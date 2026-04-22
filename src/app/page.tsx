@@ -1,65 +1,216 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import AuthProvider from "@/components/AuthProvider";
+import SplashScreen from "@/components/SplashScreen";
+import WizardFlow from "@/components/WizardFlow";
+import ResultCard from "@/components/ResultCard";
+import DuoResultCard from "@/components/DuoResultCard";
+import AnalyzingScreen from "@/components/AnalyzingScreen";
+import TokenModal from "@/components/TokenModal";
+import NotificationPrompt from "@/components/NotificationPrompt";
+import ConsentModal from "@/components/ConsentModal";
+import { useAppStore } from "@/store/useAppStore";
+import { analyzeAura, analyzeDuo, saveAuraSession, saveDuoSession } from "@/lib/services";
+import { deductToken } from "@/lib/auth";
 
 export default function Home() {
+  const screen = useAppStore((s) => s.currentScreen);
+  const setScreen = useAppStore((s) => s.setScreen);
+  
+  const analysisMode = useAppStore((s) => s.analysisMode);
+  const soloScenario = useAppStore((s) => s.soloScenario);
+  const userData = useAppStore((s) => s.userData);
+  const photoUrl = useAppStore((s) => s.photoUrl);
+  const setPhotoUrl = useAppStore((s) => s.setPhotoUrl);
+  
+  const duoPerson1 = useAppStore((s) => s.duoPerson1);
+  const duoPerson2 = useAppStore((s) => s.duoPerson2);
+  const duoRelationType = useAppStore((s) => s.duoRelationType);
+  const updateDuoPerson1 = useAppStore((s) => s.updateDuoPerson1);
+  const updateDuoPerson2 = useAppStore((s) => s.updateDuoPerson2);
+  
+  const setAuraResult = useAppStore((s) => s.setAuraResult);
+  const setDuoResult = useAppStore((s) => s.setDuoResult);
+  const setIsAnalyzing = useAppStore((s) => s.setIsAnalyzing);
+  const tokenBalance = useAppStore((s) => s.tokenBalance);
+  const setTokenBalance = useAppStore((s) => s.setTokenBalance);
+  const userId = useAppStore((s) => s.userId);
+  const isTokenModalOpen = useAppStore((s) => s.isTokenModalOpen);
+  const setTokenModalOpen = useAppStore((s) => s.setTokenModalOpen);
+
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  // Splash → Wizard after 3 seconds
+  useEffect(() => {
+    if (screen === "splash") {
+      const timer = setTimeout(() => setScreen("wizard"), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [screen, setScreen]);
+
+  const handleWizardComplete = async () => {
+    // ===== DYNAMIC PRICING =====
+    const tokenCost = analysisMode === "duo" ? 2 : 1;
+    const vipExpiry = useAppStore.getState().vipExpiry;
+    const isVipActive = vipExpiry ? new Date(vipExpiry) > new Date() : false;
+
+    // ===== TOKEN GATE: Bakiye kontrolü =====
+    if (!isVipActive && tokenBalance < tokenCost) {
+      setTokenModalOpen(true);
+      return; // Analiz KESİNLİKLE başlamaz
+    }
+
+    setScreen("analyzing");
+    setIsAnalyzing(true);
+    
+    try {
+      if (analysisMode === "duo") {
+        /* =====================
+           DUO MODE
+           ===================== */
+        const result = await analyzeDuo(userId, duoPerson1, duoPerson2, duoRelationType);
+        
+        // Bellekteki fotoğrafları temizle
+        updateDuoPerson1({ photoBase64: null });
+        updateDuoPerson2({ photoBase64: null });
+        
+        // Firestore'a kaydet (userId eklenerek)
+        try {
+          await saveDuoSession(userId, duoPerson1, duoPerson2, duoRelationType, result);
+        } catch (firestoreErr) {
+          console.error("Database Error:", firestoreErr);
+        }
+
+        // ===== TOKEN DEDUCTION: Başarılı analiz sonrası jeton düş =====
+        if (userId && !isVipActive) {
+          try {
+            await fetch("/api/spend-token", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ userId, amount: tokenCost })
+            });
+            // Yerel state'i güncelle
+            const updatedTokenBalance = useAppStore.getState().tokenBalance;
+            setTokenBalance(updatedTokenBalance - tokenCost);
+          } catch (tokenErr) {
+            console.error("Token deduction error:", tokenErr);
+          }
+        }
+
+        setDuoResult(result);
+        setScreen("result");
+
+      } else {
+        /* =====================
+           SOLO MODE (mevcut akış)
+           ===================== */
+        // Fotoğraf referansını temizlemeden önce sakla
+        const capturedPhoto = photoUrl;
+        const result = await analyzeAura({ userId, ...userData, photoUrl, soloScenario });
+        
+        // Bellekteki ağırlığı hemen temizle
+        setPhotoUrl(null);
+        
+        // Firestore'a kaydet (userId + photoBase64 eklenerek)
+        try {
+          await saveAuraSession(userId, userData, capturedPhoto, result);
+        } catch (firestoreErr) {
+          console.error("Database Error:", firestoreErr);
+        }
+
+        // ===== TOKEN DEDUCTION: Başarılı analiz sonrası jeton düş =====
+        if (userId && !isVipActive) {
+          try {
+            await fetch("/api/spend-token", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ userId, amount: tokenCost })
+            });
+            // Yerel state'i güncelle
+            const updatedTokenBalance = useAppStore.getState().tokenBalance;
+            setTokenBalance(updatedTokenBalance - tokenCost);
+          } catch (tokenErr) {
+            console.error("Token deduction error:", tokenErr);
+          }
+        }
+
+        setAuraResult(result);
+        setScreen("result");
+      }
+    } catch (err: any) {
+      console.error("Analysis failed", err);
+      
+      const errMsg = err?.message || err?.toString() || "";
+      if (errMsg.includes("503") || errMsg.includes("429") || errMsg.includes("high demand") || errMsg.includes("UNAVAILABLE")) {
+        setToastMessage("The stars are too crowded right now, come back in a minute to read your aura! 🌌");
+      } else {
+        setToastMessage("Analysis failed. Something went wrong! 💫");
+      }
+      
+      setTimeout(() => setToastMessage(null), 4000);
+      
+      // Kullanıcıyı tamamen en başa (ana sayfaya) güvenle döndür
+      useAppStore.getState().resetWizard();
+      // Analiz başarısız olursa jeton düşMEZ — kullanıcı korunur
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <AuthProvider>
+      <main className="relative mx-auto w-full max-w-[430px] min-h-dvh overflow-hidden">
+        <AnimatePresence mode="wait">
+          {screen === "splash" && <SplashScreen key="splash" />}
+          
+          {screen === "wizard" && (
+            <WizardFlow key="wizard" onComplete={handleWizardComplete} />
+          )}
+          
+          {screen === "analyzing" && <AnalyzingScreen key="analyzing" />}
+          
+          {screen === "result" && (
+            analysisMode === "duo"
+              ? <DuoResultCard key="duo-result" />
+              : <ResultCard key="solo-result" />
+          )}
+        </AnimatePresence>
+
+        {/* Token Gate Modal — her zaman render, AnimatePresence ile göster/gizle */}
+        <TokenModal
+          isOpen={isTokenModalOpen}
+          onClose={() => setTokenModalOpen(false)}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+        {/* Custom Error Toast */}
+        <AnimatePresence>
+          {toastMessage && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 30 }}
+              className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[360px]"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+              <div className="glass-panel border border-red-500/30 bg-red-500/10 p-4 rounded-2xl flex items-center gap-3 w-full shadow-[0_0_30px_rgba(239,68,68,0.2)]">
+                <div className="bg-red-500/20 p-2 rounded-full text-red-400">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <p className="text-[14px] font-medium text-red-100 leading-snug flex-1">
+                  {toastMessage}
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Cihaz Native Bildirim İsteği */}
+        <NotificationPrompt />
+
+        {/* İlk giriş hukuki onay modalı */}
+        <ConsentModal />
       </main>
-    </div>
+    </AuthProvider>
   );
 }

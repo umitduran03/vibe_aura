@@ -9,9 +9,27 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@capacitor-community/admob": "^8.0.0",
+    "@capacitor/camera": "^8.1.0",
+    "@capacitor/core": "^8.3.0",
+    "@capacitor/haptics": "^8.0.2",
+    "@capacitor/network": "^8.0.1",
+    "@capacitor/push-notifications": "^8.0.3",
+    "@google/genai": "^1.49.0",
+    "@google/generative-ai": "^0.24.1",
+    "@polar-sh/sdk": "^0.47.0",
+    "@revenuecat/purchases-capacitor": "^12.3.2",
+    "browser-image-compression": "^2.0.2",
+    "firebase": "^12.12.0",
+    "firebase-admin": "^13.8.0",
+    "framer-motion": "^12.38.0",
+    "html-to-image": "^1.11.13",
+    "html2canvas": "^1.4.1",
+    "lucide-react": "^1.8.0",
     "next": "16.2.3",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
