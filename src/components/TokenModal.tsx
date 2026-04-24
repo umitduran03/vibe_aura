@@ -88,7 +88,12 @@ type ModalView = "gate" | "store" | "loading" | "success" | "mobile-funnel";
 
 export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
   const [view, setView] = useState<ModalView>("gate");
-  const [showToast, setShowToast] = useState(false);
+  const [toast, setToast] = useState<{ show: boolean; msg: string }>({ show: false, msg: "" });
+
+  const triggerToast = (msg: string) => {
+    setToast({ show: true, msg });
+    setTimeout(() => setToast({ show: false, msg: "" }), 3000);
+  };
   const [purchasedTokens, setPurchasedTokens] = useState<number | string>(0);
   const [storeTokenPackages, setStoreTokenPackages] = useState<any[]>(TOKEN_PACKAGES as any);
   const [storeVipPackages, setStoreVipPackages] = useState<any[]>(VIP_PACKAGES as any);
@@ -160,14 +165,17 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
         console.log("[AdMob] Reward video watched. Token reward request sent.");
       }
 
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
+      triggerToast("📺 Loading ad... It will be active on the mobile version");
     } catch (e) {
       console.warn("AdMob Reward failed/skipped:", e);
       // Fallback behavior for native if ad fails
-      setShowToast(true);
-      setTimeout(() => setShowToast(false), 3000);
+      triggerToast("📺 Loading ad... It will be active on the mobile version");
     }
+  };
+
+  const handleComingSoon = () => {
+    hapticMedium();
+    triggerToast("🚀 Our native mobile apps are dropping very soon! Stay tuned.");
   };
 
   const handlePurchase = async (pkg: any) => {
@@ -614,24 +622,24 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
 
                       <div className="space-y-4">
                         {/* iOS Download */}
-                        <motion.a
-                          href="#"
+                        <motion.button
+                          onClick={handleComingSoon}
                           whileTap={{ scale: 0.96 }}
-                          className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-[14px] font-bold text-white transition-all bg-[#007AFF] shadow-[0_0_30px_rgba(0,122,255,0.3)] border border-white/10"
+                          className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-[14px] font-bold text-white transition-all bg-[#007AFF] shadow-[0_0_30px_rgba(0,122,255,0.3)] border border-white/10 cursor-pointer"
                         >
                           <svg className="h-5 w-5 fill-white" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.1 2.48-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91 1.65.17 2.47.81 3.01 1.59-4.32 1.51-3.61 7.33.68 9.07zM13 3.5c.73-.89 1.22-2.13 1.08-3.38-1.08.04-2.39.71-3.16 1.61-.69.79-1.3 2.05-1.14 3.26 1.2.1 2.43-.59 3.22-1.5z"/></svg>
-                          Download for iOS
-                        </motion.a>
+                          Download for iOS (Soon)
+                        </motion.button>
 
                         {/* Android Download */}
-                        <motion.a
-                          href="#"
+                        <motion.button
+                          onClick={handleComingSoon}
                           whileTap={{ scale: 0.96 }}
-                          className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-[14px] font-bold text-white transition-all bg-[#3DDC84] shadow-[0_0_30px_rgba(61,220,132,0.3)] border border-white/10"
+                          className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-[14px] font-bold text-white transition-all bg-[#3DDC84] shadow-[0_0_30px_rgba(61,220,132,0.3)] border border-white/10 cursor-pointer"
                         >
                           <svg className="h-5 w-5 fill-white" viewBox="0 0 24 24"><path d="M17.523 15.3414C17.025 15.3414 16.6212 14.9376 16.6212 14.4396C16.6212 13.9416 17.025 13.5378 17.523 13.5378C18.021 13.5378 18.4248 13.9416 18.4248 14.4396C18.4248 14.9376 18.021 15.3414 17.523 15.3414ZM6.477 15.3414C5.979 15.3414 5.5752 14.9376 5.5752 14.4396C5.5752 13.9416 5.979 13.5378 6.477 13.5378C6.975 13.5378 7.3788 13.9416 7.3788 14.4396C7.3788 14.9376 6.975 15.3414 6.477 15.3414ZM17.9622 10.7496L20.124 7.0056C20.25 6.786 20.1744 6.5052 19.9548 6.3792C19.7352 6.2532 19.4544 6.3288 19.3284 6.5484L17.13 10.359C15.651 9.684 13.9356 9.3024 12.0006 9.3024C10.0656 9.3024 8.3502 9.684 6.8712 10.359L4.6728 6.5484C4.5468 6.3288 4.266 6.2532 4.0464 6.3792C3.8268 6.5052 3.7512 6.786 3.8772 7.0056L6.039 10.7496C3.0042 12.3966 0.957 15.4854 0.8142 19.1178H23.1858C23.043 15.4854 20.9958 12.3966 17.9622 10.7496Z"/></svg>
-                          Download for Android
-                        </motion.a>
+                          Download for Android (Soon)
+                        </motion.button>
                       </div>
 
                       <motion.button
@@ -647,11 +655,11 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
             </motion.div>
           </motion.div>
 
-          {/* Toast notification — Reklam */}
+          {/* Toast notification */}
           <AnimatePresence>
-            {showToast && (
+            {toast.show && (
               <motion.div
-                className="fixed bottom-8 left-1/2 z-[60] -translate-x-1/2 px-5 py-3 rounded-2xl text-[13px] font-medium text-white/90 border border-white/10 backdrop-blur-xl pointer-events-none"
+                className="fixed bottom-8 left-1/2 z-[60] -translate-x-1/2 px-5 py-3 rounded-2xl text-[13px] font-medium text-white/90 border border-white/10 backdrop-blur-xl pointer-events-none text-center min-w-[280px]"
                 style={{
                   background: "linear-gradient(135deg, rgba(30,30,40,0.95), rgba(20,20,30,0.98))",
                   boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
@@ -661,7 +669,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                 exit={{ opacity: 0, y: 10, scale: 0.95 }}
                 transition={{ type: "spring", stiffness: 400, damping: 25 }}
               >
-                📺 Loading ad... It will be active on the mobile version
+                {toast.msg}
               </motion.div>
             )}
           </AnimatePresence>

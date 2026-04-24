@@ -155,7 +155,7 @@ export async function POST(req: NextRequest) {
 
   // ─── Signature Verification (Standard Webhooks) ────────────────
   const rawBody = await req.text();
-
+  
   // Build a plain headers object for validateEvent
   const headers: Record<string, string> = {};
   req.headers.forEach((value, key) => {
@@ -182,67 +182,44 @@ export async function POST(req: NextRequest) {
   }
 
   // ─── Event Processing ───────────────────────────────────────────
-  console.log(`[Polar Webhook] Received event: ${event.type}`);
+  console.log(`[Polar Webhook] 🔔 Received event: ${event.type}`);
+
+  // Only process 'order.paid' to ensure funds are received.
+  // We also listen to 'order.created' just to acknowledge it.
+  const validEvents = ["order.created", "order.paid"];
+
+  if (!validEvents.includes(event.type)) {
+    console.log(`[Polar Webhook] ⏩ Ignoring event: ${event.type}`);
+    return NextResponse.json({ received: true });
+  }
+
+  const order = event.data;
+  const eventType = event.type;
+  const sourceId = order.id;
 
   try {
-    switch (event.type) {
-      case "checkout.updated": {
-        const checkout = event.data;
-        if (checkout.status !== "succeeded") {
-          break;
-        }
+    const fulfillmentData = extractFulfillmentData(order.metadata);
 
-        const fulfillmentData = extractFulfillmentData(checkout.metadata);
-        if (!fulfillmentData) {
-          console.warn(`[Polar Webhook] ⚠️ No fulfillment metadata found in checkout ${checkout.id}`);
-          break;
-        }
-
-        // Use checkout.id as sourceId
-        await fulfillOrder(fulfillmentData, checkout.id);
-        break;
-      }
-
-      case "order.created":
-      case "order.paid": {
-        const order = event.data;
-        
-        const fulfillmentData = extractFulfillmentData(order.metadata);
-        if (fulfillmentData) {
-          // Use order.id as sourceId
-          await fulfillOrder(fulfillmentData, order.id);
-        } else {
-          console.warn(`[Polar Webhook] ⚠️ No metadata on order ${order.id}`);
-        }
-        break;
-      }
-
-      case "subscription.created":
-      case "subscription.updated": {
-        const subscription = event.data;
-        
-        const fulfillmentData = extractFulfillmentData(subscription.metadata);
-        if (fulfillmentData) {
-          // Use subscription.id as sourceId
-          await fulfillOrder(fulfillmentData, subscription.id);
-        } else {
-          console.warn(`[Polar Webhook] ⚠️ No metadata on subscription ${subscription.id}`);
-        }
-        break;
-      }
-
-      default:
-        console.log(`[Polar Webhook] Unhandled event type: ${event.type}`);
+    if (!fulfillmentData) {
+      console.warn(`[Polar Webhook] ⚠️ No valid fulfillment metadata on ${eventType}:${sourceId}. Skipping.`);
+      return NextResponse.json({ received: true, status: "skipped_no_metadata" });
     }
+
+    // Actual fulfillment only happens on 'order.paid'
+    if (eventType === "order.paid") {
+      await fulfillOrder(fulfillmentData, sourceId);
+      console.log(`[Polar Webhook] ✅ Success for order ${sourceId}`);
+    } else {
+      console.log(`[Polar Webhook] ⏳ Order created but not yet paid. Waiting for order.paid event.`);
+    }
+
+    return NextResponse.json({ received: true });
   } catch (error) {
-    console.error(`[Polar Webhook] ❌ Fulfillment error for event ${event.type}:`, error);
+    console.error(`[Polar Webhook] ❌ Error processing ${eventType}:${sourceId}:`, error);
     // Return 500 so Polar retries the webhook
     return NextResponse.json(
-      { error: "Fulfillment failed" },
+      { error: "Internal processing failed" },
       { status: 500 }
     );
   }
-
-  // ─── Acknowledge receipt ────────────────────────────────────────
-  return NextResponse.json({ received: true }, { status: 202 });
 }
