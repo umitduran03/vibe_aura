@@ -57,10 +57,10 @@ export async function POST(req: NextRequest) {
     const successUrl = `${appUrl}/payment-success?session_id={CHECKOUT_ID}`;
 
     // ─── Create Polar Checkout Session ────────────────────────────
-    const checkout = await polar.checkouts.create({
+    const checkoutPayload = {
       products: [pkg.productId],
       successUrl,
-      customerEmail: undefined, // Anonymous auth, no email available
+      cancelUrl: `${appUrl}/settings`,
       metadata: {
         firebaseUid: verifiedUser.uid,
         packageId: pkg.id,
@@ -68,7 +68,11 @@ export async function POST(req: NextRequest) {
         tokens: String(pkg.tokens || 0),
         vipDays: String(pkg.vipDays || 0),
       },
-    });
+    };
+
+    console.log("[Polar Checkout] Creating session with payload:", JSON.stringify(checkoutPayload, null, 2));
+
+    const checkout = await polar.checkouts.create(checkoutPayload);
 
     console.log(
       `[Polar Checkout] Session created for UID:${verifiedUser.uid} pkg:${packageId} checkout:${checkout.id}`
@@ -76,7 +80,12 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: checkout.url });
   } catch (error: any) {
-    console.error("[Polar Checkout] Error:", error);
+    console.error("[Polar Checkout] ❌ Error details:", {
+      message: error?.message,
+      name: error?.name,
+      response: error?.response?.data || error?.response,
+      stack: error?.stack,
+    });
 
     return NextResponse.json(
       { error: error?.message || "Internal Server Error" },

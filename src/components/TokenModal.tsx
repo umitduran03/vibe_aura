@@ -50,7 +50,7 @@ const TOKEN_PACKAGES = [
 
 const VIP_PACKAGES = [
   {
-    id: "vip_weekly",
+    id: "aura_vip",
     name: "Aura VIP",
     desc: "✦ Weekly Unlimited",
     price: "$4.99",
@@ -61,7 +61,7 @@ const VIP_PACKAGES = [
     badgeColor: null,
   },
   {
-    id: "vip_monthly",
+    id: "mcs_monthly",
     name: "Main Character Syndrome",
     desc: "✦ Monthly Unlimited",
     price: "$9.99",
@@ -72,7 +72,7 @@ const VIP_PACKAGES = [
     badgeColor: "#10b981",
   },
   {
-    id: "vip_lifetime",
+    id: "god_mode_lifetime",
     name: "God Mode",
     desc: "✦ Lifetime (One-time)",
     price: "$49.99",
@@ -192,7 +192,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
             body: JSON.stringify({ amount: pkg.tokens, source: "revenuecat" })
           });
           useAppStore.getState().setTokenBalance(useAppStore.getState().tokenBalance + pkg.tokens);
-        } else if (userId && pkg.id.startsWith("vip_")) {
+        } else if (userId && (pkg.id === "aura_vip" || pkg.id === "mcs_monthly" || pkg.id === "god_mode_lifetime")) {
           const res = await fetch("/api/purchase-vip", {
             method: "POST",
             headers: { "Content-Type": "application/json", "Authorization": `Bearer ${idToken}` },

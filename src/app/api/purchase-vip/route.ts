@@ -21,11 +21,11 @@ export async function POST(req: NextRequest) {
     }
 
     let durationDays = 0;
-    if (vipPackageId === "vip_weekly") {
+    if (vipPackageId === "aura_vip") {
       durationDays = 7;
-    } else if (vipPackageId === "vip_monthly") {
+    } else if (vipPackageId === "mcs_monthly") {
       durationDays = 30;
-    } else if (vipPackageId === "vip_lifetime") {
+    } else if (vipPackageId === "god_mode_lifetime") {
       durationDays = 36500; // 100 years
     } else {
       return NextResponse.json({ error: "Invalid VIP package" }, { status: 400 });

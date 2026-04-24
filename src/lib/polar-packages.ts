@@ -32,48 +32,48 @@ export interface PolarPackageConfig {
 
 /**
  * Returns the full package config map.
- * Called at request time so env vars are resolved from the runtime environment.
+ * Uses static property access for NEXT_PUBLIC_ env vars to ensure Next.js inlining.
  */
 export function getPolarPackages(): Record<string, PolarPackageConfig> {
   return {
     token_rookie: {
       id: "token_rookie",
-      productId: process.env.POLAR_PRODUCT_TOKEN_ROOKIE || "",
+      productId: process.env.NEXT_PUBLIC_POLAR_PRODUCT_ID_ROOKIE || "",
       type: "token",
       tokens: 10,
       label: "Rookie Gossip — 10 Tokens",
     },
     token_chaos: {
       id: "token_chaos",
-      productId: process.env.POLAR_PRODUCT_TOKEN_CHAOS || "",
+      productId: process.env.NEXT_PUBLIC_POLAR_PRODUCT_ID_CHAOS || "",
       type: "token",
       tokens: 50,
       label: "Chaos Bringer — 50 Tokens",
     },
     token_master: {
       id: "token_master",
-      productId: process.env.POLAR_PRODUCT_TOKEN_MASTER || "",
+      productId: process.env.NEXT_PUBLIC_POLAR_PRODUCT_ID_MASTER || "",
       type: "token",
       tokens: 150,
       label: "Aura Master — 150 Tokens",
     },
-    vip_weekly: {
-      id: "vip_weekly",
-      productId: process.env.POLAR_PRODUCT_VIP_WEEKLY || "",
+    aura_vip: {
+      id: "aura_vip",
+      productId: process.env.NEXT_PUBLIC_POLAR_PRODUCT_ID_VIP || "",
       type: "vip",
       vipDays: 7,
       label: "Aura VIP — Weekly Unlimited",
     },
-    vip_monthly: {
-      id: "vip_monthly",
-      productId: process.env.POLAR_PRODUCT_VIP_MONTHLY || "",
+    mcs_monthly: {
+      id: "mcs_monthly",
+      productId: process.env.NEXT_PUBLIC_POLAR_PRODUCT_ID_MCS || "",
       type: "vip",
       vipDays: 30,
       label: "Main Character Syndrome — Monthly Unlimited",
     },
-    vip_lifetime: {
-      id: "vip_lifetime",
-      productId: process.env.POLAR_PRODUCT_VIP_LIFETIME || "",
+    god_mode_lifetime: {
+      id: "god_mode_lifetime",
+      productId: process.env.NEXT_PUBLIC_POLAR_PRODUCT_ID_GOD || "",
       type: "vip",
       vipDays: 36500, // ~100 years
       label: "God Mode — Lifetime",

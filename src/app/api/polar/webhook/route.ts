@@ -41,79 +41,94 @@ function extractFulfillmentData(metadata: Record<string, any> | null | undefined
 
 /**
  * Awards tokens or activates VIP for the given user in Firestore.
+ * Uses an idempotency check to prevent double fulfillment.
+ * 
+ * @param data Fulfillment instructions
+ * @param sourceId The Polar ID (checkout.id, order.id, etc.) to track fulfillment
  */
-async function fulfillOrder(data: FulfillmentData): Promise<void> {
+async function fulfillOrder(data: FulfillmentData, sourceId: string): Promise<void> {
   if (!adminDb) {
     throw new Error("Firebase Admin is not initialized");
   }
 
+  const paymentRef = adminDb.collection("processed_payments").doc(sourceId);
   const userRef = adminDb.collection("users").doc(data.firebaseUid);
-  const userDoc = await userRef.get();
 
-  if (data.packageType === "token" && data.tokens > 0) {
-    // ─── Token Pack Fulfillment ─────────────────────────────────
-    let currentBalance = 0;
-    if (userDoc.exists) {
-      currentBalance = userDoc.data()?.token_balance || 0;
-    }
+  try {
+    await adminDb.runTransaction(async (transaction) => {
+      const paymentDoc = await transaction.get(paymentRef);
 
-    await userRef.set(
-      {
-        token_balance: currentBalance + data.tokens,
-        lastPurchase: {
-          packageId: data.packageId,
-          tokens: data.tokens,
-          source: "polar",
-          timestamp: new Date().toISOString(),
-        },
-      },
-      { merge: true }
-    );
-
-    console.log(
-      `[Polar Webhook] ✅ Fulfilled ${data.tokens} tokens for UID:${data.firebaseUid} (${data.packageId}). New balance: ${currentBalance + data.tokens}`
-    );
-  } else if (data.packageType === "vip" && data.vipDays > 0) {
-    // ─── VIP Fulfillment ────────────────────────────────────────
-    const now = new Date();
-    let currentExpiry = now;
-
-    if (userDoc.exists) {
-      const existingData = userDoc.data();
-      if (existingData?.vipExpiry) {
-        const existingDate =
-          typeof existingData.vipExpiry.toDate === "function"
-            ? existingData.vipExpiry.toDate()
-            : new Date(existingData.vipExpiry);
-
-        if (existingDate > now) {
-          currentExpiry = existingDate; // Stack on top of existing VIP
-        }
+      if (paymentDoc.exists) {
+        console.log(`[Polar Webhook] ⏩ Already fulfilled for ID: ${sourceId}. Skipping.`);
+        return;
       }
-    }
 
-    const newExpiry = new Date(
-      currentExpiry.getTime() + data.vipDays * 24 * 60 * 60 * 1000
-    );
+      const userDoc = await transaction.get(userRef);
+      
+      if (data.packageType === "token" && data.tokens > 0) {
+        // ─── Token Pack Fulfillment ─────────────────────────────────
+        let currentBalance = 0;
+        if (userDoc.exists) {
+          currentBalance = userDoc.data()?.token_balance || 0;
+        }
 
-    await userRef.set(
-      {
-        vipExpiry: newExpiry.toISOString(),
-        lastPurchase: {
-          packageId: data.packageId,
-          vipDays: data.vipDays,
-          source: "polar",
-          timestamp: new Date().toISOString(),
-        },
-      },
-      { merge: true }
-    );
+        transaction.set(userRef, {
+          token_balance: currentBalance + data.tokens,
+          lastPurchase: {
+            packageId: data.packageId,
+            tokens: data.tokens,
+            source: "polar",
+            sourceId: sourceId,
+            timestamp: new Date().toISOString(),
+          },
+        }, { merge: true });
 
-    console.log(
-      `[Polar Webhook] ✅ Activated VIP for UID:${data.firebaseUid} (${data.packageId}). Expires: ${newExpiry.toISOString()}`
-    );
-  } else {
-    console.warn(`[Polar Webhook] ⚠️ Unknown fulfillment type for package: ${data.packageId}`);
+        console.log(`[Polar Webhook] ✅ Tokens awarded: +${data.tokens} to UID:${data.firebaseUid}`);
+      } else if (data.packageType === "vip" && data.vipDays > 0) {
+        // ─── VIP Fulfillment ────────────────────────────────────────
+        const now = new Date();
+        let currentExpiry = now;
+
+        if (userDoc.exists) {
+          const existingData = userDoc.data();
+          if (existingData?.vipExpiry) {
+            const existingDate = typeof existingData.vipExpiry.toDate === "function"
+              ? existingData.vipExpiry.toDate()
+              : new Date(existingData.vipExpiry);
+
+            if (existingDate > now) {
+              currentExpiry = existingDate;
+            }
+          }
+        }
+
+        const newExpiry = new Date(currentExpiry.getTime() + data.vipDays * 24 * 60 * 60 * 1000);
+
+        transaction.set(userRef, {
+          vipExpiry: newExpiry.toISOString(),
+          lastPurchase: {
+            packageId: data.packageId,
+            vipDays: data.vipDays,
+            source: "polar",
+            sourceId: sourceId,
+            timestamp: new Date().toISOString(),
+          },
+        }, { merge: true });
+
+        console.log(`[Polar Webhook] ✅ VIP Activated: +${data.vipDays} days for UID:${data.firebaseUid}`);
+      }
+
+      // Mark this ID as fulfilled
+      transaction.set(paymentRef, {
+        firebaseUid: data.firebaseUid,
+        packageId: data.packageId,
+        fulfilledAt: new Date().toISOString(),
+        metadata: data
+      });
+    });
+  } catch (error) {
+    console.error(`[Polar Webhook] ❌ Transaction failed for ${sourceId}:`, error);
+    throw error;
   }
 }
 
@@ -172,10 +187,8 @@ export async function POST(req: NextRequest) {
   try {
     switch (event.type) {
       case "checkout.updated": {
-        // Polar fires checkout.updated when checkout is completed
         const checkout = event.data;
         if (checkout.status !== "succeeded") {
-          console.log(`[Polar Webhook] Checkout status=${checkout.status}, skipping fulfillment.`);
           break;
         }
 
@@ -185,19 +198,35 @@ export async function POST(req: NextRequest) {
           break;
         }
 
-        await fulfillOrder(fulfillmentData);
+        // Use checkout.id as sourceId
+        await fulfillOrder(fulfillmentData, checkout.id);
         break;
       }
 
-      case "order.created": {
-        // Alternative: handle at order level
+      case "order.created":
+      case "order.paid": {
         const order = event.data;
-
+        
         const fulfillmentData = extractFulfillmentData(order.metadata);
         if (fulfillmentData) {
-          await fulfillOrder(fulfillmentData);
+          // Use order.id as sourceId
+          await fulfillOrder(fulfillmentData, order.id);
         } else {
           console.warn(`[Polar Webhook] ⚠️ No metadata on order ${order.id}`);
+        }
+        break;
+      }
+
+      case "subscription.created":
+      case "subscription.updated": {
+        const subscription = event.data;
+        
+        const fulfillmentData = extractFulfillmentData(subscription.metadata);
+        if (fulfillmentData) {
+          // Use subscription.id as sourceId
+          await fulfillOrder(fulfillmentData, subscription.id);
+        } else {
+          console.warn(`[Polar Webhook] ⚠️ No metadata on subscription ${subscription.id}`);
         }
         break;
       }
