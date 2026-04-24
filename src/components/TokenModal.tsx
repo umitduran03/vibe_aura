@@ -84,7 +84,7 @@ const VIP_PACKAGES = [
   },
 ] as const;
 
-type ModalView = "gate" | "store" | "loading" | "success";
+type ModalView = "gate" | "store" | "loading" | "success" | "mobile-funnel";
 
 export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
   const [view, setView] = useState<ModalView>("gate");
@@ -129,8 +129,23 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
   const handleWatchAd = async () => {
     hapticLight();
     
+    // ─── Platform Detection ───
+    let isNative = false;
     try {
-      // AdMob Reward Video Akışı
+      const { Capacitor } = await import("@capacitor/core");
+      isNative = Capacitor.isNativePlatform();
+    } catch {
+      isNative = false;
+    }
+
+    if (!isNative) {
+      // Web platform: Show Mobile Redirect Funnel instead of attempting AdMob
+      setView("mobile-funnel");
+      return;
+    }
+
+    try {
+      // AdMob Reward Video Akışı (Native Only)
       await AdMob.prepareRewardVideoAd({ adId: process.env.NEXT_PUBLIC_ADMOB_IOS_AD_UNIT || "test" });
       await AdMob.showRewardVideoAd();
       
@@ -149,16 +164,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
       setTimeout(() => setShowToast(false), 3000);
     } catch (e) {
       console.warn("AdMob Reward failed/skipped:", e);
-      // Fallback for web test:
-      if (userId) {
-        const idToken = await auth.currentUser?.getIdToken();
-        await fetch("/api/reward-token", {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "Authorization": `Bearer ${idToken}` },
-          body: JSON.stringify({ amount: 1, source: "admob_fallback" })
-        });
-        console.log("[AdMob - Fallback] Web test completed. Token reward request sent.");
-      }
+      // Fallback behavior for native if ad fails
       setShowToast(true);
       setTimeout(() => setShowToast(false), 3000);
     }
@@ -577,6 +583,63 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                       >
                         ✦ {typeof purchasedTokens === "number" ? `${purchasedTokens} tokens added to your account` : `${purchasedTokens} activated!`}
                       </motion.p>
+                    </motion.div>
+                  )}
+
+                  {/* ═══════ MOBILE FUNNEL VIEW ═══════ */}
+                  {view === "mobile-funnel" && (
+                    <motion.div
+                      key="mobile-funnel"
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -15 }}
+                      transition={{ duration: 0.3 }}
+                      className="text-center py-2"
+                    >
+                      <motion.div
+                        initial={{ scale: 0.8 }}
+                        animate={{ scale: [1, 1.1, 1] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                        className="w-20 h-20 mx-auto mb-6 bg-accent/20 rounded-3xl flex items-center justify-center border border-accent/30 shadow-[0_0_40px_rgba(139,92,246,0.2)]"
+                      >
+                        <Sparkles className="h-10 w-10 text-accent animate-pulse" />
+                      </motion.div>
+
+                      <h2 className="text-2xl font-black text-white mb-3 tracking-tight">
+                        Real Magic is on Mobile! ✨
+                      </h2>
+                      <p className="text-[14px] leading-relaxed text-zinc-400 mb-8 px-2 font-medium">
+                        Watch ads to earn free tokens, access exclusive filters, and get instant notifications only on our mobile app.
+                      </p>
+
+                      <div className="space-y-4">
+                        {/* iOS Download */}
+                        <motion.a
+                          href="#"
+                          whileTap={{ scale: 0.96 }}
+                          className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-[14px] font-bold text-white transition-all bg-[#007AFF] shadow-[0_0_30px_rgba(0,122,255,0.3)] border border-white/10"
+                        >
+                          <svg className="h-5 w-5 fill-white" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.1 2.48-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91 1.65.17 2.47.81 3.01 1.59-4.32 1.51-3.61 7.33.68 9.07zM13 3.5c.73-.89 1.22-2.13 1.08-3.38-1.08.04-2.39.71-3.16 1.61-.69.79-1.3 2.05-1.14 3.26 1.2.1 2.43-.59 3.22-1.5z"/></svg>
+                          Download for iOS
+                        </motion.a>
+
+                        {/* Android Download */}
+                        <motion.a
+                          href="#"
+                          whileTap={{ scale: 0.96 }}
+                          className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-[14px] font-bold text-white transition-all bg-[#3DDC84] shadow-[0_0_30px_rgba(61,220,132,0.3)] border border-white/10"
+                        >
+                          <svg className="h-5 w-5 fill-white" viewBox="0 0 24 24"><path d="M17.523 15.3414C17.025 15.3414 16.6212 14.9376 16.6212 14.4396C16.6212 13.9416 17.025 13.5378 17.523 13.5378C18.021 13.5378 18.4248 13.9416 18.4248 14.4396C18.4248 14.9376 18.021 15.3414 17.523 15.3414ZM6.477 15.3414C5.979 15.3414 5.5752 14.9376 5.5752 14.4396C5.5752 13.9416 5.979 13.5378 6.477 13.5378C6.975 13.5378 7.3788 13.9416 7.3788 14.4396C7.3788 14.9376 6.975 15.3414 6.477 15.3414ZM17.9622 10.7496L20.124 7.0056C20.25 6.786 20.1744 6.5052 19.9548 6.3792C19.7352 6.2532 19.4544 6.3288 19.3284 6.5484L17.13 10.359C15.651 9.684 13.9356 9.3024 12.0006 9.3024C10.0656 9.3024 8.3502 9.684 6.8712 10.359L4.6728 6.5484C4.5468 6.3288 4.266 6.2532 4.0464 6.3792C3.8268 6.5052 3.7512 6.786 3.8772 7.0056L6.039 10.7496C3.0042 12.3966 0.957 15.4854 0.8142 19.1178H23.1858C23.043 15.4854 20.9958 12.3966 17.9622 10.7496Z"/></svg>
+                          Download for Android
+                        </motion.a>
+                      </div>
+
+                      <motion.button
+                        onClick={() => { hapticLight(); setView("gate"); }}
+                        className="mt-8 text-[12px] text-zinc-500 hover:text-zinc-300 transition-colors underline underline-offset-4"
+                      >
+                        Maybe later
+                      </motion.button>
                     </motion.div>
                   )}
                 </AnimatePresence>
