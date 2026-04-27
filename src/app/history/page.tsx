@@ -1,16 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ChevronLeft, Sparkles, AlertCircle, Calendar } from "lucide-react";
+import { ChevronLeft, Sparkles, AlertCircle, Calendar, Download, Check } from "lucide-react";
 import { getAuraHistory } from "@/lib/services";
-import { hapticLight } from "@/lib/haptics";
+import { hapticLight, hapticMedium } from "@/lib/haptics";
 
 export default function HistoryPage() {
   const [history, setHistory] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [downloadingId, setDownloadingId] = useState<string | null>(null);
+  const [downloadedId, setDownloadedId] = useState<string | null>(null);
+  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   useEffect(() => {
     const fetchHistory = async () => {
@@ -37,6 +40,42 @@ export default function HistoryPage() {
       hour: "2-digit",
       minute: "2-digit",
     }).format(date);
+  };
+
+  const handleDownload = async (itemId: string) => {
+    const cardEl = cardRefs.current[itemId];
+    if (!cardEl || downloadingId) return;
+
+    hapticLight();
+    setDownloadingId(itemId);
+
+    try {
+      const { toPng } = await import("html-to-image");
+      const dataUrl = await toPng(cardEl, {
+        pixelRatio: 3,
+        backgroundColor: "#0a0a0f",
+        filter: (node: HTMLElement) => {
+          // Hide the download button itself from the screenshot
+          if (node.dataset?.downloadBtn === "true") return false;
+          // Exclude Google Translate artifacts
+          if (node.tagName === "FONT" || node.classList?.contains("skiptranslate")) return false;
+          return true;
+        },
+      });
+
+      const link = document.createElement("a");
+      link.download = `vibe-aura-history-${itemId.slice(0, 8)}.png`;
+      link.href = dataUrl;
+      link.click();
+
+      hapticMedium();
+      setDownloadedId(itemId);
+      setTimeout(() => setDownloadedId(null), 2000);
+    } catch (err) {
+      console.error("Download failed:", err);
+    } finally {
+      setDownloadingId(null);
+    }
   };
 
   return (
@@ -67,6 +106,13 @@ export default function HistoryPage() {
       {/* Content */}
       <div className="px-5 pt-6 flex-1 z-10 flex flex-col gap-4">
         
+        {/* TTL Info Message */}
+        {!loading && !error && history.length > 0 && (
+          <p className="text-center text-[11px] text-white/25 font-light tracking-wide leading-relaxed px-4 -mb-1">
+            Energy is transient. Your past Auras are cleared from the cosmos every 7 days.
+          </p>
+        )}
+
         {loading && (
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
@@ -106,12 +152,13 @@ export default function HistoryPage() {
           {!loading && !error && history.map((item, index) => (
             <motion.div
               key={item.id}
+              ref={(el) => { cardRefs.current[item.id] = el; }}
               initial={{ opacity: 0, y: 30, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ 
                 delay: index * 0.08, 
                 duration: 0.5, 
-                ease: [0.23, 1, 0.32, 1] // iOS style spring ease
+                ease: [0.23, 1, 0.32, 1]
               }}
               className="relative p-7 overflow-hidden glass-panel -mt-4 first:mt-0 group transition-transform hover:translate-y-[-8px] hover:shadow-[0_25px_50px_-15px_rgba(0,0,0,0.8)] z-10 hover:z-20"
               style={{
@@ -143,16 +190,58 @@ export default function HistoryPage() {
                   </h3>
                 </div>
                 
-                <div className="flex flex-col items-end pt-1">
-                  <div className="text-[32px] font-black tabular-nums tracking-tighter drop-shadow-md" style={{ color: item.color }}>
-                    {item.score || 0}
+                <div className="flex items-start gap-3">
+                  {/* Download Button */}
+                  <motion.button
+                    data-download-btn="true"
+                    onClick={(e) => { e.stopPropagation(); handleDownload(item.id); }}
+                    whileTap={{ scale: 0.85 }}
+                    disabled={downloadingId === item.id}
+                    className="mt-1 p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/[0.06] transition-all duration-300 cursor-pointer disabled:opacity-50"
+                    title="Download"
+                  >
+                    <AnimatePresence mode="wait">
+                      {downloadingId === item.id ? (
+                        <motion.div
+                          key="loading"
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.5 }}
+                          className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin"
+                        />
+                      ) : downloadedId === item.id ? (
+                        <motion.div
+                          key="done"
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.5 }}
+                        >
+                          <Check className="w-4 h-4 text-emerald-400" />
+                        </motion.div>
+                      ) : (
+                        <motion.div
+                          key="icon"
+                          initial={{ opacity: 0, scale: 0.5 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.5 }}
+                        >
+                          <Download className="w-4 h-4 text-white/50 group-hover:text-white/80 transition-colors" />
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </motion.button>
+
+                  <div className="flex flex-col items-end pt-1">
+                    <div className="text-[32px] font-black tabular-nums tracking-tighter drop-shadow-md" style={{ color: item.color }}>
+                      {item.score || 0}
+                    </div>
                   </div>
                 </div>
               </div>
 
               <div className="relative mt-2">
                 <div className="text-[15px] font-medium text-[#ebebf5] leading-relaxed bg-black/30 p-4 rounded-2xl border border-white/5 italic shadow-inner">
-                  "{item.toxicComment || item.comment?.substring(0, 80) + "..."}"
+                  &quot;{item.toxicComment || item.comment?.substring(0, 80) + "..."}&quot;
                 </div>
               </div>
               

@@ -165,8 +165,10 @@ export async function saveAuraSession(
   result: AuraResult
 ) {
   try {
-    const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
+    const { collection, addDoc, serverTimestamp, Timestamp } = await import("firebase/firestore");
     const { db } = await import("./firebase");
+
+    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000));
 
     const docRef = await addDoc(collection(db, "results"), {
       userId: userId || "anonymous",
@@ -181,6 +183,7 @@ export async function saveAuraSession(
       age: userData.age,
       photoBase64: photoBase64,
       createdAt: serverTimestamp(),
+      expiresAt,
     });
     console.log("[Firestore] Analiz oturumu başarıyla kaydedildi. Belge ID:", docRef.id);
   } catch (error) {
@@ -199,8 +202,10 @@ export async function saveDuoSession(
   result: DuoResult
 ) {
   try {
-    const { collection, addDoc, serverTimestamp } = await import("firebase/firestore");
+    const { collection, addDoc, serverTimestamp, Timestamp } = await import("firebase/firestore");
     const { db } = await import("./firebase");
+
+    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000));
 
     const docRef = await addDoc(collection(db, "results"), {
       userId: userId || "anonymous",
@@ -219,6 +224,7 @@ export async function saveDuoSession(
       person2Photo: person2.photoBase64,
       duoRelationType,
       createdAt: serverTimestamp(),
+      expiresAt,
     });
     console.log("[Firestore] Duo oturumu başarıyla kaydedildi. Belge ID:", docRef.id);
   } catch (error) {
