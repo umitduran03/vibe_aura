@@ -236,10 +236,16 @@ export async function saveDuoSession(
  * Kullanıcının geçmiş aura analizlerini en yeniden eskiye doğru (createdAt - desc) çeker.
  */
 export async function getAuraHistory() {
-  const { collection, query, orderBy, getDocs } = await import("firebase/firestore");
+  const { collection, query, orderBy, where, getDocs, Timestamp } = await import("firebase/firestore");
   const { db } = await import("./firebase");
 
-  const q = query(collection(db, "results"), orderBy("createdAt", "desc"));
+  const fifteenDaysAgo = Timestamp.fromDate(new Date(Date.now() - 15 * 24 * 60 * 60 * 1000));
+
+  const q = query(
+    collection(db, "results"),
+    where("createdAt", ">=", fifteenDaysAgo),
+    orderBy("createdAt", "desc")
+  );
   const querySnapshot = await getDocs(q);
 
   const history: any[] = [];
