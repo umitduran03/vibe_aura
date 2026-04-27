@@ -14,6 +14,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const setUserId = useAppStore((s) => s.setUserId);
   const setTokenBalance = useAppStore((s) => s.setTokenBalance);
   const setVipExpiry = useAppStore((s) => s.setVipExpiry);
+  const setBalanceLoaded = useAppStore((s) => s.setBalanceLoaded);
   const unsubRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
@@ -49,6 +50,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
         setUserId(null);
         setTokenBalance(0);
+        setBalanceLoaded(false);
         setVipExpiry(null);
       }
     });
@@ -57,7 +59,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       unsubscribeAuth();
       unsubRef.current?.();
     };
-  }, [setUserId, setTokenBalance, setVipExpiry]);
+  }, [setUserId, setTokenBalance, setVipExpiry, setBalanceLoaded]);
 
   return <>{children}</>;
 }

@@ -73,6 +73,7 @@ interface AppState {
 
   // — Token —
   tokenBalance: number;
+  isBalanceLoaded: boolean;
   isTokenModalOpen: boolean;
 
   // — Result (AI JSON — Solo) —
@@ -91,6 +92,7 @@ interface AppState {
   // ========== Actions ==========
   setUserId: (uid: string | null) => void;
   setTokenBalance: (balance: number) => void;
+  setBalanceLoaded: (loaded: boolean) => void;
   setTokenModalOpen: (isOpen: boolean) => void;
   setScreen: (screen: AppScreen) => void;
   setWizardStep: (step: number, direction: number) => void;
@@ -149,6 +151,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   isUploadingPhoto: false,
 
   tokenBalance: 0,
+  isBalanceLoaded: false,
   isTokenModalOpen: false,
 
   auraResult: null,
@@ -161,7 +164,8 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // ========== Actions ==========
   setUserId: (uid) => set({ userId: uid }),
-  setTokenBalance: (balance) => set({ tokenBalance: balance }),
+  setTokenBalance: (balance) => set({ tokenBalance: balance, isBalanceLoaded: true }),
+  setBalanceLoaded: (loaded) => set({ isBalanceLoaded: loaded }),
   setTokenModalOpen: (isOpen) => set({ isTokenModalOpen: isOpen }),
   setScreen: (screen) => set({ currentScreen: screen }),
 

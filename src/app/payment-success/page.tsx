@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useAppStore } from "@/store/useAppStore";
@@ -10,33 +9,37 @@ import { useAppStore } from "@/store/useAppStore";
  * PaymentSuccessPage — Finalized Premium Success Screen
  * 
  * Displays a celebratory screen after successful Polar.sh checkout.
- * Automatically redirects to the dashboard after a 5-second countdown.
  */
 export default function PaymentSuccessPage() {
-  const router = useRouter();
-  
   // Data Binding from App Store
   const tokenBalance = useAppStore((s) => s.tokenBalance);
+  const isBalanceLoaded = useAppStore((s) => s.isBalanceLoaded);
   const vipExpiry = useAppStore((s) => s.vipExpiry);
   const isVipActive = vipExpiry ? new Date(vipExpiry) > new Date() : false;
 
-  const [countdown, setCountdown] = useState(5);
+  const [isMounted, setIsMounted] = useState(false);
+  const [particles, setParticles] = useState<Array<{
+    top: string;
+    left: string;
+    xOffset: number;
+    duration: number;
+    delay: number;
+  }>>([]);
 
-  // Auto-Redirect logic
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown((prev) => {
-        if (prev <= 1) {
-          clearInterval(timer);
-          router.push("/");
-          return 0;
-        }
-        return prev - 1;
-      });
-    }, 1000);
+    setIsMounted(true);
+  }, []);
 
-    return () => clearInterval(timer);
-  }, [router]);
+  // Generate particles on client side only (Hydration safe)
+  useEffect(() => {
+    setParticles([...Array(20)].map(() => ({
+      top: `${Math.random() * 100}%`,
+      left: `${Math.random() * 100}%`,
+      xOffset: (Math.random() - 0.5) * 100,
+      duration: 4 + Math.random() * 4,
+      delay: Math.random() * 3,
+    })));
+  }, []);
 
   return (
     <main className="relative mx-auto w-full max-w-[430px] min-h-dvh overflow-hidden flex flex-col items-center justify-center p-6 text-center select-none">
@@ -107,7 +110,16 @@ export default function PaymentSuccessPage() {
           <div className="bg-white/5 rounded-3xl p-5 border border-white/10 backdrop-blur-sm">
             <p className="text-[12px] uppercase tracking-[0.2em] text-zinc-500 font-bold mb-1">Status Update</p>
             <div className="flex items-center justify-center gap-3">
-              <span className="text-xl font-bold text-white">Current Balance: {tokenBalance} Tokens</span>
+              <span className="text-xl font-bold text-white">
+                {(!isMounted || !isBalanceLoaded) ? (
+                  <span className="inline-flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
+                    <span className="animate-pulse text-zinc-400">Syncing your balance...</span>
+                  </span>
+                ) : (
+                  `${tokenBalance} Tokens`
+                )}
+              </span>
               {isVipActive && (
                 <span className="bg-purple-500/20 text-purple-300 text-[10px] px-2 py-0.5 rounded-full border border-purple-500/30 font-bold uppercase">
                   VIP Active
@@ -136,34 +148,30 @@ export default function PaymentSuccessPage() {
               <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
             </svg>
           </Link>
-          
-          <p className="text-[12px] text-zinc-500 font-medium">
-            Redirecting to dashboard in <span className="text-white font-bold">{countdown}</span> seconds...
-          </p>
         </motion.div>
       </motion.div>
 
       {/* ─── Floating Particle System (Premium FX) ─── */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {particles.map((p, i) => (
           <motion.div
             key={i}
             initial={{ 
-              top: `${Math.random() * 100}%`, 
-              left: `${Math.random() * 100}%`,
+              top: p.top, 
+              left: p.left,
               opacity: 0,
               scale: 0 
             }}
             animate={{ 
               y: [0, -100, -200],
-              x: [0, (Math.random() - 0.5) * 100],
+              x: [0, p.xOffset],
               opacity: [0, 0.4, 0],
               scale: [0, 1, 0.5]
             }}
             transition={{ 
-              duration: 4 + Math.random() * 4, 
+              duration: p.duration, 
               repeat: Infinity,
-              delay: Math.random() * 3,
+              delay: p.delay,
               ease: "linear"
             }}
             className="absolute w-1 h-1 rounded-full bg-purple-400"
