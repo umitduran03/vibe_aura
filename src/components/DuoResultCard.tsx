@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Share2, RotateCcw, Sparkles, AlertTriangle, Loader2 } from "lucide-react";
+import { Share2, RotateCcw, Sparkles, AlertTriangle, Loader2, Download } from "lucide-react";
 import { ZODIAC_SIGNS } from "@/lib/constants";
 import { resultCardVariants, resultItemVariants } from "@/lib/animations";
 import GlassButton from "@/components/ui/GlassButton";
@@ -16,22 +16,20 @@ export default function DuoResultCard() {
   const person1 = useAppStore((s) => s.duoPerson1);
   const person2 = useAppStore((s) => s.duoPerson2);
   const [isExporting, setIsExporting] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const fallbackCopyToClipboard = async (blob: Blob) => {
-    try {
-      await navigator.clipboard.write([
-        new ClipboardItem({
-          [blob.type]: blob,
-        }),
-      ]);
-      // Optional: Add a local 'shared' state if we want to show a checkmark 
-      // but DuoResultCard doesn't seem to use a checkmark.
-    } catch (e) {
-      console.error("Copy to clipboard failed", e);
-      alert("Your device doesn't support direct image copying.");
-    }
-  };
+  /** Download blob as PNG — universal fallback */
+  const downloadBlob = useCallback((blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }, []);
 
   const handleShare = useCallback(async () => {
     if (!cardRef.current || isExporting || !duoResult) return;
@@ -53,8 +51,10 @@ export default function DuoResultCard() {
 
       if (!blob) throw new Error("Canvas blob failed");
 
-      if (navigator.share) {
-        const file = new File([blob], "duo-vibe-match.png", { type: "image/png" });
+      const file = new File([blob], "vibe-aura-duo-result.png", { type: "image/png" });
+      const filename = `vibe-aura-duo-${duoResult.duoScore}.png`;
+
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
         try {
           await navigator.share({
             title: `${duoResult.title} — Vibe & Aura`,
@@ -63,18 +63,24 @@ export default function DuoResultCard() {
           });
         } catch (e: any) {
           if (e.name !== 'AbortError') {
-            fallbackCopyToClipboard(blob);
+            setIsDownloading(true);
+            downloadBlob(blob, filename);
+            setTimeout(() => setIsDownloading(false), 2000);
           }
         }
       } else {
-        fallbackCopyToClipboard(blob);
+        setIsDownloading(true);
+        downloadBlob(blob, filename);
+        setTimeout(() => setIsDownloading(false), 2000);
       }
     } catch (err: any) {
-      console.error("[Share] Export hatası:", err);
+      if (err?.name !== "AbortError") {
+        console.error("[Share] Export error:", err);
+      }
     } finally {
       setIsExporting(false);
     }
-  }, [duoResult, isExporting]);
+  }, [duoResult, isExporting, downloadBlob]);
 
   if (!duoResult) return null;
 
@@ -243,6 +249,11 @@ export default function DuoResultCard() {
               <>
                 <Loader2 className="h-5 w-5 animate-spin" />
                 Preparing... ✨
+              </>
+            ) : isDownloading ? (
+              <>
+                <Download className="h-5 w-5 animate-bounce" />
+                Downloading... 📥
               </>
             ) : (
               <>

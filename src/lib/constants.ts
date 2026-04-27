@@ -41,7 +41,7 @@ export const RELATIONSHIP_OPTIONS: RelationshipOption[] = [
 ];
 
 // Yaş Aralığı
-export const AGE_RANGE = { min: 18, max: 65 };
+export const AGE_RANGE = { min: 13, max: 65 };
 
 // Wizard Adım Sayısı
 export const TOTAL_STEPS = 3;

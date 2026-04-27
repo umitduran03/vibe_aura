@@ -47,6 +47,20 @@ export default function ResultCard() {
   /* =============================================
      SHARE / DOWNLOAD ENGINE
      ============================================= */
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  /** Download blob as PNG — universal fallback */
+  const downloadBlob = useCallback((blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }, []);
+
   const handleShare = useCallback(async () => {
     if (!cardRef.current || isExporting || !auraResult) return;
 
@@ -68,35 +82,39 @@ export default function ResultCard() {
 
       if (!blob) throw new Error("Canvas blob failed");
 
-      const file = new File([blob], "vibe-and-aura.png", { type: "image/png" });
+      const file = new File([blob], "vibe-aura-result.png", { type: "image/png" });
+      const filename = `vibe-aura-${auraResult.aura_score}.png`;
 
       // Try Web Share API first (works on mobile, enables direct IG share)
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
-        await navigator.share({
-          title: `${auraResult.aura_name} — Vibe & Aura`,
-          text: `My aura score: ${auraResult.aura_score}/100 💜`,
-          files: [file],
-        });
+        try {
+          await navigator.share({
+            title: `${auraResult.aura_name} — Vibe & Aura`,
+            text: `My aura score: ${auraResult.aura_score}/100 💜`,
+            files: [file],
+          });
+        } catch (shareErr: any) {
+          if (shareErr?.name !== "AbortError") {
+            // Share failed — fallback to download
+            setIsDownloading(true);
+            downloadBlob(blob, filename);
+            setTimeout(() => setIsDownloading(false), 2000);
+          }
+        }
       } else {
-        // Fallback: download as PNG
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `vibe-aura-${auraResult.aura_score}.png`;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        URL.revokeObjectURL(url);
+        // Device doesn't support sharing — download directly
+        setIsDownloading(true);
+        downloadBlob(blob, filename);
+        setTimeout(() => setIsDownloading(false), 2000);
       }
     } catch (err: any) {
-      // User cancelled share dialog — not an error
       if (err?.name !== "AbortError") {
-        console.error("[Share] Export hatası:", err);
+        console.error("[Share] Export error:", err);
       }
     } finally {
       setIsExporting(false);
     }
-  }, [auraResult, isExporting]);
+  }, [auraResult, isExporting, downloadBlob]);
 
   if (!auraResult) return null;
 
@@ -254,6 +272,11 @@ export default function ResultCard() {
               <>
                 <Loader2 className="h-5 w-5 animate-spin" />
                 Preparing... ✨
+              </>
+            ) : isDownloading ? (
+              <>
+                <Download className="h-5 w-5 animate-bounce" />
+                Downloading... 📥
               </>
             ) : (
               <>

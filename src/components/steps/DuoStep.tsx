@@ -3,11 +3,10 @@
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Camera, X, Loader2, HeartOff, Flame, Eye, Users } from "lucide-react";
-import { ZODIAC_SIGNS } from "@/lib/constants";
 import { compressAndEncodeImage } from "@/lib/services";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { useAppStore, type DuoRelationType } from "@/store/useAppStore";
-import type { ZodiacSign } from "@/lib/constants";
+import ZodiacScrollPicker from "@/components/ui/ZodiacScrollPicker";
 
 const DUO_RELATION_OPTIONS: { id: DuoRelationType; label: string; emoji: React.ReactNode; color: string }[] = [
   { id: "flirt", label: "Flirt / Lovers", emoji: <Flame className="w-4 h-4" />, color: "#ec4899" },
@@ -233,23 +232,6 @@ export default function DuoStep() {
   const updateDuoPerson2 = useAppStore((s) => s.updateDuoPerson2);
   const setDuoRelationType = useAppStore((s) => s.setDuoRelationType);
 
-  const scrollRef1 = useRef<HTMLDivElement>(null);
-  const scrollRef2 = useRef<HTMLDivElement>(null);
-
-  const handleZodiacSelect = (person: 1 | 2, id: string, index: number) => {
-    hapticLight();
-    const container = person === 1 ? scrollRef1.current : scrollRef2.current;
-    
-    if (person === 1) updateDuoPerson1({ zodiac: id });
-    else updateDuoPerson2({ zodiac: id });
-
-    if (container) {
-      const itemWidth = 64 + 8; // w-16 (64px) + gap-2 (8px)
-      const centerPos = (index * itemWidth) - (container.clientWidth / 2) + (itemWidth / 2) + 120; // 120px padding
-      container.scrollTo({ left: centerPos, behavior: 'smooth' });
-    }
-  };
-
   return (
     <div className="flex flex-col gap-6 pb-4">
       {/* Photos side by side */}
@@ -288,66 +270,10 @@ export default function DuoStep() {
         <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
           Person 1 Zodiac
         </h3>
-        <div
-          className="relative w-full max-w-[340px] rounded-[2rem] p-2"
-          style={{
-            background: "rgba(255, 255, 255, 0.02)",
-            border: "1px solid rgba(255, 255, 255, 0.05)",
-            boxShadow: "inset 0 0 20px rgba(255, 255, 255, 0.01)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-            maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-          }}
-        >
-          <div 
-            ref={scrollRef1}
-            className="flex overflow-x-auto gap-2 py-4 px-[120px] snap-x snap-mandatory scrollbar-hide items-center h-[120px]"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {ZODIAC_SIGNS.map((sign: ZodiacSign, index: number) => {
-              const isSelected = duoPerson1.zodiac === sign.id;
-              return (
-                <button
-                  key={sign.id}
-                  onClick={() => handleZodiacSelect(1, sign.id, index)}
-                  className={`snap-center shrink-0 flex flex-col items-center justify-center w-16 h-20 transition-all duration-500 relative cursor-pointer outline-none ${
-                    isSelected ? "scale-110 opacity-100" : "scale-75 opacity-30 hover:opacity-60"
-                  }`}
-                >
-                  <AnimatePresence>
-                    {isSelected && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.5 }}
-                        className="absolute inset-0 rounded-full blur-xl z-0"
-                        style={{ background: `radial-gradient(circle, ${sign.gradient[0]}60 0%, transparent 70%)` }}
-                      />
-                    )}
-                  </AnimatePresence>
-                  <span 
-                    className="relative z-10 text-[40px] font-light leading-none mb-3"
-                    style={{ 
-                      fontFamily: "Times New Roman, serif",
-                      color: isSelected ? "white" : "inherit",
-                      textShadow: isSelected ? `0 0 15px ${sign.gradient[0]}` : "none",
-                    }}
-                  >
-                    {sign.emoji}{'\uFE0E'}
-                  </span>
-                  <span 
-                    className="absolute bottom-2 z-10 text-[9px] font-medium tracking-[0.15em] uppercase transition-all duration-500"
-                    style={{ 
-                      color: isSelected ? "white" : "rgba(255, 255, 255, 0.3)",
-                      textShadow: isSelected ? `0 0 10px ${sign.gradient[1]}` : "none",
-                    }}
-                  >
-                    {sign.name}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        <ZodiacScrollPicker
+          selectedZodiac={duoPerson1.zodiac}
+          onZodiacChange={(zodiac) => updateDuoPerson1({ zodiac })}
+        />
       </motion.div>
 
       {/* Person 2 — Zodiac */}
@@ -360,66 +286,10 @@ export default function DuoStep() {
         <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
           Person 2 Zodiac
         </h3>
-        <div
-          className="relative w-full max-w-[340px] rounded-[2rem] p-2"
-          style={{
-            background: "rgba(255, 255, 255, 0.02)",
-            border: "1px solid rgba(255, 255, 255, 0.05)",
-            boxShadow: "inset 0 0 20px rgba(255, 255, 255, 0.01)",
-            WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-            maskImage: "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-          }}
-        >
-          <div 
-            ref={scrollRef2}
-            className="flex overflow-x-auto gap-2 py-4 px-[120px] snap-x snap-mandatory scrollbar-hide items-center h-[120px]"
-            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
-          >
-            {ZODIAC_SIGNS.map((sign: ZodiacSign, index: number) => {
-              const isSelected = duoPerson2.zodiac === sign.id;
-              return (
-                <button
-                  key={sign.id}
-                  onClick={() => handleZodiacSelect(2, sign.id, index)}
-                  className={`snap-center shrink-0 flex flex-col items-center justify-center w-16 h-20 transition-all duration-500 relative cursor-pointer outline-none ${
-                    isSelected ? "scale-110 opacity-100" : "scale-75 opacity-30 hover:opacity-60"
-                  }`}
-                >
-                  <AnimatePresence>
-                    {isSelected && (
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.5 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.5 }}
-                        className="absolute inset-0 rounded-full blur-xl z-0"
-                        style={{ background: `radial-gradient(circle, ${sign.gradient[0]}60 0%, transparent 70%)` }}
-                      />
-                    )}
-                  </AnimatePresence>
-                  <span 
-                    className="relative z-10 text-[40px] font-light leading-none mb-3"
-                    style={{ 
-                      fontFamily: "Times New Roman, serif",
-                      color: isSelected ? "white" : "inherit",
-                      textShadow: isSelected ? `0 0 15px ${sign.gradient[0]}` : "none",
-                    }}
-                  >
-                    {sign.emoji}{'\uFE0E'}
-                  </span>
-                  <span 
-                    className="absolute bottom-2 z-10 text-[9px] font-medium tracking-[0.15em] uppercase transition-all duration-500"
-                    style={{ 
-                      color: isSelected ? "white" : "rgba(255, 255, 255, 0.3)",
-                      textShadow: isSelected ? `0 0 10px ${sign.gradient[1]}` : "none",
-                    }}
-                  >
-                    {sign.name}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
+        <ZodiacScrollPicker
+          selectedZodiac={duoPerson2.zodiac}
+          onZodiacChange={(zodiac) => updateDuoPerson2({ zodiac })}
+        />
       </motion.div>
 
       {/* Relation type selector */}

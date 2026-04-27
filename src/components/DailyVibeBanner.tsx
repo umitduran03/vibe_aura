@@ -3,7 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
-import { Sparkles, Loader2, Sparkle, Share, Check } from "lucide-react";
+import { Sparkles, Loader2, Sparkle, Share, Check, Download } from "lucide-react";
 import { db } from "@/lib/firebase";
 import { useAppStore } from "@/store/useAppStore";
 
@@ -99,6 +99,18 @@ export default function DailyVibeBanner() {
     };
   }, [userId, userData.age, userData.zodiac]);
 
+  /** Download blob as PNG — universal fallback */
+  const downloadBlob = (blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   const handleShare = async () => {
     if (!bannerRef.current || !vibe) return;
     setIsSharing(true);
@@ -115,7 +127,7 @@ export default function DailyVibeBanner() {
 
       const htmlToImage = await import("html-to-image");
       const blob = await htmlToImage.toBlob(bannerRef.current, {
-        backgroundColor: "#09090b", // Ensure dark background for the glass panel
+        backgroundColor: "#09090b",
         pixelRatio: 3,
         width: bannerRef.current.offsetWidth,
         filter: filter as any,
@@ -123,8 +135,9 @@ export default function DailyVibeBanner() {
 
       if (!blob) throw new Error("Failed to capture image");
 
-      if (navigator.share) {
-        const file = new File([blob], `VibeAura-Daily_Vibe.png`, { type: "image/png" });
+      const file = new File([blob], "vibe-aura-daily-vibe.png", { type: "image/png" });
+
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
         try {
           await navigator.share({
             files: [file],
@@ -133,34 +146,21 @@ export default function DailyVibeBanner() {
           setShared(true);
           setTimeout(() => setShared(false), 2000);
         } catch (e: any) {
-          // Check for AbortError (user cancelled) or feature non-support
           if (e.name !== 'AbortError') {
-            console.warn("Share API failed, falling back to clipboard");
-            fallbackCopyToClipboard(blob);
+            downloadBlob(blob, "vibe-aura-daily-vibe.png");
+            setShared(true);
+            setTimeout(() => setShared(false), 2000);
           }
         }
       } else {
-        fallbackCopyToClipboard(blob);
+        downloadBlob(blob, "vibe-aura-daily-vibe.png");
+        setShared(true);
+        setTimeout(() => setShared(false), 2000);
       }
     } catch (e) {
       console.error("Share error:", e);
     } finally {
       setIsSharing(false);
-    }
-  };
-
-  const fallbackCopyToClipboard = async (blob: Blob) => {
-    try {
-      await navigator.clipboard.write([
-        new ClipboardItem({
-          [blob.type]: blob,
-        }),
-      ]);
-      setShared(true);
-      setTimeout(() => setShared(false), 2000);
-    } catch (e) {
-      console.error("Copy to clipboard failed", e);
-      alert("Your device doesn't support direct image copying.");
     }
   };
 
