@@ -1,23 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { useAppStore } from "@/store/useAppStore";
 
 /**
- * PaymentSuccessPage — Finalized Premium Success Screen
+ * PaymentSuccessPage — Premium Static Success Screen
  * 
- * Displays a celebratory screen after successful Polar.sh checkout.
+ * Pure confirmation page after successful Polar.sh checkout.
+ * No dynamic data fetching — instant render, zero loading states.
  */
 export default function PaymentSuccessPage() {
-  // Data Binding from App Store
-  const tokenBalance = useAppStore((s) => s.tokenBalance);
-  const isBalanceLoaded = useAppStore((s) => s.isBalanceLoaded);
-  const vipExpiry = useAppStore((s) => s.vipExpiry);
-  const isVipActive = vipExpiry ? new Date(vipExpiry) > new Date() : false;
-
-  const [isMounted, setIsMounted] = useState(false);
   const [particles, setParticles] = useState<Array<{
     top: string;
     left: string;
@@ -25,10 +18,6 @@ export default function PaymentSuccessPage() {
     duration: number;
     delay: number;
   }>>([]);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   // Generate particles on client side only (Hydration safe)
   useEffect(() => {
@@ -96,35 +85,24 @@ export default function PaymentSuccessPage() {
             transition={{ delay: 0.8 }}
             className="text-zinc-400 text-sm leading-relaxed px-2"
           >
-            Your account has been updated with your new tokens/VIP status.
+            Your cosmic tokens have been added to your account.
           </motion.p>
         </div>
 
-        {/* Balance Display */}
+        {/* Static Confirmation Box */}
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1 }}
-          className="w-full space-y-3"
+          className="w-full"
         >
           <div className="bg-white/5 rounded-3xl p-5 border border-white/10 backdrop-blur-sm">
-            <p className="text-[12px] uppercase tracking-[0.2em] text-zinc-500 font-bold mb-1">Status Update</p>
-            <div className="flex items-center justify-center gap-3">
-              <span className="text-xl font-bold text-white">
-                {(!isMounted || !isBalanceLoaded) ? (
-                  <span className="inline-flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-purple-400 animate-pulse" />
-                    <span className="animate-pulse text-zinc-400">Syncing your balance...</span>
-                  </span>
-                ) : (
-                  `${tokenBalance} Tokens`
-                )}
+            <p className="text-[12px] uppercase tracking-[0.2em] text-zinc-500 font-bold mb-2">Status</p>
+            <div className="flex items-center justify-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]" />
+              <span className="text-[15px] font-semibold text-zinc-200">
+                Your balance has been updated successfully.
               </span>
-              {isVipActive && (
-                <span className="bg-purple-500/20 text-purple-300 text-[10px] px-2 py-0.5 rounded-full border border-purple-500/30 font-bold uppercase">
-                  VIP Active
-                </span>
-              )}
             </div>
           </div>
         </motion.div>
