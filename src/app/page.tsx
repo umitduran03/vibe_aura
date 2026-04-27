@@ -108,9 +108,8 @@ export default function Home() {
               },
               body: JSON.stringify({ userId, amount: tokenCost })
             });
-            // Yerel state'i güncelle
-            const updatedTokenBalance = useAppStore.getState().tokenBalance;
-            setTokenBalance(updatedTokenBalance - tokenCost);
+            // Yerel state'i güncelle - KALDIRILDI (Double decrement bug'ını önlemek için)
+            // Sadece Firestore listener'ın güncellemesini bekliyoruz.
           } catch (tokenErr) {
             console.error("Token deduction error:", tokenErr);
           }
@@ -149,9 +148,8 @@ export default function Home() {
               },
               body: JSON.stringify({ userId, amount: tokenCost })
             });
-            // Yerel state'i güncelle
-            const updatedTokenBalance = useAppStore.getState().tokenBalance;
-            setTokenBalance(updatedTokenBalance - tokenCost);
+            // Yerel state'i güncelle - KALDIRILDI (Double decrement bug'ını önlemek için)
+            // Sadece Firestore listener'ın güncellemesini bekliyoruz.
           } catch (tokenErr) {
             console.error("Token deduction error:", tokenErr);
           }
