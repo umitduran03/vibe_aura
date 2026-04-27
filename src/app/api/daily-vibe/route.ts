@@ -37,11 +37,29 @@ async function generateWithFallback(systemInstruction: string, promptText: strin
 }
 
 export async function POST(req: NextRequest) {
-  const allowedOrigins = ["https://vibeandaura.com", "http://localhost:3000"];
+  const allowedOrigins = [
+    "https://vibeandaura.com",
+    "https://vibe-aura.vercel.app",
+    "http://localhost:3000"
+  ];
   const origin = req.headers.get("origin");
 
-  if (process.env.NODE_ENV === "production" && origin && !allowedOrigins.includes(origin)) {
+  // CORS / Origin Guard (Vercel preview URL'lerine de izin verir)
+  if (
+    process.env.NODE_ENV === "production" &&
+    origin &&
+    !allowedOrigins.includes(origin) &&
+    !origin.endsWith(".vercel.app")
+  ) {
     return NextResponse.json({ error: "Forbidden. Invalid Origin." }, { status: 403 });
+  }
+
+  // App Check Toleransı (Sadece uyarı basıp devam eder, 403 dönmez)
+  const appCheckToken = req.headers.get("x-firebase-appcheck");
+  if (!appCheckToken) {
+    console.warn("[API] App Check token is missing. Tolerance active, bypassing.");
+  } else {
+    console.log("[API] App Check token received. Bypassing strict verification.");
   }
 
   try {
