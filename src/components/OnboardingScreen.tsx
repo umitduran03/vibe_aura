@@ -28,6 +28,7 @@ export default function OnboardingScreen() {
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [showCosmicTransition, setShowCosmicTransition] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [loginError, setLoginError] = useState<string | null>(null);
 
   // Client-side LocalStorage kontrolü
   useEffect(() => {
@@ -66,6 +67,7 @@ export default function OnboardingScreen() {
     if (!hasConsented || isLoggingIn) return;
     hapticMedium();
     setIsLoggingIn(true);
+    setLoginError(null);
 
     try {
       localStorage.setItem("hasConsented", "true");
@@ -73,6 +75,11 @@ export default function OnboardingScreen() {
       setShowCosmicTransition(true);
     } catch (err: any) {
       console.error("[Onboarding] Login failed:", err);
+      if (err?.code === "auth/unauthorized-domain" || err?.message?.includes("AppCheck") || err?.message?.includes("recaptcha")) {
+        setLoginError("Celestial alignment failed. Please ensure you are on a verified domain. ✨");
+      } else {
+        setLoginError("Cosmic connection interrupted. Please try again. ✨");
+      }
       setIsLoggingIn(false);
     }
   }, [hasConsented, isLoggingIn]);
@@ -165,6 +172,12 @@ export default function OnboardingScreen() {
                     </p>
                   )}
                 </div>
+
+                {loginError && (
+                  <div className="mb-6 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-center animate-in fade-in slide-in-from-top-2 duration-300">
+                    <p className="text-sm text-red-400 font-medium leading-relaxed">{loginError}</p>
+                  </div>
+                )}
 
                 {/* Eğer kullanıcı daha önce onay VERMEDİYSE kuralları göster */}
                 {!isBypassed && (

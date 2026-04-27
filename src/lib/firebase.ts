@@ -23,18 +23,23 @@ if (typeof window !== "undefined") {
   }
   
   try {
-    initializeAppCheck(app, {
-      provider: new ReCaptchaV3Provider("RECAPTCHA_V3_ENT_SITE_KEY_PLACEHOLDER"),
-      
-      // TODO (Faz 3 - Mobile Launch): 
-      // Capacitor ile iOS ve Android native çıktıları alındığında,
-      // aşağıdaki uygun provider'ları da eklemeliyiz:
-      // iOS için: AppAttestProvider
-      // Android için: PlayIntegrityProvider
-      
-      isTokenAutoRefreshEnabled: true,
-    });
-    console.log("[Firebase] App Check initialized.");
+    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+    if (siteKey) {
+      initializeAppCheck(app, {
+        provider: new ReCaptchaV3Provider(siteKey),
+        
+        // TODO (Faz 3 - Mobile Launch): 
+        // Capacitor ile iOS ve Android native çıktıları alındığında,
+        // aşağıdaki uygun provider'ları da eklemeliyiz:
+        // iOS için: AppAttestProvider
+        // Android için: PlayIntegrityProvider
+        
+        isTokenAutoRefreshEnabled: true,
+      });
+      console.log("[Firebase] App Check initialized.");
+    } else {
+      console.warn("[Firebase] App Check bypassed: NEXT_PUBLIC_RECAPTCHA_SITE_KEY is missing. Safe-fail active.");
+    }
   } catch (e) {
     console.warn("[Firebase] App Check error:", e);
   }
