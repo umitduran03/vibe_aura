@@ -139,11 +139,21 @@ export default function PhotoUpload() {
               className="h-full w-full object-cover"
             />
             <motion.button
-              onClick={removePhoto}
+              onClick={(e) => { e.stopPropagation(); removePhoto(); }}
+              whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(236, 72, 153, 0.8)", borderColor: "rgba(236, 72, 153, 0.6)" }}
               whileTap={{ scale: 0.9 }}
-              className="absolute -right-1 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-white shadow-lg cursor-pointer"
+              className="absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full cursor-pointer z-10 transition-all duration-300 group"
+              style={{
+                background: "rgba(10, 10, 15, 0.6)",
+                backdropFilter: "blur(12px)",
+                border: "1px solid rgba(255, 255, 255, 0.25)",
+                boxShadow: "0 0 8px rgba(236, 72, 153, 0.4)", // Default soft neon glow
+              }}
             >
-              <X className="h-3 w-3" />
+              {/* İç Hover Glow */}
+              <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" 
+                   style={{ background: "radial-gradient(circle, rgba(236,72,153,0.5) 0%, transparent 70%)" }} />
+              <X className="h-4 w-4 text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] relative z-20 transition-transform group-hover:rotate-90 duration-300" strokeWidth={2.5} />
             </motion.button>
           </motion.div>
         ) : (

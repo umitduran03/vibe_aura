@@ -39,10 +39,16 @@ export default function DuoResultCard() {
     hapticMedium();
 
     try {
+      const filter = (node: HTMLElement) => {
+        const exclusionClasses = ['google-translate', 'skiptranslate'];
+        return !exclusionClasses.some(cls => node.classList?.contains?.(cls));
+      };
+
       const htmlToImage = await import("html-to-image");
       const blob = await htmlToImage.toBlob(cardRef.current, {
         backgroundColor: "#050510",
         pixelRatio: 3,
+        filter: filter as any,
       });
 
       if (!blob) throw new Error("Canvas blob failed");
@@ -236,7 +242,7 @@ export default function DuoResultCard() {
             {isExporting ? (
               <>
                 <Loader2 className="h-5 w-5 animate-spin" />
-                Preparing...
+                Preparing... ✨
               </>
             ) : (
               <>

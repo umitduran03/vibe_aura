@@ -2,15 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import { useAppStore } from "@/store/useAppStore";
-import { signInAnon, ensureUserDoc, listenUserData } from "@/lib/auth";
+import { onAuthChange, ensureUserDoc, listenUserData } from "@/lib/auth";
 
 /**
- * AuthProvider — Uygulama açıldığında çalışır:
- * 1. Anonim giriş yapar
- * 2. users/{uid} dökümanını oluşturur veya okur
- * 3. token_balance ve vipExpiry'yi gerçek zamanlı dinlemeye başlar
- * 
- * Çocuk bileşen render etmeden önce auth'u başlatır ama ekranı bloklamaz.
+ * AuthProvider — Auth dinleyicisini yönetir.
+ * 1. Auth state değişimini dinler.
+ * 2. Giriş yapılmışsa dökümanı garanti eder ve dinlemeyi başlatır.
+ * 3. Giriş yoksa store'u temizler.
  */
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
   const setUserId = useAppStore((s) => s.setUserId);
@@ -19,38 +17,44 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const unsubRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    let cancelled = false;
+    const unsubscribeAuth = onAuthChange(async (user) => {
+      // Önceki dinlemeyi temizle
+      unsubRef.current?.();
+      unsubRef.current = null;
 
-    async function init() {
-      try {
-        // 1. Anonim giriş
-        const user = await signInAnon();
-        if (cancelled) return;
+      if (user) {
+        if (user.isAnonymous) {
+          console.log("[AuthProvider] Anonim kullanıcı algılandı, ÇIKIŞ yapılıyor (Strict Auth).");
+          import("@/lib/auth").then((m) => m.logOut());
+          return;
+        }
 
-        // 2. Store'a uid yaz
+
         setUserId(user.uid);
 
-        // 3. users koleksiyonunda dökümanı garanti et
-        const balance = await ensureUserDoc(user.uid);
-        if (cancelled) return;
-
-        setTokenBalance(balance);
-
-        // 4. Gerçek zamanlı dinleme başlat
-        unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry }) => {
+        try {
+          // Firestore dökümanını garanti et
+          const balance = await ensureUserDoc(user);
           setTokenBalance(balance);
-          setVipExpiry(vipExpiry);
-        });
 
-      } catch (err) {
-        console.error("[AuthProvider] Giriş hatası:", err);
+          // Gerçek zamanlı dinleme başlat
+          unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry }) => {
+            setTokenBalance(balance);
+            setVipExpiry(vipExpiry);
+          });
+        } catch (err) {
+          console.error("[AuthProvider] User doc error:", err);
+        }
+      } else {
+
+        setUserId(null);
+        setTokenBalance(0);
+        setVipExpiry(null);
       }
-    }
-
-    init();
+    });
 
     return () => {
-      cancelled = true;
+      unsubscribeAuth();
       unsubRef.current?.();
     };
   }, [setUserId, setTokenBalance, setVipExpiry]);

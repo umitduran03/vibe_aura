@@ -43,7 +43,7 @@ export type AnalysisMode = "solo" | "duo";
 export type SoloScenario = "general" | "roast" | "soulmate";
 export type DuoRelationType = "flirt" | "ex" | "platonic" | "bff";
 
-export type AppScreen = "splash" | "wizard" | "analyzing" | "result";
+export type AppScreen = "splash" | "onboarding" | "wizard" | "analyzing" | "result";
 
 interface AppState {
   // — Auth —
@@ -82,6 +82,9 @@ interface AppState {
   // — VIP / Subscription —
   vipExpiry: string | null;
 
+  // — UI State —
+  isConnecting: boolean;
+
   // — Network —
   isOnline: boolean;
 
@@ -101,6 +104,7 @@ interface AppState {
   setIsAnalyzing: (v: boolean) => void;
   setIsOnline: (v: boolean) => void;
   setVipExpiry: (expiry: string | null) => void;
+  setIsConnecting: (v: boolean) => void;
   consumeToken: (amount?: number) => boolean;
   resetWizard: () => void;
   // Duo actions
@@ -144,13 +148,14 @@ export const useAppStore = create<AppState>((set, get) => ({
   photoUrl: null,
   isUploadingPhoto: false,
 
-  tokenBalance: 5, // Mock: 5 token ile başla
+  tokenBalance: 0,
   isTokenModalOpen: false,
 
   auraResult: null,
   isAnalyzing: false,
 
   vipExpiry: null,
+  isConnecting: false,
 
   isOnline: true,
 
@@ -179,6 +184,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   setIsAnalyzing: (v) => set({ isAnalyzing: v }),
   
   setVipExpiry: (expiry) => set({ vipExpiry: expiry }),
+  setIsConnecting: (v) => set({ isConnecting: v }),
 
   setIsOnline: (v) => set({ isOnline: v }),
 

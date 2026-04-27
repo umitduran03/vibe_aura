@@ -1,37 +1,62 @@
-import { signInAnonymously, onAuthStateChanged, type User } from "firebase/auth";
+import { 
+  onAuthStateChanged, 
+  type User, 
+  GoogleAuthProvider, 
+  signInWithPopup,
+  signOut
+} from "firebase/auth";
 import { doc, getDoc, setDoc, onSnapshot, serverTimestamp, updateDoc, increment, arrayUnion } from "firebase/firestore";
 import { auth, db } from "./firebase";
 
 const INITIAL_TOKEN_BALANCE = 5;
 
 /**
- * Anonim giriş yapar.
- * Başarılı olursa Firebase User döner.
+ * Google ile giriş yapar.
  */
-export async function signInAnon(): Promise<User> {
-  const result = await signInAnonymously(auth);
-  console.log("[Auth] Anonim giriş başarılı. UID:", result.user.uid);
+export async function signInWithGoogle(): Promise<User> {
+  const provider = new GoogleAuthProvider();
+  const result = await signInWithPopup(auth, provider);
+  console.log("[Auth] Google giriş başarılı. UID:", result.user.uid);
   return result.user;
 }
 
 /**
- * Kullanıcı dökümanını kontrol eder.
- * - Yoksa: users/{uid} oluşturur ve 5 jeton verir.
- * - Varsa: mevcut token_balance'ı döner.
+ * Çıkış yapar.
  */
-export async function ensureUserDoc(uid: string): Promise<number> {
-  const userRef = doc(db, "users", uid);
+export async function logOut(): Promise<void> {
+  await signOut(auth);
+  console.log("[Auth] Çıkış yapıldı.");
+}
+
+/**
+ * Kullanıcı dökümanını kontrol eder ve profil verilerini günceller.
+ * - Yoksa: users/{uid} oluşturur, profil bilgilerini yazar ve 5 jeton verir.
+ * - Varsa: profil bilgilerini günceller ve mevcut token_balance'ı döner.
+ */
+export async function ensureUserDoc(user: User): Promise<number> {
+  const userRef = doc(db, "users", user.uid);
   const snap = await getDoc(userRef);
 
+  const profileData = {
+    displayName: user.displayName || null,
+    email: user.email || null,
+    photoURL: user.photoURL || null,
+    lastLoginAt: serverTimestamp(),
+  };
+
   if (snap.exists()) {
+    // Mevcut kullanıcı, profil bilgilerini güncelle
+    await setDoc(userRef, profileData, { merge: true });
+    
     const data = snap.data();
     const balance = data.token_balance ?? INITIAL_TOKEN_BALANCE;
-    console.log("[Auth] Mevcut kullanıcı bulundu. Token:", balance);
+    console.log("[Auth] Mevcut kullanıcı bulundu ve güncellendi. Token:", balance);
     return balance;
   }
 
-  // İlk kez giriş — hoş geldin hediyesi
+  // İlk kez giriş — hoş geldin hediyesi ve profil bilgileri
   await setDoc(userRef, {
+    ...profileData,
     token_balance: INITIAL_TOKEN_BALANCE,
     createdAt: serverTimestamp(),
   });

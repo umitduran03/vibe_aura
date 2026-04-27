@@ -31,7 +31,7 @@ export default function RelationshipStep({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          We aren't judging... much
+          We aren&apos;t judging... much
         </motion.p>
       </div>
 

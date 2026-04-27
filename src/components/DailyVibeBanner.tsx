@@ -104,10 +104,21 @@ export default function DailyVibeBanner() {
     setIsSharing(true);
 
     try {
+      const filter = (node: HTMLElement) => {
+        const exclusionClasses = ['google-translate', 'skiptranslate'];
+        const securityFilterPassed = !exclusionClasses.some(cls => node.classList?.contains?.(cls));
+        
+        const internalLoadingElementPassed = !(node.getAttribute?.('data-loading-feedback') === 'true');
+        
+        return securityFilterPassed && internalLoadingElementPassed;
+      };
+
       const htmlToImage = await import("html-to-image");
       const blob = await htmlToImage.toBlob(bannerRef.current, {
         backgroundColor: "#09090b", // Ensure dark background for the glass panel
-        pixelRatio: 2,
+        pixelRatio: 3,
+        width: bannerRef.current.offsetWidth,
+        filter: filter as any,
       });
 
       if (!blob) throw new Error("Failed to capture image");
@@ -184,16 +195,22 @@ export default function DailyVibeBanner() {
           </div>
 
           <motion.button
+            data-loading-feedback="true"
             onClick={handleShare}
             disabled={isLoading || isSharing}
-            className={`p-1.5 rounded-full transition-colors ${
-              shared ? "" : "bg-white/5 hover:bg-white/10 text-white/60"
+            className={`flex items-center gap-1.5 rounded-full transition-colors ${
+              isSharing ? "px-3 py-1.5 bg-white/5" : "p-1.5"
+            } ${
+              shared ? "" : isSharing ? "" : "bg-white/5 hover:bg-white/10 text-white/60"
             }`}
-            style={shared ? { backgroundColor: "rgba(34, 197, 94, 0.2)", color: "#4ade80" } : {}}
+            style={shared ? { backgroundColor: "rgba(34, 197, 94, 0.2)", color: "#4ade80", padding: "6px" } : {}}
             whileTap={{ scale: 0.9 }}
           >
             {isSharing ? (
-              <Loader2 className="w-3.5 h-3.5 animate-spin" style={{ color: "#c084fc" }} />
+              <>
+                <Loader2 className="w-3.5 h-3.5 animate-spin" style={{ color: "#c084fc" }} />
+                <span className="text-[10px] font-medium" style={{ color: "#c084fc" }}>Preparing your vibe... ✨</span>
+              </>
             ) : shared ? (
               <Check className="w-3.5 h-3.5" />
             ) : (
