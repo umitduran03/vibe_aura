@@ -16,7 +16,7 @@ const INITIAL_TOKEN_BALANCE = 5;
 export async function signInWithGoogle(): Promise<User> {
   const provider = new GoogleAuthProvider();
   const result = await signInWithPopup(auth, provider);
-  console.log("[Auth] Google giriş başarılı. UID:", result.user.uid);
+
   return result.user;
 }
 
@@ -25,7 +25,7 @@ export async function signInWithGoogle(): Promise<User> {
  */
 export async function logOut(): Promise<void> {
   await signOut(auth);
-  console.log("[Auth] Çıkış yapıldı.");
+
 }
 
 /**
@@ -50,7 +50,7 @@ export async function ensureUserDoc(user: User): Promise<number> {
     
     const data = snap.data();
     const balance = data.token_balance ?? INITIAL_TOKEN_BALANCE;
-    console.log("[Auth] Mevcut kullanıcı bulundu ve güncellendi. Token:", balance);
+
     return balance;
   }
 
@@ -60,7 +60,7 @@ export async function ensureUserDoc(user: User): Promise<number> {
     token_balance: INITIAL_TOKEN_BALANCE,
     createdAt: serverTimestamp(),
   });
-  console.log("[Auth] Yeni kullanıcı oluşturuldu. Hoş geldin hediyesi:", INITIAL_TOKEN_BALANCE);
+
   return INITIAL_TOKEN_BALANCE;
 }
 
@@ -115,7 +115,7 @@ export async function deductToken(uid: string, amount: number = 1): Promise<void
   await updateDoc(userRef, {
     token_balance: increment(-amount),
   });
-  console.log(`[Auth] ${amount} jeton düşüldü. UID:`, uid);
+
 }
 
 /**
@@ -128,7 +128,7 @@ export async function addTokens(uid: string, amount: number): Promise<void> {
   await updateDoc(userRef, {
     token_balance: increment(amount),
   });
-  console.log(`[Auth] ${amount} jeton eklendi. UID:`, uid);
+
 }
 
 /**
@@ -140,6 +140,6 @@ export async function saveFcmToken(uid: string, token: string): Promise<void> {
   await updateDoc(userRef, {
     fcmTokens: arrayUnion(token),
   });
-  console.log(`[Auth] FCM Token saved to array. UID:`, uid);
+
 }
 

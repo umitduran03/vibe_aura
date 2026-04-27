@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
   if (!appCheckToken) {
     console.warn("[API] App Check token is missing. Tolerance active, bypassing.");
   } else {
-    console.log("[API] App Check token received. Bypassing strict verification.");
+
   }
 
   try {

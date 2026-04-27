@@ -111,7 +111,7 @@ async function sendToDevices(
       });
 
       report.sent++;
-      console.log(`[FCM] ✅ Sent to token: ${token.substring(0, 20)}...`);
+
     } catch (err: any) {
       report.failed++;
       const errorCode = err?.code || err?.message || "";
@@ -138,7 +138,7 @@ async function sendToDevices(
       fcmTokens: admin.firestore.FieldValue.arrayRemove(...staleTokens),
     });
     report.staleTokensRemoved = staleTokens.length;
-    console.log(`[FCM] 🧹 Removed ${staleTokens.length} stale token(s) for UID:${userId}`);
+
   }
 
   return report;
@@ -175,7 +175,7 @@ export async function POST(req: NextRequest) {
 
     // ─── Step 1: Generate spicy notification via AI ───────────────
     const notification = await generateSpicyNotification(zodiac);
-    console.log(`[Spicy Push] 🔥 Generated for ${zodiac}:`, notification.title);
+
 
     // ─── Step 2: Fetch user's FCM tokens from Firestore ───────────
     const userId = verifiedUser.uid;
@@ -209,9 +209,7 @@ export async function POST(req: NextRequest) {
     // ─── Step 3: Send push notification to all devices ────────────
     const deliveryReport = await sendToDevices(userId, fcmTokens, notification);
 
-    console.log(
-      `[Spicy Push] 📊 Delivery report for UID:${userId} — Sent: ${deliveryReport.sent}, Failed: ${deliveryReport.failed}, Stale removed: ${deliveryReport.staleTokensRemoved}`
-    );
+
 
     return NextResponse.json({
       success: true,

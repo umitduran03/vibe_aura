@@ -70,13 +70,11 @@ export async function POST(req: NextRequest) {
       },
     };
 
-    console.log("[Polar Checkout] Creating session with payload:", JSON.stringify(checkoutPayload, null, 2));
+
 
     const checkout = await polar.checkouts.create(checkoutPayload);
 
-    console.log(
-      `[Polar Checkout] Session created for UID:${verifiedUser.uid} pkg:${packageId} checkout:${checkout.id}`
-    );
+
 
     return NextResponse.json({ url: checkout.url });
   } catch (error: any) {

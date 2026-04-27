@@ -36,7 +36,7 @@ if (typeof window !== "undefined") {
         
         isTokenAutoRefreshEnabled: true,
       });
-      console.log("[Firebase] App Check initialized.");
+
     } else {
       console.warn("[Firebase] App Check bypassed: NEXT_PUBLIC_RECAPTCHA_SITE_KEY is missing. Safe-fail active.");
     }

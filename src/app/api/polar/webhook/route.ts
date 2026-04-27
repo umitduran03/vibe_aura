@@ -59,7 +59,7 @@ async function fulfillOrder(data: FulfillmentData, sourceId: string): Promise<vo
       const paymentDoc = await transaction.get(paymentRef);
 
       if (paymentDoc.exists) {
-        console.log(`[Polar Webhook] ⏩ Already fulfilled for ID: ${sourceId}. Skipping.`);
+
         return;
       }
 
@@ -83,7 +83,7 @@ async function fulfillOrder(data: FulfillmentData, sourceId: string): Promise<vo
           },
         }, { merge: true });
 
-        console.log(`[Polar Webhook] ✅ Tokens awarded: +${data.tokens} to UID:${data.firebaseUid}`);
+
       } else if (data.packageType === "vip" && data.vipDays > 0) {
         // ─── VIP Fulfillment ────────────────────────────────────────
         const now = new Date();
@@ -115,7 +115,7 @@ async function fulfillOrder(data: FulfillmentData, sourceId: string): Promise<vo
           },
         }, { merge: true });
 
-        console.log(`[Polar Webhook] ✅ VIP Activated: +${data.vipDays} days for UID:${data.firebaseUid}`);
+
       }
 
       // Mark this ID as fulfilled
@@ -182,14 +182,14 @@ export async function POST(req: NextRequest) {
   }
 
   // ─── Event Processing ───────────────────────────────────────────
-  console.log(`[Polar Webhook] 🔔 Received event: ${event.type}`);
+
 
   // Only process 'order.paid' to ensure funds are received.
   // We also listen to 'order.created' just to acknowledge it.
   const validEvents = ["order.created", "order.paid"];
 
   if (!validEvents.includes(event.type)) {
-    console.log(`[Polar Webhook] ⏩ Ignoring event: ${event.type}`);
+
     return NextResponse.json({ received: true });
   }
 
@@ -208,9 +208,9 @@ export async function POST(req: NextRequest) {
     // Actual fulfillment only happens on 'order.paid'
     if (eventType === "order.paid") {
       await fulfillOrder(fulfillmentData, sourceId);
-      console.log(`[Polar Webhook] ✅ Success for order ${sourceId}`);
+
     } else {
-      console.log(`[Polar Webhook] ⏳ Order created but not yet paid. Waiting for order.paid event.`);
+
     }
 
     return NextResponse.json({ received: true });

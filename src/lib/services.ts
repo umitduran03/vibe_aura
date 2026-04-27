@@ -17,9 +17,7 @@ const COMPRESSION_OPTIONS = {
 export async function compressAndEncodeImage(file: File): Promise<string> {
   // 1. Sıkıştır
   const compressedFile = await imageCompression(file, COMPRESSION_OPTIONS);
-  console.log(
-    `[Vibe & Aura] Fotoğraf sıkıştırıldı: ${(file.size / 1024 / 1024).toFixed(2)}MB → ${(compressedFile.size / 1024 / 1024).toFixed(2)}MB`
-  );
+
 
   // 2. Local File / Blob => Base64 string
   return new Promise((resolve, reject) => {
@@ -168,7 +166,7 @@ export async function saveAuraSession(
     const { collection, addDoc, serverTimestamp, Timestamp } = await import("firebase/firestore");
     const { db } = await import("./firebase");
 
-    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000));
+    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 15 * 24 * 60 * 60 * 1000));
 
     const docRef = await addDoc(collection(db, "results"), {
       userId: userId || "anonymous",
@@ -185,7 +183,7 @@ export async function saveAuraSession(
       createdAt: serverTimestamp(),
       expiresAt,
     });
-    console.log("[Firestore] Analiz oturumu başarıyla kaydedildi. Belge ID:", docRef.id);
+
   } catch (error) {
     console.error("Database Error:", error);
   }
@@ -205,7 +203,7 @@ export async function saveDuoSession(
     const { collection, addDoc, serverTimestamp, Timestamp } = await import("firebase/firestore");
     const { db } = await import("./firebase");
 
-    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000));
+    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 15 * 24 * 60 * 60 * 1000));
 
     const docRef = await addDoc(collection(db, "results"), {
       userId: userId || "anonymous",
@@ -226,7 +224,7 @@ export async function saveDuoSession(
       createdAt: serverTimestamp(),
       expiresAt,
     });
-    console.log("[Firestore] Duo oturumu başarıyla kaydedildi. Belge ID:", docRef.id);
+
   } catch (error) {
     console.error("Database Error:", error);
   }

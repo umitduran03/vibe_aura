@@ -10,7 +10,7 @@ if (!admin.apps.length) {
       admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
       });
-      console.log("[Firebase Admin] Başarıyla başlatıldı");
+
     } else {
       console.warn("[Firebase Admin] Service Account bilgileri bulunamadı. Backend yetkilendirme işlemleri çalışmayabilir.");
     }

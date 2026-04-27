@@ -25,7 +25,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
       if (user) {
         if (user.isAnonymous) {
-          console.log("[AuthProvider] Anonim kullanıcı algılandı, ÇIKIŞ yapılıyor (Strict Auth).");
+
           import("@/lib/auth").then((m) => m.logOut());
           return;
         }

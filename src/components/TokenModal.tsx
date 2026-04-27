@@ -162,7 +162,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
           headers: { "Content-Type": "application/json", "Authorization": `Bearer ${idToken}` },
           body: JSON.stringify({ amount: 1, source: "admob" })
         });
-        console.log("[AdMob] Reward video watched. Token reward request sent.");
+
       }
 
       triggerToast("📺 Loading ad... It will be active on the mobile version");

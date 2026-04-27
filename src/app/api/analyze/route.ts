@@ -33,7 +33,7 @@ async function generateWithFallback(params: {
 
   for (const model of MODEL_CHAIN) {
     try {
-      console.log(`[Gemini] Deneniyor: ${model}`);
+
       const response = await ai.models.generateContent({
         model,
         contents: params.contents,
@@ -42,7 +42,7 @@ async function generateWithFallback(params: {
           responseMimeType: "application/json",
         },
       });
-      console.log(`[Gemini] ✓ Başarılı model: ${model}`);
+
       return response;
     } catch (err: any) {
       lastError = err;
@@ -86,7 +86,7 @@ export async function POST(req: NextRequest) {
   if (!appCheckToken) {
     console.warn("[API] App Check token is missing. Tolerance active, bypassing.");
   } else {
-    console.log("[API] App Check token received. Bypassing strict verification.");
+
   }
 
   try {
@@ -120,12 +120,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    console.log(`[API /analyze] Mode: ${mode}`, {
-      ...body,
-      photoBase64: body.photoBase64 ? "Base64 Image Present" : "None",
-      person1Photo: body.person1?.photoBase64 ? "Present" : "None",
-      person2Photo: body.person2?.photoBase64 ? "Present" : "None",
-    });
+
 
     /* =============================================
        DUO MODE
@@ -200,7 +195,7 @@ Based on these details (and photos if any), analyze their vibe, energy, and comp
       });
 
       const text = response.text || "";
-      console.log(`[Gemini API Duo] Raw response:`, text);
+
 
       let parsedJson;
       try {
@@ -285,7 +280,7 @@ Based on these details (and the attached photo if any), generate your response E
     });
 
     const text = response.text || "";
-    console.log(`[Gemini API] Raw response:`, text);
+
 
     // Parse the JSON reliably
     let parsedJson;
