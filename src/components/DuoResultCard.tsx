@@ -119,7 +119,7 @@ export default function DuoResultCard() {
       <motion.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
         <div />{/* Spacer for centering */}
         <p className="text-center text-xs font-medium text-text-secondary/50 uppercase tracking-widest mb-2">
-          Duo Vibe Match
+          <span>Duo Vibe Match</span>
         </p>
         <div className="mb-2">
           <SettingsDrawer />
@@ -147,18 +147,62 @@ export default function DuoResultCard() {
           {/* Zodiac Faces */}
           <div className="text-center mt-4 mb-5">
             <div className="flex items-center justify-center gap-4 mb-4">
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-4xl">{z1.emoji}</span>
-                <span className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: "#a1a1aa" }}>
+              <div className="flex flex-col items-center justify-center relative w-20 h-20">
+                <div
+                  className="absolute inset-0 rounded-full blur-xl z-0"
+                  style={{
+                    background: `radial-gradient(circle, ${z1.gradient[0]}60 0%, transparent 70%)`,
+                  }}
+                />
+                <span 
+                  translate="no"
+                  className="relative z-10 text-[40px] font-light leading-none mb-2"
+                  style={{
+                    fontFamily: "Times New Roman, serif",
+                    color: "white",
+                    textShadow: `0 0 15px ${z1.gradient[0]}`
+                  }}
+                >
+                  {z1.emoji}
+                  {"\uFE0E"}
+                </span>
+                <span className="absolute bottom-[-5px] z-10 text-[9px] font-medium tracking-[0.15em] uppercase"
+                  style={{
+                    color: "white",
+                    textShadow: `0 0 10px ${z1.gradient[1]}`
+                  }}>
                   {z1.name}
                 </span>
               </div>
+              
               <div className="text-2xl font-black select-none" style={{ color: themeColor }}>
-                ×
+                <span>×</span>
               </div>
-              <div className="flex flex-col items-center gap-1">
-                <span className="text-4xl">{z2.emoji}</span>
-                <span className="text-[11px] font-semibold uppercase tracking-wider" style={{ color: "#a1a1aa" }}>
+              
+              <div className="flex flex-col items-center justify-center relative w-20 h-20">
+                <div
+                  className="absolute inset-0 rounded-full blur-xl z-0"
+                  style={{
+                    background: `radial-gradient(circle, ${z2.gradient[0]}60 0%, transparent 70%)`,
+                  }}
+                />
+                <span 
+                  translate="no"
+                  className="relative z-10 text-[40px] font-light leading-none mb-2"
+                  style={{
+                    fontFamily: "Times New Roman, serif",
+                    color: "white",
+                    textShadow: `0 0 15px ${z2.gradient[0]}`
+                  }}
+                >
+                  {z2.emoji}
+                  {"\uFE0E"}
+                </span>
+                <span className="absolute bottom-[-5px] z-10 text-[9px] font-medium tracking-[0.15em] uppercase"
+                  style={{
+                    color: "white",
+                    textShadow: `0 0 10px ${z2.gradient[1]}`
+                  }}>
                   {z2.name}
                 </span>
               </div>
@@ -168,7 +212,7 @@ export default function DuoResultCard() {
               className="text-2xl font-bold mb-1"
               style={{ color: themeColor }}
             >
-              {duoResult.title}
+              <span>{duoResult.title}</span>
             </h1>
           </div>
 
@@ -181,10 +225,10 @@ export default function DuoResultCard() {
           >
             <Sparkles className="h-4 w-4" style={{ color: scoreColor }} />
             <span className="text-sm font-medium" style={{ color: "#a1a1aa" }}>
-              Vibe Score
+              <span>Vibe Score</span>
             </span>
             <span className="text-xl font-bold" style={{ color: scoreColor }}>
-              {duoResult.duoScore}
+              <span>{duoResult.duoScore}</span>
               <span style={{ color: "rgba(161,161,170,0.6)", fontSize: "14px" }}>/100</span>
             </span>
           </div>
@@ -199,10 +243,10 @@ export default function DuoResultCard() {
             <AlertTriangle className="h-5 w-5 shrink-0 mt-0.5" style={{ color: "#ef4444" }} />
             <div>
               <p className="text-[12px] font-bold uppercase tracking-wider mb-1" style={{ color: "#ef4444" }}>
-                🚩 Red Flag
+                <span translate="no">🚩</span> <span>Red Flag</span>
               </p>
               <p className="text-[14px] leading-relaxed font-medium" style={{ color: "#ebebf5" }}>
-                {duoResult.redFlag}
+                <span>{duoResult.redFlag}</span>
               </p>
             </div>
           </div>
@@ -218,7 +262,7 @@ export default function DuoResultCard() {
               <p className="text-[15px] leading-relaxed whitespace-pre-line font-medium"
                 style={{ color: "#ebebf5" }}
               >
-                {duoResult.analysis_text}
+                <span>{duoResult.analysis_text}</span>
               </p>
             </div>
           </div>
@@ -228,7 +272,7 @@ export default function DuoResultCard() {
             className="absolute bottom-4 right-5 text-[11px] font-bold tracking-widest uppercase select-none"
             style={{ color: "rgba(255,255,255,0.15)" }}
           >
-            vibe & aura
+            <span>vibe & aura</span>
           </p>
         </motion.div>
 
@@ -248,17 +292,17 @@ export default function DuoResultCard() {
             {isExporting ? (
               <>
                 <Loader2 className="h-5 w-5 animate-spin" />
-                Preparing... ✨
+                <span>Preparing...</span> <span translate="no">✨</span>
               </>
             ) : isDownloading ? (
               <>
                 <Download className="h-5 w-5 animate-bounce" />
-                Downloading... 📥
+                <span>Downloading...</span> <span translate="no">📥</span>
               </>
             ) : (
               <>
                 <Share2 className="h-5 w-5" />
-                Share to Story
+                <span>Share to Story</span>
               </>
             )}
           </motion.button>
@@ -269,7 +313,7 @@ export default function DuoResultCard() {
             className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl transition-all duration-300 hover:bg-white/10 active:scale-95 font-medium"
           >
             <RotateCcw className="h-5 w-5" />
-            Try Again
+            <span>Try Again</span>
           </GlassButton>
         </motion.div>
       </div>

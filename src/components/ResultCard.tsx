@@ -153,7 +153,7 @@ export default function ResultCard() {
       <motion.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
         <div />{/* Spacer for centering */}
         <p className="text-center text-xs font-medium text-text-secondary/50 uppercase tracking-widest mb-2">
-          Vibe & Aura
+          <span>Vibe & Aura</span>
         </p>
         <div className="mb-2">
           <SettingsDrawer />
@@ -181,11 +181,11 @@ export default function ResultCard() {
 
           {/* Aura Title */}
           <div className="text-center mt-4 mb-6">
-            <div className="text-5xl mb-3">
+            <div className="text-5xl mb-3" translate="no">
               {emoji}
             </div>
             <h2 className="text-lg font-medium text-text-secondary mb-1">
-              Your Aura
+              <span>Your Aura</span>
             </h2>
             <h1
               className="text-3xl font-bold"
@@ -193,7 +193,7 @@ export default function ResultCard() {
                 color: grad1,
               }}
             >
-              {auraResult.aura_name}
+              <span>{auraResult.aura_name}</span>
             </h1>
           </div>
 
@@ -206,13 +206,13 @@ export default function ResultCard() {
           >
             <Sparkles className="h-4 w-4" style={{ color: grad1 }} />
             <span className="text-sm font-medium" style={{ color: "#a1a1aa" }}>
-              Aura Score
+              <span>Aura Score</span>
             </span>
             <span
               className="text-xl font-bold"
               style={{ color: grad1 }}
             >
-              {auraResult.aura_score}
+              <span>{auraResult.aura_score}</span>
               <span style={{ color: "rgba(161,161,170,0.6)", fontSize: "14px" }}>/100</span>
             </span>
           </div>
@@ -228,19 +228,38 @@ export default function ResultCard() {
               <p className="text-[15px] leading-relaxed whitespace-pre-line font-medium"
                 style={{ color: "#ebebf5" }}
               >
-                {auraResult.analysis_text}
+                <span>{auraResult.analysis_text}</span>
               </p>
             </div>
           </div>
 
           {/* Zodiac Badge */}
-          <div className="mt-6 flex items-center justify-center gap-2">
-            <span className="text-lg">{zodiac.emoji}</span>
-            <span className="text-[13px] font-semibold tracking-wider uppercase"
-              style={{ color: "#a1a1aa" }}
-            >
-              {zodiac.name}
-            </span>
+          <div className="mt-6 flex items-center justify-center relative w-20 h-20 mx-auto">
+             <div
+                  className="absolute inset-0 rounded-full blur-xl z-0"
+                  style={{
+                    background: `radial-gradient(circle, ${zodiac.gradient[0]}60 0%, transparent 70%)`,
+                  }}
+                />
+                <span 
+                  translate="no"
+                  className="relative z-10 text-[40px] font-light leading-none mb-2"
+                  style={{
+                    fontFamily: "Times New Roman, serif",
+                    color: "white",
+                    textShadow: `0 0 15px ${zodiac.gradient[0]}`
+                  }}
+                >
+                  {zodiac.emoji}
+                  {"\uFE0E"}
+                </span>
+                <span className="absolute bottom-[-5px] z-10 text-[9px] font-medium tracking-[0.15em] uppercase"
+                  style={{
+                    color: "white",
+                    textShadow: `0 0 10px ${zodiac.gradient[1]}`
+                  }}>
+                  {zodiac.name}
+                </span>
           </div>
 
           {/* Watermark — visible in share image */}
@@ -248,7 +267,7 @@ export default function ResultCard() {
             className="absolute bottom-4 right-5 text-[11px] font-bold tracking-widest uppercase select-none"
             style={{ color: "rgba(255,255,255,0.15)" }}
           >
-            vibe & aura
+            <span>vibe & aura</span>
           </p>
         </motion.div>
 
@@ -271,17 +290,17 @@ export default function ResultCard() {
             {isExporting ? (
               <>
                 <Loader2 className="h-5 w-5 animate-spin" />
-                Preparing... ✨
+                <span>Preparing...</span> <span translate="no">✨</span>
               </>
             ) : isDownloading ? (
               <>
                 <Download className="h-5 w-5 animate-bounce" />
-                Downloading... 📥
+                <span>Downloading...</span> <span translate="no">📥</span>
               </>
             ) : (
               <>
                 <Share2 className="h-5 w-5" />
-                Share to Story
+                <span>Share to Story</span>
               </>
             )}
           </motion.button>
@@ -292,7 +311,7 @@ export default function ResultCard() {
             className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl transition-all duration-300 hover:bg-white/10 active:scale-95 font-medium"
           >
             <RotateCcw className="h-5 w-5" />
-            Try Again
+            <span>Try Again</span>
           </GlassButton>
         </motion.div>
       </div>

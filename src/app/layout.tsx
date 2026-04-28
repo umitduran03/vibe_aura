@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import OfflineBanner from "@/components/OfflineBanner";
+import TranslateFix from "@/components/TranslateFix";
 import "./globals.css";
 
 const inter = Inter({
@@ -36,6 +37,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
       <body className="min-h-full bg-background text-foreground antialiased">
+        <TranslateFix />
         <OfflineBanner />
         {children}
       </body>
