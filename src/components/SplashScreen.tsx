@@ -68,7 +68,7 @@ export default function SplashScreen() {
         variants={splashTextVariants}
         className="relative z-10 mt-8 text-sm font-medium text-text-secondary tracking-widest uppercase"
       >
-        Analyzing your aura
+        Analyzing your vibe
         <motion.span
           animate={{ opacity: [1, 0.3, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

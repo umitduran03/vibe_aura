@@ -55,9 +55,9 @@ export const AURA_EMOJIS: Record<string, string> = {
   "Fiery Warrior": "🔥",
   "Luxury Earth Mother": "🌿",
   "Two-Faced Chaos": "⚡",
-  "Mystic Healer": "🔮",
-  "Cosmic Wanderer": "🚀",
-  "Rebel Spirit": "🦋",
+  "Vibe Healer": "✨",
+  "Digital Wanderer": "🚀",
+  "Rebel Energy": "🦋",
   "Quiet Storm": "🌊",
 };
 

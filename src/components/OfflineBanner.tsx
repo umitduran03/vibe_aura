@@ -65,7 +65,7 @@ export default function OfflineBanner() {
           }}
         >
           <WifiOff className="h-4 w-4 text-red-400" />
-          <span>Aura signal lost, check your internet connection 🛸</span>
+          <span>Vibe signal lost, check your internet connection 🛸</span>
         </motion.div>
       )}
     </AnimatePresence>

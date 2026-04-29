@@ -3,6 +3,8 @@ import {
   type User, 
   GoogleAuthProvider, 
   signInWithPopup,
+  signInWithRedirect,
+  getRedirectResult,
   signOut
 } from "firebase/auth";
 import { doc, getDoc, setDoc, onSnapshot, serverTimestamp, updateDoc, increment, arrayUnion } from "firebase/firestore";
@@ -11,13 +13,79 @@ import { auth, db } from "./firebase";
 const INITIAL_TOKEN_BALANCE = 5;
 
 /**
- * Google ile giriş yapar.
+ * Firebase error codes that indicate popup was blocked or closed.
+ * These trigger the seamless redirect fallback.
  */
-export async function signInWithGoogle(): Promise<User> {
-  const provider = new GoogleAuthProvider();
-  const result = await signInWithPopup(auth, provider);
+const POPUP_FALLBACK_ERRORS = new Set([
+  "auth/popup-blocked",
+  "auth/popup-closed-by-user",
+  "auth/cancelled-popup-request",
+  "auth/network-request-failed",
+]);
 
-  return result.user;
+/**
+ * Callback to notify UI when redirect fallback is triggered.
+ * Set by OnboardingScreen to show a toast.
+ */
+let _onRedirectFallback: (() => void) | null = null;
+
+export function setOnRedirectFallback(cb: (() => void) | null) {
+  _onRedirectFallback = cb;
+}
+
+/**
+ * Google ile giriş yapar.
+ * Strateji: Popup → başarısızsa Redirect fallback.
+ * In-app tarayıcılar (Instagram, TikTok vb.) popup'ları engeller;
+ * bu durumda sessizce signInWithRedirect'e geçer.
+ */
+export async function signInWithGoogle(): Promise<User | null> {
+  const provider = new GoogleAuthProvider();
+
+  try {
+    // 1️⃣ Önce popup'ı dene
+    const result = await signInWithPopup(auth, provider);
+    return result.user;
+  } catch (err: any) {
+    const errorCode: string = err?.code || "";
+    console.warn("[Auth] Popup failed:", errorCode, err?.message);
+
+    // 2️⃣ Popup engellendi — sessizce redirect'e geç
+    if (POPUP_FALLBACK_ERRORS.has(errorCode)) {
+      console.info("[Auth] Popup blocked → falling back to redirect...");
+      _onRedirectFallback?.();
+
+      // Kısa bir bekleme ile toast'un görünmesini sağla
+      await new Promise((r) => setTimeout(r, 800));
+      await signInWithRedirect(auth, provider);
+
+      // signInWithRedirect sayfayı yeniden yükler,
+      // bu satıra asla ulaşılmaz
+      return null;
+    }
+
+    // 3️⃣ Diğer hatalar (unauthorized-domain vb.) — yukarı fırlat
+    throw err;
+  }
+}
+
+/**
+ * Sayfa yüklendiğinde redirect sonucunu kontrol eder.
+ * AuthProvider tarafından useEffect içinde çağrılmalıdır.
+ * Eğer bir redirect sonucu varsa kullanıcıyı döner.
+ */
+export async function handleRedirectResult(): Promise<User | null> {
+  try {
+    const result = await getRedirectResult(auth);
+    if (result?.user) {
+      console.info("[Auth] Redirect sign-in successful:", result.user.email);
+      return result.user;
+    }
+    return null;
+  } catch (err: any) {
+    console.error("[Auth] Redirect result error:", err?.code, err?.message);
+    return null;
+  }
 }
 
 /**

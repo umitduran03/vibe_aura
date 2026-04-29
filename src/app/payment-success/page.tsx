@@ -85,7 +85,7 @@ export default function PaymentSuccessPage() {
             transition={{ delay: 0.8 }}
             className="text-zinc-400 text-sm leading-relaxed px-2"
           >
-            Your cosmic tokens have been added to your account.
+            Your tokens have been added to your account.
           </motion.p>
         </div>
 
@@ -128,6 +128,13 @@ export default function PaymentSuccessPage() {
           </Link>
         </motion.div>
       </motion.div>
+
+      {/* Entertainment Badge */}
+      <div className="absolute bottom-6 left-0 w-full text-center opacity-20 z-10 pointer-events-none">
+        <span className="text-[9px] text-white tracking-wider">
+          🎭 For Entertainment Purposes Only
+        </span>
+      </div>
 
       {/* ─── Floating Particle System (Premium FX) ─── */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">

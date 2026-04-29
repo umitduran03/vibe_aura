@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, ExternalLink, Loader2 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
-import { signInWithGoogle } from "@/lib/auth";
+import { signInWithGoogle, setOnRedirectFallback } from "@/lib/auth";
 import { hapticLight, hapticMedium, hapticHeavy } from "@/lib/haptics";
 
 // ============================================
@@ -29,6 +29,7 @@ export default function OnboardingScreen() {
   const [showCosmicTransition, setShowCosmicTransition] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
+  const [redirectToast, setRedirectToast] = useState(false);
 
   // Client-side LocalStorage kontrolü
   useEffect(() => {
@@ -38,6 +39,14 @@ export default function OnboardingScreen() {
       setHasConsented(true);
       setIsBypassed(true);
     }
+  }, []);
+
+  // Register redirect fallback callback
+  useEffect(() => {
+    setOnRedirectFallback(() => {
+      setRedirectToast(true);
+    });
+    return () => setOnRedirectFallback(null);
   }, []);
 
   // Kullanıcı zaten giriş yapmışsa ve onaylıysa, doğrudan geçiş
@@ -71,14 +80,18 @@ export default function OnboardingScreen() {
 
     try {
       localStorage.setItem("hasConsented", "true");
-      await signInWithGoogle();
-      setShowCosmicTransition(true);
+      const user = await signInWithGoogle();
+      // signInWithRedirect returns null (page reloads), popup returns User
+      if (user) {
+        setShowCosmicTransition(true);
+      }
+      // If null, redirect is happening — page will reload
     } catch (err: any) {
       console.error("[Onboarding] Login failed:", err);
       if (err?.code === "auth/unauthorized-domain" || err?.message?.includes("AppCheck") || err?.message?.includes("recaptcha")) {
-        setLoginError("Celestial alignment failed. Please ensure you are on a verified domain. ✨");
+        setLoginError("Domain verification failed. Please ensure you are on a verified domain. ✨");
       } else {
-        setLoginError("Cosmic connection interrupted. Please try again. ✨");
+        setLoginError("Connection interrupted. Please try again. ✨");
       }
       setIsLoggingIn(false);
     }
@@ -119,7 +132,7 @@ export default function OnboardingScreen() {
                 animate={{ opacity: [1, 0.4, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
               >
-                Analyzing Your Aura...
+                Analyzing Your Vibe...
               </motion.p>
             </motion.div>
           </motion.div>
@@ -163,7 +176,7 @@ export default function OnboardingScreen() {
                     <Sparkles className="h-8 w-8 text-pink-400" />
                   </div>
                   <h2 className="text-xl font-bold text-center text-white mb-2">
-                    {isBypassed ? "Welcome Back to Vibe & Aura" : "Before We Read Your Aura..."}
+                    {isBypassed ? "Welcome Back to Vibe & Aura" : "Before We Analyze Your Vibe..."}
                   </h2>
                   {!isBypassed && (
                     <p className="text-sm text-center text-white/50 leading-relaxed">
@@ -307,6 +320,30 @@ export default function OnboardingScreen() {
                 </motion.button>
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* ─── Redirect Fallback Toast ─── */}
+      <AnimatePresence>
+        {redirectToast && (
+          <motion.div
+            key="redirect-toast"
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="fixed bottom-8 left-1/2 -translate-x-1/2 z-[1000] px-5 py-3 rounded-2xl flex items-center gap-3"
+            style={{
+              background: "linear-gradient(135deg, rgba(139,92,246,0.9) 0%, rgba(236,72,153,0.9) 100%)",
+              boxShadow: "0 8px 32px rgba(139,92,246,0.4), 0 0 0 1px rgba(255,255,255,0.1) inset",
+              backdropFilter: "blur(20px)",
+            }}
+          >
+            <Loader2 className="h-4 w-4 text-white animate-spin" />
+            <span className="text-sm font-medium text-white">
+              Popup blocked. Redirecting to secure sign-in...
+            </span>
           </motion.div>
         )}
       </AnimatePresence>

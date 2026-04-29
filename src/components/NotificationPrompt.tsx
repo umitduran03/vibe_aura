@@ -120,11 +120,11 @@ export default function NotificationPrompt() {
                 </div>
 
                 <h3 className="text-lg font-bold text-white mb-2">
-                  Cosmic Gossip
+                  Digital Gossip
                 </h3>
                 
                 <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                  The universe is going to text you! Sometimes a vibe check, sometimes a roast. Are you ready to hear your red flags and aura leaks?
+                  The algorithm is going to text you! Sometimes a vibe check, sometimes a roast. Are you ready to hear your red flags and vibe leaks?
                 </p>
 
                 <div className="flex w-full gap-3">

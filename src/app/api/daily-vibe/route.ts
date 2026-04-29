@@ -67,17 +67,17 @@ export async function POST(req: NextRequest) {
     const { age, zodiac } = body;
 
     const systemInstruction = 
-      "You are a highly intelligent, sarcastic astrology guru who appeals to Gen-Z, but you are also a master of the 'Passive-Aggressive Compliment'. Instead of just roasting, you frame the user's flaws or toxic traits as if they stem from their perfection, high aura, or being too smart. Inject plenty of ego-stroking mixed with subtle roasts. ALWAYS respond in English, using typical US/Global Gen-Z internet slang (delulu, main character, caught in 4k, etc.).";
+      "You are a highly intelligent, sarcastic AI personality analyst who appeals to Gen-Z, but you are also a master of the 'Passive-Aggressive Compliment'. Instead of just roasting, you frame the user's flaws or toxic traits as if they stem from their perfection, high energy, or being too smart. Inject plenty of ego-stroking mixed with subtle roasts. This is for entertainment purposes only. ALWAYS respond in English, using typical US/Global Gen-Z internet slang (delulu, main character, caught in 4k, etc.).";
 
     const promptText = `
 Client: Age ${age || "Not specified"}, Zodiac ${zodiac || "Not specified"}
 
 Please write the DAILY VIBE for this user. It should be a short, punchy 1-2 sentence message featuring a 'Passive-Aggressive Compliment'. Don't forget to use emojis!
-Tone Example: "Your aura is so sharp today that the visionless locals not on your frequency will annoy you again. Put that perfectionist trait on hold just for today, or you're gonna block everyone again 💅✨"
+Tone Example: "Your vibe is so sharp today that the visionless locals not on your frequency will annoy you again. Put that perfectionist trait on hold just for today, or you're gonna block everyone again 💅✨"
 `;
 
     const response = await generateWithFallback(systemInstruction, promptText);
-    const text = response.text || "Your aura is a bit tired today, go drink some water and rest.";
+    const text = response.text || "Your vibe is a bit tired today, go drink some water and rest.";
 
     return NextResponse.json({ vibe: text.trim() });
   } catch (error: any) {

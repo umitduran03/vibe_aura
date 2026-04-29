@@ -163,9 +163,9 @@ export default function Home() {
       
       const errMsg = err?.message || err?.toString() || "";
       if (errMsg.includes("503") || errMsg.includes("429") || errMsg.includes("high demand") || errMsg.includes("UNAVAILABLE")) {
-        setToast({ message: "Cosmic energies are too dense right now. Please try again in a moment. ✨", type: "error" });
+        setToast({ message: "Servers are busy right now. Please try again in a moment. ✨", type: "error" });
       } else {
-        setToast({ message: "Cosmic energies are too dense right now. Please try again in a moment. ✨", type: "error" });
+        setToast({ message: "Servers are busy right now. Please try again in a moment. ✨", type: "error" });
       }
       
       setTimeout(() => setToast(null), 4000);

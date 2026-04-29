@@ -226,18 +226,18 @@ Based on these details (and photos if any), analyze their vibe, energy, and comp
 
     // Senaryoya göre dinamik sistem promptu
     const scenarioSystemPrompts: Record<string, string> = {
-      general: "You are an aura reader fluent in global Gen-Z internet slang (like 'delulu', 'main character syndrome', 'caught in 4K', 'serving c*nt'). You are slightly sarcastic, witty, and savage. Roast the user's details and photo (if provided) mercilessly but in a hilarious, entertaining way. ALWAYS reply in English.",
-      roast: "You are the ultimate, most ruthless Gen-Z roast master. DESTROY the user. Roast their zodiac sign, age, relationship status, and photo in the harshest, funniest way possible. Serve absolute heat with high-tier stand-up comedy level roasts using global internet slang. Show absolutely zero mercy. ALWAYS reply in English.",
-      soulmate: "You are a mystical yet savage soulmate oracle fluent in Gen-Z slang. Based on the user's data and photo, predict their 'ideal partner' profile. Who should they date? What zodiac? What's their vibe? Are they a red flag or a golden retriever? Be mystical but use heavy internet slang. ALWAYS reply in English.",
+      general: "You are an AI personality analyst fluent in global Gen-Z internet slang (like 'delulu', 'main character syndrome', 'caught in 4K', 'serving c*nt'). You are slightly sarcastic, witty, and savage. Roast the user's details and photo (if provided) mercilessly but in a hilarious, entertaining way. This is purely for entertainment. ALWAYS reply in English.",
+      roast: "You are the ultimate, most ruthless Gen-Z roast master. DESTROY the user. Roast their zodiac sign, age, relationship status, and photo in the harshest, funniest way possible. Serve absolute heat with high-tier stand-up comedy level roasts using global internet slang. Show absolutely zero mercy. This is a comedy roast for entertainment. ALWAYS reply in English.",
+      soulmate: "You are a savage AI vibe matchmaker fluent in Gen-Z slang. Based on the user's data and photo, imagine their 'ideal partner' profile. Who should they date? What zodiac? What's their vibe? Are they a red flag or a golden retriever? Be dramatic but use heavy internet slang. This is for entertainment only. ALWAYS reply in English.",
     };
 
     const systemInstruction = scenarioSystemPrompts[soloScenario || "general"] || scenarioSystemPrompts.general;
 
     // Senaryoya göre prompt metni
     const scenarioPromptSuffix: Record<string, string> = {
-      general: "Analyze the user's aura. Be mystical, witty, savage, and use Gen-Z slang.",
+      general: "Analyze the user's vibe and energy. Be dramatic, witty, savage, and use Gen-Z slang.",
       roast: "ROAST the user MERCILESSLY. Weaponize every detail against them. Be hilarious but brutal. No mercy.",
-      soulmate: "Profile the user's IDEAL SOULMATE. Who should they be with? Predict their zodiac, physical type, personality, and exact vibe.",
+      soulmate: "Profile the user's IDEAL SOULMATE. Who should they be with? Guess their zodiac, physical type, personality, and exact vibe.",
     };
 
     // Kullanıcı için yönlendirme metni
@@ -246,7 +246,7 @@ User Details:
 - Age: ${age}
 - Zodiac: ${zodiac}
 - Relationship Status: ${relationship || "Not specified"}
-- Extra Note (Magic Question): ${magicText || "None"}
+- Extra Note (Vibe Question): ${magicText || "None"}
 - Analysis Type: ${(scenarioPromptSuffix as any)[soloScenario || "general"] || scenarioPromptSuffix.general}
 
 Based on these details (and the attached photo if any), generate your response ENTIRELY IN ENGLISH using heavy, natural global Gen-Z slang. Your output must be purely JSON and strictly follow this exact structure:

@@ -100,7 +100,7 @@ export default function ConsentModal() {
 
                 {/* ─── Title ─── */}
                 <h2 className="text-xl font-bold text-center text-white mb-2">
-                  Before We Read Your Aura...
+                  Before We Read Your Vibe...
                 </h2>
                 <p className="text-sm text-center text-white/50 mb-6 leading-relaxed">
                   Vibe & Aura is an <strong className="text-white/70">entertainment app</strong>. Our AI readings are for fun — not professional advice. By continuing, you agree to our terms.

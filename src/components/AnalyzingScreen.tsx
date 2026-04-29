@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
 
 const loadingPhrases = [
-  "Broadcasting your aura to the universe...",
-  "Processing cosmic data...",
+  "Scanning your vibe frequencies...",
+  "Processing personality data...",
   "Deepening the analysis...",
-  "Decoding the universe's message...",
+  "Decoding the AI's verdict...",
   "Almost there...",
 ];
 

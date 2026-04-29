@@ -200,7 +200,7 @@ export default function PhotoUpload() {
             )}
             {isUploading && (
               <span className="mt-1 text-[10px] text-accent font-medium">
-                Scanning aura...
+                Analyzing vibe...
               </span>
             )}
           </motion.label>

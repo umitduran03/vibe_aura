@@ -10,13 +10,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Vibe & Aura — Discover Your Aura",
+  title: "Vibe & Aura — AI Personality Entertainment",
   description:
-    "The most savage Gen-Z aura analysis. We analyze your aura based on your zodiac, relationship status, and hidden details. Are you ready?",
-  keywords: ["aura", "zodiac", "analysis", "gen-z", "vibe"],
+    "The most savage Gen-Z AI personality quiz. Get your vibe analyzed based on your zodiac, relationship status, and hidden details. For entertainment only — are you ready?",
+  keywords: ["personality quiz", "zodiac", "entertainment", "gen-z", "vibe", "AI analysis"],
   openGraph: {
     title: "Vibe & Aura",
-    description: "Analyze your aura and face the facts 💜",
+    description: "Get your vibe analyzed by AI and face the facts 💜 Entertainment app.",
     type: "website",
   },
 };

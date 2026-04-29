@@ -192,7 +192,7 @@ export default function SettingsDrawer() {
                       <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
                         Terms of Service
                       </p>
-                      <p className="text-[11px] text-white/35">Rules of the cosmic playground</p>
+                      <p className="text-[11px] text-white/35">Rules of the digital experience</p>
                     </div>
                     <ExternalLink className="h-3.5 w-3.5 text-white/20 group-hover:text-white/40 shrink-0" />
                   </a>
@@ -275,6 +275,9 @@ export default function SettingsDrawer() {
                   Made with 💜 by Vibe & Aura
                   <br />
                   © {new Date().getFullYear()} All rights reserved.
+                </p>
+                <p className="text-[9px] text-center text-white/15 mt-2 tracking-wide">
+                  🎭 For Entertainment Purposes Only
                 </p>
               </div>
             </motion.div>

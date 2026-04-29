@@ -5,9 +5,9 @@ import { useAppStore, type SoloScenario } from "@/store/useAppStore";
 import { hapticLight } from "@/lib/haptics";
 
 const SCENARIOS: { id: SoloScenario; emoji: string; label: string }[] = [
-  { id: "general", emoji: "✨", label: "General Aura" },
+  { id: "general", emoji: "✨", label: "General Vibe" },
   { id: "roast",   emoji: "🔥", label: "Roast Me" },
-  { id: "soulmate", emoji: "🔮", label: "My Soulmate" },
+  { id: "soulmate", emoji: "❤️‍🔥", label: "Vibe Match" },
 ];
 
 export default function SoloScenarioSelector() {

@@ -38,6 +38,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
   const analysisMode = useAppStore((s) => s.analysisMode);
   const duoPerson1 = useAppStore((s) => s.duoPerson1);
   const duoPerson2 = useAppStore((s) => s.duoPerson2);
+  const photoUrl = useAppStore((s) => s.photoUrl);
   const setWizardStep = useAppStore((s) => s.setWizardStep);
   const updateUserData = useAppStore((s) => s.updateUserData);
 
@@ -48,7 +49,12 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
     if (isDuo) {
       switch (step) {
         case 0:
-          return duoPerson1.zodiac !== null && duoPerson2.zodiac !== null;
+          return (
+            duoPerson1.zodiac !== null &&
+            duoPerson2.zodiac !== null &&
+            duoPerson1.photoBase64 !== null &&
+            duoPerson2.photoBase64 !== null
+          );
         default:
           return false;
       }
@@ -60,11 +66,21 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
       case 1:
         return userData.relationship !== null;
       case 2:
-        return true; // magic question is optional
+        return photoUrl !== null;
       default:
         return false;
     }
-  }, [step, analysisMode, userData.zodiac, userData.relationship, duoPerson1.zodiac, duoPerson2.zodiac]);
+  }, [
+    step,
+    analysisMode,
+    userData.zodiac,
+    userData.relationship,
+    duoPerson1.zodiac,
+    duoPerson2.zodiac,
+    duoPerson1.photoBase64,
+    duoPerson2.photoBase64,
+    photoUrl,
+  ]);
 
   const goNext = () => {
     hapticLight();
@@ -209,7 +225,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
             ) : (
               <>
                 <Sparkles className="h-4 w-4" />
-                Analyze My Aura
+                Analyze My Vibe
               </>
             )
           ) : (
@@ -220,7 +236,11 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
           )}
         </GlassButton>
 
-        {!isDuo && step === 2 && (
+        {((!isDuo && step === 2) ||
+          (isDuo &&
+            step === 0 &&
+            duoPerson1.zodiac !== null &&
+            duoPerson2.zodiac !== null)) && (
           <motion.button
             onClick={() => {
               hapticLight();

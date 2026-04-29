@@ -59,7 +59,7 @@ export default function ModeSelector() {
               Solo
             </p>
             <p className="text-[11px] text-text-secondary/50 mt-0.5">
-              Discover your aura
+              Discover your vibe
             </p>
           </div>
         </motion.button>

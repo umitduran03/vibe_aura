@@ -51,15 +51,15 @@ export default function PrivacyPage() {
             <ul className="space-y-2 list-none">
               <li className="flex gap-2">
                 <span className="text-cyan-400 mt-1">•</span>
-                <span><strong className="text-white/90">Zodiac Sign & Age:</strong> Used solely to personalize your aura analysis.</span>
+                <span><strong className="text-white/90">Zodiac Sign & Age:</strong> Used solely to personalize your personality analysis.</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-cyan-400 mt-1">•</span>
-                <span><strong className="text-white/90">Relationship Status:</strong> Optional input used to tailor AI-generated readings.</span>
+                <span><strong className="text-white/90">Relationship Status:</strong> Optional input used to tailor AI-generated content.</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-cyan-400 mt-1">•</span>
-                <span><strong className="text-white/90">Photos:</strong> If you choose to upload a photo for analysis, the image is processed temporarily for the AI reading and is <strong>not stored permanently on our servers</strong>.</span>
+                <span><strong className="text-white/90">Photos:</strong> If you choose to upload a photo for analysis, the image is processed temporarily for the AI analysis and is <strong>not stored permanently on our servers</strong>.</span>
               </li>
             </ul>
 
@@ -94,7 +94,7 @@ export default function PrivacyPage() {
               </p>
             </div>
             <p>
-              Photos uploaded for aura analysis are processed in real-time by our AI models and are discarded immediately after the reading is generated. We do not retain copies of your images on any server. We never sell or share your images with third parties, advertisers, or data brokers.
+              Photos uploaded for personality analysis are processed in real-time by our AI models and are discarded immediately after the analysis is generated. We do not retain copies of your images on any server. We never sell or share your images with third parties, advertisers, or data brokers.
             </p>
           </section>
 
@@ -103,7 +103,7 @@ export default function PrivacyPage() {
             <ul className="space-y-2 list-none">
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">→</span>
-                <span>To generate personalized aura readings and zodiac analyses.</span>
+                <span>To generate personalized personality analyses and zodiac-based entertainment content.</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">→</span>
@@ -130,7 +130,7 @@ export default function PrivacyPage() {
             <div className="grid gap-3">
               {[
                 { name: "Firebase (Google)", desc: "Authentication, database, and push notifications" },
-                { name: "Google Gemini AI", desc: "AI-powered aura and personality analysis" },
+                { name: "Google Gemini AI", desc: "AI-powered entertainment and personality analysis" },
                 { name: "Polar", desc: "Secure payment processing for web purchases" },
                 { name: "RevenueCat", desc: "In-app purchase management for mobile platforms" },
               ].map((service) => (

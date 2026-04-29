@@ -49,7 +49,7 @@ export default function DailyVibeBanner() {
         // Yeni gün, API'den al
         if (!userData.zodiac) {
           if (isMounted) {
-            setVibe("I can't read your vibe if I know nothing about you. Analyze your aura first to get your daily vibe. ✦");
+            setVibe("I can't read your vibe if I know nothing about you. Complete your personality analysis first to unlock your daily vibe. ✦");
             setIsLoading(false);
           }
           return;
@@ -86,7 +86,7 @@ export default function DailyVibeBanner() {
       } catch (err) {
         console.error("Error fetching daily vibe:", err);
         if (isMounted) {
-          setVibe("The sky is a bit cloudy, couldn't read your aura. Maybe try again later.");
+          setVibe("The sky is a bit cloudy, couldn't read your vibe. Maybe try again later.");
           setIsLoading(false);
         }
       }
@@ -190,7 +190,7 @@ export default function DailyVibeBanner() {
           <div className="flex items-center gap-1.5 opacity-80" style={{ color: "#c084fc" }}>
             <Sparkle className="w-3.5 h-3.5" />
             <span className="text-[11px] font-bold uppercase tracking-wider">
-              Daily Vibe 🔮
+              Daily Vibe ⚡
             </span>
           </div>
 
@@ -231,7 +231,7 @@ export default function DailyVibeBanner() {
                 style={{ color: "rgba(161, 161, 170, 0.6)" }}
               >
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Reading the stars...</span>
+                <span>Generating your vibe...</span>
               </motion.div>
             ) : (
               <motion.p

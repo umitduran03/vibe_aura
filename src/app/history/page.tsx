@@ -59,7 +59,7 @@ export default function HistoryPage() {
         </Link>
         <span className="text-sm font-semibold tracking-wide flex items-center gap-1">
           <Sparkles className="w-4 h-4 text-accent-primary" />
-          PAST AURAS
+          PAST VIBES
         </span>
         <div className="w-20" />
       </div>
@@ -68,7 +68,7 @@ export default function HistoryPage() {
       {!loading && !error && history.length > 0 && (
         <div className="z-10 px-6 pt-5 pb-2">
           <p className="text-center text-[11px] text-white/20 font-light tracking-wider leading-relaxed italic">
-            Energy is transient. Your past Auras are cleared from the cosmos every 15 days.
+            Vibes evolve. Your past analyses are permanently wiped from the digital void every 15 days.
           </p>
         </div>
       )}
@@ -93,7 +93,7 @@ export default function HistoryPage() {
           <div className="flex flex-col items-center justify-center p-8 glass-panel text-center mt-4">
             <AlertCircle className="w-10 h-10 text-destructive mb-3 opacity-80" />
             <h3 className="text-lg font-bold mb-1">Connection Error</h3>
-            <p className="text-sm text-text-secondary">Your past auras are ghosting you right now, check your internet connection bestie.</p>
+            <p className="text-sm text-text-secondary">Your past vibes are ghosting you right now, check your internet connection bestie.</p>
           </div>
         )}
 
@@ -102,13 +102,13 @@ export default function HistoryPage() {
           <div className="flex flex-col items-center justify-center py-20 text-center opacity-80 glass-panel mt-6">
             <Sparkles className="w-12 h-12 text-text-secondary mb-4 opacity-50" />
             <h3 className="text-xl font-bold mb-2">A Clean Slate</h3>
-            <p className="text-sm text-text-secondary px-8">You haven&apos;t done any aura analysis yet. Ready to get roasted?</p>
+            <p className="text-sm text-text-secondary px-8">You haven&apos;t done any vibe analysis yet. Ready to get roasted?</p>
             <Link href="/" className="mt-6">
               <button 
                 onClick={() => hapticLight()}
                 className="px-8 py-4 bg-white/10 hover:bg-white/20 transition-all active:scale-95 rounded-full text-sm font-semibold border border-white/10"
               >
-                Scan My Aura
+                Analyze My Vibe
               </button>
             </Link>
           </div>
@@ -150,7 +150,7 @@ export default function HistoryPage() {
                       {formatDate(item.createdAt)}
                     </span>
                     <h3 className="text-lg font-bold leading-tight flex items-center gap-2 tracking-tight truncate">
-                      {item.title || "Nameless Aura"}
+                      {item.title || "Nameless Vibe"}
                       <div 
                         className="w-2 h-2 rounded-full shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.8)] border border-white/20"
                         style={{ backgroundColor: item.color || "#ccc" }}

@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useAppStore } from "@/store/useAppStore";
-import { onAuthChange, ensureUserDoc, listenUserData } from "@/lib/auth";
+import { onAuthChange, ensureUserDoc, listenUserData, handleRedirectResult } from "@/lib/auth";
 
 /**
  * AuthProvider — Auth dinleyicisini yönetir.
@@ -18,6 +18,11 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const unsubRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
+    // Handle any pending redirect result (from popup → redirect fallback)
+    handleRedirectResult().catch((err) => {
+      console.warn("[AuthProvider] Redirect result check failed:", err);
+    });
+
     const unsubscribeAuth = onAuthChange(async (user) => {
       // Önceki dinlemeyi temizle
       unsubRef.current?.();

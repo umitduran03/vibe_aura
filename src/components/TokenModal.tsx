@@ -38,7 +38,7 @@ const TOKEN_PACKAGES = [
   },
   {
     id: "token_master",
-    name: "Aura Master",
+    name: "Vibe Master",
     tokens: 150,
     price: "$7.99",
     icon: <Crown className="h-5 w-5" />,
@@ -51,7 +51,7 @@ const TOKEN_PACKAGES = [
 const VIP_PACKAGES = [
   {
     id: "aura_vip",
-    name: "Aura VIP",
+    name: "Vibe VIP",
     desc: "✦ Weekly Unlimited",
     price: "$4.99",
     icon: <Sparkles className="h-5 w-5" />,
@@ -336,10 +336,10 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                       </motion.div>
 
                       <h2 className="text-[22px] font-bold text-foreground mb-2 tracking-tight">
-                        Out of Aura Tokens
+                        Out of Vibe Tokens
                       </h2>
                       <p className="text-[14px] leading-relaxed text-text-secondary mb-7">
-                        Refill your tokens to analyze your aura and decode your vibes.
+                        Refill your tokens to analyze your vibe and decode your energy.
                       </p>
 
                       <motion.button
@@ -614,7 +614,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                       </motion.div>
 
                       <h2 className="text-2xl font-black text-white mb-3 tracking-tight">
-                        Real Magic is on Mobile! ✨
+                        Full Experience is on Mobile! 🚀
                       </h2>
                       <p className="text-[14px] leading-relaxed text-zinc-400 mb-8 px-2 font-medium">
                         Watch ads to earn free tokens, access exclusive filters, and get instant notifications only on our mobile app.
@@ -651,6 +651,13 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                     </motion.div>
                   )}
                 </AnimatePresence>
+              </div>
+
+              {/* Entertainment Badge */}
+              <div className="w-full text-center pb-3 opacity-20">
+                <span className="text-[9px] text-white select-none">
+                  🎭 For Entertainment Purposes Only
+                </span>
               </div>
             </motion.div>
           </motion.div>

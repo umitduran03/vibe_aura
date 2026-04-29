@@ -90,7 +90,7 @@ export default function ResultCard() {
         try {
           await navigator.share({
             title: `${auraResult.aura_name} — Vibe & Aura`,
-            text: `My aura score: ${auraResult.aura_score}/100 💜`,
+            text: `My vibe score: ${auraResult.aura_score}/100 💜`,
             files: [file],
           });
         } catch (shareErr: any) {
@@ -185,7 +185,7 @@ export default function ResultCard() {
               {emoji}
             </div>
             <h2 className="text-lg font-medium text-text-secondary mb-1">
-              <span>Your Aura</span>
+              <span>Your Vibe</span>
             </h2>
             <h1
               className="text-3xl font-bold"
@@ -206,7 +206,7 @@ export default function ResultCard() {
           >
             <Sparkles className="h-4 w-4" style={{ color: grad1 }} />
             <span className="text-sm font-medium" style={{ color: "#a1a1aa" }}>
-              <span>Aura Score</span>
+              <span>Vibe Score</span>
             </span>
             <span
               className="text-xl font-bold"

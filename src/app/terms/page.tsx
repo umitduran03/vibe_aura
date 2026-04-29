@@ -54,7 +54,7 @@ export default function TermsPage() {
               }}
             >
               <p className="text-purple-300 font-medium text-sm">
-                ⚠️ Vibe & Aura is a novelty entertainment application. All aura readings, zodiac analyses, compatibility scores, and AI-generated content are intended <strong>solely for entertainment purposes</strong>.
+                ⚠️ Vibe & Aura is a novelty entertainment application. All personality analyses, zodiac-based content, compatibility scores, and AI-generated results are intended <strong>solely for entertainment purposes</strong>.
               </p>
             </div>
             <p>
@@ -65,7 +65,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">3. AI-Generated Content</h2>
             <p>
-              The App uses artificial intelligence (AI) models to generate aura readings and personality analyses. AI-generated content may be inaccurate, biased, or entirely fictional. We do not guarantee the accuracy, completeness, or reliability of any AI output. You acknowledge that AI results are generated algorithmically and should not be taken as factual statements about your personality, character, or future.
+              The App uses artificial intelligence (AI) models to generate personality analyses and entertainment content. AI-generated content may be inaccurate, biased, or entirely fictional. We do not guarantee the accuracy, completeness, or reliability of any AI output. You acknowledge that AI results are generated algorithmically and should not be taken as factual statements about your personality, character, or future.
             </p>
           </section>
 
