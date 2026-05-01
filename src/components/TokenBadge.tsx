@@ -24,8 +24,9 @@ export default function TokenBadge() {
       className="group flex items-center p-0.5 rounded-full bg-white/5 border border-white/10 select-none cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-purple-500/30 shadow-[0_0_0_rgba(139,92,246,0)] hover:shadow-[0_0_15px_rgba(139,92,246,0.3)]"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
+      whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.96 }}
-      transition={{ type: "spring", stiffness: 400, damping: 25, delay: 0.5 }}
+      transition={{ type: "spring", stiffness: 400, damping: 25 }}
       onClick={() => setTokenModalOpen(true)}
     >
       <AnimatePresence mode="popLayout" initial={false}>
@@ -44,13 +45,13 @@ export default function TokenBadge() {
         ) : (
           <motion.div
             key="token-badge"
-            className="flex items-center gap-1.5 px-3 py-1.5"
+            className="flex items-center gap-1 px-3 py-1.5"
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.2 }}
           >
-            <span className="text-sm">✨</span>
+            <span className="text-[11px] font-bold text-white/80 group-hover:text-white/95 transition-colors">✦</span>
             <span className="text-[13px] font-bold tabular-nums text-foreground/90 group-hover:text-white transition-colors">
               {tokenBalance}
             </span>

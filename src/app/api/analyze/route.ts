@@ -96,27 +96,25 @@ export async function POST(req: NextRequest) {
 
     const tokenCost = mode === "duo" ? 2 : 1;
 
+    let isUnlocked = true;
+    let currentBalance = 0;
+    let isVipActive = false;
+
     // Güvenlik: Admin SDK üzerinden jeton bakiyesi ve VIP kontrolü
     if (adminDb && userId) {
       const userDoc = await adminDb.collection("users").doc(userId).get();
-      const currentBalance = userDoc.exists ? (userDoc.data()?.token_balance || 0) : 0;
+      currentBalance = userDoc.exists ? (userDoc.data()?.token_balance || 0) : 0;
       
       const vipExpiryValue = userDoc.exists ? userDoc.data()?.vipExpiry : null;
-      let isVipActive = false;
       
       if (vipExpiryValue) {
         const expiryDate = typeof vipExpiryValue.toDate === 'function' ? vipExpiryValue.toDate() : new Date(vipExpiryValue);
         isVipActive = expiryDate > new Date();
       }
       
-      // İlk olarak kullanıcının vipExpiry (VIP Bitiş Tarihi) kontrol edilsin.
-      if (isVipActive) {
-        // Eğer kullanıcı VIP ise jeton bakiyesi 0 bile olsa işleme izin ver ve atla (pass)
-      } else {
-        // Jeton bakiyesi yetersizliği durumu SADECE kullanıcı VIP değilse fırlatılsın.
-        if (currentBalance < tokenCost) {
-          return NextResponse.json({ error: "Insufficient Tokens. Please top up your tokens." }, { status: 403 });
-        }
+      // VIP değilse ve jeton yetersizse teaser (sansürlü) moduna geç.
+      if (!isVipActive && currentBalance < tokenCost) {
+        isUnlocked = false;
       }
     }
 
@@ -152,7 +150,11 @@ export async function POST(req: NextRequest) {
 
       const systemInstruction = duoSystemPrompts[duoRelationType] || duoSystemPrompts.flirt;
 
-      const promptText = `
+      let promptText = "";
+
+      if (isUnlocked) {
+        // SENARYO A: Kullanıcının Token'ı Varsa (Sansür veya Zeigarnik yok)
+        promptText = `
 Duo Vibe Match Analysis:
 - Person 1: Age ${person1.age}, Zodiac: ${person1.zodiac}
 - Person 2: Age ${person2.age}, Zodiac: ${person2.zodiac}
@@ -168,6 +170,32 @@ Based on these details (and photos if any), analyze their vibe, energy, and comp
   "theme_color_hex": "#ff6b6b"
 }
 `;
+      } else {
+        // SENARYO B: Kullanıcının Token'ı Yoksa (Teaser Modu, Sansür var)
+        promptText = `
+Duo Vibe Match Analysis:
+- Person 1: Age ${person1.age}, Zodiac: ${person1.zodiac}
+- Person 2: Age ${person2.age}, Zodiac: ${person2.zodiac}
+- Relationship Type: ${relationLabels[duoRelationType] || duoRelationType}
+
+Based on these details (and photos if any), analyze their vibe, energy, and compatibility. Generate your response ENTIRELY IN ENGLISH using heavy, natural global Gen-Z slang. 
+
+CRITICAL TEASER INSTRUCTIONS:
+1. RATIO RULE: The visible (unblurred) text MUST NOT exceed 20-30% of the total analysis. The remaining 70-80% MUST be completely enclosed inside <blur> and </blur> tags. Do not write long satisfying paragraphs.
+2. SAVAGE & ZEIGARNIK INTRO: Start by stroking their ego or hitting them with a painfully accurate observation. Then, EXACTLY right before revealing the most brutal criticism or the actual reason behind their dynamic, abruptly cut off the sentence and start the <blur>. Example: 'Behind that cool, unbothered exterior, the real reason for your pathetic dynamic is... <blur>...'
+3. RED FLAG IDENTITY BLUR (CRITICAL): For the 'redFlag' field, you MUST hide WHO the toxic person is. The name or identity (e.g., Person 1 or Person 2) MUST be completely enclosed in <blur> tags so the user has no idea who is the red flag. Build a shocking hook around this hidden identity. Example: 'The ultimate toxic menace here is undeniably <blur>Person 1</blur> because... <blur>their disgusting habit of...</blur>'. 
+
+Your output must be purely JSON and strictly follow this exact structure:
+{
+  "duoScore": 65,
+  "title": "A sassy, Gen-Z title (e.g., Toxic but Iconic)",
+  "toxicComment": "Being together is like... (a savage, hilarious one-liner or short paragraph full of Gen-Z slang)",
+  "redFlag": "Targeted hook where the identity is hidden... e.g., The real red flag is <blur>Person 2</blur> because <blur>The actual toxic explanation...</blur>",
+  "analysis_text": "One savage intro sentence cutting off at the climax... <blur>Detailed highly entertaining, slang-filled paragraph dissecting their dynamic...</blur>",
+  "theme_color_hex": "#ff6b6b"
+}
+`;
+      }
 
       const userContents: any[] = [];
 
@@ -209,6 +237,19 @@ Based on these details (and photos if any), analyze their vibe, energy, and comp
         );
       }
 
+      // Jeton düşme işlemi (Backend'de güvence altına alınıyor)
+      if (isUnlocked && !isVipActive && adminDb && userId) {
+        try {
+          await adminDb.collection("users").doc(userId).update({
+            token_balance: Math.max(0, currentBalance - tokenCost)
+          });
+          console.log(`[API] Token deducted for DUO mode. User: ${userId}, Amount: ${tokenCost}`);
+        } catch (tokenErr) {
+          console.error("[API] Failed to deduct token:", tokenErr);
+        }
+      }
+
+      parsedJson.isUnlocked = isUnlocked;
       return NextResponse.json(parsedJson);
     }
 
@@ -240,8 +281,11 @@ Based on these details (and photos if any), analyze their vibe, energy, and comp
       soulmate: "Profile the user's IDEAL SOULMATE. Who should they be with? Guess their zodiac, physical type, personality, and exact vibe.",
     };
 
-    // Kullanıcı için yönlendirme metni
-    let promptText = `
+    let promptText = "";
+
+    if (isUnlocked) {
+      // SENARYO A: Kullanıcının Token'ı Varsa (Sansür veya Zeigarnik yok)
+      promptText = `
 User Details:
 - Age: ${age}
 - Zodiac: ${zodiac}
@@ -259,6 +303,34 @@ Based on these details (and the attached photo if any), generate your response E
   "theme_color_hex": "#c084fc"
 }
 `;
+    } else {
+      // SENARYO B: Kullanıcının Token'ı Yoksa (Teaser Modu, Sansür var)
+      promptText = `
+User Details:
+- Age: ${age}
+- Zodiac: ${zodiac}
+- Relationship Status: ${relationship || "Not specified"}
+- Extra Note (Vibe Question): ${magicText || "None"}
+- Analysis Type: ${(scenarioPromptSuffix as any)[soloScenario || "general"] || scenarioPromptSuffix.general}
+
+Based on these details (and the attached photo if any), generate your response ENTIRELY IN ENGLISH using heavy, natural global Gen-Z slang. 
+
+CRITICAL TEASER INSTRUCTIONS:
+1. RATIO RULE: The visible (unblurred) text MUST NOT exceed 20-30% of the total analysis. The remaining 70-80% MUST be completely enclosed inside <blur> and </blur> tags. Do not write long satisfying paragraphs.
+2. SAVAGE & ZEIGARNIK INTRO: Start by stroking their ego or hitting them with a painfully accurate observation. Then, EXACTLY right before revealing the most brutal criticism, the actual reason behind their behavior, or the core truth, abruptly cut off the sentence and start the <blur>. Example: 'Behind that cool, unbothered exterior, the real psychological reason for your pathetic vibe is... <blur>...'
+Create an extreme Zeigarnik effect (FOMO/incompleteness).
+
+Your output must be purely JSON and strictly follow this exact structure:
+{
+  "aura_name": "A sassy, savage, Gen-Z title for their aura",
+  "aura_score": 85,
+  "analysis_text": "Savage 1-2 sentence intro cutting off at the climax... <blur>The rest of the relentless, hilarious, slang-filled paragraph that roasts the user...</blur>",
+  "toxicComment": "A one-liner savage roast / ultimate call-out.",
+  "traits": ["Overthinker", "Chronically Online", "Delulu"],
+  "theme_color_hex": "#c084fc"
+}
+`;
+    }
 
     // İçerik dizisini hazırlayalım
     const userContents: any[] = [];
@@ -295,6 +367,19 @@ Based on these details (and the attached photo if any), generate your response E
       );
     }
 
+    // Jeton düşme işlemi (Backend'de güvence altına alınıyor)
+    if (isUnlocked && !isVipActive && adminDb && userId) {
+      try {
+        await adminDb.collection("users").doc(userId).update({
+          token_balance: Math.max(0, currentBalance - tokenCost)
+        });
+        console.log(`[API] Token deducted for SOLO mode. User: ${userId}, Amount: ${tokenCost}`);
+      } catch (tokenErr) {
+        console.error("[API] Failed to deduct token:", tokenErr);
+      }
+    }
+
+    parsedJson.isUnlocked = isUnlocked;
     return NextResponse.json(parsedJson);
   } catch (error: any) {
     console.error("[API Error /analyze]", error);

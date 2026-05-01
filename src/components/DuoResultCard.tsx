@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Share2, RotateCcw, Sparkles, AlertTriangle, Loader2, Download } from "lucide-react";
+import { Share2, RotateCcw, Sparkles, AlertTriangle, Loader2, Download, Lock } from "lucide-react";
 import { ZODIAC_SIGNS } from "@/lib/constants";
 import { resultCardVariants, resultItemVariants } from "@/lib/animations";
 import GlassButton from "@/components/ui/GlassButton";
@@ -15,6 +15,7 @@ export default function DuoResultCard() {
   const duoResult = useAppStore((s) => s.duoResult);
   const person1 = useAppStore((s) => s.duoPerson1);
   const person2 = useAppStore((s) => s.duoPerson2);
+  const setTokenModalOpen = useAppStore((s) => s.setTokenModalOpen);
   const [isExporting, setIsExporting] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -91,6 +92,37 @@ export default function DuoResultCard() {
   const handleReset = () => {
     hapticLight();
     resetWizard();
+  };
+
+  const renderTextWithBlurs = (text: string) => {
+    if (!text) return null;
+    const parts = text.split(/(<blur>|<\/blur>)/g);
+    let isBlurred = false;
+
+    return parts.map((part, index) => {
+      if (part === "<blur>") {
+        isBlurred = true;
+        return null;
+      }
+      if (part === "</blur>") {
+        isBlurred = false;
+        return null;
+      }
+      if (!part) return null;
+      if (isBlurred) {
+        return (
+          <span
+            key={index}
+            onClick={() => setTokenModalOpen(true)}
+            className="blur-[6px] select-none cursor-pointer opacity-70 transition-opacity hover:opacity-100"
+            style={{ textShadow: "0 0 10px rgba(255,255,255,0.5)" }}
+          >
+            {part}
+          </span>
+        );
+      }
+      return <span key={index}>{part}</span>;
+    });
   };
 
   // Score color
@@ -246,7 +278,7 @@ export default function DuoResultCard() {
                 <span translate="no">🚩</span> <span>Red Flag</span>
               </p>
               <p className="text-[14px] leading-relaxed font-medium" style={{ color: "#ebebf5" }}>
-                <span>{duoResult.redFlag}</span>
+                {renderTextWithBlurs(duoResult.redFlag)}
               </p>
             </div>
           </div>
@@ -262,7 +294,7 @@ export default function DuoResultCard() {
               <p className="text-[15px] leading-relaxed whitespace-pre-line font-medium"
                 style={{ color: "#ebebf5" }}
               >
-                <span>{duoResult.analysis_text}</span>
+                {renderTextWithBlurs(duoResult.analysis_text)}
               </p>
             </div>
           </div>
@@ -278,34 +310,61 @@ export default function DuoResultCard() {
 
         {/* Buttons */}
         <motion.div variants={resultItemVariants} className="mt-5 flex flex-col gap-3">
-          <motion.button
-            onClick={handleShare}
-            disabled={isExporting}
-            whileTap={{ scale: 0.95 }}
-            whileHover={{ scale: 1.02 }}
-            className="w-full flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[15px] font-bold tracking-wide text-white cursor-pointer transition-transform duration-300 active:scale-95 border border-white/20 disabled:opacity-60 disabled:cursor-not-allowed"
-            style={{
-              background: `linear-gradient(135deg, ${themeColor}, ${z2.gradient[0]})`,
-              boxShadow: `0 0 35px ${themeColor}40`,
-            }}
-          >
-            {isExporting ? (
-              <>
-                <Loader2 className="h-5 w-5 animate-spin" />
-                <span>Preparing...</span> <span translate="no">✨</span>
-              </>
-            ) : isDownloading ? (
-              <>
-                <Download className="h-5 w-5 animate-bounce" />
-                <span>Downloading...</span> <span translate="no">📥</span>
-              </>
-            ) : (
-              <>
-                <Share2 className="h-5 w-5" />
-                <span>Share to Story</span>
-              </>
-            )}
-          </motion.button>
+          {duoResult.isUnlocked === false && (
+            <motion.button
+              onClick={() => setTokenModalOpen(true)}
+              whileTap={{ scale: 0.98 }}
+              whileHover={{ y: -2 }}
+              className="group relative w-full flex items-center justify-center gap-2.5 rounded-2xl px-8 py-[18px] cursor-pointer transition-all duration-500 active:scale-95 overflow-hidden"
+              style={{
+                backgroundColor: "rgba(5, 5, 10, 0.4)",
+                backdropFilter: "blur(20px)",
+                border: "1px solid rgba(255, 255, 255, 0.06)",
+                boxShadow: "0 10px 30px -10px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.05)"
+              }}
+            >
+              {/* Subtle hover glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-r from-purple-500/10 via-transparent to-pink-500/10 pointer-events-none" />
+              {/* Light sweep */}
+              <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/5 to-transparent transition-transform duration-1000 ease-in-out pointer-events-none" />
+              
+              <Lock className="relative h-[15px] w-[15px] text-white/40 group-hover:text-purple-300 transition-colors duration-500" strokeWidth={2} />
+              <span className="relative text-[13px] font-semibold tracking-[0.15em] text-white/60 group-hover:text-white/90 transition-colors duration-500 uppercase">
+                Unlock Full Analysis <span className="ml-1 text-[14px]">🔒</span>
+              </span>
+            </motion.button>
+          )}
+
+          {duoResult.isUnlocked !== false && (
+            <motion.button
+              onClick={handleShare}
+              disabled={isExporting}
+              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02 }}
+              className="w-full flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[15px] font-bold tracking-wide text-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] cursor-pointer transition-transform duration-300 active:scale-95 border border-white/20 hover:shadow-[0_15px_40px_rgba(0,0,0,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
+              style={{
+                background: `linear-gradient(135deg, ${themeColor}, ${z2.gradient[0]})`,
+                boxShadow: `0 0 35px ${themeColor}40`,
+              }}
+            >
+              {isExporting ? (
+                <>
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                  <span>Preparing...</span> <span translate="no">✨</span>
+                </>
+              ) : isDownloading ? (
+                <>
+                  <Download className="h-5 w-5 animate-bounce" />
+                  <span>Downloading...</span> <span translate="no">📥</span>
+                </>
+              ) : (
+                <>
+                  <Share2 className="h-5 w-5" />
+                  <span>Share to Story</span>
+                </>
+              )}
+            </motion.button>
+          )}
 
           <GlassButton
             variant="ghost"

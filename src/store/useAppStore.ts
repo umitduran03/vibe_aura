@@ -12,6 +12,7 @@ export interface AuraResult {
   theme_color_hex: string;
   toxicComment: string;
   traits: string[];
+  isUnlocked?: boolean;
 }
 
 // AI'dan beklenen JSON formatı (Duo)
@@ -22,6 +23,7 @@ export interface DuoResult {
   redFlag: string;
   analysis_text: string;
   theme_color_hex: string;
+  isUnlocked?: boolean;
 }
 
 // Kullanıcı verileri

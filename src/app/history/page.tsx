@@ -16,7 +16,10 @@ export default function HistoryPage() {
     const fetchHistory = async () => {
       try {
         const data = await getAuraHistory();
-        setHistory(data);
+        // Sadece kilidi açık olan (veya eski formatta olan) analizleri listele
+        // isUnlocked değeri açıkça "false" olan teaser analizleri geçmişe dahil etmiyoruz.
+        const filteredData = data.filter((item: any) => item.isUnlocked !== false);
+        setHistory(filteredData);
       } catch (err) {
         console.error("Error fetching history:", err);
         setError(true);

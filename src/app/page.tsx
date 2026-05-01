@@ -70,10 +70,9 @@ export default function Home() {
     const isVipActive = vipExpiry ? new Date(vipExpiry) > new Date() : false;
 
     // ===== TOKEN GATE: Bakiye kontrolü =====
-    if (!isVipActive && tokenBalance < tokenCost) {
-      setTokenModalOpen(true);
-      return; // Analiz KESİNLİKLE başlamaz
-    }
+    // We no longer block the analysis here. If the user doesn't have enough tokens,
+    // the backend will generate a censored (teaser) analysis.
+    // However, if they are out of tokens and click "Unlock", that's handled elsewhere.
 
     setScreen("analyzing");
     setIsAnalyzing(true);
@@ -89,32 +88,18 @@ export default function Home() {
         updateDuoPerson1({ photoBase64: null });
         updateDuoPerson2({ photoBase64: null });
         
-        // Firestore'a kaydet (userId eklenerek)
-        try {
-          await saveDuoSession(userId, duoPerson1, duoPerson2, duoRelationType, result);
-        } catch (firestoreErr) {
-          console.error("Database Error:", firestoreErr);
-        }
-
-        // ===== TOKEN DEDUCTION: Başarılı analiz sonrası jeton düş =====
-        if (userId && !isVipActive) {
+        // Firestore'a kaydet (userId eklenerek) - Sadece analiz KİLİTLİ DEĞİLSE
+        if (result.isUnlocked !== false) {
           try {
-            const idToken = await auth.currentUser?.getIdToken();
-            await fetch("/api/spend-token", {
-              method: "POST",
-              headers: { 
-                "Content-Type": "application/json",
-                ...(idToken && { "Authorization": `Bearer ${idToken}` })
-              },
-              body: JSON.stringify({ userId, amount: tokenCost })
-            });
-            // Yerel state'i güncelle - KALDIRILDI (Double decrement bug'ını önlemek için)
-            // Sadece Firestore listener'ın güncellemesini bekliyoruz.
-          } catch (tokenErr) {
-            console.error("Token deduction error:", tokenErr);
+            await saveDuoSession(userId, duoPerson1, duoPerson2, duoRelationType, result);
+          } catch (firestoreErr) {
+            console.error("Database Error:", firestoreErr);
           }
         }
 
+        // ===== TOKEN DEDUCTION: ARTIK BACKEND'DE (route.ts) YAPILIYOR =====
+        // Token düşürme işlemi /api/analyze içinde başarılı olursa yapılıyor.
+        
         setDuoResult(result);
         setScreen("result");
 
@@ -129,31 +114,17 @@ export default function Home() {
         // Bellekteki ağırlığı hemen temizle
         setPhotoUrl(null);
         
-        // Firestore'a kaydet (userId + photoBase64 eklenerek)
-        try {
-          await saveAuraSession(userId, userData, capturedPhoto, result);
-        } catch (firestoreErr) {
-          console.error("Database Error:", firestoreErr);
-        }
-
-        // ===== TOKEN DEDUCTION: Başarılı analiz sonrası jeton düş =====
-        if (userId && !isVipActive) {
+        // Firestore'a kaydet (userId + photoBase64 eklenerek) - Sadece analiz KİLİTLİ DEĞİLSE
+        if (result.isUnlocked !== false) {
           try {
-            const idToken = await auth.currentUser?.getIdToken();
-            await fetch("/api/spend-token", {
-              method: "POST",
-              headers: { 
-                "Content-Type": "application/json",
-                ...(idToken && { "Authorization": `Bearer ${idToken}` })
-              },
-              body: JSON.stringify({ userId, amount: tokenCost })
-            });
-            // Yerel state'i güncelle - KALDIRILDI (Double decrement bug'ını önlemek için)
-            // Sadece Firestore listener'ın güncellemesini bekliyoruz.
-          } catch (tokenErr) {
-            console.error("Token deduction error:", tokenErr);
+            await saveAuraSession(userId, userData, capturedPhoto, result);
+          } catch (firestoreErr) {
+            console.error("Database Error:", firestoreErr);
           }
         }
+
+        // ===== TOKEN DEDUCTION: ARTIK BACKEND'DE (route.ts) YAPILIYOR =====
+        // Token düşürme işlemi /api/analyze içinde başarılı olursa yapılıyor.
 
         setAuraResult(result);
         setScreen("result");
