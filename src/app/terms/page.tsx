@@ -33,7 +33,7 @@ export default function TermsPage() {
           </div>
           <h1 className="text-2xl font-bold tracking-tight">Terms of Service</h1>
         </div>
-        <p className="text-sm text-white/40 mb-10">Last updated: April 22, 2026</p>
+        <p className="text-sm text-white/40 mb-10">Last updated: May 1, 2026</p>
 
         {/* ─── Content ─── */}
         <div className="space-y-8 text-[15px] leading-relaxed text-white/70">
@@ -72,16 +72,16 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">4. User Accounts & Authentication</h2>
             <p>
-              The App uses anonymous authentication. You are responsible for maintaining the security of your device and account. We are not liable for unauthorized access resulting from your failure to safeguard your device.
+              The App uses Google Authentication to create and manage your account. By signing in, you grant us permission to access your basic profile information (Email, Name, Profile Photo). You are responsible for maintaining the security of your Google account and device. We are not liable for unauthorized access resulting from your failure to safeguard your credentials or device.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-semibold text-white/90 mb-3">5. In-App Purchases & Tokens</h2>
+            <h2 className="text-lg font-semibold text-white/90 mb-3">5. In-App Purchases, Tokens & Credits</h2>
             <ul className="space-y-2 list-none">
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">•</span>
-                <span>The App offers digital tokens and VIP subscriptions for purchase. All purchases are processed through Polar (web) or Apple App Store / Google Play Store (mobile).</span>
+                <span>The App uses a Token (Credit) system to access certain AI features, such as deep personality analysis or Duo Match. Tokens and VIP subscriptions can be purchased via Polar (web) or Apple App Store / Google Play Store (mobile).</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">•</span>
@@ -89,7 +89,7 @@ export default function TermsPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">•</span>
-                <span>Tokens have no monetary value and cannot be exchanged, transferred, or redeemed for cash.</span>
+                <span>Tokens have no monetary value and cannot be exchanged, transferred, or redeemed for cash. They are consumed upon using specific premium features within the App.</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">•</span>
@@ -108,7 +108,7 @@ export default function TermsPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-pink-400 mt-1">✕</span>
-                <span>Exploit bugs, vulnerabilities, or API endpoints to gain unauthorized tokens, credits, or access.</span>
+                <span>Exploit bugs, vulnerabilities, or API endpoints (such as token deduction routes) to gain unauthorized tokens, credits, or access.</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-pink-400 mt-1">✕</span>
