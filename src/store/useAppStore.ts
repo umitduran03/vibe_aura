@@ -75,6 +75,7 @@ interface AppState {
   tokenBalance: number;
   isBalanceLoaded: boolean;
   isTokenModalOpen: boolean;
+  isSettingsOpen: boolean;
 
   // — Result (AI JSON — Solo) —
   auraResult: AuraResult | null;
@@ -94,6 +95,7 @@ interface AppState {
   setTokenBalance: (balance: number) => void;
   setBalanceLoaded: (loaded: boolean) => void;
   setTokenModalOpen: (isOpen: boolean) => void;
+  setSettingsOpen: (isOpen: boolean) => void;
   setScreen: (screen: AppScreen) => void;
   setWizardStep: (step: number, direction: number) => void;
   setAnalysisMode: (mode: AnalysisMode) => void;
@@ -153,6 +155,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   tokenBalance: 0,
   isBalanceLoaded: false,
   isTokenModalOpen: false,
+  isSettingsOpen: false,
 
   auraResult: null,
   isAnalyzing: false,
@@ -167,6 +170,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   setTokenBalance: (balance) => set({ tokenBalance: balance, isBalanceLoaded: true }),
   setBalanceLoaded: (loaded) => set({ isBalanceLoaded: loaded }),
   setTokenModalOpen: (isOpen) => set({ isTokenModalOpen: isOpen }),
+  setSettingsOpen: (isOpen) => set({ isSettingsOpen: isOpen }),
   setScreen: (screen) => set({ currentScreen: screen }),
 
   setWizardStep: (step, direction) =>
@@ -235,5 +239,6 @@ export const useAppStore = create<AppState>((set, get) => ({
       duoResult: null,
       isAnalyzing: false,
       isTokenModalOpen: false,
+      isSettingsOpen: false,
     }),
 }));

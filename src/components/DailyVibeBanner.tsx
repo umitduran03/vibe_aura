@@ -12,10 +12,12 @@ export default function DailyVibeBanner() {
   const userData = useAppStore((s) => s.userData); // for age/zodiac
   
   const [vibe, setVibe] = useState<string | null>(null);
+  const [missingZodiac, setMissingZodiac] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isSharing, setIsSharing] = useState(false);
   const [shared, setShared] = useState(false);
   const bannerRef = useRef<HTMLDivElement>(null);
+  const setSettingsOpen = useAppStore((s) => s.setSettingsOpen);
 
   useEffect(() => {
     if (!userId) return;
@@ -30,11 +32,13 @@ export default function DailyVibeBanner() {
         const todayStr = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
         let currentVibe = null;
         let lastDate = null;
+        let userZodiac = null;
 
         if (snap.exists()) {
           const data = snap.data();
           currentVibe = data.daily_vibe_text;
           lastDate = data.last_vibe_date;
+          userZodiac = data.zodiacSign;
         }
 
         // Eğer tarih bugünse ve vibe varsa, API'ye gitme
@@ -47,9 +51,9 @@ export default function DailyVibeBanner() {
         }
 
         // Yeni gün, API'den al
-        if (!userData.zodiac) {
+        if (!userZodiac) {
           if (isMounted) {
-            setVibe("I can't read your vibe if I know nothing about you. Complete your personality analysis first to unlock your daily vibe. ✦");
+            setMissingZodiac(true);
             setIsLoading(false);
           }
           return;
@@ -61,8 +65,8 @@ export default function DailyVibeBanner() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            age: userData.age,
-            zodiac: userData.zodiac,
+            age: 25, // default or fetch from user data if saved
+            zodiac: userZodiac,
           }),
         });
 
@@ -74,7 +78,6 @@ export default function DailyVibeBanner() {
           daily_vibe_text: newVibe,
           last_vibe_date: todayStr,
         }).catch(err => {
-          // Eğer döküman yoksa oluşturmayı dener (varsayılan ensureUserDoc sayesinde olmalı aslında)
           console.error("Vibe update error", err);
         });
 
@@ -97,7 +100,7 @@ export default function DailyVibeBanner() {
     return () => {
       isMounted = false;
     };
-  }, [userId, userData.age, userData.zodiac]);
+  }, [userId]);
 
   /** Download blob as PNG — universal fallback */
   const downloadBlob = (blob: Blob, filename: string) => {
@@ -232,6 +235,29 @@ export default function DailyVibeBanner() {
               >
                 <Loader2 className="w-4 h-4 animate-spin" />
                 <span>Generating your vibe...</span>
+              </motion.div>
+            ) : missingZodiac ? (
+              <motion.div
+                key="missing"
+                initial={{ opacity: 0, filter: "blur(4px)" }}
+                animate={{ opacity: 1, filter: "blur(0px)" }}
+                transition={{ duration: 0.4 }}
+                className="flex flex-col gap-2"
+              >
+                <p className="text-[14px] leading-snug font-medium" style={{ color: "rgba(255, 255, 255, 0.9)" }}>
+                  I can't read your daily vibe if I don't know your sign. Please set your Zodiac sign in Settings first. ✦
+                </p>
+                <button
+                  onClick={() => setSettingsOpen(true)}
+                  className="w-fit text-xs font-semibold py-1.5 px-3 rounded-full transition-all hover:bg-white/10 active:scale-95"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    color: "#c084fc",
+                  }}
+                >
+                  Set your Zodiac Sign
+                </button>
               </motion.div>
             ) : (
               <motion.p

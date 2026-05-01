@@ -12,15 +12,20 @@ import {
   ExternalLink,
   Sparkles,
   LogOut,
+  Pencil,
 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
-import { auth } from "@/lib/firebase";
+import { auth, db } from "@/lib/firebase";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { ZODIAC_SIGNS } from "@/lib/constants";
 import { logOut } from "@/lib/auth";
 import Image from "next/image";
+import { ZodiacIcon } from "@/components/ZodiacIcon";
 
 export default function SettingsDrawer() {
-  const [isOpen, setIsOpen] = useState(false);
+  const isOpen = useAppStore((s) => s.isSettingsOpen);
+  const setIsOpen = useAppStore((s) => s.setSettingsOpen);
   const tokenBalance = useAppStore((s) => s.tokenBalance);
   const vipExpiry = useAppStore((s) => s.vipExpiry);
   const setScreen = useAppStore((s) => s.setScreen);
@@ -28,11 +33,39 @@ export default function SettingsDrawer() {
 
   const isVipActive = vipExpiry ? new Date(vipExpiry) > new Date() : false;
 
+  const [userZodiac, setUserZodiac] = useState<string | null>(null);
+  const [isEditingZodiac, setIsEditingZodiac] = useState(false);
+
   // Profil Verileri
   const user = auth.currentUser;
   const displayName = user?.displayName || "Vibe Seeker";
   const photoURL = user?.photoURL;
   const initial = displayName.charAt(0).toUpperCase();
+
+  useEffect(() => {
+    if (isOpen && user?.uid) {
+      getDoc(doc(db, "users", user.uid)).then(snap => {
+        if (snap.exists()) {
+          setUserZodiac(snap.data().zodiacSign || null);
+        }
+      });
+    }
+  }, [isOpen, user?.uid]);
+
+  const handleZodiacSelect = async (zId: string) => {
+    hapticLight();
+    setUserZodiac(zId);
+    setIsEditingZodiac(false);
+    if (user?.uid) {
+      await updateDoc(doc(db, "users", user.uid), {
+        zodiacSign: zId,
+        last_vibe_date: null,
+        daily_vibe_text: null
+      });
+      // Sayfayı yenileyerek Daily Vibe'ın yeni burca göre gelmesini sağla
+      window.location.reload();
+    }
+  };
 
   const open = () => {
     hapticLight();
@@ -135,24 +168,95 @@ export default function SettingsDrawer() {
                       </div>
                     )}
                     
-                    <div className="flex-1 min-w-0">
-                      <p className="text-[15px] font-semibold text-white truncate">
-                        {displayName}
-                      </p>
-                      <p className="text-xs text-white/50 truncate flex items-center gap-1 mt-0.5">
-                        {isVipActive ? (
-                          <>
-                            <Sparkles className="h-3 w-3 text-purple-400" />
-                            <span className="text-purple-300">VIP Member</span>
-                          </>
+                    <div className="flex-1 min-w-0 flex items-start justify-between">
+                      <div>
+                        <p className="text-[15px] font-semibold text-white truncate">
+                          {displayName}
+                        </p>
+                        <p className="text-xs text-white/50 truncate flex items-center gap-1 mt-0.5">
+                          {isVipActive ? (
+                            <>
+                              <Sparkles className="h-3 w-3 text-purple-400" />
+                              <span className="text-purple-300">VIP Member</span>
+                            </>
+                          ) : (
+                            "Free Account"
+                          )}
+                        </p>
+                      </div>
+                      
+                      <div className="flex items-center gap-1.5 ml-2">
+                        {userZodiac ? (
+                          <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
+                            <ZodiacIcon id={userZodiac} className="w-4 h-4 text-cyan-400 drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" />
+                            <span className="text-[10px] font-bold text-cyan-50 uppercase tracking-widest">{ZODIAC_SIGNS.find(z => z.id === userZodiac)?.name}</span>
+                          </div>
                         ) : (
-                          "Free Account"
+                          <div className="text-[10px] font-medium text-white/40 uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
+                            No Sign
+                          </div>
                         )}
-                      </p>
+                        <button
+                          onClick={() => setIsEditingZodiac(!isEditingZodiac)}
+                          className={`p-1.5 rounded-full transition-colors ${
+                            isEditingZodiac 
+                            ? "bg-cyan-500/20 shadow-[0_0_8px_rgba(6,182,212,0.4)]" 
+                            : "bg-white/5 hover:bg-white/10"
+                          }`}
+                        >
+                          <Pencil className={`w-3.5 h-3.5 ${
+                            isEditingZodiac 
+                            ? "text-cyan-400 drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" 
+                            : "text-white/60 hover:text-cyan-300"
+                          }`} />
+                        </button>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2 relative z-10 pt-1">
+                  <AnimatePresence>
+                    {isEditingZodiac && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="overflow-hidden"
+                      >
+                        <div className="pt-2 pb-1 border-t border-white/10 relative z-10 grid grid-cols-4 gap-1.5">
+                          {ZODIAC_SIGNS.map(z => {
+                            const isSelected = userZodiac === z.id;
+                            return (
+                              <button
+                                key={z.id}
+                                onClick={() => handleZodiacSelect(z.id)}
+                                className={`flex flex-col items-center justify-center p-3 rounded-xl transition-all duration-300 ${
+                                  isSelected 
+                                  ? "bg-cyan-950/40 border border-cyan-500/50 shadow-[0_0_15px_rgba(6,182,212,0.3)]" 
+                                  : "bg-white/5 hover:bg-white/10 border border-transparent"
+                                }`}
+                              >
+                                <ZodiacIcon 
+                                  id={z.id} 
+                                  className={`w-7 h-7 mb-2 transition-all duration-300 ${
+                                    isSelected 
+                                    ? "text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]" 
+                                    : "text-white/40"
+                                  }`} 
+                                />
+                                <span className={`text-[9px] font-bold tracking-wider uppercase ${
+                                  isSelected ? "text-cyan-100" : "text-white/50"
+                                }`}>
+                                  {z.name}
+                                </span>
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <div className="flex items-center gap-2 relative z-10 pt-3">
                     <div className="px-2.5 py-1 rounded-md bg-black/20 flex items-center gap-2 border border-white/5">
                       <Coins className="h-3.5 w-3.5 text-yellow-400" />
                       <span className="text-[13px] font-medium text-white/90">
