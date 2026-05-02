@@ -7,12 +7,15 @@ import SplashScreen from "@/components/SplashScreen";
 import WizardFlow from "@/components/WizardFlow";
 import ResultCard from "@/components/ResultCard";
 import DuoResultCard from "@/components/DuoResultCard";
+import ExtrasResultCard from "@/components/ExtrasResultCard";
+import ExtrasModal from "@/components/ExtrasModal";
+import ExtrasShowcaseModal from "@/components/ExtrasShowcaseModal";
 import AnalyzingScreen from "@/components/AnalyzingScreen";
 import TokenModal from "@/components/TokenModal";
 import NotificationPrompt from "@/components/NotificationPrompt";
 import OnboardingScreen from "@/components/OnboardingScreen";
 import { useAppStore } from "@/store/useAppStore";
-import { analyzeAura, analyzeDuo, saveAuraSession, saveDuoSession } from "@/lib/services";
+import { analyzeAura, analyzeDuo, analyzeExtras, saveAuraSession, saveDuoSession, saveExtrasSession } from "@/lib/services";
 import { deductToken } from "@/lib/auth";
 import { auth } from "@/lib/firebase";
 
@@ -41,6 +44,13 @@ export default function Home() {
   const isTokenModalOpen = useAppStore((s) => s.isTokenModalOpen);
   const setTokenModalOpen = useAppStore((s) => s.setTokenModalOpen);
 
+  // Extras
+  const extrasAnalysisTrigger = useAppStore((s) => s.extrasAnalysisTrigger);
+  const extrasType = useAppStore((s) => s.extrasType);
+  const extrasFormData = useAppStore((s) => s.extrasFormData);
+  const setExtrasResult = useAppStore((s) => s.setExtrasResult);
+  const setExtrasModalOpen = useAppStore((s) => s.setExtrasModalOpen);
+
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
   // Splash → Onboarding after 3 seconds
@@ -62,6 +72,56 @@ export default function Home() {
     }
     setPrevIsConnecting(isConnecting);
   }, [isConnecting, prevIsConnecting, userId]);
+
+  // ===== EXTRAS ANALYSIS TRIGGER =====
+  useEffect(() => {
+    if (extrasAnalysisTrigger === 0) return;
+    if (!extrasType || !extrasFormData) return;
+
+    const runExtras = async () => {
+      setExtrasModalOpen(false);
+      setScreen("analyzing");
+      setIsAnalyzing(true);
+
+      try {
+        const result = await analyzeExtras(userId, extrasType, extrasFormData);
+        setExtrasResult(result);
+        setScreen("extras-result");
+
+        // Kaydet
+        try {
+          await saveExtrasSession(userId, extrasType, extrasFormData, result);
+        } catch (firestoreErr) {
+          console.error("Database Error:", firestoreErr);
+        }
+
+        // Backend token düşürüyor. Client bakiyesini senkronize edelim
+        if (userId && auth.currentUser) {
+          try {
+            const { doc, getDoc } = await import("firebase/firestore");
+            const { db } = await import("@/lib/firebase");
+            const snap = await getDoc(doc(db, "users", userId));
+            if (snap.exists()) setTokenBalance(snap.data()?.token_balance ?? 0);
+          } catch (_) { /* silent */ }
+        }
+      } catch (err: any) {
+        console.error("[Extras] Analysis failed:", err);
+        const msg = err?.message || "";
+        if (msg.includes("402")) {
+          setToast({ message: "Not enough tokens for this analysis! 💎", type: "error" });
+        } else {
+          setToast({ message: "Servers are busy. Please try again! ✨", type: "error" });
+        }
+        setTimeout(() => setToast(null), 4000);
+        useAppStore.getState().resetWizard();
+      } finally {
+        setIsAnalyzing(false);
+      }
+    };
+
+    runExtras();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [extrasAnalysisTrigger]);
 
   const handleWizardComplete = async () => {
     // ===== DYNAMIC PRICING =====
@@ -168,13 +228,23 @@ export default function Home() {
               ? <DuoResultCard key="duo-result" />
               : <ResultCard key="solo-result" />
           )}
+          
+          {screen === "extras-result" && (
+            <ExtrasResultCard key="extras-result" />
+          )}
         </AnimatePresence>
 
-        {/* Token Gate Modal — her zaman render, AnimatePresence ile göster/gizle */}
+        {/* Token Gate Modal */}
         <TokenModal
           isOpen={isTokenModalOpen}
           onClose={() => setTokenModalOpen(false)}
         />
+
+        {/* Extras Showcase Modal */}
+        <ExtrasShowcaseModal />
+
+        {/* Extras Modal */}
+        <ExtrasModal />
 
         {/* Custom Toast */}
         <AnimatePresence>

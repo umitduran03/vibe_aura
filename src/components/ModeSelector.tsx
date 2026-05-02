@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { User, Users } from "lucide-react";
 import { useAppStore, type AnalysisMode } from "@/store/useAppStore";
 import { hapticLight } from "@/lib/haptics";
+import PremiumExtras from "@/components/PremiumExtras";
 
 export default function ModeSelector() {
   const mode = useAppStore((s) => s.analysisMode);
@@ -24,6 +25,10 @@ export default function ModeSelector() {
       >
         How should we analyze? ✨
       </motion.h2>
+
+      <div className="w-full">
+        <PremiumExtras />
+      </div>
 
       <motion.div
         className="flex gap-3 w-full"

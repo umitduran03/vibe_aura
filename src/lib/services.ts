@@ -1,5 +1,5 @@
 import imageCompression from "browser-image-compression";
-import type { AuraResult, DuoResult, DuoPersonData, DuoRelationType } from "@/store/useAppStore";
+import type { AuraResult, DuoResult, DuoPersonData, DuoRelationType, ExtrasResult, ExtrasType } from "@/store/useAppStore";
 
 const COMPRESSION_OPTIONS = {
   maxSizeMB: 0.4, // Max 400KB compressed
@@ -166,8 +166,9 @@ export async function saveAuraSession(
     const { collection, addDoc, serverTimestamp, Timestamp } = await import("firebase/firestore");
     const { db } = await import("./firebase");
 
-    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 15 * 24 * 60 * 60 * 1000));
+    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 2 * 24 * 60 * 60 * 1000));
 
+    // Privacy: Base64 photo data is intentionally excluded from Firestore
     const docRef = await addDoc(collection(db, "results"), {
       userId: userId || "anonymous",
       type: "solo",
@@ -179,7 +180,6 @@ export async function saveAuraSession(
       traits: result.traits,
       zodiac: userData.zodiac,
       age: userData.age,
-      photoBase64: photoBase64,
       createdAt: serverTimestamp(),
       expiresAt,
     });
@@ -203,8 +203,9 @@ export async function saveDuoSession(
     const { collection, addDoc, serverTimestamp, Timestamp } = await import("firebase/firestore");
     const { db } = await import("./firebase");
 
-    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 15 * 24 * 60 * 60 * 1000));
+    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 2 * 24 * 60 * 60 * 1000));
 
+    // Privacy: Base64 photo data is intentionally excluded from Firestore
     const docRef = await addDoc(collection(db, "results"), {
       userId: userId || "anonymous",
       type: "duo",
@@ -216,10 +217,8 @@ export async function saveDuoSession(
       redFlag: result.redFlag,
       person1Zodiac: person1.zodiac,
       person1Age: person1.age,
-      person1Photo: person1.photoBase64,
       person2Zodiac: person2.zodiac,
       person2Age: person2.age,
-      person2Photo: person2.photoBase64,
       duoRelationType,
       createdAt: serverTimestamp(),
       expiresAt,
@@ -231,19 +230,63 @@ export async function saveDuoSession(
 }
 
 /**
- * Kullanıcının geçmiş aura analizlerini en yeniden eskiye doğru (createdAt - desc) çeker.
+ * Extras analiz sonucunu Firestore'a kaydeder.
  */
-export async function getAuraHistory() {
-  const { collection, query, orderBy, where, getDocs, Timestamp } = await import("firebase/firestore");
+export async function saveExtrasSession(
+  userId: string | null,
+  extrasType: ExtrasType,
+  formData: Record<string, string>,
+  result: ExtrasResult
+) {
+  try {
+    const { collection, addDoc, serverTimestamp, Timestamp } = await import("firebase/firestore");
+    const { db } = await import("./firebase");
+
+    const expiresAt = Timestamp.fromDate(new Date(Date.now() + 2 * 24 * 60 * 60 * 1000));
+
+    const docRef = await addDoc(collection(db, "results"), {
+      userId: userId || "anonymous",
+      type: "extras",
+      extrasType: extrasType,
+      color: result.theme_color_hex,
+      title: result.title,
+      comment: result.analysis_text,
+      verdict: result.verdict,
+      createdAt: serverTimestamp(),
+      expiresAt,
+    });
+
+  } catch (error) {
+    console.error("Database Error:", error);
+  }
+}
+
+/**
+ * Kullanıcının geçmiş analizlerini en yeniden eskiye doğru (createdAt - desc) çeker. (Infinite Scroll uyumlu)
+ */
+export async function getAuraHistory(lastVisibleDoc: any = null) {
+  const { collection, query, orderBy, where, getDocs, Timestamp, limit, startAfter } = await import("firebase/firestore");
   const { db } = await import("./firebase");
 
-  const fifteenDaysAgo = Timestamp.fromDate(new Date(Date.now() - 15 * 24 * 60 * 60 * 1000));
+  const twoDaysAgo = Timestamp.fromDate(new Date(Date.now() - 2 * 24 * 60 * 60 * 1000));
 
-  const q = query(
+  let q = query(
     collection(db, "results"),
-    where("createdAt", ">=", fifteenDaysAgo),
-    orderBy("createdAt", "desc")
+    where("createdAt", ">=", twoDaysAgo),
+    orderBy("createdAt", "desc"),
+    limit(5)
   );
+
+  if (lastVisibleDoc) {
+    q = query(
+      collection(db, "results"),
+      where("createdAt", ">=", twoDaysAgo),
+      orderBy("createdAt", "desc"),
+      startAfter(lastVisibleDoc),
+      limit(5)
+    );
+  }
+
   const querySnapshot = await getDocs(q);
 
   const history: any[] = [];
@@ -251,5 +294,36 @@ export async function getAuraHistory() {
     history.push({ id: doc.id, ...doc.data() });
   });
 
-  return history;
+  const lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1] || null;
+
+  return { history, lastVisible };
+}
+
+/**
+ * Premium Extras Analizi (Toxic Ex Scanner, Situationship Clarifier, Aura Cleansing)
+ */
+export async function analyzeExtras(
+  userId: string | null,
+  extrasType: ExtrasType,
+  formData: Record<string, string>
+): Promise<ExtrasResult> {
+  try {
+    const apiPayload = {
+      userId,
+      mode: "extras",
+      extrasType,
+      formData,
+    };
+
+    const result: ExtrasResult = await fetchWithRetry("/api/analyze", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(apiPayload),
+    });
+
+    return result;
+  } catch (error) {
+    console.error("[analyzeExtras] İşlem hatası:", error);
+    throw error;
+  }
 }

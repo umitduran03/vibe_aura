@@ -26,6 +26,31 @@ export interface DuoResult {
   isUnlocked?: boolean;
 }
 
+// AI'dan beklenen JSON formatı (Extras)
+export interface ExtrasResult {
+  title: string;
+  analysis_text: string;
+  verdict: string;
+  theme_color_hex: string;
+}
+
+export interface ExtrasFormData {
+  yourZodiac?: string;
+  exZodiac?: string;
+  theirZodiac?: string;
+  situation?: string;
+  photo?: string;
+  yourPhoto?: string;
+  theirPhoto?: string;
+  currentMood?: string;
+  breakupDynamic?: string;
+  relationshipDuration?: string;
+  talkingDuration?: string;
+  metInPerson?: string;
+  [key: string]: any;
+}
+
+
 // Kullanıcı verileri
 export interface UserData {
   age: number;
@@ -44,8 +69,9 @@ export interface DuoPersonData {
 export type AnalysisMode = "solo" | "duo";
 export type SoloScenario = "general" | "roast" | "soulmate";
 export type DuoRelationType = "flirt" | "ex" | "platonic" | "bff";
+export type ExtrasType = "toxic-ex" | "situationship" | "mood-reset";
 
-export type AppScreen = "splash" | "onboarding" | "wizard" | "analyzing" | "result";
+export type AppScreen = "splash" | "onboarding" | "wizard" | "analyzing" | "result" | "extras-result";
 
 interface AppState {
   // — Auth —
@@ -86,6 +112,14 @@ interface AppState {
   // — VIP / Subscription —
   vipExpiry: string | null;
 
+  // — Extras —
+  extrasType: ExtrasType | null;
+  isExtrasModalOpen: boolean;
+  extrasFormData: ExtrasFormData | null;
+  extrasResult: ExtrasResult | null;
+  extrasAnalysisTrigger: number;
+  isExtrasShowcaseOpen: boolean;
+
   // — UI State —
   isConnecting: boolean;
 
@@ -117,6 +151,13 @@ interface AppState {
   updateDuoPerson1: (partial: Partial<DuoPersonData>) => void;
   updateDuoPerson2: (partial: Partial<DuoPersonData>) => void;
   setDuoRelationType: (type: DuoRelationType) => void;
+  // Extras actions
+  setExtrasType: (type: ExtrasType | null) => void;
+  setExtrasModalOpen: (isOpen: boolean) => void;
+  setExtrasFormData: (data: ExtrasFormData | null) => void;
+  setExtrasResult: (result: ExtrasResult | null) => void;
+  triggerExtrasAnalysis: () => void;
+  setExtrasShowcaseOpen: (isOpen: boolean) => void;
 }
 
 const initialUserData: UserData = {
@@ -164,6 +205,13 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   vipExpiry: null,
   isConnecting: false,
+
+  extrasType: null,
+  isExtrasModalOpen: false,
+  extrasFormData: null,
+  extrasResult: null,
+  extrasAnalysisTrigger: 0,
+  isExtrasShowcaseOpen: false,
 
   isOnline: true,
 
@@ -224,6 +272,14 @@ export const useAppStore = create<AppState>((set, get) => ({
     })),
   setDuoRelationType: (type) => set({ duoRelationType: type }),
 
+  // Extras actions
+  setExtrasType: (type) => set({ extrasType: type }),
+  setExtrasModalOpen: (isOpen) => set({ isExtrasModalOpen: isOpen }),
+  setExtrasFormData: (data) => set({ extrasFormData: data }),
+  setExtrasResult: (result) => set({ extrasResult: result }),
+  triggerExtrasAnalysis: () => set((s) => ({ extrasAnalysisTrigger: s.extrasAnalysisTrigger + 1 })),
+  setExtrasShowcaseOpen: (isOpen) => set({ isExtrasShowcaseOpen: isOpen }),
+
   resetWizard: () =>
     set({
       currentScreen: "wizard",
@@ -242,5 +298,9 @@ export const useAppStore = create<AppState>((set, get) => ({
       isAnalyzing: false,
       isTokenModalOpen: false,
       isSettingsOpen: false,
+      extrasType: null,
+      extrasFormData: null,
+      extrasResult: null,
+      isExtrasShowcaseOpen: false,
     }),
 }));

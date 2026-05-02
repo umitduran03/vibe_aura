@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
     const mode = body.mode || "solo";
     const userId = body.userId;
 
-    const tokenCost = mode === "duo" ? 2 : 1;
+    const tokenCost = mode === "duo" ? 2 : mode === "extras" ? (body.extrasType === "situationship" ? 5 : 3) : 1;
 
     let isUnlocked = true;
     let currentBalance = 0;
@@ -112,10 +112,130 @@ export async function POST(req: NextRequest) {
         isVipActive = expiryDate > new Date();
       }
       
-      // VIP değilse ve jeton yetersizse teaser (sansürlü) moduna geç.
       if (!isVipActive && currentBalance < tokenCost) {
         isUnlocked = false;
       }
+    }
+
+    /* =============================================
+       EXTRAS MODE
+       ============================================= */
+    if (mode === "extras") {
+      const { extrasType, formData } = body;
+
+      if (!extrasType || !formData) {
+        return NextResponse.json({ error: "Missing extras data." }, { status: 400 });
+      }
+
+      if (!isUnlocked) {
+        return NextResponse.json({ error: "Insufficient tokens for Premium Extras." }, { status: 402 });
+      }
+
+      const extrasSystemPrompts: Record<string, string> = {
+        "toxic-ex": "You are the internet's most savage Crisis Center detective. Fluent in Gen-Z slang (delulu, red flag, ick, caught in 4K). Your job: scan their ex situation and deliver a brutal red flag reality check before they do something stupid like texting them. Show zero mercy. ALWAYS reply in English.",
+        situationship: "You are a legendary Gen-Z relationship decoder. Fluent in slang like 'breadcrumbing', 'soft-launching', 'slow-fading'. Decode the 'what are we' mystery with brutal honesty, highlighting hard compatibility stats and spicy chemistry scores. Be dramatic and savage. ALWAYS reply in English.",
+        "mood-reset": "You are a brutally honest wake-up caller. Give them a savage, reality-based pep talk to snap them out of their bad day and recharge their vibe. Provide highly practical, non-mystical, immediate action steps. Be hilarious, sharp, and pure reality. ZERO cosmic words. ALWAYS reply in English.",
+      };
+
+      const systemInstruction = extrasSystemPrompts[extrasType] || extrasSystemPrompts["toxic-ex"];
+
+      let promptText = "";
+
+      if (extrasType === "toxic-ex") {
+        promptText = `
+Toxic Ex Scan Request (Crisis Center):
+- User's Zodiac: ${formData.yourZodiac || "Unknown"}
+- Ex's Zodiac: ${formData.exZodiac || "Unknown"}
+- Breakup Dynamic: ${formData.breakupDynamic || "Unknown"}
+- Relationship Duration: ${formData.relationshipDuration || "Unknown"}
+- Situation / Text Draft: ${formData.situation || "No details provided"}
+
+Analyze this ex-situation MERCILESSLY. Tell them WHY they should NOT text their ex. Perform a savage red flag scan based on their breakup dynamic and duration. Be savage, funny, and use heavy Gen-Z slang to stop them from doing something stupid.
+
+Your output must be purely JSON:
+{
+  "title": "A dramatic, Gen-Z verdict title (e.g., 'Delete That Number Bestie')",
+  "verdict": "One devastating one-liner verdict",
+  "analysis_text": "A long, savage, entertaining paragraph analyzing the toxic dynamic, exposing the red flags, and concluding why texting them is a terrible idea. Use heavy Gen-Z slang.",
+  "theme_color_hex": "#ef4444"
+}`;
+      } else if (extrasType === "situationship") {
+        promptText = `
+Situationship Decode Request:
+- Person 1 Zodiac: ${formData.yourZodiac || "Unknown"}
+- Person 2 Zodiac: ${formData.theirZodiac || "Unknown"}
+- Talking Duration: ${formData.talkingDuration || "Unknown"}
+- Met In Person: ${formData.metInPerson || "Unknown"}
+- Situation: ${formData.situation || "No details provided"}
+
+Deep-dive into this situationship mystery. Decode 'What are we?' and provide brutal compatibility stats, a spicy chemistry score, and predict where this is heading. Be dramatic, poetic, and savagely honest.
+
+Your output must be purely JSON:
+{
+  "title": "A dramatic title (e.g., 'The Slowest Burn in History')",
+  "verdict": "One-liner defining what they actually are (e.g., 'You're basically dating without the label, bestie')",
+  "analysis_text": "A detailed, entertaining analysis decoding the situationship mystery, providing clear compatibility stats and brutal prediction. Heavy Gen-Z slang.",
+  "theme_color_hex": "#d946ef"
+}`;
+      } else {
+        promptText = `
+Mood Reset Request:
+- Zodiac: ${formData.yourZodiac || "Unknown"}
+- Current Energy: ${formData.currentMood || "Unknown"}
+- What's weighing on them: ${formData.situation || "No details provided"}
+
+Give them a savage, reality-based wake-up call to snap them out of their bad day and recharge their vibe. Include: brutal reality check, 3 highly practical physical/mental steps they can take right now to fix their mood. ZERO pseudo-science, no crystals. Pure reality.
+
+Your output must be purely JSON:
+{
+  "title": "A hilarious Gen-Z title (e.g., 'Get Up and Touch Grass')",
+  "verdict": "One-liner savage diagnosis (e.g., 'You\\'re not cursed, you just need a nap and some water, bestie.')",
+  "analysis_text": "A detailed, funny, brutal reality check with practical steps to fix their mood and recharge their vibe. Heavy Gen-Z slang, pure reality.",
+  "theme_color_hex": "#06b6d4"
+}`;
+      }
+
+      const userContents: any[] = [];
+
+      // Fotoğraf varsa ekle
+      const photoKeys = ["photo", "yourPhoto", "theirPhoto"];
+      for (const key of photoKeys) {
+        if (formData[key] && formData[key].startsWith("data:")) {
+          const { mimeType, base64Data } = parseBase64Image(formData[key]);
+          userContents.push({ inlineData: { data: base64Data, mimeType } });
+        }
+      }
+
+      userContents.push({ text: promptText });
+
+      const response = await generateWithFallback({
+        contents: userContents,
+        systemInstruction,
+      });
+
+      const text = response.text || "";
+      let parsedJson;
+      try {
+        const cleanJson = text.replace(/```json/g, "").replace(/```/g, "").trim();
+        parsedJson = JSON.parse(cleanJson);
+      } catch (parseError) {
+        console.error("[Gemini API Extras] JSON Parse Error:", parseError, "Raw:", text);
+        return NextResponse.json({ error: "Failed to parse AI response." }, { status: 500 });
+      }
+
+      // Token düşme
+      if (!isVipActive && adminDb && userId) {
+        try {
+          await adminDb.collection("users").doc(userId).update({
+            token_balance: Math.max(0, currentBalance - tokenCost)
+          });
+          console.log(`[API] Token deducted for EXTRAS (${extrasType}). User: ${userId}, Amount: ${tokenCost}`);
+        } catch (tokenErr) {
+          console.error("[API] Failed to deduct token:", tokenErr);
+        }
+      }
+
+      return NextResponse.json(parsedJson);
     }
 
 
