@@ -138,7 +138,7 @@ export async function ensureUserDoc(user: User): Promise<number> {
  */
 export function listenUserData(
   uid: string,
-  callback: (data: { balance: number; vipExpiry: string | null }) => void
+  callback: (data: { balance: number; vipExpiry: string | null; gender: string | null; preference: string | null }) => void
 ): () => void {
   const userRef = doc(db, "users", uid);
 
@@ -157,7 +157,12 @@ export function listenUserData(
         }
       }
       
-      callback({ balance, vipExpiry });
+      callback({ 
+        balance, 
+        vipExpiry,
+        gender: data.gender || null,
+        preference: data.preference || null
+      });
     }
   }, (error) => {
     console.error("[Auth] User data dinleme hatası:", error);
@@ -211,3 +216,10 @@ export async function saveFcmToken(uid: string, token: string): Promise<void> {
 
 }
 
+/**
+ * Kullanıcının gender ve preference verilerini kaydeder.
+ */
+export async function saveUserPreferences(uid: string, gender: string, preference: string): Promise<void> {
+  const userRef = doc(db, "users", uid);
+  await setDoc(userRef, { gender, preference }, { merge: true });
+}

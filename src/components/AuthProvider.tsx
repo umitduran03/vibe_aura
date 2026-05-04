@@ -44,9 +44,10 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
           setTokenBalance(balance);
 
           // Gerçek zamanlı dinleme başlat
-          unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry }) => {
+          unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference }) => {
             setTokenBalance(balance);
             setVipExpiry(vipExpiry);
+            useAppStore.getState().setUserPreferences(gender, preference);
           });
         } catch (err) {
           console.error("[AuthProvider] User doc error:", err);
@@ -57,6 +58,10 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         setTokenBalance(0);
         setBalanceLoaded(false);
         setVipExpiry(null);
+        useAppStore.getState().setUserPreferences(null, null);
+        // isPreferencesLoaded'ı false'a çekmemiz lazım, setUserPreferences true yapıyor
+        // O yüzden doğrudan set edelim:
+        useAppStore.setState({ isPreferencesLoaded: false });
       }
     });
 

@@ -123,6 +123,11 @@ interface AppState {
   // — UI State —
   isConnecting: boolean;
 
+  // — Onboarding Preferences —
+  gender: string | null;
+  preference: string | null;
+  isPreferencesLoaded: boolean;
+
   // — Network —
   isOnline: boolean;
 
@@ -158,6 +163,9 @@ interface AppState {
   setExtrasResult: (result: ExtrasResult | null) => void;
   triggerExtrasAnalysis: () => void;
   setExtrasShowcaseOpen: (isOpen: boolean) => void;
+
+  // Preferences action
+  setUserPreferences: (gender: string | null, preference: string | null) => void;
 }
 
 const initialUserData: UserData = {
@@ -212,6 +220,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   extrasResult: null,
   extrasAnalysisTrigger: 0,
   isExtrasShowcaseOpen: false,
+
+  gender: null,
+  preference: null,
+  isPreferencesLoaded: false,
 
   isOnline: true,
 
@@ -279,6 +291,8 @@ export const useAppStore = create<AppState>((set, get) => ({
   setExtrasResult: (result) => set({ extrasResult: result }),
   triggerExtrasAnalysis: () => set((s) => ({ extrasAnalysisTrigger: s.extrasAnalysisTrigger + 1 })),
   setExtrasShowcaseOpen: (isOpen) => set({ isExtrasShowcaseOpen: isOpen }),
+
+  setUserPreferences: (gender, preference) => set({ gender, preference, isPreferencesLoaded: true }),
 
   resetWizard: () =>
     set({

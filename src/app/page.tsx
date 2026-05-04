@@ -14,6 +14,7 @@ import AnalyzingScreen from "@/components/AnalyzingScreen";
 import TokenModal from "@/components/TokenModal";
 import NotificationPrompt from "@/components/NotificationPrompt";
 import OnboardingScreen from "@/components/OnboardingScreen";
+import OnboardingModal from "@/components/OnboardingModal";
 import { useAppStore } from "@/store/useAppStore";
 import { analyzeAura, analyzeDuo, analyzeExtras, saveAuraSession, saveDuoSession, saveExtrasSession } from "@/lib/services";
 import { deductToken } from "@/lib/auth";
@@ -51,7 +52,20 @@ export default function Home() {
   const setExtrasResult = useAppStore((s) => s.setExtrasResult);
   const setExtrasModalOpen = useAppStore((s) => s.setExtrasModalOpen);
 
+  // === ONBOARDING PREFERENCE STATE ===
+  const gender = useAppStore((s) => s.gender);
+  const isPreferencesLoaded = useAppStore((s) => s.isPreferencesLoaded);
+
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+
+  // === DEBUG LOG ===
+  useEffect(() => {
+    console.log("🟣 ONBOARDING_DEBUG:", {
+      hasUser: !!userId,
+      isLoaded: isPreferencesLoaded,
+      gender: gender ?? "null",
+    });
+  }, [userId, isPreferencesLoaded, gender]);
 
   // Splash → Onboarding after 3 seconds
   useEffect(() => {
@@ -233,6 +247,27 @@ export default function Home() {
             <ExtrasResultCard key="extras-result" />
           )}
         </AnimatePresence>
+
+        {/* Loading overlay: user logged in, preferences not yet fetched */}
+        <AnimatePresence>
+          {userId && !isPreferencesLoaded && (
+            <motion.div
+              key="prefs-loading"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[998] flex items-center justify-center bg-black/80 backdrop-blur-md"
+            >
+              <div className="text-center space-y-3">
+                <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin mx-auto" />
+                <p className="text-white/60 text-sm font-medium">Vibe is loading...</p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Mandatory Preference Onboarding Modal */}
+        <OnboardingModal />
 
         {/* Token Gate Modal */}
         <TokenModal
