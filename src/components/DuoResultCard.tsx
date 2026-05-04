@@ -151,7 +151,7 @@ export default function DuoResultCard() {
       <motion.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
         <div />{/* Spacer for centering */}
         <p className="text-center text-xs font-medium text-text-secondary/50 uppercase tracking-widest mb-2">
-          <span>Duo Vibe Match</span>
+          <span>Duo Soulmate</span>
         </p>
         <div className="mb-2">
           <SettingsDrawer />

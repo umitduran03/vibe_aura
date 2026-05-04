@@ -7,7 +7,7 @@ import { hapticLight } from "@/lib/haptics";
 const SCENARIOS: { id: SoloScenario; emoji: string; label: string }[] = [
   { id: "general", emoji: "✨", label: "General Vibe" },
   { id: "roast",   emoji: "🔥", label: "Roast Me" },
-  { id: "soulmate", emoji: "❤️‍🔥", label: "Vibe Match" },
+  { id: "soulmate", emoji: "❤️‍🔥", label: "Soulmate" },
 ];
 
 export default function SoloScenarioSelector() {

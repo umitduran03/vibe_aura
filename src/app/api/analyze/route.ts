@@ -275,7 +275,7 @@ Your output must be purely JSON:
       if (isUnlocked) {
         // SENARYO A: Kullanıcının Token'ı Varsa (Sansür veya Zeigarnik yok)
         promptText = `
-Duo Vibe Match Analysis:
+Duo Soulmate Analysis:
 - Person 1: Age ${person1.age}, Zodiac: ${person1.zodiac}
 - Person 2: Age ${person2.age}, Zodiac: ${person2.zodiac}
 - Relationship Type: ${relationLabels[duoRelationType] || duoRelationType}
@@ -293,7 +293,7 @@ Based on these details (and photos if any), analyze their vibe, energy, and comp
       } else {
         // SENARYO B: Kullanıcının Token'ı Yoksa (Teaser Modu, Sansür var)
         promptText = `
-Duo Vibe Match Analysis:
+Duo Soulmate Analysis:
 - Person 1: Age ${person1.age}, Zodiac: ${person1.zodiac}
 - Person 2: Age ${person2.age}, Zodiac: ${person2.zodiac}
 - Relationship Type: ${relationLabels[duoRelationType] || duoRelationType}

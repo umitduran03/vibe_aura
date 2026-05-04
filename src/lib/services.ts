@@ -114,7 +114,7 @@ export async function analyzeAura(userData: {
 }
 
 /**
- * İkili Uyum Analizi (Duo Vibe Match)
+ * İkili Uyum Analizi (Duo Soulmate)
  */
 export async function analyzeDuo(
   userId: string | null,
