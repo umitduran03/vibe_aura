@@ -14,7 +14,7 @@ import AnalyzingScreen from "@/components/AnalyzingScreen";
 import TokenModal from "@/components/TokenModal";
 import NotificationPrompt from "@/components/NotificationPrompt";
 import OnboardingScreen from "@/components/OnboardingScreen";
-import OnboardingModal from "@/components/OnboardingModal";
+import OnboardingBanner from "@/components/OnboardingBanner";
 import { useAppStore } from "@/store/useAppStore";
 import { analyzeAura, analyzeDuo, analyzeExtras, saveAuraSession, saveDuoSession, saveExtrasSession } from "@/lib/services";
 import { deductToken } from "@/lib/auth";
@@ -225,7 +225,10 @@ export default function Home() {
 
   return (
     <AuthProvider>
-      <main className="relative mx-auto w-full max-w-[430px] min-h-dvh overflow-hidden">
+      <main className="relative mx-auto w-full max-w-[430px] min-h-dvh overflow-hidden flex flex-col">
+        {/* Mandatory Preference Onboarding Banner */}
+        <OnboardingBanner />
+
         <AnimatePresence mode="wait">
           {screen === "splash" && <SplashScreen key="splash" />}
           
@@ -248,9 +251,6 @@ export default function Home() {
           )}
         </AnimatePresence>
 
-
-        {/* Mandatory Preference Onboarding Modal */}
-        <OnboardingModal />
 
         {/* Token Gate Modal */}
         <TokenModal
