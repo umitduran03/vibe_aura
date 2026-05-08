@@ -235,7 +235,7 @@ export async function saveDuoSession(
 export async function saveExtrasSession(
   userId: string | null,
   extrasType: ExtrasType,
-  formData: Record<string, string>,
+  formData: Record<string, any>,
   result: ExtrasResult
 ) {
   try {
@@ -244,7 +244,7 @@ export async function saveExtrasSession(
 
     const expiresAt = Timestamp.fromDate(new Date(Date.now() + 2 * 24 * 60 * 60 * 1000));
 
-    const docRef = await addDoc(collection(db, "results"), {
+    const payload = {
       userId: userId || "anonymous",
       type: "extras",
       extrasType: extrasType,
@@ -252,9 +252,17 @@ export async function saveExtrasSession(
       title: result.title,
       comment: result.analysis_text,
       verdict: result.verdict,
+      vibe_check: result.vibe_check,
+      roast: result.roast,
+      rizz_options: result.rizz_options,
       createdAt: serverTimestamp(),
       expiresAt,
-    });
+    };
+
+    // Remove undefined values to avoid Firebase "Unsupported field value: undefined" errors
+    const sanitizedPayload = Object.fromEntries(Object.entries(payload).filter(([_, v]) => v !== undefined));
+
+    const docRef = await addDoc(collection(db, "results"), sanitizedPayload);
 
   } catch (error) {
     console.error("Database Error:", error);
@@ -305,7 +313,7 @@ export async function getAuraHistory(lastVisibleDoc: any = null) {
 export async function analyzeExtras(
   userId: string | null,
   extrasType: ExtrasType,
-  formData: Record<string, string>
+  formData: Record<string, any>
 ): Promise<ExtrasResult> {
   try {
     const apiPayload = {

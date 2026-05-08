@@ -32,6 +32,10 @@ export interface ExtrasResult {
   analysis_text: string;
   verdict: string;
   theme_color_hex: string;
+  delulu_score?: number;
+  vibe_check?: string;
+  roast?: string | null;
+  rizz_options?: { type: string; text: string }[];
 }
 
 export interface ExtrasFormData {
@@ -47,6 +51,9 @@ export interface ExtrasFormData {
   relationshipDuration?: string;
   talkingDuration?: string;
   metInPerson?: string;
+  screenshots?: string[];
+  chatText?: string;
+  draftText?: string;
   [key: string]: any;
 }
 
@@ -69,7 +76,7 @@ export interface DuoPersonData {
 export type AnalysisMode = "solo" | "duo";
 export type SoloScenario = "general" | "roast" | "soulmate";
 export type DuoRelationType = "flirt" | "ex" | "platonic" | "bff";
-export type ExtrasType = "toxic-ex" | "situationship" | "mood-reset";
+export type ExtrasType = "toxic-ex" | "situationship" | "mood-reset" | "delulu-check" | "rizz-architect";
 
 export type AppScreen = "splash" | "onboarding" | "wizard" | "analyzing" | "result" | "extras-result";
 

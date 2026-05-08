@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Flame, HeartCrack, Sparkles, Zap, X } from "lucide-react";
+import { Flame, HeartCrack, Sparkles, Zap, X, MessageCircle, Send } from "lucide-react";
 import { useAppStore, type ExtrasType } from "@/store/useAppStore";
 import { hapticMedium, hapticLight } from "@/lib/haptics";
 
@@ -48,6 +48,28 @@ const EXTRAS_CARDS: {
     borderColor: "border-cyan-500/30",
     glowColor: "rgba(6, 182, 212, 0.15)",
     icon: Sparkles,
+  },
+  {
+    id: "delulu-check" as ExtrasType,
+    title: "Delulu Check",
+    emoji: "📱",
+    description: "Mixed signals? Drop the receipts (max 3 screenshots) or paste the chat. Get an unfiltered reality check before you double text.",
+    cost: 10,
+    gradient: "from-amber-500/20 via-yellow-500/10 to-transparent",
+    borderColor: "border-amber-500/30",
+    glowColor: "rgba(245, 158, 11, 0.15)",
+    icon: MessageCircle,
+  },
+  {
+    id: "rizz-architect" as ExtrasType,
+    title: "The Reply Guru",
+    emoji: "💬",
+    description: "Mind games? Won. Drop the screenshot and let me craft the perfect toxic, cool, or safe reply.",
+    cost: 3,
+    gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
+    borderColor: "border-violet-500/30",
+    glowColor: "rgba(139, 92, 246, 0.15)",
+    icon: Send,
   },
 ];
 

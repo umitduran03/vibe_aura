@@ -232,7 +232,7 @@ export default function HistoryPage() {
                         layout="position"
                         className={`text-[14px] font-medium text-white/80 leading-relaxed italic ${!isExpanded ? "line-clamp-3" : ""}`}
                       >
-                        &quot;{item.type === 'extras' ? item.comment : (item.toxicComment || item.comment)}&quot;
+                        &quot;{item.type === 'extras' ? (item.vibe_check || item.comment || "Analysis complete.") : (item.toxicComment || item.comment || "Analysis complete.")}&quot;
                       </motion.div>
                       
                       <AnimatePresence>

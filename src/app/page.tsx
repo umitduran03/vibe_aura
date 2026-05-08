@@ -248,23 +248,6 @@ export default function Home() {
           )}
         </AnimatePresence>
 
-        {/* Loading overlay: user logged in, preferences not yet fetched */}
-        <AnimatePresence>
-          {userId && !isPreferencesLoaded && (
-            <motion.div
-              key="prefs-loading"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[998] flex items-center justify-center bg-black/80 backdrop-blur-md"
-            >
-              <div className="text-center space-y-3">
-                <div className="w-8 h-8 border-2 border-white/30 border-t-white rounded-full animate-spin mx-auto" />
-                <p className="text-white/60 text-sm font-medium">Vibe is loading...</p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Mandatory Preference Onboarding Modal */}
         <OnboardingModal />

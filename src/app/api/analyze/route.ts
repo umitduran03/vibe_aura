@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
     const mode = body.mode || "solo";
     const userId = body.userId;
 
-    const tokenCost = mode === "duo" ? 2 : mode === "extras" ? (body.extrasType === "situationship" ? 5 : 3) : 1;
+    const tokenCost = mode === "duo" ? 2 : mode === "extras" ? (body.extrasType === "delulu-check" ? 10 : body.extrasType === "situationship" ? 5 : 3) : 1;
 
     let isUnlocked = true;
     let currentBalance = 0;
@@ -135,6 +135,8 @@ export async function POST(req: NextRequest) {
         "toxic-ex": "You are the internet's most savage Crisis Center detective. Fluent in Gen-Z slang (delulu, red flag, ick, caught in 4K). Your job: scan their ex situation and deliver a brutal red flag reality check before they do something stupid like texting them. Show zero mercy. ALWAYS reply in English.",
         situationship: "You are a legendary Gen-Z relationship decoder. Fluent in slang like 'breadcrumbing', 'soft-launching', 'slow-fading'. Decode the 'what are we' mystery with brutal honesty, highlighting hard compatibility stats and spicy chemistry scores. Be dramatic and savage. ALWAYS reply in English.",
         "mood-reset": "You are a brutally honest wake-up caller. Give them a savage, reality-based pep talk to snap them out of their bad day and recharge their vibe. Provide highly practical, non-mystical, immediate action steps. Be hilarious, sharp, and pure reality. ZERO cosmic words. ALWAYS reply in English.",
+        "delulu-check": "You are the ultimate reality check AI, specialized in destroying delusions. Analyze the provided screenshots or chat text to determine if the user is being 'delulu' (delusional) about their crush/situationship. Calculate a brutal 'delulu_score' from 0 to 100. Give an unfiltered reality check before they double text. Use heavy Gen-Z slang. ALWAYS reply in English.",
+        "rizz-architect": "You are NOT a formal AI. You are a Gen Z texting expert, highly manipulative and witty. DO NOT use formal language, punctuation, or robotic empathy. Use lowercase, casual slang, and natural texting behaviors. Match the user's energy. ALWAYS reply in English.",
       };
 
       const systemInstruction = extrasSystemPrompts[extrasType] || extrasSystemPrompts["toxic-ex"];
@@ -177,6 +179,44 @@ Your output must be purely JSON:
   "analysis_text": "A detailed, entertaining analysis decoding the situationship mystery, providing clear compatibility stats and brutal prediction. Heavy Gen-Z slang.",
   "theme_color_hex": "#d946ef"
 }`;
+      } else if (extrasType === "delulu-check") {
+        promptText = `
+Delulu Check Request:
+- Chat Text: ${formData.chatText || "No chat text provided"}
+
+Analyze the provided chat evidence (screenshots and/or text). Calculate a 'delulu_score' from 0 to 100 based on how delusional the user is being about the other person's signals. 0 means totally grounded and reading it right, 100 means clinically delulu.
+Deliver an unfiltered reality check. Should they double text? Are they ignoring red flags? Tell them what the other person is ACTUALLY thinking.
+
+Your output must be purely JSON:
+{
+  "title": "A brutal, eye-opening Gen-Z title (e.g., 'Put The Phone Down')",
+  "verdict": "One devastating one-liner reality check",
+  "analysis_text": "A long, savage, entertaining paragraph breaking down their evidence, explaining exactly why they are or aren't delulu, and what they should do next.",
+  "delulu_score": 85,
+  "theme_color_hex": "#f59e0b"
+}`;
+      } else if (extrasType === "rizz-architect") {
+        promptText = `
+Reply Guru Request:
+- Draft Text: ${formData.draftText || "None provided"}
+
+Analyze the provided screenshots (chat context).
+1. Provide a 'vibe_check': a brutal summary of the power dynamic in the screenshot.
+2. If a Draft Text is provided, provide a 'roast': roast their draft heavily (e.g., "this is too desperate, delete it"). If none, set roast to null.
+3. Provide 3 'rizz_options' (replies the user can send). E.g. types: "toxic", "mysterious", "safe". Ensure the text matches the Gen-Z texting expert persona.
+
+Your output must be purely JSON:
+{
+  "title": "A witty title for the analysis",
+  "vibe_check": "A brutal summary of the power dynamic in the screenshot.",
+  "roast": "Roast of the draft text if provided, otherwise null",
+  "rizz_options": [
+    { "type": "toxic", "text": "..." },
+    { "type": "mysterious", "text": "..." },
+    { "type": "safe", "text": "..." }
+  ],
+  "theme_color_hex": "#8b5cf6"
+}`;
       } else {
         promptText = `
 Mood Reset Request:
@@ -203,6 +243,16 @@ Your output must be purely JSON:
         if (formData[key] && formData[key].startsWith("data:")) {
           const { mimeType, base64Data } = parseBase64Image(formData[key]);
           userContents.push({ inlineData: { data: base64Data, mimeType } });
+        }
+      }
+
+      // Extras Screenshots (Delulu Check, Reply Guru)
+      if (formData.screenshots && Array.isArray(formData.screenshots)) {
+        for (const screenshot of formData.screenshots) {
+          if (screenshot && screenshot.startsWith("data:")) {
+            const { mimeType, base64Data } = parseBase64Image(screenshot);
+            userContents.push({ inlineData: { data: base64Data, mimeType } });
+          }
         }
       }
 
