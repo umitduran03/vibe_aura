@@ -138,6 +138,9 @@ interface AppState {
   // — Network —
   isOnline: boolean;
 
+  // — Auth Settling (ITP Race Condition Guard) —
+  isAuthSettling: boolean;
+
   // ========== Actions ==========
   setUserId: (uid: string | null) => void;
   setTokenBalance: (balance: number) => void;
@@ -155,6 +158,7 @@ interface AppState {
   setDuoResult: (result: DuoResult | null) => void;
   setIsAnalyzing: (v: boolean) => void;
   setIsOnline: (v: boolean) => void;
+  setAuthSettling: (v: boolean) => void;
   setVipExpiry: (expiry: string | null) => void;
   setIsConnecting: (v: boolean) => void;
   consumeToken: (amount?: number) => boolean;
@@ -233,6 +237,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   isPreferencesLoaded: false,
 
   isOnline: true,
+  isAuthSettling: true,
 
   // ========== Actions ==========
   setUserId: (uid) => set({ userId: uid }),
@@ -264,6 +269,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   setIsConnecting: (v) => set({ isConnecting: v }),
 
   setIsOnline: (v) => set({ isOnline: v }),
+  setAuthSettling: (v) => set({ isAuthSettling: v }),
 
   consumeToken: (amount = 1) => {
     const { tokenBalance, vipExpiry } = get();

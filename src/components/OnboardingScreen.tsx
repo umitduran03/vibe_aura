@@ -22,6 +22,7 @@ export default function OnboardingScreen() {
   const setIsConnecting = useAppStore((s) => s.setIsConnecting);
   const setScreen = useAppStore((s) => s.setScreen);
   const userId = useAppStore((s) => s.userId);
+  const isAuthSettling = useAppStore((s) => s.isAuthSettling);
 
   const [hasConsented, setHasConsented] = useState(false);
   const [isBypassed, setIsBypassed] = useState(false);
@@ -99,6 +100,30 @@ export default function OnboardingScreen() {
 
   // SSR uyumsuzluğunu önlemek için yüklenmeden render etme
   if (!mounted) return null;
+
+  // ══ Auth Settling Kilidi ══
+  // Redirect sonucu çözülene kadar klasik yükleme ekranını göster.
+  // Bu, Safari ITP race condition döngüsünü kırar.
+  if (isAuthSettling) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-transparent w-full overflow-hidden relative">
+        <div className="relative flex flex-col items-center gap-4">
+          <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative mb-4 bg-white/5 border border-white/10">
+            <Sparkles className="h-8 w-8 text-pink-400 drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]" />
+          </div>
+          <motion.p
+            className="text-sm font-medium text-white/60 tracking-[0.2em] uppercase"
+            animate={{ opacity: [1, 0.4, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          >
+            Analyzing Your Vibe...
+          </motion.p>
+        </div>
+        <div className="fixed -bottom-20 -left-20 w-80 h-80 bg-purple-600/10 blur-[100px] rounded-full pointer-events-none" />
+        <div className="fixed -top-20 -right-20 w-80 h-80 bg-pink-600/10 blur-[100px] rounded-full pointer-events-none" />
+      </div>
+    );
+  }
 
   // Eğer `userId` varsa ve animasyon beklemiyorsak null dön (zaten useEffect ile wizard'a geçecek)
   if (userId && !showCosmicTransition) return null;

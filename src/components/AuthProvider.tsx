@@ -6,70 +6,86 @@ import { onAuthChange, ensureUserDoc, listenUserData, handleRedirectResult } fro
 
 /**
  * AuthProvider — Auth dinleyicisini yönetir.
- * 1. Auth state değişimini dinler.
- * 2. Giriş yapılmışsa dökümanı garanti eder ve dinlemeyi başlatır.
- * 3. Giriş yoksa store'u temizler.
+ *
+ * Race Condition Fix (ITP Guard):
+ * 1. ÖNCE redirect sonucunu çöz (Safari ITP loop kırıcı)
+ * 2. SONRA onAuthStateChanged dinleyicisini başlat
+ * 3. İlk auth state callback'i geldiğinde kilidi aç
  */
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
   const setUserId = useAppStore((s) => s.setUserId);
   const setTokenBalance = useAppStore((s) => s.setTokenBalance);
   const setVipExpiry = useAppStore((s) => s.setVipExpiry);
   const setBalanceLoaded = useAppStore((s) => s.setBalanceLoaded);
+  const setAuthSettling = useAppStore((s) => s.setAuthSettling);
   const unsubRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
-    // Handle any pending redirect result (from popup → redirect fallback)
-    handleRedirectResult().catch((err) => {
-      console.warn("[AuthProvider] Redirect result check failed:", err);
-    });
+    let isMounted = true;
+    let unsubscribeAuth: (() => void) | undefined;
 
-    const unsubscribeAuth = onAuthChange(async (user) => {
-      // Önceki dinlemeyi temizle
-      unsubRef.current?.();
-      unsubRef.current = null;
-
-      if (user) {
-        if (user.isAnonymous) {
-
-          import("@/lib/auth").then((m) => m.logOut());
-          return;
-        }
-
-
-        setUserId(user.uid);
-
-        try {
-          // Firestore dökümanını garanti et
-          const balance = await ensureUserDoc(user);
-          setTokenBalance(balance);
-
-          // Gerçek zamanlı dinleme başlat
-          unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference }) => {
-            setTokenBalance(balance);
-            setVipExpiry(vipExpiry);
-            useAppStore.getState().setUserPreferences(gender, preference);
-          });
-        } catch (err) {
-          console.error("[AuthProvider] User doc error:", err);
-        }
-      } else {
-
-        setUserId(null);
-        setTokenBalance(0);
-        setBalanceLoaded(false);
-        setVipExpiry(null);
-        useAppStore.getState().setUserPreferences(null, null);
-        // isPreferencesLoaded'ı false'a çekmemiz lazım, setUserPreferences true yapıyor
-        // O yüzden doğrudan set edelim:
-        useAppStore.setState({ isPreferencesLoaded: false });
+    async function initAuth() {
+      // 1️⃣ Redirect sonucunu ÖNCE çöz — bu bitmeden auth state dinlemeye BAŞLAMA
+      try {
+        await handleRedirectResult();
+      } catch (err) {
+        console.warn("[AuthProvider] Redirect result check failed:", err);
       }
-    });
+
+      // 2️⃣ Redirect çözüldü — artık güvenle auth state dinleyebiliriz
+      unsubscribeAuth = onAuthChange(async (user) => {
+        // Önceki dinlemeyi temizle
+        unsubRef.current?.();
+        unsubRef.current = null;
+
+        if (user) {
+          if (user.isAnonymous) {
+            import("@/lib/auth").then((m) => m.logOut());
+            return;
+          }
+
+          setUserId(user.uid);
+
+          try {
+            // Firestore dökümanını garanti et
+            const balance = await ensureUserDoc(user);
+            setTokenBalance(balance);
+
+            // Gerçek zamanlı dinleme başlat
+            unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference }) => {
+              setTokenBalance(balance);
+              setVipExpiry(vipExpiry);
+              useAppStore.getState().setUserPreferences(gender, preference);
+            });
+          } catch (err) {
+            console.error("[AuthProvider] User doc error:", err);
+          }
+        } else {
+          setUserId(null);
+          setTokenBalance(0);
+          setBalanceLoaded(false);
+          setVipExpiry(null);
+          useAppStore.getState().setUserPreferences(null, null);
+          // isPreferencesLoaded'ı false'a çekmemiz lazım, setUserPreferences true yapıyor
+          // O yüzden doğrudan set edelim:
+          useAppStore.setState({ isPreferencesLoaded: false });
+        }
+
+        // 3️⃣ Auth state belirlendi — kilidi aç, UI'ı serbest bırak
+        if (isMounted) {
+          setAuthSettling(false);
+        }
+      });
+    }
+
+    initAuth();
 
     return () => {
-      unsubscribeAuth();
+      isMounted = false;
+      unsubscribeAuth?.();
       unsubRef.current?.();
     };
-  }, [setUserId, setTokenBalance, setVipExpiry, setBalanceLoaded]);
+  }, [setUserId, setTokenBalance, setVipExpiry, setBalanceLoaded, setAuthSettling]);
 
   return <>{children}</>;
 }

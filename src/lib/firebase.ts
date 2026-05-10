@@ -1,7 +1,7 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
 import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, setPersistence, browserLocalPersistence } from "firebase/auth";
 import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 const firebaseConfig = {
@@ -48,5 +48,12 @@ if (typeof window !== "undefined") {
 const storage = getStorage(app);
 const db = getFirestore(app);
 const auth = getAuth(app);
+
+// Safari ITP: Force local persistence so auth sessions survive page reloads
+if (typeof window !== "undefined") {
+  setPersistence(auth, browserLocalPersistence).catch((err) => {
+    console.warn("[Firebase] setPersistence error:", err);
+  });
+}
 
 export { app, storage, db, auth };

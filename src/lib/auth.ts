@@ -34,37 +34,53 @@ export function setOnRedirectFallback(cb: (() => void) | null) {
 }
 
 /**
- * Google ile giriş yapar.
- * Strateji: Popup → başarısızsa Redirect fallback.
- * In-app tarayıcılar (Instagram, TikTok vb.) popup'ları engeller;
- * bu durumda sessizce signInWithRedirect'e geçer.
+ * In-App Browser tespiti (Instagram, TikTok, Facebook vb.)
+ * Bu tarayıcılar popup'ları HER ZAMAN engeller.
+ */
+function isInAppBrowser(): boolean {
+  if (typeof navigator === "undefined") return false;
+  const ua = navigator.userAgent || (navigator as any).vendor || "";
+  return /FBAN|FBAV|Instagram|Line\/|Twitter|TikTok|Snapchat|Pinterest|LinkedIn|MicroMessenger|WeChat/i.test(ua);
+}
+
+/**
+ * Smart Hybrid Login — ITP Bypass Stratejisi
+ *
+ * 1. In-App Browser → Direkt signInWithRedirect
+ *    (Popup her zaman engellenir, denemeye bile gerek yok)
+ *
+ * 2. Normal Browser (Safari, Chrome) → signInWithPopup
+ *    (ITP döngüsünden tamamen kaçınır, popup same-origin kalır)
+ *    Eğer popup engellenirse → catch'te redirect fallback
  */
 export async function signInWithGoogle(): Promise<User | null> {
   const provider = new GoogleAuthProvider();
 
+  // ── In-App Browser: Direkt redirect, popup deneme bile ──
+  if (isInAppBrowser()) {
+    console.info("[Auth] In-app browser detected → using redirect directly.");
+    _onRedirectFallback?.();
+    await new Promise((r) => setTimeout(r, 300));
+    await signInWithRedirect(auth, provider);
+    return null; // Sayfa yeniden yüklenir, buraya ulaşılmaz
+  }
+
+  // ── Normal Browser: Popup öncelikli (ITP-safe) ──
   try {
-    // 1️⃣ Önce popup'ı dene
     const result = await signInWithPopup(auth, provider);
     return result.user;
   } catch (err: any) {
     const errorCode: string = err?.code || "";
     console.warn("[Auth] Popup failed:", errorCode, err?.message);
 
-    // 2️⃣ Popup engellendi — sessizce redirect'e geç
     if (POPUP_FALLBACK_ERRORS.has(errorCode)) {
       console.info("[Auth] Popup blocked → falling back to redirect...");
       _onRedirectFallback?.();
-
-      // Kısa bir bekleme ile toast'un görünmesini sağla
       await new Promise((r) => setTimeout(r, 800));
       await signInWithRedirect(auth, provider);
-
-      // signInWithRedirect sayfayı yeniden yükler,
-      // bu satıra asla ulaşılmaz
       return null;
     }
 
-    // 3️⃣ Diğer hatalar (unauthorized-domain vb.) — yukarı fırlat
     throw err;
   }
 }
