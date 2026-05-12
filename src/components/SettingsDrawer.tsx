@@ -81,6 +81,7 @@ export default function SettingsDrawer() {
     hapticMedium();
     await logOut();
     resetWizard();
+    useAppStore.getState().setHasAcceptedTerms(null);
     setScreen("onboarding");
     close();
   };

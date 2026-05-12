@@ -141,6 +141,9 @@ interface AppState {
   // — Auth Settling (ITP Race Condition Guard) —
   isAuthSettling: boolean;
 
+  // — Firestore Terms Guard —
+  hasAcceptedTerms: boolean | null;
+
   // ========== Actions ==========
   setUserId: (uid: string | null) => void;
   setTokenBalance: (balance: number) => void;
@@ -159,6 +162,7 @@ interface AppState {
   setIsAnalyzing: (v: boolean) => void;
   setIsOnline: (v: boolean) => void;
   setAuthSettling: (v: boolean) => void;
+  setHasAcceptedTerms: (v: boolean | null) => void;
   setVipExpiry: (expiry: string | null) => void;
   setIsConnecting: (v: boolean) => void;
   consumeToken: (amount?: number) => boolean;
@@ -238,6 +242,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   isOnline: true,
   isAuthSettling: true,
+  hasAcceptedTerms: null,
 
   // ========== Actions ==========
   setUserId: (uid) => set({ userId: uid }),
@@ -270,6 +275,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   setIsOnline: (v) => set({ isOnline: v }),
   setAuthSettling: (v) => set({ isAuthSettling: v }),
+  setHasAcceptedTerms: (v) => set({ hasAcceptedTerms: v }),
 
   consumeToken: (amount = 1) => {
     const { tokenBalance, vipExpiry } = get();

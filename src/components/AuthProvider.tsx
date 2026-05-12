@@ -11,6 +11,10 @@ import { onAuthChange, ensureUserDoc, listenUserData, handleRedirectResult } fro
  * 1. ÖNCE redirect sonucunu çöz (Safari ITP loop kırıcı)
  * 2. SONRA onAuthStateChanged dinleyicisini başlat
  * 3. İlk auth state callback'i geldiğinde kilidi aç
+ *
+ * Firestore Terms Guard:
+ * - Kullanıcı giriş yaptığında users/{uid}.hasAcceptedTerms kontrol edilir
+ * - Bu bilgi Zustand'a yazılır ve UI katmanı buna göre yönlendirilir
  */
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
   const setUserId = useAppStore((s) => s.setUserId);
@@ -18,6 +22,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
   const setVipExpiry = useAppStore((s) => s.setVipExpiry);
   const setBalanceLoaded = useAppStore((s) => s.setBalanceLoaded);
   const setAuthSettling = useAppStore((s) => s.setAuthSettling);
+  const setHasAcceptedTerms = useAppStore((s) => s.setHasAcceptedTerms);
   const unsubRef = useRef<(() => void) | null>(null);
 
   useEffect(() => {
@@ -51,11 +56,12 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
             const balance = await ensureUserDoc(user);
             setTokenBalance(balance);
 
-            // Gerçek zamanlı dinleme başlat
-            unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference }) => {
+            // Gerçek zamanlı dinleme başlat — hasAcceptedTerms de buradan gelir
+            unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference, hasAcceptedTerms }) => {
               setTokenBalance(balance);
               setVipExpiry(vipExpiry);
               useAppStore.getState().setUserPreferences(gender, preference);
+              setHasAcceptedTerms(!!hasAcceptedTerms);
             });
           } catch (err) {
             console.error("[AuthProvider] User doc error:", err);
@@ -65,9 +71,8 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
           setTokenBalance(0);
           setBalanceLoaded(false);
           setVipExpiry(null);
+          setHasAcceptedTerms(null);
           useAppStore.getState().setUserPreferences(null, null);
-          // isPreferencesLoaded'ı false'a çekmemiz lazım, setUserPreferences true yapıyor
-          // O yüzden doğrudan set edelim:
           useAppStore.setState({ isPreferencesLoaded: false });
         }
 
@@ -85,7 +90,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       unsubscribeAuth?.();
       unsubRef.current?.();
     };
-  }, [setUserId, setTokenBalance, setVipExpiry, setBalanceLoaded, setAuthSettling]);
+  }, [setUserId, setTokenBalance, setVipExpiry, setBalanceLoaded, setAuthSettling, setHasAcceptedTerms]);
 
   return <>{children}</>;
 }

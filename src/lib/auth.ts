@@ -3,6 +3,7 @@ import {
   type User, 
   GoogleAuthProvider, 
   signInWithRedirect,
+  signInWithPopup,
   getRedirectResult,
   signOut
 } from "firebase/auth";
@@ -12,18 +13,23 @@ import { auth, db } from "./firebase";
 const INITIAL_TOKEN_BALANCE = 5;
 
 /**
- * Google ile giriş yapar — Temiz Redirect Akışı.
+ * Google ile giriş yapar.
  *
- * Reverse Proxy Mimarisi:
- * authDomain → vibe-aura.vercel.app (kendi domain'imiz)
- * next.config.ts → /__/auth/* isteklerini Firebase'e proxy'liyor
+ * DEV ortamında (localhost): signInWithPopup kullanır.
+ *   → Vercel reverse proxy localhost'ta çalışmadığı için redirect başarısız olur.
  *
- * Bu sayede signInWithRedirect "first-party" olarak çalışır,
- * Safari ITP çerez engellemesi devre dışı kalır.
- * Popup, in-app browser tespiti veya fallback zincirine GEREK YOKTUR.
+ * PROD ortamında: signInWithRedirect kullanır.
+ *   → Reverse Proxy sayesinde first-party olarak çalışır, Safari ITP bypass.
  */
 export async function signInWithGoogle(): Promise<void> {
   const provider = new GoogleAuthProvider();
+
+  if (process.env.NODE_ENV === "development") {
+    // Localhost'ta popup kullan — redirect proxy gerektirdiği için çalışmaz
+    await signInWithPopup(auth, provider);
+    return;
+  }
+
   await signInWithRedirect(auth, provider);
   // signInWithRedirect sayfayı yeniden yükler, bu satıra ulaşılmaz
 }
@@ -106,7 +112,7 @@ export async function ensureUserDoc(user: User): Promise<number> {
  */
 export function listenUserData(
   uid: string,
-  callback: (data: { balance: number; vipExpiry: string | null; gender: string | null; preference: string | null }) => void
+  callback: (data: { balance: number; vipExpiry: string | null; gender: string | null; preference: string | null; hasAcceptedTerms: boolean }) => void
 ): () => void {
   const userRef = doc(db, "users", uid);
 
@@ -129,7 +135,8 @@ export function listenUserData(
         balance, 
         vipExpiry,
         gender: data.gender || null,
-        preference: data.preference || null
+        preference: data.preference || null,
+        hasAcceptedTerms: !!data.hasAcceptedTerms,
       });
     }
   }, (error) => {
@@ -190,4 +197,13 @@ export async function saveFcmToken(uid: string, token: string): Promise<void> {
 export async function saveUserPreferences(uid: string, gender: string, preference: string): Promise<void> {
   const userRef = doc(db, "users", uid);
   await setDoc(userRef, { gender, preference }, { merge: true });
+}
+
+/**
+ * Kullanıcının sözleşme onayını Firestore'a yazar.
+ * Bu, hesap bazlı (account-level) bir guard'dır — localStorage değil.
+ */
+export async function acceptTerms(uid: string): Promise<void> {
+  const userRef = doc(db, "users", uid);
+  await setDoc(userRef, { hasAcceptedTerms: true, termsAcceptedAt: serverTimestamp() }, { merge: true });
 }
