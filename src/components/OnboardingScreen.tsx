@@ -7,6 +7,7 @@ import { useAppStore } from "@/store/useAppStore";
 import { signInWithGoogle, acceptTerms } from "@/lib/auth";
 import { hapticLight, hapticMedium, hapticHeavy } from "@/lib/haptics";
 import Image from "next/image";
+import SplashScreen from "@/components/SplashScreen";
 
 const LEGAL_POINTS = [
   { emoji: "🎭", text: "All readings are for entertainment only" },
@@ -78,24 +79,7 @@ export default function OnboardingScreen() {
 
   // Auth settling → loading screen
   if (isAuthSettling) {
-    return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-transparent w-full overflow-hidden relative">
-        <div className="relative flex flex-col items-center gap-4">
-          <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative mb-4 bg-white/5 border border-white/10">
-            <Sparkles className="h-8 w-8 text-pink-400 drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]" />
-          </div>
-          <motion.p
-            className="text-sm font-medium text-white/60 tracking-[0.2em] uppercase"
-            animate={{ opacity: [1, 0.4, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          >
-            Analyzing Your Vibe...
-          </motion.p>
-        </div>
-        <div className="fixed -bottom-20 -left-20 w-80 h-80 bg-purple-600/10 blur-[100px] rounded-full pointer-events-none" />
-        <div className="fixed -top-20 -right-20 w-80 h-80 bg-pink-600/10 blur-[100px] rounded-full pointer-events-none" />
-      </div>
-    );
+    return <SplashScreen />;
   }
 
   // Already logged in + terms accepted → null (useEffect handles redirect)

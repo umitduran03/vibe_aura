@@ -7,12 +7,12 @@ import { useAppStore, type ExtrasType } from "@/store/useAppStore";
 import { hapticLight } from "@/lib/haptics";
 import SettingsDrawer from "@/components/SettingsDrawer";
 
-const THEME: Record<ExtrasType, { emoji:string; label:string; grad1:string; grad2:string }> = {
-  "toxic-ex": { emoji:"💀", label:"Toxic Ex Scanner", grad1:"#ef4444", grad2:"#f97316" },
-  situationship: { emoji:"🤡", label:"Situationship Clarifier", grad1:"#d946ef", grad2:"#a855f7" },
-  "mood-reset": { emoji:"🔋", label:"Mood Reset", grad1:"#06b6d4", grad2:"#14b8a6" },
-  "delulu-check": { emoji:"📱", label:"Delulu Check", grad1:"#f59e0b", grad2:"#eab308" },
-  "rizz-architect": { emoji:"💬", label:"The Reply Guru", grad1:"#8b5cf6", grad2:"#a855f7" },
+const THEME: Record<ExtrasType, { emoji: string; label: string; grad1: string; grad2: string }> = {
+  "toxic-ex": { emoji: "💀", label: "Toxic Ex Scanner", grad1: "#ef4444", grad2: "#f97316" },
+  situationship: { emoji: "🤡", label: "Situationship Clarifier", grad1: "#d946ef", grad2: "#a855f7" },
+  "mood-reset": { emoji: "🔋", label: "Mood Reset", grad1: "#06b6d4", grad2: "#14b8a6" },
+  "delulu-check": { emoji: "📱", label: "Delulu Check", grad1: "#f59e0b", grad2: "#eab308" },
+  "rizz-architect": { emoji: "💬", label: "The Reply Guru", grad1: "#8b5cf6", grad2: "#a855f7" },
 };
 
 export default function ExtrasResultCard() {
@@ -138,7 +138,7 @@ export default function ExtrasResultCard() {
                     <p className="text-[15px] leading-relaxed font-medium text-white/90">{vibe_check}</p>
                   </div>
                 )}
-                
+
                 {roast && (
                   <div className="rounded-2xl p-4" style={{ backgroundColor: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.2)" }}>
                     <h3 className="text-[11px] font-bold text-red-400 mb-1.5 uppercase tracking-wider">Draft Roast</h3>
@@ -155,7 +155,7 @@ export default function ExtrasResultCard() {
                           <span className="text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider" style={{ backgroundColor: "rgba(139,92,246,0.2)", color: "#c4b5fd" }}>
                             {option.type}
                           </span>
-                          <button 
+                          <button
                             onClick={() => {
                               navigator.clipboard.writeText(option.text);
                               hapticLight();
