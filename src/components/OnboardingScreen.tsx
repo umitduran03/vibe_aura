@@ -7,7 +7,6 @@ import { useAppStore } from "@/store/useAppStore";
 import { signInWithGoogle, acceptTerms } from "@/lib/auth";
 import { hapticLight, hapticMedium, hapticHeavy } from "@/lib/haptics";
 import Image from "next/image";
-import SplashScreen from "@/components/SplashScreen";
 
 const LEGAL_POINTS = [
   { emoji: "🎭", text: "All readings are for entertainment only" },
@@ -79,7 +78,22 @@ export default function OnboardingScreen() {
 
   // Auth settling → loading screen
   if (isAuthSettling) {
-    return <SplashScreen />;
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-transparent w-full overflow-hidden relative">
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          className="flex flex-col items-center gap-4 z-10"
+        >
+          <Loader2 className="w-8 h-8 text-white/40 animate-spin" />
+          <p className="text-[13px] text-white/30 tracking-wide font-medium">Just a second...</p>
+        </motion.div>
+        
+        {/* Background glow effects consistent with the rest of the screen */}
+        <div className="fixed -bottom-20 -left-20 w-80 h-80 bg-purple-600/10 blur-[100px] rounded-full pointer-events-none" />
+        <div className="fixed -top-20 -right-20 w-80 h-80 bg-pink-600/10 blur-[100px] rounded-full pointer-events-none" />
+      </div>
+    );
   }
 
   // Already logged in + terms accepted → null (useEffect handles redirect)
