@@ -6,7 +6,10 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  // Reverse Proxy: authDomain kendi domain'imize işaret ediyor.
+  // Vercel rewrite kuralı bu istekleri Firebase'e proxy'liyor.
+  // Bu sayede Safari ITP, auth çerezlerini "first-party" olarak görür.
+  authDomain: "vibe-aura.vercel.app",
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,

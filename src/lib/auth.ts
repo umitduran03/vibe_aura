@@ -2,7 +2,6 @@ import {
   onAuthStateChanged, 
   type User, 
   GoogleAuthProvider, 
-  signInWithPopup,
   signInWithRedirect,
   getRedirectResult,
   signOut
@@ -13,87 +12,40 @@ import { auth, db } from "./firebase";
 const INITIAL_TOKEN_BALANCE = 5;
 
 /**
- * Firebase error codes that indicate popup was blocked or closed.
- * These trigger the seamless redirect fallback.
- */
-const POPUP_FALLBACK_ERRORS = new Set([
-  "auth/popup-blocked",
-  "auth/popup-closed-by-user",
-  "auth/cancelled-popup-request",
-  "auth/network-request-failed",
-]);
-
-/**
- * Callback to notify UI when redirect fallback is triggered.
- * Set by OnboardingScreen to show a toast.
- */
-let _onRedirectFallback: (() => void) | null = null;
-
-export function setOnRedirectFallback(cb: (() => void) | null) {
-  _onRedirectFallback = cb;
-}
-
-/**
- * In-App Browser tespiti (Instagram, TikTok, Facebook vb.)
- * Bu tarayıcılar popup'ları HER ZAMAN engeller.
- */
-function isInAppBrowser(): boolean {
-  if (typeof navigator === "undefined") return false;
-  const ua = navigator.userAgent || (navigator as any).vendor || "";
-  return /FBAN|FBAV|Instagram|Line\/|Twitter|TikTok|Snapchat|Pinterest|LinkedIn|MicroMessenger|WeChat/i.test(ua);
-}
-
-/**
- * Smart Hybrid Login — ITP Bypass Stratejisi
+ * Google ile giriş yapar — Temiz Redirect Akışı.
  *
- * 1. In-App Browser → Direkt signInWithRedirect
- *    (Popup her zaman engellenir, denemeye bile gerek yok)
+ * Reverse Proxy Mimarisi:
+ * authDomain → vibe-aura.vercel.app (kendi domain'imiz)
+ * next.config.ts → /__/auth/* isteklerini Firebase'e proxy'liyor
  *
- * 2. Normal Browser (Safari, Chrome) → signInWithPopup
- *    (ITP döngüsünden tamamen kaçınır, popup same-origin kalır)
- *    Eğer popup engellenirse → catch'te redirect fallback
+ * Bu sayede signInWithRedirect "first-party" olarak çalışır,
+ * Safari ITP çerez engellemesi devre dışı kalır.
+ * Popup, in-app browser tespiti veya fallback zincirine GEREK YOKTUR.
  */
-export async function signInWithGoogle(): Promise<User | null> {
+export async function signInWithGoogle(): Promise<void> {
   const provider = new GoogleAuthProvider();
-
-  // ── In-App Browser: Direkt redirect, popup deneme bile ──
-  if (isInAppBrowser()) {
-    console.info("[Auth] In-app browser detected → using redirect directly.");
-    _onRedirectFallback?.();
-    await new Promise((r) => setTimeout(r, 300));
-    await signInWithRedirect(auth, provider);
-    return null; // Sayfa yeniden yüklenir, buraya ulaşılmaz
-  }
-
-  // ── Normal Browser: Popup öncelikli (ITP-safe) ──
-  try {
-    const result = await signInWithPopup(auth, provider);
-    return result.user;
-  } catch (err: any) {
-    const errorCode: string = err?.code || "";
-    console.warn("[Auth] Popup failed:", errorCode, err?.message);
-
-    if (POPUP_FALLBACK_ERRORS.has(errorCode)) {
-      console.info("[Auth] Popup blocked → falling back to redirect...");
-      _onRedirectFallback?.();
-      await new Promise((r) => setTimeout(r, 800));
-      await signInWithRedirect(auth, provider);
-      return null;
-    }
-
-    throw err;
-  }
+  await signInWithRedirect(auth, provider);
+  // signInWithRedirect sayfayı yeniden yükler, bu satıra ulaşılmaz
 }
 
 /**
  * Sayfa yüklendiğinde redirect sonucunu kontrol eder.
- * AuthProvider tarafından useEffect içinde çağrılmalıdır.
- * Eğer bir redirect sonucu varsa kullanıcıyı döner.
+ * AuthProvider tarafından initAuth() içinde await ile çağrılır.
+ * Redirect sonucu varsa kullanıcıyı döner, yoksa null.
+ *
+ * 5 saniyelik timeout ile Safari'nin getRedirectResult'ı askıda
+ * bırakma durumuna karşı koruma sağlar.
  */
 export async function handleRedirectResult(): Promise<User | null> {
   try {
-    const result = await getRedirectResult(auth);
-    if (result?.user) {
+    const redirectPromise = getRedirectResult(auth);
+    const timeoutPromise = new Promise<null>((resolve) =>
+      setTimeout(() => resolve(null), 5000)
+    );
+
+    const result = await Promise.race([redirectPromise, timeoutPromise]);
+
+    if (result && "user" in result && result.user) {
       console.info("[Auth] Redirect sign-in successful:", result.user.email);
       return result.user;
     }
