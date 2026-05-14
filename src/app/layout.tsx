@@ -21,6 +21,11 @@ export const metadata: Metadata = {
     description: "Get your vibe analyzed by AI and face the facts 💜 Entertainment app.",
     type: "website",
   },
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Vibe & Aura",
+  },
 };
 
 export const viewport: Viewport = {
@@ -28,7 +33,7 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  themeColor: "#0a0a0f",
+  themeColor: "#050510",
 };
 
 export default function RootLayout({
@@ -37,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`}>
+    <html lang="en" className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
       <head>
         {/* Preconnect to Firebase & Google APIs — reduces DNS+TLS latency */}
         <link rel="preconnect" href="https://firebaseinstallations.googleapis.com" crossOrigin="anonymous" />
@@ -52,7 +57,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
         <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
       </head>
-      <body className="min-h-full bg-background text-foreground antialiased">
+      <body className="min-h-full bg-background text-foreground antialiased" style={{ backgroundColor: "#050510" }}>
         <TranslateFix />
         <OfflineBanner />
         {children}
