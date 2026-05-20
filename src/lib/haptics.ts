@@ -1,5 +1,5 @@
 // ============================================
-// Vibe & Aura — Capacitor Haptics Wrapper
+// VibeCheckr — Capacitor Haptics Wrapper
 // ============================================
 // Web'de sessiz fallback, native'de gerçek titreşim.
 

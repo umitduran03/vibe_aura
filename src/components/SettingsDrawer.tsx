@@ -377,7 +377,7 @@ export default function SettingsDrawer() {
               {/* ─── Footer ─── */}
               <div className="px-5 py-5 border-t border-white/5 mt-auto">
                 <p className="text-[11px] text-center text-white/20 leading-relaxed">
-                  Made with 💜 by Vibe & Aura
+                  Made with 💜 by VibeCheckr.
                   <br />
                   © {new Date().getFullYear()} All rights reserved.
                 </p>

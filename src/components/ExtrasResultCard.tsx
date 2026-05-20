@@ -175,7 +175,7 @@ export default function ExtrasResultCard() {
           </div>
 
           <p className="absolute bottom-4 right-5 text-[11px] font-bold tracking-widest uppercase select-none"
-            style={{ color: "rgba(255,255,255,0.15)" }}>vibe &amp; aura</p>
+            style={{ color: "rgba(255,255,255,0.15)" }}>VibeCheckr.</p>
         </motion.div>
 
         <motion.div variants={resultItemVariants} className="mt-5 flex flex-col gap-3">

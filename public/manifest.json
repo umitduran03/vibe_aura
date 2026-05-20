@@ -1,6 +1,6 @@
 {
-  "name": "Vibe & Aura",
-  "short_name": "Vibe & Aura",
+  "name": "VibeCheckr",
+  "short_name": "VibeCheckr",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#050510",

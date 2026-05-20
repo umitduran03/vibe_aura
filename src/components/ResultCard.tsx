@@ -83,14 +83,14 @@ export default function ResultCard() {
 
       if (!blob) throw new Error("Canvas blob failed");
 
-      const file = new File([blob], "vibe-aura-result.png", { type: "image/png" });
-      const filename = `vibe-aura-${auraResult.aura_score}.png`;
+      const file = new File([blob], "vibecheckr-result.png", { type: "image/png" });
+      const filename = `vibecheckr-${auraResult.aura_score}.png`;
 
       // Try Web Share API first (works on mobile, enables direct IG share)
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         try {
           await navigator.share({
-            title: `${auraResult.aura_name} — Vibe & Aura`,
+            title: `${auraResult.aura_name} — VibeCheckr`,
             text: `My vibe score: ${auraResult.aura_score}/100 💜`,
             files: [file],
           });
@@ -185,7 +185,7 @@ export default function ResultCard() {
       <motion.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
         <div />{/* Spacer for centering */}
         <p className="text-center text-xs font-medium text-text-secondary/50 uppercase tracking-widest mb-2">
-          <span>Vibe & Aura</span>
+          <span>VibeCheckr</span>
         </p>
         <div className="mb-2">
           <SettingsDrawer />
@@ -300,7 +300,7 @@ export default function ResultCard() {
             className="absolute bottom-4 right-5 text-[11px] font-bold tracking-widest uppercase select-none"
             style={{ color: "rgba(255,255,255,0.15)" }}
           >
-            <span>vibe & aura</span>
+            <span>VibeCheckr.</span>
           </p>
         </motion.div>
 

@@ -7,7 +7,7 @@ import Link from "next/link";
 /**
  * PaymentSuccessPage — Premium Static Success Screen
  * 
- * Pure confirmation page after successful Polar.sh checkout.
+ * Pure confirmation page after successful checkout.
  * No dynamic data fetching — instant render, zero loading states.
  */
 export default function PaymentSuccessPage() {

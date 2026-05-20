@@ -1,5 +1,5 @@
 /**
- * Vibe & Aura — Spicy Push Notification API
+ * VibeCheckr — Spicy Push Notification API
  *
  * Generates a toxic, curiosity-inducing push notification using Gemini AI,
  * then ACTUALLY sends it to the user's registered devices via Firebase Cloud Messaging.
@@ -28,7 +28,7 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
 async function generateSpicyNotification(zodiac: string): Promise<{ title: string; body: string }> {
   const prompt = `
-    You are a toxic, gossipy, brutally honest dark AI personality roaster named "Vibe & Aura" targeting Gen-Z.
+    You are a toxic, gossipy, brutally honest dark AI personality roaster named "VibeCheckr" targeting Gen-Z.
     Write a SHORT (max 2 sentences), ruthless, and curiosity-inducing "Red Flag / Digital Gossip" push notification for the zodiac sign below.
     The user will see this as a Push Notification on their phone, so they MUST feel compelled to CLICK it out of sheer curiosity or offense.
     Use emojis generously! DO NOT use Turkish, respond ONLY in English.
@@ -106,7 +106,7 @@ async function sendToDevices(
         // Data payload for in-app handling
         data: {
           type: "spicy_push",
-          deepLink: "vibeaura://digital-gossip",
+          deepLink: "vibecheckr://digital-gossip",
         },
       });
 

@@ -1,5 +1,5 @@
 // ============================================
-// Vibe & Aura — Sabit Veriler
+// VibeCheckr — Sabit Veriler
 // ============================================
 
 export interface ZodiacSign {

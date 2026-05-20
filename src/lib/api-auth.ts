@@ -1,5 +1,5 @@
 /**
- * Vibe & Aura — Server-side API Auth Helper
+ * VibeCheckr — Server-side API Auth Helper
  *
  * Extracts and verifies a Firebase ID token from the `Authorization: Bearer <token>` header.
  * Returns the verified UID or null if invalid/missing.

@@ -6,10 +6,16 @@ import { initializeAppCheck, ReCaptchaV3Provider } from "firebase/app-check";
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  // Reverse Proxy: authDomain kendi domain'imize işaret ediyor.
-  // Vercel rewrite kuralı bu istekleri Firebase'e proxy'liyor.
-  // Bu sayede Safari ITP, auth çerezlerini "first-party" olarak görür.
-  authDomain: "vibe-aura.vercel.app",
+  // Reverse Proxy (Ortam Bazlı):
+  // Production: authDomain kendi Vercel domain'imize işaret eder.
+  //   → Vercel rewrite kuralı (/__/auth/*) istekleri Firebase'e proxy'ler.
+  //   → Safari ITP, auth çerezlerini "first-party" olarak görür.
+  // Development: Orijinal Firebase domain kullanılır.
+  //   → localhost'ta cross-origin popup hatası önlenir.
+  authDomain:
+    process.env.NODE_ENV === "production"
+      ? "thevibecheckr.vercel.app"
+      : "vibecheckr-9478f.firebaseapp.com",
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
@@ -21,8 +27,8 @@ const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 // Sadece tarayıcı (istemci) tarafında App Check başlat.
 if (typeof window !== "undefined") {
   // Geliştirme (Localhost) ortamı için debug token mekanizması
-  if (process.env.NODE_ENV !== "production") {
-    (window as any).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
+  if (process.env.NODE_ENV === "development") {
+    (self as any).FIREBASE_APPCHECK_DEBUG_TOKEN = "c333ccd9-3ce9-4a21-9484-b235589be2b9";
   }
   
   try {

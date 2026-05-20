@@ -8,7 +8,7 @@ import { hapticMedium } from "@/lib/haptics";
 import { doc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 
-const CONSENT_KEY = "vibe_aura_consent";
+const CONSENT_KEY = "vibecheckr_consent";
 
 export default function ConsentModal() {
   const [showModal, setShowModal] = useState(false);
@@ -103,7 +103,7 @@ export default function ConsentModal() {
                   Before We Read Your Vibe...
                 </h2>
                 <p className="text-sm text-center text-white/50 mb-6 leading-relaxed">
-                  Vibe & Aura is an <strong className="text-white/70">entertainment app</strong>. Our AI readings are for fun — not professional advice. By continuing, you agree to our terms.
+                  VibeCheckr is an <strong className="text-white/70">entertainment app</strong>. Our AI readings are for fun — not professional advice. By continuing, you agree to our terms.
                 </p>
 
                 {/* ─── Key Points ─── */}

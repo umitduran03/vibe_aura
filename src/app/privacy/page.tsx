@@ -40,7 +40,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">1. Introduction</h2>
             <p>
-              Vibe & Aura ("we," "us," or "the App") respects your privacy. This Privacy Policy explains what information we collect, how we use it, and the choices you have. By using the App, you consent to the practices described below.
+              VibeCheckr ("we," "us," or "the App") respects your privacy. This Privacy Policy explains what information we collect, how we use it, and the choices you have. By using the App, you consent to the practices described below.
             </p>
           </section>
 
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">→</span>
-                <span>To process payments via Polar or app store billing systems.</span>
+                <span>To process payments via app store billing systems.</span>
               </li>
             </ul>
           </section>
@@ -131,7 +131,7 @@ export default function PrivacyPage() {
               {[
                 { name: "Firebase (Google)", desc: "Authentication (Google Auth), database (Firestore), App Check, Analytics, and push notifications" },
                 { name: "Google Gemini AI", desc: "AI-powered entertainment and personality analysis" },
-                { name: "Polar", desc: "Secure payment processing for web purchases" },
+
                 { name: "RevenueCat", desc: "In-app purchase management for mobile platforms" },
               ].map((service) => (
                 <div
@@ -176,7 +176,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">7. Children's Privacy</h2>
             <p>
-              Vibe & Aura is not intended for children under the age of 13 (or the minimum age required in your jurisdiction). We do not knowingly collect personal information from children. If we discover that a child has provided us with personal information, we will delete it promptly.
+              VibeCheckr is not intended for children under the age of 13 (or the minimum age required in your jurisdiction). We do not knowingly collect personal information from children. If we discover that a child has provided us with personal information, we will delete it promptly.
             </p>
           </section>
 
@@ -206,7 +206,7 @@ export default function PrivacyPage() {
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">9. Security</h2>
             <p>
-              We use industry-standard security measures including encrypted communications (HTTPS/TLS), Firebase security rules, Polar's secure payment processing, and server-side authentication to protect your data. However, no system is 100% secure, and we cannot guarantee absolute security.
+              We use industry-standard security measures including encrypted communications (HTTPS/TLS), Firebase security rules, and server-side authentication to protect your data. However, no system is 100% secure, and we cannot guarantee absolute security.
             </p>
           </section>
 
@@ -221,8 +221,8 @@ export default function PrivacyPage() {
             <h2 className="text-lg font-semibold text-white/90 mb-3">11. Contact Us</h2>
             <p>
               For privacy-related inquiries, data deletion requests, or concerns, contact us at{" "}
-              <a href="mailto:privacy@vibeandaura.app" className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 transition-colors">
-                privacy@vibeandaura.app
+              <a href="mailto:support@vibecheckr.app" className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 transition-colors">
+                support@vibecheckr.app
               </a>
             </p>
           </section>
@@ -231,7 +231,7 @@ export default function PrivacyPage() {
         {/* ─── Footer ─── */}
         <div className="mt-16 pt-8 border-t border-white/10 text-center">
           <p className="text-xs text-white/30">
-            © {new Date().getFullYear()} Vibe & Aura. All rights reserved.
+            © {new Date().getFullYear()} VibeCheckr. All rights reserved.
           </p>
         </div>
       </div>

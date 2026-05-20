@@ -12,19 +12,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Vibe & Aura — AI Personality Entertainment",
+  title: "VibeCheckr",
   description:
-    "The most savage Gen-Z AI personality quiz. Get your vibe analyzed based on your zodiac, relationship status, and hidden details. For entertainment only — are you ready?",
-  keywords: ["personality quiz", "zodiac", "entertainment", "gen-z", "vibe", "AI analysis"],
+    "The ultimate Gen-Z AI Vibe Check & Photo Analyze/Roast app",
+  keywords: ["personality quiz", "zodiac", "entertainment", "gen-z", "vibe", "AI analysis", "photo roast"],
   openGraph: {
-    title: "Vibe & Aura",
-    description: "Get your vibe analyzed by AI and face the facts 💜 Entertainment app.",
+    title: "VibeCheckr",
+    description: "The ultimate Gen-Z AI Vibe Check & Photo Analyze/Roast app",
     type: "website",
   },
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Vibe & Aura",
+    title: "VibeCheckr",
   },
 };
 

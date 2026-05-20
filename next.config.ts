@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
    *
    * Safari ITP, 3. parti çerezleri (cross-origin) engelliyor.
    * Bu rewrite kuralı, Firebase Auth'un /__/auth/* yollarını
-   * kendi domain'imiz (vibe-aura.vercel.app) üzerinden proxy'leyerek
+   * kendi domain'imiz (thevibecheckr.vercel.app) üzerinden proxy'leyerek
    * "first-party" bağlamında çalışmasını sağlar.
    *
    * Sonuç: signInWithRedirect artık same-origin olarak değerlendirilir,
@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
     return [
       {
         source: "/__/auth/:path*",
-        destination: "https://vibe-and-aura.firebaseapp.com/__/auth/:path*",
+        destination: "https://vibecheckr-9478f.firebaseapp.com/__/auth/:path*",
       },
     ];
   },

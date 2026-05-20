@@ -173,7 +173,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
             Back
           </motion.button>
           <span className="text-xs font-medium text-text-secondary/50 uppercase tracking-widest">
-            {isDuo ? "Duo Soulmate" : "Vibe & Aura"}
+            {isDuo ? "Duo Soulmate" : "VibeCheckr."}
           </span>
           <div className="flex items-center gap-2">
             <TokenBadge />

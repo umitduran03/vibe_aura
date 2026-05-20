@@ -18,7 +18,7 @@ export default function AppLogo({ className = "", size = 48 }: AppLogoProps) {
     >
       <Image
         src="/logo.png"
-        alt="Vibe & Aura Logo"
+        alt="VibeCheckr. Logo"
         fill
         sizes={`${size}px`}
         className="object-cover select-none pointer-events-none"

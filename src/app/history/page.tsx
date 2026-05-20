@@ -230,9 +230,11 @@ export default function HistoryPage() {
                     >
                       <motion.div 
                         layout="position"
-                        className={`text-[14px] font-medium text-white/80 leading-relaxed italic ${!isExpanded ? "line-clamp-3" : ""}`}
+                        className={`text-[14px] font-medium text-white/80 leading-relaxed italic ${!isExpanded ? "line-clamp-3" : "whitespace-pre-wrap"}`}
                       >
-                        &quot;{item.type === 'extras' ? (item.vibe_check || item.comment || "Analysis complete.") : (item.toxicComment || item.comment || "Analysis complete.")}&quot;
+                        {isExpanded 
+                          ? (item.comment || item.vibe_check || item.toxicComment || "Analysis complete.")
+                          : `"${item.type === 'extras' ? (item.vibe_check || item.comment || "Analysis complete.") : (item.toxicComment || item.comment || "Analysis complete.")}"`}
                       </motion.div>
                       
                       <AnimatePresence>

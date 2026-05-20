@@ -56,6 +56,13 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
             const balance = await ensureUserDoc(user);
             setTokenBalance(balance);
 
+            // Eğer "pending_terms_accept" bayrağı varsa, otomatik olarak terms'i kabul et
+            if (localStorage.getItem("pending_terms_accept") === "true") {
+              const { acceptTerms } = await import("@/lib/auth");
+              await acceptTerms(user.uid);
+              localStorage.removeItem("pending_terms_accept");
+            }
+
             // Gerçek zamanlı dinleme başlat — hasAcceptedTerms de buradan gelir
             unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference, hasAcceptedTerms }) => {
               setTokenBalance(balance);

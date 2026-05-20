@@ -184,7 +184,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
     setView("loading");
 
     try {
-      // ─── Platform Detection: Web → Polar, Native → RevenueCat ───
+      // ─── Platform Detection: Web → Mobile Funnel, Native → RevenueCat ───
       let isNative = false;
       try {
         const { Capacitor } = await import("@capacitor/core");
@@ -218,30 +218,9 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
           }
         }
       } else {
-        // ─── Web: Polar Checkout Flow ───────────────────────────────
-        // Redirect user to Polar hosted checkout page.
-        // Fulfillment happens server-side via webhook (no client-side token injection).
-        const idToken = await auth.currentUser?.getIdToken();
-        const res = await fetch("/api/polar/checkout", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${idToken}`,
-          },
-          body: JSON.stringify({ packageId: pkg.id }),
-        });
-
-        const data = await res.json();
-
-        if (!res.ok) {
-          throw new Error(data.error || "Failed to create checkout session");
-        }
-
-        if (data.url) {
-          // Redirect to Polar Checkout — fulfillment happens via webhook
-          window.location.href = data.url;
-          return; // Don't show success view; user leaves the page
-        }
+        // ─── Web: Payments available via mobile app only ─────────────
+        setView("mobile-funnel");
+        return;
       }
     } catch (err) {
       console.error("[Purchase] Error:", err);

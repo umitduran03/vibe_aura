@@ -1,5 +1,5 @@
 // ============================================
-// Vibe & Aura — Zustand Global State Store
+// VibeCheckr — Zustand Global State Store
 // ============================================
 
 import { create } from "zustand";

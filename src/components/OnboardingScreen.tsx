@@ -53,15 +53,19 @@ export default function OnboardingScreen() {
     setIsLoggingIn(true);
     setLoginError(null);
     try {
+      if (view === "terms" && hasConsented) {
+        localStorage.setItem("pending_terms_accept", "true");
+      }
       await signInWithGoogle();
     } catch (err: any) {
       console.error("[Onboarding] Login failed:", err);
+      localStorage.removeItem("pending_terms_accept");
       setLoginError(err?.code === "auth/unauthorized-domain"
         ? "Domain verification failed. Please try again. ✨"
         : "Connection interrupted. Please try again. ✨");
       setIsLoggingIn(false);
     }
-  }, [isLoggingIn]);
+  }, [isLoggingIn, view, hasConsented]);
 
   const handleAcceptTerms = useCallback(async () => {
     if (!hasConsented || !userId) return;
@@ -119,10 +123,10 @@ export default function OnboardingScreen() {
               animate={{ scale: 1, opacity: 1, filter: ["drop-shadow(0 0 20px rgba(139,92,246,0.25))", "drop-shadow(0 0 35px rgba(236,72,153,0.3))", "drop-shadow(0 0 20px rgba(139,92,246,0.25))"] }}
               transition={{ scale: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.8 }, filter: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 } }}
             >
-              <Image src="/va-logo.png" alt="Vibe & Aura" width={128} height={128} priority className="object-contain" />
+              <Image src="/va-logo.png" alt="VibeCheckr." width={128} height={128} priority className="object-contain" />
             </motion.div>
 
-            <h1 className="text-2xl font-bold text-white mb-1 tracking-tight">Vibe & Aura</h1>
+            <h1 className="text-2xl font-bold text-white mb-1 tracking-tight">VibeCheckr.</h1>
             <p className="text-sm text-white/40 mb-10">Discover your energy ✨</p>
 
             {/* Sign Up Button */}
@@ -179,7 +183,7 @@ export default function OnboardingScreen() {
                   </div>
                   <h2 className="text-xl font-bold text-center text-white mb-2">Before We Read Your Aura...</h2>
                   <p className="text-sm text-center text-white/50 leading-relaxed">
-                    Vibe & Aura is an <strong className="text-white/70">entertainment app</strong>. Our AI readings are for fun.
+                    VibeCheckr is an <strong className="text-white/70">entertainment app</strong>. Our AI readings are for fun.
                   </p>
                 </div>
 

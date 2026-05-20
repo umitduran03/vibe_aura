@@ -138,25 +138,25 @@ export default function DailyVibeBanner() {
 
       if (!blob) throw new Error("Failed to capture image");
 
-      const file = new File([blob], "vibe-aura-daily-vibe.png", { type: "image/png" });
+      const file = new File([blob], "vibecheckr-daily-vibe.png", { type: "image/png" });
 
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         try {
           await navigator.share({
             files: [file],
-            title: "Daily Vibe - Vibe & Aura",
+            title: "Daily Vibe - VibeCheckr",
           });
           setShared(true);
           setTimeout(() => setShared(false), 2000);
         } catch (e: any) {
           if (e.name !== 'AbortError') {
-            downloadBlob(blob, "vibe-aura-daily-vibe.png");
+            downloadBlob(blob, "vibecheckr-daily-vibe.png");
             setShared(true);
             setTimeout(() => setShared(false), 2000);
           }
         }
       } else {
-        downloadBlob(blob, "vibe-aura-daily-vibe.png");
+        downloadBlob(blob, "vibecheckr-daily-vibe.png");
         setShared(true);
         setTimeout(() => setShared(false), 2000);
       }
@@ -283,7 +283,7 @@ export default function DailyVibeBanner() {
               exit={{ opacity: 0 }}
               className="absolute bottom-[-6px] right-[-6px] opacity-30 text-[8px] font-bold tracking-widest uppercase flex items-center gap-1 z-20"
             >
-              VIBE & AURA <Sparkles className="w-2 h-2" />
+              VibeCheckr. <Sparkles className="w-2 h-2" />
             </motion.div>
           )}
         </AnimatePresence>

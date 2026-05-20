@@ -52,13 +52,13 @@ export default function DuoResultCard() {
 
       if (!blob) throw new Error("Canvas blob failed");
 
-      const file = new File([blob], "vibe-aura-duo-result.png", { type: "image/png" });
-      const filename = `vibe-aura-duo-${duoResult.duoScore}.png`;
+      const file = new File([blob], "vibecheckr-duo-result.png", { type: "image/png" });
+      const filename = `vibecheckr-duo-${duoResult.duoScore}.png`;
 
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         try {
           await navigator.share({
-            title: `${duoResult.title} — Vibe & Aura`,
+            title: `${duoResult.title} — VibeCheckr`,
             text: `Duo Vibe Score: ${duoResult.duoScore}/100 💔`,
             files: [file],
           });
@@ -304,7 +304,7 @@ export default function DuoResultCard() {
             className="absolute bottom-4 right-5 text-[11px] font-bold tracking-widest uppercase select-none"
             style={{ color: "rgba(255,255,255,0.15)" }}
           >
-            <span>vibe & aura</span>
+            <span>VibeCheckr.</span>
           </p>
         </motion.div>
 

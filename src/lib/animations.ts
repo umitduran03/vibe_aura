@@ -1,5 +1,5 @@
 // ============================================
-// Vibe & Aura — Framer Motion Animasyon Presetleri
+// VibeCheckr — Framer Motion Animasyon Presetleri
 // ============================================
 
 import type { Variants, Transition } from "framer-motion";

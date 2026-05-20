@@ -38,8 +38,8 @@ async function generateWithFallback(systemInstruction: string, promptText: strin
 
 export async function POST(req: NextRequest) {
   const allowedOrigins = [
-    "https://vibeandaura.com",
-    "https://vibe-aura.vercel.app",
+    "https://vibecheckr.com",
+    "https://thevibecheckr.vercel.app",
     "http://localhost:3000"
   ];
   const origin = req.headers.get("origin");

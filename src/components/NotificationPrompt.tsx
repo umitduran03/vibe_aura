@@ -17,7 +17,7 @@ export default function NotificationPrompt() {
     // Sadece "result" ekranına ulaşıldığında ve cihaz native ise çalış
     if (currentScreen === "result" && (auraResult || duoResult)) {
       // Daha önce izin sorma işlemi yapılıp yapılmadığını localStorage ile takip ediyoruz
-      const hasPrompted = localStorage.getItem("vibe_aura_fcm_prompted");
+      const hasPrompted = localStorage.getItem("vibecheckr_fcm_prompted");
       
       if (!hasPrompted && Capacitor.isNativePlatform()) {
         // Heyecanı artırmak için analiz ekranı geldikten 3 sn sonra sor
@@ -32,13 +32,13 @@ export default function NotificationPrompt() {
 
   const handleClose = () => {
     hapticLight();
-    localStorage.setItem("vibe_aura_fcm_prompted", "true");
+    localStorage.setItem("vibecheckr_fcm_prompted", "true");
     setIsVisible(false);
   };
 
   const handleAllow = async () => {
     hapticMedium();
-    localStorage.setItem("vibe_aura_fcm_prompted", "true");
+    localStorage.setItem("vibecheckr_fcm_prompted", "true");
     setIsVisible(false);
 
     if (Capacitor.isNativePlatform()) {

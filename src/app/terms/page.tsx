@@ -40,7 +40,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">1. Acceptance of Terms</h2>
             <p>
-              By downloading, installing, or using Vibe & Aura ("the App"), you agree to be bound by these Terms of Service. If you do not agree, do not use the App.
+              By downloading, installing, or using VibeCheckr ("the App"), you agree to be bound by these Terms of Service. If you do not agree, do not use the App.
             </p>
           </section>
 
@@ -54,7 +54,7 @@ export default function TermsPage() {
               }}
             >
               <p className="text-purple-300 font-medium text-sm">
-                ⚠️ Vibe & Aura is a novelty entertainment application. All personality analyses, zodiac-based content, compatibility scores, and AI-generated results are intended <strong>solely for entertainment purposes</strong>.
+                ⚠️ VibeCheckr is a novelty entertainment application. All personality analyses, zodiac-based content, compatibility scores, and AI-generated results are intended <strong>solely for entertainment purposes</strong>.
               </p>
             </div>
             <p>
@@ -81,7 +81,7 @@ export default function TermsPage() {
             <ul className="space-y-2 list-none">
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">•</span>
-                <span>The App uses a Token (Credit) system to access certain AI features, such as deep personality analysis or Duo Match. Tokens and VIP subscriptions can be purchased via Polar (web) or Apple App Store / Google Play Store (mobile).</span>
+                <span>The App uses a Token (Credit) system to access certain AI features, such as deep personality analysis or Duo Match. Tokens and VIP subscriptions can be purchased via Apple App Store / Google Play Store (mobile).</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">•</span>
@@ -124,14 +124,14 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">7. Intellectual Property</h2>
             <p>
-              All content, designs, code, AI models, branding, and assets within Vibe & Aura are the exclusive property of the developer team. Unauthorized reproduction, distribution, or modification is strictly prohibited.
+              All content, designs, code, AI models, branding, and assets within VibeCheckr are the exclusive property of the developer team. Unauthorized reproduction, distribution, or modification is strictly prohibited.
             </p>
           </section>
 
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">8. Limitation of Liability</h2>
             <p>
-              To the maximum extent permitted by law, Vibe & Aura and its developers shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App, including but not limited to emotional distress caused by AI-generated content, loss of data, or interruption of service.
+              To the maximum extent permitted by law, VibeCheckr and its developers shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App, including but not limited to emotional distress caused by AI-generated content, loss of data, or interruption of service.
             </p>
           </section>
 
@@ -153,8 +153,8 @@ export default function TermsPage() {
             <h2 className="text-lg font-semibold text-white/90 mb-3">11. Contact</h2>
             <p>
               If you have questions about these Terms, please reach out at{" "}
-              <a href="mailto:support@vibeandaura.app" className="text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors">
-                support@vibeandaura.app
+              <a href="mailto:support@vibecheckr.app" className="text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors">
+                support@vibecheckr.app
               </a>
             </p>
           </section>
@@ -163,7 +163,7 @@ export default function TermsPage() {
         {/* ─── Footer ─── */}
         <div className="mt-16 pt-8 border-t border-white/10 text-center">
           <p className="text-xs text-white/30">
-            © {new Date().getFullYear()} Vibe & Aura. All rights reserved.
+            © {new Date().getFullYear()} VibeCheckr. All rights reserved.
           </p>
         </div>
       </div>
