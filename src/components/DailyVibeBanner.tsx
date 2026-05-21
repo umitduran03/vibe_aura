@@ -4,6 +4,8 @@ import { useEffect, useState, useRef } from "react";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Loader2, Sparkle, Share, Check, Download } from "lucide-react";
+import Image from "next/image";
+import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { db } from "@/lib/firebase";
 import { useAppStore } from "@/store/useAppStore";
 
@@ -191,7 +193,7 @@ export default function DailyVibeBanner() {
       <div className="relative z-10 flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-1.5 opacity-80" style={{ color: "#c084fc" }}>
-            <Sparkle className="w-3.5 h-3.5" />
+            <WaveLogoIcon size={14} className="opacity-80" />
             <span className="text-[11px] font-bold uppercase tracking-wider">
               Daily Vibe ⚡
             </span>

@@ -6,6 +6,8 @@ import GlassButton from "@/components/ui/GlassButton";
 import { useAppStore, type ExtrasType } from "@/store/useAppStore";
 import { hapticLight } from "@/lib/haptics";
 import SettingsDrawer from "@/components/SettingsDrawer";
+import Image from "next/image";
+import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 
 const THEME: Record<ExtrasType, { emoji: string; label: string; grad1: string; grad2: string }> = {
   "toxic-ex": { emoji: "💀", label: "Toxic Ex Scanner", grad1: "#ef4444", grad2: "#f97316" },
@@ -174,8 +176,10 @@ export default function ExtrasResultCard() {
             )}
           </div>
 
-          <p className="absolute bottom-4 right-5 text-[11px] font-bold tracking-widest uppercase select-none"
-            style={{ color: "rgba(255,255,255,0.15)" }}>VibeCheckr.</p>
+          <div className="absolute bottom-4 right-5 flex items-center gap-1.5 select-none">
+            <WaveLogoIcon size={14} className="opacity-[0.35]" />
+            <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>VibeCheckr.</span>
+          </div>
         </motion.div>
 
         <motion.div variants={resultItemVariants} className="mt-5 flex flex-col gap-3">

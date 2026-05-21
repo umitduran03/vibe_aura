@@ -9,6 +9,8 @@ import GlassButton from "@/components/ui/GlassButton";
 import { useAppStore } from "@/store/useAppStore";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
 import SettingsDrawer from "@/components/SettingsDrawer";
+import Image from "next/image";
+import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 
 export default function DuoResultCard() {
   const resetWizard = useAppStore((s) => s.resetWizard);
@@ -299,13 +301,12 @@ export default function DuoResultCard() {
             </div>
           </div>
 
-          {/* Watermark */}
-          <p
-            className="absolute bottom-4 right-5 text-[11px] font-bold tracking-widest uppercase select-none"
-            style={{ color: "rgba(255,255,255,0.15)" }}
+          <div
+            className="absolute bottom-4 right-5 flex items-center gap-1.5 select-none"
           >
-            <span>VibeCheckr.</span>
-          </p>
+            <WaveLogoIcon size={14} className="opacity-[0.35]" />
+            <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>VibeCheckr.</span>
+          </div>
         </motion.div>
 
         {/* Buttons */}

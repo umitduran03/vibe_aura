@@ -118,15 +118,14 @@ export default function OnboardingScreen() {
           >
             {/* Logo */}
             <motion.div
-              className="w-32 h-32 flex items-center justify-center relative mb-6"
+              className="flex items-center justify-center relative mb-8"
               initial={{ scale: 0.8, opacity: 0, filter: "drop-shadow(0 0 0px rgba(139,92,246,0))" }}
               animate={{ scale: 1, opacity: 1, filter: ["drop-shadow(0 0 20px rgba(139,92,246,0.25))", "drop-shadow(0 0 35px rgba(236,72,153,0.3))", "drop-shadow(0 0 20px rgba(139,92,246,0.25))"] }}
               transition={{ scale: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.8 }, filter: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 } }}
             >
-              <Image src="/va-logo.png" alt="VibeCheckr." width={128} height={128} priority className="object-contain" />
+              <Image src="/vibecheckr-markalogo.png" alt="VibeCheckr" width={220} height={66} priority className="object-contain h-auto" />
             </motion.div>
 
-            <h1 className="text-2xl font-bold text-white mb-1 tracking-tight">VibeCheckr.</h1>
             <p className="text-sm text-white/40 mb-10">Discover your energy ✨</p>
 
             {/* Sign Up Button */}
