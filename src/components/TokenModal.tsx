@@ -218,9 +218,32 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
           }
         }
       } else {
-        // ─── Web: Payments available via mobile app only ─────────────
-        setView("mobile-funnel");
-        return;
+        // ─── Web: Polar Checkout Flow ────────────────────────────────
+        const idToken = await auth.currentUser?.getIdToken();
+        if (!idToken) {
+          triggerToast("⚠️ Please sign in to make a purchase.");
+          setView("store");
+          return;
+        }
+
+        const res = await fetch("/api/polar/checkout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${idToken}`,
+          },
+          body: JSON.stringify({ packageId: pkg.id }),
+        });
+
+        const data = await res.json();
+
+        if (data.checkoutUrl) {
+          // Pürüzsüz geçiş — Polar ödeme sayfasına yönlendir
+          window.location.href = data.checkoutUrl;
+          return; // Sayfa yönleniyor, view değiştirme
+        } else {
+          throw new Error(data.error || "Checkout creation failed");
+        }
       }
     } catch (err) {
       console.error("[Purchase] Error:", err);
