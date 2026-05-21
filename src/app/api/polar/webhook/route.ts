@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
 
       if (packageId) {
         console.log(`[Polar Webhook] Using packageId from metadata: ${packageId}`);
-        await creditUser(userId, packageId);
+        await creditUser(userId, packageId, checkout.id);
       } else {
         const productId = checkout.productId;
         console.log(`[Polar Webhook] No packageId in metadata. Attempting to resolve productId: ${productId}`);
@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
           const resolvedPkgId = getPackageIdFromPolarProduct(productId);
           if (resolvedPkgId) {
             console.log(`[Polar Webhook] Successfully resolved productId to packageId: ${resolvedPkgId}`);
-            await creditUser(userId, resolvedPkgId);
+            await creditUser(userId, resolvedPkgId, checkout.id);
           } else {
             console.warn(`[Polar Webhook] Failed to resolve productId ${productId} to any internal package.`);
           }
@@ -121,7 +121,7 @@ export async function POST(req: NextRequest) {
       console.log(`[Polar Webhook] Final resolved packageId to credit: ${resolvedPkgId}`);
 
       if (resolvedPkgId) {
-        await creditUser(userId, resolvedPkgId);
+        await creditUser(userId, resolvedPkgId, order.id);
       } else {
         console.warn(`[Polar Webhook] Could not resolve package ID for this order. Nothing was credited.`);
       }
@@ -140,41 +140,50 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// ─── Helper: Credit tokens or VIP to user ───
-async function creditUser(userId: string, packageId: string) {
+// ─── Helper: Credit tokens or VIP to user and log transaction ───
+async function creditUser(userId: string, packageId: string, transactionId: string) {
   if (!adminDb) {
     throw new Error("Admin DB is not initialized inside creditUser function.");
   }
 
-  console.log(`[Polar Webhook] ---> Starting creditUser logic for User: ${userId}, Package: ${packageId}`);
+  console.log(`[Polar Webhook] ---> Starting creditUser logic for User: ${userId}, Package: ${packageId}, TxID: ${transactionId}`);
+  
+  const paymentRef = adminDb.collection("processed_payments").doc(transactionId);
   const userRef = adminDb.collection("users").doc(userId);
 
   try {
-    // Handle Token package
-    if (TOKEN_AMOUNTS[packageId]) {
-      const amount = TOKEN_AMOUNTS[packageId];
-      console.log(`[Polar Webhook] Package is a Token Package. Amount to add: ${amount}. Fetching current Firestore doc...`);
-      
-      const userDoc = await userRef.get();
-      const currentBalance = userDoc.exists ? (userDoc.data()?.token_balance || 0) : 0;
-      console.log(`[Polar Webhook] Current token balance: ${currentBalance}. New balance will be: ${currentBalance + amount}`);
-
-      console.log(`[Polar Webhook] Writing to Firestore (merge: true)...`);
-      await userRef.set(
-        { token_balance: currentBalance + amount },
-        { merge: true }
-      );
-
-      console.log(`[Polar Webhook] ✅ SUCCESS: Credited ${amount} tokens to user ${userId}`);
+    // 1. Idempotency Check: Have we processed this transaction already?
+    const paymentDoc = await paymentRef.get();
+    if (paymentDoc.exists) {
+      console.log(`[Polar Webhook] ⚠️ Transaction ${transactionId} has already been processed. Skipping to avoid duplicate crediting.`);
       return;
     }
 
-    // Handle VIP package
-    if (VIP_DURATIONS[packageId]) {
-      const durationDays = VIP_DURATIONS[packageId];
-      const now = new Date();
-      console.log(`[Polar Webhook] Package is a VIP Package. Duration to add: ${durationDays} days. Fetching current Firestore doc...`);
+    // 2. Process Token or VIP Package
+    let packageType = "";
+    let tokensAdded = 0;
+    let vipDaysAdded = 0;
 
+    if (TOKEN_AMOUNTS[packageId]) {
+      packageType = "token";
+      tokensAdded = TOKEN_AMOUNTS[packageId];
+      
+      console.log(`[Polar Webhook] Fetching current Firestore doc for token update...`);
+      const userDoc = await userRef.get();
+      const currentBalance = userDoc.exists ? (userDoc.data()?.token_balance || 0) : 0;
+      
+      await userRef.set(
+        { token_balance: currentBalance + tokensAdded },
+        { merge: true }
+      );
+      console.log(`[Polar Webhook] ✅ SUCCESS: Credited ${tokensAdded} tokens to user ${userId}`);
+
+    } else if (VIP_DURATIONS[packageId]) {
+      packageType = "vip";
+      vipDaysAdded = VIP_DURATIONS[packageId];
+      const now = new Date();
+      
+      console.log(`[Polar Webhook] Fetching current Firestore doc for VIP update...`);
       const userDoc = await userRef.get();
       let currentExpiry = now;
 
@@ -183,32 +192,41 @@ async function creditUser(userId: string, packageId: string) {
         if (existingData?.vipExpiry) {
           const existingDate = new Date(existingData.vipExpiry);
           if (existingDate > now) {
-            console.log(`[Polar Webhook] User already has active VIP until ${existingDate.toISOString()}. Stacking duration.`);
             currentExpiry = existingDate;
-          } else {
-            console.log(`[Polar Webhook] User's previous VIP expired on ${existingDate.toISOString()}. Starting from today.`);
           }
-        } else {
-          console.log(`[Polar Webhook] User has no previous VIP history. Starting from today.`);
         }
       }
 
-      const newExpiry = new Date(currentExpiry.getTime() + durationDays * 24 * 60 * 60 * 1000);
-      console.log(`[Polar Webhook] New VIP expiry calculated as: ${newExpiry.toISOString()}. Writing to Firestore...`);
-
+      const newExpiry = new Date(currentExpiry.getTime() + vipDaysAdded * 24 * 60 * 60 * 1000);
+      
       await userRef.set(
         { vipExpiry: newExpiry.toISOString() },
         { merge: true }
       );
-
       console.log(`[Polar Webhook] ✅ SUCCESS: VIP activated for user ${userId} until ${newExpiry.toISOString()}`);
-      return;
+
+    } else {
+      throw new Error(`[Polar Webhook] Unrecognized packageId: ${packageId}. It does not exist in TOKEN_AMOUNTS or VIP_DURATIONS.`);
     }
 
-    // If we reach here, the packageId matched neither list
-    throw new Error(`[Polar Webhook] Unrecognized packageId: ${packageId}. It does not exist in TOKEN_AMOUNTS or VIP_DURATIONS.`);
+    // 3. Write to processed_payments collection to keep transaction history exactly like the old system
+    console.log(`[Polar Webhook] Writing transaction receipt to processed_payments/${transactionId}`);
+    await paymentRef.set({
+      firebaseUid: userId,
+      fulfilledAt: new Date().toISOString(),
+      packageId: packageId,
+      metadata: {
+        firebaseUid: userId,
+        packageId: packageId,
+        packageType: packageType,
+        tokens: tokensAdded,
+        vipDays: vipDaysAdded
+      }
+    });
+    console.log(`[Polar Webhook] ✅ Receipt saved successfully.`);
+
   } catch (err: any) {
-    console.error(`[Polar Webhook] ❌ FIREBASE WRITE FAILED for user ${userId}:`, err);
+    console.error(`[Polar Webhook] ❌ FIREBASE WRITE FAILED for transaction ${transactionId}:`, err);
     throw err; // Re-throw to ensure the main webhook handler catches it and returns a 500
   }
 }
