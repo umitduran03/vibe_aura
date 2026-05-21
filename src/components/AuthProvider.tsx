@@ -56,11 +56,14 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
             const balance = await ensureUserDoc(user);
             setTokenBalance(balance);
 
-            // Eğer "pending_terms_accept" bayrağı varsa, otomatik olarak terms'i kabul et
-            if (localStorage.getItem("pending_terms_accept") === "true") {
-              const { acceptTerms } = await import("@/lib/auth");
-              await acceptTerms(user.uid);
+            const isPendingTerms = localStorage.getItem("pending_terms_accept") === "true";
+            if (isPendingTerms) {
               localStorage.removeItem("pending_terms_accept");
+              setHasAcceptedTerms(true); // Optimistik güncelleme (beklemeden)
+              // Arka planda çalıştır, UI'ı bloklama
+              import("@/lib/auth").then(({ acceptTerms }) => {
+                acceptTerms(user.uid).catch(console.error);
+              }).catch(console.error);
             }
 
             // Gerçek zamanlı dinleme başlat — hasAcceptedTerms de buradan gelir
@@ -68,6 +71,11 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
               setTokenBalance(balance);
               setVipExpiry(vipExpiry);
               useAppStore.getState().setUserPreferences(gender, preference);
+              
+              // Eğer optimistik olarak true yaptıysak ve veritabanı henüz güncellenmediyse (eski snapshot), UI'ın titremesini engelle
+              if (isPendingTerms && !hasAcceptedTerms) {
+                return;
+              }
               setHasAcceptedTerms(!!hasAcceptedTerms);
             });
           } catch (err) {
