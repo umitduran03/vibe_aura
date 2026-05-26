@@ -240,7 +240,7 @@ export default function DuoStep() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
       >
-        <h2 className="text-center text-xl font-semibold text-foreground mb-4">
+        <h2 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-4">
           Upload Photos 📸
         </h2>
         <div className="flex items-center justify-center gap-6">

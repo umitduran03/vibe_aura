@@ -97,7 +97,7 @@ export default function ModeSelector() {
               Duo Match
             </p>
             <p className="text-[11px] text-text-secondary/50 mt-0.5">
-              Test your vibe
+              Decode your chemistry
             </p>
           </div>
         </motion.button>
