@@ -91,14 +91,10 @@ export default function SettingsDrawer() {
       {/* ─── Trigger Button ─── */}
       <button
         onClick={open}
-        className="p-2.5 rounded-xl transition-all duration-200 hover:bg-white/10 active:scale-90 cursor-pointer"
-        style={{
-          background: "rgba(255,255,255,0.05)",
-          border: "1px solid rgba(255,255,255,0.08)",
-        }}
+        className="flex items-center justify-center p-2 rounded-full bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10 transition-colors active:scale-90 cursor-pointer"
         aria-label="Settings"
       >
-        <Settings className="h-5 w-5 text-white/60" />
+        <Settings className="h-4 w-4" />
       </button>
 
       {/* ─── Drawer ─── */}

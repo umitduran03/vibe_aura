@@ -21,7 +21,7 @@ export default function SoloScenarioSelector() {
       transition={{ delay: 0.15 }}
       className="mb-4"
     >
-      <p className="text-center text-[12px] font-semibold text-text-secondary/60 uppercase tracking-wider mb-2.5">
+      <p className="text-center text-[12px] font-semibold text-text-secondary uppercase tracking-wider mb-2.5">
         Analysis Type
       </p>
       <div className="flex gap-2">
