@@ -21,9 +21,9 @@ export default function SoloScenarioSelector() {
       transition={{ delay: 0.15 }}
       className="mb-4"
     >
-      <p className="text-center text-[12px] font-semibold text-text-secondary uppercase tracking-wider mb-2.5">
+      <h2 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-4">
         Analysis Type
-      </p>
+      </h2>
       <div className="flex gap-2">
         {SCENARIOS.map((s) => (
           <motion.button
