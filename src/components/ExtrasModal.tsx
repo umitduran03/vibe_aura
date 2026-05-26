@@ -57,7 +57,7 @@ const META: Record<ExtrasType, { title:string; emoji:string; subtitle:string; co
   situationship: { title:"Situationship Clarifier", emoji:"🤡", subtitle:"Decoding what you are...", cost:5, color:"#d946ef" },
   "mood-reset": { title:"Mood Reset", emoji:"🔋", subtitle:"Emergency vibe check...", cost:3, color:"#06b6d4" },
   "delulu-check": { title:"Delulu Check", emoji:"📱", subtitle:"Time for a reality check...", cost:10, color:"#f59e0b" },
-  "rizz-architect": { title:"The Reply Guru", emoji:"💬", subtitle:"Crafting the perfect reply...", cost:3, color:"#8b5cf6" },
+  "rizz-architect": { title:"The Reply Guru", emoji:"💬", subtitle:"Crafting the perfect reply...", cost:2, color:"#8b5cf6" },
 };
 
 

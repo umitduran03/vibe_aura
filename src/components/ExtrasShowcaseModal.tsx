@@ -65,7 +65,7 @@ const EXTRAS_CARDS: {
     title: "The Reply Guru",
     emoji: "💬",
     description: "Mind games? Won. Drop the screenshot and let me craft the perfect toxic, cool, or safe reply.",
-    cost: 3,
+    cost: 2,
     gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
     borderColor: "border-violet-500/30",
     glowColor: "rgba(139, 92, 246, 0.15)",

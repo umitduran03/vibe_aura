@@ -107,7 +107,7 @@ export default function PrivacyPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">→</span>
-                <span>To manage your account, token (credit) balance, and subscription status.</span>
+                <span>To manage your account, token (credit) balance, and VIP Pass status.</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">→</span>
@@ -119,7 +119,7 @@ export default function PrivacyPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">→</span>
-                <span>To process payments via app store billing systems.</span>
+                <span>To process payments securely via our payment providers (Polar for web, App Stores for mobile).</span>
               </li>
             </ul>
           </section>
@@ -131,8 +131,8 @@ export default function PrivacyPage() {
               {[
                 { name: "Firebase (Google)", desc: "Authentication (Google Auth), database (Firestore), App Check, Analytics, and push notifications" },
                 { name: "Google Gemini AI", desc: "AI-powered entertainment and personality analysis" },
-
-                { name: "RevenueCat", desc: "In-app purchase management for mobile platforms" },
+                { name: "Polar", desc: "Secure payment processing and checkout management for web platforms" },
+                { name: "RevenueCat", desc: "In-app purchase management for mobile platforms (App Store / Google Play)" },
               ].map((service) => (
                 <div
                   key={service.name}
@@ -221,8 +221,8 @@ export default function PrivacyPage() {
             <h2 className="text-lg font-semibold text-white/90 mb-3">11. Contact Us</h2>
             <p>
               For privacy-related inquiries, data deletion requests, or concerns, contact us at{" "}
-              <a href="mailto:support@vibecheckr.app" className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 transition-colors">
-                support@vibecheckr.app
+              <a href="mailto:vibecheckr.app@gmail.com" className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 transition-colors">
+                vibecheckr.app@gmail.com
               </a>
             </p>
           </section>

@@ -125,7 +125,7 @@ export default function Home() {
 
   const handleWizardComplete = async () => {
     // ===== DYNAMIC PRICING =====
-    const tokenCost = analysisMode === "duo" ? 2 : 1;
+    const tokenCost = analysisMode === "duo" ? 3 : 1;
     const vipExpiry = useAppStore.getState().vipExpiry;
     const isVipActive = vipExpiry ? new Date(vipExpiry) > new Date() : false;
 

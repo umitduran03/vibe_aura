@@ -81,7 +81,7 @@ export default function TermsPage() {
             <ul className="space-y-2 list-none">
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">•</span>
-                <span>The App uses a Token (Credit) system to access certain AI features, such as deep personality analysis or Duo Match. Tokens and VIP subscriptions can be purchased via Apple App Store / Google Play Store (mobile).</span>
+                <span>The App uses a Token (Credit) system to access certain AI features, such as deep personality analysis or Duo Match. Users can purchase Tokens or VIP Passes via our Web platform (powered by Polar, as one-time payments) OR via our Mobile apps (billed through Apple App Store / Google Play Store using RevenueCat).</span>
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">•</span>
@@ -93,7 +93,7 @@ export default function TermsPage() {
               </li>
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">•</span>
-                <span>VIP subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period.</span>
+                <span><strong className="text-white/90">Billing Model:</strong> Depending on your purchase platform, payments may be processed as one-time purchases (e.g., via Web / Polar) or may include auto-renewing subscription options (e.g., via Mobile App Stores). Please carefully review the terms, pricing, and renewal conditions presented on the payment screen before completing any purchase. Mobile subscriptions auto-renew unless cancelled at least 24 hours before the end of the current period.</span>
               </li>
             </ul>
           </section>
@@ -138,7 +138,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">9. Termination</h2>
             <p>
-              We reserve the right to suspend or terminate your access to the App at any time, with or without cause, including for violation of these Terms. Upon termination, your right to use the App ceases immediately and any unused tokens or active subscriptions may be forfeited.
+              We reserve the right to suspend or terminate your access to the App at any time, with or without cause, including for violation of these Terms. Upon termination, your right to use the App ceases immediately and any unused tokens or active VIP time may be forfeited.
             </p>
           </section>
 
@@ -153,8 +153,8 @@ export default function TermsPage() {
             <h2 className="text-lg font-semibold text-white/90 mb-3">11. Contact</h2>
             <p>
               If you have questions about these Terms, please reach out at{" "}
-              <a href="mailto:support@vibecheckr.app" className="text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors">
-                support@vibecheckr.app
+              <a href="mailto:vibecheckr.app@gmail.com" className="text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors">
+                vibecheckr.app@gmail.com
               </a>
             </p>
           </section>

@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
     const mode = body.mode || "solo";
     const userId = body.userId;
 
-    const tokenCost = mode === "duo" ? 2 : mode === "extras" ? (body.extrasType === "delulu-check" ? 10 : body.extrasType === "situationship" ? 5 : 3) : 1;
+    const tokenCost = mode === "duo" ? 3 : mode === "extras" ? (body.extrasType === "delulu-check" ? 10 : body.extrasType === "situationship" ? 5 : body.extrasType === "rizz-architect" ? 2 : 3) : 1;
 
     let isUnlocked = true;
     let currentBalance = 0;

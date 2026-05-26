@@ -81,7 +81,7 @@ export default function ModeSelector() {
         >
           {/* Fiyat Etiketi */}
           <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-bold text-white/90 border border-white/10 backdrop-blur-md">
-            ✦ 2
+            ✦ 3
           </div>
           <motion.div
             className={`w-14 h-14 rounded-2xl flex items-center justify-center transition-colors duration-300 ${
