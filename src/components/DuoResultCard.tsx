@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Share2, RotateCcw, Sparkles, AlertTriangle, Loader2, Download, Lock } from "lucide-react";
 import { ZODIAC_SIGNS } from "@/lib/constants";
 import { resultCardVariants, resultItemVariants } from "@/lib/animations";
@@ -11,6 +11,7 @@ import { hapticLight, hapticMedium } from "@/lib/haptics";
 import SettingsDrawer from "@/components/SettingsDrawer";
 import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
+import { auth } from "@/lib/firebase";
 
 export default function DuoResultCard() {
   const resetWizard = useAppStore((s) => s.resetWizard);
@@ -22,6 +23,11 @@ export default function DuoResultCard() {
   const [isDownloading, setIsDownloading] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
 
+  // Anti-cheat chronometer state
+  const [shareToast, setShareToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+  const shareStartTimeRef = useRef<number | null>(null);
+  const hasRewardedRef = useRef(false);
+
   /** Download blob as PNG — universal fallback */
   const downloadBlob = useCallback((blob: Blob, filename: string) => {
     const url = URL.createObjectURL(blob);
@@ -32,6 +38,48 @@ export default function DuoResultCard() {
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(url);
+  }, []);
+
+  /* =============================================
+     ANTI-CHEAT VISIBILITY LISTENER
+     ============================================= */
+  useEffect(() => {
+    const handleVisibility = async () => {
+      if (document.visibilityState === "visible" && shareStartTimeRef.current !== null) {
+        const elapsed = Date.now() - shareStartTimeRef.current;
+        shareStartTimeRef.current = null;
+
+        if (elapsed >= 12000) {
+          if (!hasRewardedRef.current) {
+            hasRewardedRef.current = true;
+            setShareToast({ message: "Main Character Energy! 🔥 +2 Tokens added.", type: "success" });
+            setTimeout(() => setShareToast(null), 4000);
+
+            try {
+              const idToken = await auth.currentUser?.getIdToken();
+              if (idToken) {
+                await fetch("/api/add-tokens", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${idToken}`,
+                  },
+                  body: JSON.stringify({ amount: 2, source: "share_story" }),
+                });
+              }
+            } catch (err) {
+              console.error("[Share Reward] Token grant failed:", err);
+            }
+          }
+        } else {
+          setShareToast({ message: "Who are you kidding? You didn't even share it yet! 🤨 No tokens for you.", type: "error" });
+          setTimeout(() => setShareToast(null), 4000);
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
   }, []);
 
   const handleShare = useCallback(async () => {
@@ -57,21 +105,29 @@ export default function DuoResultCard() {
       const file = new File([blob], "vibecheckr-duo-result.png", { type: "image/png" });
       const filename = `vibecheckr-duo-${duoResult.duoScore}.png`;
 
+      // Reset reward flag for new share attempt
+      hasRewardedRef.current = false;
+
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         try {
+          shareStartTimeRef.current = Date.now();
           await navigator.share({
             title: `${duoResult.title} — VibeCheckr`,
-            text: `Duo Vibe Score: ${duoResult.duoScore}/100 💔`,
+            text: `Duo Vibe Score: ${duoResult.duoScore}/100 💔\nTry it yourself! 👀 👉 https://thevibecheckr.vercel.app`,
             files: [file],
           });
         } catch (e: any) {
           if (e.name !== 'AbortError') {
+            shareStartTimeRef.current = Date.now();
             setIsDownloading(true);
             downloadBlob(blob, filename);
             setTimeout(() => setIsDownloading(false), 2000);
+          } else {
+            shareStartTimeRef.current = null;
           }
         }
       } else {
+        shareStartTimeRef.current = Date.now();
         setIsDownloading(true);
         downloadBlob(blob, filename);
         setTimeout(() => setIsDownloading(false), 2000);
@@ -361,11 +417,30 @@ export default function DuoResultCard() {
               ) : (
                 <>
                   <Share2 className="h-5 w-5" />
-                  <span>Share to Story</span>
+                  <span>Share (+2 Tokens 🚀)</span>
                 </>
               )}
             </motion.button>
           )}
+
+          {/* Share Anti-Cheat Toast */}
+          <AnimatePresence>
+            {shareToast && (
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] px-5 py-3 rounded-2xl backdrop-blur-xl border shadow-2xl max-w-[90vw] text-center"
+                style={{
+                  backgroundColor: shareToast.type === "success" ? "rgba(34,197,94,0.15)" : "rgba(239,68,68,0.15)",
+                  borderColor: shareToast.type === "success" ? "rgba(34,197,94,0.3)" : "rgba(239,68,68,0.3)",
+                  color: shareToast.type === "success" ? "#4ade80" : "#f87171",
+                }}
+              >
+                <p className="text-sm font-semibold">{shareToast.message}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <GlassButton
             variant="ghost"

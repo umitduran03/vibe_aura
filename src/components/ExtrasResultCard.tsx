@@ -1,13 +1,15 @@
 "use client";
-import { motion } from "framer-motion";
-import { RotateCcw, Sparkles } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { RotateCcw, Sparkles, Share2, Download, Loader2 } from "lucide-react";
 import { resultCardVariants, resultItemVariants } from "@/lib/animations";
 import GlassButton from "@/components/ui/GlassButton";
 import { useAppStore, type ExtrasType } from "@/store/useAppStore";
-import { hapticLight } from "@/lib/haptics";
+import { hapticLight, hapticMedium } from "@/lib/haptics";
 import SettingsDrawer from "@/components/SettingsDrawer";
 import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
+import { auth } from "@/lib/firebase";
 
 const THEME: Record<ExtrasType, { emoji: string; label: string; grad1: string; grad2: string }> = {
   "toxic-ex": { emoji: "💀", label: "Toxic Ex Scanner", grad1: "#ef4444", grad2: "#f97316" },
@@ -21,6 +23,139 @@ export default function ExtrasResultCard() {
   const resetWizard = useAppStore((s) => s.resetWizard);
   const extrasResult = useAppStore((s) => s.extrasResult);
   const extrasType = useAppStore((s) => s.extrasType);
+
+  const [isExporting, setIsExporting] = useState(false);
+  const [isDownloading, setIsDownloading] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Anti-cheat chronometer state
+  const [shareToast, setShareToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+  const shareStartTimeRef = useRef<number | null>(null);
+  const hasRewardedRef = useRef(false);
+
+  /* =============================================
+     ANTI-CHEAT VISIBILITY LISTENER
+     ============================================= */
+  useEffect(() => {
+    const handleVisibility = async () => {
+      if (document.visibilityState === "visible" && shareStartTimeRef.current !== null) {
+        const elapsed = Date.now() - shareStartTimeRef.current;
+        shareStartTimeRef.current = null;
+
+        if (elapsed >= 12000) {
+          if (!hasRewardedRef.current) {
+            hasRewardedRef.current = true;
+            setShareToast({ message: "Main Character Energy! 🔥 +2 Tokens added.", type: "success" });
+            setTimeout(() => setShareToast(null), 4000);
+
+            try {
+              const idToken = await auth.currentUser?.getIdToken();
+              if (idToken) {
+                await fetch("/api/add-tokens", {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${idToken}`,
+                  },
+                  body: JSON.stringify({ amount: 2, source: "share_story" }),
+                });
+              }
+            } catch (err) {
+              console.error("[Share Reward] Token grant failed:", err);
+            }
+          }
+        } else {
+          setShareToast({ message: "Who are you kidding? You didn't even share it yet! 🤨 No tokens for you.", type: "error" });
+          setTimeout(() => setShareToast(null), 4000);
+        }
+      }
+    };
+
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => document.removeEventListener("visibilitychange", handleVisibility);
+  }, []);
+
+  /* =============================================
+     SHARE / DOWNLOAD ENGINE
+     ============================================= */
+  /** Download blob as PNG — universal fallback */
+  const downloadBlob = useCallback((blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }, []);
+
+  const handleShare = useCallback(async () => {
+    if (!cardRef.current || isExporting || !extrasResult || !extrasType) return;
+
+    setIsExporting(true);
+    hapticMedium();
+
+    try {
+      const filter = (node: HTMLElement) => {
+        const exclusionClasses = ['google-translate', 'skiptranslate'];
+        if (exclusionClasses.some(cls => node.classList?.contains?.(cls))) return false;
+        // Hide interactive copy buttons from the shared image
+        if (node.getAttribute?.('data-exclude-share') === 'true') return false;
+        return true;
+      };
+
+      const htmlToImage = await import("html-to-image");
+      const blob = await htmlToImage.toBlob(cardRef.current, {
+        backgroundColor: "#050510",
+        pixelRatio: 3,
+        filter: filter as any,
+      });
+
+      if (!blob) throw new Error("Canvas blob failed");
+
+      const file = new File([blob], "vibecheckr-extras-result.png", { type: "image/png" });
+      const filename = `vibecheckr-${extrasType}.png`;
+
+      // Reset reward flag for new share attempt
+      hasRewardedRef.current = false;
+
+      // Try Web Share API first (works on mobile, enables direct IG share)
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
+        try {
+          shareStartTimeRef.current = Date.now();
+          await navigator.share({
+            title: `${extrasResult.title} — VibeCheckr`,
+            text: `${extrasResult.title}\nTry it yourself! 👀 👉 https://thevibecheckr.vercel.app`,
+            files: [file],
+          });
+        } catch (shareErr: any) {
+          if (shareErr?.name !== "AbortError") {
+            // Share failed — fallback to download
+            shareStartTimeRef.current = Date.now();
+            setIsDownloading(true);
+            downloadBlob(blob, filename);
+            setTimeout(() => setIsDownloading(false), 2000);
+          } else {
+            // User cancelled — reset timer
+            shareStartTimeRef.current = null;
+          }
+        }
+      } else {
+        // Device doesn't support sharing — download directly
+        shareStartTimeRef.current = Date.now();
+        setIsDownloading(true);
+        downloadBlob(blob, filename);
+        setTimeout(() => setIsDownloading(false), 2000);
+      }
+    } catch (err: any) {
+      if (err?.name !== "AbortError") {
+        console.error("[Share] Export error:", err);
+      }
+    } finally {
+      setIsExporting(false);
+    }
+  }, [extrasResult, extrasType, isExporting, downloadBlob]);
 
   if (!extrasResult || !extrasType) return null;
 
@@ -65,7 +200,9 @@ export default function ExtrasResultCard() {
       </motion.div>
 
       <div className="flex-1 px-5 pb-4 flex flex-col">
-        <motion.div variants={resultItemVariants}
+        <motion.div
+          ref={cardRef}
+          variants={resultItemVariants}
           className="glass-panel p-6 flex-1 flex flex-col relative overflow-hidden"
           style={{ background: "linear-gradient(170deg, rgba(30,30,40,0.85) 0%, rgba(10,10,18,0.95) 100%)" }}>
           <div className="absolute top-0 left-1/2 -translate-x-1/2 h-[2px] w-24 rounded-full"
@@ -158,6 +295,7 @@ export default function ExtrasResultCard() {
                             {option.type}
                           </span>
                           <button
+                            data-exclude-share="true"
                             onClick={() => {
                               navigator.clipboard.writeText(option.text);
                               hapticLight();
@@ -183,6 +321,54 @@ export default function ExtrasResultCard() {
         </motion.div>
 
         <motion.div variants={resultItemVariants} className="mt-5 flex flex-col gap-3">
+          <motion.button
+            onClick={handleShare}
+            disabled={isExporting}
+            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            className="w-full flex items-center justify-center gap-2 rounded-2xl px-8 py-4 text-[15px] font-bold tracking-wide text-white shadow-[0_10px_30px_rgba(0,0,0,0.3)] cursor-pointer transition-transform duration-300 active:scale-95 border border-white/20 hover:shadow-[0_15px_40px_rgba(0,0,0,0.4)] disabled:opacity-60 disabled:cursor-not-allowed"
+            style={{
+              background: `linear-gradient(135deg, ${theme.grad1}, ${theme.grad2})`,
+              boxShadow: `0 0 35px ${theme.grad1}40`,
+            }}
+          >
+            {isExporting ? (
+              <>
+                <Loader2 className="h-5 w-5 animate-spin" />
+                <span>Preparing...</span> <span translate="no">✨</span>
+              </>
+            ) : isDownloading ? (
+              <>
+                <Download className="h-5 w-5 animate-bounce" />
+                <span>Downloading...</span> <span translate="no">📥</span>
+              </>
+            ) : (
+              <>
+                <Share2 className="h-5 w-5" />
+                <span>Share (+2 Tokens 🚀)</span>
+              </>
+            )}
+          </motion.button>
+
+          {/* Share Anti-Cheat Toast */}
+          <AnimatePresence>
+            {shareToast && (
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] px-5 py-3 rounded-2xl backdrop-blur-xl border shadow-2xl max-w-[90vw] text-center"
+                style={{
+                  backgroundColor: shareToast.type === "success" ? "rgba(34,197,94,0.15)" : "rgba(239,68,68,0.15)",
+                  borderColor: shareToast.type === "success" ? "rgba(34,197,94,0.3)" : "rgba(239,68,68,0.3)",
+                  color: shareToast.type === "success" ? "#4ade80" : "#f87171",
+                }}
+              >
+                <p className="text-sm font-semibold">{shareToast.message}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <GlassButton variant="ghost" onClick={handleReset}
             className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl transition-all hover:bg-white/10 active:scale-95 font-medium">
             <RotateCcw className="h-5 w-5" /><span>Try Again</span>
