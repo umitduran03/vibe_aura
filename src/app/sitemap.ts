@@ -1,7 +1,15 @@
 import type { MetadataRoute } from "next";
+import { trendsData } from "@/lib/trends-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://thevibecheckr.vercel.app";
+
+  const trendRoutes = trendsData.map((article) => ({
+    url: `${baseUrl}/trends/${article.slug}`,
+    lastModified: new Date(article.publishDate),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
 
   return [
     {
@@ -11,23 +19,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/privacy`,
+      url: `${baseUrl}/toxic-ex-scanner`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
-      url: `${baseUrl}/terms`,
+      url: `${baseUrl}/duo-compatibility`,
       lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 0.3,
+      changeFrequency: "weekly",
+      priority: 0.9,
     },
     {
       url: `${baseUrl}/vibe-dictionary`,
       lastModified: new Date(),
-      changeFrequency: "weekly",
+      changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/trends`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    ...trendRoutes,
     {
       url: `${baseUrl}/faq`,
       lastModified: new Date(),
