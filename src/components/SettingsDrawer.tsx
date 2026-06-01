@@ -13,6 +13,7 @@ import {
   Sparkles,
   LogOut,
   Pencil,
+  BookOpen,
 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
@@ -325,6 +326,29 @@ export default function SettingsDrawer() {
                       <p className="text-[11px] text-white/35">How we protect your data</p>
                     </div>
                     <ExternalLink className="h-3.5 w-3.5 text-white/20 group-hover:text-white/40 shrink-0" />
+                  </a>
+
+                  {/* ─── Gen-Z Dictionary ─── */}
+                  <a
+                    href="/vibe-dictionary"
+                    className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
+                    style={{
+                      background: "rgba(255,255,255,0.02)",
+                      border: "1px solid rgba(255,255,255,0.05)",
+                    }}
+                  >
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(168,85,247,0.12)" }}
+                    >
+                      <BookOpen className="h-4 w-4 text-purple-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+                        Vibe Dictionary
+                      </p>
+                      <p className="text-[11px] text-white/35">Gen-Z slang & astrology terms</p>
+                    </div>
                   </a>
                 </div>
 
