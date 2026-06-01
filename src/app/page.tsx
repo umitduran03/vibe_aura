@@ -14,6 +14,7 @@ import AnalyzingScreen from "@/components/AnalyzingScreen";
 import TokenModal from "@/components/TokenModal";
 import SettingsDrawer from "@/components/SettingsDrawer";
 import StreakRecoveryModal from "@/components/StreakRecoveryModal";
+import StreakInfoModal from "@/components/StreakInfoModal";
 import NotificationPrompt from "@/components/NotificationPrompt";
 import OnboardingScreen from "@/components/OnboardingScreen";
 import OnboardingBanner from "@/components/OnboardingBanner";
@@ -252,6 +253,7 @@ export default function Home() {
         {/* Extras Showcase Modal */}
         <ExtrasShowcaseModal />
         <StreakRecoveryModal />
+        <StreakInfoModal />
         
         {/* Toast Bildirimleri */}
         <ExtrasModal />

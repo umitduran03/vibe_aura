@@ -6,6 +6,7 @@ export interface StreakState {
   lastAnalysisDate: string | null; // ISO Date string e.g. '2026-06-01'
   lostStreakCount: number;
   isRecoveryModalOpen: boolean;
+  isStreakInfoModalOpen: boolean;
   
   // Actions
   triggerAnalysis: () => void;
@@ -13,6 +14,8 @@ export interface StreakState {
   declineRecovery: () => void;
   openRecoveryModal: () => void;
   closeRecoveryModal: () => void;
+  openStreakInfoModal: () => void;
+  closeStreakInfoModal: () => void;
 }
 
 export const useStreakStore = create<StreakState>()(
@@ -22,6 +25,7 @@ export const useStreakStore = create<StreakState>()(
       lastAnalysisDate: null,
       lostStreakCount: 0,
       isRecoveryModalOpen: false,
+      isStreakInfoModalOpen: false,
 
       triggerAnalysis: () => {
         const { lastAnalysisDate, streakCount, isRecoveryModalOpen } = get();
@@ -95,6 +99,8 @@ export const useStreakStore = create<StreakState>()(
 
       openRecoveryModal: () => set({ isRecoveryModalOpen: true }),
       closeRecoveryModal: () => set({ isRecoveryModalOpen: false }),
+      openStreakInfoModal: () => set({ isStreakInfoModalOpen: true }),
+      closeStreakInfoModal: () => set({ isStreakInfoModalOpen: false }),
     }),
     {
       name: "vibecheckr-streak-storage", // name of the item in the storage (must be unique)
