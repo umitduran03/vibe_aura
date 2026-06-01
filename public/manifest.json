@@ -1,10 +1,17 @@
 {
-  "name": "VibeCheckr",
+  "name": "VibeCheckr — AI Vibe Check & Photo Roast",
   "short_name": "VibeCheckr",
+  "description": "Free AI-powered vibe check & photo roast app. Get brutally honest personality analysis, savage roasts, zodiac compatibility, and shareable result cards.",
   "start_url": "/",
+  "id": "/",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#050510",
   "theme_color": "#050510",
+  "scope": "/",
+  "categories": ["entertainment", "social", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr",
   "icons": [
     {
       "src": "/va-logo.png",

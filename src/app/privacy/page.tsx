@@ -1,7 +1,15 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Shield } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description: "VibeCheckr Privacy Policy — Learn how we collect, use, and protect your personal data. Your privacy matters to us.",
+  alternates: {
+    canonical: "https://thevibecheckr.vercel.app/privacy",
+  },
+};
+
 
 export default function PrivacyPage() {
   return (

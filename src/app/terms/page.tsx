@@ -1,7 +1,15 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Scale } from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description: "VibeCheckr Terms of Service — Read our terms and conditions for using the AI-powered vibe check and photo analysis app.",
+  alternates: {
+    canonical: "https://thevibecheckr.vercel.app/terms",
+  },
+};
+
 
 export default function TermsPage() {
   return (
