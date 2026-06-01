@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export function WaveLogoIcon({ size = 14, className = "" }: { size?: number; className?: string }) {
   return (
@@ -12,14 +13,15 @@ export function WaveLogoIcon({ size = 14, className = "" }: { size?: number; cla
         filter: "brightness(1.2)"
       }}
     >
-      <img
+      <Image
         src="/vibecheckr-logo.png"
-        alt=""
+        alt="VibeCheckr Logo"
+        fill
+        sizes={`${size}px`}
+        priority
         style={{
-          width: "170%",
-          height: "170%",
           objectFit: "contain",
-          maxWidth: "none",
+          transform: "scale(1.7)",
         }}
       />
     </div>
