@@ -35,12 +35,16 @@ export default function DailyVibeBanner() {
         let currentVibe = null;
         let lastDate = null;
         let userZodiac = null;
+        let userAge = 22; // default if missing
+        let userGender = null;
 
         if (snap.exists()) {
           const data = snap.data();
           currentVibe = data.daily_vibe_text;
           lastDate = data.last_vibe_date;
           userZodiac = data.zodiacSign;
+          userAge = data.age || data.userAge || 22;
+          userGender = data.gender || null;
         }
 
         // Eğer tarih bugünse ve vibe varsa, API'ye gitme
@@ -67,8 +71,9 @@ export default function DailyVibeBanner() {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            age: 25, // default or fetch from user data if saved
+            age: userAge,
             zodiac: userZodiac,
+            gender: userGender,
           }),
         });
 

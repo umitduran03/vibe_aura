@@ -185,7 +185,11 @@ ABSOLUTE RULES:
 5. TONE: Brutally honest, chaotic, savage, relatable, and funny. Use Gen-Z slang (delulu, brain rot, red flag, era, main character, etc.). Include emojis.
 6. ALWAYS respond in English.`;
 
-    const genderHint = gender === "male" ? "Male" : gender === "female" ? "Female" : "Not specified";
+    const g = String(gender || "").toLowerCase();
+    const genderHint = 
+      (g === "male" || g === "guy" || g === "man" || g === "boy") ? "Male" : 
+      (g === "female" || g === "girl" || g === "woman") ? "Female" : 
+      "Not specified";
 
     const promptText = `
 [BACKGROUND DATA — DO NOT REVEAL IN OUTPUT]
