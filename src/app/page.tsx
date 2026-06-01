@@ -12,10 +12,13 @@ import ExtrasModal from "@/components/ExtrasModal";
 import ExtrasShowcaseModal from "@/components/ExtrasShowcaseModal";
 import AnalyzingScreen from "@/components/AnalyzingScreen";
 import TokenModal from "@/components/TokenModal";
+import SettingsDrawer from "@/components/SettingsDrawer";
+import StreakRecoveryModal from "@/components/StreakRecoveryModal";
 import NotificationPrompt from "@/components/NotificationPrompt";
 import OnboardingScreen from "@/components/OnboardingScreen";
 import OnboardingBanner from "@/components/OnboardingBanner";
 import { useAppStore } from "@/store/useAppStore";
+import { useStreakStore } from "@/store/useStreakStore";
 import { analyzeAura, analyzeDuo, analyzeExtras, saveAuraSession, saveDuoSession, saveExtrasSession } from "@/lib/services";
 import { deductToken } from "@/lib/auth";
 import { auth } from "@/lib/firebase";
@@ -87,6 +90,7 @@ export default function Home() {
       try {
         const result = await analyzeExtras(userId, extrasType, extrasFormData);
         setExtrasResult(result);
+        useStreakStore.getState().triggerAnalysis();
         setScreen("extras-result");
 
         // Kaydet
@@ -162,6 +166,7 @@ export default function Home() {
         // Token düşürme işlemi /api/analyze içinde başarılı olursa yapılıyor.
         
         setDuoResult(result);
+        useStreakStore.getState().triggerAnalysis();
         setScreen("result");
 
       } else {
@@ -188,6 +193,7 @@ export default function Home() {
         // Token düşürme işlemi /api/analyze içinde başarılı olursa yapılıyor.
 
         setAuraResult(result);
+        useStreakStore.getState().triggerAnalysis();
         setScreen("result");
       }
     } catch (err: any) {
@@ -245,8 +251,9 @@ export default function Home() {
 
         {/* Extras Showcase Modal */}
         <ExtrasShowcaseModal />
-
-        {/* Extras Modal */}
+        <StreakRecoveryModal />
+        
+        {/* Toast Bildirimleri */}
         <ExtrasModal />
 
         {/* Custom Toast */}

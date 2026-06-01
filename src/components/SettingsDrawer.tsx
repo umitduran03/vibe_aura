@@ -23,6 +23,8 @@ import { ZODIAC_SIGNS } from "@/lib/constants";
 import { logOut } from "@/lib/auth";
 import Image from "next/image";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
+import { useStreakStore } from "@/store/useStreakStore";
+import { getVibeRank } from "@/lib/streak-utils";
 
 export default function SettingsDrawer() {
   const isOpen = useAppStore((s) => s.isSettingsOpen);
@@ -31,6 +33,9 @@ export default function SettingsDrawer() {
   const vipExpiry = useAppStore((s) => s.vipExpiry);
   const setScreen = useAppStore((s) => s.setScreen);
   const resetWizard = useAppStore((s) => s.resetWizard);
+
+  const streakCount = useStreakStore((s) => s.streakCount);
+  const currentRank = getVibeRank(streakCount);
 
   const isVipActive = vipExpiry ? new Date(vipExpiry) > new Date() : false;
 
@@ -260,11 +265,18 @@ export default function SettingsDrawer() {
                     )}
                   </AnimatePresence>
 
-                  <div className="flex items-center gap-2 relative z-10 pt-3">
+                  <div className="flex items-center gap-2 relative z-10 pt-3 justify-between">
                     <div className="px-2.5 py-1 rounded-md bg-black/20 flex items-center gap-2 border border-white/5">
                       <Coins className="h-3.5 w-3.5 text-yellow-400" />
                       <span className="text-[13px] font-medium text-white/90">
                         {tokenBalance} tokens remaining
+                      </span>
+                    </div>
+
+                    <div className={`px-2.5 py-1 rounded-md flex items-center gap-2 bg-gradient-to-r ${currentRank.gradient} border border-white/10 shadow-lg`}>
+                      {currentRank.icon}
+                      <span className="text-[12px] font-bold text-white tracking-wide">
+                        {currentRank.name}
                       </span>
                     </div>
                   </div>

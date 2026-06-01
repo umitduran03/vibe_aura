@@ -3,7 +3,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useAppStore } from "@/store/useAppStore";
 import { useMemo, useEffect, useRef, useState } from "react";
-import { ShoppingCart } from "lucide-react";
+import { Flame, ShoppingCart } from "lucide-react";
+import { useStreakStore } from "@/store/useStreakStore";
 
 /**
  * Kompakt, Apple tarzı Split Button (Ayrık Buton) jeton göstergesi.
@@ -14,6 +15,7 @@ export default function TokenBadge() {
   const tokenBalance = useAppStore((s) => s.tokenBalance);
   const vipExpiry = useAppStore((s) => s.vipExpiry);
   const setTokenModalOpen = useAppStore((s) => s.setTokenModalOpen);
+  const streakCount = useStreakStore((s) => s.streakCount);
 
   const prevBalanceRef = useRef(tokenBalance);
   const [addedTokens, setAddedTokens] = useState<number | null>(null);
@@ -42,7 +44,22 @@ export default function TokenBadge() {
   }, [tokenBalance]);
 
   return (
-    <div className="relative">
+    <div className="flex items-center gap-2 relative">
+      {/* Streak Badge */}
+      {streakCount > 0 && (
+        <motion.div
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-orange-500/10 border border-orange-500/20 select-none shadow-[0_0_10px_rgba(249,115,22,0.1)]"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+        >
+          <Flame className="w-3.5 h-3.5 text-orange-500" />
+          <span className="text-[13px] font-bold text-orange-400 tabular-nums">
+            {streakCount}
+          </span>
+        </motion.div>
+      )}
+
+      {/* Token Badge */}
       <motion.button
         className="group flex items-center p-0.5 rounded-full bg-white/5 border border-white/10 select-none cursor-pointer transition-all duration-300 hover:bg-white/10 hover:border-purple-500/30 shadow-[0_0_0_rgba(139,92,246,0)] hover:shadow-[0_0_15px_rgba(139,92,246,0.3)]"
         initial={{ opacity: 0, scale: 0.8 }}
