@@ -52,18 +52,18 @@ export default function TokenBadge() {
       {/* Streak Badge (Clickable to open info) */}
       <motion.button
         onClick={() => openStreakInfoModal()}
-        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full select-none cursor-pointer transition-all duration-300 shadow-sm ${
+        className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full select-none cursor-pointer transition-all duration-300 shadow-sm border ${
           hasStreak 
-          ? "bg-orange-500/10 border-orange-500/30 hover:bg-orange-500/20 hover:border-orange-500/50 shadow-[0_0_10px_rgba(249,115,22,0.1)]" 
+          ? "bg-white/5 border-white/10 hover:bg-white/10 hover:border-orange-500/30 hover:shadow-[0_0_15px_rgba(249,115,22,0.15)]" 
           : "bg-white/5 border-white/10 hover:bg-white/10"
-        } border`}
+        }`}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <Flame className={`w-3.5 h-3.5 ${hasStreak ? "text-orange-500" : "text-white/40"}`} />
-        <span className={`text-[13px] font-bold tabular-nums ${hasStreak ? "text-orange-400" : "text-white/40"}`}>
+        <Flame className={`w-3.5 h-3.5 ${hasStreak ? "text-orange-400 drop-shadow-[0_0_6px_rgba(249,115,22,0.6)]" : "text-white/40"}`} />
+        <span className={`text-[13px] font-bold tabular-nums ${hasStreak ? "text-white/90 group-hover:text-white" : "text-white/40"}`}>
           {streakCount}
         </span>
       </motion.button>
