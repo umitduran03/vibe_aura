@@ -23,6 +23,19 @@ export default function manifest(): MetadataRoute.Manifest {
         type: "image/png",
         purpose: "any"
       }
+    ],
+    screenshots: [
+      {
+        src: "/opengraph-image.png",
+        sizes: "1200x630",
+        type: "image/png",
+        form_factor: "wide"
+      },
+      {
+        src: "/opengraph-image.png",
+        sizes: "1200x630",
+        type: "image/png"
+      }
     ]
   };
 }
