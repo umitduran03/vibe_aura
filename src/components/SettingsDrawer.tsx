@@ -134,6 +134,7 @@ export default function SettingsDrawer() {
                 <button
                   onClick={close}
                   className="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
+                  aria-label="Close Settings"
                 >
                   <X className="h-4 w-4 text-white/60" />
                 </button>
@@ -205,6 +206,7 @@ export default function SettingsDrawer() {
                             ? "bg-cyan-500/20 shadow-[0_0_8px_rgba(6,182,212,0.4)]" 
                             : "bg-white/5 hover:bg-white/10"
                           }`}
+                          aria-label="Edit Zodiac"
                         >
                           <Pencil className={`w-3.5 h-3.5 ${
                             isEditingZodiac 
@@ -348,6 +350,29 @@ export default function SettingsDrawer() {
                         Vibe Dictionary
                       </p>
                       <p className="text-[11px] text-white/35">Gen-Z slang & astrology terms</p>
+                    </div>
+                  </a>
+
+                  {/* ─── FAQ ─── */}
+                  <a
+                    href="/faq"
+                    className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
+                    style={{
+                      background: "rgba(255,255,255,0.02)",
+                      border: "1px solid rgba(255,255,255,0.05)",
+                    }}
+                  >
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(59,130,246,0.12)" }}
+                    >
+                      <FileText className="h-4 w-4 text-blue-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+                        FAQ
+                      </p>
+                      <p className="text-[11px] text-white/35">Frequently Asked Questions</p>
                     </div>
                   </a>
                 </div>

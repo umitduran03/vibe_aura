@@ -143,6 +143,7 @@ export default function PhotoUpload() {
               whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(236, 72, 153, 0.8)", borderColor: "rgba(236, 72, 153, 0.6)" }}
               whileTap={{ scale: 0.9 }}
               className="absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full cursor-pointer z-10 transition-all duration-300 group"
+              aria-label="Remove Photo"
               style={{
                 background: "rgba(10, 10, 15, 0.6)",
                 backdropFilter: "blur(12px)",
@@ -229,6 +230,7 @@ export default function PhotoUpload() {
                 <button
                   onClick={() => { setIsModalOpen(false); hapticLight(); }}
                   className="absolute top-4 right-4 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-white/60 hover:text-white"
+                  aria-label="Close Photo Options"
                 >
                   <X className="h-5 w-5" />
                 </button>
