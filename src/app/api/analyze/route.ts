@@ -1,9 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import { adminDb } from "@/lib/firebase-admin";
+import OpenAI from "openai";
 
-// 2026 Kütüphanesi ile Başlatma: GoogleGenAI class.
+// ─── Gemini Client ───────────────────────────────────────────
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
+
+// ─── Groq Client (OpenAI SDK uyumlu — Nihai Kurtarıcı) ──────
+const groq = new OpenAI({
+  apiKey: process.env.GROQ_API_KEY || "",
+  baseURL: "https://api.groq.com/openai/v1",
+});
 
 // Model fallback zinciri: ilki meşgulse sıradakini dene
 const MODEL_CHAIN = [
@@ -23,9 +30,9 @@ function parseBase64Image(photoBase64: string) {
 }
 
 /* =============================================
-   Retry with model fallback
+   Retry with Gemini model fallback (Aşama 1)
    ============================================= */
-async function generateWithFallback(params: {
+async function generateWithGeminiFallback(params: {
   contents: any[];
   systemInstruction: string;
 }) {
@@ -33,7 +40,6 @@ async function generateWithFallback(params: {
 
   for (const model of MODEL_CHAIN) {
     try {
-
       const response = await ai.models.generateContent({
         model,
         contents: params.contents,
@@ -51,7 +57,9 @@ async function generateWithFallback(params: {
       // 503 (UNAVAILABLE) veya 429 (QUOTA) ise bir sonraki modeli dene
       if (String(code).includes("503") || String(code).includes("429") || 
           String(code).includes("UNAVAILABLE") || String(code).includes("RESOURCE_EXHAUSTED") ||
-          String(err?.message).includes("high demand") || String(err?.message).includes("overloaded")) {
+          String(code).includes("500") || String(code).includes("INTERNAL") ||
+          String(err?.message).includes("high demand") || String(err?.message).includes("overloaded") ||
+          String(err?.message).includes("timeout") || String(err?.message).includes("TIMEOUT")) {
         continue;
       }
       // Farklı bir hata (400, 404 vb.) ise direkt fırlat
@@ -59,8 +67,83 @@ async function generateWithFallback(params: {
     }
   }
 
-  // Tüm modeller başarısız oldu
-  throw lastError || new Error("All AI models are currently busy. Please try again later.");
+  // Tüm Gemini modelleri başarısız oldu
+  throw lastError || new Error("All Gemini models are currently busy.");
+}
+
+/* =============================================
+   Groq Fallback (Aşama 2 — Nihai Kurtarıcı)
+   Llama 3.3 70B via OpenAI-uyumlu API
+   ============================================= */
+async function generateWithGroqFallback(params: {
+  contents: any[];
+  systemInstruction: string;
+}): Promise<{ text: string }> {
+  // Groq text-only: contents dizisinden sadece metin parçalarını çıkar
+  const textParts = params.contents
+    .filter((part: any) => typeof part.text === "string")
+    .map((part: any) => part.text)
+    .join("\n\n");
+
+  // Fotoğraf bilgisi varsa Groq'a uyarı ekle
+  const hasImages = params.contents.some((part: any) => part.inlineData);
+  const imageNote = hasImages
+    ? "\n[NOTE: Photos were provided but cannot be processed in this fallback mode. Analyze based on the text data only and generate an equally entertaining response.]"
+    : "";
+
+  const completion = await groq.chat.completions.create({
+    model: "llama-3.3-70b-versatile",
+    messages: [
+      {
+        role: "system",
+        content: params.systemInstruction + "\n\nIMPORTANT: Your response must be ONLY valid JSON. No markdown, no code fences, no explanation text before or after the JSON.",
+      },
+      {
+        role: "user",
+        content: textParts + imageNote,
+      },
+    ],
+    temperature: 0.9,
+    max_tokens: 2048,
+    response_format: { type: "json_object" },
+  });
+
+  const responseText = completion.choices?.[0]?.message?.content || "";
+  return { text: responseText };
+}
+
+/* =============================================
+   Şelale (Waterfall) Fallback Orkestratörü
+   Gemini Zinciri → Groq Llama 3.3 70B
+   ============================================= */
+async function generateWithWaterfall(params: {
+  contents: any[];
+  systemInstruction: string;
+}) {
+  // ─── Aşama 1: Gemini Model Zinciri ─────────────────────────
+  try {
+    const response = await generateWithGeminiFallback(params);
+    return response;
+  } catch (geminiError: any) {
+    const errorInfo = geminiError?.status || geminiError?.code || geminiError?.message || "Unknown";
+    console.warn(
+      `[Waterfall] ⚠️ Tüm Gemini modelleri başarısız (${errorInfo}), Groq Llama 3.3 70B'ye geçiliyor...`
+    );
+
+    // ─── Aşama 2: Groq Nihai Kurtarıcı ─────────────────────
+    try {
+      const groqResponse = await generateWithGroqFallback(params);
+      console.log("[Waterfall] ✅ Groq Llama 3.3 70B başarılı — yanıt alındı.");
+      return groqResponse;
+    } catch (groqError: any) {
+      console.error(
+        "[Waterfall] ❌ Groq da başarısız:",
+        groqError?.message || groqError
+      );
+      // Her iki aşama da çöktü — orijinal Gemini hatasını fırlat
+      throw geminiError;
+    }
+  }
 }
 
 export async function POST(req: NextRequest) {
@@ -258,7 +341,7 @@ Your output must be purely JSON:
 
       userContents.push({ text: promptText });
 
-      const response = await generateWithFallback({
+      const response = await generateWithWaterfall({
         contents: userContents,
         systemInstruction,
       });
@@ -387,7 +470,7 @@ Your output must be purely JSON and strictly follow this exact structure:
 
       userContents.push({ text: promptText });
 
-      const response = await generateWithFallback({
+      const response = await generateWithWaterfall({
         contents: userContents,
         systemInstruction,
       });
@@ -516,7 +599,7 @@ Your output must be purely JSON and strictly follow this exact structure:
     // En sona metni ekleyelim
     userContents.push({ text: promptText });
 
-    const response = await generateWithFallback({
+    const response = await generateWithWaterfall({
       contents: userContents,
       systemInstruction,
     });
