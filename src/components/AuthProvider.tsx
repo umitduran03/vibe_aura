@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import { useAppStore } from "@/store/useAppStore";
 import { onAuthChange, ensureUserDoc, listenUserData, handleRedirectResult } from "@/lib/auth";
+import { useStreakStore } from "@/store/useStreakStore";
 
 /**
  * AuthProvider — Auth dinleyicisini yönetir.
@@ -67,10 +68,16 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
             }
 
             // Gerçek zamanlı dinleme başlat — hasAcceptedTerms de buradan gelir
-            unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference, hasAcceptedTerms }) => {
+            unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference, hasAcceptedTerms, streakCount, lastAnalysisDate, lostStreakCount }) => {
               setTokenBalance(balance);
               setVipExpiry(vipExpiry);
               useAppStore.getState().setUserPreferences(gender, preference);
+              
+              useStreakStore.setState((state) => ({
+                streakCount: streakCount ?? state.streakCount,
+                lastAnalysisDate: lastAnalysisDate ?? state.lastAnalysisDate,
+                lostStreakCount: lostStreakCount ?? state.lostStreakCount,
+              }));
               
               // Eğer optimistik olarak true yaptıysak ve veritabanı henüz güncellenmediyse (eski snapshot), UI'ın titremesini engelle
               if (isPendingTerms && !hasAcceptedTerms) {

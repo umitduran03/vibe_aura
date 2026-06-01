@@ -172,7 +172,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
             <ChevronLeft className="h-4 w-4" />
             Back
           </motion.button>
-          <span className="text-xs font-medium text-text-secondary/50 uppercase tracking-widest">
+          <span className="text-xs font-medium text-text-secondary/50 uppercase tracking-widest -translate-x-4">
             VibeCheckr.
           </span>
           <div className="flex items-center gap-2">

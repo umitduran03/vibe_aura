@@ -54,7 +54,7 @@ export default function TokenBadge() {
         onClick={() => openStreakInfoModal()}
         className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full select-none cursor-pointer transition-all duration-300 shadow-sm border ${
           hasStreak 
-          ? "bg-red-500/10 border-red-500/20 hover:bg-red-500/20 hover:border-red-500/40 hover:shadow-[0_0_15px_rgba(239,68,68,0.4)]" 
+          ? "bg-white/5 border-white/10 hover:bg-white/10 hover:border-red-500/30 hover:shadow-[0_0_15px_rgba(239,68,68,0.2)]" 
           : "bg-white/5 border-white/10 hover:bg-white/10"
         }`}
         initial={{ opacity: 0, scale: 0.8 }}
@@ -62,8 +62,8 @@ export default function TokenBadge() {
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
-        <Flame className={`w-3.5 h-3.5 ${hasStreak ? "text-red-500 drop-shadow-[0_0_6px_rgba(239,68,68,0.8)]" : "text-white/40"}`} />
-        <span className={`text-[13px] font-bold tabular-nums ${hasStreak ? "text-red-400 group-hover:text-red-300" : "text-white/40"}`}>
+        <Flame className={`w-3.5 h-3.5 ${hasStreak ? "text-red-500 drop-shadow-[0_0_6px_rgba(239,68,68,0.7)]" : "text-white/40"}`} />
+        <span className={`text-[13px] font-bold tabular-nums ${hasStreak ? "text-white/90 group-hover:text-white" : "text-white/40"}`}>
           {streakCount}
         </span>
       </motion.button>

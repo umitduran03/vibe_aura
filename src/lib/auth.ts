@@ -100,6 +100,9 @@ export async function ensureUserDoc(user: User): Promise<number> {
   await setDoc(userRef, {
     ...profileData,
     token_balance: INITIAL_TOKEN_BALANCE,
+    streakCount: 0,
+    lastAnalysisDate: null,
+    lostStreakCount: 0,
     createdAt: serverTimestamp(),
   });
 
@@ -112,7 +115,16 @@ export async function ensureUserDoc(user: User): Promise<number> {
  */
 export function listenUserData(
   uid: string,
-  callback: (data: { balance: number; vipExpiry: string | null; gender: string | null; preference: string | null; hasAcceptedTerms: boolean }) => void
+  callback: (data: { 
+    balance: number; 
+    vipExpiry: string | null; 
+    gender: string | null; 
+    preference: string | null; 
+    hasAcceptedTerms: boolean;
+    streakCount?: number;
+    lastAnalysisDate?: string | null;
+    lostStreakCount?: number;
+  }) => void
 ): () => void {
   const userRef = doc(db, "users", uid);
 
@@ -137,6 +149,9 @@ export function listenUserData(
         gender: data.gender || null,
         preference: data.preference || null,
         hasAcceptedTerms: !!data.hasAcceptedTerms,
+        streakCount: data.streakCount ?? 0,
+        lastAnalysisDate: data.lastAnalysisDate || null,
+        lostStreakCount: data.lostStreakCount ?? 0,
       });
     }
   }, (error) => {
