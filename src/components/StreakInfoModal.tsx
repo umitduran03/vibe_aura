@@ -77,8 +77,10 @@ export default function StreakInfoModal() {
                 <div>
                   <p className="text-xs text-white/50 uppercase tracking-widest font-bold mb-1">Current Streak</p>
                   <div className="flex items-center gap-2">
-                    <Flame className="w-6 h-6 text-orange-500" />
-                    <span className="text-3xl font-black text-white">{streakCount} <span className="text-lg text-white/40 font-medium">Days</span></span>
+                    <Flame className="w-6 h-6 text-orange-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
+                    <span className="text-3xl font-black text-white drop-shadow-md">
+                      {streakCount} <span className="text-lg text-white/40 font-medium">{streakCount === 1 ? 'Day' : 'Days'}</span>
+                    </span>
                   </div>
                 </div>
                 
@@ -95,16 +97,19 @@ export default function StreakInfoModal() {
               {nextRank && (
                 <div className="relative z-10 mt-6">
                   <div className="flex justify-between text-xs font-semibold mb-2">
-                    <span className="text-white/40">{currentRank.minDays} Days</span>
-                    <span className="text-white/40">Next: {nextRank.name} ({nextRank.minDays} Days)</span>
+                    <span className="text-white/50">{currentRank.minDays} {currentRank.minDays === 1 ? 'Day' : 'Days'}</span>
+                    <span className="text-white/60">Next: <span className="text-white/90">{nextRank.name}</span> ({nextRank.minDays} Days)</span>
                   </div>
-                  <div className="h-3 w-full bg-black/40 rounded-full overflow-hidden border border-white/5 p-0.5">
+                  <div className="h-4 w-full bg-black/60 rounded-full overflow-hidden border border-white/10 p-1 shadow-inner">
                     <motion.div 
-                      className={`h-full rounded-full bg-gradient-to-r ${nextRank.gradient}`}
+                      className={`h-full rounded-full bg-gradient-to-r ${nextRank.gradient} shadow-[0_0_15px_rgba(255,255,255,0.4)] relative`}
                       initial={{ width: 0 }}
                       animate={{ width: `${progressPercentage}%` }}
-                      transition={{ duration: 1, ease: "easeOut" }}
-                    />
+                      transition={{ duration: 1.2, ease: "easeOut" }}
+                    >
+                      {/* Inner highlight for a glossy 3D look */}
+                      <div className="absolute inset-0 bg-gradient-to-b from-white/30 to-transparent rounded-full" />
+                    </motion.div>
                   </div>
                 </div>
               )}
@@ -116,8 +121,8 @@ export default function StreakInfoModal() {
             </h3>
             
             <div className="space-y-3 relative">
-              {/* Connecting vertical line */}
-              <div className="absolute left-6 top-6 bottom-6 w-[2px] bg-white/5 rounded-full" />
+              {/* Connecting vertical glowing line */}
+              <div className="absolute left-6 top-6 bottom-6 w-[3px] bg-gradient-to-b from-orange-500/40 via-purple-500/40 to-white/5 rounded-full blur-[1px]" />
               
               {VIBE_RANKS.map((rank, index) => {
                 const isCurrent = currentRank.name === rank.name;
@@ -128,11 +133,16 @@ export default function StreakInfoModal() {
                   <div 
                     key={rank.name}
                     className={`relative z-10 flex items-center gap-4 p-3 rounded-2xl transition-all duration-300 ${
-                      isCurrent ? "bg-white/10 border border-white/20 scale-[1.02] shadow-lg" : 
-                      isAchieved ? "opacity-70" : "opacity-40 grayscale"
+                      isCurrent 
+                      ? "bg-white/10 border border-white/20 scale-[1.02] shadow-[0_0_30px_rgba(139,92,246,0.15)]" 
+                      : isAchieved 
+                      ? "opacity-90" 
+                      : isNext 
+                      ? "opacity-70"
+                      : "opacity-30 grayscale blur-[1px]"
                     }`}
                   >
-                    <div className={`w-12 h-12 shrink-0 rounded-xl flex items-center justify-center ${
+                    <div className={`w-14 h-14 shrink-0 rounded-xl flex items-center justify-center border border-white/10 p-3 shadow-inner ${
                       isAchieved || isNext ? `bg-gradient-to-br ${rank.gradient}` : "bg-white/5"
                     }`}>
                       {rank.icon}

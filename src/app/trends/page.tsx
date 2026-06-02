@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Flame, Sparkles, TrendingUp } from "lucide-react";
 import { trendsData } from "@/lib/trends-data";
+import SeoFooter from "@/components/SeoFooter";
 
 export const metadata: Metadata = {
   title: "Vibe Culture & Gen-Z Trends Hub",
@@ -99,6 +100,7 @@ export default function TrendsHubPage() {
           </Link>
         </div>
       </div>
+      <SeoFooter />
     </div>
   );
 }

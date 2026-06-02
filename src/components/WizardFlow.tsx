@@ -172,17 +172,17 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
             <ChevronLeft className="h-4 w-4" />
             Back
           </motion.button>
-          <span className="text-xs font-medium text-text-secondary/50 uppercase tracking-widest -translate-x-4">
+          <span className="text-[10px] sm:text-xs font-medium text-text-secondary/50 uppercase tracking-widest -translate-x-2 sm:-translate-x-4">
             VibeCheckr.
           </span>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1 sm:gap-2">
             <TokenBadge />
             <Link href="/history" prefetch={false} onClick={() => hapticLight()}>
               <motion.div 
-                className="flex items-center justify-center p-2 rounded-full bg-white/5 border border-white/10 text-text-secondary hover:text-text-primary hover:bg-white/10 transition-colors"
+                className="flex items-center justify-center p-1.5 sm:p-2 rounded-full bg-white/5 border border-white/10 text-text-secondary hover:text-text-primary hover:bg-white/10 transition-colors"
                 whileTap={{ scale: 0.9 }}
               >
-                <Clock className="h-4 w-4" />
+                <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               </motion.div>
             </Link>
             <SettingsDrawer />

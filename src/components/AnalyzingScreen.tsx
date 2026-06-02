@@ -2,16 +2,45 @@
 
 import { motion } from "framer-motion";
 import { Sparkles } from "lucide-react";
-
-const loadingPhrases = [
-  "Scanning your vibe frequencies...",
-  "Processing personality data...",
-  "Deepening the analysis...",
-  "Decoding the AI's verdict...",
-  "Almost there...",
-];
+import { useState } from "react";
+import { useAppStore } from "@/store/useAppStore";
 
 export default function AnalyzingScreen() {
+  const analysisMode = useAppStore((s) => s.analysisMode);
+  const soloScenario = useAppStore((s) => s.soloScenario);
+  const duoRelationType = useAppStore((s) => s.duoRelationType);
+  const extrasType = useAppStore((s) => s.extrasType);
+
+  // Lock the phrases on mount so they don't jump if state resets during unmount
+  const [loadingPhrases] = useState(() => {
+    if (extrasType) {
+      switch (extrasType) {
+        case "toxic-ex": return ["SCANNING TOXICITY...", "REVIEWING MISTAKES...", "JUDGING LIFE CHOICES...", "FINDING RED FLAGS...", "PREPARING REALITY CHECK..."];
+        case "situationship": return ["ANALYZING CONFUSION...", "DECODING MIXED SIGNALS...", "MEASURING COMMITMENT...", "CHECKING REALITY...", "SPITTING HARSH TRUTHS..."];
+        case "mood-reset": return ["SCANNING ENERGY LEVELS...", "PURGING BAD VIBES...", "CALCULATING AURA SHIFT...", "PREPARING WAKE UP CALL...", "RECHARGING THE VIBE..."];
+        case "delulu-check": return ["MEASURING DELUSION...", "ANALYZING RECEIPTS...", "IGNORING FAKE HOPES...", "CALCULATING REALITY...", "PREPARING BRUTAL TRUTH..."];
+        case "rizz-architect": return ["ANALYZING MIND GAMES...", "SCANNING THE CHAT...", "CALCULATING POWER MOVE...", "CRAFTING THE TRAP...", "GENERATING RIZZ..."];
+      }
+    }
+
+    if (analysisMode === "duo") {
+      switch (duoRelationType) {
+        case "flirt": return ["SCANNING CHEMISTRY...", "MEASURING THE SPARK...", "COMPARING ZODIACS...", "CHECKING LONG-TERM ODDS...", "CALCULATING LOVE SCORE..."];
+        case "ex": return ["SCANNING THE DAMAGE...", "FINDING WHO WAS TOXIC...", "ANALYZING THE BREAKUP...", "CHECKING REMAINING FEELINGS...", "PREPARING BRUTAL TRUTH..."];
+        case "platonic": return ["ANALYZING THE TENSION...", "MEASURING FRIENDZONE RISK...", "DECODING HIDDEN FEELINGS...", "CHECKING COMPATIBILITY...", "CALCULATING CRUSH ODDS..."];
+        case "bff": return ["SCANNING CHAOS LEVELS...", "CHECKING PLATONIC VIBES...", "MEASURING LOYALTY...", "ANALYZING YOUR DYNAMICS...", "CALCULATING BFF SCORE..."];
+      }
+    }
+
+    switch (soloScenario) {
+      case "roast": return ["JUDGING YOUR SELFIE...", "FINDING YOUR FLAWS...", "QUESTIONING YOUR CHOICES...", "ACTIVATING SAVAGE MODE...", "PREPARING BRUTAL ROAST..."];
+      case "soulmate": return ["SCANNING ROMANTIC AURA...", "CALCULATING RIZZ LEVEL...", "SEARCHING FOR MATCHES...", "ANALYZING LOVE POTENTIAL...", "PREPARING SOULMATE PROFILE..."];
+      case "general":
+      default:
+        return ["SCANNING VIBE FREQUENCY...", "EXTRACTING AURA DATA...", "READING YOUR ENERGY...", "DECODING PERSONALITY...", "FINALIZING VIBE CHECK..."];
+    }
+  });
+
   return (
     <motion.div
       className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8"

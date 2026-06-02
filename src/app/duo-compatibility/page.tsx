@@ -1,8 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Heart, Zap, Sparkles } from "lucide-react";
+import { ArrowLeft, Users, Sparkles, HeartCrack, Heart, Zap } from "lucide-react";
 import { motion } from "framer-motion";
+import SeoFooter from "@/components/SeoFooter";
 
 export default function DuoCompatibilityLanding() {
   const jsonLd = {
@@ -157,6 +158,7 @@ export default function DuoCompatibilityLanding() {
           </Link>
         </motion.div>
       </div>
+      <SeoFooter />
     </div>
   );
 }

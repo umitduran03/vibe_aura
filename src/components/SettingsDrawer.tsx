@@ -97,14 +97,14 @@ export default function SettingsDrawer() {
       {/* ─── Trigger Button ─── */}
       <button
         onClick={open}
-        className="group p-2.5 rounded-xl transition-all duration-200 hover:bg-white/10 active:scale-90 cursor-pointer"
+        className="group p-1.5 sm:p-2.5 rounded-xl transition-all duration-200 hover:bg-white/10 active:scale-90 cursor-pointer"
         style={{
           background: "rgba(255,255,255,0.05)",
           border: "1px solid rgba(255,255,255,0.08)",
         }}
         aria-label="Settings"
       >
-        <Settings className="h-5 w-5 text-white/60 transition-colors group-hover:text-white" />
+        <Settings className="h-4 w-4 sm:h-5 sm:w-5 text-white/60 transition-colors group-hover:text-white" />
       </button>
 
       {/* ─── Drawer ─── */}
@@ -269,7 +269,7 @@ export default function SettingsDrawer() {
                     <div className="px-2.5 py-1 rounded-md bg-black/20 flex items-center gap-2 border border-white/5">
                       <Coins className="h-3.5 w-3.5 text-yellow-400" />
                       <span className="text-[13px] font-medium text-white/90">
-                        {tokenBalance} tokens remaining
+                        {tokenBalance} {tokenBalance === 1 ? "token" : "tokens"} remaining
                       </span>
                     </div>
 
@@ -288,6 +288,80 @@ export default function SettingsDrawer() {
 
               {/* ─── Menu Items ─── */}
               <div className="flex-1 overflow-y-auto px-5">
+                <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-3 px-1">
+                  Resources
+                </p>
+                <div className="space-y-1.5 mb-6">
+                  {/* ─── Trends & Articles ─── */}
+                  <a
+                    href="/trends"
+                    className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
+                    style={{
+                      background: "rgba(255,255,255,0.02)",
+                      border: "1px solid rgba(255,255,255,0.05)",
+                    }}
+                  >
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(244,114,182,0.12)" }}
+                    >
+                      <Sparkles className="h-4 w-4 text-pink-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+                        Trends & Articles
+                      </p>
+                      <p className="text-[11px] text-white/35">Dating psychology & viral trends</p>
+                    </div>
+                  </a>
+
+                  {/* ─── Gen-Z Dictionary ─── */}
+                  <a
+                    href="/vibe-dictionary"
+                    className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
+                    style={{
+                      background: "rgba(255,255,255,0.02)",
+                      border: "1px solid rgba(255,255,255,0.05)",
+                    }}
+                  >
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(168,85,247,0.12)" }}
+                    >
+                      <BookOpen className="h-4 w-4 text-purple-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+                        Vibe Dictionary
+                      </p>
+                      <p className="text-[11px] text-white/35">Gen-Z slang & astrology terms</p>
+                    </div>
+                  </a>
+
+                  {/* ─── FAQ ─── */}
+                  <a
+                    href="/faq"
+                    className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
+                    style={{
+                      background: "rgba(255,255,255,0.02)",
+                      border: "1px solid rgba(255,255,255,0.05)",
+                    }}
+                  >
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+                      style={{ background: "rgba(59,130,246,0.12)" }}
+                    >
+                      <FileText className="h-4 w-4 text-blue-400" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
+                        FAQ
+                      </p>
+                      <p className="text-[11px] text-white/35">Frequently Asked Questions</p>
+                    </div>
+                  </a>
+                </div>
+
                 <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-3 px-1">
                   Legal
                 </p>
@@ -340,52 +414,6 @@ export default function SettingsDrawer() {
                       <p className="text-[11px] text-white/35">How we protect your data</p>
                     </div>
                     <ExternalLink className="h-3.5 w-3.5 text-white/20 group-hover:text-white/40 shrink-0" />
-                  </a>
-
-                  {/* ─── Gen-Z Dictionary ─── */}
-                  <a
-                    href="/vibe-dictionary"
-                    className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
-                    style={{
-                      background: "rgba(255,255,255,0.02)",
-                      border: "1px solid rgba(255,255,255,0.05)",
-                    }}
-                  >
-                    <div
-                      className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
-                      style={{ background: "rgba(168,85,247,0.12)" }}
-                    >
-                      <BookOpen className="h-4 w-4 text-purple-400" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
-                        Vibe Dictionary
-                      </p>
-                      <p className="text-[11px] text-white/35">Gen-Z slang & astrology terms</p>
-                    </div>
-                  </a>
-
-                  {/* ─── FAQ ─── */}
-                  <a
-                    href="/faq"
-                    className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
-                    style={{
-                      background: "rgba(255,255,255,0.02)",
-                      border: "1px solid rgba(255,255,255,0.05)",
-                    }}
-                  >
-                    <div
-                      className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
-                      style={{ background: "rgba(59,130,246,0.12)" }}
-                    >
-                      <FileText className="h-4 w-4 text-blue-400" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
-                        FAQ
-                      </p>
-                      <p className="text-[11px] text-white/35">Frequently Asked Questions</p>
-                    </div>
                   </a>
                 </div>
 

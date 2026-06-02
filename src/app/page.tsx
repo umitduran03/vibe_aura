@@ -142,6 +142,7 @@ export default function Home() {
 
     setScreen("analyzing");
     setIsAnalyzing(true);
+    useAppStore.getState().setExtrasType(null);
     
     try {
       if (analysisMode === "duo") {

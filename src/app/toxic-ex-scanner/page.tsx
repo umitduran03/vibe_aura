@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft, Skull, Sparkles, AlertTriangle } from "lucide-react";
 import { motion } from "framer-motion";
+import SeoFooter from "@/components/SeoFooter";
 
 export default function ToxicExScannerLanding() {
   const jsonLd = {
@@ -151,6 +152,7 @@ export default function ToxicExScannerLanding() {
           </Link>
         </motion.div>
       </div>
+      <SeoFooter />
     </div>
   );
 }

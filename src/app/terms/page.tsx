@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Scale } from "lucide-react";
+import SeoFooter from "@/components/SeoFooter";
 
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -168,13 +169,8 @@ export default function TermsPage() {
           </section>
         </div>
 
-        {/* ─── Footer ─── */}
-        <div className="mt-16 pt-8 border-t border-white/10 text-center">
-          <p className="text-xs text-white/30">
-            © {new Date().getFullYear()} VibeCheckr. All rights reserved.
-          </p>
-        </div>
       </div>
+      <SeoFooter />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft, Sparkles, SmartphoneNfc } from "lucide-react";
 import { motion } from "framer-motion";
+import SeoFooter from "@/components/SeoFooter";
 
 export default function DeluluCheckLanding() {
   const jsonLd = {
@@ -152,6 +153,7 @@ export default function DeluluCheckLanding() {
           </Link>
         </motion.div>
       </div>
+      <SeoFooter />
     </div>
   );
 }

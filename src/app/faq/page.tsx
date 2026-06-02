@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft, HelpCircle, MessageCircleQuestion, Sparkles } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import SeoFooter from "@/components/SeoFooter";
 
 const faqs = [
   {
@@ -165,6 +166,7 @@ export default function FAQPage() {
           </div>
         </motion.div>
       </div>
+      <SeoFooter />
     </div>
   );
 }

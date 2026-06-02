@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft, Sparkles, MessageCircleHeart } from "lucide-react";
 import { motion } from "framer-motion";
+import SeoFooter from "@/components/SeoFooter";
 
 export default function SituationshipClarifierLanding() {
   const jsonLd = {
@@ -152,6 +153,7 @@ export default function SituationshipClarifierLanding() {
           </Link>
         </motion.div>
       </div>
+      <SeoFooter />
     </div>
   );
 }

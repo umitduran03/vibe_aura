@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, BookOpen, Sparkles, Zap, HeartPulse } from "lucide-react";
+import { ArrowLeft, BookOpen, Sparkles } from "lucide-react";
+import VibeDictionaryClient from "@/components/VibeDictionaryClient";
+import { dictionaryTerms } from "@/lib/dictionary-data";
+import SeoFooter from "@/components/SeoFooter";
 
 export const metadata: Metadata = {
   title: "Gen-Z Vibe & Astrology Dictionary",
@@ -10,11 +13,30 @@ export const metadata: Metadata = {
   },
 };
 
-import VibeDictionaryClient from "@/components/VibeDictionaryClient";
-
 export default function VibeDictionaryPage() {
+  // Generate DefinedTermSet JSON-LD
+  const definedTerms = dictionaryTerms.flatMap(section => 
+    section.terms.map(term => ({
+      "@type": "DefinedTerm",
+      "name": term.word,
+      "description": term.meaning,
+      "inDefinedTermSet": "https://thevibecheckr.vercel.app/vibe-dictionary"
+    }))
+  );
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "DefinedTermSet",
+    "@id": "https://thevibecheckr.vercel.app/vibe-dictionary",
+    name: "Gen-Z Vibe & Astrology Dictionary",
+    description: "A comprehensive dictionary of Gen-Z slang, internet culture terms, and astrological personality traits.",
+    hasDefinedTerm: definedTerms
+  };
+
   return (
     <div className="min-h-dvh bg-[#050510] text-white">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+
       {/* Background Glow */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-purple-600/20 blur-[120px]" />
@@ -80,6 +102,7 @@ export default function VibeDictionaryPage() {
           </Link>
         </div>
       </div>
+      <SeoFooter />
     </div>
   );
 }
