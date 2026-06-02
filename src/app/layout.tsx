@@ -154,60 +154,10 @@ export default function RootLayout({
                 "Shareable Result Cards",
               ],
               screenshot: "https://thevibecheckr.vercel.app/opengraph-image.png",
-              aggregateRating: {
-                "@type": "AggregateRating",
-                ratingValue: "4.8",
-                ratingCount: "1200",
-                bestRating: "5",
-                worstRating: "1",
-              },
             }),
           }}
         />
-        {/* JSON-LD FAQPage Schema — Google Rich Results */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "FAQPage",
-              mainEntity: [
-                {
-                  "@type": "Question",
-                  name: "What is VibeCheckr?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "VibeCheckr is a free AI-powered app that analyzes your selfie to give you a brutally honest vibe check, personality roast, or soulmate profile. It uses advanced AI to read your energy and deliver Gen-Z style results you can share on social media.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "How does the AI photo roast work?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Upload your selfie, choose a roast intensity, and our AI analyzes your photo along with your age and zodiac sign to deliver a savage, funny, and personalized roast. Results come as shareable cards perfect for Instagram and TikTok stories.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Is VibeCheckr free to use?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Yes! VibeCheckr is free to use. You get daily free tokens to run analyses. Premium features like Toxic Ex Scanner and Situationship Clarifier are available with additional tokens.",
-                  },
-                },
-                {
-                  "@type": "Question",
-                  name: "Can I check compatibility with someone?",
-                  acceptedAnswer: {
-                    "@type": "Answer",
-                    text: "Absolutely! Use Duo Mode to upload two photos and get an AI-powered compatibility analysis. Whether it's a crush, ex, or best friend — VibeCheckr will decode your chemistry with savage honesty.",
-                  },
-                },
-              ],
-            }),
-          }}
-        />
+
         {/* Preconnect to Firebase & Google APIs — reduces DNS+TLS latency */}
         <link rel="preconnect" href="https://firebaseinstallations.googleapis.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
