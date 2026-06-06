@@ -76,6 +76,7 @@ export default function Home() {
       import("@/components/AnalyzingScreen");
       import("@/components/ResultCard");
       import("@/components/DuoResultCard");
+      import("@/lib/services"); // Groq'un hızını kesmemek için bunu da prefetch et
 
       const timer = setTimeout(() => setScreen("onboarding"), 3000);
       return () => clearTimeout(timer);
