@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useCallback, useTransition } from "react";
+import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ChevronLeft, ChevronRight, Sparkles, Clock, Heart } from "lucide-react";
+import { ChevronLeft, ChevronRight, Sparkles, Clock, Heart, Loader2 } from "lucide-react";
 
 import ProgressDots from "@/components/ProgressDots";
 import ModeSelector from "@/components/ModeSelector";
@@ -82,11 +82,18 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
     photoUrl,
   ]);
 
+  const [isPending, startTransition] = useTransition();
+
   const goNext = () => {
     hapticLight();
     if (step < totalSteps - 1) {
-      setWizardStep(step + 1, 1);
+      // Adım geçişi: düşük öncelikli concurrent render olarak işaretle
+      // Ana thread serbest kalır → INP düşer
+      startTransition(() => {
+        setWizardStep(step + 1, 1);
+      });
     } else {
+      // Son adım: analiz tetikleyici — transition dışında, anında çalışmalı
       hapticMedium();
       onComplete();
     }
@@ -95,7 +102,9 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
   const goBack = () => {
     hapticLight();
     if (step > 0) {
-      setWizardStep(step - 1, -1);
+      startTransition(() => {
+        setWizardStep(step - 1, -1);
+      });
     }
   };
 
@@ -152,7 +161,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
   const isLastStep = step === totalSteps - 1;
 
   return (
-    <motion.div
+    <m.div
       className="flex flex-col min-h-dvh"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -162,28 +171,21 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
       {/* Header */}
       <div className="flex-shrink-0 px-4 pt-4">
         <div className="flex items-center justify-between mb-2">
-          <motion.button
-            onClick={goBack}
-            className={`flex items-center gap-1 text-sm text-text-secondary transition-opacity cursor-pointer ${
-              step === 0 ? "opacity-0 pointer-events-none" : "opacity-100"
-            }`}
-            whileTap={{ scale: 0.95 }}
-          >
-            <ChevronLeft className="h-4 w-4" />
-            Back
-          </motion.button>
-          <span className="text-[10px] sm:text-xs font-medium text-text-secondary/50 uppercase tracking-widest -translate-x-2 sm:-translate-x-4">
-            VibeCheckr.
-          </span>
-          <div className="flex items-center gap-1 sm:gap-2">
+          {/* İkonların solundaki boşlukta ortalı — flex-1 ile dinamik */}
+          <div className="flex-1 flex items-center justify-center">
+            <span className="text-[10px] sm:text-xs font-medium text-text-secondary/50 uppercase tracking-widest">
+              VibeCheckr.
+            </span>
+          </div>
+          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             <TokenBadge />
             <Link href="/history" prefetch={false} onClick={() => hapticLight()}>
-              <motion.div 
+              <m.div 
                 className="flex items-center justify-center p-1.5 sm:p-2 rounded-full bg-white/5 border border-white/10 text-text-secondary hover:text-text-primary hover:bg-white/10 transition-colors"
                 whileTap={{ scale: 0.9 }}
               >
                 <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
-              </motion.div>
+              </m.div>
             </Link>
             <SettingsDrawer />
           </div>
@@ -194,7 +196,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
       {/* Step Content */}
       <div className="flex-1 px-5 overflow-y-auto overflow-x-hidden relative">
         <AnimatePresence mode="wait" custom={direction}>
-          <motion.div
+          <m.div
             key={`${analysisMode}-${step}`}
             custom={direction}
             variants={slideVariants}
@@ -204,7 +206,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
             className="w-full"
           >
             {renderStep()}
-          </motion.div>
+          </m.div>
         </AnimatePresence>
       </div>
 
@@ -212,11 +214,17 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
       <div className="flex-shrink-0 px-5 pb-8 pt-4">
         <GlassButton
           onClick={goNext}
-          disabled={!canProceed()}
+          disabled={isPending || !canProceed()}
           variant="primary"
           className="w-full flex items-center justify-center gap-2"
         >
-          {isLastStep ? (
+          {/* isPending: adım geçişi render edilirken spinner göster */}
+          {isPending && !isLastStep ? (
+            <>
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Loading...
+            </>
+          ) : isLastStep ? (
             isDuo ? (
               <>
                 <Heart className="h-4 w-4" />
@@ -236,25 +244,43 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
           )}
         </GlassButton>
 
+        {/* Back butonu — ilk adım hariç her yerde görünür */}
+        <AnimatePresence>
+          {step > 0 && (
+            <m.button
+              onClick={goBack}
+              className="mt-3 w-full text-center text-sm text-text-secondary/50 hover:text-text-secondary transition-colors cursor-pointer flex items-center justify-center gap-1"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 6 }}
+              transition={{ duration: 0.2 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              <ChevronLeft className="h-4 w-4" />
+              Back
+            </m.button>
+          )}
+        </AnimatePresence>
+
         {((!isDuo && step === 2) ||
           (isDuo &&
             step === 0 &&
             duoPerson1.zodiac !== null &&
             duoPerson2.zodiac !== null)) && (
-          <motion.button
+          <m.button
             onClick={() => {
               hapticLight();
               onComplete();
             }}
-            className="mt-3 w-full text-center text-sm text-text-secondary/50 hover:text-text-secondary transition-colors cursor-pointer"
+            className="mt-2 w-full text-center text-sm text-text-secondary/50 hover:text-text-secondary transition-colors cursor-pointer"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
             Skip, show me the results
-          </motion.button>
+          </m.button>
         )}
       </div>
-    </motion.div>
+    </m.div>
   );
 }

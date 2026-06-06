@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useAppStore } from "@/store/useAppStore";
@@ -42,7 +42,7 @@ export default function AnalyzingScreen() {
   });
 
   return (
-    <motion.div
+    <m.div
       className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8"
       style={{
         background:
@@ -56,7 +56,7 @@ export default function AnalyzingScreen() {
       {/* Pulsing rings */}
       <div className="relative flex items-center justify-center">
         {[1, 2, 3].map((ring) => (
-          <motion.div
+          <m.div
             key={ring}
             className="absolute rounded-full border border-accent/20"
             style={{
@@ -77,7 +77,7 @@ export default function AnalyzingScreen() {
         ))}
 
         {/* Center icon */}
-        <motion.div
+        <m.div
           animate={{
             scale: [1, 1.15, 1],
             rotate: [0, 180, 360],
@@ -88,12 +88,12 @@ export default function AnalyzingScreen() {
           }}
         >
           <Sparkles className="h-8 w-8 text-accent" />
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Cycling text */}
       <div className="h-12 overflow-hidden w-full max-w-[320px]">
-        <motion.div
+        <m.div
           animate={{ y: [0, -48, -96, -144, -192] }}
           transition={{
             duration: 8,
@@ -109,11 +109,11 @@ export default function AnalyzingScreen() {
               </p>
             </div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Bottom glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-48 w-48 rounded-full bg-accent/10 blur-[80px]" />
-    </motion.div>
+    </m.div>
   );
 }

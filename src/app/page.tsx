@@ -1,27 +1,36 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import dynamic from "next/dynamic";
+import { AnimatePresence, LazyMotion, m } from "framer-motion";
+
+const loadFeatures = () =>
+  import("framer-motion").then((mod) => mod.domAnimation);
+
+// ─── Kritik yol: ilk render'da hemen gösterilecekler ───
 import AuthProvider from "@/components/AuthProvider";
 import SplashScreen from "@/components/SplashScreen";
-import WizardFlow from "@/components/WizardFlow";
-import ResultCard from "@/components/ResultCard";
-import DuoResultCard from "@/components/DuoResultCard";
-import ExtrasResultCard from "@/components/ExtrasResultCard";
-import ExtrasModal from "@/components/ExtrasModal";
-import ExtrasShowcaseModal from "@/components/ExtrasShowcaseModal";
-import AnalyzingScreen from "@/components/AnalyzingScreen";
-import TokenModal from "@/components/TokenModal";
-import SettingsDrawer from "@/components/SettingsDrawer";
-import StreakRecoveryModal from "@/components/StreakRecoveryModal";
-import StreakInfoModal from "@/components/StreakInfoModal";
-import NotificationPrompt from "@/components/NotificationPrompt";
 import OnboardingScreen from "@/components/OnboardingScreen";
 import OnboardingBanner from "@/components/OnboardingBanner";
+
+// ─── Lazy: Splash sırasında arka planda prefetch edilecekler ───
+const WizardFlow = dynamic(() => import("@/components/WizardFlow"), { ssr: false });
+const AnalyzingScreen = dynamic(() => import("@/components/AnalyzingScreen"), { ssr: false });
+const ResultCard = dynamic(() => import("@/components/ResultCard"), { ssr: false });
+const DuoResultCard = dynamic(() => import("@/components/DuoResultCard"), { ssr: false });
+const ExtrasResultCard = dynamic(() => import("@/components/ExtrasResultCard"), { ssr: false });
+
+// ─── Lazy: Modal bileşenler — sadece açıldıklarında yüklenecekler ───
+const TokenModal = dynamic(() => import("@/components/TokenModal"), { ssr: false });
+const ExtrasModal = dynamic(() => import("@/components/ExtrasModal"), { ssr: false });
+const ExtrasShowcaseModal = dynamic(() => import("@/components/ExtrasShowcaseModal"), { ssr: false });
+const StreakRecoveryModal = dynamic(() => import("@/components/StreakRecoveryModal"), { ssr: false });
+const StreakInfoModal = dynamic(() => import("@/components/StreakInfoModal"), { ssr: false });
+const NotificationPrompt = dynamic(() => import("@/components/NotificationPrompt"), { ssr: false });
+
 import { useAppStore } from "@/store/useAppStore";
 import { useStreakStore } from "@/store/useStreakStore";
 import { analyzeAura, analyzeDuo, analyzeExtras, saveAuraSession, saveDuoSession, saveExtrasSession } from "@/lib/services";
-import { deductToken } from "@/lib/auth";
 import { auth } from "@/lib/firebase";
 
 export default function Home() {
@@ -59,12 +68,21 @@ export default function Home() {
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
   // Splash → Onboarding after 3 seconds
+  // Splash gösterilirken ağır chunk'ları arka planda indir (prefetch)
   useEffect(() => {
     if (screen === "splash") {
+      // Splash'in 3 saniyesini kullanarak kritik bileşenleri önceden indir
+      // Kullanıcı onboarding'i bitirdiğinde WizardFlow anında açılır
+      import("@/components/WizardFlow");
+      import("@/components/AnalyzingScreen");
+      import("@/components/ResultCard");
+      import("@/components/DuoResultCard");
+
       const timer = setTimeout(() => setScreen("onboarding"), 3000);
       return () => clearTimeout(timer);
     }
   }, [screen, setScreen]);
+
 
   const isConnecting = useAppStore((s) => s.isConnecting);
   const [prevIsConnecting, setPrevIsConnecting] = useState(false);
@@ -220,81 +238,83 @@ export default function Home() {
 
   return (
     <AuthProvider>
-      <main className="relative mx-auto w-full max-w-[430px] min-h-dvh overflow-hidden flex flex-col">
-        <OnboardingBanner />
-        <AnimatePresence mode="wait">
-          {screen === "splash" && <SplashScreen key="splash" />}
-          
-          {screen === "onboarding" && <OnboardingScreen key="onboarding" />}
-          
-          {screen === "wizard" && (
-            <WizardFlow key="wizard" onComplete={handleWizardComplete} />
-          )}
-          
-          {screen === "analyzing" && <AnalyzingScreen key="analyzing" />}
-          
-          {screen === "result" && (
-            analysisMode === "duo"
-              ? <DuoResultCard key="duo-result" />
-              : <ResultCard key="solo-result" />
-          )}
-          
-          {screen === "extras-result" && (
-            <ExtrasResultCard key="extras-result" />
-          )}
-        </AnimatePresence>
+      <LazyMotion features={loadFeatures}>
+        <main className="relative mx-auto w-full max-w-[430px] min-h-dvh overflow-hidden flex flex-col">
+          <OnboardingBanner />
+          <AnimatePresence mode="wait">
+            {screen === "splash" && <SplashScreen key="splash" />}
+            
+            {screen === "onboarding" && <OnboardingScreen key="onboarding" />}
+            
+            {screen === "wizard" && (
+              <WizardFlow key="wizard" onComplete={handleWizardComplete} />
+            )}
+            
+            {screen === "analyzing" && <AnalyzingScreen key="analyzing" />}
+            
+            {screen === "result" && (
+              analysisMode === "duo"
+                ? <DuoResultCard key="duo-result" />
+                : <ResultCard key="solo-result" />
+            )}
+            
+            {screen === "extras-result" && (
+              <ExtrasResultCard key="extras-result" />
+            )}
+          </AnimatePresence>
 
 
-        {/* Token Gate Modal */}
-        <TokenModal
-          isOpen={isTokenModalOpen}
-          onClose={() => setTokenModalOpen(false)}
-        />
+          {/* Token Gate Modal */}
+          <TokenModal
+            isOpen={isTokenModalOpen}
+            onClose={() => setTokenModalOpen(false)}
+          />
 
-        {/* Extras Showcase Modal */}
-        <ExtrasShowcaseModal />
-        <StreakRecoveryModal />
-        <StreakInfoModal />
-        
-        {/* Toast Bildirimleri */}
-        <ExtrasModal />
+          {/* Extras Showcase Modal */}
+          <ExtrasShowcaseModal />
+          <StreakRecoveryModal />
+          <StreakInfoModal />
+          
+          {/* Toast Bildirimleri */}
+          <ExtrasModal />
 
-        {/* Custom Toast */}
-        <AnimatePresence>
-          {toast && (
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 30 }}
-              className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[360px]"
-            >
-              <div className={`glass-panel border p-4 rounded-2xl flex items-center gap-3 w-full shadow-lg ${
-                toast.type === "success" 
-                  ? "border-emerald-500/30 bg-emerald-500/10 shadow-emerald-500/20" 
-                  : "border-red-500/30 bg-red-500/10 shadow-red-500/20"
-              }`}>
-                <div className={`p-2 rounded-full ${
-                  toast.type === "success" ? "bg-emerald-500/20 text-emerald-400" : "bg-red-500/20 text-red-400"
+          {/* Custom Toast */}
+          <AnimatePresence>
+            {toast && (
+              <m.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-[360px]"
+              >
+                <div className={`glass-panel border p-4 rounded-2xl flex items-center gap-3 w-full shadow-lg ${
+                  toast.type === "success" 
+                    ? "border-emerald-500/30 bg-emerald-500/10 shadow-emerald-500/20" 
+                    : "border-red-500/30 bg-red-500/10 shadow-red-500/20"
                 }`}>
-                  {toast.type === "success" ? (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  ) : (
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-                  )}
+                  <div className={`p-2 rounded-full ${
+                    toast.type === "success" ? "bg-emerald-500/20 text-emerald-400" : "bg-red-500/20 text-red-400"
+                  }`}>
+                    {toast.type === "success" ? (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    ) : (
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                    )}
+                  </div>
+                  <p className={`text-[14px] font-medium leading-snug flex-1 ${
+                    toast.type === "success" ? "text-emerald-100" : "text-red-100"
+                  }`}>
+                    {toast.message}
+                  </p>
                 </div>
-                <p className={`text-[14px] font-medium leading-snug flex-1 ${
-                  toast.type === "success" ? "text-emerald-100" : "text-red-100"
-                }`}>
-                  {toast.message}
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </m.div>
+            )}
+          </AnimatePresence>
 
-        {/* Cihaz Native Bildirim İsteği */}
-        <NotificationPrompt />
-      </main>
+          {/* Cihaz Native Bildirim İsteği */}
+          <NotificationPrompt />
+        </main>
+      </LazyMotion>
     </AuthProvider>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Sparkles, ExternalLink, Loader2, ArrowRight } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { signInWithGoogle, acceptTerms } from "@/lib/auth";
@@ -84,14 +84,14 @@ export default function OnboardingScreen() {
   if (isAuthSettling) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-transparent w-full overflow-hidden relative">
-        <motion.div 
+        <m.div 
           initial={{ opacity: 0 }} 
           animate={{ opacity: 1 }} 
           className="flex flex-col items-center gap-4 z-10"
         >
           <Loader2 className="w-8 h-8 text-white/40 animate-spin" />
           <p className="text-[13px] text-white/30 tracking-wide font-medium">Just a second...</p>
-        </motion.div>
+        </m.div>
         
         {/* Background glow effects consistent with the rest of the screen */}
         <div className="fixed -bottom-20 -left-20 w-80 h-80 bg-purple-600/10 blur-[100px] rounded-full pointer-events-none" />
@@ -108,7 +108,7 @@ export default function OnboardingScreen() {
       <AnimatePresence mode="wait">
         {/* ═══ LANDING VIEW ═══ */}
         {view === "landing" && (
-          <motion.div
+          <m.div
             key="landing"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -117,19 +117,19 @@ export default function OnboardingScreen() {
             className="w-full max-w-sm z-10 flex flex-col items-center"
           >
             {/* Logo */}
-            <motion.div
+            <m.div
               className="flex items-center justify-center relative mb-8"
               initial={{ scale: 0.8, opacity: 0, filter: "drop-shadow(0 0 0px rgba(139,92,246,0))" }}
               animate={{ scale: 1, opacity: 1, filter: ["drop-shadow(0 0 20px rgba(139,92,246,0.25))", "drop-shadow(0 0 35px rgba(236,72,153,0.3))", "drop-shadow(0 0 20px rgba(139,92,246,0.25))"] }}
               transition={{ scale: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.8 }, filter: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 } }}
             >
               <Image src="/vibecheckr-markalogo.png" alt="VibeCheckr" width={220} height={66} priority className="object-contain h-auto" />
-            </motion.div>
+            </m.div>
 
             <p className="text-sm text-white/40 mb-10">Discover your energy ✨</p>
 
             {/* Sign Up Button */}
-            <motion.button
+            <m.button
               onClick={() => { hapticMedium(); setView("terms"); }}
               className="w-full py-4 rounded-2xl text-[15px] font-bold text-white mb-3 flex items-center justify-center gap-2"
               style={{
@@ -140,10 +140,10 @@ export default function OnboardingScreen() {
               whileTap={{ scale: 0.96 }}
             >
               Sign Up <ArrowRight className="w-4 h-4" />
-            </motion.button>
+            </m.button>
 
             {/* Log In Button */}
-            <motion.button
+            <m.button
               onClick={() => { hapticLight(); setView("login"); }}
               className="w-full py-4 rounded-2xl text-[15px] font-semibold text-white/70 flex items-center justify-center gap-2"
               style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.1)" }}
@@ -151,13 +151,13 @@ export default function OnboardingScreen() {
               whileTap={{ scale: 0.96 }}
             >
               Log In
-            </motion.button>
-          </motion.div>
+            </m.button>
+          </m.div>
         )}
 
         {/* ═══ TERMS VIEW (Sign Up flow) ═══ */}
         {view === "terms" && (
-          <motion.div
+          <m.div
             key="terms"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -218,9 +218,9 @@ export default function OnboardingScreen() {
                     <div className={`mt-0.5 shrink-0 w-5 h-5 rounded-md border flex items-center justify-center transition-all duration-300 ${hasConsented ? "bg-purple-500 border-purple-500 shadow-[0_0_12px_rgba(139,92,246,0.5)]" : "bg-transparent border-white/20"}`}>
                       <AnimatePresence>
                         {hasConsented && (
-                          <motion.svg initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4">
+                          <m.svg initial={{ scale: 0 }} animate={{ scale: 1 }} exit={{ scale: 0 }} className="w-3.5 h-3.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4">
                             <polyline points="20 6 9 17 4 12" />
-                          </motion.svg>
+                          </m.svg>
                         )}
                       </AnimatePresence>
                     </div>
@@ -230,7 +230,7 @@ export default function OnboardingScreen() {
 
                 {/* Action Button — if logged in: accept terms, else: Google login */}
                 {userId ? (
-                  <motion.button
+                  <m.button
                     onClick={handleAcceptTerms}
                     disabled={!hasConsented}
                     className={`w-full py-4 rounded-2xl text-[15px] font-bold text-white flex items-center justify-center gap-3 ${hasConsented ? "cursor-pointer" : "cursor-not-allowed grayscale opacity-50"}`}
@@ -242,7 +242,7 @@ export default function OnboardingScreen() {
                     whileTap={hasConsented ? { scale: 0.96 } : {}}
                   >
                     Accept & Continue <ArrowRight className="w-4 h-4" />
-                  </motion.button>
+                  </m.button>
                 ) : (
                   <>
                     {loginError && (
@@ -250,7 +250,7 @@ export default function OnboardingScreen() {
                         <p className="text-sm text-red-400 font-medium">{loginError}</p>
                       </div>
                     )}
-                    <motion.button
+                    <m.button
                       onClick={handleGoogleLogin}
                       disabled={!hasConsented || isLoggingIn}
                       className={`w-full py-4 rounded-2xl text-[15px] font-bold text-white flex items-center justify-center gap-3 ${hasConsented ? "cursor-pointer" : "cursor-not-allowed grayscale opacity-50"}`}
@@ -272,7 +272,7 @@ export default function OnboardingScreen() {
                           Accept & Sign Up with Google
                         </>
                       )}
-                    </motion.button>
+                    </m.button>
                   </>
                 )}
 
@@ -284,12 +284,12 @@ export default function OnboardingScreen() {
                 )}
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
 
         {/* ═══ LOGIN VIEW (Returning users) ═══ */}
         {view === "login" && (
-          <motion.div
+          <m.div
             key="login"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -322,7 +322,7 @@ export default function OnboardingScreen() {
                   </div>
                 )}
 
-                <motion.button
+                <m.button
                   onClick={handleGoogleLogin}
                   disabled={isLoggingIn}
                   className="w-full py-4 rounded-2xl text-[15px] font-bold text-white cursor-pointer flex items-center justify-center gap-3"
@@ -344,14 +344,14 @@ export default function OnboardingScreen() {
                       Continue with Google
                     </>
                   )}
-                </motion.button>
+                </m.button>
 
                 <button onClick={() => setView("landing")} className="w-full mt-3 text-xs text-white/30 hover:text-white/50 transition-colors">
                   ← Back
                 </button>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 

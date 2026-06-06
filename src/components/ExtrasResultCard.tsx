@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { RotateCcw, Sparkles, Share2, Download, Loader2 } from "lucide-react";
 import { resultCardVariants, resultItemVariants } from "@/lib/animations";
 import GlassButton from "@/components/ui/GlassButton";
@@ -184,23 +184,23 @@ export default function ExtrasResultCard() {
   };
 
   return (
-    <motion.div className="flex flex-col min-h-dvh" variants={resultCardVariants} initial="hidden" animate="visible">
+    <m.div className="flex flex-col min-h-dvh" variants={resultCardVariants} initial="hidden" animate="visible">
       <div className="fixed inset-0 -z-10" style={{
         background: `radial-gradient(ellipse at 50% 20%, ${color}25 0%, transparent 60%),
           radial-gradient(ellipse at 80% 80%, ${theme.grad2}20 0%, transparent 50%),
           linear-gradient(180deg, #050510 0%, #0d0d18 100%)`
       }} />
 
-      <motion.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
+      <m.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
         <div />
         <p className="text-center text-xs font-medium text-text-secondary/50 uppercase tracking-widest mb-2">
           {theme.label}
         </p>
         <div className="mb-2"><SettingsDrawer /></div>
-      </motion.div>
+      </m.div>
 
       <div className="flex-1 px-5 pb-4 flex flex-col">
-        <motion.div
+        <m.div
           ref={cardRef}
           variants={resultItemVariants}
           className="glass-panel p-6 flex-1 flex flex-col relative overflow-hidden"
@@ -216,7 +216,7 @@ export default function ExtrasResultCard() {
 
           {/* Delulu Score Gauge */}
           {extrasType === "delulu-check" && typeof delulu_score === "number" && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
@@ -226,7 +226,7 @@ export default function ExtrasResultCard() {
                 {/* Background circle */}
                 <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
                   <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="6" />
-                  <motion.circle
+                  <m.circle
                     cx="50" cy="50" r="42"
                     fill="none"
                     stroke={getDeluluColor(delulu_score)}
@@ -249,7 +249,7 @@ export default function ExtrasResultCard() {
                 style={{ backgroundColor: `${getDeluluColor(delulu_score)}15`, color: getDeluluColor(delulu_score), border: `1px solid ${getDeluluColor(delulu_score)}30` }}>
                 {getDeluluLabel(delulu_score)}
               </div>
-            </motion.div>
+            </m.div>
           )}
 
           {verdict && (
@@ -318,10 +318,10 @@ export default function ExtrasResultCard() {
             <WaveLogoIcon size={14} className="opacity-[0.35]" />
             <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>VibeCheckr.</span>
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div variants={resultItemVariants} className="mt-5 flex flex-col gap-3">
-          <motion.button
+        <m.div variants={resultItemVariants} className="mt-5 flex flex-col gap-3">
+          <m.button
             onClick={handleShare}
             disabled={isExporting}
             whileTap={{ scale: 0.95 }}
@@ -348,12 +348,12 @@ export default function ExtrasResultCard() {
                 <span>Share (+2 Tokens 🚀)</span>
               </>
             )}
-          </motion.button>
+          </m.button>
 
           {/* Share Anti-Cheat Toast */}
           <AnimatePresence>
             {shareToast && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -365,7 +365,7 @@ export default function ExtrasResultCard() {
                 }}
               >
                 <p className="text-sm font-semibold">{shareToast.message}</p>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
 
@@ -373,8 +373,8 @@ export default function ExtrasResultCard() {
             className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl transition-all hover:bg-white/10 active:scale-95 font-medium">
             <RotateCcw className="h-5 w-5" /><span>Try Again</span>
           </GlassButton>
-        </motion.div>
+        </m.div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }

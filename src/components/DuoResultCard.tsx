@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { Share2, RotateCcw, Sparkles, AlertTriangle, Loader2, Download, Lock } from "lucide-react";
 import { ZODIAC_SIGNS } from "@/lib/constants";
 import { resultCardVariants, resultItemVariants } from "@/lib/animations";
@@ -187,7 +187,7 @@ export default function DuoResultCard() {
   const scoreColor = duoResult.duoScore > 70 ? "#22c55e" : duoResult.duoScore > 40 ? "#eab308" : "#ef4444";
 
   return (
-    <motion.div
+    <m.div
       className="flex flex-col min-h-dvh"
       variants={resultCardVariants}
       initial="hidden"
@@ -206,7 +206,7 @@ export default function DuoResultCard() {
       />
 
       {/* Header */}
-      <motion.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
+      <m.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
         <div />{/* Spacer for centering */}
         <p className="text-center text-xs font-medium text-text-secondary/50 uppercase tracking-widest mb-2">
           <span>Duo Soulmate</span>
@@ -214,11 +214,11 @@ export default function DuoResultCard() {
         <div className="mb-2">
           <SettingsDrawer />
         </div>
-      </motion.div>
+      </m.div>
 
       <div className="flex-1 px-5 pb-4 flex flex-col">
         {/* Shareable Card */}
-        <motion.div
+        <m.div
           ref={cardRef}
           variants={resultItemVariants}
           className="glass-panel p-6 flex-1 flex flex-col relative overflow-hidden"
@@ -363,12 +363,12 @@ export default function DuoResultCard() {
             <WaveLogoIcon size={14} className="opacity-[0.35]" />
             <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>VibeCheckr.</span>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Buttons */}
-        <motion.div variants={resultItemVariants} className="mt-5 flex flex-col gap-3">
+        <m.div variants={resultItemVariants} className="mt-5 flex flex-col gap-3">
           {duoResult.isUnlocked === false && (
-            <motion.button
+            <m.button
               onClick={() => setTokenModalOpen(true)}
               whileTap={{ scale: 0.98 }}
               whileHover={{ y: -2 }}
@@ -389,11 +389,11 @@ export default function DuoResultCard() {
               <span className="relative text-[13px] font-semibold tracking-[0.15em] text-white/60 group-hover:text-white/90 transition-colors duration-500 uppercase">
                 Unlock Full Analysis <span className="ml-1 text-[14px]">🔒</span>
               </span>
-            </motion.button>
+            </m.button>
           )}
 
           {duoResult.isUnlocked !== false && (
-            <motion.button
+            <m.button
               onClick={handleShare}
               disabled={isExporting}
               whileTap={{ scale: 0.95 }}
@@ -420,13 +420,13 @@ export default function DuoResultCard() {
                   <span>Share (+2 Tokens 🚀)</span>
                 </>
               )}
-            </motion.button>
+            </m.button>
           )}
 
           {/* Share Anti-Cheat Toast */}
           <AnimatePresence>
             {shareToast && (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
@@ -438,7 +438,7 @@ export default function DuoResultCard() {
                 }}
               >
                 <p className="text-sm font-semibold">{shareToast.message}</p>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
 
@@ -450,8 +450,8 @@ export default function DuoResultCard() {
             <RotateCcw className="h-5 w-5" />
             <span>Try Again</span>
           </GlassButton>
-        </motion.div>
+        </m.div>
       </div>
-    </motion.div>
+    </m.div>
   );
 }

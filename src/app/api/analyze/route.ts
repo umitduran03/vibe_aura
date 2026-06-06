@@ -113,35 +113,50 @@ async function generateWithGroqFallback(params: {
 }
 
 /* =============================================
-   Şelale (Waterfall) Fallback Orkestratörü
-   Gemini Zinciri → Groq Llama 3.3 70B
+   Akıllı Waterfall Orkestratörü
+   📷 Foto VAR  → Gemini önce (vision) → Groq fallback
+   📝 Foto YOK  → Groq önce (hız ~1-2s) → Gemini fallback
    ============================================= */
 async function generateWithWaterfall(params: {
   contents: any[];
   systemInstruction: string;
 }) {
-  // ─── Aşama 1: Gemini Model Zinciri ─────────────────────────
-  try {
-    const response = await generateWithGeminiFallback(params);
-    return response;
-  } catch (geminiError: any) {
-    const errorInfo = geminiError?.status || geminiError?.code || geminiError?.message || "Unknown";
-    console.warn(
-      `[Waterfall] ⚠️ Tüm Gemini modelleri başarısız (${errorInfo}), Groq Llama 3.3 70B'ye geçiliyor...`
-    );
+  // Gerçekten görsel eklenmiş mi? (nanosaniye-düzeyinde kontrol)
+  const hasImages = params.contents.some((p: any) => p.inlineData);
 
-    // ─── Aşama 2: Groq Nihai Kurtarıcı ─────────────────────
+  if (hasImages) {
+    // ─── FOTO MODU: Gemini önce (vision kalitesi) ───────────
+    try {
+      const response = await generateWithGeminiFallback(params);
+      return response;
+    } catch (geminiError: any) {
+      const errorInfo = geminiError?.status || geminiError?.code || geminiError?.message || "Unknown";
+      console.warn(`[Waterfall/foto] ⚠️ Gemini başarısız (${errorInfo}), Groq'a geçiliyor (foto analizi olmadan)...`);
+      try {
+        const groqResponse = await generateWithGroqFallback(params);
+        console.log("[Waterfall/foto] ✅ Groq fallback başarılı.");
+        return groqResponse;
+      } catch (groqError: any) {
+        console.error("[Waterfall/foto] ❌ Her iki servis de başarısız:", groqError?.message);
+        throw geminiError;
+      }
+    }
+  } else {
+    // ─── METİN MODU: Groq önce (hız ~1-2s) ─────────────────
     try {
       const groqResponse = await generateWithGroqFallback(params);
-      console.log("[Waterfall] ✅ Groq Llama 3.3 70B başarılı — yanıt alındı.");
+      console.log("[Waterfall/text] ✅ Groq Llama 3.3 70B — hızlı yanıt.");
       return groqResponse;
     } catch (groqError: any) {
-      console.error(
-        "[Waterfall] ❌ Groq da başarısız:",
-        groqError?.message || groqError
-      );
-      // Her iki aşama da çöktü — orijinal Gemini hatasını fırlat
-      throw geminiError;
+      console.warn(`[Waterfall/text] ⚠️ Groq başarısız, Gemini'ye geçiliyor...`);
+      try {
+        const response = await generateWithGeminiFallback(params);
+        console.log("[Waterfall/text] ✅ Gemini fallback başarılı.");
+        return response;
+      } catch (geminiError: any) {
+        console.error("[Waterfall/text] ❌ Her iki servis de başarısız:", geminiError?.message);
+        throw groqError;
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import {
   splashLogoVariants,
@@ -10,7 +10,7 @@ import {
 
 export default function SplashScreen() {
   return (
-    <motion.div
+    <m.div
       className="fixed inset-0 z-50 flex flex-col items-center justify-center"
       style={{
         background: "linear-gradient(145deg, #0a0a0f 0%, #1a1025 50%, #0d0d1a 100%)",
@@ -22,7 +22,7 @@ export default function SplashScreen() {
       {/* Aura Rings */}
       <div className="absolute inset-0 flex items-center justify-center">
         {[1, 2, 3].map((ring) => (
-          <motion.div
+          <m.div
             key={ring}
             className="absolute rounded-full border border-accent/20"
             variants={auraRingVariants}
@@ -44,7 +44,7 @@ export default function SplashScreen() {
       </div>
 
       {/* Logo */}
-      <motion.div
+      <m.div
         variants={splashLogoVariants}
         className="relative z-10 flex flex-col items-center gap-3"
       >
@@ -57,24 +57,24 @@ export default function SplashScreen() {
           </h1>
           <Sparkles className="absolute -bottom-1 -left-5 h-4 w-4 text-pink-400/70 animate-float" style={{ animationDelay: "1s" }} />
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Loading Text */}
-      <motion.p
+      <m.p
         variants={splashTextVariants}
         className="relative z-10 mt-8 text-sm font-medium text-text-secondary tracking-widest uppercase"
       >
         Analyzing your vibe
-        <motion.span
+        <m.span
           animate={{ opacity: [1, 0.3, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
         >
           ...
-        </motion.span>
-      </motion.p>
+        </m.span>
+      </m.p>
 
       {/* Bottom glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-64 w-64 rounded-full bg-accent/10 blur-[100px]" />
-    </motion.div>
+    </m.div>
   );
 }

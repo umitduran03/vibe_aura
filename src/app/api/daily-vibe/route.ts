@@ -93,47 +93,34 @@ async function generateWithGroqFallback(
 }
 
 /* =============================================
-   Şelale (Waterfall) Fallback Orkestratörü
-   Gemini Zinciri → Groq Llama 3.3 70B
+   Şelale (Waterfall) Orkestratörü
+   Daily-vibe text-only → Groq önce, Gemini fallback
    ============================================= */
 async function generateWithWaterfall(
   systemInstruction: string,
   promptText: string
 ) {
-  // ─── Aşama 1: Gemini Model Zinciri ─────────────────────────
+  // ─── Groq önce: text-only, her zaman hızlı ─────────────────
   try {
-    const response = await generateWithGeminiFallback(
-      systemInstruction,
-      promptText
-    );
-    return response;
-  } catch (geminiError: any) {
-    const errorInfo =
-      geminiError?.status ||
-      geminiError?.code ||
-      geminiError?.message ||
-      "Unknown";
+    const groqResponse = await generateWithGroqFallback(systemInstruction, promptText);
+    console.log("[DailyVibe/Waterfall] ✅ Groq Llama 3.3 70B — hızlı yanıt.");
+    return groqResponse;
+  } catch (groqError: any) {
     console.warn(
-      `[DailyVibe/Waterfall] ⚠️ Tüm Gemini modelleri başarısız (${errorInfo}), Groq Llama 3.3 70B'ye geçiliyor...`
+      `[DailyVibe/Waterfall] ⚠️ Groq başarısız, Gemini'ye geçiliyor...`
     );
 
-    // ─── Aşama 2: Groq Nihai Kurtarıcı ─────────────────────
+    // ─── Gemini fallback ─────────────────────────────────────
     try {
-      const groqResponse = await generateWithGroqFallback(
-        systemInstruction,
-        promptText
-      );
-      console.log(
-        "[DailyVibe/Waterfall] ✅ Groq Llama 3.3 70B başarılı — yanıt alındı."
-      );
-      return groqResponse;
-    } catch (groqError: any) {
+      const response = await generateWithGeminiFallback(systemInstruction, promptText);
+      console.log("[DailyVibe/Waterfall] ✅ Gemini fallback başarılı.");
+      return response;
+    } catch (geminiError: any) {
       console.error(
-        "[DailyVibe/Waterfall] ❌ Groq da başarısız:",
-        groqError?.message || groqError
+        "[DailyVibe/Waterfall] ❌ Her iki servis de başarısız:",
+        geminiError?.message || geminiError
       );
-      // Her iki aşama da çöktü — orijinal Gemini hatasını fırlat
-      throw geminiError;
+      throw groqError;
     }
   }
 }

@@ -8,8 +8,8 @@ import { hapticLight } from "@/lib/haptics";
 
 // ============================================
 // Zodiac Scroll-to-Select Picker
-// Apple-style snap-to-center carousel with
-// scroll/drag/hover selection + haptic feedback
+// ─ Mobil: touch olayları ile tam 1 item
+// ─ Desktop: scroll/hover ile normal çalışma
 // ============================================
 
 interface ZodiacScrollPickerProps {
@@ -17,8 +17,8 @@ interface ZodiacScrollPickerProps {
   onZodiacChange: (zodiac: string) => void;
 }
 
-const ITEM_WIDTH = 72; // w-[72px] per zodiac item
-const ITEM_GAP = 8;    // gap-2 = 8px
+const ITEM_WIDTH = 72;
+const ITEM_GAP = 8;
 const ITEM_TOTAL = ITEM_WIDTH + ITEM_GAP; // 80px per step
 
 export default function ZodiacScrollPicker({
@@ -27,53 +27,56 @@ export default function ZodiacScrollPicker({
 }: ZodiacScrollPickerProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const lastSelectedRef = useRef<string | null>(selectedZodiac);
-  const isUserScrolling = useRef(false);
-  const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Şu an ortadaki item'ın index'ini takip eder
+  const currentIndexRef = useRef(0);
   const [isMounted, setIsMounted] = useState(false);
 
-  // Calculate left-padding so first item can be centered
+  // onZodiacChange'i ref'te tut → event listener'larda stale closure olmaz
+  const onZodiacChangeRef = useRef(onZodiacChange);
+  useEffect(() => {
+    onZodiacChangeRef.current = onZodiacChange;
+  }, [onZodiacChange]);
+
+  // ─── Yardımcılar ────────────────────────────────────────────
+
   const getPadding = useCallback(() => {
     if (!scrollRef.current) return 120;
     return scrollRef.current.clientWidth / 2 - ITEM_WIDTH / 2;
   }, []);
 
-  // Scroll a specific index into center
-  const scrollToIndex = useCallback(
-    (index: number, smooth = true) => {
-      if (!scrollRef.current) return;
-      const pad = getPadding();
-      const targetScroll = index * ITEM_TOTAL;
-      scrollRef.current.scrollTo({
-        left: targetScroll,
-        behavior: smooth ? "smooth" : "instant",
-      });
-    },
-    [getPadding]
-  );
-
-  // Determine which zodiac is at the center of the viewport
-  const getCenterIndex = useCallback(() => {
-    if (!scrollRef.current) return 0;
-    const scrollLeft = scrollRef.current.scrollLeft;
-    const index = Math.round(scrollLeft / ITEM_TOTAL);
-    return Math.max(0, Math.min(index, ZODIAC_SIGNS.length - 1));
+  const scrollToIndex = useCallback((index: number, smooth = true) => {
+    if (!scrollRef.current) return;
+    currentIndexRef.current = index;
+    scrollRef.current.scrollTo({
+      left: index * ITEM_TOTAL,
+      behavior: smooth ? "smooth" : "instant",
+    });
   }, []);
 
-  // On mount: scroll to selected zodiac (no animation)
+  // Merkezdeki index'e göre zodiac seç + haptic
+  const selectAtIndex = useCallback((idx: number) => {
+    const sign = ZODIAC_SIGNS[idx];
+    if (sign && sign.id !== lastSelectedRef.current) {
+      hapticLight();
+      lastSelectedRef.current = sign.id;
+      onZodiacChangeRef.current(sign.id);
+    }
+  }, []);
+
+  // ─── Mount: başlangıç seçimine kaydır ───────────────────────
+
   useEffect(() => {
     setIsMounted(true);
     if (selectedZodiac && scrollRef.current) {
       const idx = ZODIAC_SIGNS.findIndex((z) => z.id === selectedZodiac);
       if (idx >= 0) {
-        // Use requestAnimationFrame to ensure DOM is ready
-        requestAnimationFrame(() => {
-          scrollToIndex(idx, false);
-        });
+        currentIndexRef.current = idx;
+        requestAnimationFrame(() => scrollToIndex(idx, false));
       }
     }
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // When selectedZodiac changes externally, scroll to it
+  // Dışarıdan selectedZodiac değişirse scroll et
   useEffect(() => {
     if (!isMounted) return;
     if (selectedZodiac && selectedZodiac !== lastSelectedRef.current) {
@@ -83,60 +86,99 @@ export default function ZodiacScrollPicker({
     }
   }, [selectedZodiac, isMounted, scrollToIndex]);
 
-  // Handle scroll events → detect center item → select it
-  const handleScroll = useCallback(() => {
-    isUserScrolling.current = true;
+  // ─── MOBİL: touch → tam 1 item kaydır ──────────────────────
+  // non-passive touchend ile iOS momentum scroll durdurulur
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (!el || !isMounted) return;
 
-    // Debounce: wait for scroll to settle
-    if (scrollTimer.current) clearTimeout(scrollTimer.current);
-    scrollTimer.current = setTimeout(() => {
-      isUserScrolling.current = false;
+    let startX = 0;
 
-      const centerIdx = getCenterIndex();
-      const sign = ZODIAC_SIGNS[centerIdx];
+    const onTouchStart = (e: TouchEvent) => {
+      startX = e.touches[0].clientX;
+    };
 
-      if (sign && sign.id !== lastSelectedRef.current) {
-        hapticLight();
-        lastSelectedRef.current = sign.id;
-        onZodiacChange(sign.id);
+    const onTouchEnd = (e: TouchEvent) => {
+      // iOS momentum scroll'u tamamen durdur
+      e.preventDefault();
+
+      const delta = startX - e.changedTouches[0].clientX;
+      const THRESHOLD = 15; // px — mikro-dokunuşları yoksay
+
+      let targetIdx = currentIndexRef.current;
+
+      if (Math.abs(delta) > THRESHOLD) {
+        if (delta > 0) {
+          // Sola kaydır → sonraki item
+          targetIdx = Math.min(currentIndexRef.current + 1, ZODIAC_SIGNS.length - 1);
+        } else {
+          // Sağa kaydır → önceki item
+          targetIdx = Math.max(currentIndexRef.current - 1, 0);
+        }
       }
 
-      // Snap to exact center position
+      scrollToIndex(targetIdx);
+      selectAtIndex(targetIdx);
+    };
+
+    // touchstart: passive (engel yok, hızlı)
+    // touchend: passive: false → preventDefault çalışsın
+    el.addEventListener("touchstart", onTouchStart, { passive: true });
+    el.addEventListener("touchend", onTouchEnd, { passive: false });
+
+    return () => {
+      el.removeEventListener("touchstart", onTouchStart);
+      el.removeEventListener("touchend", onTouchEnd);
+    };
+  }, [isMounted, scrollToIndex, selectAtIndex]);
+
+  // ─── DESKTOP: scroll wheel / trackpad ───────────────────────
+  const scrollTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleScroll = useCallback(() => {
+    if (scrollTimer.current) clearTimeout(scrollTimer.current);
+    scrollTimer.current = setTimeout(() => {
+      if (!scrollRef.current) return;
+      const centerIdx = Math.max(
+        0,
+        Math.min(
+          Math.round(scrollRef.current.scrollLeft / ITEM_TOTAL),
+          ZODIAC_SIGNS.length - 1
+        )
+      );
       scrollToIndex(centerIdx);
-    }, 80);
-  }, [getCenterIndex, onZodiacChange, scrollToIndex]);
+      selectAtIndex(centerIdx);
+    }, 100);
+  }, [scrollToIndex, selectAtIndex]);
 
-  // Direct tap on a zodiac → scroll to it + select
-  const handleTap = useCallback(
-    (signId: string, index: number) => {
-      hapticLight();
-      onZodiacChange(signId);
-      lastSelectedRef.current = signId;
-      scrollToIndex(index);
-    },
-    [onZodiacChange, scrollToIndex]
-  );
-
-  // Desktop mouse hover → highlight + select (only while NOT scrolling)
-  const handleHover = useCallback(
-    (signId: string, index: number) => {
-      if (isUserScrolling.current) return;
-      if (signId === lastSelectedRef.current) return;
-
-      hapticLight();
-      onZodiacChange(signId);
-      lastSelectedRef.current = signId;
-      scrollToIndex(index);
-    },
-    [onZodiacChange, scrollToIndex]
-  );
-
-  // Cleanup timer
   useEffect(() => {
     return () => {
       if (scrollTimer.current) clearTimeout(scrollTimer.current);
     };
   }, []);
+
+  // ─── Direkt tıklama ─────────────────────────────────────────
+  const handleTap = useCallback(
+    (signId: string, index: number) => {
+      hapticLight();
+      onZodiacChangeRef.current(signId);
+      lastSelectedRef.current = signId;
+      scrollToIndex(index);
+    },
+    [scrollToIndex]
+  );
+
+  // ─── Desktop hover ───────────────────────────────────────────
+  const handleHover = useCallback(
+    (signId: string, index: number) => {
+      if (signId === lastSelectedRef.current) return;
+      hapticLight();
+      onZodiacChangeRef.current(signId);
+      lastSelectedRef.current = signId;
+      scrollToIndex(index);
+    },
+    [scrollToIndex]
+  );
 
   const padding = isMounted ? getPadding() : 120;
 
@@ -156,7 +198,7 @@ export default function ZodiacScrollPicker({
       animate={{ opacity: 1 }}
       transition={{ delay: 0.4 }}
     >
-      {/* Center indicator line (subtle) */}
+      {/* Center indicator */}
       <div
         className="absolute left-1/2 top-2 bottom-2 -translate-x-1/2 w-[72px] rounded-2xl pointer-events-none z-[1]"
         style={{
@@ -175,6 +217,8 @@ export default function ZodiacScrollPicker({
           msOverflowStyle: "none",
           paddingLeft: `${padding}px`,
           paddingRight: `${padding}px`,
+          // iOS momentum scroll'u JS tarafından yönetiyoruz
+          WebkitOverflowScrolling: "auto",
         }}
       >
         {ZODIAC_SIGNS.map((sign: ZodiacSign, index: number) => {
@@ -185,7 +229,7 @@ export default function ZodiacScrollPicker({
               key={sign.id}
               onClick={() => handleTap(sign.id, index)}
               onMouseEnter={() => handleHover(sign.id, index)}
-              className={`snap-center shrink-0 flex flex-col items-center justify-center w-[72px] h-20 transition-all duration-400 relative cursor-pointer outline-none ${
+              className={`snap-center shrink-0 flex flex-col items-center justify-center w-[72px] h-20 relative cursor-pointer outline-none ${
                 isSelected
                   ? "scale-110 opacity-100"
                   : "scale-75 opacity-30 hover:opacity-60"
@@ -195,7 +239,7 @@ export default function ZodiacScrollPicker({
                   "transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s ease",
               }}
             >
-              {/* Glow effect — only when selected */}
+              {/* Glow — sadece seçiliyken */}
               <AnimatePresence>
                 {isSelected && (
                   <motion.div
@@ -211,7 +255,7 @@ export default function ZodiacScrollPicker({
                 )}
               </AnimatePresence>
 
-              {/* Zodiac emoji */}
+              {/* Zodiac sembolü */}
               <span
                 className="relative z-10 text-[40px] font-light leading-none mb-3"
                 style={{
@@ -227,7 +271,7 @@ export default function ZodiacScrollPicker({
                 {"\uFE0E"}
               </span>
 
-              {/* Label */}
+              {/* İsim */}
               <span
                 className="absolute bottom-2 z-10 text-[9px] font-medium tracking-[0.15em] uppercase"
                 style={{
