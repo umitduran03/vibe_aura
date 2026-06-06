@@ -374,10 +374,9 @@ export default function SettingsDrawer() {
                   Legal
                 </p>
                 <div className="space-y-1.5 mb-6">
-                  <a
+                  <Link
                     href="/terms"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    prefetch={false}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{
                       background: "rgba(255,255,255,0.02)",
@@ -396,13 +395,11 @@ export default function SettingsDrawer() {
                       </p>
                       <p className="text-[11px] text-white/35">Rules of the digital experience</p>
                     </div>
-                    <ExternalLink className="h-3.5 w-3.5 text-white/20 group-hover:text-white/40 shrink-0" />
-                  </a>
+                  </Link>
 
-                  <a
+                  <Link
                     href="/privacy"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    prefetch={false}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{
                       background: "rgba(255,255,255,0.02)",
@@ -421,8 +418,7 @@ export default function SettingsDrawer() {
                       </p>
                       <p className="text-[11px] text-white/35">How we protect your data</p>
                     </div>
-                    <ExternalLink className="h-3.5 w-3.5 text-white/20 group-hover:text-white/40 shrink-0" />
-                  </a>
+                  </Link>
                 </div>
 
                 <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-3 px-1">
