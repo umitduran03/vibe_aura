@@ -22,6 +22,7 @@ import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { ZODIAC_SIGNS } from "@/lib/constants";
 import { logOut } from "@/lib/auth";
 import Image from "next/image";
+import Link from "next/link";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
 import { useStreakStore } from "@/store/useStreakStore";
 import { getVibeRank } from "@/lib/streak-utils";
@@ -73,7 +74,11 @@ export default function SettingsDrawer() {
     }
   };
 
-  const open = () => {
+  const open = (e?: React.MouseEvent) => {
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
     hapticLight();
     setIsOpen(true);
   };
@@ -293,8 +298,9 @@ export default function SettingsDrawer() {
                 </p>
                 <div className="space-y-1.5 mb-6">
                   {/* ─── Trends & Articles ─── */}
-                  <a
+                  <Link
                     href="/trends"
+                    prefetch={true}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{
                       background: "rgba(255,255,255,0.02)",
@@ -313,11 +319,12 @@ export default function SettingsDrawer() {
                       </p>
                       <p className="text-[11px] text-white/35">Dating psychology & viral trends</p>
                     </div>
-                  </a>
+                  </Link>
 
                   {/* ─── Gen-Z Dictionary ─── */}
-                  <a
+                  <Link
                     href="/vibe-dictionary"
+                    prefetch={true}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{
                       background: "rgba(255,255,255,0.02)",
@@ -336,11 +343,12 @@ export default function SettingsDrawer() {
                       </p>
                       <p className="text-[11px] text-white/35">Gen-Z slang & astrology terms</p>
                     </div>
-                  </a>
+                  </Link>
 
                   {/* ─── FAQ ─── */}
-                  <a
+                  <Link
                     href="/faq"
+                    prefetch={true}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{
                       background: "rgba(255,255,255,0.02)",
@@ -359,7 +367,7 @@ export default function SettingsDrawer() {
                       </p>
                       <p className="text-[11px] text-white/35">Frequently Asked Questions</p>
                     </div>
-                  </a>
+                  </Link>
                 </div>
 
                 <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-3 px-1">
