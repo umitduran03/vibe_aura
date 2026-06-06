@@ -10,7 +10,6 @@ const loadFeatures = () =>
 // ─── Kritik yol: ilk render'da hemen gösterilecekler ───
 import AuthProvider from "@/components/AuthProvider";
 import SplashScreen from "@/components/SplashScreen";
-import OnboardingScreen from "@/components/OnboardingScreen";
 import OnboardingBanner from "@/components/OnboardingBanner";
 
 // ─── Lazy: Splash sırasında arka planda prefetch edilecekler ───
@@ -19,6 +18,7 @@ const AnalyzingScreen = dynamic(() => import("@/components/AnalyzingScreen"), { 
 const ResultCard = dynamic(() => import("@/components/ResultCard"), { ssr: false });
 const DuoResultCard = dynamic(() => import("@/components/DuoResultCard"), { ssr: false });
 const ExtrasResultCard = dynamic(() => import("@/components/ExtrasResultCard"), { ssr: false });
+const OnboardingScreen = dynamic(() => import("@/components/OnboardingScreen"), { ssr: false });
 
 // ─── Lazy: Modal bileşenler — sadece açıldıklarında yüklenecekler ───
 const TokenModal = dynamic(() => import("@/components/TokenModal"), { ssr: false });
@@ -30,7 +30,6 @@ const NotificationPrompt = dynamic(() => import("@/components/NotificationPrompt
 
 import { useAppStore } from "@/store/useAppStore";
 import { useStreakStore } from "@/store/useStreakStore";
-import { analyzeAura, analyzeDuo, analyzeExtras, saveAuraSession, saveDuoSession, saveExtrasSession } from "@/lib/services";
 import { auth } from "@/lib/firebase";
 
 export default function Home() {
@@ -107,6 +106,7 @@ export default function Home() {
       setIsAnalyzing(true);
 
       try {
+        const { analyzeExtras, saveExtrasSession } = await import("@/lib/services");
         const result = await analyzeExtras(userId, extrasType, extrasFormData);
         setExtrasResult(result);
         useStreakStore.getState().triggerAnalysis();
@@ -167,6 +167,7 @@ export default function Home() {
         /* =====================
            DUO MODE
            ===================== */
+        const { analyzeDuo, saveDuoSession } = await import("@/lib/services");
         const result = await analyzeDuo(userId, duoPerson1, duoPerson2, duoRelationType);
         
         // Bellekteki fotoğrafları temizle
@@ -195,6 +196,7 @@ export default function Home() {
            ===================== */
         // Fotoğraf referansını temizlemeden önce sakla
         const capturedPhoto = photoUrl;
+        const { analyzeAura, saveAuraSession } = await import("@/lib/services");
         const result = await analyzeAura({ userId, ...userData, photoUrl, soloScenario });
         
         // Bellekteki ağırlığı hemen temizle
