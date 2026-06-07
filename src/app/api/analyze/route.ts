@@ -3,20 +3,39 @@ import { GoogleGenAI } from "@google/genai";
 import { adminDb } from "@/lib/firebase-admin";
 import OpenAI from "openai";
 
+export const maxDuration = 60;
+
 // ─── Gemini Client ───────────────────────────────────────────
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
-// ─── Groq Client (OpenAI SDK uyumlu — Nihai Kurtarıcı) ──────
+// ─── Groq Client ──────────────────────────────────────────────
 const groq = new OpenAI({
   apiKey: process.env.GROQ_API_KEY || "",
   baseURL: "https://api.groq.com/openai/v1",
 });
 
-// Model fallback zinciri: ilki meşgulse sıradakini dene
+// ─── OpenRouter Client ────────────────────────────────────────
+const openRouter = new OpenAI({
+  baseURL: "https://openrouter.ai/api/v1",
+  apiKey: process.env.OPENROUTER_API_KEY || "",
+});
+
 const MODEL_CHAIN = [
   "gemini-2.5-flash",
   "gemini-2.0-flash",
   "gemini-3-flash-preview",
+];
+
+const OPENROUTER_VISION_POOL = [
+  "google/gemini-2.0-flash-lite-preview-02-05:free",
+  "meta-llama/llama-3.2-11b-vision-instruct:free"
+];
+
+const OPENROUTER_TEXT_POOL = [
+  "google/gemma-2-27b-it:free",
+  "meta-llama/llama-3.1-8b-instruct:free",
+  "mistralai/mistral-7b-instruct:free",
+  "openchat/openchat-7b:free"
 ];
 
 /* =============================================
@@ -30,7 +49,56 @@ function parseBase64Image(photoBase64: string) {
 }
 
 /* =============================================
-   Retry with Gemini model fallback (Aşama 1)
+   OpenAI Format Converter (Groq & OpenRouter için)
+   ============================================= */
+function formatOpenAIMessages(params: { contents: any[], systemInstruction: string }, isVision: boolean) {
+  const textParts = params.contents
+    .filter((part: any) => typeof part.text === "string")
+    .map((part: any) => part.text)
+    .join("\n\n");
+
+  const messages: any[] = [
+    {
+      role: "system",
+      content: params.systemInstruction + "\n\nIMPORTANT: Your response must be ONLY valid JSON. No markdown, no code fences, no explanation text before or after the JSON."
+    }
+  ];
+
+  if (isVision) {
+    const contentArray: any[] = [{ type: "text", text: textParts }];
+    
+    for (const part of params.contents) {
+      if (part.inlineData) {
+        contentArray.push({
+          type: "image_url",
+          image_url: {
+            url: `data:${part.inlineData.mimeType};base64,${part.inlineData.data}`
+          }
+        });
+      }
+    }
+    
+    messages.push({
+      role: "user",
+      content: contentArray
+    });
+  } else {
+    const hasImages = params.contents.some((part: any) => part.inlineData);
+    const imageNote = hasImages
+      ? "\n[NOTE: Photos were provided but cannot be processed in this fallback mode. Analyze based on the text data only and generate an equally entertaining response.]"
+      : "";
+      
+    messages.push({
+      role: "user",
+      content: textParts + imageNote
+    });
+  }
+
+  return messages;
+}
+
+/* =============================================
+   Retry with Gemini model fallback
    ============================================= */
 async function generateWithGeminiFallback(params: {
   contents: any[];
@@ -54,7 +122,6 @@ async function generateWithGeminiFallback(params: {
       lastError = err;
       const code = err?.status || err?.code || err?.message || "";
       console.warn(`[Gemini] ✗ ${model} başarısız (${code}), sıradaki deneniyor...`);
-      // 503 (UNAVAILABLE) veya 429 (QUOTA) ise bir sonraki modeli dene
       if (String(code).includes("503") || String(code).includes("429") || 
           String(code).includes("UNAVAILABLE") || String(code).includes("RESOURCE_EXHAUSTED") ||
           String(code).includes("500") || String(code).includes("INTERNAL") ||
@@ -62,100 +129,119 @@ async function generateWithGeminiFallback(params: {
           String(err?.message).includes("timeout") || String(err?.message).includes("TIMEOUT")) {
         continue;
       }
-      // Farklı bir hata (400, 404 vb.) ise direkt fırlat
       throw err;
     }
   }
-
-  // Tüm Gemini modelleri başarısız oldu
   throw lastError || new Error("All Gemini models are currently busy.");
 }
 
 /* =============================================
-   Groq Fallback (Aşama 2 — Nihai Kurtarıcı)
-   Llama 3.3 70B via OpenAI-uyumlu API
+   Groq Fallback
    ============================================= */
 async function generateWithGroqFallback(params: {
   contents: any[];
   systemInstruction: string;
-}): Promise<{ text: string }> {
-  // Groq text-only: contents dizisinden sadece metin parçalarını çıkar
-  const textParts = params.contents
-    .filter((part: any) => typeof part.text === "string")
-    .map((part: any) => part.text)
-    .join("\n\n");
-
-  // Fotoğraf bilgisi varsa Groq'a uyarı ekle
-  const hasImages = params.contents.some((part: any) => part.inlineData);
-  const imageNote = hasImages
-    ? "\n[NOTE: Photos were provided but cannot be processed in this fallback mode. Analyze based on the text data only and generate an equally entertaining response.]"
-    : "";
-
+}, isVision: boolean = false): Promise<{ text: string }> {
+  const messages = formatOpenAIMessages(params, isVision);
+  const model = isVision ? "llama-3.2-90b-vision-preview" : "llama-3.3-70b-versatile";
+  
   const completion = await groq.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
-    messages: [
-      {
-        role: "system",
-        content: params.systemInstruction + "\n\nIMPORTANT: Your response must be ONLY valid JSON. No markdown, no code fences, no explanation text before or after the JSON.",
-      },
-      {
-        role: "user",
-        content: textParts + imageNote,
-      },
-    ],
+    model,
+    messages,
     temperature: 0.9,
     max_tokens: 2048,
     response_format: { type: "json_object" },
   });
 
-  const responseText = completion.choices?.[0]?.message?.content || "";
-  return { text: responseText };
+  return { text: completion.choices?.[0]?.message?.content || "" };
+}
+
+/* =============================================
+   OpenRouter Fallback
+   ============================================= */
+async function generateWithOpenRouterFallback(params: {
+  contents: any[];
+  systemInstruction: string;
+}, isVision: boolean): Promise<{ text: string }> {
+  const messages = formatOpenAIMessages(params, isVision);
+  const pool = isVision ? OPENROUTER_VISION_POOL : OPENROUTER_TEXT_POOL;
+  let lastError: any = null;
+
+  for (const model of pool) {
+    try {
+      const completion = await openRouter.chat.completions.create({
+        model,
+        messages,
+        temperature: 0.9,
+        max_tokens: 2048,
+        response_format: { type: "json_object" },
+      });
+      return { text: completion.choices?.[0]?.message?.content || "" };
+    } catch (err: any) {
+      lastError = err;
+      const code = err?.status || err?.code || err?.message || "";
+      console.warn(`[OpenRouter] ✗ ${model} başarısız (${code}), sıradaki deneniyor...`);
+      continue;
+    }
+  }
+  throw lastError || new Error("All OpenRouter models failed.");
 }
 
 /* =============================================
    Akıllı Waterfall Orkestratörü
-   📷 Foto VAR  → Gemini önce (vision) → Groq fallback
-   📝 Foto YOK  → Groq önce (hız ~1-2s) → Gemini fallback
    ============================================= */
 async function generateWithWaterfall(params: {
   contents: any[];
   systemInstruction: string;
 }) {
-  // Gerçekten görsel eklenmiş mi? (nanosaniye-düzeyinde kontrol)
   const hasImages = params.contents.some((p: any) => p.inlineData);
 
   if (hasImages) {
-    // ─── FOTO MODU: Gemini önce (vision kalitesi) ───────────
+    // 📸 FOTOĞRAF MODU: 1. Gemini -> 2. OpenRouter Vision -> 3. Groq Vision
     try {
       const response = await generateWithGeminiFallback(params);
+      console.log("[Waterfall/foto] ✅ Gemini başarılı.");
       return response;
     } catch (geminiError: any) {
-      const errorInfo = geminiError?.status || geminiError?.code || geminiError?.message || "Unknown";
-      console.warn(`[Waterfall/foto] ⚠️ Gemini başarısız (${errorInfo}), Groq'a geçiliyor (foto analizi olmadan)...`);
+      console.warn(`[Waterfall/foto] ⚠️ Gemini çöktü, OpenRouter Vision'a geçiliyor...`);
       try {
-        const groqResponse = await generateWithGroqFallback(params);
-        console.log("[Waterfall/foto] ✅ Groq fallback başarılı.");
-        return groqResponse;
-      } catch (groqError: any) {
-        console.error("[Waterfall/foto] ❌ Her iki servis de başarısız:", groqError?.message);
-        throw geminiError;
+        const response = await generateWithOpenRouterFallback(params, true);
+        console.log("[Waterfall/foto] ✅ OpenRouter Vision başarılı.");
+        return response;
+      } catch (openRouterError: any) {
+        console.warn(`[Waterfall/foto] ⚠️ OpenRouter çöktü, Groq Vision'a geçiliyor...`);
+        try {
+          const response = await generateWithGroqFallback(params, true);
+          console.log("[Waterfall/foto] ✅ Groq Vision başarılı.");
+          return response;
+        } catch (groqError: any) {
+          console.error("[Waterfall/foto] ❌ Tüm Vision servisleri başarısız!");
+          throw geminiError; // En anlamlı hatayı (genelde ilk hata) fırlatıyoruz
+        }
       }
     }
   } else {
-    // ─── METİN MODU: Groq önce (hız ~1-2s) ─────────────────
+    // 📝 METİN MODU: 1. Groq Text -> 2. Gemini -> 3. OpenRouter Text
     try {
-      const groqResponse = await generateWithGroqFallback(params);
-      console.log("[Waterfall/text] ✅ Groq Llama 3.3 70B — hızlı yanıt.");
-      return groqResponse;
+      const response = await generateWithGroqFallback(params, false);
+      console.log("[Waterfall/text] ✅ Groq Text başarılı.");
+      return response;
     } catch (groqError: any) {
-      console.warn(`[Waterfall/text] ⚠️ Groq başarısız, Gemini'ye geçiliyor...`);
+      console.warn(`[Waterfall/text] ⚠️ Groq çöktü, Gemini'ye geçiliyor...`);
       try {
         const response = await generateWithGeminiFallback(params);
-        console.log("[Waterfall/text] ✅ Gemini fallback başarılı.");
+        console.log("[Waterfall/text] ✅ Gemini başarılı.");
         return response;
       } catch (geminiError: any) {
-        console.error("[Waterfall/text] ❌ Her iki servis de başarısız:", geminiError?.message);
-        throw groqError;
+        console.warn(`[Waterfall/text] ⚠️ Gemini çöktü, OpenRouter Text'e geçiliyor...`);
+        try {
+          const response = await generateWithOpenRouterFallback(params, false);
+          console.log("[Waterfall/text] ✅ OpenRouter Text başarılı.");
+          return response;
+        } catch (openRouterError: any) {
+          console.error("[Waterfall/text] ❌ Tüm Text servisleri başarısız!");
+          throw groqError; // İlk hatayı fırlatıyoruz
+        }
       }
     }
   }
