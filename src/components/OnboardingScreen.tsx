@@ -117,15 +117,34 @@ export default function OnboardingScreen() {
             className="w-full max-w-sm z-10 flex flex-col items-center"
           >
             {/* Logo */}
-            <m.div
-              className="flex items-center justify-center relative mb-8"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              style={{ filter: "drop-shadow(0 0 25px rgba(236,72,153,0.35))" }}
-            >
-              <Image src="/vibecheckr-markalogo.png" alt="VibeCheckr" width={220} height={66} priority className="object-contain h-auto" />
-            </m.div>
+            <div className="flex items-center justify-center relative mb-8">
+              {/* GPU-Friendly Animated Glow */}
+              <m.div
+                className="absolute inset-0 rounded-full blur-2xl z-0"
+                style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.4), rgba(236,72,153,0.5))" }}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: [1, 1.2, 1], opacity: [0.4, 0.8, 0.4] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              />
+              
+              {/* Actual Logo */}
+              <m.div
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="relative z-10"
+              >
+                <Image 
+                  src="/vibecheckr-markalogo.png" 
+                  alt="VibeCheckr" 
+                  width={220} 
+                  height={66} 
+                  priority 
+                  fetchPriority="high"
+                  className="object-contain h-auto" 
+                />
+              </m.div>
+            </div>
 
             <p className="text-sm text-white/40 mb-10">Discover your energy ✨</p>
 

@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Image from "next/image";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import OfflineBanner from "@/components/OfflineBanner";
@@ -215,7 +216,7 @@ export default function RootLayout({
             }
           `}} />
           
-          <img src="/v-wave.png" alt="Loading Vibe" className="wave-img" width="250" height="176" fetchPriority="high" />
+          <Image src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} priority />
         </div>
 
         <TranslateFix />
