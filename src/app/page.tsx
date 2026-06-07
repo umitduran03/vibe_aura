@@ -66,7 +66,16 @@ export default function Home() {
 
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
 
-  // Splash → Onboarding after 3 seconds
+  // JS ayaklandığında (React render edildiğinde) Global CSS loader'ı sil
+  useEffect(() => {
+    const loader = document.getElementById("global-loader");
+    if (loader) {
+      loader.style.opacity = "0";
+      setTimeout(() => loader.remove(), 600);
+    }
+  }, []);
+
+  // Splash → Onboarding after 1.8 seconds
   // Splash gösterilirken ağır chunk'ları arka planda indir (prefetch)
   useEffect(() => {
     if (screen === "splash") {

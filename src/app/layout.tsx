@@ -172,6 +172,37 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
       </head>
       <body className="min-h-full bg-background text-foreground antialiased" style={{ backgroundColor: "#050510" }}>
+        {/* GLOBAL PRE-LOADER: Orijinal Neon V Wave */}
+        <div 
+          id="global-loader" 
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 99999,
+            backgroundColor: "#050510",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "opacity 0.6s ease-out"
+          }}
+        >
+          <style dangerouslySetInnerHTML={{ __html: `
+            .wave-img {
+              width: 250px; /* Boyutunu buradan ayarlayabiliriz */
+              height: auto;
+              animation: pulse-wave 1.8s ease-in-out infinite alternate;
+              filter: drop-shadow(0 0 15px rgba(139,92,246,0.3)); /* Etrafına hafif bir aura glow'u ekler */
+            }
+
+            @keyframes pulse-wave {
+              0% { transform: scale(0.95); opacity: 0.7; }
+              100% { transform: scale(1.02); opacity: 1; filter: drop-shadow(0 0 25px rgba(236,72,153,0.5)); }
+            }
+          `}} />
+          
+          <img src="/v-wave.png" alt="Loading Vibe" className="wave-img" />
+        </div>
+
         <TranslateFix />
         <OfflineBanner />
         {children}
