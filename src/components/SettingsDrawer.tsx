@@ -14,6 +14,7 @@ import {
   LogOut,
   Pencil,
   BookOpen,
+  Download,
 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
@@ -34,6 +35,10 @@ export default function SettingsDrawer() {
   const vipExpiry = useAppStore((s) => s.vipExpiry);
   const setScreen = useAppStore((s) => s.setScreen);
   const resetWizard = useAppStore((s) => s.resetWizard);
+
+  const deferredPrompt = useAppStore((s) => s.deferredPrompt);
+  const isInstallable = useAppStore((s) => s.isInstallable);
+  const setIsInstallable = useAppStore((s) => s.setIsInstallable);
 
   const streakCount = useStreakStore((s) => s.streakCount);
   const currentRank = getVibeRank(streakCount);
@@ -95,6 +100,17 @@ export default function SettingsDrawer() {
     useAppStore.getState().setHasAcceptedTerms(null);
     setScreen("onboarding");
     close();
+  };
+
+  const handleInstallClick = async () => {
+    hapticMedium();
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === "accepted") {
+      setIsInstallable(false);
+    }
   };
 
   return (
@@ -425,6 +441,28 @@ export default function SettingsDrawer() {
                   App
                 </p>
                 <div className="space-y-1.5 mb-8">
+                  {isInstallable && (
+                    <button
+                      onClick={handleInstallClick}
+                      className="w-full flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 cursor-pointer text-left"
+                      style={{
+                        background: "linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(236,72,153,0.15) 100%)",
+                        border: "1px solid rgba(236,72,153,0.3)",
+                      }}
+                    >
+                      <div
+                        className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
+                        style={{ background: "rgba(236,72,153,0.2)" }}
+                      >
+                        <Download className="h-4 w-4 text-pink-300" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-bold text-white">Install App</p>
+                        <p className="text-[11px] text-white/60">Add to Home Screen</p>
+                      </div>
+                    </button>
+                  )}
+
                   <div
                     className="flex items-center gap-3 p-3.5 rounded-xl"
                     style={{

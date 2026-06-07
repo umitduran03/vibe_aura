@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import OfflineBanner from "@/components/OfflineBanner";
+import InstallBanner from "@/components/InstallBanner";
 import TranslateFix from "@/components/TranslateFix";
 import "./globals.css";
 
@@ -208,6 +209,7 @@ export default function RootLayout({
 
         <TranslateFix />
         <OfflineBanner />
+        <InstallBanner />
         {children}
         <SpeedInsights />
       </body>

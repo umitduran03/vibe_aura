@@ -2,8 +2,8 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "VibeCheckr - AI Vibe Check",
-    short_name: "VibeCheckr",
+    name: "VibeCheckr.",
+    short_name: "VibeCheckr.",
     description: "Brutally honest AI photo analysis, aura reading, and zodiac compatibility for Gen-Z.",
     start_url: "/",
     display: "standalone",
@@ -12,13 +12,13 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: "portrait",
     icons: [
       {
-        src: "/va-logo.png",
+        src: "/android/launchericon-192x192.png",
         sizes: "192x192",
         type: "image/png",
         purpose: "maskable"
       },
       {
-        src: "/va-logo.png",
+        src: "/android/launchericon-512x512.png",
         sizes: "512x512",
         type: "image/png",
         purpose: "any"

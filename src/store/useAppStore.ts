@@ -144,6 +144,11 @@ interface AppState {
   // — Firestore Terms Guard —
   hasAcceptedTerms: boolean | null;
 
+  // — PWA Install —
+  deferredPrompt: any | null;
+  isInstallable: boolean;
+  hasDismissedInstall: boolean;
+
   // ========== Actions ==========
   setUserId: (uid: string | null) => void;
   setTokenBalance: (balance: number) => void;
@@ -165,6 +170,11 @@ interface AppState {
   setHasAcceptedTerms: (v: boolean | null) => void;
   setVipExpiry: (expiry: string | null) => void;
   setIsConnecting: (v: boolean) => void;
+
+  setDeferredPrompt: (prompt: any | null) => void;
+  setIsInstallable: (v: boolean) => void;
+  setHasDismissedInstall: (v: boolean) => void;
+
   consumeToken: (amount?: number) => boolean;
   resetWizard: () => void;
   // Duo actions
@@ -244,6 +254,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   isAuthSettling: true,
   hasAcceptedTerms: null,
 
+  deferredPrompt: null,
+  isInstallable: false,
+  hasDismissedInstall: false,
+
   // ========== Actions ==========
   setUserId: (uid) => set({ userId: uid }),
   setTokenBalance: (balance) => set({ tokenBalance: balance, isBalanceLoaded: true }),
@@ -276,6 +290,10 @@ export const useAppStore = create<AppState>((set, get) => ({
   setIsOnline: (v) => set({ isOnline: v }),
   setAuthSettling: (v) => set({ isAuthSettling: v }),
   setHasAcceptedTerms: (v) => set({ hasAcceptedTerms: v }),
+
+  setDeferredPrompt: (prompt) => set({ deferredPrompt: prompt }),
+  setIsInstallable: (v) => set({ isInstallable: v }),
+  setHasDismissedInstall: (v) => set({ hasDismissedInstall: v }),
 
   consumeToken: (amount = 1) => {
     const { tokenBalance, vipExpiry } = get();
