@@ -442,25 +442,37 @@ export default function SettingsDrawer() {
                 </p>
                 <div className="space-y-1.5 mb-8">
                   {isInstallable && (
-                    <button
+                    <motion.button
                       onClick={handleInstallClick}
-                      className="w-full flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 cursor-pointer text-left"
+                      className="w-full relative flex items-center gap-3 p-3.5 rounded-xl transition-all duration-300 cursor-pointer text-left overflow-hidden group shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:shadow-[0_0_30px_rgba(236,72,153,0.4)]"
                       style={{
-                        background: "linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(236,72,153,0.15) 100%)",
-                        border: "1px solid rgba(236,72,153,0.3)",
+                        background: "linear-gradient(135deg, rgba(139,92,246,0.25) 0%, rgba(236,72,153,0.25) 100%)",
+                        border: "1px solid rgba(236,72,153,0.4)",
                       }}
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
                     >
+                      {/* Işık Yansıması (Shimmer Effect) */}
+                      <motion.div
+                        className="absolute inset-0 pointer-events-none"
+                        style={{
+                          background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)",
+                        }}
+                        animate={{ x: ["-100%", "200%"] }}
+                        transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                      />
+                      
                       <div
-                        className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0"
-                        style={{ background: "rgba(236,72,153,0.2)" }}
+                        className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 shadow-inner"
+                        style={{ background: "linear-gradient(135deg, #8b5cf6, #ec4899)" }}
                       >
-                        <Download className="h-4 w-4 text-pink-300" />
+                        <Download className="h-4 w-4 text-white drop-shadow-md animate-bounce" style={{ animationDuration: '2s' }} />
                       </div>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm font-bold text-white">Install App</p>
-                        <p className="text-[11px] text-white/60">Add to Home Screen</p>
+                      <div className="flex-1 min-w-0 relative z-10">
+                        <p className="text-sm font-bold text-white drop-shadow-md tracking-wide">Install VibeCheckr</p>
+                        <p className="text-[11px] text-pink-200 font-medium tracking-wider uppercase mt-0.5">Add to Home Screen 📱</p>
                       </div>
-                    </button>
+                    </motion.button>
                   )}
 
                   <div
