@@ -66,7 +66,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
       name: "VibeCheckr",
       logo: {
         "@type": "ImageObject",
-        url: "https://thevibecheckr.vercel.app/vibecheckr-logo.png"
+        url: "https://thevibecheckr.vercel.app/v-wave.png"
       }
     },
     datePublished: article.publishDate,
