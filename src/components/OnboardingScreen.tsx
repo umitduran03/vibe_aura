@@ -119,9 +119,10 @@ export default function OnboardingScreen() {
             {/* Logo */}
             <m.div
               className="flex items-center justify-center relative mb-8"
-              initial={{ scale: 0.8, opacity: 0, filter: "drop-shadow(0 0 0px rgba(139,92,246,0))" }}
-              animate={{ scale: 1, opacity: 1, filter: ["drop-shadow(0 0 20px rgba(139,92,246,0.25))", "drop-shadow(0 0 35px rgba(236,72,153,0.3))", "drop-shadow(0 0 20px rgba(139,92,246,0.25))"] }}
-              transition={{ scale: { duration: 0.8, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.8 }, filter: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 0.8 } }}
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              style={{ filter: "drop-shadow(0 0 25px rgba(236,72,153,0.35))" }}
             >
               <Image src="/vibecheckr-markalogo.png" alt="VibeCheckr" width={220} height={66} priority className="object-contain h-auto" />
             </m.div>

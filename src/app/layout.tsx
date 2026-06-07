@@ -206,16 +206,16 @@ export default function RootLayout({
               width: 250px; /* Boyutunu buradan ayarlayabiliriz */
               height: auto;
               animation: pulse-wave 1.8s ease-in-out infinite alternate;
-              filter: drop-shadow(0 0 15px rgba(139,92,246,0.3)); /* Etrafına hafif bir aura glow'u ekler */
+              filter: drop-shadow(0 0 15px rgba(139,92,246,0.5)); /* Sabit aura glow'u */
             }
 
             @keyframes pulse-wave {
               0% { transform: scale(0.95); opacity: 0.7; }
-              100% { transform: scale(1.02); opacity: 1; filter: drop-shadow(0 0 25px rgba(236,72,153,0.5)); }
+              100% { transform: scale(1.02); opacity: 1; }
             }
           `}} />
           
-          <img src="/v-wave.png" alt="Loading Vibe" className="wave-img" />
+          <img src="/v-wave.png" alt="Loading Vibe" className="wave-img" width="250" height="176" fetchPriority="high" />
         </div>
 
         <TranslateFix />
