@@ -148,7 +148,7 @@ export default function ExtrasModal() {
                 <div><h2 className="text-[16px] font-bold text-white/90">{cfg.title}</h2>
                 <p className="text-[11px] text-white/40">{cfg.subtitle}</p></div>
               </div>
-              <button onClick={handleClose} className="p-2 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white transition-colors cursor-pointer">
+              <button onClick={handleClose} aria-label="Close" className="p-2 rounded-full bg-white/5 border border-white/10 text-white/50 hover:text-white transition-colors cursor-pointer">
                 <X className="h-4 w-4" />
               </button>
             </div>
@@ -177,6 +177,7 @@ export default function ExtrasModal() {
                               <img src={ss} alt={`Screenshot ${i+1}`} className="w-full h-full object-cover" />
                               <button
                                 onClick={() => removeScreenshot(i)}
+                                aria-label="Remove screenshot"
                                 className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity cursor-pointer"
                               >
                                 <Trash2 className="h-4 w-4 text-red-400" />

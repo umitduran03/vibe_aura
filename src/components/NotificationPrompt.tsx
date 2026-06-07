@@ -103,6 +103,7 @@ export default function NotificationPrompt() {
               {/* Close Button */}
               <button
                 onClick={handleClose}
+                aria-label="Close prompt"
                 className="absolute top-4 right-4 p-1.5 rounded-full bg-white/5 text-text-secondary hover:text-white hover:bg-white/10 transition-colors"
               >
                 <X className="h-4 w-4" />
