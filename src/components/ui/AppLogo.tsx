@@ -8,7 +8,7 @@ interface AppLogoProps {
 export default function AppLogo({ className = "", size = 48 }: AppLogoProps) {
   return (
     <div
-      className={`relative aspect-square rounded-full overflow-hidden shrink-0 ${className}`.trim()}
+      className={`relative rounded-full overflow-hidden shrink-0 flex items-center justify-center ${className}`.trim()}
       style={{
         width: size,
         height: size,
@@ -17,14 +17,13 @@ export default function AppLogo({ className = "", size = 48 }: AppLogoProps) {
       }}
     >
       <Image
-        src="/logo.png"
-        alt="VibeCheckr. Logo"
+        src="/v-wave.png"
+        alt="VibeCheckr V-Wave Logo"
         fill
         sizes={`${size}px`}
-        className="object-cover select-none pointer-events-none"
+        className="object-contain select-none pointer-events-none"
         style={{
-          /* Slightly boost brightness & contrast so VA letters stand out */
-          filter: "brightness(1.5) contrast(1.2)",
+          transform: "scale(1.2)", /* Dalga tam sığsın diye çok hafif büyüklük */
         }}
         priority
       />

@@ -8,20 +8,17 @@ export function WaveLogoIcon({ size = 14, className = "" }: { size?: number; cla
       style={{ 
         width: size, 
         height: size, 
-        mixBlendMode: "screen",
-        /* Subtly boost brightness to make the white wave pop more after blend */
-        filter: "brightness(1.2)"
       }}
     >
       <Image
-        src="/vibecheckr-logo.png"
-        alt="VibeCheckr Logo"
+        src="/v-wave.png"
+        alt="V-Wave Icon"
         fill
         sizes={`${size}px`}
         priority
         style={{
           objectFit: "contain",
-          transform: "scale(1.7)",
+          transform: "scale(1.3)", /* Dalga olduğu için biraz daha görünür olması için scale edildi */
         }}
       />
     </div>

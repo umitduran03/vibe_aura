@@ -108,8 +108,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
       <head>
-        {/* Preload critical assets for LCP SEO boost */}
-        <link rel="preload" as="image" href="/vibecheckr-logo.png" type="image/png" />
+        {/* Preload critical fonts and images */}
+        <link rel="preload" as="image" href="/v-wave.png" type="image/png" />
         
         {/* JSON-LD Structured Data — WebApplication Schema */}
         <script
