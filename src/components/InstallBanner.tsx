@@ -78,6 +78,7 @@ export default function InstallBanner() {
             </button>
             <button
               onClick={handleDismiss}
+              aria-label="Kapat"
               className="p-2 text-white/50 hover:text-white bg-black/20 hover:bg-black/40 rounded-xl transition-all active:scale-90"
             >
               <X className="w-4 h-4" />
