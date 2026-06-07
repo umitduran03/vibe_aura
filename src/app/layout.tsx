@@ -108,6 +108,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
       <head>
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="5WQv53ToxbScdljghDXjmUz50ddX1OcHNDde--iuz0A" />
+
         {/* Preload critical fonts and images */}
         <link rel="preload" as="image" href="/v-wave.png" type="image/png" />
         
