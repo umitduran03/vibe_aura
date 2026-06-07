@@ -1,6 +1,6 @@
 "use client";
 
-import { m, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Download, X } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
@@ -43,7 +43,7 @@ export default function InstallBanner() {
   return (
     <AnimatePresence>
       {isVisible && (
-        <m.div
+        <motion.div
           initial={{ y: 100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: 100, opacity: 0 }}
@@ -71,7 +71,7 @@ export default function InstallBanner() {
               <X className="w-4 h-4" />
             </button>
           </div>
-        </m.div>
+        </motion.div>
       )}
     </AnimatePresence>
   );
