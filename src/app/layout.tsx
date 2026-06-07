@@ -176,6 +176,17 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
       </head>
       <body className="min-h-full bg-background text-foreground antialiased" style={{ backgroundColor: "#050510" }}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.deferredPWAEvent = null;
+              window.addEventListener('beforeinstallprompt', function(e) {
+                e.preventDefault();
+                window.deferredPWAEvent = e;
+              });
+            `,
+          }}
+        />
         {/* GLOBAL PRE-LOADER: Orijinal Neon V Wave */}
         <div 
           id="global-loader" 

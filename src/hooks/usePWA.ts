@@ -11,9 +11,17 @@ export function usePWA() {
     // Sadece client tarafında çalışır
     if (typeof window === "undefined") return;
 
+    // Check if the event fired before React hydrated
+    if ((window as any).deferredPWAEvent) {
+      setDeferredPrompt((window as any).deferredPWAEvent);
+      setIsInstallable(true);
+    }
+
     const handleBeforeInstallPrompt = (e: Event) => {
       // Tarayıcının varsayılan kurulum uyarısını engelle
       e.preventDefault();
+      // Olayı global objeye de kaydet
+      (window as any).deferredPWAEvent = e;
       // Olayı state'e kaydet, böylece kendi butonumuzdan tetikleyebiliriz
       setDeferredPrompt(e);
       // Kurulabilir olduğunu (isInstallable) true yap, banner'ı göster
@@ -24,6 +32,7 @@ export function usePWA() {
       // Uygulama kurulduğunda state'leri temizle
       setIsInstallable(false);
       setDeferredPrompt(null);
+      (window as any).deferredPWAEvent = null;
       console.log("PWA was installed");
     };
 
