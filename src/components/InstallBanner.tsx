@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Download, X } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
@@ -15,9 +16,20 @@ export default function InstallBanner() {
   const deferredPrompt = useAppStore((s) => s.deferredPrompt);
   const setIsInstallable = useAppStore((s) => s.setIsInstallable);
 
+  const [isStandalone, setIsStandalone] = useState(false);
+  
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setIsStandalone(window.matchMedia('(display-mode: standalone)').matches || (navigator as any).standalone);
+    }
+  }, []);
+
   const handleInstall = async () => {
     hapticMedium();
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      alert("Bu cihazda otomatik yükleme desteklenmiyor veya uygulama zaten yüklü! 📱\n\nTarayıcınızın 'Paylaş' veya 'Seçenekler (⋮)' menüsünden 'Ana Ekrana Ekle' (Add to Home Screen) seçeneğine dokunarak yükleyebilirsiniz.");
+      return;
+    }
 
     // Show the native prompt
     deferredPrompt.prompt();
@@ -38,7 +50,7 @@ export default function InstallBanner() {
     setHasDismissed(true);
   };
 
-  const isVisible = isInstallable && !hasDismissed;
+  const isVisible = !isStandalone && !hasDismissed;
 
   return (
     <AnimatePresence>
