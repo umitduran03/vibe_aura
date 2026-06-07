@@ -31,27 +31,30 @@ if (typeof window !== "undefined") {
     (self as any).FIREBASE_APPCHECK_DEBUG_TOKEN = "c333ccd9-3ce9-4a21-9484-b235589be2b9";
   }
   
-  try {
-    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-    if (siteKey) {
-      initializeAppCheck(app, {
-        provider: new ReCaptchaV3Provider(siteKey),
-        
-        // TODO (Faz 3 - Mobile Launch): 
-        // Capacitor ile iOS ve Android native çıktıları alındığında,
-        // aşağıdaki uygun provider'ları da eklemeliyiz:
-        // iOS için: AppAttestProvider
-        // Android için: PlayIntegrityProvider
-        
-        isTokenAutoRefreshEnabled: true,
-      });
+  // Defer App Check initialization by 2500ms to free up the main thread during initial load
+  setTimeout(() => {
+    try {
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+      if (siteKey) {
+        initializeAppCheck(app, {
+          provider: new ReCaptchaV3Provider(siteKey),
+          
+          // TODO (Faz 3 - Mobile Launch): 
+          // Capacitor ile iOS ve Android native çıktıları alındığında,
+          // aşağıdaki uygun provider'ları da eklemeliyiz:
+          // iOS için: AppAttestProvider
+          // Android için: PlayIntegrityProvider
+          
+          isTokenAutoRefreshEnabled: true,
+        });
 
-    } else {
-      console.warn("[Firebase] App Check bypassed: NEXT_PUBLIC_RECAPTCHA_SITE_KEY is missing. Safe-fail active.");
+      } else {
+        console.warn("[Firebase] App Check bypassed: NEXT_PUBLIC_RECAPTCHA_SITE_KEY is missing. Safe-fail active.");
+      }
+    } catch (e) {
+      console.warn("[Firebase] App Check error:", e);
     }
-  } catch (e) {
-    console.warn("[Firebase] App Check error:", e);
-  }
+  }, 2500);
 }
 
 const storage = getStorage(app);
