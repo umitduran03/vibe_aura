@@ -17,6 +17,13 @@ export function usePWA() {
       setIsInstallable(true);
     }
 
+    // Register Service Worker to satisfy Chrome's strict PWA requirements on Android
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch((err) => {
+        console.error('Service Worker registration failed: ', err);
+      });
+    }
+
     const handleBeforeInstallPrompt = (e: Event) => {
       // Tarayıcının varsayılan kurulum uyarısını engelle
       e.preventDefault();

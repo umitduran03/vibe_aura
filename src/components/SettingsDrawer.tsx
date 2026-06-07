@@ -104,7 +104,10 @@ export default function SettingsDrawer() {
 
   const handleInstallClick = async () => {
     hapticMedium();
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      alert("Bu cihazda otomatik yükleme desteklenmiyor veya uygulama zaten yüklü! 📱\n\nTarayıcınızın 'Paylaş' veya 'Seçenekler (⋮)' menüsünden 'Ana Ekrana Ekle' (Add to Home Screen) seçeneğine dokunarak yükleyebilirsiniz.");
+      return;
+    }
 
     deferredPrompt.prompt();
     const { outcome } = await deferredPrompt.userChoice;
@@ -441,39 +444,37 @@ export default function SettingsDrawer() {
                   App
                 </p>
                 <div className="space-y-1.5 mb-8">
-                  {isInstallable && (
-                    <motion.button
-                      onClick={handleInstallClick}
-                      className="w-full relative flex items-center gap-3 p-3.5 rounded-xl transition-all duration-300 cursor-pointer text-left overflow-hidden group shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:shadow-[0_0_30px_rgba(236,72,153,0.4)]"
+                  <motion.button
+                    onClick={handleInstallClick}
+                    className="w-full relative flex items-center gap-3 p-3.5 rounded-xl transition-all duration-300 cursor-pointer text-left overflow-hidden group shadow-[0_0_20px_rgba(236,72,153,0.2)] hover:shadow-[0_0_30px_rgba(236,72,153,0.4)]"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(139,92,246,0.25) 0%, rgba(236,72,153,0.25) 100%)",
+                      border: "1px solid rgba(236,72,153,0.4)",
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    {/* Işık Yansıması (Shimmer Effect) */}
+                    <motion.div
+                      className="absolute inset-0 pointer-events-none"
                       style={{
-                        background: "linear-gradient(135deg, rgba(139,92,246,0.25) 0%, rgba(236,72,153,0.25) 100%)",
-                        border: "1px solid rgba(236,72,153,0.4)",
+                        background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)",
                       }}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
+                      animate={{ x: ["-100%", "200%"] }}
+                      transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+                    />
+                    
+                    <div
+                      className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 shadow-inner"
+                      style={{ background: "linear-gradient(135deg, #8b5cf6, #ec4899)" }}
                     >
-                      {/* Işık Yansıması (Shimmer Effect) */}
-                      <motion.div
-                        className="absolute inset-0 pointer-events-none"
-                        style={{
-                          background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%)",
-                        }}
-                        animate={{ x: ["-100%", "200%"] }}
-                        transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
-                      />
-                      
-                      <div
-                        className="w-9 h-9 rounded-lg flex items-center justify-center shrink-0 shadow-inner"
-                        style={{ background: "linear-gradient(135deg, #8b5cf6, #ec4899)" }}
-                      >
-                        <Download className="h-4 w-4 text-white drop-shadow-md animate-bounce" style={{ animationDuration: '2s' }} />
-                      </div>
-                      <div className="flex-1 min-w-0 relative z-10">
-                        <p className="text-sm font-bold text-white drop-shadow-md tracking-wide">Install VibeCheckr</p>
-                        <p className="text-[11px] text-pink-200 font-medium tracking-wider uppercase mt-0.5">Add to Home Screen 📱</p>
-                      </div>
-                    </motion.button>
-                  )}
+                      <Download className="h-4 w-4 text-white drop-shadow-md animate-bounce" style={{ animationDuration: '2s' }} />
+                    </div>
+                    <div className="flex-1 min-w-0 relative z-10">
+                      <p className="text-sm font-bold text-white drop-shadow-md tracking-wide">Install VibeCheckr</p>
+                      <p className="text-[11px] text-pink-200 font-medium tracking-wider uppercase mt-0.5">Add to Home Screen 📱</p>
+                    </div>
+                  </motion.button>
 
                   <div
                     className="flex items-center gap-3 p-3.5 rounded-xl"
