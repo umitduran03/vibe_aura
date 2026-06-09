@@ -128,6 +128,11 @@ export default function RootLayout({
               operatingSystem: "Web, Android, iOS",
               browserRequirements: "Requires JavaScript",
               softwareVersion: "2.0",
+              isAccessibleForFree: true,
+              audience: {
+                "@type": "Audience",
+                audienceType: "Gen-Z, Young Adults, Singles, Couples"
+              },
               offers: {
                 "@type": "Offer",
                 price: "0",
