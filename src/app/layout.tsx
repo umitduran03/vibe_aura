@@ -166,8 +166,9 @@ export default function RootLayout({
           }}
         />
 
-        {/* LCP Image Preload (Lighthouse Mobile Fix) */}
+        {/* LCP Image Preload (Lighthouse Mobile Fixes) */}
         <link rel="preload" as="image" href="/v-wave.png" fetchPriority="high" />
+        <link rel="preload" as="image" href="/vibecheckr-markalogo.png" fetchPriority="high" />
         
         {/* Sadece DNS-prefetch yap (Network'ü tıkamaz ama DNS'i hazır eder) */}
         <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
