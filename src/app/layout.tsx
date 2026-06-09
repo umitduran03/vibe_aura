@@ -166,13 +166,11 @@ export default function RootLayout({
           }}
         />
 
-        {/* LCP Image Preload (Lighthouse Mobile Fixes) */}
-        <link rel="preload" as="image" href="/v-wave.png" fetchPriority="high" />
-        <link rel="preload" as="image" href="/vibecheckr-markalogo.png" fetchPriority="high" />
+        {/* Preconnect to Critical Firebase APIs (Lighthouse Fix: Max 2-3 preconnects) */}
+        <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
         
         {/* Sadece DNS-prefetch yap (Network'ü tıkamaz ama DNS'i hazır eder) */}
-        <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
-        <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
         <link rel="dns-prefetch" href="https://firebaseinstallations.googleapis.com" />
         <link rel="dns-prefetch" href="https://www.googleapis.com" />
         <link rel="dns-prefetch" href="https://apis.google.com" />
