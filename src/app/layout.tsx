@@ -166,18 +166,16 @@ export default function RootLayout({
           }}
         />
 
-        {/* Preconnect to Firebase & Google APIs — reduces DNS+TLS latency */}
-        <link rel="preconnect" href="https://firebaseinstallations.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
+        {/* Preconnect to Critical Firebase APIs (Lighthouse Fix: Max 2-3 preconnects) */}
         <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://apis.google.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://www.google.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://securetoken.googleapis.com" crossOrigin="anonymous" />
-        {/* DNS-prefetch as fallback for browsers that don't support preconnect */}
+        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
+        
+        {/* Sadece DNS-prefetch yap (Network'ü tıkamaz ama DNS'i hazır eder) */}
         <link rel="dns-prefetch" href="https://firebaseinstallations.googleapis.com" />
-        <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
-        <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.googleapis.com" />
+        <link rel="dns-prefetch" href="https://apis.google.com" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
+        <link rel="dns-prefetch" href="https://securetoken.googleapis.com" />
       </head>
       <body className="min-h-full bg-background text-foreground antialiased" style={{ backgroundColor: "#050510" }}>
         <script

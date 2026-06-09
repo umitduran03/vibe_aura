@@ -31,26 +31,30 @@ if (typeof window !== "undefined") {
     (self as any).FIREBASE_APPCHECK_DEBUG_TOKEN = "c333ccd9-3ce9-4a21-9484-b235589be2b9";
   }
   
-  try {
-    const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
-    if (siteKey) {
-      initializeAppCheck(app, {
-        provider: new ReCaptchaV3Provider(siteKey),
-        
-        // TODO (Faz 3 - Mobile Launch): 
-        // Capacitor ile iOS ve Android native çıktıları alındığında,
-        // aşağıdaki uygun provider'ları da eklemeliyiz:
-        // iOS için: AppAttestProvider
-        // Android için: PlayIntegrityProvider
-        
-        isTokenAutoRefreshEnabled: true,
-      });
-
-    } else {
-      console.warn("[Firebase] App Check bypassed: NEXT_PUBLIC_RECAPTCHA_SITE_KEY is missing. Safe-fail active.");
+  // Performans İyileştirmesi (Lighthouse Fix):
+  // reCAPTCHA scriptinin sayfa ilk yüklenirken Main Thread'i (Ana İş Parçacığı) bloklamasını
+  // engellemek için başlatma işlemini tarayıcı boşta kaldığında (veya 2 sn sonra) yapıyoruz.
+  const initAppCheck = () => {
+    try {
+      const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+      if (siteKey) {
+        initializeAppCheck(app, {
+          provider: new ReCaptchaV3Provider(siteKey),
+          isTokenAutoRefreshEnabled: true,
+        });
+      } else {
+        console.warn("[Firebase] App Check bypassed: NEXT_PUBLIC_RECAPTCHA_SITE_KEY is missing.");
+      }
+    } catch (e) {
+      console.warn("[Firebase] App Check error:", e);
     }
-  } catch (e) {
-    console.warn("[Firebase] App Check error:", e);
+  };
+
+  // Biraz gecikmeli yükle
+  if ('requestIdleCallback' in window) {
+    (window as any).requestIdleCallback(() => setTimeout(initAppCheck, 1500));
+  } else {
+    setTimeout(initAppCheck, 2500);
   }
 }
 
