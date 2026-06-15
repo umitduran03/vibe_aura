@@ -2,18 +2,19 @@ import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, Sparkles, CheckCircle2, ChevronRight } from "lucide-react";
-import { trendsData } from "@/lib/trends-data";
+import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
 import SeoFooter from "@/components/SeoFooter";
 
 export async function generateStaticParams() {
-  return trendsData.map((article) => ({
+  return trendsDataEn.map((article) => ({
     slug: article.slug,
   }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string, lang: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
-  const article = trendsData.find((a) => a.slug === resolvedParams.slug);
+  const currentTrends = resolvedParams.lang === "tr" ? trendsDataTr : trendsDataEn;
+  const article = currentTrends.find((a) => a.slug === resolvedParams.slug);
   
   if (!article) {
     return { title: "Not Found" };
@@ -39,16 +40,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function TrendArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function TrendArticlePage({ params }: { params: Promise<{ slug: string, lang: string }> }) {
   const resolvedParams = await params;
-  const article = trendsData.find((a) => a.slug === resolvedParams.slug);
+  const isTr = resolvedParams.lang === "tr";
+  const currentTrends = isTr ? trendsDataTr : trendsDataEn;
+  const article = currentTrends.find((a) => a.slug === resolvedParams.slug);
 
   if (!article) {
     notFound();
   }
 
   // Find 2 other related articles
-  const relatedArticles = trendsData.filter((a) => a.slug !== resolvedParams.slug).slice(0, 2);
+  const relatedArticles = currentTrends.filter((a) => a.slug !== resolvedParams.slug).slice(0, 2);
 
   // Article JSON-LD Schema for Google Discover and Rich Results
   const jsonLd: any = {
@@ -92,13 +95,13 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
         {/* Navigation */}
         <div className="flex items-center gap-4 mb-12">
           <Link
-            href="/trends"
+            href={`/${resolvedParams.lang}/trends`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
-            aria-label="Back to trends"
+            aria-label={isTr ? "Trendlere geri dön" : "Back to trends"}
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
-          <span className="text-sm font-medium tracking-widest text-indigo-400 uppercase">Vibe Analysis</span>
+          <span className="text-sm font-medium tracking-widest text-indigo-400 uppercase">{isTr ? "Vibe Analizi" : "Vibe Analysis"}</span>
         </div>
 
         {/* Header */}
@@ -150,9 +153,9 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
         {/* Article CTA */}
         <div className="mb-20 p-10 rounded-3xl bg-gradient-to-br from-indigo-900/40 to-black border border-indigo-500/30 text-center">
           <Sparkles className="w-10 h-10 text-indigo-400 mx-auto mb-4" />
-          <h3 className="text-2xl font-bold text-white mb-3">Don't just read about it.</h3>
+          <h3 className="text-2xl font-bold text-white mb-3">{isTr ? "Sadece okumakla kalma." : "Don't just read about it."}</h3>
           <p className="text-white/60 mb-8 max-w-sm mx-auto">
-            Experience the internet's most brutally honest AI algorithm for yourself. Free and instant.
+            {isTr ? "İnternetin en acımasızca dürüst yapay zeka algoritmasını kendin deneyimle. Ücretsiz ve anında." : "Experience the internet's most brutally honest AI algorithm for yourself. Free and instant."}
           </p>
           <Link
             href={article.ctaLink}
@@ -165,12 +168,12 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
         {/* Related Articles (Cross-linking) */}
         {relatedArticles.length > 0 && (
           <div className="border-t border-white/10 pt-16">
-            <h3 className="text-2xl font-bold text-white mb-8">Read Next</h3>
+            <h3 className="text-2xl font-bold text-white mb-8">{isTr ? "Sıradakini Oku" : "Read Next"}</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {relatedArticles.map((rel) => (
                 <Link 
                   key={rel.slug} 
-                  href={`/trends/${rel.slug}`}
+                  href={`/${resolvedParams.lang}/trends/${rel.slug}`}
                   className="group block p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] hover:border-indigo-500/50 transition-all duration-300"
                 >
                   <div className="text-xs font-bold text-indigo-400 mb-2">{rel.category}</div>
@@ -178,7 +181,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
                     {rel.title}
                   </h4>
                   <div className="flex items-center text-sm font-medium text-white/50 group-hover:text-white/70 transition-colors">
-                    Read article <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    {isTr ? "Makaleyi oku" : "Read article"} <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </Link>
               ))}

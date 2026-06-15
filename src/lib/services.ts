@@ -84,8 +84,9 @@ export async function analyzeAura(userData: {
   zodiac: string | null;
   relationship: string | null;
   magicText: string;
-  photoUrl: string | null; // Artık base64 verisi taşıyor
+  photoUrl: string | null;
   soloScenario?: string;
+  locale?: string;
 }): Promise<AuraResult> {
   try {
     const apiPayload = {
@@ -97,6 +98,7 @@ export async function analyzeAura(userData: {
       magicText: userData.magicText,
       photoBase64: userData.photoUrl,
       soloScenario: userData.soloScenario || "general",
+      locale: userData.locale || "en",
     };
 
     const result: AuraResult = await fetchWithRetry("/api/analyze", {
@@ -120,7 +122,8 @@ export async function analyzeDuo(
   userId: string | null,
   person1: DuoPersonData,
   person2: DuoPersonData,
-  duoRelationType: DuoRelationType
+  duoRelationType: DuoRelationType,
+  locale: string = "en"
 ): Promise<DuoResult> {
   try {
     const apiPayload = {
@@ -137,6 +140,7 @@ export async function analyzeDuo(
         photoBase64: person2.photoBase64,
       },
       duoRelationType,
+      locale,
     };
 
     const result: DuoResult = await fetchWithRetry("/api/analyze", {
@@ -313,7 +317,8 @@ export async function getAuraHistory(lastVisibleDoc: any = null) {
 export async function analyzeExtras(
   userId: string | null,
   extrasType: ExtrasType,
-  formData: Record<string, any>
+  formData: Record<string, any>,
+  locale: string = "en"
 ): Promise<ExtrasResult> {
   try {
     const apiPayload = {
@@ -321,6 +326,7 @@ export async function analyzeExtras(
       mode: "extras",
       extrasType,
       formData,
+      locale,
     };
 
     const result: ExtrasResult = await fetchWithRetry("/api/analyze", {

@@ -4,10 +4,12 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { WifiOff } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
+import { useT } from "@/hooks/useT";
 
 export default function OfflineBanner() {
   const isOnline = useAppStore((s) => s.isOnline);
   const setIsOnline = useAppStore((s) => s.setIsOnline);
+  const t = useT();
 
   useEffect(() => {
     // Capacitor Network plugin veya browser API
@@ -65,7 +67,7 @@ export default function OfflineBanner() {
           }}
         >
           <WifiOff className="h-4 w-4 text-red-400" />
-          <span>Vibe signal lost, check your internet connection 🛸</span>
+          <span>{t.offlineMsg}</span>
         </motion.div>
       )}
     </AnimatePresence>

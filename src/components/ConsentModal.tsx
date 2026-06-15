@@ -7,10 +7,12 @@ import { useAppStore } from "@/store/useAppStore";
 import { hapticMedium } from "@/lib/haptics";
 import { doc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import { useT } from "@/hooks/useT";
 
 const CONSENT_KEY = "vibecheckr_consent";
 
 export default function ConsentModal() {
+  const t = useT();
   const [showModal, setShowModal] = useState(false);
   const userId = useAppStore((s) => s.userId);
 
@@ -100,19 +102,19 @@ export default function ConsentModal() {
 
                 {/* ─── Title ─── */}
                 <h2 className="text-xl font-bold text-center text-white mb-2">
-                  Before We Read Your Vibe...
+                  {t.consentTitle}
                 </h2>
                 <p className="text-sm text-center text-white/50 mb-6 leading-relaxed">
-                  VibeCheckr is an <strong className="text-white/70">entertainment app</strong>. Our AI readings are for fun — not professional advice. By continuing, you agree to our terms.
+                  {t.consentDesc}
                 </p>
 
                 {/* ─── Key Points ─── */}
                 <div className="space-y-3 mb-6">
                   {[
-                    { emoji: "🎭", text: "All readings are for entertainment only" },
-                    { emoji: "📷", text: "We never store or sell your photos" },
-                    { emoji: "🤖", text: "AI results may be inaccurate or fictional" },
-                    { emoji: "💳", text: "Digital purchases are non-refundable" },
+                    { emoji: "🎭", text: t.consentPoint1 },
+                    { emoji: "📷", text: t.consentPoint2 },
+                    { emoji: "🤖", text: t.consentPoint3 },
+                    { emoji: "💳", text: t.consentPoint4 },
                   ].map((item) => (
                     <div
                       key={item.text}
@@ -136,7 +138,7 @@ export default function ConsentModal() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors"
                   >
-                    Terms of Service
+                    {t.consentTerms}
                     <ExternalLink className="h-3 w-3" />
                   </a>
                   <span className="text-white/20">|</span>
@@ -146,7 +148,7 @@ export default function ConsentModal() {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors"
                   >
-                    Privacy Policy
+                    {t.consentPrivacy}
                     <ExternalLink className="h-3 w-3" />
                   </a>
                 </div>
@@ -160,12 +162,12 @@ export default function ConsentModal() {
                     boxShadow: "0 8px 25px rgba(139,92,246,0.35), 0 2px 8px rgba(236,72,153,0.2)",
                   }}
                 >
-                  Accept & Continue ✨
+                  {t.consentAcceptBtn}
                 </button>
 
                 {/* ─── Sub-note ─── */}
                 <p className="text-[11px] text-white/30 text-center mt-4 leading-relaxed">
-                  By tapping "Accept & Continue," you acknowledge that you have read and agree to our Terms of Service and Privacy Policy.
+                  {t.consentSubtext}
                 </p>
               </div>
             </div>

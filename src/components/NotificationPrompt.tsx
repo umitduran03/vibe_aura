@@ -8,10 +8,12 @@ import { useAppStore } from "@/store/useAppStore";
 import { saveFcmToken } from "@/lib/auth";
 import { PushNotifications } from "@capacitor/push-notifications";
 import { Capacitor } from "@capacitor/core";
+import { useT } from "@/hooks/useT";
 
 export default function NotificationPrompt() {
   const [isVisible, setIsVisible] = useState(false);
   const { currentScreen, auraResult, duoResult, userId } = useAppStore();
+  const t = useT();
 
   useEffect(() => {
     // Sadece "result" ekranına ulaşıldığında ve cihaz native ise çalış
@@ -103,7 +105,7 @@ export default function NotificationPrompt() {
               {/* Close Button */}
               <button
                 onClick={handleClose}
-                aria-label="Close prompt"
+                aria-label={useAppStore.getState().locale === "tr" ? "Bildirimi Kapat" : "Close prompt"}
                 className="absolute top-4 right-4 p-1.5 rounded-full bg-white/5 text-text-secondary hover:text-white hover:bg-white/10 transition-colors"
               >
                 <X className="h-4 w-4" />
@@ -121,11 +123,11 @@ export default function NotificationPrompt() {
                 </div>
 
                 <h3 className="text-lg font-bold text-white mb-2">
-                  Digital Gossip
+                  {t.notifTitle}
                 </h3>
                 
                 <p className="text-sm text-text-secondary leading-relaxed mb-6">
-                  The algorithm is going to text you! Sometimes a vibe check, sometimes a roast. Are you ready to hear your red flags and vibe leaks?
+                  {t.notifDesc}
                 </p>
 
                 <div className="flex w-full gap-3">
@@ -133,7 +135,7 @@ export default function NotificationPrompt() {
                     onClick={handleClose}
                     className="flex-1 py-3 px-4 rounded-xl text-sm font-medium text-white/70 bg-white/5 hover:bg-white/10 transition-colors"
                   >
-                    No Thanks, I'm Scared
+                    {t.notifDecline}
                   </button>
                   
                   <button
@@ -144,7 +146,7 @@ export default function NotificationPrompt() {
                       boxShadow: "0 4px 15px rgba(236,72,153,0.3)"
                     }}
                   >
-                    I'm Ready!
+                    {t.notifAllow}
                   </button>
                 </div>
               </div>

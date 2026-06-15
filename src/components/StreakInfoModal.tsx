@@ -5,8 +5,10 @@ import { X, Flame, ChevronRight } from "lucide-react";
 import { useStreakStore } from "@/store/useStreakStore";
 import { VIBE_RANKS, getVibeRank } from "@/lib/streak-utils";
 import { hapticLight } from "@/lib/haptics";
+import { useT } from "@/hooks/useT";
 
 export default function StreakInfoModal() {
+  const t = useT();
   const { isStreakInfoModalOpen, closeStreakInfoModal, streakCount } = useStreakStore();
 
   if (!isStreakInfoModalOpen) return null;
@@ -51,7 +53,7 @@ export default function StreakInfoModal() {
             <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-purple-500/10 opacity-50 pointer-events-none" />
             <h2 className="text-xl font-bold text-white flex items-center gap-2 relative z-10">
               <Flame className="w-5 h-5 text-orange-500" />
-              Aura Rank Progression
+              {t.streakInfoTitle}
             </h2>
             <button
               onClick={handleClose}
@@ -65,7 +67,7 @@ export default function StreakInfoModal() {
             
             {/* Explanation */}
             <div className="mb-6 text-sm text-white/70 leading-relaxed bg-white/5 p-4 rounded-2xl border border-white/5">
-              Build your streak by checking your vibe every day. As your streak grows, your rank evolves. Miss a day, and you'll fall back to NPC status!
+              {t.streakInfoDesc}
             </div>
 
             {/* Current Status Card */}
@@ -75,17 +77,17 @@ export default function StreakInfoModal() {
               
               <div className="flex items-center justify-between mb-4 relative z-10">
                 <div>
-                  <p className="text-xs text-white/50 uppercase tracking-widest font-bold mb-1">Current Streak</p>
+                  <p className="text-xs text-white/50 uppercase tracking-widest font-bold mb-1">{t.streakInfoCurrentStreak}</p>
                   <div className="flex items-center gap-2">
                     <Flame className="w-6 h-6 text-orange-500 drop-shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
                     <span className="text-3xl font-black text-white drop-shadow-md">
-                      {streakCount} <span className="text-lg text-white/40 font-medium">{streakCount === 1 ? 'Day' : 'Days'}</span>
+                      {streakCount} <span className="text-lg text-white/40 font-medium">{streakCount === 1 ? t.streakInfoDay : t.streakInfoDays}</span>
                     </span>
                   </div>
                 </div>
                 
                 <div className="text-right">
-                  <p className="text-xs text-white/50 uppercase tracking-widest font-bold mb-1">Rank</p>
+                  <p className="text-xs text-white/50 uppercase tracking-widest font-bold mb-1">{t.streakInfoRank}</p>
                   <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r ${currentRank.gradient} shadow-lg`}>
                     {currentRank.icon}
                     <span className="text-sm font-bold text-white">{currentRank.name}</span>
@@ -97,8 +99,8 @@ export default function StreakInfoModal() {
               {nextRank && (
                 <div className="relative z-10 mt-6">
                   <div className="flex justify-between text-xs font-semibold mb-2">
-                    <span className="text-white/50">{currentRank.minDays} {currentRank.minDays === 1 ? 'Day' : 'Days'}</span>
-                    <span className="text-white/60">Next: <span className="text-white/90">{nextRank.name}</span> ({nextRank.minDays} Days)</span>
+                    <span className="text-white/50">{currentRank.minDays} {currentRank.minDays === 1 ? t.streakInfoDay : t.streakInfoDays}</span>
+                    <span className="text-white/60">{t.streakInfoNext} <span className="text-white/90">{nextRank.name}</span> ({nextRank.minDays} {t.streakInfoDays})</span>
                   </div>
                   <div className="h-4 w-full bg-black/60 rounded-full overflow-hidden border border-white/10 p-1 shadow-inner">
                     <motion.div 
@@ -117,7 +119,7 @@ export default function StreakInfoModal() {
 
             {/* Ranks List */}
             <h3 className="text-sm font-bold text-white/50 uppercase tracking-widest mb-4 px-1">
-              Evolution Path
+              {t.streakInfoEvolutionPath}
             </h3>
             
             <div className="space-y-3 relative">
@@ -158,7 +160,7 @@ export default function StreakInfoModal() {
                         </span>
                       </div>
                       <p className="text-xs text-white/40 truncate">
-                        {isCurrent ? "You are here" : isAchieved ? "Unlocked" : "Locked"}
+                        {isCurrent ? t.streakInfoYouAreHere : isAchieved ? t.streakInfoUnlocked : t.streakInfoLocked}
                       </p>
                     </div>
                   </div>

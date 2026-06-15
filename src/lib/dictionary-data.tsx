@@ -1,6 +1,6 @@
 import { BookOpen, Sparkles, Zap, HeartPulse } from "lucide-react";
 
-export const dictionaryTerms = [
+export const dictionaryTermsEn = [
   {
     category: "Gen-Z Slang & Lifestyle",
     icon: <Zap className="w-5 h-5 text-yellow-400" />,
@@ -134,3 +134,140 @@ export const dictionaryTerms = [
     ]
   }
 ];
+
+export const dictionaryTermsTr = [
+  {
+    category: "Gen-Z Sözlüğü & Hayat Tarzı",
+    icon: <Zap className="w-5 h-5 text-yellow-400" />,
+    terms: [
+      {
+        word: "Delulu",
+        meaning: "Kendi yarattığı hayal dünyasında yaşama durumu. Karşı tarafın 'Naber?' mesajından gelinlik modeli seçmeye giden o tehlikeli yol. Delulu is the solulu!",
+      },
+      {
+        word: "Rizz",
+        meaning: "Karizmanın yeni nesil hali. Karşı tarafı hiç uğraşmadan, tek bakışla veya bir lafla tavlayabilme yeteneği. Rizz seviyen yüksekse sırtın yere gelmez.",
+      },
+      {
+        word: "Ana Karakter Enerjisi (Main Character Energy)",
+        meaning: "Hayatının başrolü senmişsin gibi takılmak. Özgüven tavan, hafif dramatik ve dünyalar yansa umrunda olmayan o mükemmel enerji.",
+      },
+      {
+        word: "Kronik Online (Chronically Online)",
+        meaning: "Telefonu elinden o kadar düşürmüyorsun ki, bütün mizah anlayışın ve kelime dağarcığın Twitter (X) ve TikTok memelerinden ibaret.",
+      },
+      {
+        word: "Vibe Shift",
+        meaning: "Ortamın enerjisinin veya modunun aniden değişmesi. Her şey süperken birden herkesin sus pus olması durumu.",
+      },
+    ]
+  },
+  {
+    category: "Flört & Toksik İlişkiler",
+    icon: <HeartPulse className="w-5 h-5 text-pink-400" />,
+    terms: [
+      {
+        word: "Situationship",
+        meaning: "Sevgili misiniz, arkadaş mısınız belli değil. Adı konmamış, yüksek kafa karışıklığı ve sıfır sadakat içeren o malum toksik ilişki türü.",
+      },
+      {
+        word: "Red Flag (Kırmızı Bayrak)",
+        meaning: "Kaçman gerektiğinin sinyali. Örnek: 'Bütün eski sevgililerim deliydi' demesi veya telefonunu masaya ters koyması.",
+      },
+      {
+        word: "Love Bombing (Aşk Bombardımanı)",
+        meaning: "Biriyle yeni tanıştığında seni iltifata, ilgiye ve hediyeye boğması, sonra da aniden buz gibi soğuması. Klasik narsist taktiği.",
+      },
+      {
+        word: "Ghosting",
+        meaning: "Her şey çok güzel giderken karşı tarafın aniden, hiçbir açıklama yapmadan ortadan kaybolması. Resmen ölü taklidi.",
+      },
+      {
+        word: "Breadcrumbing (Yem Atma)",
+        meaning: "İlgiyi tamamen kesmeyip, seni cepte tutmak için ara sıra küçük mesajlar, story beğenileri atması. Ciddi bir şey istemez ama gitmene de izin vermez.",
+      },
+    ]
+  },
+  {
+    category: "Aura & Enerji İşleri",
+    icon: <Sparkles className="w-5 h-5 text-purple-400" />,
+    terms: [
+      {
+        word: "Aura Puanı (Aura Points)",
+        meaning: "Havanın görünmez skoru. Ortamda laf soktuğunda +1000 aura kazanırsın, yolda yürürken takılıp düştüğünde -5000 aura silinir.",
+      },
+      {
+        word: "Vibe Check",
+        meaning: "Birinin yaydığı enerjiyi test etme durumu. Vibe check'ten geçemezsen o ortamda sana yer yok demektir.",
+      },
+      {
+        word: "Golden Retriever Enerjisi",
+        meaning: "Aşırı neşeli, sadık, sürekli ilgi isteyen ve kolayca heyecanlanan tatlı köpek enerjisi. Genelde hep toksik bir 'Kara Kedi'yi bulurlar.",
+      },
+      {
+        word: "Black Cat (Kara Kedi) Enerjisi",
+        meaning: "Gizemli, soğuk, bağımsız ve dışarıdan bakınca biraz korkutucu duran tip. Ama güvenini kazandığında aşırı sevecen olur.",
+      },
+      {
+        word: "Soulmate (Ruh Eşi) Profili",
+        meaning: "Kozmik olarak tam sana uygun olan, estetiği ve enerjisi seninle %100 uyuşan o efsanevi kişi.",
+      },
+    ]
+  },
+  {
+    category: "Acımasız Burç Gerçekleri",
+    icon: <BookOpen className="w-5 h-5 text-cyan-400" />,
+    terms: [
+      {
+        word: "Koç (21 Mart - 19 Nisan)",
+        meaning: "En ufak bir tartışmayı 3. Dünya Savaşı'na çevirir. Sürekli bağırıyorsun, biraz sakin ol artık, sadece kahve sırasındayız.",
+      },
+      {
+        word: "Boğa (20 Nisan - 20 Mayıs)",
+        meaning: "En büyük hobin uyumak ve inat etmek. Hayır, 'huzurunu korumuyorsun', sadece kendi dediğin olsun diye burnunun dikine gidiyorsun.",
+      },
+      {
+        word: "İkizler (21 Mayıs - 20 Haziran)",
+        meaning: "İçinde en az 3 farklı kişi yaşıyor. Mesajlara günlerce cevap vermeyip sonra hiçbir şey olmamış gibi Instagram'dan Reels atabilirsin.",
+      },
+      {
+        word: "Yengeç (21 Haziran - 22 Temmuz)",
+        meaning: "Karşı taraf mesajın sonuna nokta koydu diye ağlama krizine girersin. Duygusal manipülasyonun kitabını yazdın (saygılar).",
+      },
+      {
+        word: "Aslan (23 Temmuz - 22 Ağustos)",
+        meaning: "7/24 övülmeye ihtiyacın var. Ortamda ilgi odağı olmazsan, suyu verilmemiş salon bitkisi gibi anında solarsın.",
+      },
+      {
+        word: "Başak (23 Ağustos - 22 Eylül)",
+        meaning: "Herkesin hayatını eleştirirsin ama kendi hayatın sadece buzlu kahve ve aşırı stresle ayakta duruyor.",
+      },
+      {
+        word: "Terazi (23 Eylül - 22 Ekim)",
+        meaning: "Kafedeki garsonla, yoldaki kediyle, duvarla bile flört edebilirsin. Basit bir yemek siparişi verirken bile karar veremezsin.",
+      },
+      {
+        word: "Akrep (23 Ekim - 21 Kasım)",
+        meaning: "Aşırı gizemli takılıyorsun ve birinin duygusal durumunu çözmek için Spotify listelerini stalk'luyorsun. 2012'de yediğin lafın kinini tutuyorsun.",
+      },
+      {
+        word: "Yay (22 Kasım - 21 Aralık)",
+        meaning: "Bağlanma fobisinin vücut bulmuş hali. Kavga ettiğinde çözmek yerine başka bir ülkeye taşınmanın her şeyi çözeceğini sanıyorsun.",
+      },
+      {
+        word: "Oğlak (22 Aralık - 19 Ocak)",
+        meaning: "Romantik ilişkilere sanki şirket yönetiyormuşsun gibi bakıyorsun. Sinir krizlerini Google Takvim'de planlayan tek burç sensin.",
+      },
+      {
+        word: "Kova (20 Ocak - 18 Şubat)",
+        meaning: "Tanrı kompleksiyle ortalarda gezinip insanları ghost'lamanın seni 'gizemli' yaptığını sanıyorsun. Uzaylı değilsin, sadece terapiye ihtiyacın var.",
+      },
+      {
+        word: "Balık (19 Şubat - 20 Mart)",
+        meaning: "7/24 delulu modunda yaşıyorsun. Yolda sana saati soran birine kafanda direkt düğün davetiyesi tasarlıyorsun.",
+      },
+    ]
+  }
+];
+
+export const dictionaryTerms = dictionaryTermsEn; // fallback, but clients should use dictionaryTermsEn/Tr explicitly

@@ -10,6 +10,7 @@ import GlassButton from "@/components/ui/GlassButton";
 import { useAppStore } from "@/store/useAppStore";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
 import SettingsDrawer from "@/components/SettingsDrawer";
+import { useT } from "@/hooks/useT";
 import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 
@@ -44,6 +45,7 @@ export default function ResultCard() {
   const zodiacId = useAppStore((s) => s.userData.zodiac);
   const setTokenModalOpen = useAppStore((s) => s.setTokenModalOpen);
   const [isExporting, setIsExporting] = useState(false);
+  const t = useT();
 
   // Anti-cheat chronometer state
   const [shareToast, setShareToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
@@ -66,7 +68,7 @@ export default function ResultCard() {
           // User actually shared — reward tokens
           if (!hasRewardedRef.current) {
             hasRewardedRef.current = true;
-            setShareToast({ message: "Main Character Energy! 🔥 +2 Tokens added.", type: "success" });
+            setShareToast({ message: t.resultShareSuccess, type: "success" });
             setTimeout(() => setShareToast(null), 4000);
 
             // Call backend to add tokens
@@ -88,7 +90,7 @@ export default function ResultCard() {
           }
         } else {
           // Too fast — cheater detected
-          setShareToast({ message: "Who are you kidding? You didn't even share it yet! 🤨 No tokens for you.", type: "error" });
+          setShareToast({ message: t.resultShareError, type: "error" });
           setTimeout(() => setShareToast(null), 4000);
         }
       }
@@ -147,8 +149,8 @@ export default function ResultCard() {
         try {
           shareStartTimeRef.current = Date.now();
           await navigator.share({
-            title: `${auraResult.aura_name} — VibeCheckr`,
-            text: `My vibe score: ${auraResult.aura_score}/100 💜\nTry it yourself! 👀 👉 https://thevibecheckr.vercel.app`,
+            title: t.resultShareTitle.replace("{name}", auraResult.aura_name),
+            text: t.resultShareText.replace("{score}", auraResult.aura_score.toString()),
             files: [file],
           });
         } catch (shareErr: any) {
@@ -279,7 +281,7 @@ export default function ResultCard() {
               {emoji}
             </div>
             <h2 className="text-lg font-medium text-text-secondary mb-1">
-              <span>Your Vibe</span>
+              <span>{t.resultYourVibe}</span>
             </h2>
             <h1
               className="text-3xl font-bold"
@@ -300,7 +302,7 @@ export default function ResultCard() {
           >
             <Sparkles className="h-4 w-4" style={{ color: grad1 }} />
             <span className="text-sm font-medium" style={{ color: "#a1a1aa" }}>
-              <span>Vibe Score</span>
+              <span>{t.resultVibeScore}</span>
             </span>
             <span
               className="text-xl font-bold"
@@ -391,7 +393,7 @@ export default function ResultCard() {
               
               <Lock className="relative h-[15px] w-[15px] text-white/40 group-hover:text-purple-300 transition-colors duration-500" strokeWidth={2} />
               <span className="relative text-[13px] font-semibold tracking-[0.15em] text-white/60 group-hover:text-white/90 transition-colors duration-500 uppercase">
-                Unlock Full Analysis <span className="ml-1 text-[14px]">🔒</span>
+                {t.resultUnlock} <span className="ml-1 text-[14px]">🔒</span>
               </span>
             </m.button>
           )}
@@ -411,17 +413,17 @@ export default function ResultCard() {
               {isExporting ? (
                 <>
                   <Loader2 className="h-5 w-5 animate-spin" />
-                  <span>Preparing...</span> <span translate="no">✨</span>
+                  <span>{t.resultPreparing}</span> <span translate="no">✨</span>
                 </>
               ) : isDownloading ? (
                 <>
                   <Download className="h-5 w-5 animate-bounce" />
-                  <span>Downloading...</span> <span translate="no">📥</span>
+                  <span>{t.resultDownloading}</span> <span translate="no">📥</span>
                 </>
               ) : (
                 <>
                   <Share2 className="h-5 w-5" />
-                  <span>Share (+2 Tokens 🚀)</span>
+                  <span>{t.resultShare}</span>
                 </>
               )}
             </m.button>
@@ -452,7 +454,7 @@ export default function ResultCard() {
             className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl transition-all duration-300 hover:bg-white/10 active:scale-95 font-medium"
           >
             <RotateCcw className="h-5 w-5" />
-            <span>Try Again</span>
+            <span>{t.resultTryAgain}</span>
           </GlassButton>
         </m.div>
       </div>

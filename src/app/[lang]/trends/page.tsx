@@ -1,18 +1,40 @@
-import type { Metadata } from "next";
+"use client";
+
 import Link from "next/link";
 import { ArrowLeft, Flame, Sparkles, TrendingUp } from "lucide-react";
-import { trendsData } from "@/lib/trends-data";
+import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
 import SeoFooter from "@/components/SeoFooter";
+import { useAppStore } from "@/store/useAppStore";
 
-export const metadata: Metadata = {
-  title: "Vibe Culture & Gen-Z Trends Hub",
-  description: "Read the latest deep dives into Gen-Z culture, dating psychology, aura points, red flags, and viral AI photo analysis trends.",
-  alternates: {
-    canonical: "https://thevibecheckr.vercel.app/trends",
+const strings = {
+  en: {
+    title: "Vibe Culture Hub",
+    intro: "The pulse of the internet.",
+    introPara: "From viral TikTok challenges to the brutal psychology behind situationships. We break down the trends so you don't have to.",
+    readMore: "Read full analysis",
+    ctaTitle: "Less reading, more roasting.",
+    ctaPara: "Experience our viral AI engine firsthand. Let our algorithm scan your face and tell you exactly what vibe you're giving off.",
+    ctaBtn: "Start Vibe Check",
+    ariaBack: "Go back home",
+  },
+  tr: {
+    title: "Vibe Kültür Merkezi",
+    intro: "İnternetin nabzı burada atıyor.",
+    introPara: "Viral TikTok akımlarından situationship'lerin o lanet psikolojisine kadar her şeyi inceliyoruz. Sen araştırmakla uğraşma diye trendleri biz analiz ediyoruz.",
+    readMore: "Analizin tamamını oku",
+    ctaTitle: "Okumayı bırak, yüzleşmeye bak.",
+    ctaPara: "İnterneti sallayan yapay zeka motorumuzu kendi üzerinde dene. Algoritma yüzünü tarasın ve dışarıya tam olarak nasıl bir vibe verdiğini yüzüne vursun.",
+    ctaBtn: "Vibe Check'i Başlat",
+    ariaBack: "Ana sayfaya dön",
   },
 };
 
 export default function TrendsHubPage() {
+  const locale = useAppStore((s) => s.locale) as "en" | "tr";
+  const isTr = locale === "tr";
+  const s = strings[locale] ?? strings.en;
+  const currentTrends = isTr ? trendsDataTr : trendsDataEn;
+
   return (
     <div className="min-h-dvh bg-[#050510] text-white">
       {/* Background Glow */}
@@ -27,7 +49,7 @@ export default function TrendsHubPage() {
           <Link
             href="/"
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
-            aria-label="Go back home"
+            aria-label={s.ariaBack}
           >
             <ArrowLeft className="w-5 h-5" />
           </Link>
@@ -36,22 +58,22 @@ export default function TrendsHubPage() {
               <TrendingUp className="w-6 h-6" />
             </div>
             <h1 className="text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-cyan-400">
-              Vibe Culture Hub
+              {s.title}
             </h1>
           </div>
         </div>
 
         {/* Intro */}
         <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">The pulse of the internet.</h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">{s.intro}</h2>
           <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl">
-            From viral TikTok challenges to the brutal psychology behind situationships. We break down the trends so you don't have to.
+            {s.introPara}
           </p>
         </div>
 
         {/* Article Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {trendsData.map((article, idx) => (
+          {currentTrends.map((article, idx) => (
             <Link 
               key={article.slug} 
               href={`/trends/${article.slug}`}
@@ -77,7 +99,7 @@ export default function TrendsHubPage() {
                 </p>
                 
                 <div className="mt-auto pt-4 border-t border-white/10 flex justify-between items-center text-sm font-semibold text-indigo-400">
-                  <span>Read full analysis</span>
+                  <span>{s.readMore}</span>
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </div>
               </div>
@@ -88,15 +110,15 @@ export default function TrendsHubPage() {
         {/* CTA */}
         <div className="mt-20 p-10 rounded-3xl bg-gradient-to-br from-indigo-950/50 to-black border border-indigo-900/30 text-center">
           <Sparkles className="w-10 h-10 text-cyan-400 mx-auto mb-6" />
-          <h2 className="text-3xl font-black text-white mb-4">Less reading, more roasting.</h2>
+          <h2 className="text-3xl font-black text-white mb-4">{s.ctaTitle}</h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto">
-            Experience our viral AI engine firsthand. Let our algorithm scan your face and tell you exactly what vibe you're giving off.
+            {s.ctaPara}
           </p>
           <Link
             href="/"
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
-            Start Vibe Check
+            {s.ctaBtn}
           </Link>
         </div>
       </div>

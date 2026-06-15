@@ -7,12 +7,13 @@ import { compressAndEncodeImage } from "@/lib/services";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { useAppStore, type DuoRelationType } from "@/store/useAppStore";
 import ZodiacScrollPicker from "@/components/ui/ZodiacScrollPicker";
+import { useT } from "@/hooks/useT";
 
-const DUO_RELATION_OPTIONS: { id: DuoRelationType; label: string; emoji: React.ReactNode; color: string }[] = [
-  { id: "flirt", label: "Flirt / Lovers", emoji: <Flame className="w-4 h-4" />, color: "#ec4899" },
-  { id: "ex", label: "Ex-Lovers", emoji: <HeartOff className="w-4 h-4" />, color: "#ef4444" },
-  { id: "platonic", label: "Platonic / Crush", emoji: <Eye className="w-4 h-4" />, color: "#3b82f6" },
-  { id: "bff", label: "BFF / Partner in Crime", emoji: <Users className="w-4 h-4" />, color: "#8b5cf6" },
+const DUO_RELATION_OPTIONS: { id: DuoRelationType; emoji: React.ReactNode; color: string }[] = [
+  { id: "flirt", emoji: <Flame className="w-4 h-4" />, color: "#ec4899" },
+  { id: "ex", emoji: <HeartOff className="w-4 h-4" />, color: "#ef4444" },
+  { id: "platonic", emoji: <Eye className="w-4 h-4" />, color: "#3b82f6" },
+  { id: "bff", emoji: <Users className="w-4 h-4" />, color: "#8b5cf6" },
 ];
 
 /* Mini photo uploader for duo mode */
@@ -27,6 +28,7 @@ function DuoPhotoUploader({
   onRemove: () => void;
   label: string;
 }) {
+  const t = useT();
   const [isUploading, setIsUploading] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -162,7 +164,7 @@ function DuoPhotoUploader({
             ) : (
               <>
                 <Camera className="h-5 w-5 text-text-secondary/60 mb-0.5" />
-                <span className="text-[9px] text-text-secondary/40 font-medium">Photo</span>
+                <span className="text-[9px] text-text-secondary/40 font-medium">{t.photoLabel}</span>
               </>
             )}
           </motion.div>
@@ -196,7 +198,7 @@ function DuoPhotoUploader({
                   <X className="h-5 w-5" />
                 </button>
 
-                <h3 className="text-xl font-bold text-white mb-6 pr-8">Choose Photo</h3>
+                <h3 className="text-xl font-bold text-white mb-6 pr-8">{t.photoChoose}</h3>
 
                 <div className="flex flex-col gap-3">
                   <button
@@ -204,7 +206,7 @@ function DuoPhotoUploader({
                     className="w-full py-4 px-6 rounded-2xl flex items-center justify-between transition-transform active:scale-95"
                     style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(236,72,153,0.15) 100%)", border: "1px solid rgba(192,132,252,0.3)" }}
                   >
-                    <span className="text-[15px] font-bold text-white">Take a Selfie 📸</span>
+                    <span className="text-[15px] font-bold text-white">{t.photoCamera}</span>
                   </button>
 
                   <button
@@ -212,7 +214,7 @@ function DuoPhotoUploader({
                     className="w-full py-4 px-6 rounded-2xl flex items-center justify-between transition-transform active:scale-95"
                     style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(236,72,153,0.15) 100%)", border: "1px solid rgba(192,132,252,0.3)" }}
                   >
-                    <span className="text-[15px] font-bold text-white">Upload from Gallery 🖼️</span>
+                    <span className="text-[15px] font-bold text-white">{t.photoGallery}</span>
                   </button>
                 </div>
               </motion.div>
@@ -231,6 +233,16 @@ export default function DuoStep() {
   const updateDuoPerson1 = useAppStore((s) => s.updateDuoPerson1);
   const updateDuoPerson2 = useAppStore((s) => s.updateDuoPerson2);
   const setDuoRelationType = useAppStore((s) => s.setDuoRelationType);
+  const t = useT();
+
+  const getDuoRelationLabel = (id: DuoRelationType) => {
+    switch (id) {
+      case "flirt": return t.duoFlirt;
+      case "ex": return t.duoEx;
+      case "platonic": return t.duoPlatonic;
+      case "bff": return t.duoBff;
+    }
+  };
 
   return (
     <div className="flex flex-col gap-6 pb-4">
@@ -241,21 +253,21 @@ export default function DuoStep() {
         transition={{ delay: 0.1 }}
       >
         <h2 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-4">
-          Upload Photos 📸
+          {t.photoTitle} 📸
         </h2>
         <div className="flex items-center justify-center gap-6">
           <DuoPhotoUploader
             photoBase64={duoPerson1.photoBase64}
             onUpload={(b64) => updateDuoPerson1({ photoBase64: b64 })}
             onRemove={() => updateDuoPerson1({ photoBase64: null })}
-            label="Person 1"
+            label={t.duoP1Title}
           />
           <div className="text-2xl text-accent/40 font-black select-none">&</div>
           <DuoPhotoUploader
             photoBase64={duoPerson2.photoBase64}
             onUpload={(b64) => updateDuoPerson2({ photoBase64: b64 })}
             onRemove={() => updateDuoPerson2({ photoBase64: null })}
-            label="Person 2"
+            label={t.duoP2Title}
           />
         </div>
       </motion.div>
@@ -268,7 +280,7 @@ export default function DuoStep() {
         transition={{ delay: 0.2 }}
       >
         <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
-          Person 1 Zodiac
+          {t.duoP1Title} - {t.zodiacLabel}
         </h3>
         <ZodiacScrollPicker
           selectedZodiac={duoPerson1.zodiac}
@@ -284,7 +296,7 @@ export default function DuoStep() {
         transition={{ delay: 0.3 }}
       >
         <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
-          Person 2 Zodiac
+          {t.duoP2Title} - {t.zodiacLabel}
         </h3>
         <ZodiacScrollPicker
           selectedZodiac={duoPerson2.zodiac}
@@ -299,7 +311,7 @@ export default function DuoStep() {
         transition={{ delay: 0.4 }}
       >
         <h3 className="text-center text-base font-semibold text-foreground mb-3">
-          Relation Type 💫
+          {t.duoRelation} 💫
         </h3>
         <div className="flex gap-2">
           {DUO_RELATION_OPTIONS.map((opt) => (
@@ -318,7 +330,7 @@ export default function DuoStep() {
                 {opt.emoji}
               </span>
               <span className={`text-[11px] font-semibold ${duoRelationType === opt.id ? "text-white" : "text-text-secondary/60"}`}>
-                {opt.label}
+                {getDuoRelationLabel(opt.id)}
               </span>
             </motion.button>
           ))}

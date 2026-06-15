@@ -4,6 +4,7 @@ import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { WORD_LIMIT } from "@/lib/constants";
 import PhotoUpload from "@/components/PhotoUpload";
+import { useT } from "@/hooks/useT";
 
 interface MagicQuestionStepProps {
   value: string;
@@ -15,6 +16,7 @@ export default function MagicQuestionStep({
   onChange,
 }: MagicQuestionStepProps) {
   const [isFocused, setIsFocused] = useState(false);
+  const t = useT();
 
   const wordCount = value.trim() === "" ? 0 : value.trim().split(/\s+/).length;
   const isOverLimit = wordCount > WORD_LIMIT;
@@ -40,7 +42,7 @@ export default function MagicQuestionStep({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          Between us... 🤫
+          {t.magicTitle}
         </motion.h2>
         <motion.p
           className="text-sm text-text-secondary leading-relaxed max-w-xs mx-auto"
@@ -48,7 +50,7 @@ export default function MagicQuestionStep({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          Is there any specific detail I should know before judging?
+          {t.magicHint}
         </motion.p>
       </div>
 
@@ -67,7 +69,7 @@ export default function MagicQuestionStep({
           onChange={handleChange}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          placeholder="Example: My 3-year relationship ended yesterday..."
+          placeholder={t.magicPlaceholder}
           rows={5}
           className="w-full bg-transparent p-5 text-foreground placeholder:text-text-secondary/40 text-sm leading-relaxed resize-none focus:outline-none"
         />
@@ -80,7 +82,7 @@ export default function MagicQuestionStep({
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
           >
-            Optional — you can leave it blank
+            {t.magicWordCount}
           </motion.span>
           <motion.span
             className={`text-xs font-semibold tabular-nums ${
@@ -105,7 +107,7 @@ export default function MagicQuestionStep({
         transition={{ delay: 0.5 }}
       >
         <p className="text-center text-xs text-text-secondary/40 mb-3">
-          Add a glowing photo if you want 📸
+          {t.photoSubtitle} 📸
         </p>
         <PhotoUpload />
       </motion.div>
@@ -117,7 +119,7 @@ export default function MagicQuestionStep({
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
       >
-        &ldquo;The more the details, the sharper the roast&rdquo;
+        {t.magicQuote}
       </motion.p>
     </div>
   );

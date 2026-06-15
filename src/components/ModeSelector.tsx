@@ -5,10 +5,12 @@ import { User, Users } from "lucide-react";
 import { useAppStore, type AnalysisMode } from "@/store/useAppStore";
 import { hapticLight } from "@/lib/haptics";
 import PremiumExtras from "@/components/PremiumExtras";
+import { useT } from "@/hooks/useT";
 
 export default function ModeSelector() {
   const mode = useAppStore((s) => s.analysisMode);
   const setMode = useAppStore((s) => s.setAnalysisMode);
+  const t = useT();
 
   const handleSelect = (m: AnalysisMode) => {
     hapticLight();
@@ -23,7 +25,7 @@ export default function ModeSelector() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
       >
-        How should we analyze? ✨
+        {t.modeTitle}
       </motion.h2>
 
       <div className="w-full">
@@ -46,7 +48,6 @@ export default function ModeSelector() {
               : "bg-white/5 border-white/8 hover:bg-white/8"
           }`}
         >
-          {/* Fiyat Etiketi */}
           <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-bold text-white/90 border border-white/10 backdrop-blur-md">
             ✦ 1
           </div>
@@ -61,10 +62,10 @@ export default function ModeSelector() {
           </motion.div>
           <div>
             <p className={`text-sm font-bold transition-colors duration-300 ${mode === "solo" ? "text-foreground" : "text-text-secondary"}`}>
-              Solo
+              {t.modeSolo}
             </p>
             <p className="text-[11px] text-text-secondary/50 mt-0.5">
-              Discover your vibe
+              {t.modeSoloSub}
             </p>
           </div>
         </motion.button>
@@ -79,7 +80,6 @@ export default function ModeSelector() {
               : "bg-white/5 border-white/8 hover:bg-white/8"
           }`}
         >
-          {/* Fiyat Etiketi */}
           <div className="absolute top-3 right-3 px-2 py-0.5 rounded-full bg-white/10 text-[10px] font-bold text-white/90 border border-white/10 backdrop-blur-md">
             ✦ 3
           </div>
@@ -94,10 +94,10 @@ export default function ModeSelector() {
           </motion.div>
           <div>
             <p className={`text-sm font-bold transition-colors duration-300 ${mode === "duo" ? "text-foreground" : "text-text-secondary"}`}>
-              Duo Match
+              {t.modeDuo}
             </p>
             <p className="text-[11px] text-text-secondary/50 mt-0.5">
-              Decode your chemistry
+              {t.modeDuoSub}
             </p>
           </div>
         </motion.button>

@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { RELATIONSHIP_OPTIONS } from "@/lib/constants";
 import { cardGridVariants, cardItemVariants } from "@/lib/animations";
 import GlassCard from "@/components/ui/GlassCard";
+import { useT } from "@/hooks/useT";
+import { useAppStore } from "@/store/useAppStore";
 
 interface RelationshipStepProps {
   selected: string | null;
@@ -14,6 +16,19 @@ export default function RelationshipStep({
   selected,
   onSelect,
 }: RelationshipStepProps) {
+  const t = useT();
+
+  const getRelationshipLabel = (id: string) => {
+    switch(id) {
+      case "single": return t.relSingleThriving;
+      case "toxic": return t.relToxicLoop;
+      case "talking": return t.relTalkingStage;
+      case "taken": return t.relTaken;
+      case "done": return t.relDone;
+      default: return "";
+    }
+  };
+
   return (
     <div className="flex flex-col gap-6">
       <div>
@@ -23,7 +38,7 @@ export default function RelationshipStep({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          Relationship status? 💫
+          {t.relationshipTitle} 💫
         </motion.h2>
         <motion.p
           className="text-center text-sm text-text-secondary mb-6"
@@ -31,7 +46,7 @@ export default function RelationshipStep({
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          We aren&apos;t judging... much
+          {t.relationshipSubtitle}
         </motion.p>
       </div>
 
@@ -55,7 +70,7 @@ export default function RelationshipStep({
             >
               <span className="text-2xl flex-shrink-0">{option.emoji}</span>
               <span className="text-base font-medium text-foreground">
-                {option.label}
+                {getRelationshipLabel(option.id)}
               </span>
               {selected === option.id && (
                 <motion.div

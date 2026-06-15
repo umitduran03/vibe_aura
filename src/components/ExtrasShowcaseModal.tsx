@@ -5,79 +5,82 @@ import { Flame, HeartCrack, Sparkles, Zap, X, MessageCircle, Send } from "lucide
 import { useAppStore, type ExtrasType } from "@/store/useAppStore";
 import { hapticMedium, hapticLight } from "@/lib/haptics";
 
-const EXTRAS_CARDS: {
-  id: ExtrasType;
-  title: string;
-  emoji: string;
-  description: string;
-  cost: number;
-  gradient: string;
-  borderColor: string;
-  glowColor: string;
-  icon: typeof Flame;
-}[] = [
-  {
-    id: "toxic-ex",
-    title: "Toxic Ex Scanner",
-    emoji: "💀",
-    description: "Should you text them? Get a savage red flag scan before you do something stupid.",
-    cost: 3,
-    gradient: "from-red-500/20 via-orange-500/10 to-transparent",
-    borderColor: "border-red-500/30",
-    glowColor: "rgba(239, 68, 68, 0.15)",
-    icon: HeartCrack,
-  },
-  {
-    id: "situationship",
-    title: "Situationship Clarifier",
-    emoji: "🤡",
-    description: "Decoding the 'What are we?' mystery. Brutal compatibility stats included.",
-    cost: 5,
-    gradient: "from-fuchsia-500/20 via-purple-500/10 to-transparent",
-    borderColor: "border-fuchsia-500/30",
-    glowColor: "rgba(217, 70, 239, 0.15)",
-    icon: Zap,
-  },
-  {
-    id: "mood-reset" as ExtrasType,
-    title: "Mood Reset",
-    emoji: "🔋",
-    description: "Bad day? Get a brutally honest wake-up call to fix your mood and recharge your vibe.",
-    cost: 3,
-    gradient: "from-cyan-500/20 via-teal-500/10 to-transparent",
-    borderColor: "border-cyan-500/30",
-    glowColor: "rgba(6, 182, 212, 0.15)",
-    icon: Sparkles,
-  },
-  {
-    id: "delulu-check" as ExtrasType,
-    title: "Delulu Check",
-    emoji: "📱",
-    description: "Mixed signals? Drop the receipts (max 3 screenshots) or paste the chat. Get an unfiltered reality check before you double text.",
-    cost: 10,
-    gradient: "from-amber-500/20 via-yellow-500/10 to-transparent",
-    borderColor: "border-amber-500/30",
-    glowColor: "rgba(245, 158, 11, 0.15)",
-    icon: MessageCircle,
-  },
-  {
-    id: "rizz-architect" as ExtrasType,
-    title: "The Reply Guru",
-    emoji: "💬",
-    description: "Mind games? Won. Drop the screenshot and let me craft the perfect toxic, cool, or safe reply.",
-    cost: 2,
-    gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
-    borderColor: "border-violet-500/30",
-    glowColor: "rgba(139, 92, 246, 0.15)",
-    icon: Send,
-  },
-];
+import { useT } from "@/hooks/useT";
 
 export default function ExtrasShowcaseModal() {
+  const t = useT();
   const isOpen = useAppStore((s) => s.isExtrasShowcaseOpen);
   const setExtrasShowcaseOpen = useAppStore((s) => s.setExtrasShowcaseOpen);
   const setExtrasType = useAppStore((s) => s.setExtrasType);
   const setExtrasModalOpen = useAppStore((s) => s.setExtrasModalOpen);
+
+  const EXTRAS_CARDS: {
+    id: ExtrasType;
+    title: string;
+    emoji: string;
+    description: string;
+    cost: number;
+    gradient: string;
+    borderColor: string;
+    glowColor: string;
+    icon: typeof Flame;
+  }[] = [
+    {
+      id: "toxic-ex",
+      title: t.extrasToxicTitle,
+      emoji: "💀",
+      description: t.extrasToxicDesc,
+      cost: 3,
+      gradient: "from-red-500/20 via-orange-500/10 to-transparent",
+      borderColor: "border-red-500/30",
+      glowColor: "rgba(239, 68, 68, 0.15)",
+      icon: HeartCrack,
+    },
+    {
+      id: "situationship",
+      title: t.extrasSitTitle,
+      emoji: "🤡",
+      description: t.extrasSitDesc,
+      cost: 5,
+      gradient: "from-fuchsia-500/20 via-purple-500/10 to-transparent",
+      borderColor: "border-fuchsia-500/30",
+      glowColor: "rgba(217, 70, 239, 0.15)",
+      icon: Zap,
+    },
+    {
+      id: "mood-reset",
+      title: t.extrasMoodTitle,
+      emoji: "🔋",
+      description: t.extrasMoodDesc,
+      cost: 3,
+      gradient: "from-cyan-500/20 via-teal-500/10 to-transparent",
+      borderColor: "border-cyan-500/30",
+      glowColor: "rgba(6, 182, 212, 0.15)",
+      icon: Sparkles,
+    },
+    {
+      id: "delulu-check",
+      title: t.extrasDeluluTitle,
+      emoji: "📱",
+      description: t.extrasDeluluDesc,
+      cost: 10,
+      gradient: "from-amber-500/20 via-yellow-500/10 to-transparent",
+      borderColor: "border-amber-500/30",
+      glowColor: "rgba(245, 158, 11, 0.15)",
+      icon: MessageCircle,
+    },
+    {
+      id: "rizz-architect",
+      title: t.extrasRizzTitle,
+      emoji: "💬",
+      description: t.extrasRizzDesc,
+      cost: 2,
+      gradient: "from-violet-500/20 via-purple-500/10 to-transparent",
+      borderColor: "border-violet-500/30",
+      glowColor: "rgba(139, 92, 246, 0.15)",
+      icon: Send,
+    },
+  ];
 
   const handleSelect = (type: ExtrasType) => {
     hapticMedium();
@@ -116,7 +119,7 @@ export default function ExtrasShowcaseModal() {
             {/* Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between p-5 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5">
               <h2 className="text-[18px] font-bold text-white/90 flex items-center gap-2">
-                Crisis Center <span className="text-xl">🔍</span>
+                {t.extrasShowcaseTitle}
               </h2>
               <button
                 onClick={closeModal}
@@ -129,7 +132,7 @@ export default function ExtrasShowcaseModal() {
             {/* Content */}
             <div className="p-5 flex flex-col gap-3">
               <p className="text-sm text-white/50 mb-2 leading-relaxed">
-                Decoding the drama and serving brutally honest reality checks. No cap.
+                {t.extrasShowcaseDesc}
               </p>
               
               {EXTRAS_CARDS.map((card, i) => {

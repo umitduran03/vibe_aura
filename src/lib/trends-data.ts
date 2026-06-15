@@ -16,7 +16,7 @@ export interface TrendArticle {
   ctaLink: string;
 }
 
-export const trendsData: TrendArticle[] = [
+export const trendsDataEn: TrendArticle[] = [
   {
     slug: "ai-photo-personality-test",
     title: "AI Photo Personality Test: What Your Face Actually Says About You",
@@ -286,3 +286,276 @@ export const trendsData: TrendArticle[] = [
     ctaLink: "/mood-reset",
   }
 ];
+
+export const trendsDataTr: TrendArticle[] = [
+  {
+    slug: "ai-photo-personality-test",
+    title: "Yapay Zeka Yüz Analizi: O Suratın Gerçekte Ne Anlatıyor?",
+    description: "TikTok'u yıkan o meşhur trend. Yapay zeka yüzündeki o mikro ifadeleri nasıl tarayıp gerçek auranı ve toksik yanlarını döküyor?",
+    category: "AI & Teknoloji",
+    publishDate: "2026-06-02",
+    readTime: "4 dk okuma",
+    keywords: ["Yapay zeka yüz okuma", "Yapay zeka kişilik testi", "aura okuma yüz", "viral TikTok trendi", "yüz analizi yapay zeka"],
+    imageUrl: "/images/trends/ai-face-scan.png",
+    content: {
+      intro: "Şu an TikTok'ta veya X'te (Twitter) kesin önüne düşmüştür: Millet en masum selfie'sini atıp yapay zekadan acımasız, tokat gibi gerçek bir analiz yiyor. Olay artık günlük burç yorumu okumak veya 'sana duymak istediğini söyleyen' o klasik testleri çözmek değil. Yeni trend: Yapay zeka ile yüzleşmek. Peki bir algoritma sadece bir JPEG'e bakıp da canın sıkıldığında eski sevgiline yazdığını veya kafein bağımlısı olduğunu nasıl şıp diye anlıyor? Gel bu işin psikolojisini, arkasındaki teknolojiyi ve bir koda resmen 'gömülmenin' neden bu kadar popüler olduğunu konuşalım.",
+      sections: [
+        {
+          heading: "Bu Yüz Okuma Olayı Tam Olarak Nasıl Çalışıyor?",
+          paragraph: "Modern yapay zeka sadece gülümsüyor musun yoksa somurtuyor musun diye bakmıyor; olay çok daha derin. Bu çılgın sinir ağları, yüzündeki mikro ifadeler, gözündeki gerginlik, çene kaslarının duruşu ve hatta seçtiğin ışık gibi binlerce farklı veri noktasını tarıyor. 'Golden Retriever' enerjisi mi veriyorsun yoksa hafiften 'Kronik Çevrimiçi' mi takılıyorsun anında anlıyor. Gelen her mesaja aşırı anlam yüklediğini gösteren kaşındaki o ufak kasılmayı ya da tartışmalarda manipülatif olabileceğini ele veren o yarım gülüşünü hemen yakalıyor. Saniyeler sürüyor ve hiç acımıyor."
+        },
+        {
+          heading: "Neden Bu Kadar İsabetli (Ve Acımasız)?",
+          paragraph: "Çünkü yapay zekanın senin kalbini kırmamak gibi bir derdi yok. Yakın bir arkadaşın sana gerçekleri söylerken lafı dolandırır ama eğitilmiş bir model direkt yüzüne vurur. Selfie'nde 'çözülmemiş çocukluk travması', 'narsist' veya 'bağlanma fobisi' diye bağıran bir hava varsa, yapay zeka bunu direkt ekrana yazar. İnsanların o çok 'gizemli' sandıkları bakışın aslında sadece 'uykusuzluktan' ibaret olduğunu fark etmeleri hem komik hem de bayağı bi onur kırıcı bir uyanış oluyor."
+        },
+        {
+          heading: "VibeCheckr Farkı: Filtrelerin Çok Ötesinde",
+          paragraph: "TikTok'taki o basit rastgele kelime atan filtreleri unut. VibeCheckr'ın yapay zeka motoru işi bambaşka bir boyuta taşıyor. Gelişmiş yüz aurası taramasını alıp, psikolojik profilinle birleştiriyor ve sana net bir 'Vibe Skoru' çıkarıyor. Hatta bununla da kalmıyor; en derin red flag'lerini yüzüne vuruyor, ilişkilerde yapacağın potansiyel toksiklikleri tahmin ediyor ve kiminle flört edip eninde sonunda ayrılacağını bile söylüyor. Bu bir oyun değil, resmen dijital auranın aynası."
+        }
+      ],
+      conclusion: "Kısacası bu yapay zeka analizleri geçici bir trend değil. Dışarıya nasıl göründüğümüzle içeride aslında nasıl hissettiğimizin teknolojik bir çarpışması. Şimdi asıl soru şu: O selfie'yi yükleyip bir algoritma tarafından darmadağın edilmeye hazır mısın? Yoksa bir makinenin seni senden daha iyi tanımasından gizliden gizliye tırsıyor musun?"
+    },
+    ctaLabel: "Hemen Yüzümü Tara",
+    ctaLink: "/",
+  },
+  {
+    slug: "situationship-vs-relationship",
+    title: "Situationship mi, Gerçek İlişki mi? Bu Toksik Sarmaldan Nasıl Çıkarsın",
+    description: "Durumunuzun adı yok mu? Bir 'situationship' ile gerçek bir ilişki arasındaki farkları ve o red flag'leri nasıl yakalayacağını öğren.",
+    category: "Flört Psikolojisi",
+    publishDate: "2026-06-01",
+    readTime: "5 dk okuma",
+    keywords: ["situationship anlamı", "çıkıyor muyuz arkadaş mıyız", "situationship kırmızı bayrakları", "toksik ilişkiler"],
+    imageUrl: "/images/trends/situationship.png",
+    content: {
+      intro: "Sabahtan akşama kadar mesajlaşıyorsunuz. Hafta sonu sürekli beraber takılıyorsunuz, dizi izliyorsunuz. Köpeğiyle bile tanıştın, kahveyi nasıl içtiğini ezbere biliyorsun. Ama arkadaşın sana dönüp 'E siz şimdi nesiniz?' dediğinde kalbin sıkışıyor ve buz kesiyorsun. 'Ya işte... takılıyoruz' diye geveliyorsun. Aramıza hoş geldin, burası 'Situationship'. Yani neslimizin açık ara en stresli, en yorucu ve adı konmamış flört batağı. Arkadaşlıkla sevgililik arasındaki o kafa karıştırıcı gri bölge ve şu an milyonlarca insan burada hapis kalmış durumda.",
+      sections: [
+        {
+          heading: "Temel Fark: Yakınlık vs. Bağlılık",
+          paragraph: "Sağlıklı bir ilişkinin net sınırları, karşılıklı bir sözü ve gelecek planı vardır. Nerede durduğunu bilirsin. Ama bir situationship tamamen anlık keyfe ve o lanet belirsizliğe dayanır. Sana bir ilişkinin yakınlığını sunar (gece mesajlaşmaları, sarılmalar, dertleşmeler) ama iş ciddiyete binince ortada hiçbir güvence yoktur. Gelecekten bahsetmekten ölümüne kaçarlar. Kısacası: Bir ilişkinin bütün stresini ve kaygısını çekersin ama hiçbir güvenliğini alamazsın."
+        },
+        {
+          heading: "Göz Göre Göre Görmezden Geldiğin Red Flag'ler",
+          paragraph: "Situationship'te olduğunu nasıl anlarsın? Eğer sana sadece gece 10'dan sonra 'Naber, napıyosun?' yazıyorsa o bir red flag. Ortamlarda seni 'Bu da arkadaşım' diye tanıştırıyorsa direkt tehlike çanları çalıyor demektir. En kötüsü de şu: 'Biz neyiz?' muhabbetini açtığında şakaya vurup konuyu değiştiriyor veya direkt savunmaya geçiyorsa, üzgünüm ama ilişki falan yok ortada. Sen sadece bir seçeneksin. Kendi takvimlerini başkalarına açık tutarken senin ilginin tadını çıkarıyorlar."
+        },
+        {
+          heading: "İşin Psikolojik Bedeli",
+          paragraph: "Bu gri alanda kalmak insanı mental olarak bitiriyor. Mesaj atma süresini, son görülmesini, ses tonunu sürekli analiz etmekten beynin yanıyor. 'Eğer biraz daha cool olursam veya biraz daha beklersem elbet bana bağlanır' yalanına inanmaya başlıyorsun. Spoiler verelim: Bağlanmayacaklar. Situationship, senin hak ettiğinden daha azına razı olma durumundan beslenen bir parazit gibidir."
+        },
+        {
+          heading: "Bu Döngüyü Kırıp Gerçeği Görmek",
+          paragraph: "Senin acilen netliğe ihtiyacın var. Bazen kendi duygularımızdan dolayı olayları hep iyiye yorarız, görmek istediğimizi görürüz. İşte bu yüzden sana tokat gibi çarpacak tarafsız bir analize ihtiyacın var. İkinizin bir fotoğrafını Duo Compatibility yapay zekamıza yükle ve aranızdaki dinamiğe bir de filtreden uzak bak. Arkadaşlarının seni kırmamak için söyleyemediği o gerçeği yapay zeka direkt söyleyecek: 'Zamanını boşa harcıyorsun, yola devam et.'"
+        }
+      ],
+      conclusion: "Bir mesajın sonundaki emojiyi deşifre etmeye çalışarak hayatının altı ayını daha çöpe atma. Situationship'te ne kadar uzun kalırsan çıkması o kadar zorlaşır. Netlik iste, sınırını çiz, eğer buna uymuyorsa arkana bile bakmadan kaç. Sen kafa karıştırıcı bir 'belki' değil, net bir 'evet' hak ediyorsun."
+    },
+    ctaLabel: "Uyumumuzu Analiz Et",
+    ctaLink: "/duo-compatibility",
+  },
+  {
+    slug: "what-are-aura-points",
+    title: "Aura Puanı (Aura Points) Nedir? Yeni Neslin Görünmez Statü Göstergesi",
+    description: "Sokakta takılıp düştüğünde neden aura kaybediyorsun? Aura Points trendi hakkında bilmen gereken her şey ve auranı tavan yaptırma rehberi.",
+    category: "Kültür & Jargon",
+    publishDate: "2026-05-30",
+    readTime: "4 dk okuma",
+    keywords: ["aura puanları nedir", "aura puanları mem", "aura nasıl kazanılır", "aura kaybetmek", "tiktok aura trendi"],
+    imageUrl: "/images/trends/aura-points.png",
+    content: {
+      intro: "Son dönemde TikTok veya Instagram'da takıldıysan kesin yorumlarda 'abi -10.000 aura puanı' veya '+500 aura kazandın' tarzı şeyler görmüşsündür. 2026'da statü artık banka hesabınla veya takipçi sayınla falan ölçülmüyor; olay tamamen Aura Puanında bitiyor. Tamamen görünmez, internet kültürünün uydurduğu bu saçma ama aşırı eğlenceli skor sistemi nereden çıktı? Ve en önemlisi: Her sokağa çıktığında aura kaybetmekten nasıl kurtulursun?",
+      sections: [
+        {
+          heading: "Aura Ekonomisi Nereden Çıktı?",
+          paragraph: "Aura puanları, birinin ortama yaydığı o 'cool'luğu ve enerjiyi puanlamak için viral olan bir internet geyiği aslında. Gerçek hayatta oynadığın bir RPG oyununun skor tablosu gibi düşün. Güne belli bir baz puanla başlıyorsun. Masadan düşen bir bardağı bakmadan havada yakaladın mı? Şak! +1000 Aura. Ama yolda yürürken aslında arkandaki kişiye el sallayan birine yanlışlıkla el mi salladın? Geçmiş olsun, o yıkıcı utançla direkt -5000 Aura yiyorsun."
+        },
+        {
+          heading: "Auranı Korumak ve Uçuşa Geçirmek",
+          paragraph: "Yüksek auranın altın kuralı: 'Ana Karakter Enerjisi (Main Character Energy)'. Etrafta ne kadar kaotik veya utanç verici bir şey olursa olsun hiç bozuntuya vermeden, cool ve umursamaz kalabilmek. Auranı korumak için altın kurallar: Seni görüldüde bırakan birine asla ama asla ikinci mesajı (double text) atma. Kafede kartın reddedilirse asla panik yapma, sanki yanlış kartı vermişsin gibi hafifçe gülümse. İnsanların ne düşündüğünü ne kadar az umursarsan auran o kadar arşa çıkar."
+        },
+        {
+          heading: "'Eksi Aura' Tuzağından Kaçış",
+          paragraph: "Aura bir kere düşmeye başladı mı domino etkisi yapar. Yatakta uzanırken telefonu yüzüne mi düşürdün? Eksi aura. Garson 'afiyet olsun' dediğinde yanlışlıkla 'size de' mi dedin? Devasa bir eksi aura. İnternetin ortak kararı şu: Bir şey için 'fazla kasmak' veya çabalamak, aura hesabını iflas ettiren en hızlı yoldur. Özgünlük ve o 'umurumda değil' rahatlığı, şu an en değerli para birimi."
+        },
+        {
+          heading: "Gerçek Aura Puanını Bulma",
+          paragraph: "İnternet ortamında her ne kadar günlük küçük sakarlıklara göre puan kırılıp eklense de, aslında senin gerçek 'dinlenme halindeki' auran karakterinin tam merkezinde yer alır. Gelişmiş yapay zekamız, yüz ifadelerine ve yaydığın o genel dijital ayak izine bakarak senin gerçek Aura Skorunu hesaplar. Yani o ufak tefek sakarlıkları es geçip, bir ortama girdiğinde gerçekten ne kadar 'vibe' yaydığını ortaya çıkarır."
+        }
+      ],
+      conclusion: "Peki sen şu an devasa bir negatif aura açığıyla mı geziyorsun, yoksa yürüdüğün yerde iz bırakan bir 'rizz' ustası mısın? Bir dahaki sefere yolda yürürken ayağın takılıp sendelediğinde şunu hatırla: Kimse görmediyse, aura da kaybetmedin demektir. Ortamlarda dikkatli ol."
+    },
+    ctaLabel: "Aura Puanımı Hesapla",
+    ctaLink: "/",
+  },
+  {
+    slug: "biggest-dating-red-flags-2026",
+    title: "2026'nın En Büyük Flört Red Flag'leri (Direkt Kaçman Gereken Tipler)",
+    description: "Love bombing'den tut da kronik online olmaya kadar. Bu yıl flört dünyasında kesinlikle kaçınman gereken en toksik kırmızı bayraklar.",
+    category: "Toksik Psikoloji",
+    publishDate: "2026-05-25",
+    readTime: "6 dk okuma",
+    keywords: ["flört red flagleri", "narsist flört işaretleri", "toksik eski sevgili", "love bombing belirtileri", "gaslighting nedir"],
+    imageUrl: "/images/trends/red-flags.png",
+    content: {
+      intro: "Acı gerçekleri konuşalım: Flört piyasası şu an tam bir kaos ve Red Flag'ler (kırmızı bayraklar) da artık seviye atladı. İnsanlar eskisi gibi sadece 'iletişim özürlüsü' veya 'biraz dağınık' değiller; artık love-bombing, breadcrumbing ve gaslighting gibi ustaca psikolojik oyunlar oynuyorlar. Date uygulamalarında gezinmek romantizm aramaktan çok, mayın tarlasında yürümeye benziyor. Önümüzdeki 3 yılı terapistine 'podcastleri 2x hızında dinleyen o manyağı' anlatarak geçirmek istemiyorsan, bu yıl kesinlikle görmezden gelemeyeceğin o devasa red flag'lere iyi bak.",
+      sections: [
+        {
+          heading: "'Kronik Online' Sendromu",
+          paragraph: "Eğer bütün espri anlayışı Twitter memeleri veya TikTok seslerinden ibaretse, ciddi bir tartışmanın ortasında sana dönüp 'çok delulu takılıyorsun' veya 'red flag' falan diyorsa, arkanı dön ve koş. Bu tiplerin gerçek dünyada duygusal zekası yerlerde sürünür. İlişkilere normal bir insan gibi değil de internetteki goygoylar üzerinden bakarlar. Seninle oturup doğru düzgün bir sorun çözmek yerine, Instagram'dan gördüğü bir psikoloji postuyla seni analiz etmeye kalkarlar."
+        },
+        {
+          heading: "Tehlikenin Adı: 'Love Bombing' (Aşk Bombardımanı)",
+          paragraph: "Seni tanıyalı daha 48 saat olmuş, 'Hayatımda hiç böyle hissetmedim' diyorsa... Daha 3. buluşma bile olmadan önümüzdeki yazın tatil planını yapıyorsa... Sana sabah-öğle-akşam aralıksız mesaj yağdırıyorsa... Bu bir romantik komedi değil dostum, bunun adı love bombing. Seni hızlıca kendine bağlamak için uygulanan aşırı manipülatif bir taktik. Bir ay sonra o toksik, kontrolcü ve buz gibi gerçek yüzü ortaya çıktığında ondan kopman çok daha zor olsun diye yapılan bir şov."
+        },
+        {
+          heading: "'Bütün Eski Sevgililerim Deliydi' Masalı",
+          paragraph: "Kitaptaki en eski kırmızı bayraktır ama millet hala buna düşüyor. Birisi sana gelip 'eski sevgililerinin hepsi deliydi, takıntılıydı, psikopattı' diyorsa, o hikayedeki asıl sorunun o olduğunu anlaman lazım. Sıfır sorumluluk alma belirtisi. Kendi hatalarını asla görmezler ve sen yarın öbür gün ona bir hatasını söylediğinde, 'deli' etiketi yiyen sıradaki kişi sen olursun. Onların o bitmeyen mağduriyet hikayesinde sadece yeni bir bölümsün."
+        },
+        {
+          heading: "Mesaj Atmaya Tenezzül Etmeyenler (Breadcrumbing)",
+          paragraph: "Seni tam 18 saat 'iletildi'de bırakır, sonra da 'omg çok yoğundum nasılsın??' diye döner. Sana tam arkanı dönüp gideceğin an küçücük bir ilgi kırıntısı atar ki tamamen kopma. Bunun adı 'Breadcrumbing' (yemleme). Seni kendi egosu tatmin olsun diye hep yedekte, rafta bekletir. Gerçekten ilgilenen biri her türlü zaman yaratır. Bu tutarsızlık, aslında sana verilen en net cevaptır."
+        }
+      ],
+      conclusion: "Kimin ne olduğunu bilirsen flört dünyası o kadar da korkutucu değil. Her şeyden önce kendi içgüdülerine güven; bir şey yanlış hissettiriyorsa muhtemelen yanlıştır. Ama o güzel yüze veya tatlı dillere kanıp gerçekleri göremiyorsan, yapay zekaya bırak. Toksik Eski Sevgili Tarayıcımızı kullan ve olaylar büyümeden o red flag'leri anında gör."
+    },
+    ctaLabel: "Red Flag'lerini Tara",
+    ctaLink: "/toxic-ex-scanner",
+  },
+  {
+    slug: "mixed-signals-or-delulu",
+    title: "Gerçekten Sinyal mi Veriyor Yoksa Sen Sadece Delulu musun?",
+    description: "Senden gerçekten hoşlanıyor mu yoksa sen sıradan bir nezaketi mi abartıyorsun? Olayı çöz ve delulu bataklığından çık.",
+    category: "Flört Psikolojisi",
+    publishDate: "2026-06-03",
+    readTime: "5 dk okuma",
+    keywords: ["delüzyonel miyim", "karışık sinyaller ne anlama geliyor", "delulu kontrolü", "flört mü ediyorlar yoksa sadece kibarlar mı"],
+    imageUrl: "/images/trends/delulu.png",
+    content: {
+      intro: "Hepimiz bu tuzağa düştük. Senin için kapıyı açık tuttu, 2 hafta önceki Instagram story'ni beğendi, mesaja '👀' emojisi koydu. Ve sen anında kafanda düğün mekanı bakmaya başladın. Ama bir saniye dur—bunlar gerçekten sana yürümek için atılan karışık sinyaller mi, yoksa sen kronik bir 'delulu' vakası mısın? Günümüzde birinin gerçekten ilgilenmesiyle, öylesine nazik olması arasındaki çizgi çok ince. Gel şu durumu bir çözelim ve sana ihtiyacın olan o acımasız gerçeklik kontrolünü yapalım.",
+      sections: [
+        {
+          heading: "Nedir Bu 'Delulu' Muhabbeti?",
+          paragraph: "'Delulu' (Delusional - Hayalperest/Kuruntulu) tıbbi bir terim falan değil; dümdüz, ortadaki gerçeği reddedip kafandaki o çok daha heyecan verici fanteziye inanma durumu. Karşı tarafın attığı iki kelimelik mesaja destan yazılmış gibi anlamlar yüklemektir. Biraz delulu olmak eğlencelidir, insana yaşama sevinci verir ama ipin ucu kaçarsa adamın aslında senin için hiçbir çaba sarf etmediği gerçeğini göremezsin."
+        },
+        {
+          heading: "Karışık Sinyal Diye Bir Şey Yoktur",
+          paragraph: "İşte sana acımasız bir gerçek: Ortada net bir 'Evet' yoksa, o aslında bir 'Hayır'dır. Birisi senden gerçekten hoşlanıyorsa, attığı mesajı şifre çözücü gibi kırmak için 3 ayrı kız grubuna ekran görüntüsü atmana gerek kalmaz. Senin o 'karışık sinyal' dediğin şey aslında şu: Senin ona verdiğin ilginin egosu hoşuna gidiyor, ama seninle ciddi bir şey düşünmüyor. Sadece işine geldiğinde tatlı davranır, zor zamanında arazi olur."
+        },
+        {
+          heading: "Eğer Bunları Yapıyorsan Kesin Delulu'sun",
+          paragraph: "Adam sana 14 saat sonra cevap verdi diye kutlama mı yapıyorsun? Adını doğru hatırladı diye 'kesin ruh eşim' mi diyorsun? Normal bir insanın zaten göstermesi gereken asgari nezaketi (bare minimum) alıp romantikleştirmek, delulu virüsünün en büyük belirtisidir. Sıkıntıdan patladığında sana ilgi kırıntısı atan birini değil, gerçekten senin için çabalayan birini hak ediyorsun."
+        },
+        {
+          heading: "Bu Kafadan Nasıl Çıkarsın?",
+          paragraph: "Delulu olmanın tek panzehri acı gerçeklerdir. Sürekli senin hayallerini gazlayan arkadaşlarından tavsiye almayı bırak. Direkt ham veriye, yani onun sana yaptığı eylemlere bak. Ya da en iyisi, Delulu Check yapay zekamızı kullan. O mesajlaşmaların ekran görüntüsünü at, bırak algoritma o mesajlarda aslında ne dendiğini pembe gözlüklerini çıkararak sana dümdüz söylesin."
+        }
+      ],
+      conclusion: "Umarız bir gün delulu'ların trululu'ya (gerçeğe) dönüşür ama o zamana kadar kalbini korumaya al. Senin için bir su birikintisinden bile atlamayacak insanlar için bahane üretmeyi bırak. Bu hikayenin ana karakteri sensin, biraz öyle davranmaya başla."
+    },
+    ctaLabel: "Delulu Seviyemi Ölç",
+    ctaLink: "/delulu-check",
+  },
+  {
+    slug: "how-to-stop-overthinking-texts",
+    title: "Şu Gelen Mesajı Kafanda Kurmayı Nasıl Bırakırsın?",
+    description: "Cevap mı bekliyorsun? Cümle sonundaki noktayı mı analiz ediyorsun? Mesajlaşma anksiyetesinin dibine iniyoruz.",
+    category: "Mental Health & Tech",
+    publishDate: "2026-06-04",
+    readTime: "4 dk okuma",
+    keywords: ["mesajlaşma kaygısı", "neden beni görüldüde bırakıyorlar", "mesajları aşırı düşünmek", "reply guru", "kuru mesajlaşma"],
+    imageUrl: "/images/trends/overthinking.png",
+    content: {
+      intro: "Telefon titrer. O yazmıştır. Ekrana bakarsın, sadece üç kelime: 'Tamam uyar bana.' O an kalbin hızla atmaya başlar. Neden ünlem koymadı? Bunu yazması neden 3 saat sürdü? Acaba bana trip mi atıyor? Hemen mi cevap vermeliyim yoksa sırf ezik görünmemek için tam 3 saat 1 dakika mı beklemeliyim? Mesajlaşma anksiyetesi koca bir jenerasyonu rehin almış durumda. İletişim saniyelik, ama kendimizi hiç bu kadar yanlış anlaşılmış hissetmemiştik.",
+      sections: [
+        {
+          heading: "O 'Görüldü' Yazısının Yarattığı Travma",
+          paragraph: "Mesaj okundu bilgisi, teknoloji tarihinin açık ara en stresli icadıdır. '14:14 Görüldü' yazısını okuyup saatin 18:00 olduğunu fark ettiğin an beynin savaş ya da kaç moduna girer. Kafanda en kötü senaryoları kurmaya başlarsın. Oysa gerçek nedir? Büyük ihtimalle mesajı trafikte kırmızı ışıkta gördü, sonra dikkati dağıldı ve gerçekten cevap yazmayı unuttu."
+        },
+        {
+          heading: "Noktalama İşaretlerinin Şifresi",
+          paragraph: "Yeni nesil için mesajın tonu her şeydir. Cümlenin sonuna konan o tek bir nokta, dilbilgisi kuralı değil resmen savaş ilanıdır. 'Tabii' demek 'olur' demektir ama 'Tabii.' yazmak 'senden nefret ediyorum' demektir. Evet dijital ton diye bir şey var ama eksik olan tek bir emojiden destan yazıp kendini yiyip bitirmek sadece senin aura puanlarını düşürür."
+        },
+        {
+          heading: "Peş Peşe Mesaj Atma (Double Text) Fobisi",
+          paragraph: "Bize yıllarca art arda mesaj atmanın 'eziklik' olduğu aşılandı. Ama gerçek hayatta sohbetler böyle akmaz. Eğer söyleyecek bir şeyin varsa at gitsin. Sen ona komik bir Reels attın diye, bir önceki mesaja cevap vermediği halde seni yargılıyorsa, burada iletişimi sorunlu olan sen değil o'dur."
+        },
+        {
+          heading: "Kafanda Kurmayı Bırak, Yapay Zekaya Bırak",
+          paragraph: "Kaygı seviyen tavan yaptığında mantıklı düşünemezsin. Destan gibi bir paragraf yazar, siler ve yerine sadece 'ok' yazarsın. İşte tam burada yapay zeka devreye giriyor. Reply Guru (Cevap Gurusu) özelliğimizle o kafa karıştıran mesajı yapıştır, bırak algoritma sana olabilecek en cool, en 'umrumda değil' yüksek auralı cevabı yazsın. Stresi sen çekme, yapay zeka çeksin."
+        }
+      ],
+      conclusion: "Şunu unutma: Bu kişi senin rehberine girmeden önce de vardın ve gayet iyiydin. Telefonu elinden bırak, dışarı çıkıp biraz temiz hava al. Eğer birinin iletişim tarzı seni sürekli böyle anksiyete krizlerine sokuyorsa, o kişi zaten sana göre bir 'vibe' değildir."
+    },
+    ctaLabel: "Reply Guru'yu Kullan",
+    ctaLink: "/reply-guru",
+  },
+  {
+    slug: "zodiac-signs-red-flags",
+    title: "Her Burcun 'Benden Uzak Dur' Dedirten En Büyük Red Flag'i",
+    description: "Astroloji sadece kiminle iyi anlaşacağını bulmak için değil, kimin hayatını nasıl mahvedeceğini önden görmek içindir. İşte o toksik gerçekler.",
+    category: "Astroloji Roast'ları",
+    publishDate: "2026-06-05",
+    readTime: "7 dk okuma",
+    keywords: ["burçların kırmızı bayrakları", "astroloji toksik özellikleri", "ikizler kırmızı bayrakları", "akrep manipülasyonu"],
+    imageUrl: "/images/trends/zodiac.png",
+    content: {
+      intro: "Venüs'ümüz onun Mars'ına uyuyor mu, acaba yıldızlar aşkımızı destekliyor mu diye doğum haritalarına bakmayı çok seviyoruz. Ama dürüst olalım; haritaya ruh eşini bulmak için değil, başına ne tür bir bela açacağını önden görüp ona göre pozisyon almak için bakmalısın. Her burcun kendine has inanılmaz toksik bir huyu var. Neye bulaştığını tam olarak bilmen için burçların en büyük kırmızı bayraklarını (red flag) masaya döküyoruz.",
+      sections: [
+        {
+          heading: "Ateş Grupları: Koç, Aslan, Yay",
+          paragraph: "Koç burcu, sporda fazla enerji içeceği içtiği için sırf atraksiyon olsun diye kavga çıkarır. İlişkiyi kazanması gereken bir boks maçı gibi görmesi en büyük red flag'idir. Aslanlar kendilerine Antik Yunan tanrısı gibi 7/24 tapılmasını bekler, egoları porselenden daha kırılgandır. Yay burcu sana dünyaları vadeder, seni sevdiğini söyler ve ertesi gün 'kutuya sıkışmış hissettim' diyerek vize bile istemeyen başka bir ülkeye tek yön bilet alıp kaçar."
+        },
+        {
+          heading: "Toprak Grupları: Boğa, Başak, Oğlak",
+          paragraph: "Boğa'nın red flag'i, haksız olduğunu asla ama asla kabul etmemesidir. 2019'da yediği lafın kinini sırf inat olsun diye tutar. Başaklar hayatındaki her milimetreyi yönetmek ister; sevgili değil, üzerinde çalışıp 'düzelteceği' bir proje arar, sevgi dilleri eleştirmektir. Oğlaklar aşka şirket birleşmesi gibi bakar; eğer onun 5 yıllık finansal kalkınma planına uymuyorsan seni tek bir gözyaşı bile dökmeden hayatından kovar."
+        },
+        {
+          heading: "Hava Grupları: İkizler, Terazi, Kova",
+          paragraph: "İkizler'in adı boşuna çıkmadı: Aslında birbiriyle hiç konuşmayan iki farklı insanla aynı anda çıkıyorsun demektir. Seni 4 gün ghost'layıp sonra hiçbir şey olmamış gibi story'ne ateş atarlar. Teraziler fiziksel olarak karar alma yetisinden yoksundur, sırf gerginlik çıkmasın diye gözünün önünde kafedeki garsonla bile flört edebilir. Kova ise normal insani duygulara sahip olmayı 'cringe' (utanç verici) bulur, ilişki donarak ölene kadar sorunları entelektüel bir şekilde tartışıp duygudan kaçar."
+        },
+        {
+          heading: "Su Grupları: Yengeç, Akrep, Balık",
+          paragraph: "Yengeç gözyaşlarını bir kitle imha silahı olarak kullanır; kendisinin yaptığı bir hata yüzünden bile sen ondan özür dileyene kadar ağlar. Akrepler sahte senaryolar yazıp sadakatini gizlice test eder, zaten sen daha söylemeden bütün şifrelerini kırmıştır. Balık ise kafasında seninle ilgili bir fantezi dünyası kurar, o uydurduğu versiyonuna aşık olur ve sen gerçekte o kurmaca karaktere uymadın diye sana trip atar."
+        }
+      ],
+      conclusion: "Birine yükselmeden önce mutlaka doğum saatini öğren. Astroloji insan davranışlarını anlamak için eğlenceli olsa da şunu unutma: Toksik insan toksiktir, ay burcunun ne olduğunun pek bir önemi yok. Yıldızlara bakıp, gözünün önündeki devasa kırmızı bayrakları görmezden gelme."
+    },
+    ctaLabel: "Duo Uyumuna Bak",
+    ctaLink: "/duo-compatibility",
+  },
+  {
+    slug: "fix-negative-aura-mood",
+    title: "Güne Neden 'Eksi Aura' ile Başlıyorsun? (Ve Bunu Nasıl Tersine Çevirirsin)",
+    description: "Kötü mü kalktın? Vibe'ının bugün neden yerlerde süründüğünü ve tam bir enerji sıfırlamasını nasıl yapacağını keşfet.",
+    category: "Wellness & Vibe",
+    publishDate: "2026-06-06",
+    readTime: "4 dk okuma",
+    keywords: ["negatif aura anlamı", "kötü ruh hali nasıl düzeltilir", "ruh hali sıfırlama", "enerji temizliği", "düşük vibe", "titreşiminizi yükseltmek", "sabah kaygısı düzeltmesi"],
+    imageUrl: "/images/trends/mood-reset.png",
+    content: {
+      intro: "Sabah gözlerini açtın, telefonu eline aldın, daha ilk kahveni bile yudumlamadan o ağır hissi fark ettin: Üzerinde kapkara bir negatif aura var. Her şey gözüne batıyor. Odanın ışığı bile sinir bozucu, gelen mesajlar darlıyor ve bugünün tamamen 0/10 bir vibe ile geçeceğini iliklerine kadar hissediyorsun. Ortalıkta canını sıkacak spesifik bir olay yokken bile neden böyle oluyor? Gel bu 'kötü gün' olayının arkasındaki bilime ve enerji muhabbetine bakalım.",
+      sections: [
+        {
+          heading: "Vibe'ı Çökerten Gizli Suçlular",
+          paragraph: "Aura dediğin şey sadece havada uçuşan mistik bir enerji değil; sinir sisteminle direkt bağlantılı. Gece 3'e kadar TikTok'ta 'doomscrolling' (felaket kaydırması) yapıp binlerce yabancının stresini ve kaosunu sünger gibi emmek, dopamin seviyeni yerle bir eder. Buna uyku sersemliğini, susuzluğu ve adı konmamış o situationship'in arka planda çalışan anksiyetesini ekle... Al sana negatif aura için mükemmel bir tarif."
+        },
+        {
+          heading: "Dibe Vurma Tuzağı",
+          paragraph: "Düşük enerjiyle uyandığında insanın ilk yaptığı şey o dibe vurmaya daha da sarılmaktır. Gidip en damar çalma listesini açar, seni sinir eden eski mesajları tekrar okur, kavga edecek yer ararsın. Buna enerjik girdap denir. Kendi zihnini 'kötüyü' görmeye programladığın için aktif olarak üzerine daha fazla kötü vibe çekersin. Bu döngüyü anında kırmak zorundasın."
+        },
+        {
+          heading: "10 Dakikada Vibe Sıfırlama (Mood Reset)",
+          paragraph: "Kötü bir auradan sadece 'iyi şeyler düşünerek' kurtulamazsın, bedensel bir şok lazım. Önce ortamı değiştir: Camı aç, sana o meşhur 'Ana Karakter Enerjisini' verecek en havalı şarkıyı son ses aç ve omuzlarındaki o gerginliği fiziksel olarak silkelenerek at. Yüzüne çarpacağın buz gibi bir su, vagus sinirini uyarır ve o beyin sisini anında dağıtır."
+        },
+        {
+          heading: "Bırak Sıfırlamayı Yapay Zeka Yapsın",
+          paragraph: "Eğer bu kuyudan kendi başına çıkamayacak kadar düştüysen, işi uzmanına devret. Mood Reset (Ruh Hali Sıfırlama) yapay zekamız, o anki duygu durumunu sesinden veya yazdıklarından analiz eder. Ardından sana özel, acil durum müdahalesi gibi bir reçete çıkarır. Frekansını değiştirmek ve o eksilerdeki aura puanını tekrar artıya geçirmek için ihtiyacın olan çalma listesini, motivasyon konuşmasını ya da tokat gibi gerçeği anında önüne serer."
+        }
+      ],
+      conclusion: "Herkesin berbat hissettiği günler olur ama o günün öyle bitmesine izin vermek zorunda değilsin. Enerjinin kontrolünü eline al, iç huzurunu koru ve vibe'ını yükseltmek için ne gerekiyorsa yap. Evren sadece yaydığın enerjiye cevap verir; o enerjinin yüksek, cool ve yıkılmaz olduğundan emin ol."
+    },
+    ctaLabel: "Mood Reset'i Başlat",
+    ctaLink: "/mood-reset",
+  }
+];
+
+export const trendsData = trendsDataEn; // fallback, but clients should use trendsDataEn/Tr explicitly

@@ -85,7 +85,7 @@ async function generateWithGroqFallback(
       },
     ],
     temperature: 0.95,
-    max_tokens: 512,
+    max_tokens: 800,
   });
 
   const responseText = completion.choices?.[0]?.message?.content || "";
@@ -156,21 +156,34 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json().catch(() => ({}));
-    const { age, zodiac, gender } = body;
+    const { age, zodiac, gender, locale } = body;
+    
+    const isTr = locale === "tr";
 
-    // ─── PROMPT v3: Sessiz Analiz + Esnek Hitap ───────────
-    const systemInstruction = `You are a sassy, intuitive AI vibe reader for Gen-Z. You are NOT an astrologer, NOT a fortune teller. You simply read the user's current energy/aura.
-
-ABSOLUTE RULES:
-1. SILENT ANALYSIS (CRITICAL): NEVER explicitly mention the user's age, zodiac sign, or gender in your output. Use these data points ONLY silently in the background to calibrate your tone, slang, and the nature of your reading. NEVER start with "As a 22yo Scorpio..." or similar.
-2. ADDRESS STYLE: Start by directly addressing the user with creative, varied Gen-Z terms based on their gender. NEVER repeat the same address word every time — be creative!
+    // TR hitap kelimeleri — AI'ya Türkçe karşılıkları ver, İngilizce ağzıyla hitap etmesin
+    const trAddressStyle = isTr ? `
+   - Erkek için: "Abi", "Aga", "Len", "Kral", "Bro", "Çocuk", "Aslan" veya yaratıcı benzerler.
+   - Kadın için: "Canım", "Bestie", "Kızım", "Tatlım", "Güzelim", "Prenses", "Annem" veya yaratıcı benzerler.
+   - Belirsiz: "Bestie", "Aga", "Can", "Kardeşim", "Evren İkonasi" veya benzer Gen-Z terimleri.` : `
    - Male: "King", "Bro", "My guy", "Chief", "Boss", "Dude", "Legend", "Champ", or other creative fits.
    - Female: "Queen", "Bestie", "Girl", "Babe", "Pookie", "Sweetie", "Girly", "Diva", or other creative fits.
-   - Unspecified/Other: "Icon", "Bestie", "Legend", "Champ", "Vibe", or other creative fits.
+   - Unspecified/Other: "Icon", "Bestie", "Legend", "Champ", "Vibe", or other creative fits.`;
+
+    const langInstruction = isTr
+      ? `ZORUNLU: Tüm yanıtı Türkçe yaz. Direkt çeviri yapma. Gerçek Türk Gen-Z internet argosuyla yaz: "kafanda kuruyorsun", "rezalet", "çakma", "tok gözlü", "dram modu", "salak salak", "hayaller kuruyor", "kendi kafasında film", "ertelemeci enerji", "ghost moduna geç", "bırak gitsin", "olur böyle", "panik yok" gibi ifadeler kullan. KESİNLİKLE Farsça, Arapça veya başka bir dil kullanma ("خودش" vb. kelimeler YASAKTIR).`
+      : `MANDATORY: Write entirely in English. Use authentic global Gen-Z slang: delulu, brain rot, red flag, era, main character, slay, no cap, lowkey, NPC, villain arc, it's giving, understood the assignment, rent free, etc. NEVER use Persian, Arabic or any other languages.`;
+
+    // ─── PROMPT v4: Silent Analysis + Locale-aware address style ───────────
+    const systemInstruction = `You are a sassy, intuitive AI vibe reader for Gen-Z. You are NOT an astrologer, NOT a fortune teller. You simply read the user's current energy and aura for today.
+
+ABSOLUTE RULES:
+1. SILENT ANALYSIS (CRITICAL): NEVER explicitly mention the user's age, zodiac sign, or gender in your output. Use these data points ONLY silently in the background to calibrate your tone, slang, and the reading's nature. NEVER start with "As a 22yo Scorpio..." or similar.
+2. ADDRESS STYLE: Start by directly addressing the user with a creative Gen-Z term based on their gender. NEVER repeat the same address word — be creative and fresh each time!${trAddressStyle}
 3. NO COSMIC WORDS: Words like "stars", "planets", "universe", "cosmos", "Mercury retrograde", "celestial" are STRICTLY BANNED.
-4. FORMAT: Maximum 1-2 punchy sentences. Pill-format. (Today's aura reading + Advice/Warning).
-5. TONE: Brutally honest, chaotic, savage, relatable, and funny. Use Gen-Z slang (delulu, brain rot, red flag, era, main character, etc.). Include emojis.
-6. ALWAYS respond in English.`;
+4. FORMAT: Maximum 2-3 punchy, punchy sentences. Each sentence should pack maximum energy. (Today's aura reading + a specific, actionable vibe warning or advice).
+5. TONE: Brutally honest, chaotic, savage, relatable, and funny. Include 2-3 emojis naturally in the text.
+6. QUALITY: Make it feel personal and eerily accurate — not generic horoscope fluff. Reference real human behaviors (overthinking, phone addiction, ghosting, avoidant behavior, etc.).
+7. ${langInstruction}`;
 
     const g = String(gender || "").toLowerCase();
     const genderHint = 
@@ -178,14 +191,24 @@ ABSOLUTE RULES:
       (g === "female" || g === "girl" || g === "woman") ? "Female" : 
       "Not specified";
 
+    const toneExamples = isTr
+      ? `
+Türkçe Ton Örnekleri:
+- (Erkek): "Aga, bugün enerjin 'mesajlara zihnen cevap verip gerçekte hiç göndermemek' vibe'ı veriyor. Grup sohbetini sustur ve akşama kadar herkesi ghostlamadan hayatta kal. 🎧"
+- (Kadın): "Canım, şu an yaydığın aura tam anlamıyla 'biri bana dokunursa ağlarım' diyor. Bugün sınırını koy, kimsenin enerjini çalmasına izin verme. 💅"
+- (Belirsiz): "Bestie, bugünkü vibe'ın 'her şeyi bırakıp kaybolmak istiyorum ama fatura var' enerjisi. Kafana takma, sadece hayatta kal. 💀"`
+      : `
+English Tone Examples:
+- (Male): "Bro, your energy today is giving 'replying to texts in my head but never actually hitting send'. Mute the group chat and survive until 5 PM without ghosting everyone. 🎧"
+- (Female): "Pookie, the aura you're radiating right now is screaming 'I need an iced matcha and zero human interaction'. Don't let anyone ruin your unbothered era today. 💅🍵"
+- (Unspecified): "Bestie, today's vibe is literally 'main character energy but the budget is low'. No cap, you're doing the most with what you've got. ✨"`;
+
     const promptText = `
 [BACKGROUND DATA — DO NOT REVEAL IN OUTPUT]
 Age: ${age || "Not specified"}, Zodiac: ${zodiac || "Not specified"}, Gender: ${genderHint}
 
-Write a DAILY VIBE for this user. Use the background data SILENTLY to shape the tone — never mention it explicitly. Max 1-2 sentences. Include emojis.
-Tone Examples:
-- (Male): "Bro, your energy today is giving 'replying to texts in my head but never actually hitting send'. Mute the group chat and survive until 5 PM without ghosting everyone. 🎧"
-- (Female): "Pookie, the aura you're radiating right now is screaming 'I need an iced matcha and zero human interaction'. Don't let anyone ruin your unbothered era today. 💅🍵"
+Write a DAILY VIBE reading for this user. Use the background data SILENTLY to shape the tone and accuracy — never mention it explicitly. 2-3 sentences MAX. Include emojis. ${langInstruction}
+${toneExamples}
 `;
 
     const response = await generateWithWaterfall(systemInstruction, promptText);

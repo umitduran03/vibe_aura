@@ -31,10 +31,19 @@ const NotificationPrompt = dynamic(() => import("@/components/NotificationPrompt
 import { useAppStore } from "@/store/useAppStore";
 import { useStreakStore } from "@/store/useStreakStore";
 import { auth } from "@/lib/firebase";
+import { useT } from "@/hooks/useT";
 
 export default function Home() {
   const screen = useAppStore((s) => s.currentScreen);
   const setScreen = useAppStore((s) => s.setScreen);
+  const setLocale = useAppStore((s) => s.setLocale);
+  const locale = useAppStore((s) => s.locale);
+
+  // Pathname'den locale'yi tespit et ve store'a yaz
+  useEffect(() => {
+    const pathLocale = window.location.pathname.startsWith("/tr") ? "tr" : "en";
+    setLocale(pathLocale);
+  }, [setLocale]);
   
   const analysisMode = useAppStore((s) => s.analysisMode);
   const soloScenario = useAppStore((s) => s.soloScenario);
@@ -65,6 +74,7 @@ export default function Home() {
   const setExtrasModalOpen = useAppStore((s) => s.setExtrasModalOpen);
 
   const [toast, setToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
+  const t = useT();
 
   // JS ayaklandığında (React render edildiğinde) Global CSS loader'ı sil
   useEffect(() => {
@@ -99,7 +109,7 @@ export default function Home() {
   // Login Success Toast — ONLY after isConnecting becomes false
   useEffect(() => {
     if (prevIsConnecting && !isConnecting && userId) {
-      setToast({ message: "5 Welcome Tokens Added! 🎁", type: "success" });
+      setToast({ message: t.toastWelcome, type: "success" });
       setTimeout(() => setToast(null), 4000);
     }
     setPrevIsConnecting(isConnecting);
@@ -117,7 +127,7 @@ export default function Home() {
 
       try {
         const { analyzeExtras, saveExtrasSession } = await import("@/lib/services");
-        const result = await analyzeExtras(userId, extrasType, extrasFormData);
+        const result = await analyzeExtras(userId, extrasType, extrasFormData, locale);
         setExtrasResult(result);
         useStreakStore.getState().triggerAnalysis();
         setScreen("extras-result");
@@ -142,9 +152,9 @@ export default function Home() {
         console.error("[Extras] Analysis failed:", err);
         const msg = err?.message || "";
         if (msg.includes("402")) {
-          setToast({ message: "Not enough tokens for this analysis! 💎", type: "error" });
+          setToast({ message: t.toastTokenInsufficient, type: "error" });
         } else {
-          setToast({ message: "Servers are busy. Please try again! ✨", type: "error" });
+          setToast({ message: t.toastServerBusy, type: "error" });
         }
         setTimeout(() => setToast(null), 4000);
         useAppStore.getState().resetWizard();
@@ -178,7 +188,7 @@ export default function Home() {
            DUO MODE
            ===================== */
         const { analyzeDuo, saveDuoSession } = await import("@/lib/services");
-        const result = await analyzeDuo(userId, duoPerson1, duoPerson2, duoRelationType);
+        const result = await analyzeDuo(userId, duoPerson1, duoPerson2, duoRelationType, locale);
         
         // Bellekteki fotoğrafları temizle
         updateDuoPerson1({ photoBase64: null });
@@ -207,7 +217,7 @@ export default function Home() {
         // Fotoğraf referansını temizlemeden önce sakla
         const capturedPhoto = photoUrl;
         const { analyzeAura, saveAuraSession } = await import("@/lib/services");
-        const result = await analyzeAura({ userId, ...userData, photoUrl, soloScenario });
+        const result = await analyzeAura({ userId, ...userData, photoUrl, soloScenario, locale });
         
         // Bellekteki ağırlığı hemen temizle
         setPhotoUrl(null);
@@ -233,9 +243,9 @@ export default function Home() {
       
       const errMsg = err?.message || err?.toString() || "";
       if (errMsg.includes("503") || errMsg.includes("429") || errMsg.includes("high demand") || errMsg.includes("UNAVAILABLE")) {
-        setToast({ message: "Servers are busy right now. Please try again in a moment. ✨", type: "error" });
+        setToast({ message: t.toastServerBusy, type: "error" });
       } else {
-        setToast({ message: "Servers are busy right now. Please try again in a moment. ✨", type: "error" });
+        setToast({ message: t.toastServerBusy, type: "error" });
       }
       
       setTimeout(() => setToast(null), 4000);

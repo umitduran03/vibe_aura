@@ -17,6 +17,7 @@ import {
   Download,
 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
+import { useStreakStore } from "@/store/useStreakStore";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { auth, db } from "@/lib/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
@@ -25,8 +26,8 @@ import { logOut } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
-import { useStreakStore } from "@/store/useStreakStore";
 import { getVibeRank } from "@/lib/streak-utils";
+import { useT } from "@/hooks/useT";
 
 export default function SettingsDrawer() {
   const isOpen = useAppStore((s) => s.isSettingsOpen);
@@ -42,6 +43,19 @@ export default function SettingsDrawer() {
 
   const streakCount = useStreakStore((s) => s.streakCount);
   const currentRank = getVibeRank(streakCount);
+  const t = useT();
+  const locale = useAppStore((s) => s.locale);
+  const setLocale = useAppStore((s) => s.setLocale);
+
+  const handleLocaleChange = (newLocale: "en" | "tr") => {
+    hapticLight();
+    setLocale(newLocale);
+    if (typeof window !== "undefined") {
+      const currentPath = window.location.pathname;
+      const newPath = currentPath.replace(/^\/(en|tr)/, `/${newLocale}`);
+      window.history.replaceState(null, "", newPath);
+    }
+  };
 
   const isVipActive = vipExpiry ? new Date(vipExpiry) > new Date() : false;
 
@@ -71,8 +85,13 @@ export default function SettingsDrawer() {
     if (user?.uid) {
       await updateDoc(doc(db, "users", user.uid), {
         zodiacSign: zId,
+        // Tüm locale-specific vibe cache'ini temizle — yeni burca göre yeniden çekilsin
+        daily_vibe_text: null,
         last_vibe_date: null,
-        daily_vibe_text: null
+        daily_vibe_text_tr: null,
+        last_vibe_date_tr: null,
+        daily_vibe_text_en: null,
+        last_vibe_date_en: null,
       });
       // Sayfayı yenileyerek Daily Vibe'ın yeni burca göre gelmesini sağla
       window.location.reload();
@@ -159,7 +178,7 @@ export default function SettingsDrawer() {
             >
               {/* ─── Header ─── */}
               <div className="flex items-center justify-between px-6 pt-6 pb-4">
-                <h2 className="text-lg font-bold text-white tracking-tight">Settings</h2>
+                <h2 className="text-lg font-bold text-white tracking-tight">{t.settings}</h2>
                 <button
                   onClick={close}
                   className="p-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors cursor-pointer"
@@ -209,10 +228,10 @@ export default function SettingsDrawer() {
                           {isVipActive ? (
                             <>
                               <Sparkles className="h-3 w-3 text-purple-400" />
-                              <span className="text-purple-300">VIP Member</span>
+                              <span className="text-purple-300">{t.settingsVipMember}</span>
                             </>
                           ) : (
-                            "Free Account"
+                            t.settingsFreeAccount
                           )}
                         </p>
                       </div>
@@ -225,7 +244,7 @@ export default function SettingsDrawer() {
                           </div>
                         ) : (
                           <div className="text-[10px] font-medium text-white/40 uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
-                            No Sign
+                            {t.settingsNoSign}
                           </div>
                         )}
                         <button
@@ -293,7 +312,7 @@ export default function SettingsDrawer() {
                     <div className="px-2.5 py-1 rounded-md bg-black/20 flex items-center gap-2 border border-white/5">
                       <Coins className="h-3.5 w-3.5 text-yellow-400" />
                       <span className="text-[13px] font-medium text-white/90">
-                        {tokenBalance} {tokenBalance === 1 ? "token" : "tokens"} remaining
+                        {tokenBalance} {t.settingsTokens} {t.settingsTokensRemaining}
                       </span>
                     </div>
 
@@ -312,8 +331,35 @@ export default function SettingsDrawer() {
 
               {/* ─── Menu Items ─── */}
               <div className="flex-1 overflow-y-auto px-5">
+
+                {/* ─── Language Selector ─── */}
                 <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-3 px-1">
-                  Resources
+                  {t.langSelectorTitle}
+                </p>
+                <div className="flex gap-2 mb-6">
+                  {(["en", "tr"] as const).map((lang) => (
+                    <button
+                      key={lang}
+                      onClick={() => handleLocaleChange(lang)}
+                      className={`flex-1 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 cursor-pointer ${
+                        locale === lang
+                          ? "text-white shadow-lg"
+                          : "text-white/50 bg-white/5 hover:bg-white/10"
+                      }`}
+                      style={locale === lang ? {
+                        background: "linear-gradient(135deg, rgba(139,92,246,0.3) 0%, rgba(236,72,153,0.3) 100%)",
+                        border: "1px solid rgba(139,92,246,0.4)",
+                      } : {
+                        border: "1px solid rgba(255,255,255,0.08)",
+                      }}
+                    >
+                      {lang === "en" ? `🇬🇧 ${t.langEn}` : `🇹🇷 ${t.langTr}`}
+                    </button>
+                  ))}
+                </div>
+
+                <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-3 px-1">
+                  {t.settingsResources}
                 </p>
                 <div className="space-y-1.5 mb-6">
                   {/* ─── Trends & Articles ─── */}
@@ -334,9 +380,9 @@ export default function SettingsDrawer() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
-                        Trends & Articles
+                        {t.settingsTrends}
                       </p>
-                      <p className="text-[11px] text-white/35">Dating psychology & viral trends</p>
+                      <p className="text-[11px] text-white/35">{t.settingsTrendsSub}</p>
                     </div>
                   </Link>
 
@@ -358,9 +404,9 @@ export default function SettingsDrawer() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
-                        Vibe Dictionary
+                        {t.settingsDict}
                       </p>
-                      <p className="text-[11px] text-white/35">Gen-Z slang & astrology terms</p>
+                      <p className="text-[11px] text-white/35">{t.settingsDictSub}</p>
                     </div>
                   </Link>
 
@@ -382,15 +428,15 @@ export default function SettingsDrawer() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
-                        FAQ
+                        {t.settingsFaq}
                       </p>
-                      <p className="text-[11px] text-white/35">Frequently Asked Questions</p>
+                      <p className="text-[11px] text-white/35">{t.settingsFaqSub}</p>
                     </div>
                   </Link>
                 </div>
 
                 <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-3 px-1">
-                  Legal
+                  {t.settingsLegal}
                 </p>
                 <div className="space-y-1.5 mb-6">
                   <Link
@@ -410,9 +456,9 @@ export default function SettingsDrawer() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
-                        Terms of Service
+                        {t.settingsTerms}
                       </p>
-                      <p className="text-[11px] text-white/35">Rules of the digital experience</p>
+                      <p className="text-[11px] text-white/35">{t.settingsTermsSub}</p>
                     </div>
                   </Link>
 
@@ -433,15 +479,15 @@ export default function SettingsDrawer() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm font-medium text-white/80 group-hover:text-white transition-colors">
-                        Privacy Policy
+                        {t.settingsPrivacy}
                       </p>
-                      <p className="text-[11px] text-white/35">How we protect your data</p>
+                      <p className="text-[11px] text-white/35">{t.settingsPrivacySub}</p>
                     </div>
                   </Link>
                 </div>
 
                 <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-3 px-1">
-                  App
+                  {t.settingsApp}
                 </p>
                 <div className="space-y-1.5 mb-8">
                   <motion.button
@@ -471,8 +517,8 @@ export default function SettingsDrawer() {
                       <Download className="h-4 w-4 text-white drop-shadow-md animate-bounce" style={{ animationDuration: '2s' }} />
                     </div>
                     <div className="flex-1 min-w-0 relative z-10">
-                      <p className="text-sm font-bold text-white drop-shadow-md tracking-wide">Install VibeCheckr</p>
-                      <p className="text-[11px] text-pink-200 font-medium tracking-wider uppercase mt-0.5">Add to Home Screen 📱</p>
+                      <p className="text-sm font-bold text-white drop-shadow-md tracking-wide">{t.settingsInstall}</p>
+                      <p className="text-[11px] text-pink-200 font-medium tracking-wider uppercase mt-0.5">{t.settingsAddHome}</p>
                     </div>
                   </motion.button>
 
@@ -490,7 +536,7 @@ export default function SettingsDrawer() {
                       <Crown className="h-4 w-4 text-pink-400" />
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-white/80">Version</p>
+                      <p className="text-sm font-medium text-white/80">{t.settingsVersion}</p>
                       <p className="text-[11px] text-white/35">1.0.0 (beta)</p>
                     </div>
                   </div>
@@ -513,7 +559,7 @@ export default function SettingsDrawer() {
                   whileTap={{ scale: 0.98 }}
                 >
                   <LogOut className="h-4 w-4 transition-transform group-hover:-translate-x-1" />
-                  Log Out
+                  {t.settingsLogout}
                 </motion.button>
 
               </div>
@@ -521,12 +567,12 @@ export default function SettingsDrawer() {
               {/* ─── Footer ─── */}
               <div className="px-5 py-5 border-t border-white/5 mt-auto">
                 <p className="text-[11px] text-center text-white/20 leading-relaxed">
-                  Made with 💜 by VibeCheckr.
+                  {t.settingsMadeWith}
                   <br />
-                  © {new Date().getFullYear()} All rights reserved.
+                  {t.settingsCopyright.replace("{year}", new Date().getFullYear().toString())}
                 </p>
                 <p className="text-[9px] text-center text-white/15 mt-2 tracking-wide">
-                  🎭 For Entertainment Purposes Only
+                  {t.settingsForEntertainment}
                 </p>
               </div>
             </motion.div>

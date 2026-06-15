@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { hapticLight } from "@/lib/haptics";
+import { useT } from "@/hooks/useT";
 
 export default function PremiumExtras() {
   const setExtrasShowcaseOpen = useAppStore((s) => s.setExtrasShowcaseOpen);
+  const t = useT();
 
   const handleClick = () => {
     hapticLight();
@@ -34,8 +36,8 @@ export default function PremiumExtras() {
             <span className="text-xl">🔍</span>
           </div>
           <div className="text-left">
-            <h3 className="text-[14px] font-bold text-white/90">Crisis Center</h3>
-            <p className="text-[12px] text-white/50">Decoding the drama and serving brutally honest reality checks. No cap.</p>
+            <h3 className="text-[14px] font-bold text-white/90">{t.crisisCenter}</h3>
+            <p className="text-[12px] text-white/50">{t.crisisSub}</p>
           </div>
         </div>
 

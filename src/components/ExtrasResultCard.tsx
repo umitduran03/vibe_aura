@@ -7,16 +7,27 @@ import GlassButton from "@/components/ui/GlassButton";
 import { useAppStore, type ExtrasType } from "@/store/useAppStore";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
 import SettingsDrawer from "@/components/SettingsDrawer";
+import { useT } from "@/hooks/useT";
 import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { auth } from "@/lib/firebase";
 
-const THEME: Record<ExtrasType, { emoji: string; label: string; grad1: string; grad2: string }> = {
-  "toxic-ex": { emoji: "💀", label: "Toxic Ex Scanner", grad1: "#ef4444", grad2: "#f97316" },
-  situationship: { emoji: "🤡", label: "Situationship Clarifier", grad1: "#d946ef", grad2: "#a855f7" },
-  "mood-reset": { emoji: "🔋", label: "Mood Reset", grad1: "#06b6d4", grad2: "#14b8a6" },
-  "delulu-check": { emoji: "📱", label: "Delulu Check", grad1: "#f59e0b", grad2: "#eab308" },
-  "rizz-architect": { emoji: "💬", label: "The Reply Guru", grad1: "#8b5cf6", grad2: "#a855f7" },
+const getThemeLabel = (type: ExtrasType, t: any) => {
+  switch (type) {
+    case "toxic-ex": return t.extrasTitleToxic;
+    case "situationship": return t.extrasTitleSituationship;
+    case "mood-reset": return t.extrasTitleMood;
+    case "delulu-check": return t.extrasTitleDelulu;
+    case "rizz-architect": return t.extrasTitleRizz;
+  }
+};
+
+const THEME: Record<ExtrasType, { emoji: string; grad1: string; grad2: string }> = {
+  "toxic-ex": { emoji: "💀", grad1: "#ef4444", grad2: "#f97316" },
+  situationship: { emoji: "🤡", grad1: "#d946ef", grad2: "#a855f7" },
+  "mood-reset": { emoji: "🔋", grad1: "#06b6d4", grad2: "#14b8a6" },
+  "delulu-check": { emoji: "📱", grad1: "#f59e0b", grad2: "#eab308" },
+  "rizz-architect": { emoji: "💬", grad1: "#8b5cf6", grad2: "#a855f7" },
 };
 
 export default function ExtrasResultCard() {
@@ -26,6 +37,7 @@ export default function ExtrasResultCard() {
 
   const [isExporting, setIsExporting] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const t = useT();
   const cardRef = useRef<HTMLDivElement>(null);
 
   // Anti-cheat chronometer state
@@ -45,7 +57,7 @@ export default function ExtrasResultCard() {
         if (elapsed >= 12000) {
           if (!hasRewardedRef.current) {
             hasRewardedRef.current = true;
-            setShareToast({ message: "Main Character Energy! 🔥 +2 Tokens added.", type: "success" });
+            setShareToast({ message: t.resultShareSuccess, type: "success" });
             setTimeout(() => setShareToast(null), 4000);
 
             try {
@@ -65,7 +77,7 @@ export default function ExtrasResultCard() {
             }
           }
         } else {
-          setShareToast({ message: "Who are you kidding? You didn't even share it yet! 🤨 No tokens for you.", type: "error" });
+          setShareToast({ message: t.resultShareError, type: "error" });
           setTimeout(() => setShareToast(null), 4000);
         }
       }
@@ -125,8 +137,8 @@ export default function ExtrasResultCard() {
         try {
           shareStartTimeRef.current = Date.now();
           await navigator.share({
-            title: `${extrasResult.title} — VibeCheckr`,
-            text: `${extrasResult.title}\nTry it yourself! 👀 👉 https://thevibecheckr.vercel.app`,
+            title: t.resultShareTitle.replace("{name}", extrasResult.title),
+            text: `${extrasResult.title}\n${t.resultShareText.replace("{score}", "").replace("{name}", extrasResult.title)}`,
             files: [file],
           });
         } catch (shareErr: any) {
@@ -167,11 +179,11 @@ export default function ExtrasResultCard() {
 
   // Delulu score label
   const getDeluluLabel = (score: number) => {
-    if (score <= 20) return "Grounded Queen 👑";
-    if (score <= 40) return "Slightly Delusional 🤔";
-    if (score <= 60) return "Copium Overdose 💨";
-    if (score <= 80) return "Full Delulu Mode 🤡";
-    return "Clinically Delulu 🚨";
+    if (score <= 20) return t.deluluGrounded;
+    if (score <= 40) return t.deluluSlight;
+    if (score <= 60) return t.deluluCopium;
+    if (score <= 80) return t.deluluFull;
+    return t.deluluClinical;
   };
 
   // Delulu score color
@@ -194,7 +206,7 @@ export default function ExtrasResultCard() {
       <m.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
         <div />
         <p className="text-center text-xs font-medium text-text-secondary/50 uppercase tracking-widest mb-2">
-          {theme.label}
+          {getThemeLabel(extrasType, t)}
         </p>
         <div className="mb-2"><SettingsDrawer /></div>
       </m.div>
@@ -210,7 +222,7 @@ export default function ExtrasResultCard() {
 
           <div className="text-center mt-4 mb-6">
             <div className="text-5xl mb-3">{theme.emoji}</div>
-            <h2 className="text-lg font-medium text-text-secondary mb-1">{theme.label}</h2>
+            <h2 className="text-lg font-medium text-text-secondary mb-1">{getThemeLabel(extrasType, t)}</h2>
             <h1 className="text-2xl font-bold" style={{ color }}>{title}</h1>
           </div>
 
@@ -242,7 +254,7 @@ export default function ExtrasResultCard() {
                   <span className="text-3xl font-black" style={{ color: getDeluluColor(delulu_score) }}>
                     {delulu_score}
                   </span>
-                  <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider">Delulu</span>
+                  <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider">{t.deluluLabel}</span>
                 </div>
               </div>
               <div className="px-3 py-1.5 rounded-full text-[11px] font-bold tracking-wide"
@@ -273,21 +285,21 @@ export default function ExtrasResultCard() {
               <div className="flex flex-col gap-4 w-full pb-4">
                 {vibe_check && (
                   <div className="rounded-2xl p-4" style={{ backgroundColor: "rgba(139,92,246,0.1)", border: "1px solid rgba(139,92,246,0.2)" }}>
-                    <h3 className="text-[11px] font-bold text-violet-400 mb-1.5 uppercase tracking-wider">Vibe Check</h3>
+                    <h3 className="text-[11px] font-bold text-violet-400 mb-1.5 uppercase tracking-wider">{t.vibeCheckLabel}</h3>
                     <p className="text-[15px] leading-relaxed font-medium text-white/90">{vibe_check}</p>
                   </div>
                 )}
 
                 {roast && (
                   <div className="rounded-2xl p-4" style={{ backgroundColor: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.2)" }}>
-                    <h3 className="text-[11px] font-bold text-red-400 mb-1.5 uppercase tracking-wider">Draft Roast</h3>
+                    <h3 className="text-[11px] font-bold text-red-400 mb-1.5 uppercase tracking-wider">{t.roastLabel}</h3>
                     <p className="text-[15px] leading-relaxed font-medium text-white/90">{roast}</p>
                   </div>
                 )}
 
                 {rizz_options && rizz_options.length > 0 && (
                   <div className="flex flex-col gap-3 mt-2">
-                    <h3 className="text-[11px] font-bold text-white/50 uppercase tracking-wider text-center mb-1">GURU'S REPLIES</h3>
+                    <h3 className="text-[11px] font-bold text-white/50 uppercase tracking-wider text-center mb-1">{t.guruRepliesLabel}</h3>
                     {rizz_options.map((option, i) => (
                       <div key={i} className="rounded-2xl p-4 relative group" style={{ backgroundColor: "rgba(0,0,0,0.3)", border: "1px solid rgba(255,255,255,0.05)" }}>
                         <div className="flex justify-between items-start mb-2">
@@ -335,17 +347,17 @@ export default function ExtrasResultCard() {
             {isExporting ? (
               <>
                 <Loader2 className="h-5 w-5 animate-spin" />
-                <span>Preparing...</span> <span translate="no">✨</span>
+                <span>{t.resultPreparing}</span> <span translate="no">✨</span>
               </>
             ) : isDownloading ? (
               <>
                 <Download className="h-5 w-5 animate-bounce" />
-                <span>Downloading...</span> <span translate="no">📥</span>
+                <span>{t.resultDownloading}</span> <span translate="no">📥</span>
               </>
             ) : (
               <>
                 <Share2 className="h-5 w-5" />
-                <span>Share (+2 Tokens 🚀)</span>
+                <span>{t.resultShare}</span>
               </>
             )}
           </m.button>
@@ -371,7 +383,7 @@ export default function ExtrasResultCard() {
 
           <GlassButton variant="ghost" onClick={handleReset}
             className="w-full flex items-center justify-center gap-2 py-4 rounded-2xl transition-all hover:bg-white/10 active:scale-95 font-medium">
-            <RotateCcw className="h-5 w-5" /><span>Try Again</span>
+            <RotateCcw className="h-5 w-5" /><span>{t.resultTryAgain}</span>
           </GlassButton>
         </m.div>
       </div>

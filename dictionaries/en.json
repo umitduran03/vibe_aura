@@ -1,0 +1,52 @@
+{
+  "onboarding": {
+    "tagline": "Discover your energy ✨",
+    "signUp": "Sign Up",
+    "logIn": "Log In",
+    "terms": {
+      "title": "Before We Read Your Aura...",
+      "subtitle": "VibeCheckr is an entertainment app. Our AI readings are for fun.",
+      "points": {
+        "entertainment": "All readings are for entertainment only",
+        "photos": "We never store or sell your photos",
+        "accuracy": "AI results may be inaccurate or fictional",
+        "purchases": "Digital purchases are non-refundable"
+      },
+      "termsLink": "Terms of Service",
+      "privacyLink": "Privacy Policy",
+      "checkbox": "I accept the Terms of Service and Privacy Policy.",
+      "acceptBtn": "Accept & Continue",
+      "googleBtn": "Accept & Sign Up with Google",
+      "connecting": "Connecting...",
+      "back": "← Back",
+      "domainError": "Domain verification failed. Please try again. ✨",
+      "genericError": "Connection interrupted. Please try again. ✨"
+    },
+    "login": {
+      "title": "Welcome Back ✨",
+      "subtitle": "Sign in to continue your journey",
+      "googleBtn": "Continue with Google",
+      "connecting": "Connecting...",
+      "back": "← Back"
+    }
+  },
+  "wizard": {
+    "continue": "Continue",
+    "back": "Back",
+    "loading": "Loading...",
+    "analyzeSolo": "Analyze My Vibe",
+    "analyzeDuo": "Analyze Duo Vibe",
+    "skip": "Skip, show me the results"
+  },
+  "analyzing": {
+    "title": "Reading your aura...",
+    "subtitle": "Hang tight, the universe is calculating"
+  },
+  "common": {
+    "jusASecond": "Just a second..."
+  },
+  "seo": {
+    "title": "VibeCheckr — AI Vibe Check, Photo Roast & Personality Analysis",
+    "description": "Free AI-powered vibe check & photo roast app for Gen-Z. Upload your selfie, get brutally honest personality analysis, savage roasts, zodiac-based compatibility checks. Try the viral AI roast trend now!"
+  }
+}

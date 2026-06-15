@@ -104,9 +104,9 @@ export const viewport: Viewport = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
       <head>
@@ -217,7 +217,7 @@ export default function RootLayout({
             }
           `}} />
           
-          <Image src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} priority />
+          <Image src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} priority style={{ width: "auto", height: "auto" }} />
         </div>
 
         <TranslateFix />

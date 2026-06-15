@@ -8,85 +8,87 @@ import { useAppStore } from "@/store/useAppStore";
 import { Purchases } from "@revenuecat/purchases-capacitor";
 import { AdMob } from "@capacitor-community/admob";
 import { auth } from "@/lib/firebase";
+import { useT } from "@/hooks/useT";
 
 interface TokenModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-/* ─── Paket Tanımları ─── */
-const TOKEN_PACKAGES = [
-  {
-    id: "token_rookie",
-    name: "Rookie Gossip",
-    tokens: 10,
-    price: "$0.99",
-    icon: <Sparkles className="h-5 w-5" />,
-    color: "#8b5cf6", // Purple
-    glowColor: "rgba(139,92,246,0.15)",
-    popular: false,
-  },
-  {
-    id: "token_chaos",
-    name: "Chaos Bringer",
-    tokens: 50,
-    price: "$2.99",
-    icon: <Zap className="h-5 w-5" />,
-    color: "#ec4899", // Pink
-    glowColor: "rgba(236,72,153,0.20)",
-    popular: true,
-  },
-  {
-    id: "token_master",
-    name: "Vibe Master",
-    tokens: 150,
-    price: "$7.99",
-    icon: <Crown className="h-5 w-5" />,
-    color: "#f59e0b", // Amber
-    glowColor: "rgba(245,158,11,0.15)",
-    popular: false,
-  },
-] as const;
-
-const VIP_PACKAGES = [
-  {
-    id: "aura_vip",
-    name: "Vibe VIP",
-    desc: "✦ Weekly Unlimited",
-    price: "$4.99",
-    icon: <Sparkles className="h-5 w-5" />,
-    color: "#3b82f6", // Blue
-    glowColor: "rgba(59,130,246,0.15)",
-    badge: null,
-    badgeColor: null,
-  },
-  {
-    id: "mcs_monthly",
-    name: "Main Character Syndrome",
-    desc: "✦ Monthly Unlimited",
-    price: "$9.99",
-    icon: <Zap className="h-5 w-5" />,
-    color: "#10b981", // Emerald
-    glowColor: "rgba(16,185,129,0.25)",
-    badge: "50% OFF", 
-    badgeColor: "#10b981",
-  },
-  {
-    id: "god_mode_lifetime",
-    name: "God Mode",
-    desc: "✦ Lifetime (One-time)",
-    price: "$49.99",
-    icon: <Crown className="h-5 w-5" />,
-    color: "#eab308", // Yellow
-    glowColor: "rgba(234,179,8,0.25)",
-    badge: null,
-    badgeColor: null,
-  },
-] as const;
+const getTokensConfig = (isTr: boolean) => ({
+  TOKEN_PACKAGES: [
+    {
+      id: "token_rookie",
+      name: isTr ? "Çaylak Dedikodusu" : "Rookie Gossip",
+      tokens: 10,
+      price: "$0.99",
+      icon: <Sparkles className="h-5 w-5" />,
+      color: "#8b5cf6",
+      glowColor: "rgba(139,92,246,0.15)",
+      popular: false,
+    },
+    {
+      id: "token_chaos",
+      name: isTr ? "Kaos Getiren" : "Chaos Bringer",
+      tokens: 50,
+      price: "$2.99",
+      icon: <Zap className="h-5 w-5" />,
+      color: "#ec4899",
+      glowColor: "rgba(236,72,153,0.20)",
+      popular: true,
+    },
+    {
+      id: "token_master",
+      name: isTr ? "Vibe Ustası" : "Vibe Master",
+      tokens: 150,
+      price: "$7.99",
+      icon: <Crown className="h-5 w-5" />,
+      color: "#f59e0b",
+      glowColor: "rgba(245,158,11,0.15)",
+      popular: false,
+    },
+  ],
+  VIP_PACKAGES: [
+    {
+      id: "aura_vip",
+      name: isTr ? "Vibe VIP" : "Vibe VIP",
+      desc: isTr ? "✦ Haftalık Sınırsız" : "✦ Weekly Unlimited",
+      price: "$4.99",
+      icon: <Sparkles className="h-5 w-5" />,
+      color: "#3b82f6",
+      glowColor: "rgba(59,130,246,0.15)",
+      badge: null,
+      badgeColor: null,
+    },
+    {
+      id: "mcs_monthly",
+      name: isTr ? "Ana Karakter Sendromu" : "Main Character Syndrome",
+      desc: isTr ? "✦ Aylık Sınırsız" : "✦ Monthly Unlimited",
+      price: "$9.99",
+      icon: <Zap className="h-5 w-5" />,
+      color: "#10b981",
+      glowColor: "rgba(16,185,129,0.25)",
+      badge: isTr ? "%50 İNDİRİM" : "50% OFF", 
+      badgeColor: "#10b981",
+    },
+    {
+      id: "god_mode_lifetime",
+      name: isTr ? "Tanrı Modu" : "God Mode",
+      desc: isTr ? "✦ Ömür Boyu (Tek Sefer)" : "✦ Lifetime (One-time)",
+      price: "$49.99",
+      icon: <Crown className="h-5 w-5" />,
+      color: "#eab308",
+      glowColor: "rgba(234,179,8,0.25)",
+      badge: null,
+      badgeColor: null,
+    },
+  ]
+});
 
 type ModalView = "gate" | "store" | "loading" | "success" | "mobile-funnel";
 
 export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
+  const t = useT();
   const [view, setView] = useState<ModalView>("gate");
   const [toast, setToast] = useState<{ show: boolean; msg: string }>({ show: false, msg: "" });
 
@@ -94,6 +96,10 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
     setToast({ show: true, msg });
     setTimeout(() => setToast({ show: false, msg: "" }), 3000);
   };
+  const locale = useAppStore((s) => s.locale);
+  const isTr = locale === "tr";
+  const { TOKEN_PACKAGES, VIP_PACKAGES } = getTokensConfig(isTr);
+
   const [purchasedTokens, setPurchasedTokens] = useState<number | string>(0);
   const [storeTokenPackages, setStoreTokenPackages] = useState<any[]>(TOKEN_PACKAGES as any);
   const [storeVipPackages, setStoreVipPackages] = useState<any[]>(VIP_PACKAGES as any);
@@ -165,22 +171,22 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
 
       }
 
-      triggerToast("📺 Loading ad... It will be active on the mobile version");
+      triggerToast(t.toastAdLoading);
     } catch (e) {
       console.warn("AdMob Reward failed/skipped:", e);
       // Fallback behavior for native if ad fails
-      triggerToast("📺 Loading ad... It will be active on the mobile version");
+      triggerToast(t.toastAdLoading);
     }
   };
 
   const handleComingSoon = () => {
     hapticMedium();
-    triggerToast("🚀 Our native mobile apps are dropping very soon! Stay tuned.");
+    triggerToast(t.toastAppSoon);
   };
 
   const handlePurchase = async (pkg: any) => {
     hapticMedium();
-    setPurchasedTokens(pkg.tokens || "Unlimited VIP ✦");
+    setPurchasedTokens(pkg.tokens || (isTr ? "Sınırsız VIP ✦" : "Unlimited VIP ✦"));
     setView("loading");
 
     try {
@@ -221,7 +227,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
         // ─── Web: Polar Checkout Flow ────────────────────────────────
         const idToken = await auth.currentUser?.getIdToken();
         if (!idToken) {
-          triggerToast("⚠️ Please sign in to make a purchase.");
+          triggerToast(t.toastSignIn);
           setView("store");
           return;
         }
@@ -300,7 +306,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                   className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-[11px] font-semibold text-text-secondary hover:text-white hover:bg-white/10 transition-all cursor-pointer"
                 >
                   <Tv className="h-3.5 w-3.5" />
-                  Watch to Earn
+                  {t.tokenModalWatchToEarn}
                 </motion.button>
 
                 {/* Close */}
@@ -338,10 +344,10 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                       </motion.div>
 
                       <h2 className="text-[22px] font-bold text-foreground mb-2 tracking-tight">
-                        Out of Vibe Tokens
+                        {t.tokenModalOut}
                       </h2>
                       <p className="text-[14px] leading-relaxed text-text-secondary mb-7">
-                        Refill your tokens to analyze your vibe and decode your energy.
+                        {t.tokenModalRefillDesc}
                       </p>
 
                       <motion.button
@@ -355,7 +361,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                         }}
                       >
                         <Sparkles className="h-5 w-5" />
-                        Get Tokens
+                        {t.tokenModalGetTokens}
                       </motion.button>
                     </motion.div>
                   )}
@@ -370,10 +376,10 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                       transition={{ duration: 0.25 }}
                     >
                       <h2 className="text-center text-[16px] font-bold text-foreground mb-0.5 tracking-tight">
-                        Token Packages
+                        {t.tokenModalPackages}
                       </h2>
                       <p className="text-center text-[11px] text-text-secondary/60 mb-3.5">
-                        Choose the package that suits you best
+                        {t.tokenModalChooseDesc}
                       </p>
 
                       <div className="flex flex-col gap-2.5">
@@ -405,7 +411,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                                   boxShadow: `0 2px 10px ${pkg.glowColor}`,
                                 }}
                               >
-                                Popular
+                                {t.tokenModalPopular}
                               </div>
                             )}
 
@@ -426,7 +432,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                                 {pkg.name}
                               </p>
                               <p className="text-[11px] text-text-secondary/70 mt-0.5">
-                                ✦ {pkg.tokens} Tokens
+                                {t.tokenModalTokensLabel.replace("{count}", pkg.tokens.toString())}
                               </p>
                             </div>
 
@@ -447,7 +453,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                       {/* VIP Section Divider */}
                       <div className="flex items-center gap-3 my-4 opacity-80">
                         <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-text-secondary/30"></div>
-                        <p className="text-[10px] font-bold text-text-secondary tracking-widest uppercase">VIP Pass</p>
+                        <p className="text-[10px] font-bold text-text-secondary tracking-widest uppercase">{t.tokenModalVipPass}</p>
                         <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-text-secondary/30"></div>
                       </div>
 
@@ -524,7 +530,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                         className="mt-4 w-full text-center text-[12px] text-text-secondary/40 hover:text-text-secondary transition-colors cursor-pointer"
                         whileTap={{ scale: 0.95 }}
                       >
-                        ← Go back
+                        {t.tokenModalGoBack}
                       </motion.button>
                     </motion.div>
                   )}
@@ -546,10 +552,10 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                         <Loader2 className="h-10 w-10 text-accent" />
                       </motion.div>
                       <p className="mt-4 text-[14px] font-semibold text-foreground">
-                        Processing payment...
+                        {t.tokenModalProcessing}
                       </p>
                       <p className="mt-1 text-[12px] text-text-secondary/50">
-                        Establishing secure connection
+                        {t.tokenModalSecureConn}
                       </p>
                     </motion.div>
                   )}
@@ -583,7 +589,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                       >
-                        Payment Successful!
+                        {t.tokenModalSuccess}
                       </motion.p>
                       <motion.p
                         className="mt-1 text-[13px] text-text-secondary"
@@ -591,7 +597,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.35 }}
                       >
-                        ✦ {typeof purchasedTokens === "number" ? `${purchasedTokens} tokens added to your account` : `${purchasedTokens} activated!`}
+                        {typeof purchasedTokens === "number" ? t.tokenModalAdded.replace("{count}", purchasedTokens.toString()) : t.tokenModalActivated.replace("{count}", purchasedTokens.toString())}
                       </motion.p>
                     </motion.div>
                   )}
@@ -616,10 +622,10 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                       </motion.div>
 
                       <h2 className="text-2xl font-black text-white mb-3 tracking-tight">
-                        Full Experience is on Mobile! 🚀
+                        {t.tokenModalMobileTitle}
                       </h2>
                       <p className="text-[14px] leading-relaxed text-zinc-400 mb-8 px-2 font-medium">
-                        Watch ads to earn free tokens, access exclusive filters, and get instant notifications only on our mobile app.
+                        {t.tokenModalMobileDesc}
                       </p>
 
                       <div className="space-y-4">
@@ -630,7 +636,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                           className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-[14px] font-bold text-white transition-all bg-[#007AFF] shadow-[0_0_30px_rgba(0,122,255,0.3)] border border-white/10 cursor-pointer"
                         >
                           <svg className="h-5 w-5 fill-white" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.1 2.48-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91 1.65.17 2.47.81 3.01 1.59-4.32 1.51-3.61 7.33.68 9.07zM13 3.5c.73-.89 1.22-2.13 1.08-3.38-1.08.04-2.39.71-3.16 1.61-.69.79-1.3 2.05-1.14 3.26 1.2.1 2.43-.59 3.22-1.5z"/></svg>
-                          Download for iOS (Soon)
+                          {t.tokenModalDownloadIos}
                         </motion.button>
 
                         {/* Android Download */}
@@ -640,7 +646,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                           className="w-full flex items-center justify-center gap-3 py-4 rounded-2xl text-[14px] font-bold text-white transition-all bg-[#3DDC84] shadow-[0_0_30px_rgba(61,220,132,0.3)] border border-white/10 cursor-pointer"
                         >
                           <svg className="h-5 w-5 fill-white" viewBox="0 0 24 24"><path d="M17.523 15.3414C17.025 15.3414 16.6212 14.9376 16.6212 14.4396C16.6212 13.9416 17.025 13.5378 17.523 13.5378C18.021 13.5378 18.4248 13.9416 18.4248 14.4396C18.4248 14.9376 18.021 15.3414 17.523 15.3414ZM6.477 15.3414C5.979 15.3414 5.5752 14.9376 5.5752 14.4396C5.5752 13.9416 5.979 13.5378 6.477 13.5378C6.975 13.5378 7.3788 13.9416 7.3788 14.4396C7.3788 14.9376 6.975 15.3414 6.477 15.3414ZM17.9622 10.7496L20.124 7.0056C20.25 6.786 20.1744 6.5052 19.9548 6.3792C19.7352 6.2532 19.4544 6.3288 19.3284 6.5484L17.13 10.359C15.651 9.684 13.9356 9.3024 12.0006 9.3024C10.0656 9.3024 8.3502 9.684 6.8712 10.359L4.6728 6.5484C4.5468 6.3288 4.266 6.2532 4.0464 6.3792C3.8268 6.5052 3.7512 6.786 3.8772 7.0056L6.039 10.7496C3.0042 12.3966 0.957 15.4854 0.8142 19.1178H23.1858C23.043 15.4854 20.9958 12.3966 17.9622 10.7496Z"/></svg>
-                          Download for Android (Soon)
+                          {t.tokenModalDownloadAndroid}
                         </motion.button>
                       </div>
 
@@ -648,7 +654,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                         onClick={() => { hapticLight(); setView("gate"); }}
                         className="mt-8 text-[12px] text-zinc-500 hover:text-zinc-300 transition-colors underline underline-offset-4"
                       >
-                        Maybe later
+                        {t.tokenModalMaybeLater}
                       </motion.button>
                     </motion.div>
                   )}
@@ -658,7 +664,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
               {/* Entertainment Badge */}
               <div className="w-full text-center pb-3 opacity-20">
                 <span className="text-[9px] text-white select-none">
-                  🎭 For Entertainment Purposes Only
+                  {t.tokenModalEntertainmentOnly}
                 </span>
               </div>
             </motion.div>

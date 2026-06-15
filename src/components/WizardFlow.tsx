@@ -21,6 +21,12 @@ import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { TOTAL_STEPS } from "@/lib/constants";
 import { useAppStore } from "@/store/useAppStore";
 
+// ─ Hafif client-side sözlük ─
+const WIZARD_STRINGS = {
+  en: { continue: "Continue", back: "Back", loading: "Loading...", analyzeSolo: "Analyze My Vibe", analyzeDuo: "Analyze Duo Vibe", skip: "Skip, show me the results" },
+  tr: { continue: "Devam Et", back: "Geri", loading: "Yükleniyor...", analyzeSolo: "Vibe'ımı Analiz Et", analyzeDuo: "İkili Vibe'ı Analiz Et", skip: "Geç, sonuçları göster" },
+} as const;
+
 interface WizardFlowProps {
   onComplete: () => void;
 }
@@ -41,6 +47,8 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
   const photoUrl = useAppStore((s) => s.photoUrl);
   const setWizardStep = useAppStore((s) => s.setWizardStep);
   const updateUserData = useAppStore((s) => s.updateUserData);
+  const locale = useAppStore((s) => s.locale);
+  const wt = WIZARD_STRINGS[locale];
 
   const isDuo = analysisMode === "duo";
   const totalSteps = isDuo ? DUO_TOTAL_STEPS : TOTAL_STEPS;
@@ -222,23 +230,23 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
           {isPending && !isLastStep ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" />
-              Loading...
+              {wt.loading}
             </>
           ) : isLastStep ? (
             isDuo ? (
               <>
                 <Heart className="h-4 w-4" />
-                Analyze Duo Vibe
+                {wt.analyzeDuo}
               </>
             ) : (
               <>
                 <Sparkles className="h-4 w-4" />
-                Analyze My Vibe
+                {wt.analyzeSolo}
               </>
             )
           ) : (
             <>
-              Continue
+              {wt.continue}
               <ChevronRight className="h-4 w-4" />
             </>
           )}
@@ -257,7 +265,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
               whileTap={{ scale: 0.97 }}
             >
               <ChevronLeft className="h-4 w-4" />
-              Back
+              {wt.back}
             </m.button>
           )}
         </AnimatePresence>
@@ -277,7 +285,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
           >
-            Skip, show me the results
+            {wt.skip}
           </m.button>
         )}
       </div>

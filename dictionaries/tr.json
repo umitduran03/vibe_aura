@@ -1,0 +1,52 @@
+{
+  "onboarding": {
+    "tagline": "Enerjini keşfet ✨",
+    "signUp": "Kayıt Ol",
+    "logIn": "Giriş Yap",
+    "terms": {
+      "title": "Auranı Okumadan Önce...",
+      "subtitle": "VibeCheckr bir eğlence uygulamasıdır. Yapay zeka yorumlarımız saf eğlence içindir.",
+      "points": {
+        "entertainment": "Tüm okumalar yalnızca eğlence amaçlıdır",
+        "photos": "Fotoğraflarını asla saklamıyor veya satmıyoruz",
+        "accuracy": "Yapay zeka sonuçları yanlış veya kurgusal olabilir",
+        "purchases": "Dijital satın alımlar iade edilemez"
+      },
+      "termsLink": "Kullanım Koşulları",
+      "privacyLink": "Gizlilik Politikası",
+      "checkbox": "Kullanım Koşullarını ve Gizlilik Politikasını kabul ediyorum.",
+      "acceptBtn": "Kabul Et & Devam",
+      "googleBtn": "Kabul Et & Google ile Kayıt Ol",
+      "connecting": "Bağlanıyor...",
+      "back": "← Geri",
+      "domainError": "Alan adı doğrulaması başarısız. Lütfen tekrar deneyin. ✨",
+      "genericError": "Bağlantı kesildi. Lütfen tekrar deneyin. ✨"
+    },
+    "login": {
+      "title": "Tekrar Hoş Geldin ✨",
+      "subtitle": "Yolculuğuna devam etmek için giriş yap",
+      "googleBtn": "Google ile Devam Et",
+      "connecting": "Bağlanıyor...",
+      "back": "← Geri"
+    }
+  },
+  "wizard": {
+    "continue": "Devam Et",
+    "back": "Geri",
+    "loading": "Yükleniyor...",
+    "analyzeSolo": "Vibe'ımı Analiz Et",
+    "analyzeDuo": "İkili Vibe'ı Analiz Et",
+    "skip": "Geç, sonuçları göster"
+  },
+  "analyzing": {
+    "title": "Auran okunuyor...",
+    "subtitle": "Bekle, evren hesaplıyor"
+  },
+  "common": {
+    "jusASecond": "Bir saniye..."
+  },
+  "seo": {
+    "title": "VibeCheckr — Yapay Zeka Vibe Testi, Fotoğraf Analizi & Kişilik Testi",
+    "description": "Ücretsiz yapay zeka destekli aura & kişilik analizi uygulaması. Selfie'ni yükle, acımasız dürüst yorumlar, burç uyum testi, ikili kimya analizi al. Viral Gen-Z uygulamasını şimdi dene!"
+  }
+}

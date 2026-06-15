@@ -3,16 +3,18 @@
 import { motion } from "framer-motion";
 import { useAppStore, type SoloScenario } from "@/store/useAppStore";
 import { hapticLight } from "@/lib/haptics";
-
-const SCENARIOS: { id: SoloScenario; emoji: string; label: string }[] = [
-  { id: "general", emoji: "✨", label: "General Vibe" },
-  { id: "roast",   emoji: "🔥", label: "Roast Me" },
-  { id: "soulmate", emoji: "❤️‍🔥", label: "Soulmate" },
-];
+import { useT } from "@/hooks/useT";
 
 export default function SoloScenarioSelector() {
   const scenario = useAppStore((s) => s.soloScenario);
   const setScenario = useAppStore((s) => s.setSoloScenario);
+  const t = useT();
+
+  const SCENARIOS: { id: SoloScenario; emoji: string; label: string }[] = [
+    { id: "general",  emoji: "✨", label: t.scenarioGeneral },
+    { id: "roast",    emoji: "🔥", label: t.scenarioRoast },
+    { id: "soulmate", emoji: "❤️‍🔥", label: t.scenarioSoulmate },
+  ];
 
   return (
     <motion.div
@@ -22,7 +24,7 @@ export default function SoloScenarioSelector() {
       className="mb-4"
     >
       <h2 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-4">
-        Analysis Type
+        {t.analysisType}
       </h2>
       <div className="flex gap-2">
         {SCENARIOS.map((s) => (

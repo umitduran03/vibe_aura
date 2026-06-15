@@ -84,6 +84,8 @@ interface AppState {
   // — Auth —
   userId: string | null;
 
+  // — Locale (dil) —
+  locale: "en" | "tr";
   // — Screen —
   currentScreen: AppScreen;
   wizardStep: number;
@@ -151,6 +153,7 @@ interface AppState {
 
   // ========== Actions ==========
   setUserId: (uid: string | null) => void;
+  setLocale: (locale: "en" | "tr") => void;
   setTokenBalance: (balance: number) => void;
   setBalanceLoaded: (loaded: boolean) => void;
   setTokenModalOpen: (isOpen: boolean) => void;
@@ -210,6 +213,9 @@ export const useAppStore = create<AppState>((set, get) => ({
   // — Auth —
   userId: null,
 
+  // — Locale (dil) —
+  locale: "en" as "en" | "tr",
+
   // — Initial State —
   currentScreen: "splash",
   wizardStep: 0,
@@ -260,6 +266,7 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // ========== Actions ==========
   setUserId: (uid) => set({ userId: uid }),
+  setLocale: (locale) => set({ locale }),
   setTokenBalance: (balance) => set({ tokenBalance: balance, isBalanceLoaded: true }),
   setBalanceLoaded: (loaded) => set({ isBalanceLoaded: loaded }),
   setTokenModalOpen: (isOpen) => set({ isTokenModalOpen: isOpen }),

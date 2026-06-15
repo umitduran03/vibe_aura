@@ -1,8 +1,58 @@
+"use client";
+
 import Link from "next/link";
 import { Sparkles, ArrowRight } from "lucide-react";
+import { useAppStore } from "@/store/useAppStore";
+import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
+
+const strings = {
+  en: {
+    tagline: "The internet's most brutally honest AI algorithm. Scan your vibes, decode mixed signals, and get the reality check you desperately need.",
+    aiFeatures: "AI Features",
+    resources: "Resources",
+    legal: "Legal",
+    allTrends: "All Trends & Articles →",
+    vibeDictionary: "Vibe Dictionary",
+    faq: "FAQ",
+    topReads: "Top Reads",
+    privacyPolicy: "Privacy Policy",
+    termsOfService: "Terms of Service",
+    copyright: "© {year} VibeCheckr AI. All rights reserved. Not actual medical or psychological advice.",
+    toxicEx: "Toxic Ex Scanner",
+    duoCompat: "Duo Compatibility",
+    situation: "Situationship Clarifier",
+    moodReset: "Mood Reset",
+    deluluCheck: "Delulu Check",
+    replyGuru: "The Reply Guru",
+  },
+  tr: {
+    tagline: "İnternetin en acımasız dürüst yapay zeka algoritması. Vibe'larını tara, karma sinyalleri çöz ve çok ihtiyacın olan gerçeklik kontrolünü al.",
+    aiFeatures: "YZ Özellikleri",
+    resources: "Kaynaklar",
+    legal: "Yasal",
+    allTrends: "Tüm Trendler & Makaleler →",
+    vibeDictionary: "Vibe Sözlüğü",
+    faq: "SSS",
+    topReads: "Öne Çıkanlar",
+    privacyPolicy: "Gizlilik Politikası",
+    termsOfService: "Kullanım Koşulları",
+    copyright: "© {year} VibeCheckr AI. Tüm hakları saklıdır. Gerçek tıbbi veya psikolojik tavsiye değildir.",
+    toxicEx: "Toksik Eski Sevgili Tarayıcı",
+    duoCompat: "İkili Uyumluluk",
+    situation: "Situationship Çözücü",
+    moodReset: "Mod Sıfırlama",
+    deluluCheck: "Delulu Check",
+    replyGuru: "Mesaj Gurusu",
+  },
+};
 
 export default function SeoFooter() {
   const currentYear = new Date().getFullYear();
+  const locale = useAppStore((s) => s.locale) as "en" | "tr";
+  const isTr = locale === "tr";
+  const s = strings[locale] ?? strings.en;
+  const currentTrends = isTr ? trendsDataTr : trendsDataEn;
+  const topReads = currentTrends.slice(0, 5);
 
   return (
     <footer className="w-full border-t border-white/10 bg-black/40 backdrop-blur-md py-12 px-6 mt-20 relative z-20">
@@ -17,60 +67,60 @@ export default function SeoFooter() {
             <span className="font-bold text-xl text-white tracking-tight">VibeCheckr</span>
           </div>
           <p className="text-white/60 text-sm leading-relaxed">
-            The internet's most brutally honest AI algorithm. Scan your vibes, decode mixed signals, and get the reality check you desperately need.
+            {s.tagline}
           </p>
         </div>
 
         {/* AI Features */}
         <div className="md:col-span-1 space-y-4">
-          <h4 className="text-white font-bold tracking-wide uppercase text-xs opacity-50">AI Features</h4>
+          <h4 className="text-white font-bold tracking-wide uppercase text-xs opacity-50">{s.aiFeatures}</h4>
           <ul className="space-y-3">
             <li>
-              <Link href="/toxic-ex-scanner" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+              <Link href={`/${locale}/toxic-ex-scanner`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                 <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   <ArrowRight className="w-3 h-3 text-red-400" />
                 </span>
-                Toxic Ex Scanner
+                {s.toxicEx}
               </Link>
             </li>
             <li>
-              <Link href="/duo-compatibility" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+              <Link href={`/${locale}/duo-compatibility`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                 <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   <ArrowRight className="w-3 h-3 text-pink-400" />
                 </span>
-                Duo Compatibility
+                {s.duoCompat}
               </Link>
             </li>
             <li>
-              <Link href="/situationship-clarifier" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+              <Link href={`/${locale}/situationship-clarifier`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                 <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   <ArrowRight className="w-3 h-3 text-purple-400" />
                 </span>
-                Situationship Clarifier
+                {s.situation}
               </Link>
             </li>
             <li>
-              <Link href="/mood-reset" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+              <Link href={`/${locale}/mood-reset`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                 <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   <ArrowRight className="w-3 h-3 text-emerald-400" />
                 </span>
-                Mood Reset
+                {s.moodReset}
               </Link>
             </li>
             <li>
-              <Link href="/delulu-check" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+              <Link href={`/${locale}/delulu-check`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                 <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   <ArrowRight className="w-3 h-3 text-amber-400" />
                 </span>
-                Delulu Check
+                {s.deluluCheck}
               </Link>
             </li>
             <li>
-              <Link href="/reply-guru" className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+              <Link href={`/${locale}/reply-guru`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
                 <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
                   <ArrowRight className="w-3 h-3 text-indigo-400" />
                 </span>
-                The Reply Guru
+                {s.replyGuru}
               </Link>
             </li>
           </ul>
@@ -78,66 +128,48 @@ export default function SeoFooter() {
 
         {/* Resources */}
         <div className="md:col-span-1 space-y-4">
-          <h4 className="text-white font-bold tracking-wide uppercase text-xs opacity-50">Resources</h4>
+          <h4 className="text-white font-bold tracking-wide uppercase text-xs opacity-50">{s.resources}</h4>
           <ul className="space-y-3">
             <li>
-              <Link href="/trends" className="text-white/70 hover:text-white transition-colors text-sm font-semibold text-indigo-300">
-                All Trends & Articles →
+              <Link href={`/${locale}/trends`} className="text-white/70 hover:text-white transition-colors text-sm font-semibold text-indigo-300">
+                {s.allTrends}
               </Link>
             </li>
             <li>
-              <Link href="/vibe-dictionary" className="text-white/70 hover:text-white transition-colors text-sm">
-                Vibe Dictionary
+              <Link href={`/${locale}/vibe-dictionary`} className="text-white/70 hover:text-white transition-colors text-sm">
+                {s.vibeDictionary}
               </Link>
             </li>
             <li>
-              <Link href="/faq" className="text-white/70 hover:text-white transition-colors text-sm">
-                FAQ
+              <Link href={`/${locale}/faq`} className="text-white/70 hover:text-white transition-colors text-sm">
+                {s.faq}
               </Link>
             </li>
             <li className="pt-2">
-              <span className="text-xs text-white/40 uppercase font-bold tracking-wider">Top Reads</span>
+              <span className="text-xs text-white/40 uppercase font-bold tracking-wider">{s.topReads}</span>
             </li>
-            <li>
-              <Link href="/trends/ai-photo-personality-test" className="text-white/60 hover:text-white transition-colors text-xs block truncate" title="AI Photo Personality Test">
-                AI Photo Personality Test
-              </Link>
-            </li>
-            <li>
-              <Link href="/trends/situationship-vs-relationship" className="text-white/60 hover:text-white transition-colors text-xs block truncate" title="Situationship vs Relationship">
-                Situationship vs Relationship
-              </Link>
-            </li>
-            <li>
-              <Link href="/trends/mixed-signals-or-delulu" className="text-white/60 hover:text-white transition-colors text-xs block truncate" title="Mixed Signals or Delulu?">
-                Mixed Signals or Delulu?
-              </Link>
-            </li>
-            <li>
-              <Link href="/trends/biggest-dating-red-flags-2026" className="text-white/60 hover:text-white transition-colors text-xs block truncate" title="Biggest Dating Red Flags">
-                Biggest Dating Red Flags
-              </Link>
-            </li>
-            <li>
-              <Link href="/trends/how-to-stop-overthinking-texts" className="text-white/60 hover:text-white transition-colors text-xs block truncate" title="Stop Overthinking Texts">
-                Stop Overthinking Texts
-              </Link>
-            </li>
+            {topReads.map((article) => (
+              <li key={article.slug}>
+                <Link href={`/${locale}/trends/${article.slug}`} className="text-white/60 hover:text-white transition-colors text-xs block truncate" title={article.title}>
+                  {article.title}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
 
         {/* Legal */}
         <div className="md:col-span-1 space-y-4">
-          <h4 className="text-white font-bold tracking-wide uppercase text-xs opacity-50">Legal</h4>
+          <h4 className="text-white font-bold tracking-wide uppercase text-xs opacity-50">{s.legal}</h4>
           <ul className="space-y-3">
             <li>
-              <Link href="/privacy" className="text-white/70 hover:text-white transition-colors text-sm">
-                Privacy Policy
+              <Link href={`/${locale}/privacy`} className="text-white/70 hover:text-white transition-colors text-sm">
+                {s.privacyPolicy}
               </Link>
             </li>
             <li>
-              <Link href="/terms" className="text-white/70 hover:text-white transition-colors text-sm">
-                Terms of Service
+              <Link href={`/${locale}/terms`} className="text-white/70 hover:text-white transition-colors text-sm">
+                {s.termsOfService}
               </Link>
             </li>
           </ul>
@@ -147,7 +179,7 @@ export default function SeoFooter() {
 
       <div className="max-w-6xl mx-auto mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-white/40 text-xs">
-          © {currentYear} VibeCheckr AI. All rights reserved. Not actual medical or psychological advice.
+          {s.copyright.replace("{year}", String(currentYear))}
         </p>
         <div className="flex gap-4">
           {/* Social placeholders if needed in future */}

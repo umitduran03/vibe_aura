@@ -8,16 +8,15 @@ import { signInWithGoogle, acceptTerms } from "@/lib/auth";
 import { hapticLight, hapticMedium, hapticHeavy } from "@/lib/haptics";
 import Image from "next/image";
 
-const LEGAL_POINTS = [
-  { emoji: "🎭", text: "All readings are for entertainment only" },
-  { emoji: "📷", text: "We never store or sell your photos" },
-  { emoji: "🤖", text: "AI results may be inaccurate or fictional" },
-  { emoji: "💳", text: "Digital purchases are non-refundable" },
-];
+import { useT } from "@/hooks/useT";
 
 type OnboardingView = "landing" | "terms" | "login";
 
 export default function OnboardingScreen() {
+  const locale = useAppStore((s) => s.locale);
+  const setLocale = useAppStore((s) => s.setLocale);
+  const t = useT();
+
   const setIsConnecting = useAppStore((s) => s.setIsConnecting);
   const setScreen = useAppStore((s) => s.setScreen);
   const userId = useAppStore((s) => s.userId);
@@ -61,8 +60,8 @@ export default function OnboardingScreen() {
       console.error("[Onboarding] Login failed:", err);
       localStorage.removeItem("pending_terms_accept");
       setLoginError(err?.code === "auth/unauthorized-domain"
-        ? "Domain verification failed. Please try again. ✨"
-        : "Connection interrupted. Please try again. ✨");
+        ? t.onboardingDomainError
+        : t.onboardingGenericError);
       setIsLoggingIn(false);
     }
   }, [isLoggingIn, view, hasConsented]);
@@ -90,7 +89,7 @@ export default function OnboardingScreen() {
           className="flex flex-col items-center gap-4 z-10"
         >
           <Loader2 className="w-8 h-8 text-white/40 animate-spin" />
-          <p className="text-[13px] text-white/30 tracking-wide font-medium">Just a second...</p>
+          <p className="text-[13px] text-white/30 tracking-wide font-medium">{t.onboardingWait}</p>
         </m.div>
         
         {/* Background glow effects consistent with the rest of the screen */}
@@ -146,7 +145,7 @@ export default function OnboardingScreen() {
               </m.div>
             </div>
 
-            <p className="text-sm text-white/40 mb-10">Discover your energy ✨</p>
+            <p className="text-sm text-white/40 mb-10">{t.onboardingTagline}</p>
 
             {/* Sign Up Button */}
             <m.button
@@ -159,7 +158,7 @@ export default function OnboardingScreen() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.96 }}
             >
-              Sign Up <ArrowRight className="w-4 h-4" />
+              {t.onboardingSignUp} <ArrowRight className="w-4 h-4" />
             </m.button>
 
             {/* Log In Button */}
@@ -170,8 +169,40 @@ export default function OnboardingScreen() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.96 }}
             >
-              Log In
+              {t.onboardingLogIn}
             </m.button>
+
+            {/* Language Toggle */}
+            <div className="flex items-center justify-center gap-2 mt-6">
+              {(["en", "tr"] as const).map((lang) => (
+                <button
+                  key={lang}
+                  onClick={() => {
+                    hapticLight();
+                    setLocale(lang);
+                    if (typeof window !== "undefined") {
+                      const currentPath = window.location.pathname;
+                      const newPath = currentPath.replace(/^\/(en|tr)/, `/${lang}`);
+                      window.history.replaceState(null, "", newPath);
+                    }
+                  }}
+                  className={`px-4 py-1.5 rounded-full text-[12px] font-semibold transition-all duration-200 cursor-pointer ${
+                    locale === lang
+                      ? "text-white"
+                      : "text-white/30 hover:text-white/60"
+                  }`}
+                  style={locale === lang ? {
+                    background: "rgba(139,92,246,0.2)",
+                    border: "1px solid rgba(139,92,246,0.4)",
+                  } : {
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "transparent",
+                  }}
+                >
+                  {lang === "en" ? "🇬🇧 English" : "🇹🇷 Türkçe"}
+                </button>
+              ))}
+            </div>
           </m.div>
         )}
 
@@ -200,14 +231,19 @@ export default function OnboardingScreen() {
                   <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative mb-4 bg-white/5 border border-white/10">
                     <Sparkles className="h-8 w-8 text-pink-400" />
                   </div>
-                  <h2 className="text-xl font-bold text-center text-white mb-2">Before We Read Your Aura...</h2>
+                  <h2 className="text-xl font-bold text-center text-white mb-2">{t.onboardingLegalTitle}</h2>
                   <p className="text-sm text-center text-white/50 leading-relaxed">
-                    VibeCheckr is an <strong className="text-white/70">entertainment app</strong>. Our AI readings are for fun.
+                    {t.onboardingLegalSubtitle}
                   </p>
                 </div>
 
                 <div className="space-y-2.5 mb-6">
-                  {LEGAL_POINTS.map((item) => (
+                  {[
+                    { emoji: "🎭", text: t.onboardingLegalPoint1 },
+                    { emoji: "📷", text: t.onboardingLegalPoint2 },
+                    { emoji: "🤖", text: t.onboardingLegalPoint3 },
+                    { emoji: "💳", text: t.onboardingLegalPoint4 }
+                  ].map((item) => (
                     <div key={item.text} className="flex items-center gap-3 p-3 rounded-xl bg-white/[0.02] border border-white/[0.05]">
                       <span className="text-base shrink-0">{item.emoji}</span>
                       <span className="text-[13px] text-white/65 leading-snug">{item.text}</span>
@@ -217,11 +253,11 @@ export default function OnboardingScreen() {
 
                 <div className="flex items-center justify-center gap-4 mb-6">
                   <a href="/terms" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline">
-                    Terms of Service <ExternalLink className="h-3 w-3 opacity-60 group-hover:opacity-100" />
+                    {t.onboardingTermsLink} <ExternalLink className="h-3 w-3 opacity-60 group-hover:opacity-100" />
                   </a>
                   <span className="text-white/15">|</span>
                   <a href="/privacy" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline">
-                    Privacy Policy <ExternalLink className="h-3 w-3 opacity-60 group-hover:opacity-100" />
+                    {t.onboardingPrivacyLink} <ExternalLink className="h-3 w-3 opacity-60 group-hover:opacity-100" />
                   </a>
                 </div>
 
@@ -244,7 +280,7 @@ export default function OnboardingScreen() {
                         )}
                       </AnimatePresence>
                     </div>
-                    <p className="text-[13px] text-white/65 leading-snug flex-1">I accept the Terms of Service and Privacy Policy.</p>
+                    <p className="text-[13px] text-white/65 leading-snug flex-1">{t.onboardingCheckbox}</p>
                   </label>
                 </div>
 
@@ -261,7 +297,7 @@ export default function OnboardingScreen() {
                     whileHover={hasConsented ? { scale: 1.02 } : {}}
                     whileTap={hasConsented ? { scale: 0.96 } : {}}
                   >
-                    Accept & Continue <ArrowRight className="w-4 h-4" />
+                    {t.onboardingAcceptBtn} <ArrowRight className="w-4 h-4" />
                   </m.button>
                 ) : (
                   <>
@@ -281,7 +317,7 @@ export default function OnboardingScreen() {
                       whileHover={hasConsented && !isLoggingIn ? { scale: 1.02 } : {}}
                       whileTap={hasConsented && !isLoggingIn ? { scale: 0.96 } : {}}
                     >
-                      {isLoggingIn ? (<><Loader2 className="h-5 w-5 animate-spin" /> Connecting...</>) : (
+                      {isLoggingIn ? (<><Loader2 className="h-5 w-5 animate-spin" /> {t.onboardingConnecting}</>) : (
                         <>
                           <svg className="h-5 w-5 bg-white rounded-full p-[2px]" viewBox="0 0 24 24">
                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -289,7 +325,7 @@ export default function OnboardingScreen() {
                             <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                             <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                           </svg>
-                          Accept & Sign Up with Google
+                          {t.onboardingGoogleBtn}
                         </>
                       )}
                     </m.button>
@@ -299,7 +335,7 @@ export default function OnboardingScreen() {
                 {/* Back button */}
                 {!userId && (
                   <button onClick={() => setView("landing")} className="w-full mt-3 text-xs text-white/30 hover:text-white/50 transition-colors">
-                    ← Back
+                    {t.onboardingBack}
                   </button>
                 )}
               </div>
@@ -332,8 +368,8 @@ export default function OnboardingScreen() {
                   <div className="w-16 h-16 rounded-2xl flex items-center justify-center relative mb-4 bg-white/5 border border-white/10">
                     <Sparkles className="h-8 w-8 text-pink-400" />
                   </div>
-                  <h2 className="text-xl font-bold text-center text-white mb-2">Welcome Back ✨</h2>
-                  <p className="text-sm text-center text-white/50">Sign in to continue your journey</p>
+                  <h2 className="text-xl font-bold text-center text-white mb-2">{t.onboardingLoginTitle}</h2>
+                  <p className="text-sm text-center text-white/50">{t.onboardingLoginSubtitle}</p>
                 </div>
 
                 {loginError && (
@@ -353,7 +389,7 @@ export default function OnboardingScreen() {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.96 }}
                 >
-                  {isLoggingIn ? (<><Loader2 className="h-5 w-5 animate-spin" /> Connecting...</>) : (
+                  {isLoggingIn ? (<><Loader2 className="h-5 w-5 animate-spin" /> {t.onboardingConnecting}</>) : (
                     <>
                       <svg className="h-5 w-5 bg-white rounded-full p-[2px]" viewBox="0 0 24 24">
                         <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -361,13 +397,13 @@ export default function OnboardingScreen() {
                         <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
                         <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
                       </svg>
-                      Continue with Google
+                      {t.onboardingLoginBtn}
                     </>
                   )}
                 </m.button>
 
                 <button onClick={() => setView("landing")} className="w-full mt-3 text-xs text-white/30 hover:text-white/50 transition-colors">
-                  ← Back
+                  {t.onboardingBack}
                 </button>
               </div>
             </div>

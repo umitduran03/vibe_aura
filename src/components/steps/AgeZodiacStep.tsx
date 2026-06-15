@@ -5,6 +5,7 @@ import { AGE_RANGE } from "@/lib/constants";
 import { Minus, Plus } from "lucide-react";
 import { hapticLight } from "@/lib/haptics";
 import ZodiacScrollPicker from "@/components/ui/ZodiacScrollPicker";
+import { useT } from "@/hooks/useT";
 
 interface AgeZodiacStepProps {
   selectedAge: number;
@@ -19,6 +20,7 @@ export default function AgeZodiacStep({
   onAgeChange,
   onZodiacChange,
 }: AgeZodiacStepProps) {
+  const t = useT();
 
   const handleAgeChange = (newAge: number) => {
     if (newAge >= AGE_RANGE.min && newAge <= AGE_RANGE.max) {
@@ -37,7 +39,7 @@ export default function AgeZodiacStep({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          Age Details
+          {t.ageLabel}
         </motion.h2>
         
         <motion.div 
@@ -83,7 +85,7 @@ export default function AgeZodiacStep({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          Zodiac Sign
+          {t.zodiacLabel}
         </motion.h2>
 
         <ZodiacScrollPicker

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { saveUserPreferences } from "@/lib/auth";
+import { useT } from "@/hooks/useT";
 
 /**
  * OnboardingBanner — Sayfanın en tepesinde yer alan yapışkan profil tamamlama banner'ı.
@@ -16,6 +17,7 @@ export default function OnboardingBanner() {
   const isPreferencesLoaded = useAppStore((s) => s.isPreferencesLoaded);
   const gender = useAppStore((s) => s.gender);
   const preference = useAppStore((s) => s.preference);
+  const t = useT();
 
   const [isExpanded, setIsExpanded] = useState(false);
   const [step, setStep] = useState(1);
@@ -75,13 +77,13 @@ export default function OnboardingBanner() {
               <div className="relative px-4 py-3 flex items-center justify-between z-10">
                 <div className="flex items-center gap-2">
                   <span className="text-[12px] sm:text-[13px] text-white/90 font-medium tracking-wide">
-                    Before we start, let's clear a few things up... ✨
+                    {t.onboardingBannerTeaser}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-1.5 flex-shrink-0 pl-2">
-                  <span className="text-[10px] text-purple-400 font-bold uppercase tracking-wider hidden sm:block">Tap to complete your profile</span>
-                  <span className="text-[10px] text-purple-400 font-bold uppercase tracking-wider sm:hidden">Tap</span>
+                  <span className="text-[10px] text-purple-400 font-bold uppercase tracking-wider hidden sm:block">{t.onboardingBannerTapFull}</span>
+                  <span className="text-[10px] text-purple-400 font-bold uppercase tracking-wider sm:hidden">{t.onboardingBannerTapShort}</span>
                   <motion.div
                     animate={{ y: [0, 3, 0] }}
                     transition={{ duration: 1.5, repeat: Infinity }}
@@ -129,10 +131,10 @@ export default function OnboardingBanner() {
                   {/* Title */}
                   <div className="relative z-10 mb-6 max-w-[90%]">
                     <h2 className="text-[18px] font-bold tracking-tight text-white/95 leading-snug">
-                      Before we start, let's clear a few things up...
+                      {t.onboardingBannerExpandedTitle}
                     </h2>
                     <p className="text-[13px] text-white/50 mt-1.5">
-                      We wouldn't want any accidents during the analysis, right? 😅
+                      {t.onboardingBannerExpandedSub}
                     </p>
                   </div>
 
@@ -148,12 +150,12 @@ export default function OnboardingBanner() {
                           transition={{ duration: 0.2 }}
                           className="space-y-3"
                         >
-                          <h3 className="text-[14px] font-semibold text-white/70">I am a...</h3>
+                          <h3 className="text-[14px] font-semibold text-white/70">{t.onboardingBannerStep1Title}</h3>
                           <div className="flex flex-col gap-2">
                             {[
-                              { label: "Guy 🧢", value: "Guy" },
-                              { label: "Girl 💅", value: "Girl" },
-                              { label: "Icon ✨", value: "Icon" },
+                              { label: t.onboardingBannerGuy, value: "Guy" },
+                              { label: t.onboardingBannerGirl, value: "Girl" },
+                              { label: t.onboardingBannerIcon, value: "Icon" },
                             ].map((opt) => (
                               <motion.button
                                 key={opt.value}
@@ -188,19 +190,19 @@ export default function OnboardingBanner() {
                           className="space-y-3"
                         >
                           <div className="flex items-center justify-between mb-1">
-                            <h3 className="text-[14px] font-semibold text-white/70">I usually overanalyze...</h3>
+                            <h3 className="text-[14px] font-semibold text-white/70">{t.onboardingBannerStep2Title}</h3>
                             <button
                               onClick={() => setStep(1)}
                               className="text-[12px] text-purple-400/80 hover:text-purple-400 transition-colors cursor-pointer"
                             >
-                              ← Back
+                              ← {t.back}
                             </button>
                           </div>
                           <div className="flex flex-col gap-2">
                             {[
-                              { label: "Guys 🚩", value: "Guys" },
-                              { label: "Girls ☕", value: "Girls" },
-                              { label: "Everyone 🍿", value: "Everyone" },
+                              { label: t.onboardingBannerGuys, value: "Guys" },
+                              { label: t.onboardingBannerGirls, value: "Girls" },
+                              { label: t.onboardingBannerEveryone, value: "Everyone" },
                             ].map((opt) => (
                               <motion.button
                                 key={opt.value}

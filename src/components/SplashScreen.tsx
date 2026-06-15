@@ -7,8 +7,10 @@ import {
   splashTextVariants,
   auraRingVariants,
 } from "@/lib/animations";
+import { useT } from "@/hooks/useT";
 
 export default function SplashScreen() {
+  const t = useT();
   return (
     <m.div
       className="fixed inset-0 z-50 flex flex-col items-center justify-center"
@@ -64,7 +66,7 @@ export default function SplashScreen() {
         variants={splashTextVariants}
         className="relative z-10 mt-8 text-sm font-medium text-text-secondary tracking-widest uppercase"
       >
-        Analyzing your vibe
+        {t.splashAnalyzing}
         <m.span
           animate={{ opacity: [1, 0.3, 1] }}
           transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}

@@ -2,15 +2,16 @@
 
 import { useState } from "react";
 import { Search } from "lucide-react";
-import { dictionaryTerms } from "@/lib/dictionary-data";
+import { useT } from "@/hooks/useT";
 
-export default function VibeDictionaryClient() {
+export default function VibeDictionaryClient({ dictionaryTerms }: { dictionaryTerms: any[] }) {
   const [searchQuery, setSearchQuery] = useState("");
+  const t = useT();
 
   const filteredDictionary = dictionaryTerms.map(section => {
     return {
       ...section,
-      terms: section.terms.filter(term => 
+      terms: section.terms.filter((term: any) => 
         term.word.toLowerCase().includes(searchQuery.toLowerCase()) || 
         term.meaning.toLowerCase().includes(searchQuery.toLowerCase())
       )
@@ -28,7 +29,7 @@ export default function VibeDictionaryClient() {
           type="text"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          placeholder="Search for rizz, ghosting, aries..."
+          placeholder={t.dictionarySearchPlaceholder ?? "Search for rizz, ghosting, aries..."}
           className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder-white/40 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent transition-all"
         />
       </div>
@@ -37,8 +38,8 @@ export default function VibeDictionaryClient() {
       <div className="space-y-12 min-h-[400px]">
         {filteredDictionary.length === 0 ? (
           <div className="text-center py-10 text-white/50">
-            <p className="text-lg">No vibes found for "{searchQuery}".</p>
-            <p className="text-sm mt-2">Try searching something else or check your spelling.</p>
+            <p className="text-lg">{t.dictionaryNoResults?.replace("{query}", searchQuery) ?? `No vibes found for "${searchQuery}".`}</p>
+            <p className="text-sm mt-2">{t.dictionaryTryAgain ?? "Try searching something else or check your spelling."}</p>
           </div>
         ) : (
           filteredDictionary.map((section, idx) => (
@@ -48,7 +49,7 @@ export default function VibeDictionaryClient() {
                 <h2 className="text-2xl font-bold text-white">{section.category}</h2>
               </div>
               <div className="grid gap-4">
-                {section.terms.map((term, tIdx) => (
+                {section.terms.map((term: any, tIdx: number) => (
                   <div key={tIdx} className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors">
                     <h3 className="text-lg font-bold text-purple-300 mb-2">{term.word}</h3>
                     <p className="text-white/70 leading-relaxed">{term.meaning}</p>

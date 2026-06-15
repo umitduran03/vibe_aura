@@ -6,12 +6,14 @@ import { Camera, X, Loader2 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { compressAndEncodeImage } from "@/lib/services";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
+import { useT } from "@/hooks/useT";
 
 export default function PhotoUpload() {
   const photoUrl = useAppStore((s) => s.photoUrl);
   const isUploading = useAppStore((s) => s.isUploadingPhoto);
   const setPhotoUrl = useAppStore((s) => s.setPhotoUrl);
   const setIsUploading = useAppStore((s) => s.setIsUploadingPhoto);
+  const t = useT();
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [dragOver, setDragOver] = useState(false);
@@ -135,7 +137,7 @@ export default function PhotoUpload() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={photoUrl}
-              alt="Uploaded photo"
+              alt={useAppStore.getState().locale === "tr" ? "Yüklenen fotoğraf" : "Uploaded photo"}
               className="h-full w-full object-cover"
             />
             <motion.button
@@ -143,7 +145,7 @@ export default function PhotoUpload() {
               whileHover={{ scale: 1.1, boxShadow: "0 0 20px rgba(236, 72, 153, 0.8)", borderColor: "rgba(236, 72, 153, 0.6)" }}
               whileTap={{ scale: 0.9 }}
               className="absolute top-2 right-2 flex h-8 w-8 items-center justify-center rounded-full cursor-pointer z-10 transition-all duration-300 group"
-              aria-label="Remove Photo"
+              aria-label={useAppStore.getState().locale === "tr" ? "Fotoğrafı Kaldır" : "Remove Photo"}
               style={{
                 background: "rgba(10, 10, 15, 0.6)",
                 backdropFilter: "blur(12px)",
@@ -195,13 +197,13 @@ export default function PhotoUpload() {
               <>
                 <Camera className="h-6 w-6 text-text-secondary/60 mb-1" />
                 <span className="text-[10px] text-text-secondary/40 font-medium">
-                  Photo
+                  {t.photoLabel}
                 </span>
               </>
             )}
             {isUploading && (
               <span className="mt-1 text-[10px] text-accent font-medium">
-                Analyzing vibe...
+                {t.photoAnalyzing}
               </span>
             )}
           </motion.label>
@@ -230,12 +232,12 @@ export default function PhotoUpload() {
                 <button
                   onClick={() => { setIsModalOpen(false); hapticLight(); }}
                   className="absolute top-4 right-4 p-2 rounded-full bg-white/5 hover:bg-white/10 transition-colors text-white/60 hover:text-white"
-                  aria-label="Close Photo Options"
+                  aria-label={useAppStore.getState().locale === "tr" ? "Fotoğraf Seçeneklerini Kapat" : "Close Photo Options"}
                 >
                   <X className="h-5 w-5" />
                 </button>
 
-                <h3 className="text-xl font-bold text-white mb-6 pr-8">Choose Photo</h3>
+                <h3 className="text-xl font-bold text-white mb-6 pr-8">{t.photoChoose}</h3>
 
                 <div className="flex flex-col gap-3">
                   <button
@@ -243,7 +245,7 @@ export default function PhotoUpload() {
                     className="w-full py-4 px-6 rounded-2xl flex items-center justify-between transition-transform active:scale-95"
                     style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(236,72,153,0.15) 100%)", border: "1px solid rgba(192,132,252,0.3)" }}
                   >
-                    <span className="text-[15px] font-bold text-white">Take a Selfie 📸</span>
+                    <span className="text-[15px] font-bold text-white">{t.photoCamera}</span>
                   </button>
 
                   <button
@@ -251,7 +253,7 @@ export default function PhotoUpload() {
                     className="w-full py-4 px-6 rounded-2xl flex items-center justify-between transition-transform active:scale-95"
                     style={{ background: "linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(236,72,153,0.15) 100%)", border: "1px solid rgba(192,132,252,0.3)" }}
                   >
-                    <span className="text-[15px] font-bold text-white">Upload from Gallery 🖼️</span>
+                    <span className="text-[15px] font-bold text-white">{t.photoGallery}</span>
                   </button>
                 </div>
               </motion.div>

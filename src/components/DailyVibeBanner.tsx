@@ -8,10 +8,13 @@ import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { db } from "@/lib/firebase";
 import { useAppStore } from "@/store/useAppStore";
+import { useT } from "@/hooks/useT";
 
 export default function DailyVibeBanner() {
   const userId = useAppStore((s) => s.userId);
-  const userData = useAppStore((s) => s.userData); // for age/zodiac
+  const userData = useAppStore((s) => s.userData);
+  const locale = useAppStore((s) => s.locale);
+  const t = useT();
   
   const [vibe, setVibe] = useState<string | null>(null);
   const [missingZodiac, setMissingZodiac] = useState(false);
@@ -32,6 +35,10 @@ export default function DailyVibeBanner() {
         const snap = await getDoc(userRef);
         
         const todayStr = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+        // Her locale için ayrı Firestore alanı kullan
+        const vibeField = locale === "tr" ? "daily_vibe_text_tr" : "daily_vibe_text_en";
+        const dateField = locale === "tr" ? "last_vibe_date_tr" : "last_vibe_date_en";
+
         let currentVibe = null;
         let lastDate = null;
         let userZodiac = null;
@@ -40,14 +47,14 @@ export default function DailyVibeBanner() {
 
         if (snap.exists()) {
           const data = snap.data();
-          currentVibe = data.daily_vibe_text;
-          lastDate = data.last_vibe_date;
+          currentVibe = data[vibeField] || null;
+          lastDate = data[dateField] || null;
           userZodiac = data.zodiacSign;
           userAge = data.age || data.userAge || 22;
           userGender = data.gender || null;
         }
 
-        // Eğer tarih bugünse ve vibe varsa, API'ye gitme
+        // Bugün zaten bu locale için vibe çekildiyse API'ye gitme
         if (lastDate === todayStr && currentVibe) {
           if (isMounted) {
             setVibe(currentVibe);
@@ -56,7 +63,7 @@ export default function DailyVibeBanner() {
           return;
         }
 
-        // Yeni gün, API'den al
+        // Burcu yoksa UI'da uyarı göster
         if (!userZodiac) {
           if (isMounted) {
             setMissingZodiac(true);
@@ -74,16 +81,17 @@ export default function DailyVibeBanner() {
             age: userAge,
             zodiac: userZodiac,
             gender: userGender,
+            locale,
           }),
         });
 
         if (!res.ok) throw new Error("API error");
         const { vibe: newVibe } = await res.json();
 
-        // Firestore'a kaydet
+        // Locale'e özgü alanlara kaydet
         await updateDoc(userRef, {
-          daily_vibe_text: newVibe,
-          last_vibe_date: todayStr,
+          [vibeField]: newVibe,
+          [dateField]: todayStr,
         }).catch(err => {
           console.error("Vibe update error", err);
         });
@@ -96,18 +104,23 @@ export default function DailyVibeBanner() {
       } catch (err) {
         console.error("Error fetching daily vibe:", err);
         if (isMounted) {
-          setVibe("The sky is a bit cloudy, couldn't read your vibe. Maybe try again later.");
+          setVibe(t.dailyError);
           setIsLoading(false);
         }
       }
     }
 
+    // Locale değiştiğinde soruşurmadan yeniden çek
+    setVibe(null);
+    setIsLoading(true);
+    setMissingZodiac(false);
     fetchVibe();
 
     return () => {
       isMounted = false;
     };
-  }, [userId]);
+  // locale değişince de yeniden çek — TR/EN vibe ayrı olmalı
+  }, [userId, locale]);
 
   /** Download blob as PNG — universal fallback */
   const downloadBlob = (blob: Blob, filename: string) => {
@@ -200,7 +213,7 @@ export default function DailyVibeBanner() {
           <div className="flex items-center gap-1.5 opacity-80" style={{ color: "#c084fc" }}>
             <WaveLogoIcon size={14} className="opacity-80" />
             <span className="text-[11px] font-bold uppercase tracking-wider">
-              Daily Vibe ⚡
+              {t.dailyVibe}
             </span>
           </div>
 
@@ -219,7 +232,7 @@ export default function DailyVibeBanner() {
             {isSharing ? (
               <>
                 <Loader2 className="w-3.5 h-3.5 animate-spin" style={{ color: "#c084fc" }} />
-                <span className="text-[10px] font-medium" style={{ color: "#c084fc" }}>Preparing your vibe... ✨</span>
+                <span className="text-[10px] font-medium" style={{ color: "#c084fc" }}>{t.dailyPreparingShare}</span>
               </>
             ) : shared ? (
               <Check className="w-3.5 h-3.5" />
@@ -241,7 +254,7 @@ export default function DailyVibeBanner() {
                 style={{ color: "rgba(161, 161, 170, 0.6)" }}
               >
                 <Loader2 className="w-4 h-4 animate-spin" />
-                <span>Generating your vibe...</span>
+                <span>{t.dailyLoading}</span>
               </motion.div>
             ) : missingZodiac ? (
               <motion.div
@@ -252,7 +265,7 @@ export default function DailyVibeBanner() {
                 className="flex flex-col gap-2"
               >
                 <p className="text-[14px] leading-snug font-medium" style={{ color: "rgba(255, 255, 255, 0.9)" }}>
-                  I can't read your daily vibe if I don't know your sign. Please set your Zodiac sign in Settings first. ✦
+                  {t.dailyMissingZodiac}
                 </p>
                 <button
                   onClick={() => setSettingsOpen(true)}
@@ -263,7 +276,7 @@ export default function DailyVibeBanner() {
                     color: "#c084fc",
                   }}
                 >
-                  Set your Zodiac Sign
+                  {t.dailySetZodiac}
                 </button>
               </motion.div>
             ) : (

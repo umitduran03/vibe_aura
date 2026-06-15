@@ -9,8 +9,10 @@ import { auth } from "@/lib/firebase";
 import { useState } from "react";
 import { hapticMedium, hapticHeavy } from "@/lib/haptics";
 import { getVibeRank } from "@/lib/streak-utils";
+import { useT } from "@/hooks/useT";
 
 export default function StreakRecoveryModal() {
+  const t = useT();
   const { isRecoveryModalOpen, lostStreakCount, recoverStreak, declineRecovery } = useStreakStore();
   const tokenBalance = useAppStore((s) => s.tokenBalance);
   const setTokenBalance = useAppStore((s) => s.setTokenBalance);
@@ -27,7 +29,7 @@ export default function StreakRecoveryModal() {
   const handleRecover = async () => {
     hapticMedium();
     if (tokenBalance < tokensNeeded) {
-      setError("Not enough tokens. You need more tokens to recover this streak.");
+      setError(t.streakRecoveryTokenError);
       setTimeout(() => setTokenModalOpen(true), 1000);
       return;
     }
@@ -46,7 +48,7 @@ export default function StreakRecoveryModal() {
       recoverStreak();
       hapticHeavy();
     } catch (err) {
-      setError("An error occurred while recovering streak.");
+      setError(t.streakRecoveryGenericError);
     } finally {
       setIsProcessing(false);
     }
@@ -80,20 +82,20 @@ export default function StreakRecoveryModal() {
             <Flame className="w-10 h-10 text-orange-500" />
           </div>
 
-          <h2 className="text-2xl font-black text-white mb-2">Streak Lost!</h2>
+          <h2 className="text-2xl font-black text-white mb-2">{t.streakRecoveryTitle}</h2>
           
           <div className="text-white/70 mb-6 text-sm leading-relaxed">
-            You forgot to check your vibe yesterday and lost your{" "}
-            <span className="font-bold text-orange-400">{lostStreakCount} Day</span> streak. 
-            You were a <span className={`font-bold ${rank.color}`}>{rank.name}</span>.
+            {t.streakRecoveryDesc1} {" "}
+            <span className="font-bold text-orange-400">{lostStreakCount} {t.streakRecoveryDay}</span> {t.streakRecoveryDesc2}
+            <br/>{t.streakRecoveryYouWereA} <span className={`font-bold ${rank.color}`}>{rank.name}</span>.
           </div>
 
           <div className="p-4 bg-white/5 rounded-2xl border border-white/10 mb-6">
             <p className="text-sm text-white/90 font-medium mb-3">
-              Don't lose your rank! Recover it now for:
+              {t.streakRecoveryDonNotLose}
             </p>
             <div className="flex items-center justify-center gap-2 text-2xl font-black text-yellow-400">
-              🪙 {tokensNeeded} Tokens
+              {t.streakRecoveryCost.replace("{tokens}", tokensNeeded.toString())}
             </div>
           </div>
 
@@ -119,7 +121,7 @@ export default function StreakRecoveryModal() {
               ) : (
                 <>
                   <Flame className="w-5 h-5" />
-                  Recover My Streak
+                  {t.streakRecoveryButton}
                 </>
               )}
             </button>
@@ -129,7 +131,7 @@ export default function StreakRecoveryModal() {
               disabled={isProcessing}
               className="w-full py-3.5 rounded-xl font-semibold text-white/50 hover:bg-white/5 hover:text-white/80 transition-all text-sm"
             >
-              No, let me start from Day 1
+              {t.streakRecoveryDecline}
             </button>
           </div>
         </motion.div>

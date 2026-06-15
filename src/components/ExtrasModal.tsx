@@ -5,63 +5,76 @@ import { X, Camera, Loader2, ImagePlus, Trash2 } from "lucide-react";
 import { useAppStore, type ExtrasType } from "@/store/useAppStore";
 import { compressAndEncodeImage } from "@/lib/services";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
+import { useT } from "@/hooks/useT";
 
-const ZODIAC_OPTIONS = ["Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"];
-const MOOD_OPTIONS = ["Drained & Exhausted","Anxious & Overthinking","Heartbroken","Lost & Confused","Angry & Frustrated","Numb","Stuck in a Loop"];
-const BREAKUP_DYNAMIC_OPTIONS = ["I dumped them", "They dumped me", "Got ghosted", "Mutual breakup"];
-const RELATIONSHIP_DURATION_OPTIONS = ["Just a fling", "A few months", "Over a year", "Multiple years"];
-const TALKING_DURATION_OPTIONS = ["Just started", "A few weeks", "A few months", "Way too long"];
-const MET_IN_PERSON_OPTIONS = ["Yes", "No"];
+const ZODIAC_OPTIONS_EN = ["Aries","Taurus","Gemini","Cancer","Leo","Virgo","Libra","Scorpio","Sagittarius","Capricorn","Aquarius","Pisces"];
+const ZODIAC_OPTIONS_TR = ["Koç","Boğa","İkizler","Yengeç","Aslan","Başak","Terazi","Akrep","Yay","Oğlak","Kova","Balık"];
+const MOOD_OPTIONS_EN = ["Drained & Exhausted","Anxious & Overthinking","Heartbroken","Lost & Confused","Angry & Frustrated","Numb","Stuck in a Loop"];
+const MOOD_OPTIONS_TR = ["Tükenmiş & Yorgun","Kaygılı & Aşırı Düşünen","Kalp Kırıklığı","Kaybolmuş & Kafası Karışık","Sinirli & Engellenmiş","Hissizleşmiş","Döngüde Sıkışmış"];
+const BREAKUP_DYNAMIC_OPTIONS_EN = ["I dumped them", "They dumped me", "Got ghosted", "Mutual breakup"];
+const BREAKUP_DYNAMIC_OPTIONS_TR = ["Ben ayrıldım", "O ayrıldı", "Ghost'landım", "Karşılıklı ayrıldık"];
+const RELATIONSHIP_DURATION_OPTIONS_EN = ["Just a fling", "A few months", "Over a year", "Multiple years"];
+const RELATIONSHIP_DURATION_OPTIONS_TR = ["Kısa bir macera", "Birkaç ay", "Bir yılı geçti", "Yıllar geçti"];
+const TALKING_DURATION_OPTIONS_EN = ["Just started", "A few weeks", "A few months", "Way too long"];
+const TALKING_DURATION_OPTIONS_TR = ["Daha yeni başladık", "Birkaç haftadır", "Birkaç aydır", "Çok uzun süredir"];
+const MET_IN_PERSON_OPTIONS_EN = ["Yes", "No"];
+const MET_IN_PERSON_OPTIONS_TR = ["Evet", "Hayır"];
 
 type FieldDef = { key: string; label: string; type: "text"|"textarea"|"photo"|"select"|"multi-photo"; options?: string[]; placeholder?: string; maxPhotos?: number };
 
-const FIELDS: Record<ExtrasType, FieldDef[]> = {
-  "toxic-ex": [
-    { key:"yourZodiac", label:"Your Zodiac", type:"select", options:ZODIAC_OPTIONS },
-    { key:"exZodiac", label:"Their Zodiac", type:"select", options:ZODIAC_OPTIONS },
-    { key:"breakupDynamic", label:"Breakup Dynamic", type:"select", options:BREAKUP_DYNAMIC_OPTIONS },
-    { key:"relationshipDuration", label:"Relationship Duration", type:"select", options:RELATIONSHIP_DURATION_OPTIONS },
-    { key:"situation", label:"What happened?", type:"textarea", placeholder:"What do you want to text them right now? Spill..." },
-    { key:"photo", label:"Their Photo (optional)", type:"photo" },
-  ],
-  situationship: [
-    { key:"yourZodiac", label:"Your Zodiac", type:"select", options:ZODIAC_OPTIONS },
-    { key:"theirZodiac", label:"Their Zodiac", type:"select", options:ZODIAC_OPTIONS },
-    { key:"talkingDuration", label:"Talking Duration", type:"select", options:TALKING_DURATION_OPTIONS },
-    { key:"metInPerson", label:"Met in person?", type:"select", options:MET_IN_PERSON_OPTIONS },
-    { key:"situation", label:"Describe it", type:"textarea", placeholder:"What's the vibe?" },
-    { key:"yourPhoto", label:"Your Photo", type:"photo" },
-    { key:"theirPhoto", label:"Their Photo", type:"photo" },
-  ],
-  "mood-reset": [
-    { key:"yourZodiac", label:"Your Zodiac", type:"select", options:ZODIAC_OPTIONS },
-    { key:"currentMood", label:"Current Energy", type:"select", options:MOOD_OPTIONS },
-    { key:"situation", label:"What's weighing on you?", type:"textarea", placeholder:"Vent it all out..." },
-    { key:"photo", label:"Your Photo", type:"photo" },
-  ],
-  "delulu-check": [
-    { key:"screenshots", label:"Drop the Receipts", type:"multi-photo", maxPhotos: 3 },
-    { key:"chatText", label:"Or Paste the Chat", type:"textarea", placeholder:"Copy-paste the conversation here..." },
-    { key:"yourZodiac", label:"Your Zodiac", type:"select", options:ZODIAC_OPTIONS },
-    { key:"theirZodiac", label:"Their Zodiac (optional)", type:"select", options:[...ZODIAC_OPTIONS, "Idk"] },
-    { key:"situation", label:"Context / Your side of the story", type:"textarea", placeholder:"What's confusing you? What do you THINK it means vs what it probably means?" },
-  ],
-  "rizz-architect": [
-    { key:"screenshots", label:"Drop the Screenshot", type:"multi-photo", maxPhotos: 1 },
-    { key:"draftText", label:"Your Draft Reply (optional)", type:"textarea", placeholder:"What were you going to reply? Let's see it before I judge..." },
-  ],
-};
-
-const META: Record<ExtrasType, { title:string; emoji:string; subtitle:string; cost:number; color:string }> = {
-  "toxic-ex": { title:"Toxic Ex Scanner", emoji:"💀", subtitle:"Let's scan those red flags...", cost:3, color:"#ef4444" },
-  situationship: { title:"Situationship Clarifier", emoji:"🤡", subtitle:"Decoding what you are...", cost:5, color:"#d946ef" },
-  "mood-reset": { title:"Mood Reset", emoji:"🔋", subtitle:"Emergency vibe check...", cost:3, color:"#06b6d4" },
-  "delulu-check": { title:"Delulu Check", emoji:"📱", subtitle:"Time for a reality check...", cost:10, color:"#f59e0b" },
-  "rizz-architect": { title:"The Reply Guru", emoji:"💬", subtitle:"Crafting the perfect reply...", cost:2, color:"#8b5cf6" },
-};
+// Moved to component
 
 
 export default function ExtrasModal() {
+  const t = useT();
+  const locale = useAppStore((s) => s.locale);
+  const isTr = locale === "tr";
+  
+  const FIELDS: Record<ExtrasType, FieldDef[]> = {
+    "toxic-ex": [
+      { key:"yourZodiac", label:isTr ? "Senin Burcun" : "Your Zodiac", type:"select", options:isTr ? ZODIAC_OPTIONS_TR : ZODIAC_OPTIONS_EN },
+      { key:"exZodiac", label:isTr ? "Onun Burcu" : "Their Zodiac", type:"select", options:isTr ? ZODIAC_OPTIONS_TR : ZODIAC_OPTIONS_EN },
+      { key:"breakupDynamic", label:isTr ? "Ayrılık Durumu" : "Breakup Dynamic", type:"select", options:isTr ? BREAKUP_DYNAMIC_OPTIONS_TR : BREAKUP_DYNAMIC_OPTIONS_EN },
+      { key:"relationshipDuration", label:isTr ? "İlişki Süresi" : "Relationship Duration", type:"select", options:isTr ? RELATIONSHIP_DURATION_OPTIONS_TR : RELATIONSHIP_DURATION_OPTIONS_EN },
+      { key:"situation", label:isTr ? "Ne oldu?" : "What happened?", type:"textarea", placeholder:isTr ? "Ona şu an ne yazmak istiyorsun? Dökül..." : "What do you want to text them right now? Spill..." },
+      { key:"photo", label:isTr ? "Onun Fotoğrafı (opsiyonel)" : "Their Photo (optional)", type:"photo" },
+    ],
+    situationship: [
+      { key:"yourZodiac", label:isTr ? "Senin Burcun" : "Your Zodiac", type:"select", options:isTr ? ZODIAC_OPTIONS_TR : ZODIAC_OPTIONS_EN },
+      { key:"theirZodiac", label:isTr ? "Onun Burcu" : "Their Zodiac", type:"select", options:isTr ? ZODIAC_OPTIONS_TR : ZODIAC_OPTIONS_EN },
+      { key:"talkingDuration", label:isTr ? "Konuşma Süresi" : "Talking Duration", type:"select", options:isTr ? TALKING_DURATION_OPTIONS_TR : TALKING_DURATION_OPTIONS_EN },
+      { key:"metInPerson", label:isTr ? "Yüz yüze görüştünüz mü?" : "Met in person?", type:"select", options:isTr ? MET_IN_PERSON_OPTIONS_TR : MET_IN_PERSON_OPTIONS_EN },
+      { key:"situation", label:isTr ? "Durumu anlat" : "Describe it", type:"textarea", placeholder:isTr ? "Nasıl bir vibe var?" : "What's the vibe?" },
+      { key:"yourPhoto", label:isTr ? "Senin Fotoğrafın" : "Your Photo", type:"photo" },
+      { key:"theirPhoto", label:isTr ? "Onun Fotoğrafı" : "Their Photo", type:"photo" },
+    ],
+    "mood-reset": [
+      { key:"yourZodiac", label:isTr ? "Senin Burcun" : "Your Zodiac", type:"select", options:isTr ? ZODIAC_OPTIONS_TR : ZODIAC_OPTIONS_EN },
+      { key:"currentMood", label:isTr ? "Şu anki Enerjin" : "Current Energy", type:"select", options:isTr ? MOOD_OPTIONS_TR : MOOD_OPTIONS_EN },
+      { key:"situation", label:isTr ? "İçini ne daraltıyor?" : "What's weighing on you?", type:"textarea", placeholder:isTr ? "İçini dök..." : "Vent it all out..." },
+      { key:"photo", label:isTr ? "Senin Fotoğrafın" : "Your Photo", type:"photo" },
+    ],
+    "delulu-check": [
+      { key:"screenshots", label:isTr ? "Kanıtları Bırak" : "Drop the Receipts", type:"multi-photo", maxPhotos: 3 },
+      { key:"chatText", label:isTr ? "Veya Mesajı Yapıştır" : "Or Paste the Chat", type:"textarea", placeholder:isTr ? "Konuşmayı buraya yapıştır..." : "Copy-paste the conversation here..." },
+      { key:"yourZodiac", label:isTr ? "Senin Burcun" : "Your Zodiac", type:"select", options:isTr ? ZODIAC_OPTIONS_TR : ZODIAC_OPTIONS_EN },
+      { key:"theirZodiac", label:isTr ? "Onun Burcu (opsiyonel)" : "Their Zodiac (optional)", type:"select", options:[...(isTr ? ZODIAC_OPTIONS_TR : ZODIAC_OPTIONS_EN), isTr ? "Bilmiyorum" : "Idk"] },
+      { key:"situation", label:isTr ? "Bağlam / Senin tarafın" : "Context / Your side of the story", type:"textarea", placeholder:isTr ? "Kafanı ne karıştırıyor? Ne anlama geldiğini DÜŞÜNÜYORSUN ve aslında ne anlama geliyor?" : "What's confusing you? What do you THINK it means vs what it probably means?" },
+    ],
+    "rizz-architect": [
+      { key:"screenshots", label:isTr ? "Ekran Görüntüsünü Bırak" : "Drop the Screenshot", type:"multi-photo", maxPhotos: 1 },
+      { key:"draftText", label:isTr ? "Taslak Cevabın (opsiyonel)" : "Your Draft Reply (optional)", type:"textarea", placeholder:isTr ? "Ne cevap verecektin? Ben yargılamadan önce bir göreyim..." : "What were you going to reply? Let's see it before I judge..." },
+    ],
+  };
+
+  const META: Record<ExtrasType, { title:string; emoji:string; subtitle:string; cost:number; color:string }> = {
+    "toxic-ex": { title: t.extrasToxicTitle, emoji:"💀", subtitle:isTr ? "Şu red flag'leri bir tarayalım..." : "Let's scan those red flags...", cost:3, color:"#ef4444" },
+    situationship: { title: t.extrasSitTitle, emoji:"🤡", subtitle:isTr ? "Ne olduğunuzu çözüyoruz..." : "Decoding what you are...", cost:5, color:"#d946ef" },
+    "mood-reset": { title: t.extrasMoodTitle, emoji:"🔋", subtitle:isTr ? "Acil vibe kontrolü..." : "Emergency vibe check...", cost:3, color:"#06b6d4" },
+    "delulu-check": { title: t.extrasDeluluTitle, emoji:"📱", subtitle:isTr ? "Gerçeklerle yüzleşme zamanı..." : "Time for a reality check...", cost:10, color:"#f59e0b" },
+    "rizz-architect": { title: t.extrasRizzTitle, emoji:"💬", subtitle:isTr ? "Mükemmel cevabı hazırlıyoruz..." : "Crafting the perfect reply...", cost:2, color:"#8b5cf6" },
+  };
+
   const isOpen = useAppStore((s) => s.isExtrasModalOpen);
   const extrasType = useAppStore((s) => s.extrasType);
   const close = useAppStore((s) => s.setExtrasModalOpen);
@@ -159,7 +172,7 @@ export default function ExtrasModal() {
                   {isDeluluCheck && f.key === "chatText" && (
                     <div className="flex items-center gap-3 my-3">
                       <div className="flex-1 h-px bg-white/10" />
-                      <span className="text-[11px] font-bold text-white/30 uppercase tracking-widest">or</span>
+                      <span className="text-[11px] font-bold text-white/30 uppercase tracking-widest">{t.extrasModalOr}</span>
                       <div className="flex-1 h-px bg-white/10" />
                     </div>
                   )}
@@ -206,10 +219,10 @@ export default function ExtrasModal() {
                             className="w-full flex items-center justify-center gap-2 bg-white/5 border border-dashed border-white/15 rounded-xl px-4 py-3 text-[13px] text-white/50 hover:bg-white/8 transition-colors cursor-pointer"
                           >
                             {uploading === "screenshot" ? (
-                              <><Loader2 className="h-4 w-4 animate-spin" />Uploading...</>
+                              <><Loader2 className="h-4 w-4 animate-spin" />{t.extrasModalUploading}</>
                             ) : (
                               <><ImagePlus className="h-4 w-4" />
-                              {screenshots.length === 0 ? "Upload Screenshot" : `+ Add Image (${screenshots.length}/${f.maxPhotos || 3})`}</>
+                              {screenshots.length === 0 ? t.extrasModalUploadScreenshot : t.extrasModalAddImage.replace("{count}", screenshots.length.toString()).replace("{max}", (f.maxPhotos || 3).toString())}</>
                             )}
                           </button>
                         </>
@@ -219,7 +232,7 @@ export default function ExtrasModal() {
 
                   {f.type==="select"&&<select value={form[f.key]||""} onChange={e=>setForm(p=>({...p,[f.key]:e.target.value}))}
                     className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-[14px] text-white/90 appearance-none focus:outline-none focus:border-white/20">
-                    <option value="" disabled className="bg-[#1a1a2e]">Select...</option>
+                    <option value="" disabled className="bg-[#1a1a2e]">{t.extrasModalSelect}</option>
                     {f.options?.map(o=><option key={o} value={o} className="bg-[#1a1a2e]">{o}</option>)}
                   </select>}
                   {f.type==="text"&&<input type="text" value={form[f.key]||""} onChange={e=>setForm(p=>({...p,[f.key]:e.target.value}))}
@@ -231,9 +244,9 @@ export default function ExtrasModal() {
                       onChange={e=>{const file=e.target.files?.[0]; if(file) upload(f.key,file);}} />
                     <button onClick={()=>refs.current[f.key]?.click()}
                       className="w-full flex items-center justify-center gap-2 bg-white/5 border border-dashed border-white/15 rounded-xl px-4 py-3 text-[13px] text-white/50 hover:bg-white/8 transition-colors cursor-pointer">
-                      {uploading===f.key?<><Loader2 className="h-4 w-4 animate-spin"/>Uploading...</>
-                        :photos[f.key]?<><Camera className="h-4 w-4 text-emerald-400"/><span className="text-emerald-400">Photo Added ✓</span></>
-                        :<><Camera className="h-4 w-4"/>Tap to Upload</>}
+                      {uploading===f.key?<><Loader2 className="h-4 w-4 animate-spin"/>{t.extrasModalUploading}</>
+                        :photos[f.key]?<><Camera className="h-4 w-4 text-emerald-400"/><span className="text-emerald-400">{t.extrasModalPhotoAdded}</span></>
+                        :<><Camera className="h-4 w-4"/>{t.extrasModalTapToUpload}</>}
                     </button>
                   </div>}
                 </div>
@@ -241,7 +254,7 @@ export default function ExtrasModal() {
               <motion.button onClick={submit} disabled={!valid} whileTap={{scale:0.97}}
                 className="w-full flex items-center justify-center gap-2 rounded-2xl px-6 py-4 text-[14px] font-bold text-white cursor-pointer transition-all disabled:opacity-40 disabled:cursor-not-allowed border border-white/10"
                 style={{background:valid?`linear-gradient(135deg,${cfg.color},${cfg.color}99)`:"rgba(255,255,255,0.05)",boxShadow:valid?`0 0 30px ${cfg.color}30`:"none"}}>
-                {!canAfford?"Get Tokens to Unlock":"Let's Go"} <span className="text-[12px] opacity-70 ml-1">✦ {cfg.cost}</span>
+                {!canAfford?t.extrasModalGetTokens:t.extrasModalLetsGo} <span className="text-[12px] opacity-70 ml-1">✦ {cfg.cost}</span>
               </motion.button>
             </div>
           </motion.div>

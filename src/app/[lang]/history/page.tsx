@@ -6,12 +6,16 @@ import Link from "next/link";
 import { ChevronLeft, Sparkles, AlertCircle, Calendar, ChevronDown } from "lucide-react";
 import { getAuraHistory } from "@/lib/services";
 import { hapticLight } from "@/lib/haptics";
+import { useT } from "@/hooks/useT";
+import { useAppStore } from "@/store/useAppStore";
 
 export default function HistoryPage() {
   const [history, setHistory] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const t = useT();
+  const locale = useAppStore((s) => s.locale);
   
   // Infinite scroll states
   const [lastVisible, setLastVisible] = useState<any>(null);
@@ -36,7 +40,6 @@ export default function HistoryPage() {
         setHistory(prev => isLoadMore ? [...prev, ...filteredData] : filteredData);
         setLastVisible(newLastVisible);
         
-        // If we got less than 5 items, there's no more data
         if (newHistory.length < 5) {
           setHasMore(false);
         }
@@ -76,9 +79,9 @@ export default function HistoryPage() {
   }, [hasMore, loading, loadingMore, lastVisible]);
 
   const formatDate = (timestamp: any) => {
-    if (!timestamp) return "Unknown Date";
+    if (!timestamp) return t.historyUnknownDate;
     const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
-    return new Intl.DateTimeFormat("en-US", {
+    return new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-US", {
       day: "numeric",
       month: "short",
       hour: "2-digit",
@@ -106,21 +109,21 @@ export default function HistoryPage() {
             whileTap={{ scale: 0.95 }}
           >
             <ChevronLeft className="h-5 w-5" />
-            <span className="font-medium">Home</span>
+            <span className="font-medium">{t.historyHome}</span>
           </motion.button>
         </Link>
         <span className="text-sm font-semibold tracking-wide flex items-center gap-1">
           <Sparkles className="w-4 h-4 text-accent-primary" />
-          PAST VIBES
+          {t.historyTitle}
         </span>
         <div className="w-20" />
       </div>
 
-      {/* TTL Info — fixed under header */}
+      {/* TTL Info */}
       {!loading && !error && history.length > 0 && (
         <div className="z-10 px-6 pt-5 pb-2">
           <p className="text-center text-[11px] text-white/20 font-light tracking-wider leading-relaxed italic">
-            Vibes evolve. Your past analyses are permanently wiped from the digital void every 48 hours.
+            {t.historyTtl}
           </p>
         </div>
       )}
@@ -144,8 +147,8 @@ export default function HistoryPage() {
         {!loading && error && (
           <div className="flex flex-col items-center justify-center p-8 glass-panel text-center mt-4">
             <AlertCircle className="w-10 h-10 text-destructive mb-3 opacity-80" />
-            <h3 className="text-lg font-bold mb-1">Connection Error</h3>
-            <p className="text-sm text-text-secondary">Your past vibes are ghosting you right now, check your internet connection bestie.</p>
+            <h3 className="text-lg font-bold mb-1">{t.historyErrorTitle}</h3>
+            <p className="text-sm text-text-secondary">{t.historyErrorDesc}</p>
           </div>
         )}
 
@@ -153,14 +156,14 @@ export default function HistoryPage() {
         {!loading && !error && history.length === 0 && (
           <div className="flex flex-col items-center justify-center py-20 text-center opacity-80 glass-panel mt-6">
             <Sparkles className="w-12 h-12 text-text-secondary mb-4 opacity-50" />
-            <h3 className="text-xl font-bold mb-2">A Clean Slate</h3>
-            <p className="text-sm text-text-secondary px-8">You haven&apos;t done any vibe analysis yet. Ready to get roasted?</p>
+            <h3 className="text-xl font-bold mb-2">{t.historyEmptyTitle}</h3>
+            <p className="text-sm text-text-secondary px-8">{t.historyEmptyDesc}</p>
             <Link href="/" prefetch={false} className="mt-6">
               <button 
                 onClick={() => hapticLight()}
                 className="px-8 py-4 bg-white/10 hover:bg-white/20 transition-all active:scale-95 rounded-full text-sm font-semibold border border-white/10"
               >
-                Analyze My Vibe
+                {t.historyEmptyCta}
               </button>
             </Link>
           </div>
@@ -206,7 +209,7 @@ export default function HistoryPage() {
                       </span>
                       <h3 className={`text-lg font-bold leading-tight flex items-center gap-2 tracking-tight ${!isExpanded ? "truncate" : "whitespace-normal text-wrap"}`}>
                         <span className={`${!isExpanded ? "truncate" : ""}`}>
-                          {item.title || (item.type === "extras" ? "Extras Analysis" : "Nameless Vibe")}
+                          {item.title || (item.type === "extras" ? t.historyExtrasLabel : t.historyNamelessVibe)}
                         </span>
                         <div 
                           className="w-2 h-2 rounded-full shrink-0 shadow-[0_0_10px_rgba(255,255,255,0.8)] border border-white/20"
@@ -233,8 +236,8 @@ export default function HistoryPage() {
                         className={`text-[14px] font-medium text-white/80 leading-relaxed italic ${!isExpanded ? "line-clamp-3" : "whitespace-pre-wrap"}`}
                       >
                         {isExpanded 
-                          ? (item.comment || item.vibe_check || item.toxicComment || "Analysis complete.")
-                          : `"${item.type === 'extras' ? (item.vibe_check || item.comment || "Analysis complete.") : (item.toxicComment || item.comment || "Analysis complete.")}"`}
+                          ? (item.comment || item.vibe_check || item.toxicComment || t.historyAnalysisComplete)
+                          : `"${item.type === 'extras' ? (item.vibe_check || item.comment || t.historyAnalysisComplete) : (item.toxicComment || item.comment || t.historyAnalysisComplete)}"`}
                       </motion.div>
                       
                       <AnimatePresence>
@@ -246,7 +249,7 @@ export default function HistoryPage() {
                             className="overflow-hidden"
                           >
                             <div className="mt-4 pt-4 border-t border-white/10">
-                              <span className="block text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">Verdict</span>
+                              <span className="block text-[10px] font-bold uppercase tracking-widest text-white/40 mb-1">{t.historyVerdict}</span>
                               <span className="text-[14px] font-bold text-white/90">{item.verdict}</span>
                             </div>
                           </motion.div>
@@ -255,7 +258,7 @@ export default function HistoryPage() {
 
                       <motion.div layout="position" className="mt-3 flex items-center justify-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
                         <span className="text-[10px] uppercase tracking-widest font-semibold">
-                          {isExpanded ? "Show Less" : "Read More"}
+                          {isExpanded ? t.historyShowLess : t.historyReadMore}
                         </span>
                         <motion.div
                           animate={{ rotate: isExpanded ? 180 : 0 }}
@@ -287,7 +290,7 @@ export default function HistoryPage() {
           
           {!hasMore && history.length > 0 && (
              <div className="w-full text-center py-8">
-               <span className="text-xs font-medium tracking-widest text-white/20 uppercase">End of history</span>
+               <span className="text-xs font-medium tracking-widest text-white/20 uppercase">{t.historyEnd}</span>
              </div>
           )}
         </div>
