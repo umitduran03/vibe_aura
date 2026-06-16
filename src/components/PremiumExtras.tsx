@@ -31,19 +31,19 @@ export default function PremiumExtras() {
         {/* Background glow */}
         <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/10 via-purple-500/10 to-transparent opacity-50 pointer-events-none group-hover:opacity-100 transition-opacity" />
 
-        <div className="relative flex items-center gap-3">
-          <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 shadow-[0_0_15px_rgba(217,70,239,0.3)]">
+        <div className="relative flex items-center gap-3 flex-1 pr-4">
+          <div className="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 shadow-[0_0_15px_rgba(217,70,239,0.3)]">
             <span className="text-xl">🔍</span>
           </div>
-          <div className="text-left">
+          <div className="text-left flex-1">
             <h3 className="text-[14px] font-bold text-white/90">{t.crisisCenter}</h3>
             <p className="text-[12px] text-white/50">{t.crisisSub}</p>
           </div>
         </div>
 
-        <div className="relative flex items-center gap-2 text-fuchsia-400">
-          <Sparkles className="w-4 h-4 opacity-70" />
-          <ArrowRight className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+        <div className="relative flex shrink-0 items-center gap-2 text-fuchsia-400">
+          <Sparkles className="w-4 h-4 opacity-70 shrink-0" />
+          <ArrowRight className="w-4 h-4 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all shrink-0" />
         </div>
       </motion.button>
     </motion.div>
