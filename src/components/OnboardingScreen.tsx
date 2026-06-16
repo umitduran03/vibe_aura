@@ -181,9 +181,10 @@ export default function OnboardingScreen() {
                     hapticLight();
                     setLocale(lang);
                     if (typeof window !== "undefined") {
+                      document.cookie = `NEXT_LOCALE=${lang}; path=/; max-age=31536000`;
                       const currentPath = window.location.pathname;
                       const newPath = currentPath.replace(/^\/(en|tr)/, `/${lang}`);
-                      window.history.replaceState(null, "", newPath);
+                      window.location.href = newPath;
                     }
                   }}
                   className={`px-4 py-1.5 rounded-full text-[12px] font-semibold transition-all duration-200 cursor-pointer ${

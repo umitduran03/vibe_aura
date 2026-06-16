@@ -6,9 +6,11 @@ import { useStreakStore } from "@/store/useStreakStore";
 import { VIBE_RANKS, getVibeRank } from "@/lib/streak-utils";
 import { hapticLight } from "@/lib/haptics";
 import { useT } from "@/hooks/useT";
+import { useAppStore } from "@/store/useAppStore";
 
 export default function StreakInfoModal() {
   const t = useT();
+  const locale = useAppStore((s) => s.locale);
   const { isStreakInfoModalOpen, closeStreakInfoModal, streakCount } = useStreakStore();
 
   if (!isStreakInfoModalOpen) return null;
@@ -90,7 +92,9 @@ export default function StreakInfoModal() {
                   <p className="text-xs text-white/50 uppercase tracking-widest font-bold mb-1">{t.streakInfoRank}</p>
                   <div className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-gradient-to-r ${currentRank.gradient} shadow-lg`}>
                     {currentRank.icon}
-                    <span className="text-sm font-bold text-white">{currentRank.name}</span>
+                    <span className="text-sm font-bold text-white">
+                      {locale === "tr" ? (currentRank.nameTr || currentRank.name) : currentRank.name}
+                    </span>
                   </div>
                 </div>
               </div>
@@ -100,7 +104,7 @@ export default function StreakInfoModal() {
                 <div className="relative z-10 mt-6">
                   <div className="flex justify-between text-xs font-semibold mb-2">
                     <span className="text-white/50">{currentRank.minDays} {currentRank.minDays === 1 ? t.streakInfoDay : t.streakInfoDays}</span>
-                    <span className="text-white/60">{t.streakInfoNext} <span className="text-white/90">{nextRank.name}</span> ({nextRank.minDays} {t.streakInfoDays})</span>
+                    <span className="text-white/60">{t.streakInfoNext} <span className="text-white/90">{locale === "tr" ? (nextRank.nameTr || nextRank.name) : nextRank.name}</span> ({nextRank.minDays} {t.streakInfoDays})</span>
                   </div>
                   <div className="h-4 w-full bg-black/60 rounded-full overflow-hidden border border-white/10 p-1 shadow-inner">
                     <motion.div 
@@ -153,7 +157,7 @@ export default function StreakInfoModal() {
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between mb-0.5">
                         <p className={`font-bold truncate ${isCurrent ? "text-white" : "text-white/80"}`}>
-                          {rank.name}
+                          {locale === "tr" ? (rank.nameTr || rank.name) : rank.name}
                         </p>
                         <span className="text-xs font-mono font-medium text-white/50 bg-black/30 px-2 py-0.5 rounded-md">
                           {rank.minDays}+

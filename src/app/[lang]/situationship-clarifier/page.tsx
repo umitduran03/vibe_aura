@@ -1,18 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, MessageCircleHeart } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 
 export default function SituationshipClarifierLanding() {
+  const params = useParams();
+  const isTr = params?.lang === "tr";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Situationship Clarifier AI",
+    name: isTr ? "Situationship Çözücü YZ" : "Situationship Clarifier AI",
     applicationCategory: "EntertainmentApplication",
     operatingSystem: "Any",
-    description: "Decoding the 'What are we?' mystery. Brutal compatibility stats included.",
+    description: isTr 
+      ? "'Biz şimdi neyiz?' gizemini çözüyoruz. Acımasız uyumluluk istatistikleri dahildir."
+      : "Decoding the 'What are we?' mystery. Brutal compatibility stats included.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -44,7 +50,9 @@ export default function SituationshipClarifierLanding() {
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>
-          <span className="text-sm font-medium tracking-widest text-purple-400 uppercase drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]">AI Feature Spotlight</span>
+          <span className="text-sm font-medium tracking-widest text-purple-400 uppercase drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]">
+            {isTr ? "YZ İFŞA RADARI" : "AI Feature Spotlight"}
+          </span>
         </motion.div>
 
         {/* Hero Section */}
@@ -57,21 +65,23 @@ export default function SituationshipClarifierLanding() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(168,85,247,0.2)]">
               <span className="text-base leading-none">🤡</span>
-              <span>The "What are we?" Decoder</span>
+              <span>{isTr ? `"Biz şimdi neyiz?" Çözücü` : `The "What are we?" Decoder`}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-500">
-              Situationship Clarifier AI
+              {isTr ? "Situationship Çözücü YZ" : "Situationship Clarifier AI"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
-              Tired of the grey zone? Stop overanalyzing their texts and let our AI read the actual energy between you two. 
+              {isTr 
+                ? "Belirsizlikten yoruldun mu? Onun mesajlarını aşırı analiz etmeyi bırak ve yapay zekamızın aranızdaki o gerçek enerjiyi okumasına izin ver."
+                : "Tired of the grey zone? Stop overanalyzing their texts and let our AI read the actual energy between you two."}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/"
+                href={`/${isTr ? "tr" : "en"}`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(147,51,234,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 <MessageCircleHeart className="w-5 h-5 animate-pulse" />
-                Get Clarity Now
+                {isTr ? "Gerçeği Öğren" : "Get Clarity Now"}
               </Link>
             </div>
           </motion.div>
@@ -92,8 +102,12 @@ export default function SituationshipClarifierLanding() {
                 >
                   🤡
                 </motion.div>
-                <h3 className="text-xl font-black text-purple-400">Diagnosis: Delusion</h3>
-                <p className="text-sm text-white/60 font-medium leading-relaxed">"They like the attention, but they don't like you enough to commit."</p>
+                <h3 className="text-xl font-black text-purple-400">{isTr ? "Teşhis: Delulu" : "Diagnosis: Delusion"}</h3>
+                <p className="text-sm text-white/60 font-medium leading-relaxed">
+                  {isTr 
+                    ? `"İlgin hoşlarına gidiyor ama seninle ciddi düşünecek kadar da sevmiyorlar."`
+                    : `"They like the attention, but they don't like you enough to commit."`}
+                </p>
               </div>
             </div>
           </motion.div>
@@ -103,18 +117,18 @@ export default function SituationshipClarifierLanding() {
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
             {
-              title: "Energy Reading",
-              desc: "AI decodes the hidden power dynamics and true intentions behind the relationship.",
+              title: isTr ? "Enerji Okuması" : "Energy Reading",
+              desc: isTr ? "Yapay zeka bu ilişkinin arkasındaki gizli güç dinamiklerini ve gerçek niyetleri deşifre eder." : "AI decodes the hidden power dynamics and true intentions behind the relationship.",
               icon: "🔮"
             },
             {
-              title: "Brutal Truth",
-              desc: "Are you being played or just taking things slow? Find out immediately.",
+              title: isTr ? "Acı Gerçekler" : "Brutal Truth",
+              desc: isTr ? "Oynatılıyor musun yoksa sadece ağırdan mı alıyorsunuz? Anında öğren." : "Are you being played or just taking things slow? Find out immediately.",
               icon: "🔪"
             },
             {
-              title: "Future Forecast",
-              desc: "A statistical breakdown of where this situationship is actually heading.",
+              title: isTr ? "Gelecek Tahmini" : "Future Forecast",
+              desc: isTr ? "Bu situationship'in aslında nereye gittiğine dair istatistiksel bir döküm." : "A statistical breakdown of where this situationship is actually heading.",
               icon: "📈"
             }
           ].map((feat, i) => (
@@ -141,15 +155,19 @@ export default function SituationshipClarifierLanding() {
           className="text-center p-10 rounded-3xl bg-gradient-to-br from-purple-950/60 to-black border border-purple-900/50 shadow-[0_0_50px_rgba(147,51,234,0.15)]"
         >
           <Sparkles className="w-10 h-10 text-fuchsia-400 mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Ready to stop guessing?</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+            {isTr ? "Tahmin etmeyi bırakmaya hazır mısın?" : "Ready to stop guessing?"}
+          </h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">
-            Stop asking your friends for advice. Let the AI give you the brutal reality check you need.
+            {isTr 
+              ? "Arkadaşlarına taktik sormayı bırak. Yapay zekanın sana ihtiyacın olan o acımasız reality check'i (gerçeklik tokatını) atmasına izin ver."
+              : "Stop asking your friends for advice. Let the AI give you the brutal reality check you need."}
           </p>
           <Link
-            href="/"
+            href={`/${isTr ? "tr" : "en"}`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
-            Launch VibeCheckr
+            {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}
           </Link>
         </motion.div>
       </div>

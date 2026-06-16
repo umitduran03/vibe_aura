@@ -1,18 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, BatteryCharging } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 
 export default function MoodResetLanding() {
+  const params = useParams();
+  const isTr = params?.lang === "tr";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Mood Reset AI",
+    name: isTr ? "Mod Sıfırlama YZ" : "Mood Reset AI",
     applicationCategory: "EntertainmentApplication",
     operatingSystem: "Any",
-    description: "Bad day? Get a brutally honest wake-up call to fix your mood and recharge your vibe.",
+    description: isTr 
+      ? "Kötü bir gün mü? Modunu düzeltmek ve enerjini şarj etmek için acımasızca dürüst bir uyanış çağrısı al."
+      : "Bad day? Get a brutally honest wake-up call to fix your mood and recharge your vibe.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -44,7 +50,9 @@ export default function MoodResetLanding() {
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>
-          <span className="text-sm font-medium tracking-widest text-emerald-400 uppercase drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]">AI Feature Spotlight</span>
+          <span className="text-sm font-medium tracking-widest text-emerald-400 uppercase drop-shadow-[0_0_5px_rgba(52,211,153,0.5)]">
+            {isTr ? "YZ İFŞA RADARI" : "AI Feature Spotlight"}
+          </span>
         </motion.div>
 
         {/* Hero Section */}
@@ -57,21 +65,23 @@ export default function MoodResetLanding() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(52,211,153,0.2)]">
               <span className="text-base leading-none">🔋</span>
-              <span>Recharge Your Energy</span>
+              <span>{isTr ? "Enerjini Fulleyelim" : "Recharge Your Energy"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500">
-              Mood Reset AI
+              {isTr ? "Mod Sıfırlama YZ" : "Mood Reset AI"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
-              Having a bad day? Stop complaining to friends who just agree with you. Get a brutally honest AI wake-up call to snap out of it and fix your vibe.
+              {isTr 
+                ? "Kötü bir gün mü geçiriyorsun? Sadece seni onaylayan arkadaşlarına sızlanmayı bırak. Kendine gelmek ve vibe'ını düzeltmek için yapay zekadan acımasızca dürüst bir gerçeklik tokatı ye."
+                : "Having a bad day? Stop complaining to friends who just agree with you. Get a brutally honest AI wake-up call to snap out of it and fix your vibe."}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/"
+                href={`/${isTr ? "tr" : "en"}`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-emerald-600 to-teal-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(5,150,105,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 <BatteryCharging className="w-5 h-5 animate-pulse" />
-                Reset My Mood
+                {isTr ? "Modumu Sıfırla" : "Reset My Mood"}
               </Link>
             </div>
           </motion.div>
@@ -92,8 +102,12 @@ export default function MoodResetLanding() {
                 >
                   🔋
                 </motion.div>
-                <h3 className="text-xl font-black text-emerald-400">Energy Depleted</h3>
-                <p className="text-sm text-white/60 font-medium leading-relaxed">"You are letting a minor inconvenience ruin a perfectly good 24 hours. Stand up."</p>
+                <h3 className="text-xl font-black text-emerald-400">{isTr ? "Enerji Tükendi" : "Energy Depleted"}</h3>
+                <p className="text-sm text-white/60 font-medium leading-relaxed">
+                  {isTr 
+                    ? `"Ufak bir aksiliğin mükemmel geçebilecek koca bir 24 saati mahvetmesine izin veriyorsun. Kalk ayağa."`
+                    : `"You are letting a minor inconvenience ruin a perfectly good 24 hours. Stand up."`}
+                </p>
               </div>
             </div>
           </motion.div>
@@ -103,18 +117,18 @@ export default function MoodResetLanding() {
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
             {
-              title: "Tough Love",
-              desc: "The AI reads your exhausted aura and delivers exactly the harsh truth you need to hear.",
+              title: isTr ? "Acı Gerçekler" : "Tough Love",
+              desc: isTr ? "Yapay zeka tükenmiş auranı okur ve tam olarak duyman gereken o acı gerçeği yüzüne çarpar." : "The AI reads your exhausted aura and delivers exactly the harsh truth you need to hear.",
               icon: "🗣️"
             },
             {
-              title: "Perspective Shift",
-              desc: "Instantly zooms you out of your current mental breakdown and grounds you.",
+              title: isTr ? "Perspektif Değişimi" : "Perspective Shift",
+              desc: isTr ? "Seni anında o anki mental çöküntünden uzaklaştırır ve ayaklarını yere bastırır." : "Instantly zooms you out of your current mental breakdown and grounds you.",
               icon: "🌍"
             },
             {
-              title: "Instant Recharge",
-              desc: "Leave the app with a restored sense of main character energy.",
+              title: isTr ? "Anında Şarj" : "Instant Recharge",
+              desc: isTr ? "Uygulamadan yenilenmiş bir main character (ana karakter) enerjisiyle ayrıl." : "Leave the app with a restored sense of main character energy.",
               icon: "⚡"
             }
           ].map((feat, i) => (
@@ -141,15 +155,19 @@ export default function MoodResetLanding() {
           className="text-center p-10 rounded-3xl bg-gradient-to-br from-emerald-950/60 to-black border border-emerald-900/50 shadow-[0_0_50px_rgba(5,150,105,0.15)]"
         >
           <Sparkles className="w-10 h-10 text-teal-400 mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Ready to stop sulking?</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+            {isTr ? "Surat asmayı bırakmaya hazır mısın?" : "Ready to stop sulking?"}
+          </h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">
-            Upload a selfie and let the AI roast the negativity straight out of your system.
+            {isTr 
+              ? "Bir fotoğraf yükle ve yapay zekanın içindeki o negatifliği söküp atmasına izin ver."
+              : "Upload a selfie and let the AI roast the negativity straight out of your system."}
           </p>
           <Link
-            href="/"
+            href={`/${isTr ? "tr" : "en"}`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
-            Launch VibeCheckr
+            {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}
           </Link>
         </motion.div>
       </div>

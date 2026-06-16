@@ -17,6 +17,7 @@ export default function StreakRecoveryModal() {
   const tokenBalance = useAppStore((s) => s.tokenBalance);
   const setTokenBalance = useAppStore((s) => s.setTokenBalance);
   const setTokenModalOpen = useAppStore((s) => s.setTokenModalOpen);
+  const locale = useAppStore((s) => s.locale);
   
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -87,7 +88,7 @@ export default function StreakRecoveryModal() {
           <div className="text-white/70 mb-6 text-sm leading-relaxed">
             {t.streakRecoveryDesc1} {" "}
             <span className="font-bold text-orange-400">{lostStreakCount} {t.streakRecoveryDay}</span> {t.streakRecoveryDesc2}
-            <br/>{t.streakRecoveryYouWereA} <span className={`font-bold ${rank.color}`}>{rank.name}</span>.
+            <br/>{t.streakRecoveryYouWereA} <span className={`font-bold ${rank.color}`}>{locale === "tr" ? (rank.nameTr || rank.name) : rank.name}</span>.
           </div>
 
           <div className="p-4 bg-white/5 rounded-2xl border border-white/10 mb-6">

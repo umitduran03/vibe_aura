@@ -51,9 +51,10 @@ export default function SettingsDrawer() {
     hapticLight();
     setLocale(newLocale);
     if (typeof window !== "undefined") {
+      document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000`;
       const currentPath = window.location.pathname;
       const newPath = currentPath.replace(/^\/(en|tr)/, `/${newLocale}`);
-      window.history.replaceState(null, "", newPath);
+      window.location.href = newPath;
     }
   };
 
@@ -240,7 +241,12 @@ export default function SettingsDrawer() {
                         {userZodiac ? (
                           <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/5 border border-white/10 shadow-[0_0_10px_rgba(6,182,212,0.2)]">
                             <ZodiacIcon id={userZodiac} className="w-4 h-4 text-cyan-400 drop-shadow-[0_0_5px_rgba(6,182,212,0.8)]" />
-                            <span className="text-[10px] font-bold text-cyan-50 uppercase tracking-widest">{ZODIAC_SIGNS.find(z => z.id === userZodiac)?.name}</span>
+                            <span className="text-[10px] font-bold text-cyan-50 uppercase tracking-widest">
+                              {(() => {
+                                const z = ZODIAC_SIGNS.find(z => z.id === userZodiac);
+                                return z ? (locale === "tr" ? (z.nameTr || z.name) : z.name) : "";
+                              })()}
+                            </span>
                           </div>
                         ) : (
                           <div className="text-[10px] font-medium text-white/40 uppercase tracking-wider px-2 py-0.5 rounded-full bg-white/5 border border-white/10">
@@ -298,7 +304,7 @@ export default function SettingsDrawer() {
                                 <span className={`text-[9px] font-bold tracking-wider uppercase ${
                                   isSelected ? "text-cyan-100" : "text-white/50"
                                 }`}>
-                                  {z.name}
+                                  {locale === "tr" ? (z.nameTr || z.name) : z.name}
                                 </span>
                               </button>
                             );
@@ -319,7 +325,7 @@ export default function SettingsDrawer() {
                     <div className={`px-2.5 py-1 rounded-md flex items-center gap-2 bg-gradient-to-r ${currentRank.gradient} border border-white/10 shadow-lg`}>
                       {currentRank.icon}
                       <span className="text-[12px] font-bold text-white tracking-wide">
-                        {currentRank.name}
+                        {locale === "tr" ? (currentRank.nameTr || currentRank.name) : currentRank.name}
                       </span>
                     </div>
                   </div>

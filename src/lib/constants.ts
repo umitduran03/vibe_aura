@@ -5,6 +5,7 @@
 export interface ZodiacSign {
   id: string;
   name: string;
+  nameTr?: string;
   emoji: string;
   gradient: [string, string];
 }
@@ -17,18 +18,18 @@ export interface RelationshipOption {
 
 // Burç Listesi
 export const ZODIAC_SIGNS: ZodiacSign[] = [
-  { id: "aries",       name: "Aries",       emoji: "♈", gradient: ["#ef4444", "#f97316"] },
-  { id: "taurus",      name: "Taurus",      emoji: "♉", gradient: ["#22c55e", "#16a34a"] },
-  { id: "gemini",      name: "Gemini",      emoji: "♊", gradient: ["#eab308", "#f59e0b"] },
-  { id: "cancer",      name: "Cancer",      emoji: "♋", gradient: ["#94a3b8", "#e2e8f0"] },
-  { id: "leo",         name: "Leo",         emoji: "♌", gradient: ["#f59e0b", "#ef4444"] },
-  { id: "virgo",       name: "Virgo",       emoji: "♍", gradient: ["#6366f1", "#8b5cf6"] },
-  { id: "libra",       name: "Libra",       emoji: "♎", gradient: ["#ec4899", "#f43f5e"] },
-  { id: "scorpio",     name: "Scorpio",     emoji: "♏", gradient: ["#1e1b4b", "#7c3aed"] },
-  { id: "sagittarius", name: "Sagittarius", emoji: "♐", gradient: ["#7c3aed", "#a855f7"] },
-  { id: "capricorn",   name: "Capricorn",   emoji: "♑", gradient: ["#374151", "#6b7280"] },
-  { id: "aquarius",    name: "Aquarius",    emoji: "♒", gradient: ["#06b6d4", "#3b82f6"] },
-  { id: "pisces",      name: "Pisces",      emoji: "♓", gradient: ["#8b5cf6", "#6366f1"] },
+  { id: "aries",       name: "Aries",       nameTr: "Koç",       emoji: "♈", gradient: ["#ef4444", "#f97316"] },
+  { id: "taurus",      name: "Taurus",      nameTr: "Boğa",      emoji: "♉", gradient: ["#22c55e", "#16a34a"] },
+  { id: "gemini",      name: "Gemini",      nameTr: "İkizler",   emoji: "♊", gradient: ["#eab308", "#f59e0b"] },
+  { id: "cancer",      name: "Cancer",      nameTr: "Yengeç",    emoji: "♋", gradient: ["#94a3b8", "#e2e8f0"] },
+  { id: "leo",         name: "Leo",         nameTr: "Aslan",     emoji: "♌", gradient: ["#f59e0b", "#ef4444"] },
+  { id: "virgo",       name: "Virgo",       nameTr: "Başak",     emoji: "♍", gradient: ["#6366f1", "#8b5cf6"] },
+  { id: "libra",       name: "Libra",       nameTr: "Terazi",    emoji: "♎", gradient: ["#ec4899", "#f43f5e"] },
+  { id: "scorpio",     name: "Scorpio",     nameTr: "Akrep",     emoji: "♏", gradient: ["#1e1b4b", "#7c3aed"] },
+  { id: "sagittarius", name: "Sagittarius", nameTr: "Yay",       emoji: "♐", gradient: ["#7c3aed", "#a855f7"] },
+  { id: "capricorn",   name: "Capricorn",   nameTr: "Oğlak",     emoji: "♑", gradient: ["#374151", "#6b7280"] },
+  { id: "aquarius",    name: "Aquarius",    nameTr: "Kova",      emoji: "♒", gradient: ["#06b6d4", "#3b82f6"] },
+  { id: "pisces",      name: "Pisces",      nameTr: "Balık",     emoji: "♓", gradient: ["#8b5cf6", "#6366f1"] },
 ];
 
 // İlişki Durumu Seçenekleri

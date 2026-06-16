@@ -5,6 +5,22 @@ import OpenAI from "openai";
 
 export const maxDuration = 60;
 
+// ─── TRANSLATION MAPS ───────────────────────────────────────────
+const ZODIAC_TR: Record<string, string> = { aries: "Koç", taurus: "Boğa", gemini: "İkizler", cancer: "Yengeç", leo: "Aslan", virgo: "Başak", libra: "Terazi", scorpio: "Akrep", sagittarius: "Yay", capricorn: "Oğlak", aquarius: "Kova", pisces: "Balık" };
+const ZODIAC_EN: Record<string, string> = { aries: "Aries", taurus: "Taurus", gemini: "Gemini", cancer: "Cancer", leo: "Leo", virgo: "Virgo", libra: "Libra", scorpio: "Scorpio", sagittarius: "Sagittarius", capricorn: "Capricorn", aquarius: "Aquarius", pisces: "Pisces" };
+
+const REL_TR: Record<string, string> = { single: "Bekar", toxic: "Toksik İlişki", talking: "Flörtleşiyor / Karmaşık", taken: "Sevgilisi Var", done: "Aşka Tövbe Etmiş" };
+const REL_EN: Record<string, string> = { single: "Single", toxic: "In a Toxic Loop", talking: "Talking Stage / Complicated", taken: "Taken", done: "Done with Love" };
+
+const DUO_REL_TR: Record<string, string> = { flirt: "Flört / Sevgili", ex: "Eski Sevgili", platonic: "Platonik / Crush", bff: "En Yakın Arkadaş" };
+const DUO_REL_EN: Record<string, string> = { flirt: "Flirt / Lovers", ex: "Ex-Lovers", platonic: "Platonic / Crush", bff: "BFF / Partner in Crime" };
+
+function tVal(val: string | undefined, mapEn: Record<string, string>, mapTr: Record<string, string>, locale: string) {
+  if (!val) return "Unknown";
+  const key = val.toLowerCase();
+  return locale === "tr" ? (mapTr[key] || val) : (mapEn[key] || val);
+}
+
 // ─── Gemini Client ───────────────────────────────────────────
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
@@ -281,8 +297,8 @@ export async function POST(req: NextRequest) {
 
     // Dil yönergesi — AI'ya dil talimatı ver
     const langInstruction = locale === "tr"
-      ? `ZORUNLU: Tüm yanıtı Türkçe yaz. Direkt çeviri yapma. Gerçek Türk Gen-Z internet argosuyla yaz. Örnek ifadeler: "kafanda kuruyorsun", "rezalet", "çakma", "tok gözlü", "dram modu", "salak salak", "hayaller kuruyor", "kendi kafasında film", "ertelemeci enerji", "ghost moduna geç", "bırak gitsin", "olur böyle", "panik yok", "red flag", "delulu", "NPC enerjisi", "main character", "sanguine", "tükenmiş", "burnout". Traits/etiketler de Türkçe olmalı ("Aşırı Düşünen", "Kronik Çevrimiçi", "Delulu", "Red Flag", "NPC Enerjisi", "Drama Kraliçesi", "Kaotik", "Paralı Aslan", "Dram Makinesi", "Hayalperest" vb). KESİNLİKLE Farsça, Arapça veya başka bir dil kullanma ("خودش" vb. kelimeler YASAKTIR).`
-      : `MANDATORY: Write the entire response in English using natural global Gen-Z internet slang (delulu, brain rot, red flag, era, main character, slay, no cap, lowkey, NPC, villain arc, it's giving, understood the assignment, rent free, etc.). NEVER use Persian, Arabic or any other languages.`;
+      ? `ZORUNLU: Tüm yanıtı Türkçe yaz. Direkt çeviri yapma. Gerçek Türk Gen-Z internet argosu ve Twitter/TikTok dili kullan. ÖNEMLİ KURAL: Sürekli aynı argoları (örn: "kafanda kuruyorsun", "ghost moduna geç", "rezalet", "dram modu", "kendi kafasında film") TEKRAR ETME. Kelime dağarcığını çok geniş tut. Bazen evrensel terimleri (delulu, red flag, aura, pick-me) Türkçe içinde harmanla, bazen güncel yerel jargon (patladın, kilit, NPC gibi, boş yapma) kullan. Örnekleri BİREBİR KULLANMA, her seferinde ŞAŞIRTICI ve YENİ kelimeler seç. ÖNEMLİ UYARI: "Person 1", "Person 2", "Aries", "relationship", "zodiac", "taken", "single", "talking" gibi İngilizce kelimeleri (argo kelimeler hariç) ASLA KULLANMA. Bunları kesinlikle Türkçeleştir (örn: 1. Kişi, Koç burcu, sevgilisi var, bekar vb). KESİNLİKLE Farsça, Arapça veya başka bir dil kullanma ("خودش" vb. YASAKTIR).`
+      : `MANDATORY: Write entirely in English. Use authentic global Gen-Z slang and TikTok/X vocabulary. CRITICAL RULE: Do NOT repeat the same slang words every time. Keep your vocabulary extremely diverse, unpredictable, and fresh. Do NOT just copy the typical examples, surprise the user with niche internet terms. NEVER use Persian, Arabic or any other languages.`;
 
     const tokenCost = mode === "duo" ? 3 : mode === "extras" ? (body.extrasType === "delulu-check" ? 10 : body.extrasType === "situationship" ? 5 : body.extrasType === "rizz-architect" ? 2 : 3) : 1;
 
@@ -342,8 +358,8 @@ export async function POST(req: NextRequest) {
       if (extrasType === "toxic-ex") {
         promptText = `
 Toxic Ex Scan Request (Crisis Center):
-- User's Zodiac: ${formData.yourZodiac || "Unknown"}
-- Ex's Zodiac: ${formData.exZodiac || "Unknown"}
+- User's Zodiac: ${tVal(formData.yourZodiac, ZODIAC_EN, ZODIAC_TR, locale)}
+- Ex's Zodiac: ${tVal(formData.exZodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Breakup Dynamic: ${formData.breakupDynamic || "Unknown"}
 - Relationship Duration: ${formData.relationshipDuration || "Unknown"}
 - Situation / Text Draft: ${formData.situation || "No details provided"}
@@ -360,8 +376,8 @@ Your output must be purely JSON:
       } else if (extrasType === "situationship") {
         promptText = `
 Situationship Decode Request:
-- Person 1 Zodiac: ${formData.yourZodiac || "Unknown"}
-- Person 2 Zodiac: ${formData.theirZodiac || "Unknown"}
+- Person 1 Zodiac: ${tVal(formData.yourZodiac, ZODIAC_EN, ZODIAC_TR, locale)}
+- Person 2 Zodiac: ${tVal(formData.theirZodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Talking Duration: ${formData.talkingDuration || "Unknown"}
 - Met In Person: ${formData.metInPerson || "Unknown"}
 - Situation: ${formData.situation || "No details provided"}
@@ -416,7 +432,7 @@ Your output must be purely JSON:
       } else {
         promptText = `
 Mood Reset Request:
-- Zodiac: ${formData.yourZodiac || "Unknown"}
+- Zodiac: ${tVal(formData.yourZodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Current Energy: ${formData.currentMood || "Unknown"}
 - What's weighing on them: ${formData.situation || "No details provided"}
 
@@ -499,13 +515,6 @@ Your output must be purely JSON:
         );
       }
 
-      const relationLabels: Record<string, string> = {
-        flirt: "Flirt / Lovers",
-        ex: "Ex-Lovers",
-        platonic: "Platonic / Crush",
-        bff: "BFF / Partner in Crime",
-      };
-
       // İlişki türüne göre dinamik sistem promptu
       const duoSystemPrompts: Record<string, string> = {
         flirt: `You are a savage, sarcastic relationship therapist fluent in Gen-Z internet slang. Analyze their romantic compatibility, toxicity levels, and who the real 'Red Flag' is. Show no mercy, spit facts. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
@@ -522,9 +531,9 @@ Your output must be purely JSON:
         // SENARYO A: Kullanıcının Token'ı Varsa (Sansür veya Zeigarnik yok)
         promptText = `
 Duo Soulmate Analysis:
-- Person 1: Age ${person1.age}, Zodiac: ${person1.zodiac}
-- Person 2: Age ${person2.age}, Zodiac: ${person2.zodiac}
-- Relationship Type: ${relationLabels[duoRelationType] || duoRelationType}
+- Person 1: Age ${person1.age}, Zodiac: ${tVal(person1.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
+- Person 2: Age ${person2.age}, Zodiac: ${tVal(person2.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
+- Relationship Type: ${tVal(duoRelationType, DUO_REL_EN, DUO_REL_TR, locale)}
 
 Based on these details (and photos if any), analyze their vibe, energy, and compatibility. ${langInstruction} Your output must be purely JSON and strictly follow this exact structure:
 {
@@ -540,9 +549,9 @@ Based on these details (and photos if any), analyze their vibe, energy, and comp
         // SENARYO B: Kullanıcının Token'ı Yoksa (Teaser Modu, Sansür var)
         promptText = `
 Duo Soulmate Analysis:
-- Person 1: Age ${person1.age}, Zodiac: ${person1.zodiac}
-- Person 2: Age ${person2.age}, Zodiac: ${person2.zodiac}
-- Relationship Type: ${relationLabels[duoRelationType] || duoRelationType}
+- Person 1: Age ${person1.age}, Zodiac: ${tVal(person1.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
+- Person 2: Age ${person2.age}, Zodiac: ${tVal(person2.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
+- Relationship Type: ${tVal(duoRelationType, DUO_REL_EN, DUO_REL_TR, locale)}
 
 Based on these details (and photos if any), analyze their vibe, energy, and compatibility. ${langInstruction}
 
@@ -654,8 +663,8 @@ Your output must be purely JSON and strictly follow this exact structure:
       promptText = `
 User Details:
 - Age: ${age}
-- Zodiac: ${zodiac}
-- Relationship Status: ${relationship || "Not specified"}
+- Zodiac: ${tVal(zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
+- Relationship Status: ${tVal(relationship, REL_EN, REL_TR, locale)}
 - Extra Note (Vibe Question): ${magicText || "None"}
 - Analysis Type: ${(scenarioPromptSuffix as any)[soloScenario || "general"] || scenarioPromptSuffix.general}
 
@@ -674,8 +683,8 @@ Based on these details (and the attached photo if any), ${langInstruction} Your 
       promptText = `
 User Details:
 - Age: ${age}
-- Zodiac: ${zodiac}
-- Relationship Status: ${relationship || "Not specified"}
+- Zodiac: ${tVal(zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
+- Relationship Status: ${tVal(relationship, REL_EN, REL_TR, locale)}
 - Extra Note (Vibe Question): ${magicText || "None"}
 - Analysis Type: ${(scenarioPromptSuffix as any)[soloScenario || "general"] || scenarioPromptSuffix.general}
 

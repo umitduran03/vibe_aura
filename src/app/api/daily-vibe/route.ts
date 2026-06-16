@@ -2,6 +2,15 @@ import { NextRequest, NextResponse } from "next/server";
 import { GoogleGenAI } from "@google/genai";
 import OpenAI from "openai";
 
+const ZODIAC_TR: Record<string, string> = { aries: "Koç", taurus: "Boğa", gemini: "İkizler", cancer: "Yengeç", leo: "Aslan", virgo: "Başak", libra: "Terazi", scorpio: "Akrep", sagittarius: "Yay", capricorn: "Oğlak", aquarius: "Kova", pisces: "Balık" };
+const ZODIAC_EN: Record<string, string> = { aries: "Aries", taurus: "Taurus", gemini: "Gemini", cancer: "Cancer", leo: "Leo", virgo: "Virgo", libra: "Libra", scorpio: "Scorpio", sagittarius: "Sagittarius", capricorn: "Capricorn", aquarius: "Aquarius", pisces: "Pisces" };
+
+function tVal(val: string | undefined, mapEn: Record<string, string>, mapTr: Record<string, string>, locale: string) {
+  if (!val) return "Unknown";
+  const key = val.toLowerCase();
+  return locale === "tr" ? (mapTr[key] || val) : (mapEn[key] || val);
+}
+
 // ─── Gemini Client ───────────────────────────────────────────
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
@@ -94,33 +103,33 @@ async function generateWithGroqFallback(
 
 /* =============================================
    Şelale (Waterfall) Orkestratörü
-   Daily-vibe text-only → Groq önce, Gemini fallback
+   Daily-vibe text-only → Gemini önce, Groq fallback
    ============================================= */
 async function generateWithWaterfall(
   systemInstruction: string,
   promptText: string
 ) {
-  // ─── Groq önce: text-only, her zaman hızlı ─────────────────
+  // ─── Gemini önce: Ana modelimiz ─────────────────
   try {
-    const groqResponse = await generateWithGroqFallback(systemInstruction, promptText);
-    console.log("[DailyVibe/Waterfall] ✅ Groq Llama 3.3 70B — hızlı yanıt.");
-    return groqResponse;
-  } catch (groqError: any) {
+    const response = await generateWithGeminiFallback(systemInstruction, promptText);
+    console.log("[DailyVibe/Waterfall] ✅ Gemini başarılı.");
+    return response;
+  } catch (geminiError: any) {
     console.warn(
-      `[DailyVibe/Waterfall] ⚠️ Groq başarısız, Gemini'ye geçiliyor...`
+      `[DailyVibe/Waterfall] ⚠️ Gemini başarısız, Groq Llama'ya geçiliyor...`
     );
 
-    // ─── Gemini fallback ─────────────────────────────────────
+    // ─── Groq fallback ─────────────────────────────────────
     try {
-      const response = await generateWithGeminiFallback(systemInstruction, promptText);
-      console.log("[DailyVibe/Waterfall] ✅ Gemini fallback başarılı.");
-      return response;
-    } catch (geminiError: any) {
+      const groqResponse = await generateWithGroqFallback(systemInstruction, promptText);
+      console.log("[DailyVibe/Waterfall] ✅ Groq fallback başarılı.");
+      return groqResponse;
+    } catch (groqError: any) {
       console.error(
         "[DailyVibe/Waterfall] ❌ Her iki servis de başarısız:",
-        geminiError?.message || geminiError
+        groqError?.message || groqError
       );
-      throw groqError;
+      throw geminiError;
     }
   }
 }
@@ -170,8 +179,8 @@ export async function POST(req: NextRequest) {
    - Unspecified/Other: "Icon", "Bestie", "Legend", "Champ", "Vibe", or other creative fits.`;
 
     const langInstruction = isTr
-      ? `ZORUNLU: Tüm yanıtı Türkçe yaz. Direkt çeviri yapma. Gerçek Türk Gen-Z internet argosuyla yaz: "kafanda kuruyorsun", "rezalet", "çakma", "tok gözlü", "dram modu", "salak salak", "hayaller kuruyor", "kendi kafasında film", "ertelemeci enerji", "ghost moduna geç", "bırak gitsin", "olur böyle", "panik yok" gibi ifadeler kullan. KESİNLİKLE Farsça, Arapça veya başka bir dil kullanma ("خودش" vb. kelimeler YASAKTIR).`
-      : `MANDATORY: Write entirely in English. Use authentic global Gen-Z slang: delulu, brain rot, red flag, era, main character, slay, no cap, lowkey, NPC, villain arc, it's giving, understood the assignment, rent free, etc. NEVER use Persian, Arabic or any other languages.`;
+      ? `ZORUNLU: Tüm yanıtı Türkçe yaz. Direkt çeviri yapma. Gerçek Türk Gen-Z internet argosu ve Twitter/TikTok dili kullan. ÖNEMLİ KURAL: Sürekli aynı argoları (örn: "kafanda kuruyorsun", "ghost moduna geç", "rezalet") TEKRAR ETME. Kelime dağarcığını çok geniş tut. Bazen evrensel terimleri (delulu, red flag, aura, pick-me) Türkçe içinde harmanla, bazen güncel yerel jargon (patladın, kilit, NPC gibi, boş yapma) kullan. Örnekleri BİREBİR KULLANMA, her seferinde ŞAŞIRTICI ve YENİ kelimeler seç. KESİNLİKLE Farsça, Arapça veya başka bir dil kullanma ("خودش" vb. YASAKTIR).`
+      : `MANDATORY: Write entirely in English. Use authentic global Gen-Z slang and TikTok/X vocabulary. CRITICAL RULE: Do NOT repeat the same slang words every time. Keep your vocabulary extremely diverse, unpredictable, and fresh. Do NOT just copy the typical examples, surprise the user with niche internet terms. NEVER use Persian, Arabic or any other languages.`;
 
     // ─── PROMPT v4: Silent Analysis + Locale-aware address style ───────────
     const systemInstruction = `You are a sassy, intuitive AI vibe reader for Gen-Z. You are NOT an astrologer, NOT a fortune teller. You simply read the user's current energy and aura for today.
@@ -205,7 +214,7 @@ English Tone Examples:
 
     const promptText = `
 [BACKGROUND DATA — DO NOT REVEAL IN OUTPUT]
-Age: ${age || "Not specified"}, Zodiac: ${zodiac || "Not specified"}, Gender: ${genderHint}
+Age: ${age || "Not specified"}, Zodiac: ${tVal(zodiac, ZODIAC_EN, ZODIAC_TR, locale)}, Gender: ${genderHint}
 
 Write a DAILY VIBE reading for this user. Use the background data SILENTLY to shape the tone and accuracy — never mention it explicitly. 2-3 sentences MAX. Include emojis. ${langInstruction}
 ${toneExamples}

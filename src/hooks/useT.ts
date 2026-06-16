@@ -314,7 +314,7 @@ const STRINGS = {
     serverBusy: "Servers are busy. Please try again! ✨",
 
     // SplashScreen
-    splashAnalyzing: "Analyzing your vibe",
+    splashAnalyzing: "INITIATING VIBE CHECK...",
 
     // MagicQuestionStep
     magicWordCount: "Optional — you can leave it blank",
@@ -373,7 +373,7 @@ const STRINGS = {
 
     // PremiumExtras
     crisisCenter: "Kriz Merkezi",
-    crisisSub: "Dramayı çözüyoruz, acımasız gerçekleri servis ediyoruz. Lafı dolandırmadan.",
+    crisisSub: "Dramayı çözüp acımasızca dürüst gerçekleri yüzüne vuruyoruz. Yalan yok.",
 
     // SoloScenarioSelector
     analysisType: "Analiz Türü",
@@ -394,9 +394,9 @@ const STRINGS = {
     analyzingSubtitle: "YZ vibe'ını tarıyor. Bu birkaç saniye sürer.",
     analyzingFact1: "Aura rengin burcuna ve mevcut enerjine göre şekilleniyor ✨",
     analyzingFact2: "Gen-Z vibe'ları diğer nesillerden %73 daha kaotik 💀",
-    analyzingFact3: "Vibe'ın 1.000'den fazla kişilik arketiple karşılaştırılıyor 🧬",
-    analyzingFact4: "Algoritma seçimlerini yargılıyor... ve etkilenmedi 😤",
-    analyzingFact5: "Ana karakter enerji seviyeleri tespit ediliyor... bekle 🎬",
+    analyzingFact3: "Vibe'ın 1.000'den fazla kişilik arketipiyle karşılaştırılıyor 🧬",
+    analyzingFact4: "Algoritma seçimlerini yargılıyor... ve hiç etkilenmedi 😤",
+    analyzingFact5: "Ana karakter enerji seviyen ölçülüyor... hazır ol 🎬",
 
     // PhotoUpload
     photoTitle: "Fotoğraf Ekle",
@@ -473,18 +473,18 @@ const STRINGS = {
     onboardingBannerEveryone: "Herkesi 🍿",
 
     // AnalyzingScreen
-    analyzingToxicEx: ["TOKSİSİTE TARANIYOR...", "HATALAR İNCELENİYOR...", "SEÇİMLER YARGILANIYOR...", "KIRMIZI BAYRAKLAR ARANIYOR...", "GERÇEKLİK ÇEKİ HAZIRLANIYOR..."],
-    analyzingSituationship: ["KAFALAR KARIŞIKLIĞI ANALİZ EDİLİYOR...", "KARMA SİNYALLER ÇÖZÜLÜYOR...", "BAĞLILIK ÖLÇÜLÜYOR...", "GERÇEKLİK KONTROL EDİLİYOR...", "SERT GERÇEKLER GELİYOR..."],
-    analyzingMoodReset: ["ENERJİ SEVİYELERİ TARANIYOR...", "KÖTÜ VİBELAR TEMİZLENİYOR...", "AURA DEĞİŞİMİ HESAPLANIYOR...", "UYANIŞ ÇAĞRISI HAZIRLANIYOR...", "VİBE YENİDEN YÜKLENİYOR..."],
-    analyzingDeluluCheck: ["KAFADA KURMA SEVİYESİ ÖLÇÜLÜYOR...", "DELİLLER ANALİZ EDİLİYOR...", "SAHTE UMUTLAR GÖRMEZDEN GELİNİYOR...", "GERÇEKLİK HESAPLANIYOR...", "ACİL GERÇEK HAZIRLANIYOR..."],
-    analyzingRizzArchitect: ["ZİHİN OYUNLARI ANALİZ EDİLİYOR...", "SOHBET TARANIYOR...", "GÜÇ HAMLESİ HESAPLANIYOR...", "TUZAK KURULUYOR...", "RİZZ ÜRETİLİYOR..."],
+    analyzingToxicEx: ["TOKSİSİTE TARANIYOR...", "HATALAR İNCELENİYOR...", "SEÇİMLER YARGILANIYOR...", "KIRMIZI BAYRAKLAR ARANIYOR...", "GERÇEKLİK KONTROLÜ HAZIRLANIYOR..."],
+    analyzingSituationship: ["KAFA KARIŞIKLIĞI ANALİZ EDİLİYOR...", "KARIŞIK SİNYALLER ÇÖZÜLÜYOR...", "BAĞLILIK ÖLÇÜLÜYOR...", "GERÇEKLİK KONTROL EDİLİYOR...", "SERT GERÇEKLER GELİYOR..."],
+    analyzingMoodReset: ["ENERJİ SEVİYELERİ TARANIYOR...", "KÖTÜ ENERJİ TEMİZLENİYOR...", "AURA DEĞİŞİMİ HESAPLANIYOR...", "UYANIŞ ÇAĞRISI HAZIRLANIYOR...", "VIBE YENİDEN YÜKLENİYOR..."],
+    analyzingDeluluCheck: ["KAFADA KURMA SEVİYESİ ÖLÇÜLÜYOR...", "DELİLLER ANALİZ EDİLİYOR...", "SAHTE UMUTLAR GÖRMEZDEN GELİNİYOR...", "GERÇEKLİK HESAPLANIYOR...", "ACIMASIZ GERÇEKLER HAZIRLANIYOR..."],
+    analyzingRizzArchitect: ["ZİHİN OYUNLARI ANALİZ EDİLİYOR...", "SOHBET TARANIYOR...", "GÜÇ HAMLESİ HESAPLANIYOR...", "TUZAK KURULUYOR...", "RIZZ ÜRETİLİYOR..."],
     analyzingDuoFlirt: ["KİMYA TARANIYOR...", "KIVILCIM ÖLÇÜLÜYOR...", "BURÇLAR KARŞILAŞTIRILIYOR...", "UZUN VADELİ ŞANS KONTROL EDİLİYOR...", "AŞK SKORU HESAPLANIYOR..."],
-    analyzingDuoEx: ["HASAR TARANIYOR...", "TOKSİK OLAN BULUNUYOR...", "AYRILIK ANALİZ EDİLİYOR...", "KALAN HİSLER KONTROL EDİLİYOR...", "SERT GERÇEK HAZIRLANIYOR..."],
-    analyzingDuoPlatonic: ["GERGİNLİK ANALİZ EDİLİYOR...", "FRIEND ZONE RİSKİ ÖLÇÜLÜYOR...", "GİZLİ HİSLER ÇÖZÜLÜYOR...", "UYUMLULUK KONTROL EDİLİYOR...", "CRUSH ŞANSI HESAPLANIYOR..."],
-    analyzingDuoBff: ["KAOS SEVİYESİ TARANIYOR...", "PLATONİK VİBELAR KONTROL EDİLİYOR...", "SADAKAT ÖLÇÜLÜYOR...", "DİNAMİKLER ANALİZ EDİLİYOR...", "EN YAKIN ARKADAŞ SKORU HESAPLANIYOR..."],
-    analyzingSoloRoast: ["SELFİEN YARGILANIYOR...", "HATALARIN BULUNUYOR...", "SEÇİMLERİN SORGULANIYOR...", "SAVAGE MOD AKTİF...", "YAKICI ROAST HAZIRLANIYOR..."],
-    analyzingSoloSoulmate: ["ROMANTİK AURA TARANIYOR...", "RİZZ SEVİYESİ HESAPLANIYOR...", "EŞLEŞMELER ARANIYOR...", "AŞK POTANSİYELİ ANALİZ EDİLİYOR...", "RUH EŞİ PROFİLİ HAZIRLANIYOR..."],
-    analyzingGeneral: ["VİBE FREKANSI TARANIYOR...", "AURA VERİSİ ÇIKARTILIYOR...", "ENERJİN OKUNUYOR...", "KİŞİLİK ÇÖZÜLÜYOR...", "VİBE ÇEKİ TAMAMLANIYOR..."],
+    analyzingDuoEx: ["HASAR TARANIYOR...", "KİMİN TOKSİK OLDUĞU BULUNUYOR...", "AYRILIK ANALİZ EDİLİYOR...", "KALAN HİSLER KONTROL EDİLİYOR...", "ACIMASIZ GERÇEKLER HAZIRLANIYOR..."],
+    analyzingDuoPlatonic: ["ARADAKİ ÇEKİM ANALİZ EDİLİYOR...", "FRIEND ZONE RİSKİ ÖLÇÜLÜYOR...", "GİZLİ HİSLER ÇÖZÜLÜYOR...", "UYUMLULUK KONTROL EDİLİYOR...", "CRUSH ŞANSI HESAPLANIYOR..."],
+    analyzingDuoBff: ["KAOS SEVİYESİ TARANIYOR...", "PLATONİK VİBE KONTROL EDİLİYOR...", "SADAKAT ÖLÇÜLÜYOR...", "DİNAMİKLER ANALİZ EDİLİYOR...", "EN YAKIN ARKADAŞ SKORU HESAPLANIYOR..."],
+    analyzingSoloRoast: ["SELFİEN YARGILANIYOR...", "KUSURLARIN ARANIYOR...", "HAYAT SEÇİMLERİN SORGULANIYOR...", "SAVAGE MOD AKTİF...", "ACIMASIZ ROAST HAZIRLANIYOR..."],
+    analyzingSoloSoulmate: ["ROMANTİK AURA TARANIYOR...", "RIZZ SEVİYESİ HESAPLANIYOR...", "EŞLEŞMELER ARANIYOR...", "AŞK POTANSİYELİ ANALİZ EDİLİYOR...", "RUH EŞİ PROFİLİ HAZIRLANIYOR..."],
+    analyzingGeneral: ["VIBE FREKANSI TARANIYOR...", "AURA VERİSİ ÇIKARTILIYOR...", "ENERJİN OKUNUYOR...", "KİŞİLİK ÇÖZÜLÜYOR...", "VIBE KONTROLÜ TAMAMLANIYOR..."],
 
     // WizardFlow
     continue: "Devam Et",
@@ -517,7 +517,7 @@ const STRINGS = {
     settingsZodiac: "Burç",
     settingsLanguage: "Dil",
     settingsLogout: "Çıkış Yap",
-    settingsTokens: "Jetonlar",
+    settingsTokens: "Jeton",
     settingsVipMember: "VIP Üye",
     settingsFreeAccount: "Ücretsiz Hesap",
     settingsNoSign: "Burç Yok",
@@ -666,7 +666,7 @@ const STRINGS = {
     serverBusy: "Sunucular meşgul. Lütfen tekrar dene! ✨",
 
     // SplashScreen
-    splashAnalyzing: "Vibe'ın analiz ediliyor",
+    splashAnalyzing: "VIBE CHECK BAŞLIYOR...",
 
     // MagicQuestionStep
     magicWordCount: "Opsiyonel — boş bırakabilirsin, sorun olmaz",

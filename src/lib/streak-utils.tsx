@@ -3,6 +3,7 @@ import { Ghost, Sparkles, Star, Crown, Zap, Skull, Bot, Sprout, Hexagon, Sun, Wi
 
 export interface VibeRank {
   name: string;
+  nameTr?: string;
   minDays: number;
   icon: React.ReactNode;
   color: string;
@@ -12,6 +13,7 @@ export interface VibeRank {
 export const VIBE_RANKS: VibeRank[] = [
   {
     name: "NPC",
+    nameTr: "NPC",
     minDays: 0,
     icon: (
       <div className="relative flex items-center justify-center">
@@ -23,6 +25,7 @@ export const VIBE_RANKS: VibeRank[] = [
   },
   {
     name: "Vibe Padawan",
+    nameTr: "Vibe Çırağı",
     minDays: 3,
     icon: (
       <div className="relative flex items-center justify-center">
@@ -36,6 +39,7 @@ export const VIBE_RANKS: VibeRank[] = [
   },
   {
     name: "Main Character",
+    nameTr: "Ana Karakter",
     minDays: 7,
     icon: (
       <div className="relative flex items-center justify-center">
@@ -49,6 +53,7 @@ export const VIBE_RANKS: VibeRank[] = [
   },
   {
     name: "Aura Architect",
+    nameTr: "Aura Mimarı",
     minDays: 15,
     icon: (
       <div className="relative flex items-center justify-center">
@@ -62,6 +67,7 @@ export const VIBE_RANKS: VibeRank[] = [
   },
   {
     name: "Vibe God",
+    nameTr: "Vibe İlahı",
     minDays: 30,
     icon: (
       <div className="relative flex items-center justify-center">
@@ -76,6 +82,7 @@ export const VIBE_RANKS: VibeRank[] = [
   },
   {
     name: "Chronically Online",
+    nameTr: "Kronik Çevrimiçi",
     minDays: 70,
     icon: (
       <div className="relative flex items-center justify-center">

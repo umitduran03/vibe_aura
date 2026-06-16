@@ -44,6 +44,7 @@ export default function ResultCard() {
   const auraResult = useAppStore((s) => s.auraResult);
   const zodiacId = useAppStore((s) => s.userData.zodiac);
   const setTokenModalOpen = useAppStore((s) => s.setTokenModalOpen);
+  const locale = useAppStore((s) => s.locale);
   const [isExporting, setIsExporting] = useState(false);
   const t = useT();
 
@@ -355,7 +356,7 @@ export default function ResultCard() {
                     color: "white",
                     textShadow: `0 0 10px ${zodiac.gradient[1]}`
                   }}>
-                  {zodiac.name}
+                  {locale === "tr" ? (zodiac.nameTr || zodiac.name) : zodiac.name}
                 </span>
           </div>
 

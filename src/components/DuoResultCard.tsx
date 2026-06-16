@@ -14,12 +14,15 @@ import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { auth } from "@/lib/firebase";
 
+
+
 export default function DuoResultCard() {
   const resetWizard = useAppStore((s) => s.resetWizard);
   const duoResult = useAppStore((s) => s.duoResult);
   const person1 = useAppStore((s) => s.duoPerson1);
   const person2 = useAppStore((s) => s.duoPerson2);
   const setTokenModalOpen = useAppStore((s) => s.setTokenModalOpen);
+  const locale = useAppStore((s) => s.locale);
   const [isExporting, setIsExporting] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const t = useT();
@@ -149,6 +152,9 @@ export default function DuoResultCard() {
   const z2 = ZODIAC_SIGNS.find((z) => z.id === person2.zodiac) || ZODIAC_SIGNS[1];
   const themeColor = duoResult.theme_color_hex || "#ec4899";
 
+  const z1Name = locale === "tr" ? (z1.nameTr || z1.name) : z1.name;
+  const z2Name = locale === "tr" ? (z2.nameTr || z2.name) : z2.name;
+
   const handleReset = () => {
     hapticLight();
     resetWizard();
@@ -263,7 +269,7 @@ export default function DuoResultCard() {
                     color: "white",
                     textShadow: `0 0 10px ${z1.gradient[1]}`
                   }}>
-                  {z1.name}
+                  {z1Name}
                 </span>
               </div>
               
@@ -295,7 +301,7 @@ export default function DuoResultCard() {
                     color: "white",
                     textShadow: `0 0 10px ${z2.gradient[1]}`
                   }}>
-                  {z2.name}
+                  {z2Name}
                 </span>
               </div>
             </div>

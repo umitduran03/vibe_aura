@@ -1,18 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, SmartphoneNfc } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 
 export default function DeluluCheckLanding() {
+  const params = useParams();
+  const isTr = params?.lang === "tr";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "Delulu Check AI",
+    name: isTr ? "Delulu Check YZ" : "Delulu Check AI",
     applicationCategory: "EntertainmentApplication",
     operatingSystem: "Any",
-    description: "Mixed signals? Drop the receipts and get an unfiltered reality check before you double text.",
+    description: isTr 
+      ? "Kafan mı karışık? Chat detaylarını sal ve o ikinci mesajı atmadan önce acı gerçeklerle yüzleş."
+      : "Mixed signals? Drop the receipts and get an unfiltered reality check before you double text.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -44,7 +50,9 @@ export default function DeluluCheckLanding() {
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>
-          <span className="text-sm font-medium tracking-widest text-amber-400 uppercase drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]">AI Feature Spotlight</span>
+          <span className="text-sm font-medium tracking-widest text-amber-400 uppercase drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]">
+            {isTr ? "YZ İFŞA RADARI" : "AI Feature Spotlight"}
+          </span>
         </motion.div>
 
         {/* Hero Section */}
@@ -57,21 +65,23 @@ export default function DeluluCheckLanding() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(251,191,36,0.2)]">
               <span className="text-base leading-none">📱</span>
-              <span>Stop The Double Text</span>
+              <span>{isTr ? "O İkinci Mesajı Atma" : "Stop The Double Text"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-500 to-orange-500">
-              Delulu Check AI
+              {isTr ? "Delulu Check YZ" : "Delulu Check AI"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
-              Are they giving mixed signals, or are you just delusional? Drop the chat receipts and let our AI give you an unfiltered reality check before you do something embarrassing.
+              {isTr
+                ? "O mu sana karışık sinyaller veriyor, yoksa sen mi tamamen delulu'sun? Sohbeti yapay zekaya dök ve kendini rezil etmeden önce sana acımasız bir reality check (gerçeklik tokatı) atmasına izin ver."
+                : "Are they giving mixed signals, or are you just delusional? Drop the chat receipts and let our AI give you an unfiltered reality check before you do something embarrassing."}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/"
+                href={`/${isTr ? "tr" : "en"}`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-amber-600 to-yellow-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(217,119,6,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 <SmartphoneNfc className="w-5 h-5 animate-pulse" />
-                Check My Receipts
+                {isTr ? "Durumu Analiz Et" : "Check My Receipts"}
               </Link>
             </div>
           </motion.div>
@@ -92,8 +102,12 @@ export default function DeluluCheckLanding() {
                 >
                   📱
                 </motion.div>
-                <h3 className="text-xl font-black text-amber-400">Diagnosis: Delulu</h3>
-                <p className="text-sm text-white/60 font-medium leading-relaxed">"They took 14 hours to reply 'lol yeah'. No, they aren't intimidated by your beauty. They are busy texting someone else."</p>
+                <h3 className="text-xl font-black text-amber-400">{isTr ? "Teşhis: Delulu" : "Diagnosis: Delulu"}</h3>
+                <p className="text-sm text-white/60 font-medium leading-relaxed">
+                  {isTr 
+                    ? `"Sana 14 saat sonra 'aynen sjsj' diye cevap vermiş. Hayır, güzelliğinden falan çekinmiyor. Sadece başkasıyla yazışmakla meşgul."`
+                    : `"They took 14 hours to reply 'lol yeah'. No, they aren't intimidated by your beauty. They are busy texting someone else."`}
+                </p>
               </div>
             </div>
           </motion.div>
@@ -103,18 +117,18 @@ export default function DeluluCheckLanding() {
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
             {
-              title: "Receipt Analysis",
-              desc: "The AI reads the exact tone, response time, and word choice of their messages.",
+              title: isTr ? "Chat Analizi" : "Receipt Analysis",
+              desc: isTr ? "Yapay zeka o mesajların tonunu, cevaplama süresini ve kelime seçimlerini didik didik eder." : "The AI reads the exact tone, response time, and word choice of their messages.",
               icon: "🧾"
             },
             {
               title: "Reality Check",
-              desc: "Separates your hopeful delusions from the cold, hard facts of the conversation.",
+              desc: isTr ? "Kendi kafanda kurduğun o tatlı hayalleri, konuşmanın o soğuk ve acı gerçeklerinden ayırır." : "Separates your hopeful delusions from the cold, hard facts of the conversation.",
               icon: "⚖️"
             },
             {
-              title: "Next Steps",
-              desc: "Tells you whether to respond, block them, or throw your phone in a lake.",
+              title: isTr ? "Şimdi Ne Yapmalı?" : "Next Steps",
+              desc: isTr ? "Ona cevap mı vermelisin, engellemeli misin, yoksa telefonunu komple denize mi fırlatmalısın söyler." : "Tells you whether to respond, block them, or throw your phone in a lake.",
               icon: "🛑"
             }
           ].map((feat, i) => (
@@ -141,15 +155,19 @@ export default function DeluluCheckLanding() {
           className="text-center p-10 rounded-3xl bg-gradient-to-br from-amber-950/60 to-black border border-amber-900/50 shadow-[0_0_50px_rgba(217,119,6,0.15)]"
         >
           <Sparkles className="w-10 h-10 text-yellow-400 mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Time to wake up.</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+            {isTr ? "Uyanma vakti geldi." : "Time to wake up."}
+          </h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">
-            Stop making excuses for their dry texts. Get the brutal truth from the AI now.
+            {isTr 
+              ? "Onun o kuru mesajlarına kılıf uydurmayı bırak. Yapay zekadan o acımasız gerçekleri şimdi duy."
+              : "Stop making excuses for their dry texts. Get the brutal truth from the AI now."}
           </p>
           <Link
-            href="/"
+            href={`/${isTr ? "tr" : "en"}`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
-            Launch VibeCheckr
+            {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}
           </Link>
         </motion.div>
       </div>

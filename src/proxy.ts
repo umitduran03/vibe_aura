@@ -6,6 +6,11 @@ const DEFAULT_LOCALE = "en";
 type Locale = (typeof SUPPORTED_LOCALES)[number];
 
 function getLocale(request: NextRequest): Locale {
+  const cookieLocale = request.cookies.get("NEXT_LOCALE")?.value;
+  if (cookieLocale === "tr" || cookieLocale === "en") {
+    return cookieLocale;
+  }
+
   // Accept-Language header'dan dil tespit et
   const acceptLanguage = request.headers.get("accept-language") ?? "";
 

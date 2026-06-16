@@ -1,18 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft, Users, Sparkles, HeartCrack, Heart, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 
 export default function DuoCompatibilityLanding() {
+  const params = useParams();
+  const isTr = params?.lang === "tr";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "AI Duo Compatibility Test",
+    name: isTr ? "YZ İkili Uyumluluk Testi" : "AI Duo Compatibility Test",
     applicationCategory: "EntertainmentApplication",
     operatingSystem: "Any",
-    description: "Upload two photos and let our AI calculate your exact relationship chemistry, aura blend, and romantic compatibility.",
+    description: isTr 
+      ? "İki fotoğraf yükle ve yapay zekamız ilişkinizin tam kimyasını, auralarınızın nasıl karıştığını ve romantik uyumluluğunuzu hesaplasın."
+      : "Upload two photos and let our AI calculate your exact relationship chemistry, aura blend, and romantic compatibility.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -44,7 +50,9 @@ export default function DuoCompatibilityLanding() {
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>
-          <span className="text-sm font-medium tracking-widest text-pink-400 uppercase drop-shadow-[0_0_5px_rgba(236,72,153,0.5)]">AI Feature Spotlight</span>
+          <span className="text-sm font-medium tracking-widest text-pink-400 uppercase drop-shadow-[0_0_5px_rgba(236,72,153,0.5)]">
+            {isTr ? "YZ İFŞA RADARI" : "AI Feature Spotlight"}
+          </span>
         </motion.div>
 
         {/* Hero Section */}
@@ -57,21 +65,23 @@ export default function DuoCompatibilityLanding() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-pink-500/10 border border-pink-500/20 text-pink-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(236,72,153,0.2)]">
               <Heart className="w-4 h-4 fill-pink-400" />
-              <span>Relationship Chemistry AI</span>
+              <span>{isTr ? "İlişki Kimyası YZ" : "Relationship Chemistry AI"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400">
-              AI Duo Compatibility Test
+              {isTr ? "YZ İkili Uyumluluk Testi" : "AI Duo Compatibility Test"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
-              Are you soulmates or a walking disaster? Upload two selfies and our AI will calculate your energetic match, aura blend, and brutal relationship forecast.
+              {isTr 
+                ? "Ruh eşi misiniz yoksa yürüyen bir felaket mi? İki selfie yükleyin ve yapay zekamız enerji uyumunuzu, aura birleşiminizi ve acımasız ilişki tahmininizi hesaplasın."
+                : "Are you soulmates or a walking disaster? Upload two selfies and our AI will calculate your energetic match, aura blend, and brutal relationship forecast."}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/"
+                href={`/${isTr ? "tr" : "en"}`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 <Zap className="w-5 h-5 animate-pulse" />
-                Test Your Compatibility
+                {isTr ? "Uyumluluğunu Test Et" : "Test Your Compatibility"}
               </Link>
             </div>
           </motion.div>
@@ -97,8 +107,14 @@ export default function DuoCompatibilityLanding() {
                  />
               </div>
               <div className="text-center p-6 space-y-4">
-                <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-300 drop-shadow-[0_0_10px_rgba(236,72,153,0.5)]">92% Match</h3>
-                <p className="text-sm text-white/70 font-medium leading-relaxed">"A chaotic but highly magnetic bond. Expect intense loyalty mixed with dramatic arguments over nothing."</p>
+                <h3 className="text-2xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-300 to-purple-300 drop-shadow-[0_0_10px_rgba(236,72,153,0.5)]">
+                  {isTr ? "%92 Uyum" : "92% Match"}
+                </h3>
+                <p className="text-sm text-white/70 font-medium leading-relaxed">
+                  {isTr 
+                    ? `"Kaotik ama inanılmaz çekici bir bağ. Hiçbir şey yüzünden çıkan dramatik kavgalarla harmanlanmış yoğun bir sadakat sizi bekliyor."`
+                    : `"A chaotic but highly magnetic bond. Expect intense loyalty mixed with dramatic arguments over nothing."`}
+                </p>
               </div>
             </div>
           </motion.div>
@@ -108,18 +124,18 @@ export default function DuoCompatibilityLanding() {
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
             {
-              title: "Aura Blending",
-              desc: "See exactly how your individual energies and micro-expressions mix together.",
+              title: isTr ? "Aura Harmanlama" : "Aura Blending",
+              desc: isTr ? "Bireysel enerjilerinizin ve mikro ifadelerinizin birbiriyle tam olarak nasıl karıştığını görün." : "See exactly how your individual energies and micro-expressions mix together.",
               icon: "🔮"
             },
             {
-              title: "Platonic or Romantic?",
-              desc: "Select your relationship type. Works for crushes, couples, or just testing your BFF.",
+              title: isTr ? "Platonik mi Romantik mi?" : "Platonic or Romantic?",
+              desc: isTr ? "İlişki türünüzü seçin. Crush'ınız, sevgiliniz veya sadece kankanızı test etmek için mükemmel." : "Select your relationship type. Works for crushes, couples, or just testing your BFF.",
               icon: "👯‍♀️"
             },
             {
-              title: "Brutally Honest",
-              desc: "No sugarcoating. If it's a toxic match, the AI will tell you to run.",
+              title: isTr ? "Aşırı Dürüst" : "Brutally Honest",
+              desc: isTr ? "Tatlı yalanlar yok. Eğer toksik bir eşleşmeyse, yapay zeka size anında kaçmanızı söyleyecek." : "No sugarcoating. If it's a toxic match, the AI will tell you to run.",
               icon: "🏃‍♂️"
             }
           ].map((feat, i) => (
@@ -146,15 +162,19 @@ export default function DuoCompatibilityLanding() {
           className="text-center p-10 rounded-3xl bg-gradient-to-br from-purple-950/60 to-black border border-pink-900/50 shadow-[0_0_50px_rgba(236,72,153,0.15)]"
         >
           <Sparkles className="w-10 h-10 text-pink-400 mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Curious about your chemistry?</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+            {isTr ? "Kimyanızı merak mı ediyorsunuz?" : "Curious about your chemistry?"}
+          </h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">
-            Find out if it's true love or just a shared delusion. Free, instant, and terrifyingly accurate.
+            {isTr 
+              ? "Gerçek aşk mı yoksa ortak bir halüsinasyon (delulu) mu öğrenin. Ücretsiz, anında ve korkutucu derecede isabetli."
+              : "Find out if it's true love or just a shared delusion. Free, instant, and terrifyingly accurate."}
           </p>
           <Link
-            href="/"
+            href={`/${isTr ? "tr" : "en"}`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
-            Launch VibeCheckr
+            {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}
           </Link>
         </motion.div>
       </div>

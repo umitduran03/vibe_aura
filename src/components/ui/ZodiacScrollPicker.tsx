@@ -7,20 +7,7 @@ import type { ZodiacSign } from "@/lib/constants";
 import { hapticLight } from "@/lib/haptics";
 import { useAppStore } from "@/store/useAppStore";
 
-const ZODIAC_NAMES_TR: Record<string, string> = {
-  aries: "Koç",
-  taurus: "Boğa",
-  gemini: "İkizler",
-  cancer: "Yengeç",
-  leo: "Aslan",
-  virgo: "Başak",
-  libra: "Terazi",
-  scorpio: "Akrep",
-  sagittarius: "Yay",
-  capricorn: "Oğlak",
-  aquarius: "Kova",
-  pisces: "Balık",
-};
+
 
 // ============================================
 // Zodiac Scroll-to-Select Picker
@@ -48,7 +35,7 @@ export default function ZodiacScrollPicker({
   const locale = useAppStore((s) => s.locale);
 
   const getDisplayName = (sign: ZodiacSign) =>
-    locale === "tr" ? (ZODIAC_NAMES_TR[sign.id] ?? sign.name) : sign.name;
+    locale === "tr" ? (sign.nameTr || sign.name) : sign.name;
 
   // onZodiacChange'i ref'te tut → event listener'larda stale closure olmaz
   const onZodiacChangeRef = useRef(onZodiacChange);

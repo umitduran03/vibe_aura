@@ -1,18 +1,24 @@
 "use client";
 
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, MessageSquareQuote } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 
 export default function ReplyGuruLanding() {
+  const params = useParams();
+  const isTr = params?.lang === "tr";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: "The Reply Guru AI",
+    name: isTr ? "Mesaj Gurusu YZ" : "The Reply Guru AI",
     applicationCategory: "EntertainmentApplication",
     operatingSystem: "Any",
-    description: "Drop the screenshot and let our AI craft the perfect toxic, cool, or safe reply. Never stress about what to text back again.",
+    description: isTr 
+      ? "Ekran görüntüsünü sal ve yapay zekamızın o en mükemmel toksik, cool veya risksiz cevabı kurgulamasına izin ver. Bir daha asla 'buna ne yazsam' diye strese girme."
+      : "Drop the screenshot and let our AI craft the perfect toxic, cool, or safe reply. Never stress about what to text back again.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -44,7 +50,9 @@ export default function ReplyGuruLanding() {
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>
-          <span className="text-sm font-medium tracking-widest text-violet-400 uppercase drop-shadow-[0_0_5px_rgba(139,92,246,0.5)]">AI Feature Spotlight</span>
+          <span className="text-sm font-medium tracking-widest text-violet-400 uppercase drop-shadow-[0_0_5px_rgba(139,92,246,0.5)]">
+            {isTr ? "YZ İFŞA RADARI" : "AI Feature Spotlight"}
+          </span>
         </motion.div>
 
         {/* Hero Section */}
@@ -57,21 +65,23 @@ export default function ReplyGuruLanding() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(139,92,246,0.2)]">
               <span className="text-base leading-none">💬</span>
-              <span>Win The Mind Games</span>
+              <span>{isTr ? "Akıl Oyunlarını Kazan" : "Win The Mind Games"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-500 to-indigo-400">
-              The Reply Guru AI
+              {isTr ? "Mesaj Gurusu YZ" : "The Reply Guru AI"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
-              Staring at your keyboard for 20 minutes? Drop the screenshot of their text and let the AI craft the perfect toxic, cool, or safe reply.
+              {isTr 
+                ? "20 dakikadır klavyeye mi bakıyorsun? Mesajın ekran görüntüsünü sal ve yapay zekanın tam o mükemmel toksik, cool veya garantici cevabı yapıştırmasına izin ver."
+                : "Staring at your keyboard for 20 minutes? Drop the screenshot of their text and let the AI craft the perfect toxic, cool, or safe reply."}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
-                href="/"
+                href={`/${isTr ? "tr" : "en"}`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-violet-600 to-indigo-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(109,40,217,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 <MessageSquareQuote className="w-5 h-5 animate-pulse" />
-                Generate Reply
+                {isTr ? "Cevap Üret" : "Generate Reply"}
               </Link>
             </div>
           </motion.div>
@@ -92,8 +102,12 @@ export default function ReplyGuruLanding() {
                 >
                   💬
                 </motion.div>
-                <h3 className="text-xl font-black text-violet-400">AI Suggestion</h3>
-                <p className="text-sm text-white/60 font-medium leading-relaxed">"Who's this?" (Sends them into an immediate panic spiral)</p>
+                <h3 className="text-xl font-black text-violet-400">{isTr ? "YZ Tavsiyesi" : "AI Suggestion"}</h3>
+                <p className="text-sm text-white/60 font-medium leading-relaxed">
+                  {isTr 
+                    ? `"Sen kimdin ya?" (Onu anında bir panik krizine sokar)`
+                    : `"Who's this?" (Sends them into an immediate panic spiral)`}
+                </p>
               </div>
             </div>
           </motion.div>
@@ -103,18 +117,18 @@ export default function ReplyGuruLanding() {
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
             {
-              title: "Multiple Tones",
-              desc: "Choose between 'Toxic', 'Cool & Unbothered', or 'Playful' depending on your end goal.",
+              title: isTr ? "Farklı Vibe'lar" : "Multiple Tones",
+              desc: isTr ? "Nihai hedefine göre 'Toksik', 'Umursamaz' veya 'Flörtöz' arasında seçim yap." : "Choose between 'Toxic', 'Cool & Unbothered', or 'Playful' depending on your end goal.",
               icon: "🎭"
             },
             {
-              title: "Context Aware",
-              desc: "The AI reads the previous messages to match the energy perfectly.",
+              title: isTr ? "Bağlamı Anlar" : "Context Aware",
+              desc: isTr ? "Yapay zeka enerjiyi mükemmel eşleştirmek için önceki mesajları da okur." : "The AI reads the previous messages to match the energy perfectly.",
               icon: "🧠"
             },
             {
-              title: "No More Panic",
-              desc: "Stop crowd-sourcing your replies from the group chat. Get instant results.",
+              title: isTr ? "Panik Yok" : "No More Panic",
+              desc: isTr ? "Kız grubundan / kankalarından taktik dilenmeyi bırak. Anında sonuç al." : "Stop crowd-sourcing your replies from the group chat. Get instant results.",
               icon: "🧘‍♀️"
             }
           ].map((feat, i) => (
@@ -141,15 +155,19 @@ export default function ReplyGuruLanding() {
           className="text-center p-10 rounded-3xl bg-gradient-to-br from-violet-950/60 to-black border border-violet-900/50 shadow-[0_0_50px_rgba(109,40,217,0.15)]"
         >
           <Sparkles className="w-10 h-10 text-purple-400 mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">Leave them on read no more.</h2>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+            {isTr ? "Artık onları görüldüde bırakmaya son." : "Leave them on read no more."}
+          </h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">
-            Let the Guru handle the heavy lifting. Win the argument, secure the date, or just cause chaos.
+            {isTr 
+              ? "Ağır işi Guru'ya bırak. Tartışmayı kazan, date'i garantile veya sadece kaos yarat."
+              : "Let the Guru handle the heavy lifting. Win the argument, secure the date, or just cause chaos."}
           </p>
           <Link
-            href="/"
+            href={`/${isTr ? "tr" : "en"}`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
-            Launch VibeCheckr
+            {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}
           </Link>
         </motion.div>
       </div>
