@@ -21,6 +21,13 @@ export default function PaymentSuccessPage() {
 
   // Generate particles on client side only (Hydration safe)
   useEffect(() => {
+    // ─── REMOVE GLOBAL LOADER IF REDIRECTED HERE DIRECTLY ───
+    const loader = document.getElementById("global-loader");
+    if (loader) {
+      loader.style.opacity = "0";
+      setTimeout(() => loader.remove(), 600);
+    }
+
     setParticles([...Array(20)].map(() => ({
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
