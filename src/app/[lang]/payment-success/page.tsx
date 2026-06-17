@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useT } from "@/hooks/useT";
 
 /**
  * PaymentSuccessPage — Premium Static Success Screen
@@ -11,6 +12,7 @@ import Link from "next/link";
  * No dynamic data fetching — instant render, zero loading states.
  */
 export default function PaymentSuccessPage() {
+  const t = useT();
   const [particles, setParticles] = useState<Array<{
     top: string;
     left: string;
@@ -84,7 +86,7 @@ export default function PaymentSuccessPage() {
             transition={{ delay: 0.6 }}
             className="text-3xl font-extrabold tracking-tight text-white"
           >
-            Payment Successful! ✨
+            {t.paymentSuccessTitle}
           </motion.h1>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -92,7 +94,7 @@ export default function PaymentSuccessPage() {
             transition={{ delay: 0.8 }}
             className="text-zinc-400 text-sm leading-relaxed px-2"
           >
-            Your tokens have been added to your account.
+            {t.paymentSuccessDesc}
           </motion.p>
         </div>
 
@@ -104,11 +106,11 @@ export default function PaymentSuccessPage() {
           className="w-full"
         >
           <div className="bg-white/5 rounded-3xl p-5 border border-white/10 backdrop-blur-sm">
-            <p className="text-[12px] uppercase tracking-[0.2em] text-zinc-500 font-bold mb-2">Status</p>
+            <p className="text-[12px] uppercase tracking-[0.2em] text-zinc-500 font-bold mb-2">{t.paymentSuccessStatusTitle}</p>
             <div className="flex items-center justify-center gap-2.5">
               <span className="w-2 h-2 rounded-full bg-green-400 shadow-[0_0_8px_rgba(74,222,128,0.6)]" />
               <span className="text-[15px] font-semibold text-zinc-200">
-                Your balance has been updated successfully.
+                {t.paymentSuccessStatusDesc}
               </span>
             </div>
           </div>
@@ -125,7 +127,7 @@ export default function PaymentSuccessPage() {
             href="/"
             className="group w-full bg-white text-black font-bold py-5 rounded-2xl shadow-[0_0_40px_rgba(255,255,255,0.2)] active:scale-95 transition-all flex items-center justify-center gap-3"
           >
-            Start Analyzing Now
+            {t.paymentSuccessButton}
             <svg 
               className="group-hover:translate-x-1 transition-transform" 
               xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"

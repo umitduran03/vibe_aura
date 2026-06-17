@@ -357,10 +357,16 @@ const STRINGS = {
     langEn: "English",
     langTr: "Türkçe",
 
-    // Page [lang] — toast in page.tsx
     toastWelcome: "5 Welcome Tokens Added! 🎁",
     toastTokenInsufficient: "Not enough tokens for this analysis! 💎",
     toastServerBusy: "Servers are busy. Please try again! ✨",
+
+    // PaymentSuccessPage
+    paymentSuccessTitle: "Payment Successful! ✨",
+    paymentSuccessDesc: "Your tokens have been added to your account.",
+    paymentSuccessStatusTitle: "Status",
+    paymentSuccessStatusDesc: "Your balance has been updated successfully.",
+    paymentSuccessButton: "Start Analyzing Now",
   },
 
   tr: {
@@ -709,10 +715,16 @@ const STRINGS = {
     langEn: "English",
     langTr: "Türkçe",
 
-    // Page [lang] — toast in page.tsx
     toastWelcome: "5 Hoşgeldin Jetonu Eklendi! 🎁",
     toastTokenInsufficient: "Bu analiz için yeterli jetonun yok! 💎",
     toastServerBusy: "Sunucular meşgul. Lütfen tekrar dene! ✨",
+
+    // PaymentSuccessPage
+    paymentSuccessTitle: "Ödeme Başarılı! ✨",
+    paymentSuccessDesc: "Jetonların hesabına başarıyla eklendi.",
+    paymentSuccessStatusTitle: "Durum",
+    paymentSuccessStatusDesc: "Bakiye güncellemesi başarıyla tamamlandı.",
+    paymentSuccessButton: "Hemen Analize Başla",
   },
 } as const;
 
