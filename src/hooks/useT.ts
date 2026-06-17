@@ -556,7 +556,7 @@ const STRINGS = {
     resultDownloading: "İndiriliyor...",
     resultShare: "Paylaş (+2 Jeton 🚀)",
     resultTryAgain: "Tekrar Dene",
-    resultShareSuccess: "Main character enerji! 🔥 +2 Jeton eklendi.",
+    resultShareSuccess: "Ana karakter enerjisi! 🔥 +2 Jeton eklendi.",
     resultShareError: "Dur dur, paylaşmadan jeton olur mu? 🤨 Önce paylaş sonra konuşuruz.",
     resultShareTitle: "{name} — VibeCheckr",
     resultShareText: "Vibe puanım: {score}/100 💜\nSen de dene! 👀 👉 https://thevibecheckr.vercel.app",
