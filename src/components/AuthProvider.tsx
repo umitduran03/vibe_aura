@@ -57,14 +57,19 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
             const balance = await ensureUserDoc(user);
             setTokenBalance(balance);
 
-            const isPendingTerms = localStorage.getItem("pending_terms_accept") === "true";
-            if (isPendingTerms) {
-              localStorage.removeItem("pending_terms_accept");
-              setHasAcceptedTerms(true); // Optimistik güncelleme (beklemeden)
-              // Arka planda çalıştır, UI'ı bloklama
-              import("@/lib/auth").then(({ acceptTerms }) => {
-                acceptTerms(user.uid).catch(console.error);
-              }).catch(console.error);
+            let isPendingTerms = false;
+            try {
+              isPendingTerms = localStorage.getItem("pending_terms_accept") === "true";
+              if (isPendingTerms) {
+                localStorage.removeItem("pending_terms_accept");
+                setHasAcceptedTerms(true); // Optimistik güncelleme (beklemeden)
+                // Arka planda çalıştır, UI'ı bloklama
+                import("@/lib/auth").then(({ acceptTerms }) => {
+                  acceptTerms(user.uid).catch(console.error);
+                }).catch(console.error);
+              }
+            } catch (storageErr) {
+              console.warn("[AuthProvider] localStorage error:", storageErr);
             }
 
             // Gerçek zamanlı dinleme başlat — hasAcceptedTerms de buradan gelir

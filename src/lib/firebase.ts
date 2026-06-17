@@ -80,9 +80,13 @@ const auth = getAuth(app);
 
 // Safari ITP: Force local persistence so auth sessions survive page reloads
 if (typeof window !== "undefined") {
-  setPersistence(auth, browserLocalPersistence).catch((err) => {
-    console.warn("[Firebase] setPersistence error:", err);
-  });
+  try {
+    setPersistence(auth, browserLocalPersistence).catch((err) => {
+      console.warn("[Firebase] setPersistence error:", err);
+    });
+  } catch (syncErr) {
+    console.warn("[Firebase] setPersistence sync error (likely localStorage blocked):", syncErr);
+  }
 }
 
 export { app, storage, db, auth };

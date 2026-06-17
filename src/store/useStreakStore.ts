@@ -39,6 +39,18 @@ const syncToFirebase = async (data: Partial<StreakState>) => {
   }
 };
 
+const safeLocalStorage = {
+  getItem: (name: string) => {
+    try { return localStorage.getItem(name); } catch(e) { return null; }
+  },
+  setItem: (name: string, value: string) => {
+    try { localStorage.setItem(name, value); } catch(e) {}
+  },
+  removeItem: (name: string) => {
+    try { localStorage.removeItem(name); } catch(e) {}
+  }
+};
+
 export const useStreakStore = create<StreakState>()(
   persist(
     (set, get) => ({
@@ -135,7 +147,7 @@ export const useStreakStore = create<StreakState>()(
     }),
     {
       name: "vibecheckr-streak-storage", // name of the item in the storage (must be unique)
-      storage: createJSONStorage(() => localStorage), 
+      storage: createJSONStorage(() => safeLocalStorage), 
     }
   )
 );
