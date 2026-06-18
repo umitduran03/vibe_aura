@@ -16,7 +16,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://thevibecheckr.vercel.app"),
   title: {
-    default: "VibeCheckr — AI Vibe Check, Photo Roast & Personality Analysis",
+    default: "VibeCheckr — AI Vibe Check, Photo Analysis, Roast & Personality Test",
     template: "%s | VibeCheckr",
   },
   description:
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "VibeCheckr — AI Vibe Check, Photo Roast & Personality Analysis",
+    title: "VibeCheckr — AI Vibe Check, Photo Analysis, Roast & Personality Test",
     description: "Upload your selfie, get brutally honest AI personality analysis & savage roasts. Zodiac compatibility, duo chemistry checks, and viral shareable result cards. Free & instant!",
     url: "https://thevibecheckr.vercel.app",
     siteName: "VibeCheckr",

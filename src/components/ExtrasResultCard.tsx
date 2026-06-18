@@ -37,6 +37,7 @@ export default function ExtrasResultCard() {
 
   const [isExporting, setIsExporting] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const t = useT();
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -311,10 +312,19 @@ export default function ExtrasResultCard() {
                             onClick={() => {
                               navigator.clipboard.writeText(option.text);
                               hapticLight();
+                              setCopiedIndex(i);
+                              setTimeout(() => setCopiedIndex(null), 2000);
                             }}
-                            className="text-white/40 hover:text-white transition-colors p-1"
+                            className="text-white/40 hover:text-white transition-colors p-1 flex items-center gap-1.5"
                           >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            {copiedIndex === i ? (
+                              <>
+                                <span className="text-[10px] text-green-400 font-bold uppercase">{t.copied}</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                              </>
+                            ) : (
+                              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                            )}
                           </button>
                         </div>
                         <p className="text-[15px] leading-relaxed font-medium text-white">{option.text}</p>
