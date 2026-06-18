@@ -280,7 +280,7 @@ export default function DuoStep() {
         transition={{ delay: 0.2 }}
       >
         <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
-          {t.duoP1Title} - {t.zodiacLabel}
+          {t.duoP1ZodiacTitle}
         </h3>
         <ZodiacScrollPicker
           selectedZodiac={duoPerson1.zodiac}
@@ -296,7 +296,7 @@ export default function DuoStep() {
         transition={{ delay: 0.3 }}
       >
         <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
-          {t.duoP2Title} - {t.zodiacLabel}
+          {t.duoP2ZodiacTitle}
         </h3>
         <ZodiacScrollPicker
           selectedZodiac={duoPerson2.zodiac}

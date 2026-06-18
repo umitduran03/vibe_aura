@@ -145,6 +145,8 @@ const STRINGS = {
     // DuoStep
     duoP1Title: "Person 1",
     duoP2Title: "Person 2",
+    duoP1ZodiacTitle: "PERSON 1 - ZODIAC",
+    duoP2ZodiacTitle: "PERSON 2 - ZODIAC",
     duoRelation: "Relationship Type",
     duoFlirt: "Flirt / Lovers",
     duoEx: "Ex-Lovers",
@@ -501,8 +503,10 @@ const STRINGS = {
     skip: "Geç, sonuçları göster",
 
     // DuoStep
-    duoP1Title: "1. Kişi",
-    duoP2Title: "2. Kişi",
+    duoP1Title: "1. KİŞİ",
+    duoP2Title: "2. KİŞİ",
+    duoP1ZodiacTitle: "1. KİŞİNİN BURCU",
+    duoP2ZodiacTitle: "2. KİŞİNİN BURCU",
     duoRelation: "İlişki Türü",
     duoFlirt: "Flört / Sevgili",
     duoEx: "Eski Sevgili",
