@@ -138,14 +138,8 @@ async function generateWithGeminiFallback(params: {
       lastError = err;
       const code = err?.status || err?.code || err?.message || "";
       console.warn(`[Gemini] ✗ ${model} başarısız (${code}), sıradaki deneniyor...`);
-      if (String(code).includes("503") || String(code).includes("429") || 
-          String(code).includes("UNAVAILABLE") || String(code).includes("RESOURCE_EXHAUSTED") ||
-          String(code).includes("500") || String(code).includes("INTERNAL") ||
-          String(err?.message).includes("high demand") || String(err?.message).includes("overloaded") ||
-          String(err?.message).includes("timeout") || String(err?.message).includes("TIMEOUT")) {
-        continue;
-      }
-      throw err;
+      // Bütün hatalarda bir sonraki Gemini modelini dene
+      continue;
     }
   }
   throw lastError || new Error("All Gemini models are currently busy.");
@@ -161,13 +155,19 @@ async function generateWithGroqFallback(params: {
   const messages = formatOpenAIMessages(params, isVision);
   const model = isVision ? "llama-3.2-90b-vision-preview" : "llama-3.3-70b-versatile";
   
-  const completion = await groq.chat.completions.create({
+  const options: any = {
     model,
     messages,
     temperature: 0.9,
     max_tokens: 2048,
-    response_format: { type: "json_object" },
-  });
+  };
+  
+  // Groq Vision modelleri json_object formatını desteklemez, sadece Text modellerinde kullanıyoruz
+  if (!isVision) {
+    options.response_format = { type: "json_object" };
+  }
+
+  const completion = await groq.chat.completions.create(options);
 
   return { text: completion.choices?.[0]?.message?.content || "" };
 }
@@ -190,7 +190,8 @@ async function generateWithOpenRouterFallback(params: {
         messages,
         temperature: 0.9,
         max_tokens: 2048,
-        response_format: { type: "json_object" },
+        // Ücretsiz OpenRouter modellerinin hepsi strict JSON formatını desteklemediği için bunu kaldırıyoruz.
+        // Zaten System Prompt'ta sadece JSON döndürmesi talimatı verildi.
       });
       return { text: completion.choices?.[0]?.message?.content || "" };
     } catch (err: any) {
