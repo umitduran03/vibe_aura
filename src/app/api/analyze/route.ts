@@ -668,10 +668,14 @@ User Details:
 - Extra Note (Vibe Question): ${magicText || "None"}
 - Analysis Type: ${(scenarioPromptSuffix as any)[soloScenario || "general"] || scenarioPromptSuffix.general}
 
-Based on these details (and the attached photo if any), ${langInstruction} Your output must be purely JSON and strictly follow this exact structure:
+Based on these details (and the attached photo if any), ${langInstruction} 
+
+CRITICAL SCORING RULE: The aura_score MUST NOT default to 85 or 90. You MUST use the full 1-100 spectrum based on their true vibe! Give terrible/toxic vibes 10-40, basic/mid vibes 40-70, and truly elite vibes 70-100. Be extremely realistic and varied!
+
+Your output must be purely JSON and strictly follow this exact structure:
 {
   "aura_name": "A sassy, savage, Gen-Z title for their aura — MUST be in the correct language",
-  "aura_score": 85,
+  "aura_score": 62,
   "analysis_text": "Your aura is... (3-4 relentless, hilarious, slang-filled sentences that feel eerily accurate. Roast the photo if it exists. Reference real behaviors, not generic fluff.)",
   "toxicComment": "A devastating one-liner savage roast / ultimate call-out that hits differently.",
   "traits": ["${locale === 'tr' ? 'A\u015f\u0131r\u0131 D\u00fc\u015f\u00fcnen' : 'Overthinker'}", "${locale === 'tr' ? 'Kronik \u00c7evrimi\u00e7i' : 'Chronically Online'}", "${locale === 'tr' ? 'Delulu' : 'Delulu'}"],
@@ -690,6 +694,8 @@ User Details:
 
 Based on these details (and the attached photo if any), ${langInstruction}
 
+CRITICAL SCORING RULE: The aura_score MUST NOT default to 85 or 90. You MUST use the full 1-100 spectrum based on their true vibe! Give terrible/toxic vibes 10-40, basic/mid vibes 40-70, and truly elite vibes 70-100. Be extremely realistic and varied!
+
 CRITICAL TEASER INSTRUCTIONS:
 1. RATIO RULE: The visible (unblurred) text MUST NOT exceed 20-30% of the total analysis. The remaining 70-80% MUST be completely enclosed inside <blur> and </blur> tags. Do not write long satisfying paragraphs.
 2. SAVAGE & ZEIGARNIK INTRO: Start by stroking their ego or hitting them with a painfully accurate observation. Then, EXACTLY right before revealing the most brutal criticism, the actual reason behind their behavior, or the core truth, abruptly cut off the sentence and start the <blur>. Example: 'Behind that cool, unbothered exterior, the real psychological reason for your pathetic vibe is... <blur>...'
@@ -698,7 +704,7 @@ Create an extreme Zeigarnik effect (FOMO/incompleteness).
 Your output must be purely JSON and strictly follow this exact structure:
 {
   "aura_name": "A sassy, savage, Gen-Z title for their aura — MUST be in the correct language",
-  "aura_score": 85,
+  "aura_score": 38,
   "analysis_text": "Savage 1-2 sentence intro cutting off at the climax... <blur>The rest of the relentless, hilarious, slang-filled paragraph that roasts the user...</blur>",
   "toxicComment": "A one-liner savage roast / ultimate call-out.",
   "traits": ["${locale === 'tr' ? 'A\u015f\u0131r\u0131 D\u00fc\u015f\u00fcnen' : 'Overthinker'}", "${locale === 'tr' ? 'Kronik \u00c7evrimi\u00e7i' : 'Chronically Online'}", "${locale === 'tr' ? 'Delulu' : 'Delulu'}"],
