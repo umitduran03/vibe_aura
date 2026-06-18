@@ -670,7 +670,7 @@ User Details:
 
 Based on these details (and the attached photo if any), ${langInstruction} 
 
-CRITICAL SCORING RULE: The aura_score MUST NOT default to 85. You are ALLOWED and ENCOURAGED to give extreme, absurd, and negative scores for dramatic effect! If they have absolutely terrible/toxic vibes, give them negative scores (e.g. -10, -100, or even -999). If they are basic/mid, give 10-50. If they are elite, give 70-100. For absolutely flawless god-tier vibes, you can give crazy high scores like 999 or 1000. BE HILARIOUS AND UNPREDICTABLE WITH THE SCORES!
+CRITICAL SCORING RULE: The aura_score MUST NOT default to 85. 90% of the time, give a highly realistic and wildly varied score between 1 and 100 (e.g. 12, 47, 63, 88). ONLY if the vibe is RARELY and EXTREMELY terrible/toxic, you are allowed to give negative scores (like -100 or -999). ONLY if the vibe is RARELY and FLAWLESSLY god-tier, you can give 999. Use extreme scores sparingly as a rare Easter egg!
 
 Your output must be purely JSON and strictly follow this exact structure:
 {
@@ -694,7 +694,7 @@ User Details:
 
 Based on these details (and the attached photo if any), ${langInstruction}
 
-CRITICAL SCORING RULE: The aura_score MUST NOT default to 85. You are ALLOWED and ENCOURAGED to give extreme, absurd, and negative scores for dramatic effect! If they have absolutely terrible/toxic vibes, give them negative scores (e.g. -10, -100, or even -999). If they are basic/mid, give 10-50. If they are elite, give 70-100. For absolutely flawless god-tier vibes, you can give crazy high scores like 999 or 1000. BE HILARIOUS AND UNPREDICTABLE WITH THE SCORES!
+CRITICAL SCORING RULE: The aura_score MUST NOT default to 85. 90% of the time, give a highly realistic and wildly varied score between 1 and 100 (e.g. 12, 47, 63, 88). ONLY if the vibe is RARELY and EXTREMELY terrible/toxic, you are allowed to give negative scores (like -100 or -999). ONLY if the vibe is RARELY and FLAWLESSLY god-tier, you can give 999. Use extreme scores sparingly as a rare Easter egg!
 
 CRITICAL TEASER INSTRUCTIONS:
 1. RATIO RULE: The visible (unblurred) text MUST NOT exceed 20-30% of the total analysis. The remaining 70-80% MUST be completely enclosed inside <blur> and </blur> tags. Do not write long satisfying paragraphs.
