@@ -16,7 +16,7 @@ const STRINGS = {
     modeTitle: "How should we analyze? ✨",
     modeSolo: "Solo",
     modeSoloSub: "Discover your vibe",
-    modeDuo: "Duo Match",
+    modeDuo: "Duo",
     modeDuoSub: "Decode your chemistry",
 
     // PremiumExtras
@@ -47,7 +47,7 @@ const STRINGS = {
     analyzingFact5: "Detecting main character energy levels... stand by 🎬",
 
     // PhotoUpload
-    photoTitle: "Add a Photo",
+    photoTitle: "Add Photo",
     photoSubtitle: "Optional but gives much better results",
     photoTap: "Tap to upload a photo",
     photoHint: "JPG, PNG, HEIC · Max 10 MB",
@@ -377,9 +377,9 @@ const STRINGS = {
   tr: {
     // ModeSelector
     modeTitle: "Nasıl analiz edelim? ✨",
-    modeSolo: "Solo",
+    modeSolo: "Bireysel",
     modeSoloSub: "Kendi vibe'ını keşfet",
-    modeDuo: "İkili Eşleşme",
+    modeDuo: "İkili",
     modeDuoSub: "Kimyanızı çöz",
 
     // PremiumExtras
@@ -398,7 +398,7 @@ const STRINGS = {
     dailyPreparingShare: "Paylaşım hazırlanıyor... ✨",
     dailyMissingZodiac: "Burcunu bilmeden günlük vibe'ını okuyamam. Lütfen önce Ayarlar'dan burcunu gir. ✦",
     dailySetZodiac: "Burcunu Ayarla",
-    dailyError: "Hava biraz kapalı, vibe'ın okunmadı. Biraz sonra tekrar dene.",
+    dailyError: "Hava biraz kapalı, vibe'ın okunamadı. Biraz sonra tekrar dene.",
 
     // AnalyzingScreen
     analyzingTitle: "Enerjin okunuyor...",
@@ -481,7 +481,7 @@ const STRINGS = {
     onboardingBannerStep2Title: "İlgimi çekenler...",
     onboardingBannerGuys: "Erkekler 🚩",
     onboardingBannerGirls: "Kadınlar ☕",
-    onboardingBannerEveryone: "Farketmez 🍿",
+    onboardingBannerEveryone: "Fark etmez 🍿",
 
     // AnalyzingScreen
     analyzingToxicEx: ["TOKSİSİTE TARANIYOR...", "HATALAR İNCELENİYOR...", "SEÇİMLER YARGILANIYOR...", "KIRMIZI BAYRAKLAR ARANIYOR...", "GERÇEKLİK KONTROLÜ HAZIRLANIYOR..."],
@@ -616,11 +616,11 @@ const STRINGS = {
     consentPoint2: "Fotoğraflarını asla saklamaz veya satmayız",
     consentPoint3: "Yapay zeka sonuçları hatalı veya kurgusal olabilir",
     consentPoint4: "Dijital satın alımların iadesi yoktur",
-    consentTerms: "Kullanım Şartları",
+    consentTerms: "Kullanım Koşulları",
     consentPrivacy: "Gizlilik Politikası",
     consentAcceptBtn: "Kabul Et ve Devam Et",
-    consentCheckbox: "Kullanım Şartları'nı ve Gizlilik Politikası'nı kabul ediyorum.",
-    consentSubtext: "Butonuna tıklayarak Kullanım Şartları ve Gizlilik Politikamızı okuduğunu ve kabul ettiğini onaylarsın.",
+    consentCheckbox: "Kullanım Koşullarını ve Gizlilik Politikasını kabul ediyorum.",
+    consentSubtext: "Devam ederek Kullanım Koşulları ve Gizlilik Politikamızı okuduğunu ve kabul ettiğini onaylarsın.",
 
     // VibeDictionaryClient
     dictionarySearchPlaceholder: "Rizz, ghosting, akrep falan ara...",
@@ -642,7 +642,7 @@ const STRINGS = {
 
     // StreakInfoModal
     streakInfoTitle: "Aura Rütbesi Gelişimi",
-    streakInfoDesc: "Her gün vibe'ını kontrol ederek serini büyüt. Serin büyüdükçe rütben de yükselir. Bir gün bile atlarsın, NPC statüsüne geri dönersin!",
+    streakInfoDesc: "Her gün vibe'ını kontrol ederek serini büyüt. Serin büyüdükçe rütben de yükselir. Bir gün bile atlarsan, NPC statüsüne geri dönersin!",
     streakInfoCurrentStreak: "Mevcut Seri",
     streakInfoDay: "Gün",
     streakInfoDays: "Gün",
@@ -699,15 +699,15 @@ const STRINGS = {
     // NotificationPrompt
     notifTitle: "Dijital Dedikodu",
     notifDesc: "Algoritma sana mesaj atacak! Bazen vibe kontrolü, bazen acımasız roast. Red flag'larını ve vibe sızıntılarını duymaya hazır mısın?",
-    notifDecline: "Hayır makk, korkuyorum",
+    notifDecline: "Yok kalsın, korkuyorum",
     notifAllow: "Hazırım, gel! 🤙",
 
     // History page
     historyHome: "Ana Sayfa",
     historyTitle: "GEÇMİŞ VİBELAR",
-    historyTtl: "Vibeler evrilir. Geçmiş analizlerin dijital boşluktan her 48 saatte bir otomatik siliniyor.",
+    historyTtl: "Vibeler evrilir. Geçmiş analizlerin her 48 saatte bir kalıcı olarak siliniyor.",
     historyErrorTitle: "Bağlantı Hatası",
-    historyErrorDesc: "Geçmiş vibelerin şu an seni hayalet gibi geçiyor, internet bağlantını kontrol et bestie.",
+    historyErrorDesc: "Geçmiş vibelerin şu an seni ghostluyor, internet bağlantını kontrol et bestie.",
     historyEmptyTitle: "Temiz Bir Sayfa",
     historyEmptyDesc: "Henüz hiç vibe analizi yapmadın. Roast'lanmaya hazır mısın bestie?",
     historyEmptyCta: "Vibe'ımı Analiz Et",
