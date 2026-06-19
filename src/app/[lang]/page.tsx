@@ -56,6 +56,7 @@ export default function Home() {
   const duoRelationType = useAppStore((s) => s.duoRelationType);
   const updateDuoPerson1 = useAppStore((s) => s.updateDuoPerson1);
   const updateDuoPerson2 = useAppStore((s) => s.updateDuoPerson2);
+  const duoMagicText = useAppStore((s) => s.duoMagicText);
   
   const setAuraResult = useAppStore((s) => s.setAuraResult);
   const setDuoResult = useAppStore((s) => s.setDuoResult);
