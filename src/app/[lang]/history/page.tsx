@@ -3,9 +3,10 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { ChevronLeft, Sparkles, AlertCircle, Calendar, ChevronDown } from "lucide-react";
+import { ChevronLeft, Sparkles, AlertCircle, Calendar, ChevronDown, Share2, Loader2 } from "lucide-react";
 import { getAuraHistory } from "@/lib/services";
-import { hapticLight } from "@/lib/haptics";
+import { hapticLight, hapticMedium } from "@/lib/haptics";
+import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { useT } from "@/hooks/useT";
 import { useAppStore } from "@/store/useAppStore";
 
@@ -23,6 +24,74 @@ export default function HistoryPage() {
   const [hasMore, setHasMore] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const observerTarget = useRef<HTMLDivElement>(null);
+
+  // Share states
+  const [sharingId, setSharingId] = useState<string | null>(null);
+  const [sharingItem, setSharingItem] = useState<any>(null);
+  const shareRef = useRef<HTMLDivElement>(null);
+
+  const downloadBlob = (blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
+  const handleShare = async (item: any) => {
+    if (sharingId) return;
+    
+    hapticMedium();
+    setSharingId(item.id);
+    setSharingItem(item);
+
+    // Give React time to render the offscreen component
+    await new Promise(r => setTimeout(r, 150));
+
+    try {
+      if (!shareRef.current) return;
+      
+      const filter = (node: HTMLElement) => {
+        const exclusionClasses = ['google-translate', 'skiptranslate'];
+        return !exclusionClasses.some(cls => node.classList?.contains?.(cls));
+      };
+
+      const htmlToImage = await import("html-to-image");
+      const blob = await htmlToImage.toBlob(shareRef.current, {
+        backgroundColor: "#050510",
+        pixelRatio: 3,
+        filter: filter as any,
+      });
+
+      if (!blob) throw new Error("Canvas blob failed");
+
+      const file = new File([blob], "vibecheckr-history.png", { type: "image/png" });
+      const filename = `vibecheckr-history-${item.id}.png`;
+
+      if (navigator.share && navigator.canShare?.({ files: [file] })) {
+        try {
+          await navigator.share({
+            title: "VibeCheckr",
+            files: [file],
+          });
+        } catch (shareErr: any) {
+          if (shareErr?.name !== "AbortError") {
+            downloadBlob(blob, filename);
+          }
+        }
+      } else {
+        downloadBlob(blob, filename);
+      }
+    } catch (err) {
+      console.error("[Share] Export error:", err);
+    } finally {
+      setSharingId(null);
+      setSharingItem(null);
+    }
+  };
 
   const fetchHistory = async (isLoadMore = false) => {
     if (!userId) return;
@@ -104,6 +173,59 @@ export default function HistoryPage() {
       {/* Decorative Blur */}
       <div className="absolute top-[-10%] right-[-20%] w-64 h-64 rounded-full bg-accent-primary/20 blur-[100px] pointer-events-none" />
       <div className="absolute bottom-[-10%] left-[-20%] w-80 h-80 rounded-full bg-accent-secondary/15 blur-[120px] pointer-events-none" />
+
+      {/* Off-screen Share Container */}
+      <div className="fixed top-0 left-[-9999px] z-[-1] pointer-events-none">
+        {sharingItem && (
+          <div 
+            ref={shareRef}
+            className="relative p-8 overflow-hidden rounded-[2rem] border border-white/10 w-[420px]"
+            style={{
+              background: `linear-gradient(145deg, rgba(28,28,34,0.95) 0%, rgba(12,12,18,1) 100%)`
+            }}
+          >
+            <div className="absolute -top-14 -right-14 w-40 h-40 rounded-full blur-[60px] opacity-30" style={{ backgroundColor: sharingItem.color || "#888" }} />
+            <div className="absolute -bottom-8 -left-8 w-28 h-28 rounded-full blur-[50px] opacity-10" style={{ backgroundColor: sharingItem.color || "#c084fc" }} />
+
+            <div className="relative z-10 flex justify-between items-start mb-6">
+              <div className="flex flex-col flex-1 pr-3">
+                <span className="text-[12px] font-semibold text-white/40 uppercase tracking-widest mb-2 flex items-center gap-1.5">
+                  <Calendar className="w-3.5 h-3.5" />
+                  {formatDate(sharingItem.createdAt)}
+                </span>
+                <h3 className="text-2xl font-bold leading-tight flex items-center gap-2">
+                  <span>{sharingItem.title || (sharingItem.type === "extras" ? t.historyExtrasLabel : t.historyNamelessVibe)}</span>
+                </h3>
+              </div>
+              {sharingItem.score !== undefined && sharingItem.score !== null && (
+                <div className="text-[40px] font-black tabular-nums tracking-tighter leading-none drop-shadow-lg" style={{ color: sharingItem.color }}>
+                  {sharingItem.score}
+                </div>
+              )}
+            </div>
+
+            <div className="relative z-10 bg-black/40 p-6 rounded-2xl border border-white/5">
+              <div className="text-[16px] font-medium text-white/90 leading-relaxed italic whitespace-pre-wrap">
+                {sharingItem.comment || sharingItem.vibe_check || sharingItem.toxicComment || t.historyAnalysisComplete}
+              </div>
+              {sharingItem.type === 'extras' && sharingItem.verdict && (
+                <div className="mt-6 pt-6 border-t border-white/10">
+                  <span className="block text-[12px] font-bold uppercase tracking-widest text-white/40 mb-1.5">{t.historyVerdict}</span>
+                  <span className="text-[16px] font-bold text-white/90">{sharingItem.verdict}</span>
+                </div>
+              )}
+            </div>
+
+            <div className="relative z-10 mt-8 flex items-center justify-between opacity-50">
+              <div className="flex items-center gap-1.5">
+                <WaveLogoIcon size={16} />
+                <span className="text-[12px] font-bold tracking-widest uppercase">VibeCheckr</span>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest border border-white/20 px-2 py-1 rounded-full">GEÇMİŞ VİBE</span>
+            </div>
+          </div>
+        )}
+      </div>
 
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-8 pb-4 z-10 sticky top-0 bg-bg-primary/80 backdrop-blur-xl border-b border-white/5">
@@ -260,16 +382,27 @@ export default function HistoryPage() {
                         )}
                       </AnimatePresence>
 
-                      <motion.div layout="position" className="mt-3 flex items-center justify-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
-                        <span className="text-[10px] uppercase tracking-widest font-semibold">
-                          {isExpanded ? t.historyShowLess : t.historyReadMore}
-                        </span>
-                        <motion.div
-                          animate={{ rotate: isExpanded ? 180 : 0 }}
-                          transition={{ duration: 0.3 }}
+                      <motion.div layout="position" className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between">
+                        <div className="flex items-center gap-1 opacity-50 group-hover:opacity-100 transition-opacity">
+                          <span className="text-[10px] uppercase tracking-widest font-semibold">
+                            {isExpanded ? t.historyShowLess : t.historyReadMore}
+                          </span>
+                          <motion.div
+                            animate={{ rotate: isExpanded ? 180 : 0 }}
+                            transition={{ duration: 0.3 }}
+                          >
+                            <ChevronDown className="w-3 h-3" />
+                          </motion.div>
+                        </div>
+
+                        <button 
+                          onClick={(e) => { e.stopPropagation(); handleShare(item); }}
+                          disabled={sharingId === item.id}
+                          className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-full transition-colors text-white/70 hover:text-white"
                         >
-                          <ChevronDown className="w-3 h-3" />
-                        </motion.div>
+                          {sharingId === item.id ? <Loader2 className="w-3 h-3 animate-spin text-white/70" /> : <Share2 className="w-3 h-3" />}
+                          <span className="text-[10px] font-bold tracking-widest uppercase">{t.resultShare || 'PAYLAŞ'}</span>
+                        </button>
                       </motion.div>
                     </motion.div>
                   </div>
