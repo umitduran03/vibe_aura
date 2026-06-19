@@ -15,6 +15,6 @@ export default function robots(): MetadataRoute.Robots {
         allow: ["/", "/llms.txt"],
       },
     ],
-    sitemap: "https://thevibecheckr.vercel.app/sitemap.xml",
+    sitemap: "https://thevibecheckr.com/sitemap.xml",
   };
 }

@@ -14,7 +14,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://thevibecheckr.vercel.app"),
+  metadataBase: new URL("https://thevibecheckr.com"),
   title: {
     default: "VibeCheckr — AI Vibe Check, Photo Analysis, Roast & Personality Test",
     template: "%s | VibeCheckr",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     "energy check AI", "daily vibe AI",
   ],
   alternates: {
-    canonical: "https://thevibecheckr.vercel.app",
+    canonical: "https://thevibecheckr.com",
   },
   robots: {
     index: true,
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VibeCheckr — AI Vibe Check, Photo Analysis, Roast & Personality Test",
     description: "Upload your selfie, get brutally honest AI personality analysis & savage roasts. Zodiac compatibility, duo chemistry checks, and viral shareable result cards. Free & instant!",
-    url: "https://thevibecheckr.vercel.app",
+    url: "https://thevibecheckr.com",
     siteName: "VibeCheckr",
     type: "website",
     locale: "en_US",
@@ -122,7 +122,7 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebApplication",
               name: "VibeCheckr",
-              url: "https://thevibecheckr.vercel.app",
+              url: "https://thevibecheckr.com",
               description: "Free AI-powered vibe check & photo roast app. Upload your selfie, get brutally honest personality analysis, savage roasts, and zodiac-based compatibility checks.",
               applicationCategory: "EntertainmentApplication",
               operatingSystem: "Web, Android, iOS",
@@ -142,7 +142,7 @@ export default function RootLayout({
               creator: {
                 "@type": "Organization",
                 name: "VibeCheckr",
-                url: "https://thevibecheckr.vercel.app",
+                url: "https://thevibecheckr.com",
               },
               featureList: [
                 "AI Photo Personality Analysis",
@@ -161,7 +161,7 @@ export default function RootLayout({
                 "Mood Reset",
                 "Shareable Result Cards",
               ],
-              screenshot: "https://thevibecheckr.vercel.app/opengraph-image.png",
+              screenshot: "https://thevibecheckr.com/opengraph-image.png",
             }),
           }}
         />

@@ -14,7 +14,7 @@ const firebaseConfig = {
   //   → localhost'ta cross-origin popup hatası önlenir.
   authDomain:
     process.env.NODE_ENV === "production"
-      ? "thevibecheckr.vercel.app"
+      ? "thevibecheckr.com"
       : "vibecheckr-9478f.firebaseapp.com",
   projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,

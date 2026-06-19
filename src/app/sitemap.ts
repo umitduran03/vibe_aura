@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
 
 const locales = ["en", "tr"];
-const baseUrl = "https://thevibecheckr.vercel.app";
+const baseUrl = "https://thevibecheckr.com";
 
 const staticRoutes = [
   "",

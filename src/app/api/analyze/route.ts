@@ -267,7 +267,7 @@ async function generateWithWaterfall(params: {
 export async function POST(req: NextRequest) {
   const allowedOrigins = [
     "https://vibecheckr.com",
-    "https://thevibecheckr.vercel.app",
+    "https://thevibecheckr.com",
     "http://localhost:3000"
   ];
   const origin = req.headers.get("origin");
