@@ -219,7 +219,7 @@ export default function HistoryPage() {
             <div className="relative z-10 mt-8 flex items-center justify-between opacity-50">
               <div className="flex items-center gap-1.5">
                 <WaveLogoIcon size={16} />
-                <span className="text-[12px] font-bold tracking-widest uppercase">VibeCheckr</span>
+                <span className="text-[12px] font-bold tracking-widest uppercase">VibeCheckr.</span>
               </div>
               <span className="text-[10px] uppercase tracking-widest border border-white/20 px-2 py-1 rounded-full">GEÇMİŞ VİBE</span>
             </div>
