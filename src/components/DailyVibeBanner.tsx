@@ -139,6 +139,9 @@ export default function DailyVibeBanner() {
     if (!bannerRef.current || !vibe) return;
     setIsSharing(true);
 
+    // Give React time to render the watermark before capturing
+    await new Promise(r => setTimeout(r, 150));
+
     try {
       const filter = (node: HTMLElement) => {
         const exclusionClasses = ['google-translate', 'skiptranslate'];
@@ -299,12 +302,13 @@ export default function DailyVibeBanner() {
         <AnimatePresence>
           {isSharing && (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute bottom-[-6px] right-[-6px] opacity-30 text-[8px] font-bold tracking-widest uppercase flex items-center gap-1 z-20"
+              initial={{ opacity: 0, height: 0, marginTop: 0 }}
+              animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
+              exit={{ opacity: 0, height: 0, marginTop: 0 }}
+              className="flex items-center justify-end gap-1.5 select-none pt-3 border-t border-white/5 overflow-hidden"
             >
-              VibeCheckr. <Sparkles className="w-2 h-2" />
+              <WaveLogoIcon size={12} className="opacity-40" />
+              <span className="text-[10px] font-bold tracking-widest uppercase text-white/30">VibeCheckr.</span>
             </motion.div>
           )}
         </AnimatePresence>
