@@ -33,6 +33,7 @@ export default function AnalyzingScreen() {
         case "ex": return t.analyzingDuoEx;
         case "platonic": return t.analyzingDuoPlatonic;
         case "bff": return t.analyzingDuoBff;
+        case "battle": return t.analyzingDuoBattle;
       }
     }
 

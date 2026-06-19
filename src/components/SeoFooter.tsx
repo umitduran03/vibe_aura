@@ -24,6 +24,7 @@ const strings = {
     moodReset: "Mood Reset",
     deluluCheck: "Delulu Check",
     replyGuru: "The Reply Guru",
+    auraBattle: "Aura Battle",
   },
   tr: {
     tagline: "İnternetin en acımasız dürüst yapay zeka algoritması. Vibe'larını tara, karma sinyalleri çöz ve çok ihtiyacın olan gerçeklik kontrolünü al.",
@@ -43,6 +44,7 @@ const strings = {
     moodReset: "Mod Sıfırlama",
     deluluCheck: "Delulu Check",
     replyGuru: "Mesaj Gurusu",
+    auraBattle: "Vibe Savaşları",
   },
 };
 
@@ -121,6 +123,14 @@ export default function SeoFooter() {
                   <ArrowRight className="w-3 h-3 text-indigo-400" />
                 </span>
                 {s.replyGuru}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/aura-battle`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  <ArrowRight className="w-3 h-3 text-orange-400" />
+                </span>
+                {s.auraBattle}
               </Link>
             </li>
           </ul>

@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Camera, X, Loader2, HeartOff, Flame, Eye, Users } from "lucide-react";
+import { Camera, X, Loader2, HeartOff, Flame, Eye, Users, Zap } from "lucide-react";
 import { compressAndEncodeImage } from "@/lib/services";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { useAppStore, type DuoRelationType } from "@/store/useAppStore";
@@ -14,6 +14,7 @@ const DUO_RELATION_OPTIONS: { id: DuoRelationType; emoji: React.ReactNode; color
   { id: "ex", emoji: <HeartOff className="w-4 h-4" />, color: "#ef4444" },
   { id: "platonic", emoji: <Eye className="w-4 h-4" />, color: "#3b82f6" },
   { id: "bff", emoji: <Users className="w-4 h-4" />, color: "#8b5cf6" },
+  { id: "battle", emoji: <Zap className="w-4 h-4" />, color: "#f59e0b" },
 ];
 
 /* Mini photo uploader for duo mode */
@@ -241,6 +242,7 @@ export default function DuoStep() {
       case "ex": return t.duoEx;
       case "platonic": return t.duoPlatonic;
       case "bff": return t.duoBff;
+      case "battle": return t.duoBattle;
     }
   };
 
@@ -313,15 +315,17 @@ export default function DuoStep() {
         <h3 className="text-center text-base font-semibold text-foreground mb-3">
           {t.duoRelation} 💫
         </h3>
-        <div className="flex gap-2">
+        <div className="flex flex-wrap justify-center gap-2">
           {DUO_RELATION_OPTIONS.map((opt) => (
             <motion.button
               key={opt.id}
               whileTap={{ scale: 0.95 }}
               onClick={() => { hapticLight(); setDuoRelationType(opt.id); }}
-              className={`flex-1 flex flex-col items-center gap-1.5 py-3 rounded-2xl transition-all duration-200 cursor-pointer border ${
+              className={`flex-[1_1_30%] min-w-[80px] max-w-[120px] flex flex-col items-center gap-1.5 py-3 rounded-2xl transition-all duration-200 cursor-pointer border ${
                 duoRelationType === opt.id
                   ? "bg-white/10 border-white/20 shadow-lg"
+                  : opt.id === "battle"
+                  ? "bg-red-500/5 border-red-500/30 hover:bg-red-500/10 shadow-[0_0_10px_rgba(239,68,68,0.1)]"
                   : "bg-white/5 border-white/5 hover:bg-white/8"
               }`}
               style={duoRelationType === opt.id ? { boxShadow: `0 0 20px ${opt.color}20` } : {}}

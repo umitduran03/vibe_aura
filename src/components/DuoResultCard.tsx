@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { m, AnimatePresence } from "framer-motion";
-import { Share2, RotateCcw, Sparkles, AlertTriangle, Loader2, Download, Lock } from "lucide-react";
+import { Share2, RotateCcw, Sparkles, AlertTriangle, Loader2, Download, Lock, Trophy } from "lucide-react";
 import { ZODIAC_SIGNS } from "@/lib/constants";
 import { resultCardVariants, resultItemVariants } from "@/lib/animations";
 import GlassButton from "@/components/ui/GlassButton";
@@ -19,6 +19,7 @@ import { auth } from "@/lib/firebase";
 export default function DuoResultCard() {
   const resetWizard = useAppStore((s) => s.resetWizard);
   const duoResult = useAppStore((s) => s.duoResult);
+  const duoRelationType = useAppStore((s) => s.duoRelationType);
   const person1 = useAppStore((s) => s.duoPerson1);
   const person2 = useAppStore((s) => s.duoPerson2);
   const setTokenModalOpen = useAppStore((s) => s.setTokenModalOpen);
@@ -217,7 +218,7 @@ export default function DuoResultCard() {
       <m.div variants={resultItemVariants} className="pt-8 px-5 flex items-center justify-between">
         <div />{/* Spacer for centering */}
         <p className="text-center text-xs font-medium text-text-secondary/50 uppercase tracking-widest mb-2">
-          <span>{t.resultDuoSoulmate}</span>
+          <span>{duoRelationType === "battle" ? t.duoBattle.replace("⚔️", "").trim() : t.resultDuoSoulmate}</span>
         </p>
         <div className="mb-2">
           <SettingsDrawer />
@@ -333,15 +334,26 @@ export default function DuoResultCard() {
 
           {/* Red Flag */}
           <div className="rounded-2xl p-4 mb-4 flex items-start gap-3"
-            style={{
-              backgroundColor: "rgba(239,68,68,0.08)",
-              border: "1px solid rgba(239,68,68,0.15)",
-            }}
+            style={
+              duoRelationType === "battle"
+                ? {
+                    backgroundColor: "rgba(245,158,11,0.08)",
+                    border: "1px solid rgba(245,158,11,0.15)",
+                  }
+                : {
+                    backgroundColor: "rgba(239,68,68,0.08)",
+                    border: "1px solid rgba(239,68,68,0.15)",
+                  }
+            }
           >
-            <AlertTriangle className="h-5 w-5 shrink-0 mt-0.5" style={{ color: "#ef4444" }} />
+            {duoRelationType === "battle" ? (
+              <span className="text-[20px] shrink-0 mt-0.5 leading-none">💀</span>
+            ) : (
+              <AlertTriangle className="h-5 w-5 shrink-0 mt-0.5" style={{ color: "#ef4444" }} />
+            )}
             <div>
-              <p className="text-[12px] font-bold uppercase tracking-wider mb-1" style={{ color: "#ef4444" }}>
-                <span translate="no">🚩</span> <span>{t.resultRedFlag}</span>
+              <p className="text-[12px] font-bold uppercase tracking-wider mb-1" style={{ color: duoRelationType === "battle" ? "#f59e0b" : "#ef4444" }}>
+                <span translate="no">{duoRelationType === "battle" ? "👎" : "🚩"}</span> <span>{duoRelationType === "battle" ? t.resultBattleVerdict : t.resultRedFlag}</span>
               </p>
               <p className="text-[14px] leading-relaxed font-medium" style={{ color: "#ebebf5" }}>
                 {renderTextWithBlurs(duoResult.redFlag)}

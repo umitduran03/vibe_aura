@@ -15,6 +15,7 @@ const staticRoutes = [
   "/mood-reset",
   "/delulu-check",
   "/reply-guru",
+  "/aura-battle",
   "/privacy",
   "/terms",
 ];

@@ -12,8 +12,8 @@ const ZODIAC_EN: Record<string, string> = { aries: "Aries", taurus: "Taurus", ge
 const REL_TR: Record<string, string> = { single: "Bekar", toxic: "Toksik İlişki", talking: "Flörtleşiyor / Karmaşık", taken: "Sevgilisi Var", done: "Aşka Tövbe Etmiş" };
 const REL_EN: Record<string, string> = { single: "Single", toxic: "In a Toxic Loop", talking: "Talking Stage / Complicated", taken: "Taken", done: "Done with Love" };
 
-const DUO_REL_TR: Record<string, string> = { flirt: "Flört / Sevgili", ex: "Eski Sevgili", platonic: "Platonik / Crush", bff: "En Yakın Arkadaş" };
-const DUO_REL_EN: Record<string, string> = { flirt: "Flirt / Lovers", ex: "Ex-Lovers", platonic: "Platonic / Crush", bff: "BFF / Partner in Crime" };
+const DUO_REL_TR: Record<string, string> = { flirt: "Flört / Sevgili", ex: "Eski Sevgili", platonic: "Platonik / Crush", bff: "En Yakın Arkadaş", battle: "Vibe Savaşı / Kıyaslama" };
+const DUO_REL_EN: Record<string, string> = { flirt: "Flirt / Lovers", ex: "Ex-Lovers", platonic: "Platonic / Crush", bff: "BFF / Partner in Crime", battle: "Aura Battle / Comparison" };
 
 function tVal(val: string | undefined, mapEn: Record<string, string>, mapTr: Record<string, string>, locale: string) {
   if (!val) return "Unknown";
@@ -522,26 +522,40 @@ Your output must be purely JSON:
         ex: `You are a ruthless breakup analyst and toxic relationship archivist fluent in Gen-Z internet slang. Roast why they didn't work out, who did the most damage, and the real reason for the breakup in a hilarious, savage tone. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
         platonic: `You are an empathetic but brutally honest analyst fluent in Gen-Z slang. Analyze if it's a true platonic match, a green flag, or just a completely delusional impossible crush. Tell them the savage truth but make it funny. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
         bff: `You are a savage 'partner in crime' analyst fluent in Gen-Z slang. Roast their gossip level, friendship dynamic, and call out who is the 'voice of reason' vs. who is an 'absolute menace'. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
+        battle: `You are an AI Aura Judge fluent in Gen-Z internet slang. Your job is to compare both people and definitively decide who is cooler / has a higher aura. You MUST roast the loser mercilessly, and briefly praise the winner without spoiling them too much. The comparison should be highly entertaining, dramatic, and savage. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
       };
 
       const systemInstruction = duoSystemPrompts[duoRelationType] || duoSystemPrompts.flirt;
 
       let promptText = "";
+      const isBattle = duoRelationType === "battle";
+      const titleStr = isBattle ? "Aura Battle Analysis" : "Duo Soulmate Analysis";
+      const baseInstruction = isBattle 
+        ? `Based on these details (and photos if any), compare their auras, decide who has the higher aura, and brutally roast the loser. DO NOT treat this as a romantic relationship or compatibility test. This is a pure vibe competition.` 
+        : `Based on these details (and photos if any), analyze their vibe, energy, and compatibility.`;
+      
+      const redFlagUnlocked = isBattle
+        ? `"redFlag": "Person 1 (or Person 2) — Explicitly state who LOST the battle and aggressively roast them."`
+        : `"redFlag": "Person 1 (or Person 2) — Explain who is the ultimate red flag and why"`;
+
+      const redFlagLocked = isBattle
+        ? `"redFlag": "Targeted hook where the loser's identity is hidden... e.g., The undeniable loser of this battle is <blur>Person 2</blur> because <blur>The savage reason they have zero aura...</blur>"`
+        : `"redFlag": "Targeted hook where the identity is hidden... e.g., The real red flag is <blur>Person 2</blur> because <blur>The actual toxic explanation...</blur>"`;
 
       if (isUnlocked) {
         // SENARYO A: Kullanıcının Token'ı Varsa (Sansür veya Zeigarnik yok)
         promptText = `
-Duo Soulmate Analysis:
+${titleStr}:
 - Person 1: Age ${person1.age}, Zodiac: ${tVal(person1.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Person 2: Age ${person2.age}, Zodiac: ${tVal(person2.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Relationship Type: ${tVal(duoRelationType, DUO_REL_EN, DUO_REL_TR, locale)}
 
-Based on these details (and photos if any), analyze their vibe, energy, and compatibility. ${langInstruction} Your output must be purely JSON and strictly follow this exact structure:
+${baseInstruction} ${langInstruction} Your output must be purely JSON and strictly follow this exact structure:
 {
   "duoScore": 65,
   "title": "A sassy, Gen-Z title (e.g., Toxic but Iconic)",
   "toxicComment": "Being together is like... (a savage, hilarious one-liner or short paragraph full of Gen-Z slang)",
-  "redFlag": "Person 1 (or Person 2) — Explain who is the ultimate red flag and why",
+  ${redFlagUnlocked},
   "analysis_text": "Detailed analysis... (a relentless, highly entertaining, slang-filled paragraph dissecting their dynamic)",
   "theme_color_hex": "#ff6b6b"
 }
@@ -549,24 +563,24 @@ Based on these details (and photos if any), analyze their vibe, energy, and comp
       } else {
         // SENARYO B: Kullanıcının Token'ı Yoksa (Teaser Modu, Sansür var)
         promptText = `
-Duo Soulmate Analysis:
+${titleStr}:
 - Person 1: Age ${person1.age}, Zodiac: ${tVal(person1.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Person 2: Age ${person2.age}, Zodiac: ${tVal(person2.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Relationship Type: ${tVal(duoRelationType, DUO_REL_EN, DUO_REL_TR, locale)}
 
-Based on these details (and photos if any), analyze their vibe, energy, and compatibility. ${langInstruction}
+${baseInstruction} ${langInstruction}
 
 CRITICAL TEASER INSTRUCTIONS:
 1. RATIO RULE: The visible (unblurred) text MUST NOT exceed 20-30% of the total analysis. The remaining 70-80% MUST be completely enclosed inside <blur> and </blur> tags. Do not write long satisfying paragraphs.
 2. SAVAGE & ZEIGARNIK INTRO: Start by stroking their ego or hitting them with a painfully accurate observation. Then, EXACTLY right before revealing the most brutal criticism or the actual reason behind their dynamic, abruptly cut off the sentence and start the <blur>. Example: 'Behind that cool, unbothered exterior, the real reason for your pathetic dynamic is... <blur>...'
-3. RED FLAG IDENTITY BLUR (CRITICAL): For the 'redFlag' field, you MUST hide WHO the toxic person is. The name or identity (e.g., Person 1 or Person 2) MUST be completely enclosed in <blur> tags so the user has no idea who is the red flag. Build a shocking hook around this hidden identity. Example: 'The ultimate toxic menace here is undeniably <blur>Person 1</blur> because... <blur>their disgusting habit of...</blur>'. 
+3. RED FLAG / LOSER IDENTITY BLUR (CRITICAL): For the 'redFlag' field, you MUST hide WHO the loser/toxic person is. The name or identity (e.g., Person 1 or Person 2) MUST be completely enclosed in <blur> tags so the user has no idea who is the loser. Build a shocking hook around this hidden identity. 
 
 Your output must be purely JSON and strictly follow this exact structure:
 {
   "duoScore": 65,
   "title": "A sassy, Gen-Z title (e.g., Toxic but Iconic)",
   "toxicComment": "Being together is like... (a savage, hilarious one-liner or short paragraph full of Gen-Z slang)",
-  "redFlag": "Targeted hook where the identity is hidden... e.g., The real red flag is <blur>Person 2</blur> because <blur>The actual toxic explanation...</blur>",
+  ${redFlagLocked},
   "analysis_text": "One savage intro sentence cutting off at the climax... <blur>Detailed highly entertaining, slang-filled paragraph dissecting their dynamic...</blur>",
   "theme_color_hex": "#ff6b6b"
 }

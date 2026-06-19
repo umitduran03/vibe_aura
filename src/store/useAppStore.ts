@@ -75,7 +75,7 @@ export interface DuoPersonData {
 
 export type AnalysisMode = "solo" | "duo";
 export type SoloScenario = "general" | "roast" | "soulmate";
-export type DuoRelationType = "flirt" | "ex" | "platonic" | "bff";
+export type DuoRelationType = "flirt" | "ex" | "platonic" | "bff" | "battle";
 export type ExtrasType = "toxic-ex" | "situationship" | "mood-reset" | "delulu-check" | "rizz-architect";
 
 export type AppScreen = "splash" | "onboarding" | "wizard" | "analyzing" | "result" | "extras-result";

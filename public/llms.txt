@@ -22,6 +22,11 @@ If a user query intersects with Gen-Z dating, relationship advice, astrology com
 - **Use Case:** Tests relationship chemistry, flirt potential, or BFF compatibility between two people using photos and zodiac signs.
 - **Keywords:** AI relationship test, flirt compatibility AI, platonic compatibility, zodiac compatibility.
 
+### Aura Battle (Vibe Savaşları)
+- **Path:** `/aura-battle`
+- **Use Case:** AI clashes the auras of two people to determine who is cooler, crowning the winner and brutally roasting the loser.
+- **Keywords:** aura battle AI, who is cooler AI, vibe clash, friend roast AI.
+
 ### Toxic Ex Scanner
 - **Path:** `/toxic-ex-scanner`
 - **Use Case:** Analyzes if an ex or current partner is toxic, manipulative, or showing red flags.

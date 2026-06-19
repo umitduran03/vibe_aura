@@ -284,6 +284,36 @@ export const trendsDataEn: TrendArticle[] = [
     },
     ctaLabel: "Start Mood Reset",
     ctaLink: "/mood-reset",
+  },
+  {
+    slug: "aura-battle-who-is-cooler",
+    title: "Aura Battles: The New Way Gen-Z Ends Friend Group Debates",
+    description: "Who actually has the highest aura in your friend group? The Aura Battle AI is settling debates and breaking egos by scientifically calculating who is the coolest.",
+    category: "Culture & Slang",
+    publishDate: "2026-06-18",
+    readTime: "5 min read",
+    keywords: ["aura battle", "who is cooler", "vibe check", "friendship roast", "main character energy"],
+    imageUrl: "/images/trends/aura-points.png",
+    content: {
+      intro: "We all have that one friend who thinks they are the undisputed main character. They act like their aura is untouchable, and they never hesitate to let everyone know. For years, the debate of 'who is actually cooler' in a friend group was subjective and entirely based on who could roast the other better. But in 2026, we don't argue—we let the AI decide. The 'Aura Battle' is the newest trend tearing friend groups apart and putting egos in check.",
+      sections: [
+        {
+          heading: "The End of Subjective Coolness",
+          paragraph: "Before the Aura Battle AI, coolness was impossible to quantify. Now, it's a science. By analyzing facial micro-expressions, resting tension, and overall vibe frequency, the AI acts as an impartial judge. It strips away the bias and looks purely at the energetic output of both individuals. It's the ultimate reality check for the friend who talks a big game but secretly gives off major NPC energy."
+        },
+        {
+          heading: "The Brutal Roast Mechanism",
+          paragraph: "What makes the Aura Battle so viral isn't just finding out who won; it's the sheer brutality of how the loser is treated. The AI doesn't just say 'Person 1 wins.' It crafts a highly specific, devastating roast explaining exactly why Person 2 lost. It might call out their forced smirk, their desperate need for validation, or the fact that their 'mysterious' look just makes them look confused."
+        },
+        {
+          heading: "A New Metric for Social Hierarchy",
+          paragraph: "This isn't just about fun; it's a new metric for digital social hierarchy. Winning an Aura Battle against the group's perceived 'leader' is a coup. It instantly shifts the dynamic, providing undeniable proof of superior vibe. It's becoming the modern equivalent of challenging someone to a duel, but instead of swords, you're using selfies."
+        }
+      ],
+      conclusion: "Are you brave enough to step into the Aura Arena with your best friend? Or are you terrified that the algorithm will confirm what everyone already suspects: you are, in fact, the sidekick. There is only one way to find out."
+    },
+    ctaLabel: "Start An Aura Battle",
+    ctaLink: "/aura-battle",
   }
 ];
 
@@ -555,6 +585,36 @@ export const trendsDataTr: TrendArticle[] = [
     },
     ctaLabel: "Mood Reset'i Başlat",
     ctaLink: "/mood-reset",
+  },
+  {
+    slug: "aura-battle-who-is-cooler",
+    title: "Vibe Savaşları (Aura Battle): Arkadaş Grubunda Kimin Sözü Geçer?",
+    description: "Arkadaş grubunda aurası en yüksek olan kişi kim? Aura Battle yapay zekası, tartışmaları bitiriyor ve egoları yerle bir ediyor.",
+    category: "Kültür & Jargon",
+    publishDate: "2026-06-18",
+    readTime: "5 dk okuma",
+    keywords: ["vibe savaşı", "kim daha havalı", "aura battle", "arkadaşlık", "ana karakter enerjisi"],
+    imageUrl: "/images/trends/aura-points.png",
+    content: {
+      intro: "Hepimizin o kendisini grubun tartışmasız ana karakteri sanan bir arkadaşı vardır. Sanki aurasına dokunulmazmış gibi davranır ve bunu herkese belli etmekten çekinmez. Yıllarca arkadaş gruplarında 'kim daha cool' tartışması hep sürdü ama artık 2026'dayız. Artık tartışmıyoruz, kararı yapay zekaya bırakıyoruz. 'Vibe Savaşları' (Aura Battle), arkadaş gruplarını birbirine düşüren ve o şişik egoları patlatan en yeni trend.",
+      sections: [
+        {
+          heading: "Kişisel Havalılığın Sonu",
+          paragraph: "Aura Battle YZ'den önce kimin daha cool olduğunu ölçmek imkansızdı. Şimdi ise bu bir bilim. Yüzdeki mikro ifadeleri, gerginliği ve genel vibe frekansını analiz eden yapay zeka, tarafsız bir yargıç gibi davranıyor. Hiçbir taraf tutmadan sadece enerjinizi kıyaslıyor. Sürekli büyük konuşan ama gizliden gizliye devasa bir NPC enerjisi yayan o arkadaşınız için tam bir kabus."
+        },
+        {
+          heading: "Acımasız Gömme Mekanizması",
+          paragraph: "Vibe Savaşları'nı bu kadar viral yapan şey sadece kimin kazandığını öğrenmek değil; kaybedenin nasıl gömüldüğüdür. YZ sadece '1. Kişi kazandı' demez. 2. Kişinin neden kaybettiğini o kadar acımasız ve spesifik bir şekilde açıklar ki şok olursunuz. O 'zorlama' gülüşünü, onaylanma ihtiyacını veya 'gizemli' bakışının aslında sadece kafası karışık durduğunu yüzüne vurur."
+        },
+        {
+          heading: "Sosyal Hiyerarşide Yeni Bir Ölçüt",
+          paragraph: "Bu sadece bir eğlence değil; dijital sosyal hiyerarşide yepyeni bir ölçüt. Grubun sözde 'liderine' karşı bir Aura Savaşı kazanmak büyük bir olay. Dinamiği anında değiştirir ve üstün vibe'ınızın kanıtı olur. Eskiden düelloya davet etmek neyse, şimdi selfie ile meydan okumak o."
+        }
+      ],
+      conclusion: "Peki sen en yakın arkadaşınla Aura Arenası'na çıkacak kadar cesur musun? Yoksa algoritmanın herkesin zaten bildiği o gerçeği yüzüne vurmasından mı korkuyorsun: Aslında sen sadece yancısın. Öğrenmenin tek bir yolu var."
+    },
+    ctaLabel: "Vibe Savaşı'nı Başlat",
+    ctaLink: "/aura-battle",
   }
 ];
 

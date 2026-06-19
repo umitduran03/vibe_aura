@@ -26,12 +26,22 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
 
 // ─── AI Notification Generator ───────────────────────────────────
 
-async function generateSpicyNotification(zodiac: string): Promise<{ title: string; body: string }> {
+async function generateSpicyNotification(zodiac: string, locale: string = "tr"): Promise<{ title: string; body: string }> {
+  const langInstruction = locale === "tr" 
+    ? "Write the notification ONLY in Turkish (Gen-Z internet slang)." 
+    : "Write the notification ONLY in English (Gen-Z internet slang).";
+
   const prompt = `
     You are a toxic, gossipy, brutally honest dark AI personality roaster named "VibeCheckr" targeting Gen-Z.
     Write a SHORT (max 2 sentences), ruthless, and curiosity-inducing "Red Flag / Digital Gossip" push notification for the zodiac sign below.
+    
+    CRITICAL THEME INSTRUCTIONS:
+    Include astrological events (like Mercury retrograde, full moons) or aura drops to bait them into opening the app.
+    IMPORTANT: DO NOT make definitive claims about other people's actions (e.g. do not say "Someone is stalking you"). Instead, use words like "might be", "could be", or "seems like" to avoid misleading notifications.
+    Examples of the vibe: "Merkür retrosu başladı, auran çok düşük hissediliyor, hemen bi' vibe kontrolü yap" or "Someone might be lowering your vibe score right now...".
+    
     The user will see this as a Push Notification on their phone, so they MUST feel compelled to CLICK it out of sheer curiosity or offense.
-    Use emojis generously! DO NOT use Turkish, respond ONLY in English.
+    Use emojis generously! ${langInstruction}
 
     Zodiac: ${zodiac}
 
@@ -164,7 +174,7 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { zodiac } = await req.json();
+    const { zodiac, locale } = await req.json();
 
     if (!zodiac || typeof zodiac !== "string") {
       return NextResponse.json(
@@ -174,7 +184,7 @@ export async function POST(req: NextRequest) {
     }
 
     // ─── Step 1: Generate spicy notification via AI ───────────────
-    const notification = await generateSpicyNotification(zodiac);
+    const notification = await generateSpicyNotification(zodiac, locale || "tr");
 
 
     // ─── Step 2: Fetch user's FCM tokens from Firestore ───────────
