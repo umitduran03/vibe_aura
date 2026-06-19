@@ -188,7 +188,7 @@ export default function Home() {
            DUO MODE
            ===================== */
         const { analyzeDuo, saveDuoSession } = await import("@/lib/services");
-        const result = await analyzeDuo(userId, duoPerson1, duoPerson2, duoRelationType, locale);
+        const result = await analyzeDuo(userId, duoPerson1, duoPerson2, duoRelationType, duoMagicText, locale);
         
         // Bellekteki fotoğrafları temizle
         updateDuoPerson1({ photoBase64: null });
@@ -197,7 +197,7 @@ export default function Home() {
         // Firestore'a kaydet (userId eklenerek) - Sadece analiz KİLİTLİ DEĞİLSE
         if (result.isUnlocked !== false) {
           try {
-            await saveDuoSession(userId, duoPerson1, duoPerson2, duoRelationType, result);
+            await saveDuoSession(userId, duoPerson1, duoPerson2, duoRelationType, duoMagicText, result);
           } catch (firestoreErr) {
             console.error("Database Error:", firestoreErr);
           }

@@ -507,7 +507,7 @@ Your output must be purely JSON:
        DUO MODE
        ============================================= */
     if (mode === "duo") {
-      const { person1, person2, duoRelationType } = body;
+      const { person1, person2, duoRelationType, magicText } = body;
 
       if (!person1?.zodiac || !person2?.zodiac) {
         return NextResponse.json(
@@ -549,7 +549,7 @@ ${titleStr}:
 - Person 1: Age ${person1.age}, Zodiac: ${tVal(person1.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Person 2: Age ${person2.age}, Zodiac: ${tVal(person2.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Relationship Type: ${tVal(duoRelationType, DUO_REL_EN, DUO_REL_TR, locale)}
-
+${magicText ? `- User's Context / Note: ${magicText}\n` : ""}
 ${baseInstruction} ${langInstruction} Your output must be purely JSON and strictly follow this exact structure:
 {
   "duoScore": 65,
@@ -567,7 +567,7 @@ ${titleStr}:
 - Person 1: Age ${person1.age}, Zodiac: ${tVal(person1.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Person 2: Age ${person2.age}, Zodiac: ${tVal(person2.zodiac, ZODIAC_EN, ZODIAC_TR, locale)}
 - Relationship Type: ${tVal(duoRelationType, DUO_REL_EN, DUO_REL_TR, locale)}
-
+${magicText ? `- User's Context / Note: ${magicText}\n` : ""}
 ${baseInstruction} ${langInstruction}
 
 CRITICAL TEASER INSTRUCTIONS:

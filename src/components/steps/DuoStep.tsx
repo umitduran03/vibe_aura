@@ -232,9 +232,11 @@ export default function DuoStep() {
   const duoPerson1 = useAppStore((s) => s.duoPerson1);
   const duoPerson2 = useAppStore((s) => s.duoPerson2);
   const duoRelationType = useAppStore((s) => s.duoRelationType);
+  const duoMagicText = useAppStore((s) => s.duoMagicText);
   const updateDuoPerson1 = useAppStore((s) => s.updateDuoPerson1);
   const updateDuoPerson2 = useAppStore((s) => s.updateDuoPerson2);
   const setDuoRelationType = useAppStore((s) => s.setDuoRelationType);
+  const setDuoMagicText = useAppStore((s) => s.setDuoMagicText);
   const t = useT();
 
   const getDuoRelationLabel = (id: DuoRelationType) => {
@@ -356,6 +358,26 @@ export default function DuoStep() {
             </motion.button>
           ))}
         </div>
+      </motion.div>
+
+      {/* Duo Magic Text */}
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="w-full mt-2"
+      >
+        <h3 className="text-center text-sm font-semibold text-foreground mb-2">
+          {t.magicTitle} 🤫
+        </h3>
+        <textarea
+          value={duoMagicText}
+          onChange={(e) => setDuoMagicText(e.target.value)}
+          placeholder={t.magicPlaceholder}
+          rows={2}
+          maxLength={100}
+          className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-foreground placeholder:text-text-secondary/40 resize-none focus:outline-none focus:border-accent/40 transition-colors"
+        />
       </motion.div>
     </div>
   );

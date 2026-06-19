@@ -123,6 +123,7 @@ export async function analyzeDuo(
   person1: DuoPersonData,
   person2: DuoPersonData,
   duoRelationType: DuoRelationType,
+  duoMagicText: string,
   locale: string = "en"
 ): Promise<DuoResult> {
   try {
@@ -140,6 +141,7 @@ export async function analyzeDuo(
         photoBase64: person2.photoBase64,
       },
       duoRelationType,
+      magicText: duoMagicText,
       locale,
     };
 
@@ -201,6 +203,7 @@ export async function saveDuoSession(
   person1: DuoPersonData,
   person2: DuoPersonData,
   duoRelationType: DuoRelationType,
+  magicText: string,
   result: DuoResult
 ) {
   try {
@@ -224,6 +227,7 @@ export async function saveDuoSession(
       person2Zodiac: person2.zodiac,
       person2Age: person2.age,
       duoRelationType,
+      magicText,
       createdAt: serverTimestamp(),
       expiresAt,
     });

@@ -102,6 +102,7 @@ interface AppState {
   duoPerson1: DuoPersonData;
   duoPerson2: DuoPersonData;
   duoRelationType: DuoRelationType;
+  duoMagicText: string;
   duoResult: DuoResult | null;
 
   // — Photo (Solo) —
@@ -184,6 +185,7 @@ interface AppState {
   updateDuoPerson1: (partial: Partial<DuoPersonData>) => void;
   updateDuoPerson2: (partial: Partial<DuoPersonData>) => void;
   setDuoRelationType: (type: DuoRelationType) => void;
+  setDuoMagicText: (text: string) => void;
   // Extras actions
   setExtrasType: (type: ExtrasType | null) => void;
   setExtrasModalOpen: (isOpen: boolean) => void;
@@ -229,6 +231,7 @@ export const useAppStore = create<AppState>((set, get) => ({
   duoPerson1: { ...initialDuoPerson },
   duoPerson2: { ...initialDuoPerson },
   duoRelationType: "flirt",
+  duoMagicText: "",
   duoResult: null,
 
   photoUrl: null,
@@ -327,6 +330,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       duoPerson2: { ...state.duoPerson2, ...partial },
     })),
   setDuoRelationType: (type) => set({ duoRelationType: type }),
+  setDuoMagicText: (text) => set({ duoMagicText: text }),
 
   // Extras actions
   setExtrasType: (type) => set({ extrasType: type }),
@@ -349,6 +353,7 @@ export const useAppStore = create<AppState>((set, get) => ({
       duoPerson1: { ...initialDuoPerson },
       duoPerson2: { ...initialDuoPerson },
       duoRelationType: "flirt",
+      duoMagicText: "",
       photoUrl: null,
       isUploadingPhoto: false,
       auraResult: null,
