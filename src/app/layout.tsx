@@ -111,7 +111,7 @@ export default function RootLayout({
     <html lang="en" className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
       <head>
         {/* Google Search Console Verification */}
-        <meta name="google-site-verification" content="5WQv53ToxbScdljghDXjmUz50ddX1OcHNDde--iuz0A" />
+        <meta name="google-site-verification" content="D41h1N2A_WHp7CwkRMW19KP1XYPFdQ6YdXXH_edJ1xQ" />
 
         {/* Preload critical fonts and images */}
         {/* JSON-LD Structured Data — WebApplication Schema */}
