@@ -401,7 +401,7 @@ export default function HistoryPage() {
                           className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 hover:bg-white/10 rounded-full transition-colors text-white/70 hover:text-white"
                         >
                           {sharingId === item.id ? <Loader2 className="w-3 h-3 animate-spin text-white/70" /> : <Share2 className="w-3 h-3" />}
-                          <span className="text-[10px] font-bold tracking-widest uppercase">{t.resultShare || 'PAYLAŞ'}</span>
+                          <span className="text-[10px] font-bold tracking-widest uppercase">{locale === 'tr' ? 'PAYLAŞ' : 'SHARE'}</span>
                         </button>
                       </motion.div>
                     </motion.div>
