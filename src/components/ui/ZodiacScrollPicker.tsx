@@ -199,7 +199,6 @@ export default function ZodiacScrollPicker({
           "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
         maskImage:
           "linear-gradient(to right, transparent 0%, black 15%, black 85%, transparent 100%)",
-        transform: "translateZ(0)",
       }}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -254,10 +253,9 @@ export default function ZodiacScrollPicker({
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.5 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="absolute inset-0 rounded-full z-0"
+                    className="absolute inset-0 rounded-full blur-xl z-0"
                     style={{
-                      background: `radial-gradient(circle, ${sign.gradient[0]} 0%, transparent 70%)`,
-                      opacity: 0.5,
+                      background: `radial-gradient(circle, ${sign.gradient[0]}60 0%, transparent 70%)`,
                     }}
                   />
                 )}
