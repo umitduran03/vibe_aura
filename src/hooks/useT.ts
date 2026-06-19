@@ -77,7 +77,7 @@ const STRINGS = {
     // MagicQuestionStep
     magicTitle: "One Last Thing...",
     magicPlaceholder: "e.g. I overthink everything...",
-    magicHint: "Optional — but the more you share, the more savage the result.",
+    magicHint: "Optional — but the more you share, the more accurate the result.",
 
     // OnboardingScreen (Landing/Auth)
     onboardingTagline: "Discover your energy ✨",
