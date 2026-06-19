@@ -7,6 +7,7 @@ import { compressAndEncodeImage } from "@/lib/services";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { useAppStore, type DuoRelationType } from "@/store/useAppStore";
 import ZodiacScrollPicker from "@/components/ui/ZodiacScrollPicker";
+import AgeSelector from "@/components/ui/AgeSelector";
 import { useT } from "@/hooks/useT";
 
 const DUO_RELATION_OPTIONS: { id: DuoRelationType; emoji: React.ReactNode; color: string }[] = [
@@ -274,35 +275,51 @@ export default function DuoStep() {
         </div>
       </motion.div>
 
-      {/* Person 1 — Zodiac */}
+      {/* Person 1 — Zodiac & Age */}
       <motion.div
-        className="flex flex-col items-center"
+        className="flex flex-col items-center gap-6"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
-        <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
-          {t.duoP1ZodiacTitle}
-        </h3>
-        <ZodiacScrollPicker
-          selectedZodiac={duoPerson1.zodiac}
-          onZodiacChange={(zodiac) => updateDuoPerson1({ zodiac })}
+        <div>
+          <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
+            {t.duoP1ZodiacTitle}
+          </h3>
+          <ZodiacScrollPicker
+            selectedZodiac={duoPerson1.zodiac}
+            onZodiacChange={(zodiac) => updateDuoPerson1({ zodiac })}
+          />
+        </div>
+        <AgeSelector
+          selectedAge={duoPerson1.age}
+          onAgeChange={(age) => updateDuoPerson1({ age })}
+          label={t.duoP1AgeTitle}
+          delay={0.25}
         />
       </motion.div>
 
-      {/* Person 2 — Zodiac */}
+      {/* Person 2 — Zodiac & Age */}
       <motion.div
-        className="flex flex-col items-center"
+        className="flex flex-col items-center gap-6"
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
       >
-        <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
-          {t.duoP2ZodiacTitle}
-        </h3>
-        <ZodiacScrollPicker
-          selectedZodiac={duoPerson2.zodiac}
-          onZodiacChange={(zodiac) => updateDuoPerson2({ zodiac })}
+        <div>
+          <h3 className="text-center text-sm font-semibold text-white/90 tracking-wide uppercase mb-2">
+            {t.duoP2ZodiacTitle}
+          </h3>
+          <ZodiacScrollPicker
+            selectedZodiac={duoPerson2.zodiac}
+            onZodiacChange={(zodiac) => updateDuoPerson2({ zodiac })}
+          />
+        </div>
+        <AgeSelector
+          selectedAge={duoPerson2.age}
+          onAgeChange={(age) => updateDuoPerson2({ age })}
+          label={t.duoP2AgeTitle}
+          delay={0.35}
         />
       </motion.div>
 
