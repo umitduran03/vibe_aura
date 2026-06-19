@@ -367,12 +367,9 @@ export default function DuoStep() {
         transition={{ delay: 0.5 }}
         className="w-full mt-2"
       >
-        <h3 className="text-center text-sm font-semibold text-foreground mb-1">
+        <h3 className="text-center text-sm font-semibold text-foreground mb-2">
           {t.duoMagicTitle} 🤫
         </h3>
-        <p className="text-center text-[11px] text-text-secondary/60 mb-2 max-w-[280px] mx-auto leading-relaxed">
-          {t.duoMagicHint}
-        </p>
         <textarea
           value={duoMagicText}
           onChange={(e) => setDuoMagicText(e.target.value)}
