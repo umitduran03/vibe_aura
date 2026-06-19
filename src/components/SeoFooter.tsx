@@ -54,7 +54,9 @@ export default function SeoFooter() {
   const isTr = locale === "tr";
   const s = strings[locale] ?? strings.en;
   const currentTrends = isTr ? trendsDataTr : trendsDataEn;
-  const topReads = currentTrends.slice(0, 5);
+  const topReads = currentTrends.filter((t) => 
+    ["ai-photo-personality-test", "aura-battle-who-is-cooler", "zodiac-signs-red-flags", "situationship-vs-relationship", "mixed-signals-or-delulu"].includes(t.slug)
+  ).slice(0, 5);
 
   return (
     <footer className="w-full border-t border-white/10 bg-black/40 backdrop-blur-md py-12 px-6 mt-20 relative z-20">
