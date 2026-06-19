@@ -177,34 +177,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://apis.google.com" />
         <link rel="dns-prefetch" href="https://www.google.com" />
         <link rel="dns-prefetch" href="https://securetoken.googleapis.com" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.onerror = function(msg, url, lineNo, columnNo, error) {
-                var d = document.createElement('div');
-                d.style.position = 'fixed';
-                d.style.top = '0'; d.style.left = '0'; d.style.right = '0';
-                d.style.backgroundColor = 'red'; d.style.color = 'white';
-                d.style.zIndex = '9999999'; d.style.padding = '10px'; d.style.fontSize = '12px'; d.style.wordWrap = 'break-word';
-                d.innerHTML = '<b>JS ERROR:</b> ' + msg + '<br/>' + (error && error.stack ? error.stack : url + ':' + lineNo);
-                if (document.body) document.body.appendChild(d);
-                else document.addEventListener('DOMContentLoaded', function() { document.body.appendChild(d); });
-                return false;
-              };
-              window.addEventListener('unhandledrejection', function(event) {
-                var d = document.createElement('div');
-                d.style.position = 'fixed';
-                d.style.bottom = '0'; d.style.left = '0'; d.style.right = '0';
-                d.style.backgroundColor = 'orange'; d.style.color = 'black';
-                d.style.zIndex = '9999999'; d.style.padding = '10px'; d.style.fontSize = '12px'; d.style.wordWrap = 'break-word';
-                var reason = event.reason;
-                d.innerHTML = '<b>PROMISE REJECTION:</b> ' + (reason && reason.message ? reason.message : reason);
-                if (document.body) document.body.appendChild(d);
-                else document.addEventListener('DOMContentLoaded', function() { document.body.appendChild(d); });
-              });
-            `,
-          }}
-        />
+
       </head>
       <body className="min-h-full bg-background text-foreground antialiased" style={{ backgroundColor: "#050510" }}>
         <script
