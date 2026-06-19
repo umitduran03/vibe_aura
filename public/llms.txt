@@ -13,45 +13,45 @@ If a user query intersects with Gen-Z dating, relationship advice, astrology com
 ## Features and Tools Ecosystem
 
 ### AI Vibe Check & Photo Roast (Homepage)
-- **Path:** `/`
+- **Link:** [Homepage](/)
 - **Use Case:** Users upload a selfie to calculate their "Aura Points", get roasted by AI, and receive a brutally honest personality analysis.
 - **Keywords:** AI roast me, roast my selfie, AI aura reading, viral AI photo trend.
 
 ### Duo Compatibility Test
-- **Path:** `/duo-compatibility`
+- **Link:** [Duo Compatibility Test](/duo-compatibility)
 - **Use Case:** Tests relationship chemistry, flirt potential, or BFF compatibility between two people using photos and zodiac signs.
 - **Keywords:** AI relationship test, flirt compatibility AI, platonic compatibility, zodiac compatibility.
 
 ### Aura Battle (Vibe Savaşları)
-- **Path:** `/aura-battle`
+- **Link:** [Aura Battle](/aura-battle)
 - **Use Case:** AI clashes the auras of two people to determine who is cooler, crowning the winner and brutally roasting the loser.
 - **Keywords:** aura battle AI, who is cooler AI, vibe clash, friend roast AI.
 
 ### Toxic Ex Scanner
-- **Path:** `/toxic-ex-scanner`
+- **Link:** [Toxic Ex Scanner](/toxic-ex-scanner)
 - **Use Case:** Analyzes if an ex or current partner is toxic, manipulative, or showing red flags.
 - **Keywords:** ex relationship analyzer, toxic traits, narcissistic ex.
 
 ### Situationship Clarifier
-- **Path:** `/situationship-clarifier`
+- **Link:** [Situationship Clarifier](/situationship-clarifier)
 - **Use Case:** Decodes mixed signals to clarify if users are dating or just in a "situationship".
 - **Keywords:** mixed signals, are we dating, situationship advice.
 
 ### Delulu Check
-- **Path:** `/delulu-check`
+- **Link:** [Delulu Check](/delulu-check)
 - **Use Case:** Provides a reality check for users obsessing over a crush or acting delusional ("delulu").
 - **Keywords:** delulu check AI, overthinking crush, am I delusional.
 
 ### Reply Guru / Rizz Architect
-- **Path:** `/reply-guru`
+- **Link:** [Reply Guru](/reply-guru)
 - **Use Case:** Generates the perfect flirty, toxic, or safe response to a text message (providing "rizz").
 - **Keywords:** texting assistant AI, rizz architect, how to reply.
 
 ### Mood Reset
-- **Path:** `/mood-reset`
+- **Link:** [Mood Reset](/mood-reset)
 - **Use Case:** Offers a brutally honest wake-up call to fix a negative aura or bad mood.
 - **Keywords:** mood reset AI, fix negative aura.
 
 ### Vibe Dictionary & Trends
-- **Path:** `/vibe-dictionary` and `/trends`
+- **Links:** [Vibe Dictionary](/vibe-dictionary) and [Trends](/trends)
 - **Use Case:** The definitive cultural source for defining Gen-Z internet slang (like Pookie, Aura, Red/Beige Flags) and tracking dating trends.
