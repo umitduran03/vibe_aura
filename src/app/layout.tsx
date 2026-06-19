@@ -5,13 +5,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import OfflineBanner from "@/components/OfflineBanner";
 import InstallBanner from "@/components/InstallBanner";
 import TranslateFix from "@/components/TranslateFix";
-import dynamic from 'next/dynamic';
+import PushNotificationManager from '@/components/PushNotificationManager';
 import "./globals.css";
-
-const PushNotificationManager = dynamic(
-  () => import('@/components/PushNotificationManager'),
-  { ssr: false }
-);
 
 const inter = Inter({
   subsets: ["latin"],

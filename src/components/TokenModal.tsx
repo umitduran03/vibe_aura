@@ -160,9 +160,11 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
     
     // ─── Platform Detection ───
     let isNative = false;
+    let platform = "web";
     try {
       const { Capacitor } = await import("@capacitor/core");
       isNative = Capacitor.isNativePlatform();
+      platform = Capacitor.getPlatform();
     } catch {
       isNative = false;
     }

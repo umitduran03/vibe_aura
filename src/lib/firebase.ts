@@ -89,4 +89,9 @@ if (typeof window !== "undefined") {
   }
 }
 
+// Temporary dummy for Web Push, as full web push requires Service Worker setup
+export const getFirebaseToken = async (): Promise<string | null> => {
+  return null;
+};
+
 export { app, storage, db, auth };
