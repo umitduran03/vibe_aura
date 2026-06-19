@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     "should i text her",
   ],
   alternates: {
-    canonical: "https://thevibecheckr.vercel.app/delulu-check",
+    canonical: "https://thevibecheckr.com/delulu-check",
   },
   openGraph: {
     title: "Delulu Check AI — VibeCheckr",
     description:
       "Mixed signals? Drop the receipts and get an unfiltered reality check before you double text.",
-    url: "https://thevibecheckr.vercel.app/delulu-check",
+    url: "https://thevibecheckr.com/delulu-check",
     type: "website",
   },
 };

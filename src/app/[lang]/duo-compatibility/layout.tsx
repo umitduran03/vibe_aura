@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     "crush compatibility check",
   ],
   alternates: {
-    canonical: "https://thevibecheckr.vercel.app/duo-compatibility",
+    canonical: "https://thevibecheckr.com/duo-compatibility",
   },
   openGraph: {
     title: "AI Duo Compatibility Test — VibeCheckr",
     description:
       "Are you soulmates or a walking disaster? Upload two selfies and our AI will decode your chemistry with savage honesty.",
-    url: "https://thevibecheckr.vercel.app/duo-compatibility",
+    url: "https://thevibecheckr.com/duo-compatibility",
     type: "website",
   },
 };

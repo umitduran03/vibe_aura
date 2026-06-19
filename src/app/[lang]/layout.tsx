@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!hasLocale(lang)) return {};
 
   const dict = await getDictionary(lang as Locale);
-  const canonicalBase = "https://thevibecheckr.vercel.app";
+  const canonicalBase = "https://thevibecheckr.com";
 
   return {
     title: dict.seo.title,

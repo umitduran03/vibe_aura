@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "VibeCheckr Privacy Policy — Learn how we collect, use, and protect your personal data. Your privacy matters to us.",
   alternates: {
-    canonical: "https://thevibecheckr.vercel.app/privacy",
+    canonical: "https://thevibecheckr.com/privacy",
   },
 };
 

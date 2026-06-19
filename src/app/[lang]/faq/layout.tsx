@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     "zodiac compatibility questions",
   ],
   alternates: {
-    canonical: "https://thevibecheckr.vercel.app/faq",
+    canonical: "https://thevibecheckr.com/faq",
   },
   openGraph: {
     title: "FAQ — VibeCheckr AI Vibe Check & Photo Roast",
     description:
       "Everything you need to know about VibeCheckr. How the AI works, privacy, features, and more.",
-    url: "https://thevibecheckr.vercel.app/faq",
+    url: "https://thevibecheckr.com/faq",
     type: "website",
   },
 };

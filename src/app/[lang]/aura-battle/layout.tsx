@@ -14,13 +14,13 @@ export const metadata: Metadata = {
     "vibe compatibility",
   ],
   alternates: {
-    canonical: "https://thevibecheckr.vercel.app/aura-battle",
+    canonical: "https://thevibecheckr.com/aura-battle",
   },
   openGraph: {
     title: "Aura Battle AI — VibeCheckr",
     description:
       "Who has more main character energy? Upload both your photos and let the AI clash your auras. The winner takes the crown, the loser gets brutally roasted.",
-    url: "https://thevibecheckr.vercel.app/aura-battle",
+    url: "https://thevibecheckr.com/aura-battle",
     type: "website",
   },
 };

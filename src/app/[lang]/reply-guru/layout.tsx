@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     "how to reply to my crush",
   ],
   alternates: {
-    canonical: "https://thevibecheckr.vercel.app/reply-guru",
+    canonical: "https://thevibecheckr.com/reply-guru",
   },
   openGraph: {
     title: "The Reply Guru AI — VibeCheckr",
     description:
       "Mind games? Won. Drop the screenshot and let our AI craft the perfect toxic, cool, or safe reply.",
-    url: "https://thevibecheckr.vercel.app/reply-guru",
+    url: "https://thevibecheckr.com/reply-guru",
     type: "website",
   },
 };

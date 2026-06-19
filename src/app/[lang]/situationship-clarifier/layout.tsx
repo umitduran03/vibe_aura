@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     "toxic situationship test",
   ],
   alternates: {
-    canonical: "https://thevibecheckr.vercel.app/situationship-clarifier",
+    canonical: "https://thevibecheckr.com/situationship-clarifier",
   },
   openGraph: {
     title: "Situationship Clarifier AI — VibeCheckr",
     description:
       "Decoding the 'What are we?' mystery. Brutal compatibility stats included. Drop your photos and get the unfiltered reality check.",
-    url: "https://thevibecheckr.vercel.app/situationship-clarifier",
+    url: "https://thevibecheckr.com/situationship-clarifier",
     type: "website",
   },
 };

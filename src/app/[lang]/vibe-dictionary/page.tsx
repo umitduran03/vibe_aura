@@ -45,14 +45,14 @@ export default function VibeDictionaryPage() {
       "@type": "DefinedTerm",
       "name": term.word,
       "description": term.meaning,
-      "inDefinedTermSet": "https://thevibecheckr.vercel.app/vibe-dictionary"
+      "inDefinedTermSet": "https://thevibecheckr.com/vibe-dictionary"
     }))
   );
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
-    "@id": "https://thevibecheckr.vercel.app/vibe-dictionary",
+    "@id": "https://thevibecheckr.com/vibe-dictionary",
     name: "Gen-Z Vibe & Astrology Dictionary",
     description: "A comprehensive dictionary of Gen-Z slang, internet culture terms, and astrological personality traits.",
     hasDefinedTerm: definedTerms

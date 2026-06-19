@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: article.description,
     keywords: article.keywords,
     alternates: {
-      canonical: `https://thevibecheckr.vercel.app/trends/${article.slug}`,
+      canonical: `https://thevibecheckr.com/trends/${article.slug}`,
     },
     openGraph: {
       title: article.title,
@@ -62,20 +62,20 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
     author: {
       "@type": "Organization",
       name: "VibeCheckr AI",
-      url: "https://thevibecheckr.vercel.app"
+      url: "https://thevibecheckr.com"
     },
     publisher: {
       "@type": "Organization",
       name: "VibeCheckr",
       logo: {
         "@type": "ImageObject",
-        url: "https://thevibecheckr.vercel.app/v-wave.png"
+        url: "https://thevibecheckr.com/v-wave.png"
       }
     },
     datePublished: article.publishDate,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://thevibecheckr.vercel.app/trends/${article.slug}`
+      "@id": `https://thevibecheckr.com/trends/${article.slug}`
     }
   };
 
