@@ -9,6 +9,7 @@ import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { db } from "@/lib/firebase";
 import { useAppStore } from "@/store/useAppStore";
 import { useT } from "@/hooks/useT";
+import { getApiUrl } from "@/lib/api";
 
 export default function DailyVibeBanner() {
   const userId = useAppStore((s) => s.userId);
@@ -74,7 +75,7 @@ export default function DailyVibeBanner() {
 
         if (isMounted) setIsLoading(true);
 
-        const res = await fetch("/api/daily-vibe", {
+        const res = await fetch(getApiUrl("/api/daily-vibe"), {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({

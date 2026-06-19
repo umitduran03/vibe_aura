@@ -14,6 +14,7 @@ import { useT } from "@/hooks/useT";
 import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
+import { getApiUrl } from "@/lib/api";
 
 function AnimatedCounter({ target, duration = 2 }: { target: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -77,7 +78,7 @@ export default function ResultCard() {
             try {
               const idToken = await auth.currentUser?.getIdToken();
               if (idToken) {
-                await fetch("/api/add-tokens", {
+                await fetch(getApiUrl("/api/add-tokens"), {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",

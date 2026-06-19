@@ -1,5 +1,6 @@
 import imageCompression from "browser-image-compression";
 import type { AuraResult, DuoResult, DuoPersonData, DuoRelationType, ExtrasResult, ExtrasType } from "@/store/useAppStore";
+import { getApiUrl } from "./api";
 
 const COMPRESSION_OPTIONS = {
   maxSizeMB: 0.4, // Max 400KB compressed
@@ -31,10 +32,11 @@ export async function compressAndEncodeImage(file: File): Promise<string> {
 // Helper fetch function with retry logic
 async function fetchWithRetry(url: string, options: RequestInit, maxRetries = 3): Promise<any> {
   let attempt = 0;
+  const fullUrl = getApiUrl(url);
   
   while (attempt < maxRetries) {
     try {
-      const res = await fetch(url, options);
+      const res = await fetch(fullUrl, options);
       
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));

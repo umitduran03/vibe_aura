@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "840020487445",
+    "project_id": "vibecheckr-9478f",
+    "storage_bucket": "vibecheckr-9478f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:840020487445:android:2d7e6725fa740619a88d1c",
+        "android_client_info": {
+          "package_name": "com.thevibecheckr.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "840020487445-lq2l3v8utq9t2js5s33ngjgli8q9d83h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBi5UY96n6r5Xt2DVEWHhetWAOCBib_A78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "840020487445-lq2l3v8utq9t2js5s33ngjgli8q9d83h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

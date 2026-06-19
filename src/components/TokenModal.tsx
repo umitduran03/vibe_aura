@@ -9,6 +9,7 @@ import { Purchases } from "@revenuecat/purchases-capacitor";
 import { AdMob } from "@capacitor-community/admob";
 import { auth } from "@/lib/firebase";
 import { useT } from "@/hooks/useT";
+import { getApiUrl } from "@/lib/api";
 
 interface TokenModalProps {
   isOpen: boolean;
@@ -106,28 +107,45 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
   const userId = useAppStore((s) => s.userId);
 
   useEffect(() => {
-    // Mobil native ortamlarda AdMob ve RevenueCat ilklemesi
     const initMonetization = async () => {
+      let isNative = false;
+      let platform = "web";
       try {
-        AdMob.initialize({
-          // requestTrackingAuthorization was removed or invalid
-        }).catch(console.warn);
+        const { Capacitor } = await import("@capacitor/core");
+        isNative = Capacitor.isNativePlatform();
+        platform = Capacitor.getPlatform();
+      } catch {
+        isNative = false;
+      }
 
-        if (process.env.NEXT_PUBLIC_REVENUECAT_API_KEY) {
-          await Purchases.configure({ apiKey: process.env.NEXT_PUBLIC_REVENUECAT_API_KEY });
+      if (!isNative) return; // Web'de boşuna initialize etme
+
+      try {
+        // Initialize AdMob safely
+        await AdMob.initialize({
+          testingDevices: [],
+          initializeForTesting: process.env.NODE_ENV !== "production"
+        });
+
+        // Initialize RevenueCat depending on platform
+        let rcKey = platform === "ios" ? process.env.NEXT_PUBLIC_RC_IOS_KEY : process.env.NEXT_PUBLIC_RC_ANDROID_KEY;
+        if (rcKey) {
+          await Purchases.configure({ apiKey: rcKey });
+          if (userId) {
+            await Purchases.logIn({ appUserID: userId });
+          }
           const offerings = await Purchases.getOfferings();
           if (offerings.current && offerings.current.availablePackages.length > 0) {
-            // İleride RevenueCat bağlandığında token ve VIP paketler ayrı ayrı rcPkg ile eşleştirilebilir.
-            // setStoreTokenPackages(...)
-            // setStoreVipPackages(...)
+            // Packages are loaded successfully
+            console.log("RevenueCat Offerings loaded:", offerings.current);
           }
         }
       } catch (e) {
-        console.warn("Monetization initialization skipped (Web or missing keys)");
+        console.warn("Monetization initialization error:", e);
       }
     };
     initMonetization();
-  }, []);
+  }, [userId]);
 
   /* Reset on close */
   const handleClose = () => {
@@ -156,14 +174,19 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
     }
 
     try {
+      // Determine correct Ad Unit ID
+      const adUnitId = platform === "ios" 
+        ? process.env.NEXT_PUBLIC_ADMOB_IOS_AD_UNIT 
+        : process.env.NEXT_PUBLIC_ADMOB_ANDROID_AD_UNIT;
+
       // AdMob Reward Video Akışı (Native Only)
-      await AdMob.prepareRewardVideoAd({ adId: process.env.NEXT_PUBLIC_ADMOB_IOS_AD_UNIT || "test" });
+      await AdMob.prepareRewardVideoAd({ adId: adUnitId || "test" });
       await AdMob.showRewardVideoAd();
       
       // İzleme başarılıysa API'ye istek at
       if (userId) {
         const idToken = await auth.currentUser?.getIdToken();
-        await fetch("/api/reward-token", {
+        await fetch(getApiUrl("/api/reward-token"), {
           method: "POST",
           headers: { "Content-Type": "application/json", "Authorization": `Bearer ${idToken}` },
           body: JSON.stringify({ amount: 1, source: "admob" })
@@ -206,14 +229,14 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
         // After successful native purchase, credit via authenticated API
         const idToken = await auth.currentUser?.getIdToken();
         if (userId && pkg.tokens) {
-          await fetch("/api/reward-token", {
+          await fetch(getApiUrl("/api/reward-token"), {
             method: "POST",
             headers: { "Content-Type": "application/json", "Authorization": `Bearer ${idToken}` },
             body: JSON.stringify({ amount: pkg.tokens, source: "revenuecat" })
           });
           useAppStore.getState().setTokenBalance(useAppStore.getState().tokenBalance + pkg.tokens);
         } else if (userId && (pkg.id === "aura_vip" || pkg.id === "mcs_monthly" || pkg.id === "god_mode_lifetime")) {
-          const res = await fetch("/api/purchase-vip", {
+          const res = await fetch(getApiUrl("/api/purchase-vip"), {
             method: "POST",
             headers: { "Content-Type": "application/json", "Authorization": `Bearer ${idToken}` },
             body: JSON.stringify({ vipPackageId: pkg.id })
@@ -232,7 +255,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
           return;
         }
 
-        const res = await fetch("/api/polar/checkout", {
+        const res = await fetch(getApiUrl("/api/polar/checkout"), {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

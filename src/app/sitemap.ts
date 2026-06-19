@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
 
+export const dynamic = "force-static";
+
 const locales = ["en", "tr"];
 const baseUrl = "https://thevibecheckr.com";
 

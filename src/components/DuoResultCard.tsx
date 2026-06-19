@@ -14,6 +14,7 @@ import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { auth } from "@/lib/firebase";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
+import { getApiUrl } from "@/lib/api";
 
 
 
@@ -65,7 +66,7 @@ export default function DuoResultCard() {
             try {
               const idToken = await auth.currentUser?.getIdToken();
               if (idToken) {
-                await fetch("/api/add-tokens", {
+                await fetch(getApiUrl("/api/add-tokens"), {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",

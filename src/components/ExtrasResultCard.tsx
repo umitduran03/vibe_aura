@@ -11,6 +11,7 @@ import { useT } from "@/hooks/useT";
 import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { auth } from "@/lib/firebase";
+import { getApiUrl } from "@/lib/api";
 
 const getThemeLabel = (type: ExtrasType, t: any) => {
   switch (type) {
@@ -64,7 +65,7 @@ export default function ExtrasResultCard() {
             try {
               const idToken = await auth.currentUser?.getIdToken();
               if (idToken) {
-                await fetch("/api/add-tokens", {
+                await fetch(getApiUrl("/api/add-tokens"), {
                   method: "POST",
                   headers: {
                     "Content-Type": "application/json",
