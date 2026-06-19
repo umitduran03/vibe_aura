@@ -15,7 +15,7 @@ const privacyData = {
   en: {
     back: "Back to App",
     title: "Privacy Policy",
-    updated: "Last updated: May 1, 2026",
+    updated: "Last updated: June 19, 2026",
     s1Title: "1. Introduction",
     s1Desc: "VibeCheckr (\"we,\" \"us,\" or \"the App\") respects your privacy. This Privacy Policy explains what information we collect, how we use it, and the choices you have. By using the App, you consent to the practices described below.",
     s2Title: "2. Information We Collect",
@@ -65,7 +65,7 @@ const privacyData = {
   tr: {
     back: "Uygulamaya Dön",
     title: "Gizlilik Politikası",
-    updated: "Son güncelleme: 1 Mayıs 2026",
+    updated: "Son güncelleme: 19 Haziran 2026",
     s1Title: "1. Giriş",
     s1Desc: "VibeCheckr (\"biz\" veya \"Uygulama\") gizliliğine gerçekten önem verir. Bu Gizlilik Politikası, senden hangi bilgileri aldığımızı, bunları ne yaptığımızı ve senin bu konudaki haklarını anlatır. Uygulamayı kullanıyorsan, buradaki kuralları kabul etmiş sayılırsın.",
     s2Title: "2. Hangi Bilgileri Topluyoruz?",

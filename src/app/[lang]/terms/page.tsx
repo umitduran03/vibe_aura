@@ -15,7 +15,7 @@ const termsData = {
   en: {
     back: "Back to App",
     title: "Terms of Service",
-    updated: "Last updated: May 1, 2026",
+    updated: "Last updated: June 19, 2026",
     s1Title: "1. Acceptance of Terms",
     s1Desc: "By downloading, installing, or using VibeCheckr (\"the App\"), you agree to be bound by these Terms of Service. If you do not agree, do not use the App.",
     s2Title: "2. Entertainment Purpose Only",
@@ -52,7 +52,7 @@ const termsData = {
   tr: {
     back: "Uygulamaya Dön",
     title: "Kullanım Şartları",
-    updated: "Son güncelleme: 1 Mayıs 2026",
+    updated: "Son güncelleme: 19 Haziran 2026",
     s1Title: "1. Kuralları Kabul Etmek",
     s1Desc: "VibeCheckr'ı (\"Uygulama\") indirerek veya kullanarak bu kuralları kabul etmiş sayılırsın. Kurallar sana uymuyorsa, uygulamayı kullanmamanı rica ederiz.",
     s2Title: "2. Sadece Eğlence Amaçlıdır (Ciddiye Alma)",
