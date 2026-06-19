@@ -8,8 +8,9 @@ service cloud.firestore {
     
     // Açık Analiz Sonuçları
     match /results/{documentId} {
-      // Herkestan paylaşım linkiyle okunabilir
-      allow read: if true;
+      // Herkestan paylaşım linkiyle okunabilir (Sadece direkt ID ile get işlemi)
+      allow get: if true;
+      allow list: if request.auth != null && resource.data.userId == request.auth.uid;
       // Yeni yazdırma işlemleri yalnızca yetkili ve dokümana UID'sini ekleyenlere açık
       allow create: if request.auth != null && request.resource.data.userId == request.auth.uid;
       // Sadece dokumanın sahibi güncelleyebilir veya silebilir

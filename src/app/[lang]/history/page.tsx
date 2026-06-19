@@ -16,6 +16,7 @@ export default function HistoryPage() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const t = useT();
   const locale = useAppStore((s) => s.locale);
+  const userId = useAppStore((s) => s.userId);
   
   // Infinite scroll states
   const [lastVisible, setLastVisible] = useState<any>(null);
@@ -24,13 +25,14 @@ export default function HistoryPage() {
   const observerTarget = useRef<HTMLDivElement>(null);
 
   const fetchHistory = async (isLoadMore = false) => {
+    if (!userId) return;
     if (isLoadMore && (!hasMore || loadingMore)) return;
     
     try {
       if (isLoadMore) setLoadingMore(true);
       else setLoading(true);
 
-      const { history: newHistory, lastVisible: newLastVisible } = await getAuraHistory(isLoadMore ? lastVisible : null);
+      const { history: newHistory, lastVisible: newLastVisible } = await getAuraHistory(userId, isLoadMore ? lastVisible : null);
       
       const filteredData = newHistory.filter((item: any) => item.isUnlocked !== false);
 
@@ -54,8 +56,10 @@ export default function HistoryPage() {
   };
 
   useEffect(() => {
-    fetchHistory();
-  }, []);
+    if (userId) {
+      fetchHistory();
+    }
+  }, [userId]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(

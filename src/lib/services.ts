@@ -282,7 +282,7 @@ export async function saveExtrasSession(
 /**
  * Kullanıcının geçmiş analizlerini en yeniden eskiye doğru (createdAt - desc) çeker. (Infinite Scroll uyumlu)
  */
-export async function getAuraHistory(lastVisibleDoc: any = null) {
+export async function getAuraHistory(userId: string, lastVisibleDoc: any = null) {
   const { collection, query, orderBy, where, getDocs, Timestamp, limit, startAfter } = await import("firebase/firestore");
   const { db } = await import("./firebase");
 
@@ -290,6 +290,7 @@ export async function getAuraHistory(lastVisibleDoc: any = null) {
 
   let q = query(
     collection(db, "results"),
+    where("userId", "==", userId),
     where("createdAt", ">=", twoDaysAgo),
     orderBy("createdAt", "desc"),
     limit(5)
@@ -298,6 +299,7 @@ export async function getAuraHistory(lastVisibleDoc: any = null) {
   if (lastVisibleDoc) {
     q = query(
       collection(db, "results"),
+      where("userId", "==", userId),
       where("createdAt", ">=", twoDaysAgo),
       orderBy("createdAt", "desc"),
       startAfter(lastVisibleDoc),
