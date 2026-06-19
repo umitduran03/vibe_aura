@@ -368,12 +368,12 @@ export default function DuoStep() {
         className="w-full mt-2"
       >
         <h3 className="text-center text-sm font-semibold text-foreground mb-2">
-          {t.magicTitle} 🤫
+          {t.duoMagicTitle} 🤫
         </h3>
         <textarea
           value={duoMagicText}
           onChange={(e) => setDuoMagicText(e.target.value)}
-          placeholder={t.magicPlaceholder}
+          placeholder={t.duoMagicPlaceholder}
           rows={2}
           maxLength={100}
           className="w-full bg-white/5 border border-white/10 rounded-xl p-3 text-sm text-foreground placeholder:text-text-secondary/40 resize-none focus:outline-none focus:border-accent/40 transition-colors"
