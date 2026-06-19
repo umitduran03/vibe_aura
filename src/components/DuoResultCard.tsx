@@ -13,6 +13,7 @@ import { useT } from "@/hooks/useT";
 import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { auth } from "@/lib/firebase";
+import { ZodiacIcon } from "@/components/ZodiacIcon";
 
 
 
@@ -253,18 +254,15 @@ export default function DuoResultCard() {
                     background: `radial-gradient(circle, ${z1.gradient[0]}60 0%, transparent 70%)`,
                   }}
                 />
-                <span 
-                  translate="no"
-                  className="relative z-10 text-[40px] font-light leading-none mb-2"
+                <div 
+                  className="relative z-10 mb-2 flex items-center justify-center"
                   style={{
-                    fontFamily: "Times New Roman, serif",
                     color: "white",
-                    textShadow: `0 0 15px ${z1.gradient[0]}`
+                    filter: `drop-shadow(0 0 10px ${z1.gradient[0]})`
                   }}
                 >
-                  {z1.emoji}
-                  {"\uFE0E"}
-                </span>
+                  <ZodiacIcon id={z1.id} className="w-10 h-10" />
+                </div>
                 <span className="absolute bottom-[-5px] z-10 text-[9px] font-medium tracking-[0.15em] uppercase"
                   style={{
                     color: "white",
@@ -285,18 +283,15 @@ export default function DuoResultCard() {
                     background: `radial-gradient(circle, ${z2.gradient[0]}60 0%, transparent 70%)`,
                   }}
                 />
-                <span 
-                  translate="no"
-                  className="relative z-10 text-[40px] font-light leading-none mb-2"
+                <div 
+                  className="relative z-10 mb-2 flex items-center justify-center"
                   style={{
-                    fontFamily: "Times New Roman, serif",
                     color: "white",
-                    textShadow: `0 0 15px ${z2.gradient[0]}`
+                    filter: `drop-shadow(0 0 10px ${z2.gradient[0]})`
                   }}
                 >
-                  {z2.emoji}
-                  {"\uFE0E"}
-                </span>
+                  <ZodiacIcon id={z2.id} className="w-10 h-10" />
+                </div>
                 <span className="absolute bottom-[-5px] z-10 text-[9px] font-medium tracking-[0.15em] uppercase"
                   style={{
                     color: "white",

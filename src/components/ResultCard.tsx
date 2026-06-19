@@ -13,6 +13,7 @@ import SettingsDrawer from "@/components/SettingsDrawer";
 import { useT } from "@/hooks/useT";
 import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
+import { ZodiacIcon } from "@/components/ZodiacIcon";
 
 function AnimatedCounter({ target, duration = 2 }: { target: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -339,18 +340,15 @@ export default function ResultCard() {
                     background: `radial-gradient(circle, ${zodiac.gradient[0]}60 0%, transparent 70%)`,
                   }}
                 />
-                <span 
-                  translate="no"
-                  className="relative z-10 text-[40px] font-light leading-none mb-2"
+                <div 
+                  className="relative z-10 mb-2 flex items-center justify-center"
                   style={{
-                    fontFamily: "Times New Roman, serif",
                     color: "white",
-                    textShadow: `0 0 15px ${zodiac.gradient[0]}`
+                    filter: `drop-shadow(0 0 10px ${zodiac.gradient[0]})`
                   }}
                 >
-                  {zodiac.emoji}
-                  {"\uFE0E"}
-                </span>
+                  <ZodiacIcon id={zodiac.id} className="w-10 h-10" />
+                </div>
                 <span className="absolute bottom-[-5px] z-10 text-[9px] font-medium tracking-[0.15em] uppercase"
                   style={{
                     color: "white",

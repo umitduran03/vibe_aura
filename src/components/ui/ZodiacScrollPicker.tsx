@@ -6,6 +6,7 @@ import { ZODIAC_SIGNS } from "@/lib/constants";
 import type { ZodiacSign } from "@/lib/constants";
 import { hapticLight } from "@/lib/haptics";
 import { useAppStore } from "@/store/useAppStore";
+import { ZodiacIcon } from "@/components/ZodiacIcon";
 
 
 
@@ -262,20 +263,16 @@ export default function ZodiacScrollPicker({
               </AnimatePresence>
 
               {/* Zodiac sembolü */}
-              <span
-                className="relative z-10 text-[40px] font-light leading-none mb-3"
+              <div
+                className="relative z-10 mb-3 flex items-center justify-center"
                 style={{
-                  fontFamily: "Times New Roman, serif",
                   color: isSelected ? "white" : "inherit",
-                  textShadow: isSelected
-                    ? `0 0 15px ${sign.gradient[0]}`
-                    : "none",
-                  transition: "color 0.3s, text-shadow 0.3s",
+                  filter: isSelected ? `drop-shadow(0 0 10px ${sign.gradient[0]})` : "none",
+                  transition: "color 0.3s, filter 0.3s"
                 }}
               >
-                {sign.emoji}
-                {"\uFE0E"}
-              </span>
+                <ZodiacIcon id={sign.id} className="w-10 h-10" />
+              </div>
 
               {/* İsim */}
               <span
