@@ -442,7 +442,7 @@ const STRINGS = {
     // MagicQuestionStep
     magicTitle: "Son Bir Şey...",
     magicPlaceholder: "örn. Her şeyi fazla düşünürüm...",
-    magicHint: "Opsiyonel — ne kadar çok dökülürsen, roast o kadar yakıcı çıkar.",
+    magicHint: "Opsiyonel — ne kadar çok dökülürsen, sonuç o kadar acımasız çıkar.",
 
     // OnboardingScreen (Landing/Auth)
     onboardingTagline: "Enerjini keşfet ✨",
