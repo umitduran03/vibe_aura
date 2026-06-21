@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -7,6 +8,7 @@ import InstallBanner from "@/components/InstallBanner";
 import TranslateFix from "@/components/TranslateFix";
 import GlobalLoaderRemover from "@/components/GlobalLoaderRemover";
 import PushNotificationManager from '@/components/PushNotificationManager';
+import DesktopAdBanner from "@/components/DesktopAdBanner";
 import "./globals.css";
 
 const inter = Inter({
@@ -179,6 +181,13 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google.com" />
         <link rel="dns-prefetch" href="https://securetoken.googleapis.com" />
 
+        {/* Google AdSense Script */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4394628220494584"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="min-h-full bg-background text-foreground antialiased" style={{ backgroundColor: "#050510" }}>
         <script
@@ -224,6 +233,7 @@ export default function RootLayout({
         </div>
 
         <GlobalLoaderRemover />
+        <DesktopAdBanner />
         <TranslateFix />
         <OfflineBanner />
         <InstallBanner />
