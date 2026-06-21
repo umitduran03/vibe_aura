@@ -5,6 +5,7 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import OfflineBanner from "@/components/OfflineBanner";
 import InstallBanner from "@/components/InstallBanner";
 import TranslateFix from "@/components/TranslateFix";
+import GlobalLoaderRemover from "@/components/GlobalLoaderRemover";
 import PushNotificationManager from '@/components/PushNotificationManager';
 import "./globals.css";
 
@@ -222,6 +223,7 @@ export default function RootLayout({
           <Image src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} priority style={{ width: "auto", height: "auto" }} />
         </div>
 
+        <GlobalLoaderRemover />
         <TranslateFix />
         <OfflineBanner />
         <InstallBanner />
