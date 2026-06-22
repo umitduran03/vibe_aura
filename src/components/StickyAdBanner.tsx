@@ -32,10 +32,18 @@ export default function StickyAdBanner() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  /* Oturum hafızası */
+  /* 30 dk bekleme mantığı — süre dolduysa yeniden göster */
   useEffect(() => {
-    if (sessionStorage.getItem("stickyAdClosed") === "1") {
-      setClosed(true);
+    const closedAt = localStorage.getItem("stickyAdClosedAt");
+    if (closedAt) {
+      const elapsed = Date.now() - parseInt(closedAt, 10);
+      if (elapsed < 10 * 60 * 1000) {
+        // 30 dakika henüz dolmadı, gizle
+        setClosed(true);
+      } else {
+        // 30 dakika geçti, eski kaydı sil ve tekrar göster
+        localStorage.removeItem("stickyAdClosedAt");
+      }
     }
   }, []);
 
@@ -92,7 +100,8 @@ export default function StickyAdBanner() {
 
   const handleClose = () => {
     setClosed(true);
-    sessionStorage.setItem("stickyAdClosed", "1");
+    // Kapanma zamanını kaydet — 30 dk sonra yeniden açılacak
+    localStorage.setItem("stickyAdClosedAt", String(Date.now()));
     document.body.style.paddingBottom = "";
   };
 
