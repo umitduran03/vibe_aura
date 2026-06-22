@@ -494,6 +494,160 @@ export const trendsDataEn: TrendArticle[] = [
     },
     ctaLabel: "Run My Delulu Check",
     ctaLink: "/",
+  },
+  {
+    slug: "attachment-styles-explained",
+    title: "The 4 Attachment Styles: Why You Date the Way You Do",
+    description: "Secure, anxious, avoidant, or fearful? Your attachment style is the invisible force controlling every relationship you've ever had. Here's how to finally understand yours.",
+    category: "Dating Psychology",
+    publishDate: "2026-06-22",
+    readTime: "6 min read",
+    keywords: ["attachment styles", "anxious attachment", "avoidant attachment", "secure attachment", "fearful avoidant", "attachment theory dating", "why do i push people away", "relationship psychology"],
+    imageUrl: "/images/trends/attachment-styles.png",
+    content: {
+      intro: "Every time a relationship ends, you swear you'll do things differently next time. But somehow, the same patterns keep repeating. You either cling too hard and scare people away, or you run the moment things get real. You attract the same type of person, fall into the same traps, and feel the same heartbreak. This isn't bad luck — it's your attachment style. Developed in childhood and hardwired into your nervous system, your attachment style is the invisible blueprint that dictates how you love, fight, communicate, and ultimately sabotage your relationships. Understanding it is the single most transformative thing you can do for your love life.",
+      sections: [
+        {
+          heading: "Secure Attachment: The Gold Standard",
+          paragraph: "Securely attached people are comfortable with intimacy and independence in equal measure. They communicate their needs directly, they don't play games, and they can handle conflict without spiraling into panic or shutting down. They trust their partner and give them space without anxiety. If this sounds like a fantasy, that's because only about 50% of adults have a secure attachment style. They're not perfect — they just have a healthy foundation for navigating emotional terrain. If you're dating someone secure, it might actually feel boring at first because your nervous system is wired to associate love with chaos."
+        },
+        {
+          heading: "Anxious Attachment: The Overthinker",
+          paragraph: "If you've ever sent a double text, checked their last seen 47 times, or spiraled because they used a period instead of an exclamation mark, you might be anxiously attached. Anxious attachment stems from inconsistent caregiving in childhood — sometimes your needs were met, sometimes they weren't. This created a hypervigilance around love. You crave closeness intensely but live in constant fear of abandonment. You become a detective, scanning for evidence that they're losing interest. The tragedy is that this very behavior — the neediness, the constant reassurance-seeking — often pushes partners away, confirming your deepest fear."
+        },
+        {
+          heading: "Avoidant Attachment: The Escape Artist",
+          paragraph: "Avoidants are the people who pull away when things get serious. They value independence to an extreme degree, they're uncomfortable with emotional vulnerability, and they often idealize past relationships while devaluing current ones. Avoidant attachment typically develops when a child learns that expressing emotional needs leads to rejection or dismissal. They learned to self-soothe, to not need anyone. On the surface, they seem cool, independent, and unbothered. Underneath, they're terrified of engulfment — of losing themselves in another person. They're not heartless; they're just protecting a very old wound."
+        },
+        {
+          heading: "Fearful-Avoidant: The Push-Pull Paradox",
+          paragraph: "The rarest and most turbulent style. Fearful-avoidants desperately want love but are simultaneously terrified of it. They swing between anxious and avoidant behaviors unpredictably — one day they're all in, the next they're completely withdrawn. This style often stems from childhood trauma or chaotic early relationships where the source of love was also the source of fear. Dating a fearful-avoidant feels like emotional whiplash. Being a fearful-avoidant feels like being at war with yourself. The good news: all attachment styles can shift toward security with awareness and intentional work."
+        }
+      ],
+      conclusion: "Your attachment style is not your destiny — it's your starting point. The first step toward healthier relationships is understanding the pattern you're unconsciously repeating. Once you see it, you can't unsee it. And that's when real change begins."
+    },
+    ctaLabel: "Analyze My Attachment Style",
+    ctaLink: "/",
+  },
+  {
+    slug: "how-to-get-over-someone",
+    title: "How to Actually Get Over Someone (No Toxic Positivity)",
+    description: "Skip the 'just focus on yourself' advice. Here's the brutally honest, psychologically-backed guide to moving on from someone who lives rent-free in your head.",
+    category: "Dating Psychology",
+    publishDate: "2026-06-22",
+    readTime: "5 min read",
+    keywords: ["how to get over someone", "how to move on", "getting over a breakup", "heartbreak advice", "how to stop thinking about someone", "breakup recovery", "moving on from ex"],
+    imageUrl: "/images/trends/get-over-someone.png",
+    content: {
+      intro: "It's 2 AM. You're lying in bed, staring at the ceiling, replaying the same conversation for the 400th time. You've deleted their number — and re-saved it from memory. You've muted their Instagram — and checked it from a browser. Every song sounds like it was written about them. Every happy couple on the street feels like a personal attack. Getting over someone is one of the most universally painful human experiences, and the internet's advice of 'just focus on yourself' and 'time heals everything' feels insultingly insufficient when you're in the trenches. So here's the real guide — no sugarcoating, no toxic positivity, just the raw psychological truth about how to actually move on.",
+      sections: [
+        {
+          heading: "Why Your Brain Won't Let Go (It's Literally Addiction)",
+          paragraph: "This isn't just emotional pain — it's neurochemical withdrawal. Studies show that romantic rejection activates the same brain regions as cocaine withdrawal. Your brain was flooded with dopamine, oxytocin, and serotonin every time you were with this person. Now that supply has been cut off, and your brain is screaming for another hit. This is why you keep checking their social media, re-reading old texts, and fantasizing about reconciliation. You're not weak — you're going through withdrawal from a human being. Understanding this reframes the entire experience: you're not failing at moving on, you're recovering from an addiction."
+        },
+        {
+          heading: "The No-Contact Rule: Why It Actually Works",
+          paragraph: "Every interaction — every text, every story view, every 'accidental' run-in — resets your withdrawal clock to zero. No contact isn't about punishing them or playing games. It's about giving your brain the space it needs to rewire. Delete, mute, block — whatever it takes. The first two weeks are hell. After that, the cravings start to space out. After 30 days, you'll have moments where you realize you haven't thought about them for hours. Those moments become days, then weeks. No contact doesn't erase the feelings — it starves them of fuel until they naturally diminish."
+        },
+        {
+          heading: "The Identity Reconstruction Phase",
+          paragraph: "The hardest part of getting over someone isn't losing them — it's losing the version of yourself that existed with them. You built an identity around being their person. Your future plans included them. Your daily routine revolved around them. Now there's a void, and that void feels like it's consuming you. The cure isn't to fill that void with another person — it's to rebuild your sense of self from scratch. This is where real growth happens. Not the Instagram-quote version of growth, but the uncomfortable, messy, crying-in-the-shower kind of growth that actually transforms you."
+        }
+      ],
+      conclusion: "Getting over someone is not a linear process. You'll have good days and terrible days. You'll think you're over it and then hear their name and feel like you've been punched. That's normal. The goal isn't to forget them — it's to reach a place where the memory no longer controls you. And you will get there. Not today, maybe not this month, but you will."
+    },
+    ctaLabel: "Reset My Mood",
+    ctaLink: "/mood-reset",
+  },
+  {
+    slug: "signs-someone-likes-you-body-language",
+    title: "12 Body Language Signs Someone is Into You (Science-Backed)",
+    description: "Forget what they text — watch what they DO. These science-backed body language cues reveal if someone is genuinely attracted to you or just being polite.",
+    category: "Dating Psychology",
+    publishDate: "2026-06-22",
+    readTime: "5 min read",
+    keywords: ["signs someone likes you", "body language attraction", "how to know if someone likes you", "signs of attraction", "crush body language", "does my crush like me", "nonverbal attraction cues"],
+    imageUrl: "/images/trends/body-language-crush.png",
+    content: {
+      intro: "You've been analyzing their texts for hidden meanings, dissecting their emoji choices, and reading way too deeply into their response times. But here's the truth that most dating advice ignores: words lie. Texts can be calculated, captions can be performative, and people can say all the right things without meaning any of them. But the body doesn't lie. Nonverbal communication accounts for over 55% of human interaction, and when someone is genuinely attracted to you, their body broadcasts it in ways they can't consciously control. Here are the twelve science-backed signals to look for.",
+      sections: [
+        {
+          heading: "The Eyes: The Ultimate Truth Detector",
+          paragraph: "Prolonged eye contact is the single most reliable indicator of attraction. When someone likes you, their pupils literally dilate — a physiological response they cannot fake. They'll hold your gaze a fraction of a second longer than necessary. They'll look at you when they laugh, even in a group setting, to check if you found it funny too. The 'triangle gaze' — eyes to left eye, right eye, then lips, then back up — is a subconscious pattern that signals romantic rather than platonic interest. If you catch them looking at you and they quickly look away with a slight smile, that's not coincidence — that's chemistry."
+        },
+        {
+          heading: "Physical Proximity and Touch",
+          paragraph: "Humans instinctively move closer to things they're attracted to and away from things they're not. If someone consistently chooses to sit next to you, stands slightly closer than necessary, or finds excuses to touch you — a hand on the arm during a laugh, a brush against your shoulder, fixing your collar — they are physically drawn to you. This is called 'haptic communication' and it's one of the earliest, most primal indicators of attraction. Pay attention to whether the touching increases over time — escalating touch is a strong signal of growing romantic interest."
+        },
+        {
+          heading: "Mirroring: The Subconscious Sync",
+          paragraph: "When we're attracted to someone, we unconsciously mirror their body language. If you lean forward, they lean forward. If you cross your legs, they cross theirs. If you pick up your drink, they pick up theirs seconds later. This phenomenon is called 'limbic synchrony' and it's controlled by mirror neurons in the brain. It's a deep, evolutionary signal of rapport and connection. The best part? It's nearly impossible to fake consistently. If someone is mirroring your movements without realizing it, their subconscious brain has already decided it likes you — even if they haven't admitted it to themselves yet."
+        }
+      ],
+      conclusion: "The next time you're wondering if someone likes you, put down your phone and start watching. Their body is telling you everything their words won't. And if you want an AI-powered second opinion on whether the chemistry is real, our Duo Compatibility feature can analyze the dynamic between you two with brutal honesty."
+    },
+    ctaLabel: "Test Our Chemistry",
+    ctaLink: "/duo-compatibility",
+  },
+  {
+    slug: "what-is-the-ick",
+    title: "What is 'The Ick'? And Can You Ever Come Back From It?",
+    description: "One moment they're perfect. The next, you watched them run for the bus and now you can never look at them the same way again. Welcome to the ick.",
+    category: "Culture & Slang",
+    publishDate: "2026-06-22",
+    readTime: "4 min read",
+    keywords: ["what is the ick", "ick meaning", "ick examples", "ick in dating", "sudden loss of attraction", "why did i get the ick", "ick vs red flag"],
+    imageUrl: "/images/trends/the-ick.png",
+    content: {
+      intro: "You liked them. Like, genuinely liked them. The butterflies were real, the chemistry was electric, and you were mentally planning your future together. Then one day, without any warning or logical reason, you watched them do something completely mundane — run for a bus, eat a sandwich in a specific way, or use a baby voice on the phone — and something inside you died. Instantly, irreversibly, and completely. Every ounce of attraction evaporated, replaced by a visceral feeling of repulsion that you can't explain, justify, or undo. Congratulations: you just got the ick. And no, you cannot come back from it.",
+      sections: [
+        {
+          heading: "The Psychology Behind the Ick",
+          paragraph: "The ick isn't just a TikTok trend — it's a genuine psychological phenomenon. Psychologists believe it's related to a sudden shift in perception where the 'halo effect' (viewing someone favorably because you're attracted to them) collapses instantaneously. One trigger — usually something that makes the person seem childish, awkward, or 'unsexy' — breaks the spell. Once your brain reclassifies them from 'romantic interest' to 'awkward human,' it's almost impossible to reverse. Your subconscious is essentially saying: 'I've seen enough. This person is not a viable mate.' It's brutal, it's unfair, and it's devastatingly permanent."
+        },
+        {
+          heading: "The Most Common Icks (Warning: You May Relate)",
+          paragraph: "The internet has catalogued thousands of icks, and the beauty of them is how absurdly specific they are. Running with a backpack on. Clapping when the plane lands. Using the word 'yummy.' Walking too fast. Walking too slow. Taking too long to order food. Saying 'that's what she said' in 2026. Wearing a lanyard. Having their phone on full brightness. Waving for a waiter and being ignored. The thing about icks is that they're not rational — they're instinctive. They reveal something about your subconscious preferences that you didn't even know existed."
+        },
+        {
+          heading: "Ick vs. Red Flag: Know the Difference",
+          paragraph: "Here's the crucial distinction. An ick is an irrational, harmless trigger that kills your personal attraction. A red flag is a legitimate warning sign of toxic or dangerous behavior. Watching someone trip up the stairs is an ick. Watching someone scream at a waiter is a red flag. Both might make you lose attraction, but only one should genuinely concern you. The ick is your taste in packaging; the red flag is the product itself being defective. Don't confuse them — and don't ignore actual red flags by dismissing them as 'just an ick.'"
+        }
+      ],
+      conclusion: "The ick is a reminder that attraction is not entirely within our conscious control. You can't logic your way out of it, and you definitely can't force yourself to un-ick someone. The best approach? Accept it, move on, and pray that you never give someone the ick by running for a bus in their line of sight."
+    },
+    ctaLabel: "Scan Their Red Flags",
+    ctaLink: "/toxic-ex-scanner",
+  },
+  {
+    slug: "love-languages-which-one-are-you",
+    title: "The 5 Love Languages: Which One Are You (and Why It Matters)?",
+    description: "Words of affirmation? Physical touch? Quality time? Understanding your love language — and your partner's — is the cheat code to healthier relationships.",
+    category: "Relationships",
+    publishDate: "2026-06-22",
+    readTime: "5 min read",
+    keywords: ["love languages", "5 love languages", "what is my love language", "words of affirmation", "physical touch love language", "quality time", "acts of service", "relationship advice"],
+    imageUrl: "/images/trends/love-languages.png",
+    content: {
+      intro: "You cook them dinner, clean the apartment, and run their errands — and they complain that you never say 'I love you' enough. They text you compliments all day, write you love notes, and shower you with verbal adoration — and you feel unloved because they never just sit and watch a movie with you without scrolling their phone. This isn't incompatibility — it's a love language mismatch, and it's the silent killer of otherwise great relationships. Developed by Dr. Gary Chapman, the five love languages framework explains that people give and receive love in fundamentally different ways, and most relationship conflicts stem from speaking different emotional dialects.",
+      sections: [
+        {
+          heading: "The Five Languages Decoded",
+          paragraph: "Words of Affirmation: You feel loved through verbal expression — compliments, encouragement, 'I love you,' and texts that show they're thinking of you. Physical Touch: Hugs, hand-holding, cuddling, and physical presence make you feel safe and connected. It's not just about intimacy — it's about constant, reassuring physical closeness. Quality Time: You feel loved when someone gives you their undivided, fully present attention. A distracted partner on their phone is your worst nightmare. Acts of Service: Actions speak louder than words for you. When someone does your laundry, fills your car with gas, or handles a stressful task for you, that IS their 'I love you.' Receiving Gifts: It's not about materialism — it's about the thought, effort, and symbolism behind a gift. A random $5 coffee means more to you than a generic 'thinking of you' text."
+        },
+        {
+          heading: "Why Mismatched Languages Destroy Relationships",
+          paragraph: "Here's the trap: we instinctively express love in OUR language, not our partner's. If your language is Acts of Service, you'll show love by doing things for your partner. But if their language is Words of Affirmation, they won't even register your efforts as love — they'll just think you're being helpful while emotionally neglecting them. Meanwhile, you'll feel unappreciated because they never acknowledge all the things you do. Both of you are pouring love into the relationship — but you're pouring it into cups the other person can't drink from. This creates a cycle of escalating resentment where both partners feel unloved despite both actively loving."
+        },
+        {
+          heading: "How to Discover and Apply Your Love Language",
+          paragraph: "The fastest way to discover your love language is to ask yourself: what hurts the most when it's missing? If silence kills you, your language is Words of Affirmation. If distance makes you feel rejected, it's Physical Touch. If being ignored or phone-scrolling during dinner enrages you, it's Quality Time. Once you know yours and your partner's, the goal isn't to change your natural language — it's to become bilingual. Learn to express love in THEIR language, even if it doesn't come naturally to you. It's a skill, and like any skill, it gets easier with practice."
+        }
+      ],
+      conclusion: "The love languages framework isn't a magic solution, but it is an incredibly powerful diagnostic tool. Most relationship problems aren't about a lack of love — they're about a lack of translation. When you learn to speak your partner's language, the love that was always there finally gets through."
+    },
+    ctaLabel: "Check Our Compatibility",
+    ctaLink: "/duo-compatibility",
   }
 ];
 
@@ -975,6 +1129,160 @@ export const trendsDataTr: TrendArticle[] = [
     },
     ctaLabel: "Delulu Kontrolümü Yap",
     ctaLink: "/",
+  },
+  {
+    slug: "attachment-styles-explained",
+    title: "4 Bağlanma Stili: Neden Hep Aynı Şekilde Seviyorsun?",
+    description: "Güvenli, kaygılı, kaçınmacı yoksa korkulu mu? Bağlanma stilin, yaşadığın her ilişkiyi kontrol eden görünmez bir güç. İşte sonunda anlama zamanı.",
+    category: "Flört Psikolojisi",
+    publishDate: "2026-06-22",
+    readTime: "6 dk okuma",
+    keywords: ["bağlanma stilleri", "kaygılı bağlanma", "kaçınmacı bağlanma", "güvenli bağlanma", "korkulu kaçınmacı", "ilişki psikolojisi", "neden insanları itiyorum"],
+    imageUrl: "/images/trends/attachment-styles.png",
+    content: {
+      intro: "Her ilişki bittiğinde bir dahaki sefere farklı yapacağına yemin edersin. Ama bir şekilde aynı kalıplar tekrarlanmaya devam eder. Ya çok sıkı yapışıp insanları kaçırırsın, ya da işler ciddileşince sen kaçarsın. Aynı tip insanı çekersin, aynı tuzaklara düşersin ve aynı kalp kırıklığını hissedersin. Bu kötü şans değil — bu senin bağlanma stilin. Çocuklukta gelişen ve sinir sistemine kodlanmış olan bağlanma stilin, nasıl sevdiğini, nasıl kavga ettiğini, nasıl iletişim kurduğunu ve nihayetinde ilişkilerini nasıl sabote ettiğini belirleyen görünmez bir plandır.",
+      sections: [
+        {
+          heading: "Güvenli Bağlanma: Altın Standart",
+          paragraph: "Güvenli bağlananlar yakınlık ve bağımsızlıkla eşit ölçüde rahatlar. İhtiyaçlarını doğrudan iletirler, oyun oynamazlar ve panik ya da kapanma yaşamadan çatışmayla başa çıkabilirler. Partnerlerine güvenirler ve kaygı duymadan alan verirler. Kulağa bir fantezi gibi geliyorsa, bunun nedeni yetişkinlerin yalnızca yaklaşık %50'sinin güvenli bağlanma stiline sahip olmasıdır. Mükemmel değiller — sadece duygusal arazide yol almak için sağlıklı bir temelleri var."
+        },
+        {
+          heading: "Kaygılı Bağlanma: Aşırı Düşünen",
+          paragraph: "Hiç çift mesaj attıysan, 'son görülme'yi 47 kez kontrol ettiysen veya ünlem yerine nokta kullandıkları için krizler geçirdiysen, kaygılı bağlanan olabilirsin. Kaygılı bağlanma, çocuklukta tutarsız bakım vermekten kaynaklanır — bazen ihtiyaçların karşılandı, bazen karşılanmadı. Bu, aşk etrafında bir aşırı uyanıklık yarattı. Yakınlığı yoğun bir şekilde arzularsın ama terk edilme korkusuyla yaşarsın. İlgi kaybettiklerine dair kanıt arayan bir dedektif olursun. Trajedisi şu ki tam da bu davranış — muhtaçlık, sürekli güvence arama — genellikle partnerleri uzaklaştırarak en derin korkunu doğrular."
+        },
+        {
+          heading: "Kaçınmacı Bağlanma: Kaçış Sanatçısı",
+          paragraph: "Kaçınmacılar, işler ciddileştiğinde geri çekilen insanlardır. Bağımsızlığa aşırı derecede değer verirler, duygusal kırılganlıkla rahatsız olurlar ve genellikle geçmiş ilişkileri idealleştirirken mevcut olanları değersizleştirirler. Kaçınmacı bağlanma genellikle bir çocuğun duygusal ihtiyaçlarını ifade etmenin reddedilmeye yol açtığını öğrendiğinde gelişir. Kendi kendini sakinleştirmeyi, kimseye ihtiyaç duymamayı öğrendiler. Yüzeyde soğukkanlı, bağımsız ve umursamaz görünürler. Altında, yutulma korkusu — başka bir insanda kendilerini kaybetme — taşırlar."
+        },
+        {
+          heading: "Korkulu-Kaçınmacı: İt-Çek Paradoksu",
+          paragraph: "En nadir ve en çalkantılı stil. Korkulu-kaçınmacılar umutsuzca aşkı isterler ama aynı anda ondan dehşete kapılırlar. Kaygılı ve kaçınmacı davranışlar arasında öngörülemez biçimde sallanırlar — bir gün tamamen içindeler, ertesi gün tamamen geri çekilmişler. Bu stil genellikle çocukluk travmasından veya sevginin kaynağının aynı zamanda korkunun kaynağı olduğu kaotik erken ilişkilerden kaynaklanır. İyi haber: tüm bağlanma stilleri farkındalık ve bilinçli çabayla güvenli bağlanmaya doğru kayabilir."
+        }
+      ],
+      conclusion: "Bağlanma stilin kaderin değil — başlangıç noktandır. Daha sağlıklı ilişkilere giden ilk adım, bilinçsizce tekrarladığın kalıbı anlamaktır. Bir kez gördüğünde, görmezden gelemezsin. Ve gerçek değişim o zaman başlar."
+    },
+    ctaLabel: "Bağlanma Stilimi Analiz Et",
+    ctaLink: "/",
+  },
+  {
+    slug: "how-to-get-over-someone",
+    title: "Birini Gerçekten Nasıl Unutursun (Toksik Pozitiflik Yok)",
+    description: "'Kendine odaklan' tavsiyesini geç. İşte kafanda bedava kiracı olarak yaşayan birinden kurtulmanın acımasızca dürüst, psikoloji destekli rehberi.",
+    category: "Flört Psikolojisi",
+    publishDate: "2026-06-22",
+    readTime: "5 dk okuma",
+    keywords: ["birini nasıl unuturum", "ayrılık sonrası ne yapmalı", "eski sevgiliyi unutmak", "kalp kırıklığı tavsiye", "birini düşünmeyi bırakmak", "ayrılık iyileşme"],
+    imageUrl: "/images/trends/get-over-someone.png",
+    content: {
+      intro: "Gece 2. Yatakta yatıyorsun, tavana bakıyorsun, aynı konuşmayı 400. kez kafanda tekrarlıyorsun. Numarasını sildin — ve hafızandan tekrar kaydettin. Instagram'ını sessize aldın — ve tarayıcıdan kontrol ettin. Her şarkı onlar hakkında yazılmış gibi geliyor. Sokaklardaki her mutlu çift kişisel bir saldırı hissettiriyor. Birini unutmak evrensel olarak en acı verici insan deneyimlerinden biridir ve internetin 'kendine odaklan' ve 'zaman her şeyi iyileştirir' tavsiyeleri siperlerdeyken hakaret edici derecede yetersiz hissettiriyor. İşte gerçek rehber — şekerleme yok, toksik pozitiflik yok.",
+      sections: [
+        {
+          heading: "Beynin Neden Bırakmıyor (Tam Anlamıyla Bağımlılık)",
+          paragraph: "Bu sadece duygusal acı değil — nörokimyasal yoksunluk. Araştırmalar romantik reddin, kokain yoksunluğuyla aynı beyin bölgelerini aktive ettiğini gösteriyor. Beynin bu kişiyle her birlikteyken dopamin, oksitosin ve serotoninle doluyordu. Şimdi o kaynak kesildi ve beynin başka bir doz için çığlık atıyor. Bu yüzden sosyal medyalarını kontrol etmeye, eski mesajları yeniden okumaya devam ediyorsun. Zayıf değilsin — bir insandan yoksunluk geçiriyorsun."
+        },
+        {
+          heading: "İletişimi Kesme Kuralı: Neden Gerçekten İşe Yarıyor",
+          paragraph: "Her etkileşim — her mesaj, her story görüntüleme, her 'kazara' karşılaşma — yoksunluk saatini sıfıra geri alır. İletişimsizlik onları cezalandırmak veya oyun oynamakla ilgili değil. Beynine yeniden yapılanması için ihtiyaç duyduğu alanı vermekle ilgili. Sil, sessize al, engelle — ne gerekiyorsa. İlk iki hafta cehennem. Ondan sonra, istekler aralıklı olmaya başlar. 30 gün sonra, saatlerce onları düşünmediğini fark ettiğin anlar olacak."
+        },
+        {
+          heading: "Kimlik Yeniden İnşa Aşaması",
+          paragraph: "Birini unutmanın en zor kısmı onu kaybetmek değil — onlarla var olan kendinin versiyonunu kaybetmektir. Onların insanı olmak üzerine bir kimlik inşa ettin. Gelecek planların onları içeriyordu. Günlük rutinin onların etrafında dönüyordu. Şimdi bir boşluk var ve o boşluk seni yutuyormuş gibi hissettiriyor. Çare o boşluğu başka bir insanla doldurmak değil — benlik duygunu sıfırdan yeniden inşa etmektir."
+        }
+      ],
+      conclusion: "Birini unutmak doğrusal bir süreç değil. İyi günlerin ve berbat günlerin olacak. Atlattığını düşüneceksin ve sonra adlarını duyup yumruk yemiş gibi hissedeceksin. Bu normal. Amaç onları unutmak değil — anının artık seni kontrol etmediği bir yere ulaşmak. Ve oraya varacaksın."
+    },
+    ctaLabel: "Ruh Halimi Sıfırla",
+    ctaLink: "/mood-reset",
+  },
+  {
+    slug: "signs-someone-likes-you-body-language",
+    title: "Birinin Senden Hoşlandığının 12 Beden Dili İşareti (Bilim Destekli)",
+    description: "Mesajlarını bırak — ne YAPTIĞINA bak. Bu bilim destekli beden dili ipuçları, birinin sana gerçekten ilgi duyup duymadığını ya da sadece kibar olup olmadığını ortaya koyuyor.",
+    category: "Flört Psikolojisi",
+    publishDate: "2026-06-22",
+    readTime: "5 dk okuma",
+    keywords: ["birinin senden hoşlandığının işaretleri", "beden dili çekim", "hoşlanma belirtileri", "ezildiğim kişi beni seviyor mu", "sözsüz çekim ipuçları"],
+    imageUrl: "/images/trends/body-language-crush.png",
+    content: {
+      intro: "Mesajlarını gizli anlamlar için analiz ediyor, emoji seçimlerini inceliyor ve yanıt sürelerini çok fazla derinlemesine okuyorsun. Ama işte çoğu flört tavsiyesinin görmezden geldiği gerçek: kelimeler yalan söyler. Mesajlar hesaplanabilir, altyazılar performatif olabilir ve insanlar hiçbirini kastetmeden doğru şeyleri söyleyebilir. Ama beden yalan söylemez. Sözsüz iletişim insan etkileşiminin %55'inden fazlasını oluşturur ve biri sana gerçekten ilgi duyduğunda, bedeni bunu bilinçli olarak kontrol edemeyecekleri şekillerde yayınlar.",
+      sections: [
+        {
+          heading: "Gözler: Nihai Gerçek Dedektörü",
+          paragraph: "Uzun süreli göz teması, çekimin en güvenilir tek göstergesidir. Biri senden hoşlandığında, göz bebekleri kelimenin tam anlamıyla genişler — taklit edemeyecekleri fizyolojik bir tepki. Bakışını gerekli olandan bir saniye daha uzun tutarlar. Bir grup ortamında bile güldüklerinde sana bakarlar, senin de komik bulup bulmadığını kontrol ederek. 'Üçgen bakış' — sol göz, sağ göz, sonra dudaklar, sonra tekrar yukarı — platonik değil romantik ilgiyi işaret eden bilinçaltı bir kalıptır."
+        },
+        {
+          heading: "Fiziksel Yakınlık ve Dokunma",
+          paragraph: "İnsanlar içgüdüsel olarak çekildikleri şeylere yaklaşır ve çekilmedikleri şeylerden uzaklaşır. Biri sürekli yanına oturmayı seçiyor, gerekli olandan biraz daha yakın duruyor veya sana dokunmak için bahaneler buluyorsa — gülüşte koluna bir el, omzuna bir sürtünme, yakana dokunma — fiziksel olarak sana çekiliyorlar. Buna 'haptik iletişim' denir ve çekimin en erken, en ilkel göstergelerinden biridir."
+        },
+        {
+          heading: "Aynalama: Bilinçaltı Senkronizasyon",
+          paragraph: "Birine çekildiğimizde bilinçsizce onların beden dilini aynalarız. Sen öne eğilirsen, onlar öne eğilir. Bacak bacak üstüne atarsan, onlar da atar. İçeceğini alırsan, saniyeler sonra onlar da alır. Bu fenomene 'limbik senkroni' denir ve beyindeki ayna nöronlar tarafından kontrol edilir. Tutarlı bir şekilde taklit etmek neredeyse imkansızdır. Biri farkında olmadan hareketlerini aynalıyorsa, bilinçaltı beyinleri zaten seni sevdiğine karar vermiştir."
+        }
+      ],
+      conclusion: "Bir dahaki sefere birinin senden hoşlanıp hoşlanmadığını merak ettiğinde, telefonunu bırak ve izlemeye başla. Bedenleri, sözlerinin söylemeyeceği her şeyi sana anlatıyor. Kimyanın gerçek olup olmadığı hakkında yapay zeka destekli ikinci bir görüş istersen, Duo Compatibility özelliğimiz ikiniz arasındaki dinamiği acımasız bir dürüstlükle analiz edebilir."
+    },
+    ctaLabel: "Kimyamızı Test Et",
+    ctaLink: "/duo-compatibility",
+  },
+  {
+    slug: "what-is-the-ick",
+    title: "'The Ick' Nedir? Ve Ondan Geri Dönebilir misin?",
+    description: "Bir an mükemmeller. Bir sonraki anda otobüse koştuklarını gördün ve artık onlara aynı gözle asla bakamayacaksın. 'The ick'e hoş geldin.",
+    category: "Kültür ve Slang",
+    publishDate: "2026-06-22",
+    readTime: "4 dk okuma",
+    keywords: ["the ick ne demek", "ick anlamı", "ick örnekleri", "flörtte ick", "ani çekim kaybı", "neden ick oldum", "ick vs kırmızı bayrak"],
+    imageUrl: "/images/trends/the-ick.png",
+    content: {
+      intro: "Onlardan hoşlanıyordun. Gerçekten, samimi bir şekilde hoşlanıyordun. Kelebekler gerçekti, kimya elektrikliydi ve zihnen geleceğinizi planlıyordun. Sonra bir gün, hiçbir uyarı veya mantıklı sebep olmaksızın, tamamen sıradan bir şey yapmalarını izledin — otobüse koştular, belirli bir şekilde sandviç yediler veya telefonda bebek sesi kullandılar — ve içindeki bir şey öldü. Anında, geri dönülemez biçimde ve tamamen. Her damla çekim buharlaştı, yerini açıklayamadığın, haklı çıkaramadığın veya geri alamadığın içgüdüsel bir itilme hissi aldı. Tebrikler: az önce 'ick' yaşadın.",
+      sections: [
+        {
+          heading: "Ick'in Arkasındaki Psikoloji",
+          paragraph: "Ick sadece bir TikTok trendi değil — gerçek bir psikolojik fenomen. Psikologlar bunun, 'halo etkisinin' (birine çekildiğin için olumlu görme) aniden çöktüğü algıda ani bir değişimle ilgili olduğuna inanıyor. Bir tetikleyici — genellikle kişiyi çocuksu, garip veya 'çekici olmayan' gösteren bir şey — büyüyü bozar. Beynin onları 'romantik ilgi'den 'garip insan'a yeniden sınıflandırdığında, geri dönüş neredeyse imkansızdır. Bilinçaltın aslında şunu söylüyor: 'Yeterince gördüm. Bu kişi uygun bir eş değil.'"
+        },
+        {
+          heading: "En Yaygın Ick'ler (Uyarı: Kendini Görebilirsin)",
+          paragraph: "İnternet binlerce ick'i katalogladı ve güzellikleri ne kadar absürd derecede spesifik olmaları. Sırt çantasıyla koşmak. Uçak indiğinde alkışlamak. 'Nefis' kelimesini kullanmak. Çok hızlı yürümek. Çok yavaş yürümek. Yemek sipariş etmesi çok uzun sürmek. Garsona el sallamak ve görmezden gelinmek. Ick'lerin meselesi şu ki rasyonel değiller — içgüdüsel. Var olduğunu bile bilmediğin bilinçaltı tercihler hakkında bir şeyler ortaya koyuyorlar."
+        },
+        {
+          heading: "Ick vs. Kırmızı Bayrak: Farkı Bilin",
+          paragraph: "İşte kritik ayrım. Ick, kişisel çekimini öldüren irrasyonel, zararsız bir tetikleyicidir. Kırmızı bayrak, toksik veya tehlikeli davranışın meşru bir uyarı işaretidir. Birinin merdivenlerde tökezlediğini izlemek ick'tir. Birinin garsona bağırdığını izlemek kırmızı bayraktır. İkisi de çekimi kaybettiribilir, ama sadece biri seni gerçekten endişelendirmelidir. Ick ambalaj zevkindir; kırmızı bayrak ürünün kendisinin kusurlu olmasıdır. Karıştırmayın."
+        }
+      ],
+      conclusion: "Ick, çekimin tamamen bilinçli kontrolümüz altında olmadığının bir hatırlatıcısıdır. Mantıkla çıkamazsın ve birini kesinlikle ick'lememiş hale getiremezsin. En iyi yaklaşım? Kabul et, devam et ve birisinin göreceği yerde otobüse koşarak asla ick vermemek için dua et."
+    },
+    ctaLabel: "Kırmızı Bayraklarını Tara",
+    ctaLink: "/toxic-ex-scanner",
+  },
+  {
+    slug: "love-languages-which-one-are-you",
+    title: "5 Sevgi Dili: Hangisisin (ve Neden Önemli)?",
+    description: "Onaylama sözleri mi? Fiziksel temas mı? Kaliteli zaman mı? Sevgi dilini ve partnerinin dilini anlamak, daha sağlıklı ilişkilerin şifre kodu.",
+    category: "İlişkiler",
+    publishDate: "2026-06-22",
+    readTime: "5 dk okuma",
+    keywords: ["sevgi dilleri", "5 sevgi dili", "benim sevgi dilim ne", "onaylama sözleri", "fiziksel temas sevgi dili", "kaliteli zaman", "hizmet eylemleri", "ilişki tavsiyesi"],
+    imageUrl: "/images/trends/love-languages.png",
+    content: {
+      intro: "Onlara akşam yemeği pişiriyorsun, evi temizliyorsun, işlerini hallediyorsun — ve yeterince 'seni seviyorum' demediğinden şikayet ediyorlar. Sana bütün gün iltifat mesajları atıyorlar, aşk notları yazıyorlar, sözlü sevgi yağmuruna tutuyorlar — ve sen sevilmemiş hissediyorsun çünkü telefonlarına bakmadan seninle oturup film izlemiyorlar. Bu uyumsuzluk değil — bu bir sevgi dili uyuşmazlığı ve başka türlü harika ilişkilerin sessiz katili. Dr. Gary Chapman tarafından geliştirilen beş sevgi dili çerçevesi, insanların temelden farklı şekillerde sevgi verip aldığını açıklıyor.",
+      sections: [
+        {
+          heading: "Beş Dil Çözüldü",
+          paragraph: "Onaylama Sözleri: Sözlü ifadeyle sevilmiş hissedersin — iltifatlar, teşvikler, 'seni seviyorum' ve seni düşündüklerini gösteren mesajlar. Fiziksel Temas: Sarılmalar, el ele tutuşma, kucaklaşma ve fiziksel varlık seni güvende ve bağlı hissettirir. Kaliteli Zaman: Biri sana bölünmemiş, tamamen mevcut dikkatini verdiğinde sevilmiş hissedersin. Telefonuyla meşgul dikkatsiz bir partner en kötü kabusun. Hizmet Eylemleri: Senin için eylemler kelimelerden daha yüksek sesle konuşur. Biri çamaşırını yıkadığında veya stresli bir işi senin yerine hallettiğinde, bu onların 'seni seviyorum'u. Hediye Alma: Materyalizm değil — bir hediyenin arkasındaki düşünce, çaba ve sembolizmle ilgili."
+        },
+        {
+          heading: "Uyumsuz Diller İlişkileri Neden Yıkar",
+          paragraph: "İşte tuzak: içgüdüsel olarak KENDİ dilimizde sevgi ifade ederiz, partnerimizinkinde değil. Dilin Hizmet Eylemleri ise, parterin için bir şeyler yaparak sevgi gösterirsin. Ama onların dili Onaylama Sözleri ise, çabalarını sevgi olarak bile algılamayacaklar — sadece yardımsever olduğunu düşünecekler. Bu arada sen takdir edilmemiş hissedeceksin çünkü yaptığın her şeyi asla fark etmiyorlar. İkiniz de ilişkiye sevgi döküyorsunuz — ama diğerinin içemeyeceği bardaklara döküyorsunuz."
+        },
+        {
+          heading: "Sevgi Dilini Nasıl Keşfeder ve Uygularsın",
+          paragraph: "Sevgi dilini keşfetmenin en hızlı yolu kendine sormak: eksik olduğunda en çok ne acıtır? Sessizlik seni öldürüyorsa, dilin Onaylama Sözleri. Mesafe reddedilmiş hissettiriyorsa, Fiziksel Temas. Yemekte görmezden gelinmek veya telefon kaydırma seni çıldırtıyorsa, Kaliteli Zaman. Kendininkini ve partnerinkini öğrendikten sonra, amaç doğal dilini değiştirmek değil — iki dilli olmak. Doğal gelmese bile ONLARIN dilinde sevgi ifade etmeyi öğren. Bu bir beceridir ve her beceri gibi pratikle kolaylaşır."
+        }
+      ],
+      conclusion: "Sevgi dilleri çerçevesi sihirli bir çözüm değildir, ama inanılmaz güçlü bir teşhis aracıdır. Çoğu ilişki sorunu sevgi eksikliğinden değil — çeviri eksikliğinden kaynaklanır. Partnerinin dilini konuşmayı öğrendiğinde, her zaman orada olan sevgi nihayet karşı tarafa ulaşır."
+    },
+    ctaLabel: "Uyumumuzu Kontrol Et",
+    ctaLink: "/duo-compatibility",
   }
 ];
 
