@@ -314,6 +314,186 @@ export const trendsDataEn: TrendArticle[] = [
     },
     ctaLabel: "Start An Aura Battle",
     ctaLink: "/aura-battle",
+  },
+  {
+    slug: "what-is-rizz",
+    title: "What is Rizz and Do You Actually Have It?",
+    description: "Rizz is the most searched dating term of 2026. Find out what it really means, whether it can be learned, and how to find out if you have unspoken rizz.",
+    category: "Culture & Slang",
+    publishDate: "2026-06-19",
+    readTime: "4 min read",
+    keywords: ["what is rizz", "rizz meaning", "unspoken rizz", "how to have rizz", "gen-z slang 2026", "charisma tips", "dating confidence"],
+    imageUrl: "/images/trends/rizz.png",
+    content: {
+      intro: "If you've spent any time on TikTok or Twitter in the last two years, you've definitely heard someone accused of having 'no rizz' or celebrated for their 'unspoken rizz'. It's the most dominant term in the Gen-Z social and dating lexicon right now, and it's being used to describe everything from smooth flirting to raw, unexplainable magnetic charisma. But what does rizz actually mean? Can you learn it? And most importantly — do you have it, or are you secretly a rizzless NPC in your own life story?",
+      sections: [
+        {
+          heading: "The Real Definition of Rizz",
+          paragraph: "Rizz, short for 'charisma', is your innate ability to attract, charm, and seduce others — particularly romantic interests — through your words, body language, and overall vibe. It was popularized by streamer Kai Cenat and later went fully mainstream when even celebrities started being rated on their rizz levels. The key distinction is between 'spoken rizz' (being verbally smooth and witty) and 'unspoken rizz' (attracting people purely through your energy and presence, without even trying). The latter is considered far more powerful and is virtually impossible to fake."
+        },
+        {
+          heading: "Can You Actually Learn Rizz?",
+          paragraph: "Here's the controversial truth the internet won't tell you: spoken rizz can absolutely be practiced and improved. It comes down to active listening, confident eye contact, playful teasing, and the ability to make someone feel like the only person in the room. These are learnable social skills. However, unspoken rizz is different. It's not about what you say — it's about who you fundamentally are. It radiates from your aura, your confidence, and the way you carry yourself when you think nobody is watching. That is something you feel, not perform."
+        },
+        {
+          heading: "The AI Rizz Test: Finding Out Once and For All",
+          paragraph: "Self-assessment of rizz is notoriously unreliable. The people with the least rizz are always the most confident about having it, and vice versa. This is where AI comes in. Our Rizz Architect feature doesn't just give you a score; it analyzes your selfie for the specific facial cues associated with high-rizz individuals: the confidence in your resting expression, your jaw tension, the authenticity in your eyes. It then gives you a brutally honest breakdown of your rizz level and a personalized action plan to level it up."
+        }
+      ],
+      conclusion: "Rizz isn't just a silly internet word. It's a shorthand for a deeply human desire: to be magnetic, compelling, and irresistible. The good news is that your baseline rizz level is not your destiny. The first step is knowing where you actually stand. Are you ready to find out?"
+    },
+    ctaLabel: "Test My Rizz Level",
+    ctaLink: "/",
+  },
+  {
+    slug: "soft-launch-hard-launch",
+    title: "Soft Launch vs. Hard Launch: What Your Dating Strategy Says About You",
+    description: "Posting a blurry hand holding yours vs. a full couple photo. The soft launch vs. hard launch debate reveals everything about your attachment style and relationship confidence.",
+    category: "Dating Psychology",
+    publishDate: "2026-06-20",
+    readTime: "5 min read",
+    keywords: ["soft launch relationship", "hard launch dating", "relationship on social media", "posting your partner", "attachment style", "dating advice 2026", "instagram relationship"],
+    imageUrl: "/images/trends/soft-launch.png",
+    content: {
+      intro: "You've just started seeing someone incredible. The butterflies are real, the dates are immaculate, and you are dangerously close to catching actual feelings. And then comes the most strategically complex decision of modern dating: how do you handle their social media debut? Do you go with the mysterious soft launch — a blurry hand in the corner of a brunch photo, a barely-visible shadow on your story — or do you go full hard launch with a face-forward couple photo and a tagged Instagram post? This decision, which previous generations never had to make, reveals more about your psychology than you might think.",
+      sections: [
+        {
+          heading: "The Soft Launch: Strategic Ambiguity",
+          paragraph: "The soft launch is the art of introducing a romantic partner to your audience without fully committing to the reveal. It's a cropped hand, a silhouette, a 'grabbed dinner with someone special' caption with zero context. The underlying psychology is one of risk management. The soft-launcher is protecting themselves from the embarrassing public fallout if the relationship doesn't work out. It's also sometimes a power move — generating mystery and making your audience wonder who this new person is. If you're a habitual soft-launcher, it can also signal an anxious or avoidant attachment style. You want the validation of being seen as desired, but you're terrified of the vulnerability of full commitment."
+        },
+        {
+          heading: "The Hard Launch: Bold Confidence or Reckless Optimism?",
+          paragraph: "The hard launch is a statement of intent. A clear photo, both faces visible, a warm caption, maybe even a tag. It tells the world: this person is mine, I am proud, and I am not afraid of what happens next. Hard launchers tend to have more secure attachment styles — they're comfortable with vulnerability and don't obsessively fear public failure. However, a premature hard launch (posting someone after three dates) can also be a sign of emotional impulsivity or love-bombing tendencies. The timing of the hard launch is everything. Too soon, and you look desperate. Just right, and it's the most romantic thing you can do."
+        },
+        {
+          heading: "What Your Strategy Reveals About Your Attachment Style",
+          paragraph: "Here's the unfiltered psychological breakdown. Chronic soft-launchers? Likely anxious or avoidant attachment — they crave connection but fear exposure. Impulsive hard-launchers? Possibly fearful-avoidant, using intense openness as a defense mechanism. Calculated, timed hard-launchers? Secure attachment — they know what they have, they're proud of it, and they're not performing for anyone. Understanding your own pattern is the first step to understanding why your relationships unfold the way they do."
+        }
+      ],
+      conclusion: "There is no universally correct answer in the soft launch vs. hard launch debate. But your instinctive choice is a window into your relationship psychology. Are you protecting yourself? Are you performing? Or are you genuinely, securely happy — and just want the world to know?"
+    },
+    ctaLabel: "Check Our Compatibility",
+    ctaLink: "/duo-compatibility",
+  },
+  {
+    slug: "emotionally-unavailable-signs",
+    title: "10 Signs Someone is Emotionally Unavailable (And You're Ignoring Them)",
+    description: "They text back fast but never go deep. They're fun but deflect every serious conversation. Here are the undeniable signs of emotional unavailability and why we keep falling for it.",
+    category: "Dating Psychology",
+    publishDate: "2026-06-21",
+    readTime: "6 min read",
+    keywords: ["emotionally unavailable man", "emotionally unavailable woman", "signs emotional unavailability", "avoidant attachment", "why they won't commit", "toxic relationship signs", "dating red flags"],
+    imageUrl: "/images/trends/emotionally-unavailable.png",
+    content: {
+      intro: "You've been talking for two months. The conversations are great when they happen — funny, deep, electric. But something always feels slightly out of reach. They're there, but they're not fully there. They share details about their life but deflect the moment anything gets emotionally heavy. You feel connected, but only to a version of them they've carefully constructed and curated for your consumption. You might be falling for someone who is emotionally unavailable, and the painful truth is: they might not even know it themselves.",
+      sections: [
+        {
+          heading: "They're Consistent on the Surface, Absent in Depth",
+          paragraph: "Emotionally unavailable people are often excellent communicators — on a surface level. They text regularly, they make plans, they show up. What they don't do is go deeper. The moment a conversation shifts from fun and flirty to vulnerable and real, they pivot. They crack a joke, they change the subject, or they suddenly 'get busy'. Consistency without depth is one of the earliest and most reliable warning signs. You're getting their highlight reel, not their truth."
+        },
+        {
+          heading: "Their Past is a Vault",
+          paragraph: "A person who is emotionally available shares their history gradually, building trust and vulnerability over time. An emotionally unavailable person either shares nothing ('I don't really talk about my past') or shares everything all at once as a performance of openness that actually reveals nothing personal. They may have unprocessed trauma, a recent heartbreak they haven't recovered from, or deeply ingrained avoidant attachment patterns from childhood. Whatever the cause, their past is a sealed vault, and they are not ready to hand you the key."
+        },
+        {
+          heading: "Why You Keep Falling for Them Anyway",
+          paragraph: "Here's the hardest truth: emotionally unavailable people are often incredibly charismatic, attractive, and fun. The hot-and-cold dynamic they create is psychologically addictive — our brains release more dopamine chasing unpredictable rewards than consistent ones. The chase feels exciting. And on some level, their unavailability might mirror patterns of love you learned in your own childhood. Our Toxic Ex Scanner can help you identify if someone in your life is exhibiting these patterns before you get any deeper."
+        }
+      ],
+      conclusion: "Loving an emotionally unavailable person is one of the loneliest experiences imaginable — because you can feel the connection that could exist, while being constantly denied the depth you need. You cannot love someone into being ready. The most powerful thing you can do is recognize the pattern and choose yourself."
+    },
+    ctaLabel: "Scan for Red Flags",
+    ctaLink: "/toxic-ex-scanner",
+  },
+  {
+    slug: "toxic-friendship-signs",
+    title: "Is My Friendship Toxic? 10 Signs You Need to See",
+    description: "Not all toxicity comes from romantic partners. Toxic friendships are just as damaging — and twice as hard to spot. Here are the signs your friendship might be draining your aura.",
+    category: "Relationships",
+    publishDate: "2026-06-22",
+    readTime: "5 min read",
+    keywords: ["toxic friendship signs", "how to know if a friend is toxic", "friendship red flags", "one-sided friendship", "draining friends", "how to end a toxic friendship", "friendship advice"],
+    imageUrl: "/images/trends/toxic-friendship.png",
+    content: {
+      intro: "We spend enormous amounts of energy identifying toxic romantic partners, but we rarely apply the same critical lens to our friendships. Yet a toxic friendship can be just as devastating — and often more insidious — because the expectations are different and the betrayal cuts deeper. Friends are supposed to be your chosen family, your safe space. When that relationship becomes a source of anxiety, self-doubt, or exhaustion instead of joy, something has gone seriously wrong. Here are the undeniable signs that your friendship might be quietly destroying your aura.",
+      sections: [
+        {
+          heading: "It's Always About Them",
+          paragraph: "A healthy friendship is a two-way exchange of energy, support, and genuine interest. In a toxic friendship, you are the audience and they are the main character — always. You spend hours listening to their problems, celebrating their wins, and validating their feelings. When you try to share something about your own life, the conversation quickly pivots back to them. You leave every hangout feeling emotionally drained and oddly hollow, like you gave a lot and received nothing in return. This one-sided dynamic is the foundational red flag of any toxic relationship."
+        },
+        {
+          heading: "They Celebrate Your Failures More Than Your Wins",
+          paragraph: "A real friend's joy at your success should be genuine and unguarded. A toxic friend has a strange, barely-concealed bitterness toward your achievements. They minimize your wins ('oh, that's cool, but it's not that big a deal'), immediately compare your success to their own, or find something negative to say in the moment of your celebration. Conversely, they seem almost energized when things go wrong for you, offering 'sympathy' that feels slightly too comfortable. This is often rooted in deep insecurity, but regardless of the cause, it is corrosive to your self-esteem."
+        },
+        {
+          heading: "You're Always Walking on Eggshells",
+          paragraph: "In a healthy friendship, you can be your full, unfiltered self. In a toxic one, you are constantly self-censoring. You choose your words carefully to avoid setting them off. You don't share good news immediately because you're worried about their reaction. You feel a low-level anxiety before hanging out with them. This eggshell dynamic is a trauma response your nervous system has developed to protect you from their unpredictable reactions. It is not normal, and it is not sustainable."
+        }
+      ],
+      conclusion: "Ending a friendship is one of the most painful things you can do, precisely because society doesn't give it the same legitimacy as a romantic breakup. But your aura — your energy, your mental health, your sense of self — is worth protecting, even from people who once felt like family. You deserve friendships that feel like sunlight, not like work."
+    },
+    ctaLabel: "Do an Aura Battle",
+    ctaLink: "/aura-battle",
+  },
+  {
+    slug: "gen-z-dating-terms-2026",
+    title: "Every Gen-Z Dating Term You Need to Know in 2026",
+    description: "From 'benching' to 'breadcrumbing' to 'beige flag' — the complete glossary of Gen-Z dating slang that is reshaping how we talk about modern relationships.",
+    category: "Culture & Slang",
+    publishDate: "2026-06-20",
+    readTime: "6 min read",
+    keywords: ["gen-z dating terms 2026", "modern dating slang", "breadcrumbing meaning", "benching dating", "beige flag", "situationship", "dating glossary", "relationship terms"],
+    imageUrl: "/images/trends/gen-z-dating-terms.png",
+    content: {
+      intro: "Modern dating has developed an entirely new language, and if you're not fluent, you're going to find yourself completely lost in conversations about your own love life. Gen-Z has taken the messy, confusing, often painful experience of dating and given every single phenomenon its own precise, shareable term. From the manipulative to the mundane, these words capture emotional realities that previous generations didn't even have vocabulary for. Consider this your essential glossary for navigating romance in 2026.",
+      sections: [
+        {
+          heading: "The Manipulation Playbook: Terms for Toxic Behavior",
+          paragraph: "Breadcrumbing: Sending just enough attention — a like, a 'hey' text, an occasional compliment — to keep you interested without ever committing to anything real. Benching: Keeping you on the roster as a backup option while they pursue someone else. Orbiting: They've stopped talking to you, but they still watch every single one of your stories. It keeps you wondering and attached without them having to do any actual work. Love bombing: Overwhelming you with intense affection, attention, and grand gestures in the early stages of a relationship to hook you before revealing their true nature. These aren't just internet jokes — they're documented psychological manipulation tactics."
+        },
+        {
+          heading: "The Ambiguity Zone: Terms for Confusing Situations",
+          paragraph: "Situationship: More than friends, less than partners — the undefined grey zone that thrives on ambiguity. Talking stage: The pre-relationship courtship period that can apparently last anywhere from two weeks to four years with no clear endpoint. Beige flag: A quirk or habit that isn't a red flag but is notably weird — something that gives you pause but not necessarily alarm. Soft launching: Introducing a partner on social media subtly, without a direct reveal. Slow fade: Instead of a direct conversation, someone simply reduces their communication frequency until they've essentially ghosted you without technically doing so."
+        },
+        {
+          heading: "The Good Stuff: Terms for Healthy Dating",
+          paragraph: "Green flag: A behavior or trait that signals emotional health, security, and good relationship potential. Main character energy: Living your life with intentionality and confidence, prioritizing your own story. Hard launching: Posting your partner clearly and confidently on social media — a sign of security and pride in the relationship. Rizz: The magnetic charisma that makes someone naturally attractive without trying too hard. Secure attachment: Not a slang term, but the goal — a relationship style characterized by emotional availability, trust, and consistent behavior."
+        }
+      ],
+      conclusion: "Language shapes reality. By having a precise vocabulary for these experiences, Gen-Z has made it significantly easier to identify, articulate, and process the confusing dynamics of modern dating. The first step to escaping a toxic pattern is being able to name it."
+    },
+    ctaLabel: "Check Your Vibe",
+    ctaLink: "/",
+  },
+  {
+    slug: "are-you-delulu",
+    title: "Are You Delulu? The Fine Line Between Manifestation and Delusion",
+    description: "'Delulu is the solulu' became a Gen-Z mantra. But when does positive thinking become genuine delusion about a situationship that was never going anywhere?",
+    category: "Dating Psychology",
+    publishDate: "2026-06-21",
+    readTime: "5 min read",
+    keywords: ["delulu meaning", "delulu is the solulu", "am i delusional about my crush", "manifestation vs delusion", "gen-z mental health", "situationship delusion", "positive thinking"],
+    imageUrl: "/images/trends/delulu.png",
+    content: {
+      intro: "'Delulu is the solulu.' It started as a joke, a self-aware declaration that your wildly unrealistic romantic fantasies were your greatest personality trait. The girl who's convinced the barista who remembered her name is her soulmate. The guy who interprets a two-letter text reply as a sign of deep emotional connection. Being 'delulu' became a badge of honor — a way of weaponizing optimism against the bleak realities of modern dating. But somewhere along the way, the joke stopped being funny. Because some of us aren't performing delulu. We're actually living it, and it's keeping us stuck.",
+      sections: [
+        {
+          heading: "The Healthy Kind of Delulu",
+          paragraph: "Let's be fair — there is a genuinely healthy version of this mindset. Psychologists call it 'positive illusions': slightly overestimating your attractiveness, your partner's interest, or your relationship's potential in ways that keep you motivated and optimistic. Research actually shows that people with mild positive illusions tend to be happier and more persistent in pursuing their goals. The 'delulu is the solulu' era works when you're using it to build confidence, take a chance on someone you like, or maintain hope after a rough dating period."
+        },
+        {
+          heading: "When Delulu Becomes a Trap",
+          paragraph: "The line is crossed when you start fabricating evidence. When you spend three hours analyzing a 'k' text for hidden meaning. When you decide that them canceling for the fourth time is actually a sign they're just scared of their feelings for you. When you're six months deep into a talking stage and you're convinced they just need more time. This isn't manifestation — it's a trauma response. You're protecting yourself from a painful reality by constructing a more comfortable fictional one. Meanwhile, the person you're delulu about is probably not thinking about you nearly as much as you think they are."
+        },
+        {
+          heading: "How to Reality-Check Yourself",
+          paragraph: "The brutal truth is that delusion, by definition, is invisible from the inside. You can't diagnose your own delusion with the same brain that created it. This is why external, objective input is crucial. Talking to a blunt friend helps — but friends have their own biases. Our AI Delulu Check feature is designed specifically for this: you describe the situation, and our algorithm gives you a completely unfiltered, evidence-based probability of whether this person is actually into you or whether you're deep in your feelings alone. Sometimes you need a machine to say what your friends are too kind to."
+        }
+      ],
+      conclusion: "Being delulu is sometimes necessary for survival in the brutal arena of modern dating. But chronic delusion is a way of abandoning yourself — choosing a comfortable fiction over a reality where you could actually find genuine connection. Check yourself before you wreck yourself."
+    },
+    ctaLabel: "Run My Delulu Check",
+    ctaLink: "/",
   }
 ];
 
@@ -615,6 +795,186 @@ export const trendsDataTr: TrendArticle[] = [
     },
     ctaLabel: "Vibe Savaşı'nı Başlat",
     ctaLink: "/aura-battle",
+  },
+  {
+    slug: "what-is-rizz",
+    title: "Rizz Nedir ve Sende Gerçekten Var Mı?",
+    description: "Rizz, 2026'nın en çok aranan flört terimi. Ne anlama geldiğini, öğrenilip öğrenilemeyeceğini ve 'unspoken rizz'in gerçekten var mı olmadığını öğren.",
+    category: "Kültür ve Slang",
+    publishDate: "2026-06-19",
+    readTime: "4 dk okuma",
+    keywords: ["rizz ne demek", "rizz anlamı", "unspoken rizz", "nasıl rizz sahibi olunur", "gen-z slang 2026", "karizmatik olmak"],
+    imageUrl: "/images/trends/rizz.png",
+    content: {
+      intro: "Son iki yılda TikTok veya Twitter'da biraz vakit geçirdiysen, birine 'hiç rizzo yok' dendiğini ya da 'unspoken rizzi var' diye övüldüğünü mutlaka duymuşsundur. Şu anda Gen-Z'nin sosyal ve flört sözlüğüne egemen olan en baskın terim bu: pürüzsüz flörtten tarif edilemez, manyetik karizmaya kadar her şeyi tanımlamak için kullanılıyor. Ama rizz gerçekte ne anlama geliyor? Öğrenilebilir mi? Ve daha da önemlisi — sende var mı, yoksa kendi hayat hikayende farkında olmadan bir NPC olarak mı geziniyorsun?",
+      sections: [
+        {
+          heading: "Rizz'in Gerçek Tanımı",
+          paragraph: "'Karizmanın' kısaltması olan Rizz, sözler, beden dili ve genel vibe aracılığıyla başkalarını — özellikle romantik ilgileri — doğal olarak çekme, etkileme ve büyüleme yeteneğindir. Yayıncı Kai Cenat tarafından popülerleştirilen ve ardından ünlülerin bile rizz seviyeleriyle değerlendirilmeye başlandığı bu kavramın iki türü var: 'spoken rizz' (sözlü olarak pürüzsüz ve esprili olmak) ve 'unspoken rizz' (hiç çaba harcamadan sadece enerjin ve varlığınla insanları çekmek). İkincisi çok daha güçlü kabul ediliyor ve sahte yapmak neredeyse imkânsız."
+        },
+        {
+          heading: "Rizz Gerçekten Öğrenilebilir mi?",
+          paragraph: "İnternetin sana söylemeyeceği tartışmalı gerçek şu: spoken rizz kesinlikle pratikle geliştirilebilir. Aktif dinleme, özgüvenli göz teması, oyuncu takılmalar ve birine konuşurken odanın tek kişisiymiş gibi hissettirme yeteneğine dayanır. Bunlar öğrenilebilir sosyal beceriler. Ancak unspoken rizz farklı bir şeydir. Ne söylediğinle değil, temelden kim olduğunla ilgilidir. Auranızdan, özgüveninizden ve kimse bakmıyor sanırken kendinizi taşıma biçiminizden yayılır. Bu, hissedilen bir şeydir, performans değil."
+        },
+        {
+          heading: "Yapay Zeka Rizz Testi: Bir Kez ve Hepsini Öğren",
+          paragraph: "Rizzo kendi kendine değerlendirmek son derece güvenilmez. En az rizze sahip olanlar her zaman buna en çok güvenenlerdir ve tam tersi. İşte burada yapay zeka devreye giriyor. Rizz Architect özelliğimiz sadece sana bir puan vermekle kalmıyor; selfienizi yüksek rizz bireyleriyle ilişkili spesifik yüz ipuçları için analiz ediyor: istirahat ifadenizdeki özgüven, çene gerginliğiniz, gözlerinizdeki otantiklik. Ardından rizz seviyenizin acımasızca dürüst bir analizini ve onu yükseltmek için kişiselleştirilmiş bir eylem planı sunuyor."
+        }
+      ],
+      conclusion: "Rizz sadece saçma bir internet kelimesi değil. Derin bir insani arzunun özeti: manyetik, etkileyici ve karşı konulmaz olmak. İyi haber şu ki temel rizz seviyeniz kaderiniz değil. İlk adım gerçekte nerede durduğunu bilmek. Öğrenmeye hazır mısın?"
+    },
+    ctaLabel: "Rizz Seviyemi Test Et",
+    ctaLink: "/",
+  },
+  {
+    slug: "soft-launch-hard-launch",
+    title: "Soft Launch mı Hard Launch mı: Flört Stratejin Seni Ele Veriyor",
+    description: "Birinin bulanık elini paylaşmak mı, yoksa tam çift fotoğrafı mı? Soft launch ve hard launch arasındaki fark, bağlanma stilin ve ilişki özgüvenin hakkında her şeyi söylüyor.",
+    category: "Flört Psikolojisi",
+    publishDate: "2026-06-20",
+    readTime: "5 dk okuma",
+    keywords: ["soft launch ne demek", "hard launch ilişki", "sosyal medyada ilişki paylaşmak", "partneri tanıtmak", "bağlanma stili", "instagram ilişki"],
+    imageUrl: "/images/trends/soft-launch.png",
+    content: {
+      intro: "Müthiş biriyle yeni tanışmaya başladın. Kelebekler gerçek, buluşmalar kusursuz ve gerçek anlamda duygular geliştirmekten tehlikeli derecede yakınsın. Ardından modern flörtün en stratejik açıdan karmaşık kararı geliyor: Sosyal medya debütlerini nasıl yöneteceksin? Gizemli soft launch'a mı gideceksin — brunch fotoğrafının köşesinde bulanık bir el, story'nde neredeyse görünmez bir gölge — yoksa yüz yüze bir çift fotoğrafı ve etiketli bir Instagram gönderisiyle tam hard launch'a mı? Önceki nesillerin hiç vermek zorunda kalmadığı bu karar, psikolojin hakkında düşündüğünden çok daha fazlasını ortaya koyuyor.",
+      sections: [
+        {
+          heading: "Soft Launch: Stratejik Belirsizlik",
+          paragraph: "Soft launch, romantik bir partneri izleyicilerine tam olarak ortaya koymadan tanıtma sanatıdır. Kırpılmış bir el, bir siluet, sıfır bağlam içeren 'özel biriyle akşam yemeği yedim' açıklaması. Altta yatan psikoloji risk yönetimine dayanır. Soft launcher, ilişki işe yaramazsa utanç verici bir kamuoyu düşüşünden kendini korur. Aynı zamanda bazen bir güç hamlesidir — gizemlilik yaratır ve izleyicinin bu yeni kişinin kim olduğunu merak etmesini sağlar. Alışılmış bir soft launcher'san, bu aynı zamanda kaygılı veya kaçınmacı bir bağlanma stiline de işaret edebilir."
+        },
+        {
+          heading: "Hard Launch: Cesur Özgüven mi, Düşüncesiz İyimserlik mi?",
+          paragraph: "Hard launch bir niyet beyanıdır. Net bir fotoğraf, her iki yüz de görünür, sıcak bir açıklama, belki bir etiket. Dünyaya şunu söyler: bu kişi benimle, gurur duyuyorum ve bundan sonra ne olacağından korkmuyorum. Hard launcher'lar genellikle daha güvenli bağlanma stillerine sahiptir — kırılganlıkla rahattırlar ve kamuoyu başarısızlığından obsesif biçimde korkmaz. Ancak erken bir hard launch (üç buluşmadan sonra birini paylaşmak), duygusal dürtüselliğin veya aşk bombalama eğilimlerinin de işareti olabilir. Hard launch'ın zamanlaması her şeydir."
+        },
+        {
+          heading: "Stratejin Bağlanma Stilin Hakkında Ne Söylüyor",
+          paragraph: "İşte filtresiz psikolojik analiz. Kronik soft launcher'lar? Muhtemelen kaygılı veya kaçınmacı bağlanma — bağlantıya ihtiyaç duyarlar ama açılmaktan korkarlar. Dürtüsel hard launcher'lar? Muhtemelen korkulu-kaçınmacı, savunma mekanizması olarak yoğun açıklık kullanıyorlar. Hesaplı, zamanlanmış hard launcher'lar? Güvenli bağlanma — ne sahip olduklarını biliyorlar, bundan gurur duyuyorlar ve kimse için performans sergilemiyorlar."
+        }
+      ],
+      conclusion: "Soft launch - hard launch tartışmasında evrensel olarak doğru bir cevap yok. Ama içgüdüsel seçimin ilişki psikolojine açılan bir penceredir. Kendini mi koruyorsun? Performans mı sergiliyorsun? Yoksa gerçekten, güvenli bir şekilde mutlu musun — ve sadece dünyanın bilmesini mi istiyorsun?"
+    },
+    ctaLabel: "Uyumumuzu Kontrol Et",
+    ctaLink: "/duo-compatibility",
+  },
+  {
+    slug: "emotionally-unavailable-signs",
+    title: "Duygusal Olarak Kapalı Birinin 10 İşareti (ve Sen Bunları Görmezden Geliyorsun)",
+    description: "Hızlı mesaj atıyorlar ama hiç derine inmiyorlar. Eğlenceliler ama her ciddi konuşmayı savıyorlar. İşte duygusal kapalılığın inkâr edilemez işaretleri.",
+    category: "Flört Psikolojisi",
+    publishDate: "2026-06-21",
+    readTime: "6 dk okuma",
+    keywords: ["duygusal olarak kapalı erkek", "duygusal olarak kapalı kadın", "duygusal kapalılık işaretleri", "kaçınmacı bağlanma", "toksik ilişki işaretleri"],
+    imageUrl: "/images/trends/emotionally-unavailable.png",
+    content: {
+      intro: "İki aydır konuşuyorsunuz. Gerçekleştiğinde sohbetler harika — komik, derin, elektrikli. Ama bir şey her zaman biraz ulaşılamaz hissettiriyor. Oradalar, ama tam olarak orada değiller. Hayatlarından ayrıntılar paylaşıyorlar ama emotionell ağır bir şeye gelir gelmez savıyorlar. Bağlı hissediyorsun, ama yalnızca senin tüketimin için dikkatlice inşa ettikleri bir versiyonuna. Duygusal olarak kapalı birine aşık oluyor olabilirsin ve acı gerçek şu: kendileri bile bunun farkında olmayabilir.",
+      sections: [
+        {
+          heading: "Yüzeyde Tutarlı, Derinlikte Yok",
+          paragraph: "Duygusal olarak kapalı insanlar genellikle mükemmel iletişimcilerdir — yüzeysel düzeyde. Düzenli mesaj atarlar, planlar yaparlar, gösterirler. Yapmadıkları şey daha derine inmektir. Bir sohbet eğlenceli ve flörtöz olmaktan savunmasız ve gerçeğe doğru kayar kaymaz konu değiştirirler. Derinlik olmadan tutarlılık, en erken ve en güvenilir uyarı işaretlerinden biridir. Sen onların öne çıkardıklarını alıyorsun, gerçeklerini değil."
+        },
+        {
+          heading: "Geçmişleri Bir Kasa",
+          paragraph: "Duygusal olarak erişilebilir bir kişi, zaman içinde güven ve kırılganlık inşa ederek geçmişini paylaşır. Duygusal olarak kapalı bir kişi ya hiçbir şey paylaşmaz ya da aslında hiçbir şeyi ortaya koymayan açıklık performansı olarak hepsini bir anda paylaşır. İşlenmemiş travmaları, henüz atlatamadıkları bir kırık kalpleri veya çocukluktan gelen derin kaçınmacı bağlanma kalıpları olabilir. Neden olursa olsun, geçmişleri mühürlü bir kasadır ve sana anahtarı vermeye hazır değiller."
+        },
+        {
+          heading: "Yine de Neden Aşık Oluyorsun?",
+          paragraph: "İşte en zor gerçek: duygusal olarak kapalı insanlar genellikle inanılmaz derecede karizmatik, çekici ve eğlencelidir. Yarattıkları sıcak-soğuk dinamiği psikolojik olarak bağımlılık yaratır — beynimiz tutarsız ödülleri kovalamaktan tutarlı olanlardan daha fazla dopamin salgılar. Kovalama heyecan verici hissettiriyor. Toksik Ex Scanner özelliğimiz, daha da derine girmeden hayatındaki birinin bu kalıpları sergileyip sergilemediğini belirlemenize yardımcı olabilir."
+        }
+      ],
+      conclusion: "Duygusal olarak kapalı birini sevmek, hayal edilebilecek en yalnız deneyimlerden biridir — çünkü var olabilecek bağlantıyı hissedebilirsin, ihtiyaç duyduğun derinlikten sürekli mahrum kalırken. Birini hazır olmaya zorlayamazsın. Yapabileceğin en güçlü şey kalıbı fark etmek ve kendini seçmektir."
+    },
+    ctaLabel: "Kırmızı Bayrakları Tara",
+    ctaLink: "/toxic-ex-scanner",
+  },
+  {
+    slug: "toxic-friendship-signs",
+    title: "Arkadaşlığım Toksik mi? Görmen Gereken 10 İşaret",
+    description: "Tüm toksisite romantik partnerlerden gelmez. Toksik arkadaşlıklar da en az onlar kadar zarar verir. İşte arkadaşlığının auranı eritiyor olabileceğinin işaretleri.",
+    category: "İlişkiler",
+    publishDate: "2026-06-22",
+    readTime: "5 dk okuma",
+    keywords: ["toksik arkadaş işaretleri", "toksik arkadaşlık nasıl anlaşılır", "arkadaşlık kırmızı bayrakları", "tek taraflı arkadaşlık", "yorucu arkadaşlar"],
+    imageUrl: "/images/trends/toxic-friendship.png",
+    content: {
+      intro: "Toksik romantik partnerleri tespit etmek için çok fazla enerji harcıyoruz, ancak aynı eleştirel bakışı pek nadiren arkadaşlıklarımıza uyguluyoruz. Oysa toksik bir arkadaşlık en az onlar kadar yıkıcı olabilir — ve çoğu zaman daha sinsi, çünkü beklentiler farklı ve ihanet daha derin acıtır. Arkadaşlar seçtiğimiz ailemiz, güvenli alanımız olmalıdır. O ilişki sevinç yerine kaygı, şüphe veya tükenme kaynağı haline geldiğinde, bir şeyler ciddi biçimde yanlış gitmiş demektir.",
+      sections: [
+        {
+          heading: "Her Şey Her Zaman Onlarla İlgili",
+          paragraph: "Sağlıklı bir arkadaşlık, enerji, destek ve gerçek ilginin iki yönlü bir alışverişidir. Toksik bir arkadaşlıkta ise sen izleyici, onlar baş karakterdir — her zaman. Sorunlarını dinlemek, başarılarını kutlamak ve duygularını onaylamak için saatler harcarsın. Kendi hayatından bir şeyler paylaşmaya çalıştığında sohbet hızla onlara geri döner. Her buluşmadan duygusal olarak tükenmiş ve tuhaf bir boşlukla ayrılırsın; çok şey verdiğini ama karşılığında hiçbir şey almadığını hissedersin."
+        },
+        {
+          heading: "Başarılarından Çok Başarısızlıklarını Kutluyorlar",
+          paragraph: "Gerçek bir arkadaşın başarına duyduğu sevinç samimi ve çekingesiz olmalıdır. Toksik bir arkadaşın başarılarına karşı tuhaf, zar zor gizlenmiş bir acılık vardır. Kazanımlarını küçümserler ('oh, bu güzel ama o kadar büyük bir şey değil'), başarını hemen kendileriyle kıyaslarlar ya da kutlama anında olumsuz bir şey bulurlar. Tersine, işler senin için yanlış gittiğinde neredeyse canlanır gibidirler, biraz fazla rahat hissettiren bir 'sempati' sunarlar."
+        },
+        {
+          heading: "Her Zaman Yumurta Kabuğu Üzerinde Yürüyorsun",
+          paragraph: "Sağlıklı bir arkadaşlıkta tam ve filtresiz kendin olabilirsin. Toksik birinde ise sürekli kendini sansürlüyorsun. Onları kışkırtmamak için kelimelerini dikkatle seçiyorsun. İyi haberleri hemen paylaşmıyorsun çünkü tepkilerinden korkuyorsun. Onlarla buluşmadan önce hafif bir kaygı hissediyorsun. Bu yumurta kabuğu dinamiği, sinir sisteminin onların öngörülemeyen tepkilerinden seni korumak için geliştirdiği bir travma yanıtıdır."
+        }
+      ],
+      conclusion: "Bir arkadaşlığı bitirmek, yapabileceğin en acı verici şeylerden biridir. Ama aura'n — enerjin, ruh sağlığın, kendin olma hissin — bir zamanlar aile gibi hissettiren insanlardan bile korunmaya değer. Güneş ışığı gibi hissettiren arkadaşlıkları hak ediyorsun, iş gibi değil."
+    },
+    ctaLabel: "Aura Savaşı Yap",
+    ctaLink: "/aura-battle",
+  },
+  {
+    slug: "gen-z-dating-terms-2026",
+    title: "2026'da Bilmen Gereken Her Gen-Z Flört Terimi",
+    description: "'Benching'ten 'breadcrumbing'e, 'beige flag'den 'soft launch'a kadar — modern ilişkileri yeniden şekillendiren Gen-Z flört jargonunun tam sözlüğü.",
+    category: "Kültür ve Slang",
+    publishDate: "2026-06-20",
+    readTime: "6 dk okuma",
+    keywords: ["gen-z flört terimleri 2026", "modern flört jargonu", "breadcrumbing ne demek", "benching flört", "beige flag", "situationship", "ilişki terimleri sözlüğü"],
+    imageUrl: "/images/trends/gen-z-dating-terms.png",
+    content: {
+      intro: "Modern flört tamamen yeni bir dil geliştirdi ve bu dile hâkim değilsen, kendi aşk hayatın hakkındaki sohbetlerde tamamen kaybolduğunu göreceksin. Gen-Z, flörtün dağınık, kafa karıştırıcı ve çoğu zaman acı verici deneyimini aldı ve her tek fenomene kendi kesin, paylaşılabilir terimini verdi. Manipülatif olandan sıradana kadar bu sözcükler, önceki nesillerin bile kelime hazinesi olmayan duygusal gerçeklikleri yakalıyor. Bu, 2026'da romantizmde yol almak için temel sözlüğün.",
+      sections: [
+        {
+          heading: "Manipülasyon Oyun Kitabı: Toksik Davranış Terimleri",
+          paragraph: "Breadcrumbing: Gerçek bir şeye bağlanmadan seni ilgili tutmak için tam yeterince dikkat göndermek — bir beğeni, 'hey' mesajı, ara sıra iltifat. Benching: Başka birini takip ederken seni yedek seçenek olarak listede tutmak. Orbiting: Seninle konuşmayı bıraktılar ama her hikayeni hâlâ izliyorlar. Seni merak ettirir ve bağlı tutar, hiçbir gerçek çaba harcamadan. Love bombing: Gerçek doğalarını ortaya koymadan önce seni yakalamak için ilişkinin ilk aşamalarında yoğun sevgi, dikkat ve büyük jestlerle bunaltmak."
+        },
+        {
+          heading: "Belirsizlik Bölgesi: Kafa Karıştırıcı Durumlar İçin Terimler",
+          paragraph: "Situationship: Arkadaştan fazlası, partnerden azı — belirsizlik üzerine gelişen tanımlanmamış gri alan. Talking stage: İki haftadan dört yıla kadar sürebilen, net bir bitiş noktası olmayan ilişki öncesi aşama. Beige flag: Kırmızı bayrak olmayan ama dikkat çekici derecede garip bir tuhaflık veya alışkanlık. Slow fade: Doğrudan bir konuşma yerine, biri iletişim sıklığını azaltarak teknik olarak hayalet geçirmeksizin senden uzaklaşır."
+        },
+        {
+          heading: "İyi Taraf: Sağlıklı Flört İçin Terimler",
+          paragraph: "Green flag: Duygusal sağlığı, güvenliği ve iyi ilişki potansiyelini gösteren davranış veya özellik. Main character energy: Hayatını niyetle ve özgüvenle yaşamak, kendi hikayene öncelik vermek. Hard launch: Partnerini sosyal medyada açık ve güvenli bir şekilde paylaşmak — ilişkideki güvenlik ve gurur işareti. Rizz: Çok fazla çabalamadan birini doğal olarak çekici yapan manyetik karizm. Secure attachment: Argo bir terim değil ama hedef — duygusal erişilebilirlik, güven ve tutarlı davranışla karakterize edilmiş bir ilişki stili."
+        }
+      ],
+      conclusion: "Dil gerçekliği şekillendirir. Bu deneyimler için kesin bir kelime hazinesine sahip olarak Gen-Z, modern flörtün kafa karıştırıcı dinamiklerini tespit etmeyi, ifade etmeyi ve işlemeyi önemli ölçüde kolaylaştırdı. Toksik bir kalıptan kaçmanın ilk adımı onu adlandırabilmektir."
+    },
+    ctaLabel: "Vibe'ımı Kontrol Et",
+    ctaLink: "/",
+  },
+  {
+    slug: "are-you-delulu",
+    title: "Delulu musun? Manifestasyon ile Delilik Arasındaki İnce Çizgi",
+    description: "'Delulu is the solulu' Gen-Z'nin mantrası oldu. Ama pozitif düşünce ne zaman gerçek bir yanılsamaya dönüşür — hiçbir yere gitmeyen bir situationship hakkında?",
+    category: "Flört Psikolojisi",
+    publishDate: "2026-06-21",
+    readTime: "5 dk okuma",
+    keywords: ["delulu ne demek", "delulu is the solulu", "ezildiğim kişi gerçekten beni seviyor mu", "manifestasyon vs yanılsama", "gen-z ruh sağlığı", "situationship yanılsaması"],
+    imageUrl: "/images/trends/delulu.png",
+    content: {
+      intro: "'Delulu is the solulu.' Şaka olarak başladı, vahşi derecede gerçekçi olmayan romantik fantezilerinin en büyük kişilik özelliğin olduğunun öz farkında bir ilanı. Adını hatırlayan baristanın ruh eşi olduğuna inanan kız. İki harfli bir mesaj yanıtını derin duygusal bağlantının işareti olarak yorumlayan erkek. 'Delulu' olmak bir onur nişanı haline geldi — iyimserliği modern flörtün kasvetli gerçekliklerine karşı bir silah olarak kullanmanın bir yolu. Ama bir yerde şaka artık komik olmaktan çıktı. Çünkü bazılarımız delulu performansı sergilemiyoruz. Gerçekten yaşıyoruz onu, ve bu bizi olduğumuz yerde tutuyor.",
+      sections: [
+        {
+          heading: "Sağlıklı Delulu Türü",
+          paragraph: "Adil olalım — bu zihniyetin gerçekten sağlıklı bir versiyonu var. Psikologlar buna 'pozitif yanılsamalar' diyor: çekiciliğini, partnerinin ilgisini veya ilişkinin potansiyelini, seni motive ve iyimser tutan yollarla biraz abartmak. Araştırmalar aslında hafif pozitif yanılsamalara sahip insanların daha mutlu ve hedeflerini kovalamada daha ısrarcı olduğunu gösteriyor. 'Delulu is the solulu' dönemi, bunu özgüven inşa etmek, beğendiğin birine şans tanımak veya zorlu bir flört döneminden sonra umudu korumak için kullandığında işe yarıyor."
+        },
+        {
+          heading: "Delulu Bir Tuzak Olduğunda",
+          paragraph: "Kanıt üretmeye başladığında çizgi aşılır. 'k' metnini gizli anlam için üç saat analiz ettiğinde. Dördüncü kez randevuyu iptal etmelerinin aslında senin için hisleri konusunda korktuktan kaçındıklarının işareti olduğuna karar verdiğinde. Talking stage'de altı aydır derinsin ve sadece biraz daha zamana ihtiyaçları olduğuna inandığında. Bu manifestasyon değil — bu bir travma yanıtı. Daha rahat olan kurgusal bir şeyi inşa ederek acı verici bir gerçekten kendini koruyorsun. Bu arada, delulu olduğun kişi muhtemelen düşündüğün kadar seni düşünmüyor."
+        },
+        {
+          heading: "Kendini Nasıl Gerçeklik Kontrolü Yaparsın",
+          paragraph: "Acı gerçek şu: yanılsama, tanımı gereği içeriden görünmez. Kendi yanılsamanı, onu yaratan beynin ile teşhis edemezsin. Bu yüzden dışsal, nesnel girdi çok önemli. Dürüst bir arkadaşla konuşmak yardımcı olur — ama arkadaşların da kendi önyargıları var. Yapay Zeka Delulu Check özelliğimiz tam bunun için tasarlandı: durumu anlat, algoritmamız sana bu kişinin gerçekten ilgilenip ilgilenmediği ya da duygularında yalnız mı olduğuna dair tamamen filtresiz, kanıta dayalı bir değerlendirme yapıyor."
+        }
+      ],
+      conclusion: "Delulu olmak, modern flörtün acımasız arenasında bazen hayatta kalmak için gereklidir. Ama kronik yanılsama, kendini terk etmenin bir yoludur — gerçek bir bağlantı bulabileceğin bir gerçekliğin yerine rahat bir kurguyu seçmek. Kendini mahvetmeden önce kendini kontrol et."
+    },
+    ctaLabel: "Delulu Kontrolümü Yap",
+    ctaLink: "/",
   }
 ];
 
