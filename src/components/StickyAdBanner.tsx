@@ -175,7 +175,7 @@ export default function StickyAdBanner() {
           className="adsbygoogle"
           style={{ display: "block", width: "100%", height: "72px" }}
           data-ad-client="ca-pub-4394628220494584"
-          data-ad-slot="7073630645"
+          data-ad-slot="5121721895"
           data-ad-format="auto"
           data-full-width-responsive="true"
         />
