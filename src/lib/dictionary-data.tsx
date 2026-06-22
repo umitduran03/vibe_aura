@@ -25,6 +25,22 @@ export const dictionaryTermsEn = [
         word: "Vibe Shift",
         meaning: "A sudden, noticeable change in the cultural atmosphere or the energy of a room. Also known as when your Daily Vibe completely flips.",
       },
+      {
+        word: "Pookie",
+        meaning: "An extremely affectionate nickname for someone you adore. Usually reserved for your absolute favorite person or best friend.",
+      },
+      {
+        word: "Skibidi",
+        meaning: "A nonsense word that can mean literally anything depending on context. Usually used to signify something chaotic, bad, or just brainrot.",
+      },
+      {
+        word: "GYAT / Gyatt",
+        meaning: "An exclamation of surprise or appreciation, usually directed at an attractive person (often regarding physical assets).",
+      },
+      {
+        word: "Mewing / Looksmaxxing",
+        meaning: "The internet obsession with improving one's facial structure (specifically jawline) through tongue posture or extreme aesthetic optimization.",
+      },
     ]
   },
   {
@@ -159,6 +175,22 @@ export const dictionaryTermsTr = [
       {
         word: "Vibe Shift",
         meaning: "Ortamın enerjisinin veya modunun aniden değişmesi. Her şey süperken birden herkesin sus pus olması durumu.",
+      },
+      {
+        word: "Pookie",
+        meaning: "Çok sevilen, şirin bulunan kişilere veya en yakın arkadaşlara takılan aşırı sevgi dolu lakap.",
+      },
+      {
+        word: "Skibidi",
+        meaning: "Bağlama göre her anlama gelebilen, çoğunlukla kaotik veya absürt durumları ifade eden internet 'brainrot' (beyin çürüten) kelimesi.",
+      },
+      {
+        word: "GYAT / Gyatt",
+        meaning: "Aşırı şaşkınlık veya beğeni ifade eden bir nida. Genellikle çok çekici (veya spesifik fiziksel özelliklere sahip) birini görünce kullanılır.",
+      },
+      {
+        word: "Mewing / Looksmaxxing",
+        meaning: "Dilin damağa yapıştırılarak çene hattını belirginleştirme takıntısı (mewing) ve genel olarak fiziksel görünümü maksimize etme çabası.",
       },
     ]
   },
