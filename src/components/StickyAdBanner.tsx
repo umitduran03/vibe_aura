@@ -1,33 +1,28 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 /**
  * StickyAdBanner — Sayfanın altında yapışık reklam bandı.
  *
  * Davranış:
  * - Sayfa açıldıktan 3 saniye sonra aşağıdan kayarak gelir.
+ * - AdSense'den reklam istenilir. Eğer Google o an "reklam yok"
+ *   (unfilled) yanıtı verirse, banner saniyesinde tamamen kendini imha eder.
  * - X'e basıldığında banner tamamen yok olur, boşluk kalmaz.
- *   Oturum boyunca (tab kapanana kadar) bir daha çıkmaz.
- * - Banner görünürken altındaki butonlar tıklanamaz sorunu:
- *   Banner'ın yüksekliği kadar <body>'e padding-bottom eklenir,
- *   böylece sayfa içeriği banner'ın üstüne sığar.
- * - Masaüstünde (≥1024px) sidebar reklamlar var, bu gizlenir.
- *
- * AdSense bağlanınca: Eğer Google o an için uygun reklam
- * bulamazsa <ins> tag'i kendiliğinden 0 yüksekliğe çöker,
- * useEffect içindeki yükseklik de buna göre güncellenir.
+ * - Banner görünürken <body>'e padding-bottom eklenir.
  */
 
-const BANNER_H = 96;       // banner yüksekliği (px)
-const PADDING = 8;         // banner üstü boşluk
-const TOTAL_OFFSET = BANNER_H + PADDING;
-const DELAY_MS = 3000;     // kaç ms sonra belirsin
+const BANNER_H = 96;
+const TOTAL_OFFSET = BANNER_H + 8;
+const DELAY_MS = 3000;
 
 export default function StickyAdBanner() {
-  const [visible, setVisible]   = useState(false); // 3sn doldu mu
-  const [closed,  setClosed]    = useState(false); // kullanıcı kapattı mı
-  const [desktop, setDesktop]   = useState(false); // ≥1024px mi
+  const [visible, setVisible]   = useState(false);
+  const [closed,  setClosed]    = useState(false);
+  const [desktop, setDesktop]   = useState(false);
+  
+  const insRef = useRef<HTMLModElement>(null);
 
   /* Masaüstü tespiti */
   useEffect(() => {
@@ -37,21 +32,54 @@ export default function StickyAdBanner() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  /* Oturum hafızası — kullanıcı kapattıysa bir daha açma */
+  /* Oturum hafızası */
   useEffect(() => {
     if (sessionStorage.getItem("stickyAdClosed") === "1") {
       setClosed(true);
     }
   }, []);
 
-  /* 3 saniye sonra göster */
+  /* 3 saniye sonra göster ve AdSense'i tetikle */
   useEffect(() => {
     if (closed || desktop) return;
-    const t = setTimeout(() => setVisible(true), DELAY_MS);
+    
+    const t = setTimeout(() => {
+      setVisible(true);
+      // Reklam kodunu pushla
+      try {
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch (e) {
+        console.error("AdSense banner error", e);
+      }
+    }, DELAY_MS);
+    
     return () => clearTimeout(t);
   }, [closed, desktop]);
 
-  /* Banner görünürken body'e padding ekle → alt butonlar tıklanabilir */
+  /* Reklamın dolup dolmadığını (unfilled) dinle */
+  useEffect(() => {
+    if (!visible || closed || desktop || !insRef.current) return;
+
+    // MutationObserver ile data-ad-status özniteliğini izleyelim
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === "attributes" && mutation.attributeName === "data-ad-status") {
+          const status = insRef.current?.getAttribute("data-ad-status");
+          if (status === "unfilled") {
+            // Google reklam bulamadı! Banner'ı hemen yok et.
+            setClosed(true);
+            document.body.style.paddingBottom = "";
+          }
+        }
+      });
+    });
+
+    observer.observe(insRef.current, { attributes: true });
+    return () => observer.disconnect();
+  }, [visible, closed, desktop]);
+
+  /* Body padding yönetimi */
   useEffect(() => {
     const show = visible && !closed && !desktop;
     if (show) {
@@ -65,15 +93,11 @@ export default function StickyAdBanner() {
   const handleClose = () => {
     setClosed(true);
     sessionStorage.setItem("stickyAdClosed", "1");
-    // padding'i anında temizle
     document.body.style.paddingBottom = "";
   };
 
-  /* Masaüstünde sidebar var → gösterme */
   if (desktop)  return null;
-  /* Kullanıcı kapattı → tamamen yok ol, boşluk yok */
   if (closed)   return null;
-  /* Henüz 3sn dolmadı */
   if (!visible) return null;
 
   return (
@@ -85,7 +109,7 @@ export default function StickyAdBanner() {
         bottom: 0,
         left: 0,
         right: 0,
-        zIndex: 45,          /* toast'lar (z-999+) üstünde değil, içeriğin üstünde */
+        zIndex: 45,
         display: "flex",
         justifyContent: "center",
         animation: "adSlideUp 0.35s cubic-bezier(0.34,1.56,0.64,1) both",
@@ -101,7 +125,7 @@ export default function StickyAdBanner() {
       <div
         style={{
           width: "100%",
-          maxWidth: "430px",        /* uygulama genişliğiyle hizalı */
+          maxWidth: "430px",
           height: `${BANNER_H}px`,
           background: "rgba(5,5,16,0.97)",
           borderTop: "1px solid rgba(255,255,255,0.09)",
@@ -109,7 +133,6 @@ export default function StickyAdBanner() {
           overflow: "hidden",
         }}
       >
-        {/* ── Kapat butonu ── */}
         <button
           onClick={handleClose}
           aria-label="Reklamı kapat"
@@ -135,7 +158,6 @@ export default function StickyAdBanner() {
           ✕
         </button>
 
-        {/* ── Reklam etiketi ── */}
         <p style={{
           margin: "5px 28px 0 0",
           textAlign: "center",
@@ -148,43 +170,15 @@ export default function StickyAdBanner() {
           Reklam
         </p>
 
-        {/*
-          ── GOOGLE ADSENSE ─────────────────────────────────────────
-          Aşağıdaki placeholder div'i silip bu kodu aç:
-
-          <ins
-            className="adsbygoogle"
-            style={{ display: "block", width: "100%", height: "72px" }}
-            data-ad-client="ca-pub-4394628220494584"
-            data-ad-slot="XXXXXXXXXX"   ← Mobil Banner Ad Unit slot ID
-            data-ad-format="auto"
-            data-full-width-responsive="true"
-          />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(adsbygoogle = window.adsbygoogle || []).push({});`
-            }}
-          />
-
-          NOT: Eğer Google o an uygun reklam bulamazsa <ins> kendi
-          kendine 0 yüksekliğe çöker. padding-bottom de gereksiz
-          kalır ama sayfa bozulmaz.
-          ───────────────────────────────────────────────────────────
-        */}
-
-        {/* Placeholder — AdSense aktif olunca bu div'i sil */}
-        <div style={{
-          height: "72px",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "8px",
-          color: "rgba(255,255,255,0.1)",
-          fontSize: "11px",
-        }}>
-          <span>📢</span>
-          <span>Mobil Reklam Alanı — 320 × 72</span>
-        </div>
+        <ins
+          ref={insRef}
+          className="adsbygoogle"
+          style={{ display: "block", width: "100%", height: "72px" }}
+          data-ad-client="ca-pub-4394628220494584"
+          data-ad-slot="7073630645"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        />
       </div>
     </div>
   );
