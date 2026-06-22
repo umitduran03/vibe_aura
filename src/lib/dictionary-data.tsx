@@ -41,6 +41,46 @@ export const dictionaryTermsEn = [
         word: "Mewing / Looksmaxxing",
         meaning: "The internet obsession with improving one's facial structure (specifically jawline) through tongue posture or extreme aesthetic optimization.",
       },
+      {
+        word: "Cap / No Cap",
+        meaning: "Cap means lie. No cap means telling the truth. Usually said when making an unbelievable statement.",
+      },
+      {
+        word: "Simp",
+        meaning: "Someone who does way too much for a person they like, often abandoning their own dignity in the process.",
+      },
+      {
+        word: "Sus",
+        meaning: "Short for suspicious. Used when someone is acting shady, weird, or hiding something.",
+      },
+      {
+        word: "Bop",
+        meaning: "A really good song. Alternatively, used derogatorily to describe someone who gets around.",
+      },
+      {
+        word: "W / L",
+        meaning: "Win or Loss. Taking a W means succeeding; taking an L means failing miserably.",
+      },
+      {
+        word: "Ratio",
+        meaning: "When a reply on social media gets more likes than the original post, signaling that the original poster's opinion is universally rejected.",
+      },
+      {
+        word: "Salty",
+        meaning: "Being bitter, upset, or visibly angry about something minor.",
+      },
+      {
+        word: "Tea (Spill the tea)",
+        meaning: "Gossip or dramatic news. Someone who 'spills the tea' is sharing the drama.",
+      },
+      {
+        word: "Gatekeeping",
+        meaning: "When someone hides information (like where they bought a shirt or a good song) so others can't enjoy it.",
+      },
+      {
+        word: "Touch Grass",
+        meaning: "An insult telling someone they are chronically online and need to disconnect from the internet and experience the real world.",
+      },
     ]
   },
   {
@@ -67,6 +107,34 @@ export const dictionaryTermsEn = [
         word: "Breadcrumbing",
         meaning: "Sending out flirtatious, but non-committal messages to keep someone's interest alive without any intention of taking things further.",
       },
+      {
+        word: "Gaslighting",
+        meaning: "A manipulation tactic where someone makes you question your own memory, perception, or sanity. 'You're crazy, that never happened.'",
+      },
+      {
+        word: "Trauma Dumping",
+        meaning: "Unloading all your deep emotional baggage onto someone unprompted, usually very early in a relationship.",
+      },
+      {
+        word: "Cuffing Season",
+        meaning: "The cold months of the year when people who usually prefer to be single suddenly want to be in a relationship to survive the winter.",
+      },
+      {
+        word: "DTR (Define The Relationship)",
+        meaning: "That terrifying conversation where you finally ask 'What are we?' to end a situationship.",
+      },
+      {
+        word: "Pick-Me",
+        meaning: "Someone who puts down other people of their own gender to gain validation and attention from the opposite gender.",
+      },
+      {
+        word: "Sneaky Link",
+        meaning: "Someone you're hooking up with in secret. Nobody knows they exist except you and your best friend.",
+      },
+      {
+        word: "Fumble",
+        meaning: "When you had a great person or a great opportunity, but you ruined it through your own stupidity.",
+      },
     ]
   },
   {
@@ -92,6 +160,18 @@ export const dictionaryTermsEn = [
       {
         word: "Soulmate Profile",
         meaning: "The exact energy and aesthetic of the person you are cosmically meant to be with. (Upload your selfie to find yours).",
+      },
+      {
+        word: "Beige Flag",
+        meaning: "A trait that isn't inherently good or bad, just weird. Like someone who sets their alarms to 7:03 instead of 7:00.",
+      },
+      {
+        word: "Green Flag",
+        meaning: "A positive indicator in a person. Example: They go to therapy, they text back fast, they like animals.",
+      },
+      {
+        word: "Pink Flag",
+        meaning: "A minor warning sign that isn't quite a red flag yet, but you definitely need to keep an eye on it.",
       },
     ]
   },
@@ -192,6 +272,42 @@ export const dictionaryTermsTr = [
         word: "Mewing / Looksmaxxing",
         meaning: "Dilin damağa yapıştırılarak çene hattını belirginleştirme takıntısı (mewing) ve genel olarak fiziksel görünümü maksimize etme çabası.",
       },
+      {
+        word: "Cap / No Cap",
+        meaning: "Cap yalan demek, No cap ise yalan yok/harbi demek. İnanılması güç bir şey söylerken ciddiyeti vurgulamak için kullanılır.",
+      },
+      {
+        word: "Simp",
+        meaning: "Hoşlandığı kişi için kendi gururunu ayaklar altına alıp gereğinden fazla çaba gösteren kişi. (bkz: köle olmak)",
+      },
+      {
+        word: "Sus",
+        meaning: "'Suspicious' (şüpheli) kelimesinin kısaltması. Biri garip, gizemli veya tekinsiz davrandığında söylenir.",
+      },
+      {
+        word: "W / L (Win / Loss)",
+        meaning: "W (Win) kazanmak, başarı; L (Loss) kaybetmek, eziklik demektir. 'Büyük bir L aldın' cümlesi fena çuvalladın anlamına gelir.",
+      },
+      {
+        word: "Ratio",
+        meaning: "Sosyal medyada bir yanıta gelen beğeninin, asıl gönderinin beğenisini geçmesi durumu. Asıl gönderiyi atanın fikrinin çöp olduğunun kanıtı.",
+      },
+      {
+        word: "Salty",
+        meaning: "Küçük bir şeye gereğinden fazla bozulmak, trip atmak, alınganlık yapmak.",
+      },
+      {
+        word: "Tea (Çay dökmek)",
+        meaning: "Dedikodu veya drama. 'Spill the tea' demek, hadi dökül, dedikoduyu ver demektir.",
+      },
+      {
+        word: "Gatekeeping",
+        meaning: "Bir bilgiyi (şarkı adı, mekan, giysi markası) başkaları da öğrenip popüler etmesin diye saklamak.",
+      },
+      {
+        word: "Touch Grass (Çimene Dokun)",
+        meaning: "Sürekli internette yaşayan (kronik online) kişilere gerçek hayata dönmeleri ve biraz dışarı çıkmaları için söylenen bir hakaret.",
+      },
     ]
   },
   {
@@ -218,6 +334,34 @@ export const dictionaryTermsTr = [
         word: "Breadcrumbing (Yem Atma)",
         meaning: "İlgiyi tamamen kesmeyip, seni cepte tutmak için ara sıra küçük mesajlar, story beğenileri atması. Ciddi bir şey istemez ama gitmene de izin vermez.",
       },
+      {
+        word: "Gaslighting",
+        meaning: "Sana kendi hafızanı, algını veya akıl sağlığını sorgulatan psikolojik manipülasyon taktiği. 'Sen uyduruyorsun, öyle bir şey demedim' klasik cümlesidir.",
+      },
+      {
+        word: "Trauma Dumping",
+        meaning: "Daha yeni tanıştığın birine, hiç sorulmadığı halde bütün derin psikolojik travmalarını ve dertlerini kusmak.",
+      },
+      {
+        word: "Cuffing Season",
+        meaning: "Havaların soğumasıyla birlikte, normalde yalnız takılmayı seven insanların kışı geçirmek için aniden sevgili yapma ihtiyacı duyduğu dönem.",
+      },
+      {
+        word: "DTR (İlişkiyi Tanımlamak)",
+        meaning: "'Biz şimdi neyiz?' sorusunun sorulduğu o korkunç konuşma anı. Genelde situationship'leri bitirir.",
+      },
+      {
+        word: "Pick-Me (Beni Seç)",
+        meaning: "Karşı cinsten ilgi görmek için kendi hemcinslerini ezen veya 'ben diğer kızlar/erkekler gibi değilim' imajı çizen kişi.",
+      },
+      {
+        word: "Sneaky Link",
+        meaning: "Gizli gizli görüştüğün, takıldığın kişi. Sen ve en yakın arkadaşın dışında kimse onun varlığından haberdar değildir.",
+      },
+      {
+        word: "Fumble (Topu Düşürmek)",
+        meaning: "Eline geçen harika bir fırsatı veya harika bir insanı kendi aptallığın yüzünden kaybetmek, batırmak.",
+      },
     ]
   },
   {
@@ -243,6 +387,18 @@ export const dictionaryTermsTr = [
       {
         word: "Soulmate (Ruh Eşi) Profili",
         meaning: "Kozmik olarak tam sana uygun olan, estetiği ve enerjisi seninle %100 uyuşan o efsanevi kişi.",
+      },
+      {
+        word: "Beige Flag (Bej Bayrak)",
+        meaning: "Ne iyi ne kötü olan, sadece kişinin biraz tuhaf olduğunu gösteren özellik. Mesela alarmını 07:00 yerine 07:03'e kurması gibi.",
+      },
+      {
+        word: "Green Flag (Yeşil Bayrak)",
+        meaning: "Bir kişideki olumlu özellik. Örnek: Terapiye gitmesi, mesajlara hızlı dönmesi, garsonlara kibar davranması.",
+      },
+      {
+        word: "Pink Flag (Pembe Bayrak)",
+        meaning: "Tam olarak kırmızı bayrak olmayan ama kesinlikle gözlem altında tutman gereken küçük uyarı sinyali.",
       },
     ]
   },
