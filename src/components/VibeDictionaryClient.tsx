@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { Search } from "lucide-react";
 import { useT } from "@/hooks/useT";
+import InArticleAd from "@/components/InArticleAd";
 
 export default function VibeDictionaryClient({ dictionaryTerms }: { dictionaryTerms: any[] }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -43,20 +44,28 @@ export default function VibeDictionaryClient({ dictionaryTerms }: { dictionaryTe
           </div>
         ) : (
           filteredDictionary.map((section, idx) => (
-            <section key={idx}>
-              <div className="flex items-center gap-3 mb-6">
-                {section.icon}
-                <h2 className="text-2xl font-bold text-white">{section.category}</h2>
-              </div>
-              <div className="grid gap-4">
-                {section.terms.map((term: any, tIdx: number) => (
-                  <div key={tIdx} className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors">
-                    <h3 className="text-lg font-bold text-purple-300 mb-2">{term.word}</h3>
-                    <p className="text-white/70 leading-relaxed">{term.meaning}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
+            <React.Fragment key={idx}>
+              <section>
+                <div className="flex items-center gap-3 mb-6">
+                  {section.icon}
+                  <h2 className="text-2xl font-bold text-white">{section.category}</h2>
+                </div>
+                <div className="grid gap-4">
+                  {section.terms.map((term: any, tIdx: number) => (
+                    <div key={tIdx} className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors">
+                      <h3 className="text-lg font-bold text-purple-300 mb-2">{term.word}</h3>
+                      <p className="text-white/70 leading-relaxed">{term.meaning}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+              {/* Her 2 sözlük kategorisinden sonra reklam */}
+              {idx > 0 && idx % 2 === 1 && (
+                <div className="py-4">
+                  <InArticleAd />
+                </div>
+              )}
+            </React.Fragment>
           ))
         )}
       </div>

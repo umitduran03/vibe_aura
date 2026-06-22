@@ -147,7 +147,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
                 <p className="pl-9">{section.paragraph}</p>
               </section>
               {/* Her 2 bölümden sonra in-article reklam */}
-              {idx === 1 && <InArticleAd />}
+              {idx > 0 && idx % 2 === 1 && <InArticleAd />}
             </React.Fragment>
           ))}
           
