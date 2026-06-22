@@ -1,3 +1,4 @@
+import React from "react";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -137,8 +138,8 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
         {/* Content */}
         <div className="space-y-12 mb-16 text-lg text-white/80 leading-relaxed">
           {article.content.sections.map((section, idx) => (
-            <>
-              <section key={idx}>
+            <React.Fragment key={idx}>
+              <section>
                 <h2 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                   <CheckCircle2 className="w-6 h-6 text-indigo-500 shrink-0" />
                   <span>{section.heading}</span>
@@ -147,7 +148,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
               </section>
               {/* Her 2 bölümden sonra in-article reklam */}
               {idx === 1 && <InArticleAd />}
-            </>
+            </React.Fragment>
           ))}
           
           <div className="p-6 rounded-2xl bg-white/5 border-l-4 border-indigo-500 italic mt-12">

@@ -1,5 +1,7 @@
 "use client";
 
+import React from "react";
+
 import Link from "next/link";
 import { ArrowLeft, HelpCircle, MessageCircleQuestion, Sparkles } from "lucide-react";
 import { motion, Variants } from "framer-motion";
@@ -183,9 +185,8 @@ export default function FAQPage() {
           className="space-y-4"
         >
           {faqList.map((faq, idx) => (
-            <>
+            <React.Fragment key={idx}>
               <motion.div
-                key={idx}
                 variants={itemVariants}
                 className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/[0.07] transition-all duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)]"
               >
@@ -199,7 +200,7 @@ export default function FAQPage() {
               </motion.div>
               {/* Listenin ortasında reklam */}
               {idx === Math.floor(faqList.length / 2) - 1 && <InArticleAd />}
-            </>
+            </React.Fragment>
           ))}
         </motion.div>
 
