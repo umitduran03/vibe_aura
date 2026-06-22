@@ -39,20 +39,6 @@ export default function StickyAdBanner() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-  /* 30 dk bekleme mantığı — süre dolduysa yeniden göster */
-  useEffect(() => {
-    const closedAt = localStorage.getItem("stickyAdClosedAt");
-    if (closedAt) {
-      const elapsed = Date.now() - parseInt(closedAt, 10);
-      if (elapsed < 3 * 60 * 1000) {
-        // 30 dakika henüz dolmadı, gizle
-        setClosed(true);
-      } else {
-        // 30 dakika geçti, eski kaydı sil ve tekrar göster
-        localStorage.removeItem("stickyAdClosedAt");
-      }
-    }
-  }, []);
 
   /* 3 saniye sonra göster ve AdSense'i tetikle */
   useEffect(() => {
@@ -107,8 +93,6 @@ export default function StickyAdBanner() {
 
   const handleClose = () => {
     setClosed(true);
-    // Kapanma zamanını kaydet — 30 dk sonra yeniden açılacak
-    localStorage.setItem("stickyAdClosedAt", String(Date.now()));
     document.body.style.paddingBottom = "";
   };
 
