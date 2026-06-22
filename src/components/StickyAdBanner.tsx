@@ -37,7 +37,7 @@ export default function StickyAdBanner() {
     const closedAt = localStorage.getItem("stickyAdClosedAt");
     if (closedAt) {
       const elapsed = Date.now() - parseInt(closedAt, 10);
-      if (elapsed < 10 * 60 * 1000) {
+      if (elapsed < 3 * 60 * 1000) {
         // 30 dakika henüz dolmadı, gizle
         setClosed(true);
       } else {
