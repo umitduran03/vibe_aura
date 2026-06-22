@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Flame, Sparkles, TrendingUp } from "lucide-react";
 import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
 import SeoFooter from "@/components/SeoFooter";
+import InArticleAd from "@/components/InArticleAd";
 import { useAppStore } from "@/store/useAppStore";
 
 const strings = {
@@ -106,6 +107,9 @@ export default function TrendsHubPage() {
             </Link>
           ))}
         </div>
+
+        {/* In-Article Ad — makale listesi ile CTA arası */}
+        <InArticleAd />
 
         {/* CTA */}
         <div className="mt-20 p-10 rounded-3xl bg-gradient-to-br from-indigo-950/50 to-black border border-indigo-900/30 text-center">

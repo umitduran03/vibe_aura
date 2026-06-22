@@ -5,6 +5,7 @@ import { ArrowLeft, BookOpen, Sparkles } from "lucide-react";
 import VibeDictionaryClient from "@/components/VibeDictionaryClient";
 import { dictionaryTermsEn, dictionaryTermsTr } from "@/lib/dictionary-data";
 import SeoFooter from "@/components/SeoFooter";
+import InArticleAd from "@/components/InArticleAd";
 import { useAppStore } from "@/store/useAppStore";
 
 const strings = {
@@ -107,6 +108,9 @@ export default function VibeDictionaryPage() {
 
         {/* Dictionary Client Component with Search */}
         <VibeDictionaryClient dictionaryTerms={currentDictionary} />
+
+        {/* In-Article Ad */}
+        <InArticleAd />
 
         {/* CTA Banner (Bottom) */}
         <div className="mt-20 p-8 rounded-3xl bg-black/40 border border-white/10 text-center backdrop-blur-md">

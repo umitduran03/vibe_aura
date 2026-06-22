@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * StickyAdBanner — Sayfanın altında yapışık reklam bandı.
@@ -21,6 +22,12 @@ export default function StickyAdBanner() {
   const [visible, setVisible]   = useState(false);
   const [closed,  setClosed]    = useState(false);
   const [desktop, setDesktop]   = useState(false);
+  const pathname = usePathname();
+
+  // SEO sayfalarında InArticleAd kullanılır, bu banner gizlenir
+  const isSeoPage = ["/trends", "/faq", "/vibe-dictionary"].some((p) =>
+    pathname?.includes(p)
+  );
   
   const insRef = useRef<HTMLModElement>(null);
 
@@ -105,7 +112,9 @@ export default function StickyAdBanner() {
     document.body.style.paddingBottom = "";
   };
 
-  if (desktop)  return null;
+  if (desktop)   return null;
+  if (isSeoPage) return null;
+
   if (closed)   return null;
   if (!visible) return null;
 

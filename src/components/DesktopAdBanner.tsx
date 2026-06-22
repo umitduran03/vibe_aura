@@ -1,16 +1,21 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 /**
  * DesktopAdBanner — Sadece masaüstünde görünür (≥1024px).
- *
- * Her iki yana 160px genişliğinde, ekranın tamamına yayılan
- * bir alan verilir. Google AdSense data-ad-format="auto" ile
- * bu alana ne sığarsa kendisi doldurur.
+ * SEO sayfalarında (trends, faq, vibe-dictionary) gizlenir —
+ * oralarda InArticleAd kullanılır.
  */
 export default function DesktopAdBanner() {
   const [visible, setVisible] = useState(false);
+  const pathname = usePathname();
+
+  // SEO sayfalarında gizle
+  const isSeoPage = ["/trends", "/faq", "/vibe-dictionary"].some((p) =>
+    pathname?.includes(p)
+  );
 
   useEffect(() => {
     const check = () => setVisible(window.innerWidth >= 1024);
@@ -20,6 +25,7 @@ export default function DesktopAdBanner() {
   }, []);
 
   if (!visible) return null;
+  if (isSeoPage) return null;
 
   return (
     <>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, HelpCircle, MessageCircleQuestion, Sparkles } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import InArticleAd from "@/components/InArticleAd";
 import { useAppStore } from "@/store/useAppStore";
 
 const faqs = {
@@ -182,19 +183,23 @@ export default function FAQPage() {
           className="space-y-4"
         >
           {faqList.map((faq, idx) => (
-            <motion.div
-              key={idx}
-              variants={itemVariants}
-              className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/[0.07] transition-all duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)]"
-            >
-              <div className="flex gap-4">
-                <HelpCircle className="w-6 h-6 text-cyan-400 shrink-0 mt-1 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)] group-hover:scale-110 transition-transform" />
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-100 transition-colors">{faq.question}</h3>
-                  <p className="text-white/60 leading-relaxed text-sm md:text-base group-hover:text-white/80 transition-colors">{faq.answer}</p>
+            <>
+              <motion.div
+                key={idx}
+                variants={itemVariants}
+                className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/[0.07] transition-all duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.1)]"
+              >
+                <div className="flex gap-4">
+                  <HelpCircle className="w-6 h-6 text-cyan-400 shrink-0 mt-1 drop-shadow-[0_0_8px_rgba(6,182,212,0.5)] group-hover:scale-110 transition-transform" />
+                  <div>
+                    <h3 className="text-lg font-bold text-white mb-2 group-hover:text-cyan-100 transition-colors">{faq.question}</h3>
+                    <p className="text-white/60 leading-relaxed text-sm md:text-base group-hover:text-white/80 transition-colors">{faq.answer}</p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+              {/* Listenin ortasında reklam */}
+              {idx === Math.floor(faqList.length / 2) - 1 && <InArticleAd />}
+            </>
           ))}
         </motion.div>
 
