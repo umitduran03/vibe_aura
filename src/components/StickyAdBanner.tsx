@@ -5,143 +5,185 @@ import { useEffect, useState } from "react";
 /**
  * StickyAdBanner — Sayfanın altında yapışık reklam bandı.
  *
- * - 3 saniye sonra belirir (kullanıcı önce içerikle ilgilensin)
- * - X butonu ile kapatılabilir (session süresince tekrar çıkmaz)
- * - Mobilde 320×100, masaüstünde tam genişlik banner
- * - Masaüstünde zaten sidebar reklam var; isteğe bağlı olarak
- *   SHOW_ON_DESKTOP false yapılarak masaüstünde gizlenebilir.
+ * Davranış:
+ * - Sayfa açıldıktan 3 saniye sonra aşağıdan kayarak gelir.
+ * - X'e basıldığında banner tamamen yok olur, boşluk kalmaz.
+ *   Oturum boyunca (tab kapanana kadar) bir daha çıkmaz.
+ * - Banner görünürken altındaki butonlar tıklanamaz sorunu:
+ *   Banner'ın yüksekliği kadar <body>'e padding-bottom eklenir,
+ *   böylece sayfa içeriği banner'ın üstüne sığar.
+ * - Masaüstünde (≥1024px) sidebar reklamlar var, bu gizlenir.
  *
- * Google AdSense entegrasyonu:
- * Placeholder div'i <ins> tag'iyle değiştir, data-ad-slot gir.
+ * AdSense bağlanınca: Eğer Google o an için uygun reklam
+ * bulamazsa <ins> tag'i kendiliğinden 0 yüksekliğe çöker,
+ * useEffect içindeki yükseklik de buna göre güncellenir.
  */
 
-const SHOW_ON_DESKTOP = false; // masaüstünde sidebar var, gerek yok
-const DELAY_MS = 3000;         // kaç ms sonra belirsin
+const BANNER_H = 96;       // banner yüksekliği (px)
+const PADDING = 8;         // banner üstü boşluk
+const TOTAL_OFFSET = BANNER_H + PADDING;
+const DELAY_MS = 3000;     // kaç ms sonra belirsin
 
 export default function StickyAdBanner() {
-  const [visible, setVisible] = useState(false);
-  const [closed, setClosed] = useState(false);
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [visible, setVisible]   = useState(false); // 3sn doldu mu
+  const [closed,  setClosed]    = useState(false); // kullanıcı kapattı mı
+  const [desktop, setDesktop]   = useState(false); // ≥1024px mi
 
+  /* Masaüstü tespiti */
   useEffect(() => {
-    const checkWidth = () => setIsDesktop(window.innerWidth >= 1024);
-    checkWidth();
-    window.addEventListener("resize", checkWidth);
-    return () => window.removeEventListener("resize", checkWidth);
+    const check = () => setDesktop(window.innerWidth >= 1024);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
   }, []);
 
+  /* Oturum hafızası — kullanıcı kapattıysa bir daha açma */
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), DELAY_MS);
-    return () => clearTimeout(timer);
+    if (sessionStorage.getItem("stickyAdClosed") === "1") {
+      setClosed(true);
+    }
   }, []);
 
-  // Masaüstünde gizle (sidebar var)
-  if (!SHOW_ON_DESKTOP && isDesktop) return null;
-  // Kullanıcı kapattıysa gizle
-  if (closed) return null;
-  // Henüz süre dolmadıysa gizle
+  /* 3 saniye sonra göster */
+  useEffect(() => {
+    if (closed || desktop) return;
+    const t = setTimeout(() => setVisible(true), DELAY_MS);
+    return () => clearTimeout(t);
+  }, [closed, desktop]);
+
+  /* Banner görünürken body'e padding ekle → alt butonlar tıklanabilir */
+  useEffect(() => {
+    const show = visible && !closed && !desktop;
+    if (show) {
+      document.body.style.paddingBottom = `${TOTAL_OFFSET}px`;
+    } else {
+      document.body.style.paddingBottom = "";
+    }
+    return () => { document.body.style.paddingBottom = ""; };
+  }, [visible, closed, desktop]);
+
+  const handleClose = () => {
+    setClosed(true);
+    sessionStorage.setItem("stickyAdClosed", "1");
+    // padding'i anında temizle
+    document.body.style.paddingBottom = "";
+  };
+
+  /* Masaüstünde sidebar var → gösterme */
+  if (desktop)  return null;
+  /* Kullanıcı kapattı → tamamen yok ol, boşluk yok */
+  if (closed)   return null;
+  /* Henüz 3sn dolmadı */
   if (!visible) return null;
 
   return (
     <div
+      role="complementary"
+      aria-label="Reklam"
       style={{
         position: "fixed",
         bottom: 0,
         left: 0,
         right: 0,
-        zIndex: 50,
+        zIndex: 45,          /* toast'lar (z-999+) üstünde değil, içeriğin üstünde */
         display: "flex",
         justifyContent: "center",
-        alignItems: "flex-end",
-        pointerEvents: "none",
+        animation: "adSlideUp 0.35s cubic-bezier(0.34,1.56,0.64,1) both",
       }}
     >
+      <style>{`
+        @keyframes adSlideUp {
+          from { transform: translateY(110%); opacity: 0; }
+          to   { transform: translateY(0);    opacity: 1; }
+        }
+      `}</style>
+
       <div
         style={{
           width: "100%",
-          maxWidth: "728px",             // leaderboard genişliği (büyük ekranlar)
+          maxWidth: "430px",        /* uygulama genişliğiyle hizalı */
+          height: `${BANNER_H}px`,
           background: "rgba(5,5,16,0.97)",
-          borderTop: "1px solid rgba(255,255,255,0.08)",
+          borderTop: "1px solid rgba(255,255,255,0.09)",
           position: "relative",
-          pointerEvents: "auto",
-          animation: "slideUp 0.4s ease-out",
+          overflow: "hidden",
         }}
       >
-        <style>{`
-          @keyframes slideUp {
-            from { transform: translateY(100%); opacity: 0; }
-            to   { transform: translateY(0);    opacity: 1; }
-          }
-        `}</style>
-
-        {/* Kapat butonu */}
+        {/* ── Kapat butonu ── */}
         <button
-          onClick={() => setClosed(true)}
+          onClick={handleClose}
           aria-label="Reklamı kapat"
           style={{
             position: "absolute",
-            top: "4px",
+            top: "5px",
             right: "6px",
-            background: "rgba(255,255,255,0.07)",
+            zIndex: 2,
+            background: "rgba(255,255,255,0.08)",
             border: "none",
             borderRadius: "50%",
-            width: "20px",
-            height: "20px",
+            width: "18px",
+            height: "18px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             cursor: "pointer",
-            zIndex: 2,
-            color: "rgba(255,255,255,0.4)",
-            fontSize: "11px",
+            color: "rgba(255,255,255,0.45)",
+            fontSize: "10px",
             lineHeight: 1,
           }}
         >
           ✕
         </button>
 
-        {/* Reklam etiketi */}
+        {/* ── Reklam etiketi ── */}
         <p style={{
+          margin: "5px 28px 0 0",
           textAlign: "center",
           fontSize: "8px",
           fontWeight: 700,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
-          color: "rgba(255,255,255,0.2)",
-          margin: "4px 0 0",
-          padding: 0,
+          color: "rgba(255,255,255,0.18)",
         }}>
           Reklam
         </p>
 
         {/*
-          ── GOOGLE ADSENSE ──────────────────────────────────────────
-          Aşağıdaki placeholder div'i kaldırıp bu <ins> tag'ini aç:
+          ── GOOGLE ADSENSE ─────────────────────────────────────────
+          Aşağıdaki placeholder div'i silip bu kodu aç:
 
           <ins
             className="adsbygoogle"
-            style={{ display: "block", width: "100%", height: "90px" }}
+            style={{ display: "block", width: "100%", height: "72px" }}
             data-ad-client="ca-pub-4394628220494584"
-            data-ad-slot="XXXXXXXXXX"   ← Yeni bir "Banner" Ad Unit oluştur
+            data-ad-slot="XXXXXXXXXX"   ← Mobil Banner Ad Unit slot ID
             data-ad-format="auto"
             data-full-width-responsive="true"
           />
-          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-          ────────────────────────────────────────────────────────────
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(adsbygoogle = window.adsbygoogle || []).push({});`
+            }}
+          />
+
+          NOT: Eğer Google o an uygun reklam bulamazsa <ins> kendi
+          kendine 0 yüksekliğe çöker. padding-bottom de gereksiz
+          kalır ama sayfa bozulmaz.
+          ───────────────────────────────────────────────────────────
         */}
 
-        {/* Placeholder */}
+        {/* Placeholder — AdSense aktif olunca bu div'i sil */}
         <div style={{
-          height: "90px",
+          height: "72px",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
           gap: "8px",
-          color: "rgba(255,255,255,0.12)",
+          color: "rgba(255,255,255,0.1)",
           fontSize: "11px",
         }}>
-          <span style={{ opacity: 0.4 }}>📢</span>
-          <span>Banner Reklam Alanı — 728 × 90</span>
+          <span>📢</span>
+          <span>Mobil Reklam Alanı — 320 × 72</span>
         </div>
       </div>
     </div>
