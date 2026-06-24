@@ -7,28 +7,27 @@ import { usePathname } from "next/navigation";
  * StickyAdBanner — Sayfanın altında yapışık reklam bandı.
  *
  * Davranış:
- * - Sayfa açıldıktan 3 saniye sonra aşağıdan kayarak gelir.
- * - AdSense'den reklam istenilir. Eğer Google o an "reklam yok"
- *   (unfilled) yanıtı verirse, banner saniyesinde tamamen kendini imha eder.
- * - X'e basıldığında banner tamamen yok olur, boşluk kalmaz.
- * - Banner görünürken <body>'e padding-bottom eklenir.
+ * - <ins> her zaman DOM'da ve görünür durumdadır (AdSense gizli elemente reklam doldurmaz).
+ * - Wrapper height:0 / overflow:hidden olduğu için kullanıcı hiçbir şey görmez.
+ * - AdSense "filled" döndüğünde wrapper açılır → banner aşağıdan kayarak belirir.
+ * - "unfilled" veya cevap gelmezse → sessizce hiçbir şey olmaz.
+ * - X'e basıldığında banner tamamen yok olur.
+ * - Her sayfa/route değişiminde yeniden mount olur, yeni reklam varsa tekrar belirir.
  */
 
 const BANNER_H = 96;
 const TOTAL_OFFSET = BANNER_H + 8;
-const DELAY_MS = 3000;
 
 export default function StickyAdBanner() {
-  const [visible, setVisible]   = useState(false);
-  const [closed,  setClosed]    = useState(false);
-  const [desktop, setDesktop]   = useState(false);
+  const [filled,  setFilled]  = useState(false);
+  const [closed,  setClosed]  = useState(false);
+  const [desktop, setDesktop] = useState(false);
   const pathname = usePathname();
 
-  // SEO sayfalarında InArticleAd kullanılır, bu banner gizlenir
   const isSeoPage = ["/trends", "/faq", "/vibe-dictionary"].some((p) =>
     pathname?.includes(p)
   );
-  
+
   const insRef = useRef<HTMLModElement>(null);
 
   /* Masaüstü tespiti */
@@ -39,68 +38,47 @@ export default function StickyAdBanner() {
     return () => window.removeEventListener("resize", check);
   }, []);
 
-
-  /* 3 saniye sonra göster ve AdSense'i tetikle */
+  /* AdSense'i tetikle ve dolu/boş durumu dinle */
   useEffect(() => {
-    if (closed || desktop) return;
-    
-    const t = setTimeout(() => {
-      setVisible(true);
-      // Reklam kodunu pushla
-      try {
-        // @ts-ignore
-        (window.adsbygoogle = window.adsbygoogle || []).push({});
-      } catch (e) {
-        console.error("AdSense banner error", e);
+    if (desktop || isSeoPage || !insRef.current) return;
+
+    try {
+      // @ts-ignore
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error("AdSense banner error", e);
+    }
+
+    const observer = new MutationObserver(() => {
+      const status = insRef.current?.getAttribute("data-ad-status");
+      if (status === "filled") {
+        setFilled(true); // → wrapper açılır, banner kayarak belirir
       }
-    }, DELAY_MS);
-    
-    return () => clearTimeout(t);
-  }, [closed, desktop]);
-
-  /* Reklamın dolup dolmadığını (unfilled) dinle */
-  useEffect(() => {
-    if (!visible || closed || desktop || !insRef.current) return;
-
-    // MutationObserver ile data-ad-status özniteliğini izleyelim
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === "attributes" && mutation.attributeName === "data-ad-status") {
-          const status = insRef.current?.getAttribute("data-ad-status");
-          if (status === "unfilled") {
-            // Google reklam bulamadı! Banner'ı hemen yok et.
-            setClosed(true);
-            document.body.style.paddingBottom = "";
-          }
-        }
-      });
+      // "unfilled" → wrapper zaten height:0, hiçbir şey olmaz
     });
 
-    observer.observe(insRef.current, { attributes: true });
+    observer.observe(insRef.current, {
+      attributes: true,
+      attributeFilter: ["data-ad-status"],
+    });
+
     return () => observer.disconnect();
-  }, [visible, closed, desktop]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [desktop, isSeoPage]);
 
   /* Body padding yönetimi */
   useEffect(() => {
-    const show = visible && !closed && !desktop;
-    if (show) {
-      document.body.style.paddingBottom = `${TOTAL_OFFSET}px`;
-    } else {
-      document.body.style.paddingBottom = "";
-    }
+    const show = filled && !closed && !desktop;
+    document.body.style.paddingBottom = show ? `${TOTAL_OFFSET}px` : "";
     return () => { document.body.style.paddingBottom = ""; };
-  }, [visible, closed, desktop]);
+  }, [filled, closed, desktop]);
 
   const handleClose = () => {
     setClosed(true);
     document.body.style.paddingBottom = "";
   };
 
-  if (desktop)   return null;
-  if (isSeoPage) return null;
-
-  if (closed)   return null;
-  if (!visible) return null;
+  if (desktop || isSeoPage) return null;
 
   return (
     <div
@@ -114,68 +92,76 @@ export default function StickyAdBanner() {
         zIndex: 45,
         display: "flex",
         justifyContent: "center",
-        animation: "adSlideUp 0.35s cubic-bezier(0.34,1.56,0.64,1) both",
+        // Reklam dolana kadar sıfır yükseklik — kullanıcı hiçbir şey görmez
+        height: filled && !closed ? `${BANNER_H}px` : 0,
+        overflow: "hidden",
+        transition: "height 0.35s cubic-bezier(0.34,1.56,0.64,1)",
       }}
     >
-      <style>{`
-        @keyframes adSlideUp {
-          from { transform: translateY(110%); opacity: 0; }
-          to   { transform: translateY(0);    opacity: 1; }
-        }
-      `}</style>
-
       <div
         style={{
           width: "100%",
           maxWidth: "430px",
           height: `${BANNER_H}px`,
           background: "rgba(5,5,16,0.97)",
-          borderTop: "1px solid rgba(255,255,255,0.09)",
+          borderTop: filled && !closed ? "1px solid rgba(255,255,255,0.09)" : "none",
           position: "relative",
           overflow: "hidden",
         }}
       >
-        <button
-          onClick={handleClose}
-          aria-label="Reklamı kapat"
-          style={{
-            position: "absolute",
-            top: "5px",
-            right: "6px",
-            zIndex: 2,
-            background: "rgba(255,255,255,0.08)",
-            border: "none",
-            borderRadius: "50%",
-            width: "18px",
-            height: "18px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            cursor: "pointer",
-            color: "rgba(255,255,255,0.45)",
-            fontSize: "10px",
-            lineHeight: 1,
-          }}
-        >
-          ✕
-        </button>
+        {filled && !closed && (
+          <button
+            onClick={handleClose}
+            aria-label="Reklamı kapat"
+            style={{
+              position: "absolute",
+              top: "5px",
+              right: "6px",
+              zIndex: 2,
+              background: "rgba(255,255,255,0.08)",
+              border: "none",
+              borderRadius: "50%",
+              width: "18px",
+              height: "18px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              cursor: "pointer",
+              color: "rgba(255,255,255,0.45)",
+              fontSize: "10px",
+              lineHeight: 1,
+            }}
+          >
+            ✕
+          </button>
+        )}
 
-        <p style={{
-          margin: "5px 28px 0 0",
-          textAlign: "center",
-          fontSize: "8px",
-          fontWeight: 700,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "rgba(255,255,255,0.18)",
-        }}>
-          Reklam
-        </p>
+        {filled && !closed && (
+          <p style={{
+            margin: "5px 28px 0 0",
+            textAlign: "center",
+            fontSize: "8px",
+            fontWeight: 700,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: "rgba(255,255,255,0.18)",
+          }}>
+            Reklam
+          </p>
+        )}
 
+        {/* <ins> her zaman görünür olmalı — AdSense gizli elemente reklam doldurmaz */}
         <ins
           ref={insRef}
           className="adsbygoogle"
-          style={{ display: "block", width: "100%", height: "72px" }}
+          style={{
+            display: "block",
+            width: "100%",
+            height: "72px",
+            // Reklam dolana kadar tamamen şeffaf — ama DOM'da ve görünür
+            opacity: filled && !closed ? 1 : 0,
+            pointerEvents: filled && !closed ? "auto" : "none",
+          }}
           data-ad-client="ca-pub-4394628220494584"
           data-ad-slot="5121721895"
           data-ad-format="auto"
