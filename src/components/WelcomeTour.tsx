@@ -10,13 +10,13 @@ const TOUR_STEPS = {
     { id: "modes", title: "Your Aura & Duo Mode", desc: "Discover your own energy in Solo mode, or upload two photos in Duo mode to uncover relationship dynamics, compatibility, and red flags.", Icon: Users },
     { id: "daily", title: "Daily Vibe & Streaks", desc: "Check your Daily Vibe tailored to your zodiac. Keep your streak alive by coming back every day! Don't let the flame die.", Icon: Flame },
     { id: "extras", title: "Crisis Center (Extras)", desc: "Confused? Delulu? Need rizz? The 'Extras' menu at the bottom is your ultimate toolkit for complex life situations.", Icon: Siren },
-    { id: "economy", title: "Tokens & History", desc: "Analyses cost Tokens. Top up from the Store (top-left), and review past vibes in History (top-right).", Icon: Gem },
+    { id: "economy", title: "Tokens & History", desc: "You need Tokens to perform an analysis. You can easily get more from the Store (top-left), and review past vibes in History (top-right).", Icon: Gem },
   ],
   tr: [
     { id: "modes", title: "Senin Auran & Duo Modu", desc: "Solo modda kendi enerjini keşfet. Duo modunda ise iki fotoğraf yükleyerek uyumunuzu, toksik detayları ve kırmızı bayrakları (red flags) öğren.", Icon: Users },
     { id: "daily", title: "Günlük Vibe & Ateşi Koru", desc: "Burcuna özel hazırlanan Daily Vibe'ı oku. Her gün gelerek serini (Streak) koru ve alevini büyüt! Seriyi bozma.", Icon: Flame },
     { id: "extras", title: "Kriz Masası (Ekstralar)", desc: "Kafan mı karışık? Eski sevgiliye mesaj atılır mı? Delulu musun? Alt menüdeki Kriz Masası en karmaşık durumlarda seni bekliyor.", Icon: Siren },
-    { id: "economy", title: "Jetonlar ve Geçmiş", desc: "Gerçeklerle yüzleşmek bedava değil! Analizler Jeton harcar. Sol üstten Mağazaya, sağ üstten eski yüzleşmelerine (Geçmiş) ulaşabilirsin.", Icon: Gem },
+    { id: "economy", title: "Jetonlar ve Geçmiş", desc: "Analiz yapmak için Jeton kullanılır. Sol üstteki menüden Mağaza'ya ulaşarak kolayca jeton alabilir, sağ üstten eski analizlerine (Geçmiş) ulaşabilirsin.", Icon: Gem },
   ]
 } as const;
 
