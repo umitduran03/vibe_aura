@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 
 /**
@@ -41,10 +41,15 @@ function AdColumn({ side }: { side: "left" | "right" }) {
       ? { left: "calc(50% - 215px - 20px - 160px)" }
       : { right: "calc(50% - 215px - 20px - 160px)" };
 
+  const insRef = useRef<HTMLModElement>(null);
+
   useEffect(() => {
     try {
-      // @ts-ignore
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      // Zaten başlatılmışsa tekrar push etme (Strict Mode / hot-reload koruması)
+      if (!insRef.current?.getAttribute("data-adsbygoogle-status")) {
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
     } catch (e) {
       console.error("AdSense error", e);
     }
@@ -64,6 +69,7 @@ function AdColumn({ side }: { side: "left" | "right" }) {
       }}
     >
       <ins
+        ref={insRef}
         className="adsbygoogle"
         style={{ display: "block", width: "160px", height: "100%" }}
         data-ad-client="ca-pub-4394628220494584"

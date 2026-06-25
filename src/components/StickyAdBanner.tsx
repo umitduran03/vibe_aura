@@ -43,8 +43,11 @@ export default function StickyAdBanner() {
     if (desktop || isSeoPage || !insRef.current) return;
 
     try {
-      // @ts-ignore
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      // Zaten başlatılmışsa tekrar push etme (Strict Mode / hot-reload koruması)
+      if (!insRef.current?.getAttribute("data-adsbygoogle-status")) {
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
     } catch (e) {
       console.error("AdSense banner error", e);
     }

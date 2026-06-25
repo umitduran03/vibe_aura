@@ -14,8 +14,11 @@ export default function InArticleAd() {
 
   useEffect(() => {
     try {
-      // @ts-ignore
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      // Zaten başlatılmışsa tekrar push etme (Strict Mode / hot-reload koruması)
+      if (!insRef.current?.getAttribute("data-adsbygoogle-status")) {
+        // @ts-ignore
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }
     } catch (e) {
       console.error("InArticleAd AdSense error", e);
     }
