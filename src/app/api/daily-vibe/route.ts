@@ -200,24 +200,36 @@ ABSOLUTE RULES:
       (g === "female" || g === "girl" || g === "woman") ? "Female" : 
       "Not specified";
 
-    const toneExamples = isTr
-      ? `
-Türkçe Ton Örnekleri:
-- (Erkek): "Aga, bugün enerjin 'mesajlara zihnen cevap verip gerçekte hiç göndermemek' vibe'ı veriyor. Grup sohbetini sustur ve akşama kadar herkesi ghostlamadan hayatta kal. 🎧"
-- (Kadın): "Canım, şu an yaydığın aura tam anlamıyla 'biri bana dokunursa ağlarım' diyor. Bugün sınırını koy, kimsenin enerjini çalmasına izin verme. 💅"
-- (Belirsiz): "Bestie, bugünkü vibe'ın 'her şeyi bırakıp kaybolmak istiyorum ama fatura var' enerjisi. Kafana takma, sadece hayatta kal. 💀"`
-      : `
-English Tone Examples:
-- (Male): "Bro, your energy today is giving 'replying to texts in my head but never actually hitting send'. Mute the group chat and survive until 5 PM without ghosting everyone. 🎧"
-- (Female): "Pookie, the aura you're radiating right now is screaming 'I need an iced matcha and zero human interaction'. Don't let anyone ruin your unbothered era today. 💅🍵"
-- (Unspecified): "Bestie, today's vibe is literally 'main character energy but the budget is low'. No cap, you're doing the most with what you've got. ✨"`;
+    const THEMES_TR = [
+      "Kaos ve Drama (Eski flörtü stalklamak, magazin, kaostan beslenmek, toksik dedikodu)",
+      "Aşk ve Delulu (Mesaj bekleme krizleri, 'acaba benden mi hoşlanıyor' hezeyanları, toksik flört)",
+      "Tükenmişlik ve İzolasyon (Sosyal pilin bitmesi, planları iptal edip yatağa dönmek, herkesi ghostlamak)",
+      "Kariyer ve Hustle (Duygusuzlaşıp sadece işe/paraya odaklanmak, hedeflere kilitlenmek, NPC'leri umursamamak)",
+      "Özgüven Patlaması (Main character enerjisi, kimseye eyvallahı olmamak, narsisizm sınırlarında gezmek)"
+    ];
+
+    const THEMES_EN = [
+      "Chaos and Drama (Stalking exes, sipping tea, thriving on toxic gossip)",
+      "Love and Delulu (Waiting for replies, making up fake scenarios, toxic situationships)",
+      "Burnout and Isolation (Zero social battery, canceling plans to rot in bed, ghosting the group chat)",
+      "Hustle and Focus (Locking in, ignoring distractions, purely focused on securing the bag)",
+      "Main Character Energy (Unbothered, untouchable aura, borderline narcissistic confidence)"
+    ];
+
+    const selectedTheme = isTr 
+      ? THEMES_TR[Math.floor(Math.random() * THEMES_TR.length)]
+      : THEMES_EN[Math.floor(Math.random() * THEMES_EN.length)];
 
     const promptText = `
 [BACKGROUND DATA — DO NOT REVEAL IN OUTPUT]
 Age: ${age || "Not specified"}, Zodiac: ${tVal(zodiac, ZODIAC_EN, ZODIAC_TR, locale)}, Gender: ${genderHint}
 
-Write a DAILY VIBE reading for this user. Use the background data SILENTLY to shape the tone and accuracy — never mention it explicitly. 2-3 sentences MAX. Include emojis. ${langInstruction}
-${toneExamples}
+[TODAY'S VIBE THEME — STRICTLY FOCUS ON THIS TOPIC]
+Theme: ${selectedTheme}
+
+Write a DAILY VIBE reading for this user focusing EXCLUSIVELY on today's theme. 
+Use the background data SILENTLY to shape the accuracy — never mention it explicitly. 
+2-3 sentences MAX. Include emojis. ${langInstruction}
 `;
 
     const response = await generateWithWaterfall(systemInstruction, promptText);
