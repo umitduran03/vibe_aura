@@ -19,6 +19,7 @@ const ResultCard = dynamic(() => import("@/components/ResultCard"), { ssr: false
 const DuoResultCard = dynamic(() => import("@/components/DuoResultCard"), { ssr: false });
 const ExtrasResultCard = dynamic(() => import("@/components/ExtrasResultCard"), { ssr: false });
 const OnboardingScreen = dynamic(() => import("@/components/OnboardingScreen"), { ssr: false });
+const WelcomeTour = dynamic(() => import("@/components/WelcomeTour"), { ssr: false });
 
 // ─── Lazy: Modal bileşenler — sadece açıldıklarında yüklenecekler ───
 const TokenModal = dynamic(() => import("@/components/TokenModal"), { ssr: false });
@@ -255,6 +256,7 @@ export default function Home() {
       <LazyMotion features={loadFeatures}>
         <main className="relative mx-auto w-full max-w-[430px] min-h-dvh overflow-hidden flex flex-col">
           <OnboardingBanner />
+          <WelcomeTour />
           <AnimatePresence mode="wait">
             {screen === "splash" && <SplashScreen key="splash" />}
             
