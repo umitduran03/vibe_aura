@@ -28,6 +28,7 @@ import Link from "next/link";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
 import { getVibeRank } from "@/lib/streak-utils";
 import { useT } from "@/hooks/useT";
+import { ShareEarnBanner } from "@/components/ShareEarnBanner";
 
 export default function SettingsDrawer() {
   const isOpen = useAppStore((s) => s.isSettingsOpen);
@@ -337,6 +338,9 @@ export default function SettingsDrawer() {
 
               {/* ─── Menu Items ─── */}
               <div className="flex-1 overflow-y-auto px-5">
+
+                {/* ─── Share & Earn Banner ─── */}
+                <ShareEarnBanner />
 
                 {/* ─── Language Selector ─── */}
                 <p className="text-[11px] font-semibold tracking-widest uppercase text-white/30 mb-3 px-1">

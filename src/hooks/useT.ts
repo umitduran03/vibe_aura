@@ -379,6 +379,21 @@ const STRINGS = {
     paymentSuccessStatusTitle: "Status",
     paymentSuccessStatusDesc: "Your balance has been updated successfully.",
     paymentSuccessButton: "Start Analyzing Now",
+
+    // Share & Earn
+    shareEarnTitle: "Win 100 Tokens!",
+    shareEarnDesc: "Record your vibe, share it on socials, and get 100 tokens instantly.",
+    shareEarnBtn: "See Details",
+    shareEarnModalTitle: "How to Win?",
+    shareEarnModalDesc: "Complete 3 simple steps, and we'll send you 100 Tokens.",
+    shareEarnStep1Title: "Create Content",
+    shareEarnStep1Desc: "Record a creative video (min 15s) or take a funny screenshot of your results.",
+    shareEarnStep2Title: "Share on Socials",
+    shareEarnStep2Desc: "Share your video or post. Tag us, use #VibeCheckr, and you MUST include the app link.",
+    shareEarnStep3Title: "Email Us",
+    shareEarnStep3Desc: "Send your post/video link to vibecheckr.app@gmail.com. You can also reach out to us for other collaboration opportunities.",
+    shareEarnTerms: "Terms: Account must have 500+ followers, post/video must reach 1,000+ organic views. Max 3 rewards/month. P.S: High engagement might unlock even bigger rewards! 👀",
+    shareEarnGotIt: "Got it, Close",
   },
 
   tr: {
@@ -749,6 +764,21 @@ const STRINGS = {
     paymentSuccessStatusTitle: "Durum",
     paymentSuccessStatusDesc: "Bakiye güncellemesi başarıyla tamamlandı.",
     paymentSuccessButton: "Hemen Analize Başla",
+
+    // Share & Earn
+    shareEarnTitle: "100 Jeton Kazan!",
+    shareEarnDesc: "Deneyimini videoya çek, paylaş ve hediyeni anında kap.",
+    shareEarnBtn: "Detayları İncele",
+    shareEarnModalTitle: "Nasıl Kazanırım?",
+    shareEarnModalDesc: "3 basit adımı tamamla, 100 Jeton hediyeni hemen gönderelim.",
+    shareEarnStep1Title: "İçerik Üret",
+    shareEarnStep1Desc: "En az 15 saniyelik yaratıcı bir video çek veya analiz sonucunun ekran görüntüsünü al.",
+    shareEarnStep2Title: "Sosyal Medyada Paylaş",
+    shareEarnStep2Desc: "Video veya fotoğraf olarak paylaş. Bizi etiketlemeyi, #VibeCheckr yazmayı ve uygulama linkini eklemeyi KESİNLİKLE unutma.",
+    shareEarnStep3Title: "Bize Mail At",
+    shareEarnStep3Desc: "Gönderinin linkini vibecheckr.app@gmail.com adresine e-posta olarak gönder. Ayrıca daha farklı iş birlikleri için de bize ulaşabilirsin.",
+    shareEarnTerms: "Şartlar: En az 500 takipçi, 1.000+ organik görüntülenme ve herkese açık gönderi şarttır. (Not: Gönderinin etkileşimine göre ödül miktarın sürpriz şekilde artabilir! 👀)",
+    shareEarnGotIt: "Anladım, Kapat",
   },
 } as const;
 
