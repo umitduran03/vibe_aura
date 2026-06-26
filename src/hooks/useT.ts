@@ -382,7 +382,7 @@ const STRINGS = {
 
     // Share & Earn
     shareEarnTitle: "Win 100 Tokens!",
-    shareEarnDesc: "Record your vibe, share it on socials, and get 100 tokens instantly.",
+    shareEarnDesc: "Share your vibe on socials and get 100 tokens instantly.",
     shareEarnBtn: "See Details",
     shareEarnModalTitle: "How to Win?",
     shareEarnModalDesc: "Complete 3 simple steps, and we'll send you 100 Tokens.",
@@ -767,7 +767,7 @@ const STRINGS = {
 
     // Share & Earn
     shareEarnTitle: "100 Jeton Kazan!",
-    shareEarnDesc: "Deneyimini videoya çek, paylaş ve hediyeni anında kap.",
+    shareEarnDesc: "Deneyimini sosyal medyada paylaş, hediyeni anında kap.",
     shareEarnBtn: "Detayları İncele",
     shareEarnModalTitle: "Nasıl Kazanırım?",
     shareEarnModalDesc: "3 basit adımı tamamla, 100 Jeton hediyeni hemen gönderelim.",
