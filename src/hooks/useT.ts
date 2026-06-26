@@ -363,6 +363,8 @@ const STRINGS = {
     historyReadMore: "Read More",
     historyEnd: "End of history",
     historyUnknownDate: "Unknown Date",
+    historyBadge: "PAST VIBE",
+    historyShareText: "My VibeCheckr Analysis 👀 👉 https://thevibecheckr.com",
 
     // Language selector
     langSelectorTitle: "Language",
@@ -748,6 +750,8 @@ const STRINGS = {
     historyReadMore: "Devamını gör",
     historyEnd: "Hepsi bu kadar, bestie 👻",
     historyUnknownDate: "Bilinmeyen Tarih",
+    historyBadge: "GEÇMİŞ VİBE",
+    historyShareText: "VibeCheckr Analizim 👀 👉 https://thevibecheckr.com",
 
     // Language selector
     langSelectorTitle: "Dil",

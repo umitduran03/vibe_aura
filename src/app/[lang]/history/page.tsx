@@ -75,6 +75,7 @@ export default function HistoryPage() {
         try {
           await navigator.share({
             title: "VibeCheckr",
+            text: t.historyShareText,
             files: [file],
           });
         } catch (shareErr: any) {
@@ -221,7 +222,7 @@ export default function HistoryPage() {
                 <WaveLogoIcon size={16} />
                 <span className="text-[12px] font-bold tracking-widest uppercase">VibeCheckr.</span>
               </div>
-              <span className="text-[10px] uppercase tracking-widest border border-white/20 px-2 py-1 rounded-full">GEÇMİŞ VİBE</span>
+              <span className="text-[10px] uppercase tracking-widest border border-white/20 px-2 py-1 rounded-full">{t.historyBadge}</span>
             </div>
           </div>
         )}
