@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Camera, Loader2, ImagePlus, Trash2 } from "lucide-react";
 import { useAppStore, type ExtrasType } from "@/store/useAppStore";
@@ -86,6 +86,15 @@ export default function ExtrasModal() {
   const [uploading, setUploading] = useState<string|null>(null);
   const refs = useRef<Record<string, HTMLInputElement|null>>({});
   const screenshotRef = useRef<HTMLInputElement|null>(null);
+
+  useEffect(() => {
+    if (isOpen) {
+      setForm({});
+      setPhotos({});
+      setScreenshots([]);
+      setUploading(null);
+    }
+  }, [isOpen, extrasType]);
 
   if (!isOpen || !extrasType) return null;
   const cfg = META[extrasType];
