@@ -40,12 +40,56 @@ export default function Home() {
   const setLocale = useAppStore((s) => s.setLocale);
   const locale = useAppStore((s) => s.locale);
 
-  // Pathname'den locale'yi tespit et ve store'a yaz
+  // Pathname'den locale'yi ve query'den feature'ı tespit et
   useEffect(() => {
     const pathLocale = window.location.pathname.startsWith("/tr") ? "tr" : "en";
     setLocale(pathLocale);
+
+    // Deep linking for SEO feature pages
+    const params = new URLSearchParams(window.location.search);
+    const feature = params.get("feature");
+    
+    if (feature) {
+      const store = useAppStore.getState();
+      if (["toxic-ex", "situationship", "mood-reset", "delulu-check", "rizz-architect"].includes(feature)) {
+        store.setExtrasType(feature as any);
+        store.setExtrasModalOpen(true);
+        store.setScreen("wizard");
+      } else if (feature === "duo-compatibility") {
+        store.setAnalysisMode("duo");
+        store.setDuoRelationType("flirt");
+        store.setScreen("wizard");
+      } else if (feature === "aura-battle") {
+        store.setAnalysisMode("duo");
+        store.setDuoRelationType("battle");
+        store.setScreen("wizard");
+      } else if (feature === "ai-roast-me") {
+        store.setAnalysisMode("solo");
+        store.setSoloScenario("roast");
+        store.setScreen("wizard");
+      } else if (feature === "soulmate-radar") {
+        store.setAnalysisMode("solo");
+        store.setSoloScenario("soulmate");
+        store.setScreen("wizard");
+      } else if (feature === "crush-calculator") {
+        store.setAnalysisMode("duo");
+        store.setDuoRelationType("platonic");
+        store.setScreen("wizard");
+      } else if (feature === "bff-vibe-check") {
+        store.setAnalysisMode("duo");
+        store.setDuoRelationType("bff");
+        store.setScreen("wizard");
+      } else if (feature === "ex-compatibility") {
+        store.setAnalysisMode("duo");
+        store.setDuoRelationType("ex");
+        store.setScreen("wizard");
+      }
+      
+      // Clean up URL so it doesn't trigger again on refresh
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
   }, [setLocale]);
-  
+
   const analysisMode = useAppStore((s) => s.analysisMode);
   const soloScenario = useAppStore((s) => s.soloScenario);
   const userData = useAppStore((s) => s.userData);

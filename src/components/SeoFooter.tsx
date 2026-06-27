@@ -25,6 +25,11 @@ const strings = {
     deluluCheck: "Delulu Check",
     replyGuru: "The Reply Guru",
     auraBattle: "Aura Battle",
+    aiRoast: "AI Roast Me",
+    soulmateRadar: "Soulmate Radar",
+    crushCalc: "Crush Calculator",
+    bffCheck: "BFF Vibe Check",
+    exCompat: "Ex Compatibility",
   },
   tr: {
     tagline: "İnternetin en acımasız dürüst yapay zeka algoritması. Vibe'larını tara, karma sinyalleri çöz ve çok ihtiyacın olan gerçeklik kontrolünü al.",
@@ -45,6 +50,11 @@ const strings = {
     deluluCheck: "Delulu Check",
     replyGuru: "Mesaj Gurusu",
     auraBattle: "Vibe Savaşları",
+    aiRoast: "YZ Fotoğraf Gömme",
+    soulmateRadar: "Ruh Eşi Radarı",
+    crushCalc: "Platonik / Crush Testi",
+    bffCheck: "BFF Kanka Uyumu",
+    exCompat: "Eski Sevgili Uyumu",
   },
 };
 
@@ -55,8 +65,18 @@ export default function SeoFooter() {
   const s = strings[locale] ?? strings.en;
   const currentTrends = isTr ? trendsDataTr : trendsDataEn;
   const topReads = currentTrends.filter((t) => 
-    ["ai-photo-personality-test", "aura-battle-who-is-cooler", "zodiac-signs-red-flags", "situationship-vs-relationship", "mixed-signals-or-delulu"].includes(t.slug)
-  ).slice(0, 5);
+    [
+      "ai-photo-personality-test", 
+      "aura-battle-who-is-cooler", 
+      "zodiac-signs-red-flags", 
+      "situationship-vs-relationship", 
+      "mixed-signals-or-delulu",
+      "biggest-dating-red-flags-2026",
+      "how-to-stop-overthinking-texts",
+      "what-are-aura-points",
+      "are-you-delulu"
+    ].includes(t.slug)
+  ).slice(0, 9);
 
   return (
     <footer className="w-full border-t border-white/10 bg-black/40 backdrop-blur-md py-12 px-6 mt-20 relative z-20">
@@ -133,6 +153,46 @@ export default function SeoFooter() {
                   <ArrowRight className="w-3 h-3 text-orange-400" />
                 </span>
                 {s.auraBattle}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/ai-roast-me`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  <ArrowRight className="w-3 h-3 text-red-500" />
+                </span>
+                {s.aiRoast}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/soulmate-radar`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  <ArrowRight className="w-3 h-3 text-rose-400" />
+                </span>
+                {s.soulmateRadar}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/crush-calculator`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  <ArrowRight className="w-3 h-3 text-fuchsia-400" />
+                </span>
+                {s.crushCalc}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/bff-vibe-check`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  <ArrowRight className="w-3 h-3 text-cyan-400" />
+                </span>
+                {s.bffCheck}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/ex-compatibility`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  <ArrowRight className="w-3 h-3 text-slate-400" />
+                </span>
+                {s.exCompat}
               </Link>
             </li>
           </ul>

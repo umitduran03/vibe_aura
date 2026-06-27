@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { auth } from "@/lib/firebase";
 import { m, AnimatePresence } from "framer-motion";
-import { Share2, RotateCcw, Sparkles, Download, Loader2, Lock } from "lucide-react";
+import { Share2, RotateCcw, Sparkles, Download, Loader2, Lock, Swords } from "lucide-react";
 import { ZODIAC_SIGNS, getAuraEmoji } from "@/lib/constants";
 import { resultCardVariants, resultItemVariants } from "@/lib/animations";
 import GlassButton from "@/components/ui/GlassButton";
@@ -15,6 +15,7 @@ import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
 import { getApiUrl } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
 function AnimatedCounter({ target, duration = 2 }: { target: number; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -49,6 +50,7 @@ export default function ResultCard() {
   const locale = useAppStore((s) => s.locale);
   const [isExporting, setIsExporting] = useState(false);
   const t = useT();
+  const router = useRouter();
 
   // Anti-cheat chronometer state
   const [shareToast, setShareToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
@@ -359,12 +361,13 @@ export default function ResultCard() {
                 </span>
           </div>
 
-          {/* Watermark — visible in share image */}
+          {/* Watermark — visible in share image, prominent for viral sharing */}
           <div
-            className="absolute bottom-4 right-5 flex items-center gap-1.5 select-none"
+            className="mt-6 pt-4 flex items-center justify-center gap-2 select-none"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
           >
-            <WaveLogoIcon size={14} className="opacity-[0.35]" />
-            <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>VibeCheckr.</span>
+            <WaveLogoIcon size={13} className="opacity-60" />
+            <span className="text-[12px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.55)" }}>VibeCheckr.com</span>
           </div>
         </m.div>
 
@@ -447,6 +450,27 @@ export default function ResultCard() {
               </m.div>
             )}
           </AnimatePresence>
+
+          {/* Challenge a Friend Button */}
+          {auraResult.isUnlocked !== false && (
+            <m.button
+              onClick={() => {
+                hapticLight();
+                router.push(`/${locale}/aura-battle`);
+              }}
+              whileTap={{ scale: 0.97 }}
+              whileHover={{ y: -1 }}
+              className="w-full flex items-center justify-center gap-2.5 rounded-2xl px-8 py-[15px] text-[14px] font-semibold tracking-wide cursor-pointer transition-all duration-300 active:scale-95"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.05)",
+                border: `1px solid rgba(255,255,255,0.12)`,
+                color: "rgba(255,255,255,0.75)",
+              }}
+            >
+              <Swords className="h-4 w-4" />
+              <span>{t.resultChallengeBtn}</span>
+            </m.button>
+          )}
 
           <GlassButton
             variant="ghost"

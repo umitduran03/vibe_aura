@@ -77,7 +77,7 @@ export default function AuraBattleLanding() {
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
-                href={`/${isTr ? "tr" : "en"}`}
+                href={`/${isTr ? "tr" : "en"}?feature=aura-battle`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 <Zap className="w-5 h-5 animate-pulse" />
@@ -161,7 +161,7 @@ export default function AuraBattleLanding() {
               : "100% Free. 100% Savage. We don't save photos, we just clash egos."}
           </p>
           <Link
-            href={`/${isTr ? "tr" : "en"}`}
+            href={`/${isTr ? "tr" : "en"}?feature=aura-battle`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
             {isTr ? "Savaşı Başlat" : "Start Battle"}

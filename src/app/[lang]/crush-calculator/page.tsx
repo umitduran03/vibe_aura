@@ -2,23 +2,23 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, Sparkles, MessageCircleHeart } from "lucide-react";
+import { ArrowLeft, Sparkles, HeartPulse, Infinity as InfinityIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 
-export default function SituationshipClarifierLanding() {
+export default function CrushCalculatorLanding() {
   const params = useParams();
   const isTr = params?.lang === "tr";
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: isTr ? "Situationship Çözücü YZ" : "Situationship Clarifier AI",
+    name: isTr ? "YZ Platonik Aşk & Crush Uyumu Testi" : "AI Crush Compatibility Calculator",
     applicationCategory: "EntertainmentApplication",
     operatingSystem: "Any",
     description: isTr 
-      ? "'Biz şimdi neyiz?' gizemini çözüyoruz. Acımasız uyumluluk istatistikleri dahildir."
-      : "Decoding the 'What are we?' mystery. Brutal compatibility stats included.",
+      ? "Platonik aşkınla aranızda gerçekten bir kıvılcım var mı, yoksa hepsi senin kafanda mı? YZ ile crush uyumunuzu test et."
+      : "Is there a real spark between you and your crush, or is it all in your head? Test your compatibility with our AI.",
     offers: {
       "@type": "Offer",
       price: "0",
@@ -32,8 +32,8 @@ export default function SituationshipClarifierLanding() {
 
       {/* Background Glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[150px]" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/10 blur-[150px]" />
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-purple-900/20 blur-[150px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-fuchsia-900/10 blur-[150px]" />
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
@@ -51,7 +51,7 @@ export default function SituationshipClarifierLanding() {
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>
           <span className="text-sm font-medium tracking-widest text-purple-400 uppercase drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]">
-            {isTr ? "YZ İFŞA RADARI" : "AI Feature Spotlight"}
+            {isTr ? "YZ CRUSH ANALİZİ" : "AI CRUSH ANALYSIS"}
           </span>
         </motion.div>
 
@@ -64,24 +64,24 @@ export default function SituationshipClarifierLanding() {
             className="flex-1 space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(168,85,247,0.2)]">
-              <span className="text-base leading-none">🤡</span>
-              <span>{isTr ? `"Biz şimdi neyiz?" Çözücü` : `The "What are we?" Decoder`}</span>
+              <InfinityIcon className="w-4 h-4" />
+              <span>{isTr ? "Delulu Seviyesi: %99" : "Delulu Level: 99%"}</span>
             </div>
-            <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-500">
-              {isTr ? "Situationship Çözücü YZ" : "Situationship Clarifier AI"}
+            <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500">
+              {isTr ? "Crush'ınla Gerçekten Oluru Var Mı?" : "Do You And Your Crush Actually Have A Chance?"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr 
-                ? "Belirsizlikten yoruldun mu? Onun mesajlarını aşırı analiz etmeyi bırak ve yapay zekamızın aranızdaki o gerçek enerjiyi okumasına izin ver."
-                : "Tired of the grey zone? Stop overanalyzing their texts and let our AI read the actual energy between you two."}
+                ? "Sana 3 gün önce attığı o emojinin ne anlama geldiğini düşünmeyi bırak. İkinizin birer fotoğrafını yükle, yapay zeka aranızdaki platonik enerjiyi okusun ve acı gerçekleri yüzüne vursun."
+                : "Stop overanalyzing that emoji they sent 3 days ago. Upload both your photos, let the AI read the platonic energy between you, and give you the brutal truth."}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
-                href={`/${isTr ? "tr" : "en"}?feature=situationship`}
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(147,51,234,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
+                href={`/${isTr ? "tr" : "en"}?feature=crush-calculator`}
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(192,38,211,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
-                <MessageCircleHeart className="w-5 h-5 animate-pulse" />
-                {isTr ? "Gerçeği Öğren" : "Get Clarity Now"}
+                <HeartPulse className="w-5 h-5 animate-pulse" />
+                {isTr ? "Crush Uyumu Test Et" : "Test Crush Compatibility"}
               </Link>
             </div>
           </motion.div>
@@ -92,21 +92,18 @@ export default function SituationshipClarifierLanding() {
             transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
             className="flex-1 w-full max-w-sm relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/30 to-indigo-500/30 blur-3xl rounded-full" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/30 to-pink-500/30 blur-3xl rounded-full" />
             <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-purple-500/20 shadow-[0_0_40px_rgba(168,85,247,0.2)] glass-strong flex items-center justify-center bg-black/40">
               <div className="text-center p-6 space-y-4">
                 <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-7xl drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]"
+                  animate={{ scale: [1, 1.2, 1], rotate: [0, -5, 5, 0] }}
+                  transition={{ duration: 2, repeat: Infinity }}
                 >
-                  🤡
+                  <HeartPulse className="w-16 h-16 text-purple-500 mx-auto drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]" />
                 </motion.div>
-                <h3 className="text-xl font-black text-purple-400">{isTr ? "Teşhis: Delulu" : "Diagnosis: Delusion"}</h3>
+                <h3 className="text-xl font-black text-purple-400">{isTr ? "Uyum Sonucu" : "Compatibility Result"}</h3>
                 <p className="text-sm text-white/60 font-medium leading-relaxed">
-                  {isTr 
-                    ? `"İlgin hoşlarına gidiyor ama seninle ciddi düşünecek kadar da sevmiyorlar."`
-                    : `"They like the attention, but they don't like you enough to commit."`}
+                  {isTr ? `"Seni sadece ödevleri sorduğu bir 'okul arkadaşı' olarak görüyor. İleri gitme."` : `"They literally just see you as the person they ask for homework answers. Do not proceed."`}
                 </p>
               </div>
             </div>
@@ -117,19 +114,19 @@ export default function SituationshipClarifierLanding() {
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
             {
-              title: isTr ? "Enerji Okuması" : "Energy Reading",
-              desc: isTr ? "Yapay zeka bu ilişkinin arkasındaki gizli güç dinamiklerini ve gerçek niyetleri deşifre eder." : "AI decodes the hidden power dynamics and true intentions behind the relationship.",
-              icon: "🔮"
+              title: isTr ? "Çift Vibe Taraması" : "Duo Vibe Scan",
+              desc: isTr ? "İkinizin aurasını kıyaslayıp o elektriklenmenin gerçek mi sahte mi olduğunu anlar." : "Compares both your auras to detect if that spark is real or totally made up.",
+              icon: "⚡"
             },
             {
-              title: isTr ? "Acı Gerçekler" : "Brutal Truth",
-              desc: isTr ? "Oynatılıyor musun yoksa sadece ağırdan mı alıyorsunuz? Anında öğren." : "Are you being played or just taking things slow? Find out immediately.",
-              icon: "🔪"
+              title: isTr ? "Delulu Kontrolü" : "Delulu Check",
+              desc: isTr ? "Onun en ufak bir hareketinden çıkardığın abartılı senaryoları çürütür." : "Debunks all those wild scenarios you created from their smallest, meaningless actions.",
+              icon: "🤡"
             },
             {
-              title: isTr ? "Gelecek Tahmini" : "Future Forecast",
-              desc: isTr ? "Bu situationship'in aslında nereye gittiğine dair istatistiksel bir döküm." : "A statistical breakdown of where this situationship is actually heading.",
-              icon: "📈"
+              title: isTr ? "Aksiyon Tavsiyesi" : "Actionable Advice",
+              desc: isTr ? "Gidip açılmalı mısın yoksa sessizce unutmalı mısın? Sana net bir taktik verir." : "Tells you whether you should shoot your shot or silently retreat and forget about it.",
+              icon: "🎯"
             }
           ].map((feat, i) => (
             <motion.div 
@@ -152,19 +149,19 @@ export default function SituationshipClarifierLanding() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center p-10 rounded-3xl bg-gradient-to-br from-purple-950/60 to-black border border-purple-900/50 shadow-[0_0_50px_rgba(147,51,234,0.15)]"
+          className="text-center p-10 rounded-3xl bg-gradient-to-br from-purple-950/60 to-black border border-purple-900/50 shadow-[0_0_50px_rgba(168,85,247,0.15)]"
         >
-          <Sparkles className="w-10 h-10 text-fuchsia-400 mx-auto mb-6" />
+          <Sparkles className="w-10 h-10 text-purple-400 mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
-            {isTr ? "Tahmin etmeyi bırakmaya hazır mısın?" : "Ready to stop guessing?"}
+            {isTr ? "Gerçeklerle Yüzleşmeye Hazır mısın?" : "Ready for the reality check?"}
           </h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">
             {isTr 
-              ? "Arkadaşlarına taktik sormayı bırak. Yapay zekanın sana ihtiyacın olan o acımasız reality check'i (gerçeklik tokatını) atmasına izin ver."
-              : "Stop asking your friends for advice. Let the AI give you the brutal reality check you need."}
+              ? "%100 Ücretsiz. Gizlilik garantili. Arkadaş grubuna rezil olmadan önce gerçeği öğren."
+              : "100% Free. Completely private. Find out the truth before you embarrass yourself in the group chat."}
           </p>
           <Link
-            href={`/${isTr ? "tr" : "en"}?feature=situationship`}
+            href={`/${isTr ? "tr" : "en"}?feature=crush-calculator`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
             {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}

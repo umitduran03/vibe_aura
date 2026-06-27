@@ -337,9 +337,13 @@ export default function ExtrasResultCard() {
             )}
           </div>
 
-          <div className="absolute bottom-4 right-5 flex items-center gap-1.5 select-none">
-            <WaveLogoIcon size={14} className="opacity-[0.35]" />
-            <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>VibeCheckr.</span>
+          {/* Watermark — visible in share image, prominent for viral sharing */}
+          <div
+            className="mt-6 pt-4 flex items-center justify-center gap-2 select-none"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
+          >
+            <WaveLogoIcon size={13} className="opacity-60" />
+            <span className="text-[12px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.55)" }}>VibeCheckr.com</span>
           </div>
         </m.div>
 

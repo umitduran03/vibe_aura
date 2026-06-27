@@ -181,6 +181,8 @@ interface AppState {
 
   consumeToken: (amount?: number) => boolean;
   resetWizard: () => void;
+  tryAgain: () => void;
+  newAnalysis: () => void;
   // Duo actions
   updateDuoPerson1: (partial: Partial<DuoPersonData>) => void;
   updateDuoPerson2: (partial: Partial<DuoPersonData>) => void;
@@ -366,4 +368,37 @@ export const useAppStore = create<AppState>((set, get) => ({
       extrasResult: null,
       isExtrasShowcaseOpen: false,
     }),
+
+  tryAgain: () =>
+    set((s) => ({
+      currentScreen: "wizard",
+      // If it's extras, stay on step 0 since extras modal only has 1 step. 
+      // For solo/duo, we go to a step where they can easily re-submit or edit without losing everything.
+      // Let's just set step to 0 but keep all data.
+      wizardStep: 0, 
+      wizardDirection: -1,
+      auraResult: null,
+      duoResult: null,
+      extrasResult: null,
+      isAnalyzing: false,
+    })),
+
+  newAnalysis: () =>
+    set((s) => ({
+      currentScreen: "wizard",
+      wizardStep: 0,
+      wizardDirection: 1,
+      // Keep mode, scenario, relation type, extras type!
+      userData: { ...initialUserData },
+      duoPerson1: { ...initialDuoPerson },
+      duoPerson2: { ...initialDuoPerson },
+      duoMagicText: "",
+      photoUrl: null,
+      isUploadingPhoto: false,
+      auraResult: null,
+      duoResult: null,
+      extrasFormData: null,
+      extrasResult: null,
+      isAnalyzing: false,
+    })),
 }));

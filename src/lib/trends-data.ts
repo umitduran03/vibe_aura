@@ -648,8 +648,43 @@ export const trendsDataEn: TrendArticle[] = [
     },
     ctaLabel: "Check Our Compatibility",
     ctaLink: "/duo-compatibility",
+  },
+  {
+    slug: "what-is-an-ick",
+    title: "What is an Ick? Why One Small Thing Can Kill All Attraction",
+    description: "The 'ick' is the sudden, overwhelming feeling of disgust that makes you lose all attraction instantly. Learn what triggers an ick, why it happens, and if it means you should walk away.",
+    category: "Dating Psychology",
+    publishDate: "2026-06-27",
+    readTime: "5 min read",
+    keywords: ["what is an ick", "ick meaning", "what is ick in dating", "the ick", "ick examples", "getting the ick", "ick relationship", "why do i get the ick", "ick gen-z", "lost attraction"],
+    imageUrl: "/images/trends/situationship.png",
+    content: {
+      intro: "You are on a perfectly good date. The chemistry is there, they look amazing, and the conversation is flowing. Then it happens. They laugh just a little too loudly at their own joke. Or they walk slightly too fast while swinging their arms in a weird way. Or they wave at you from across the street in an overly enthusiastic, double-handed wave. And just like that — it is gone. Every drop of attraction you had vanishes in an instant, replaced by a wave of visceral, irrational, overwhelming disgust. That, my friend, is the ick. And once you get it, it almost never goes away.",
+      sections: [
+        {
+          heading: "What Exactly Is 'The Ick'?",
+          paragraph: "The ick is a Gen-Z coined term for a sudden, involuntary loss of romantic attraction triggered by a specific behavior, habit, or quirk — usually something objectively small or harmless. It's the romantic equivalent of a switch being flipped. One moment you're completely into someone; the next, the mere thought of touching them gives you the shivers. What makes the ick so brutal is its irrationality. You can't logic your way out of it. You know perfectly well that the person waving enthusiastically isn't doing anything wrong. Yet your brain has decided: absolutely not. The attraction is dead. It cannot be revived."
+        },
+        {
+          heading: "The Most Common Ick Triggers",
+          paragraph: "While ick triggers are deeply personal, some are nearly universal. Being visibly too excited about impressing you — like running to open the car door, or ordering their food in a weird voice — triggers the ick at scale. Performing anything for an audience (laughing too hard, trying to be seen as the alpha of a group) is another classic. Then there are the logistical icks: watching someone struggle with parallel parking, seeing them hand their phone to the waiter to take a photo, or witnessing them eat with a tiny forkful of food while making direct eye contact. These are objectively minor. Yet they hit like a truck."
+        },
+        {
+          heading: "The Psychology Behind the Ick",
+          paragraph: "Psychologists suggest the ick might actually be a sophisticated evolutionary mating signal — your subconscious picking up on subtle social competency cues. An overly try-hard behavior might signal social anxiety or insecurity, which your brain registers as a potential long-term compatibility red flag. Alternatively, the ick could be rooted in your own emotional unavailability. Sometimes we develop the ick for genuinely good partners because something about their openness and vulnerability frightens us. It is worth asking yourself: am I experiencing the ick because of a real incompatibility, or am I running away from someone emotionally safe?"
+        },
+        {
+          heading: "Can You Come Back from the Ick?",
+          paragraph: "In most cases, once the ick is locked in, it is game over. Attraction is not a rational decision, and you cannot force yourself to find someone appealing once your gut has ruled. However, there are rare cases where the ick fades — usually when the person in question demonstrates such a high level of confidence, character, or emotional intelligence that your brain is forced to override its initial judgment. If you have given it genuine time and the ick persists, it is almost always better to be honest with yourself and the other person rather than forcing a connection that your subconscious has already rejected."
+        }
+      ],
+      conclusion: "The ick is one of the most discussed, most relatable, and most ruthless phenomena in modern dating. It is a reminder that attraction is not entirely logical — our bodies and brains are running a complex, often unfair evaluation system that no amount of charm can always override. The best you can do? Know your own ick triggers, be honest when it hits, and try to figure out whether it is a genuine incompatibility signal or your own fear of vulnerability doing the talking."
+    },
+    ctaLabel: "Check My Vibe",
+    ctaLink: "/",
   }
 ];
+
 
 export const trendsDataTr: TrendArticle[] = [
   {
@@ -1283,7 +1318,42 @@ export const trendsDataTr: TrendArticle[] = [
     },
     ctaLabel: "Uyumumuzu Kontrol Et",
     ctaLink: "/duo-compatibility",
+  },
+  {
+    slug: "what-is-an-ick",
+    title: "Ick Nedir? Neden Tek Bir Küçük Şey Tüm Çekimi Öldürüyor?",
+    description: "'Ick', birine olan tüm çekimin bir anda, büyük bir iğrenme dalgasıyla yok olması. Ick ne demek, nedenleri, tetikleyicileri ve gerçekten o kişiden uzaklaşman gerekip gerekmediği.",
+    category: "Flört Psikolojisi",
+    publishDate: "2026-06-27",
+    readTime: "5 dk okuma",
+    keywords: ["ick nedir", "ick ne demek", "ick ne anlama gelir", "ick örnekleri", "ick almak", "ick ilişki", "çekim kaybı", "gen-z ick", "birinden ick almak", "ick neden olur"],
+    imageUrl: "/images/trends/situationship.png",
+    content: {
+      intro: "Harika giden bir buluşmanın ortasındasın. Kimya var, kişi güzel görünüyor, sohbet akıyor. Sonra oluyor. Kendi şakasına biraz fazla yüksek sesle gülüyor. Ya da yürürken kollarını garip sallayarak biraz fazla hızlı yürüyor. Veya seni sokağın karşısından iki eliyle birden bayrak gibi sallayarak selamlıyor. Ve işte o an — bitti. İçinde birikmekte olan her damla çekim saniyeler içinde yerle bir oluyor, yerine korkunç, mantıksız ve seni yutacak gibi gelen bir iğrenme dalgası geçiyor. İşte bu dostum, 'ick'. Ve bir kez aldığında, neredeyse hiç geçmiyor.",
+      sections: [
+        {
+          heading: "Bu 'Ick' Olayı Tam Olarak Nedir?",
+          paragraph: "Ick, birine olan romantik çekimin belirli bir davranış, alışkanlık veya küçük bir ayrıntı tarafından aniden, istemsizce yok edilmesi demek. Gen-Z'nin ortaya attığı bu terim, romantizmde bir düğmeye basılması gibidir. Bir an tamamen o kişiye çekiliyorsun; bir sonraki anda onun hakkında düşünmek bile seni rahatsız ediyor. İck'in en acımasız yanı irrasyonelliğidir. Mantık yoluyla çıkamazsın. İki eliyle selamlayan kişinin yanlış bir şey yapmadığını gayet iyi biliyorsun. Ama beynin karar verdi: Asla. Çekim öldü. Diriltilemiyor."
+        },
+        {
+          heading: "En Yaygın Ick Tetikleyicileri",
+          paragraph: "Ick tetikleyiciler çok kişisel olsa da bazıları neredeyse evrensel. Seni etkilemek için fazla çaba harcayan davranışlar — mesela arabanın kapısını açmak için neredeyse koşarak gelmek veya yemek siparişini garip bir tonlamayla vermek — büyük ick tetikleyicileri. Bir grup içinde kendini büyük göstermeye çalışmak da klasik bir ick. Bir de lojistik ick'ler var: paralel park yaparken paniğe kapılan birini izlemek, fotoğraf çektirmek için telefonu garsona vermek, ya da sana doğrudan bakarak ufacık çatal lokmaları alarak yemek yemek. Bunlar objektif olarak küçük şeyler. Ama bir kamyon gibi çarpıyorlar."
+        },
+        {
+          heading: "Ick'in Arkasındaki Psikoloji",
+          paragraph: "Psikologlar, ick'in aslında çok gelişmiş bir evrimsel eşleşme sinyali olabileceğini söylüyor — bilinçaltının sosyal yeterlilik ipuçlarını yakaladığı ince bir mekanizma. Fazla 'kasılan' bir davranış, sosyal kaygıyı veya güvensizliği işaret edebilir ve beynin bunu uzun vadeli uyumsuzluk işareti olarak kaydetmesine yol açar. Öte yandan ick, bazen kendi duygusal kaçınmanlığımızdan da kaynaklanabilir. Bazen gerçekten iyi olan birine karşı ick geliştiririz çünkü onların açıklığı ve kırılganlığı bizi korkutur. Şunu sormaya değer: Bu ick gerçek bir uyumsuzluk mu işaret ediyor, yoksa duygusal açıdan güvenli birinden mi kaçıyorum?"
+        },
+        {
+          heading: "Ick'ten Geri Dönüş Mümkün mü?",
+          paragraph: "Çoğu durumda, ick bir kere kilitlenince iş biter. Çekim rasyonel bir karar değildir ve içgüdün reddettiği birini sevimli bulmaya kendin zorlayamazsın. Ancak nadiren ick'in geçtiği durumlar da var — genellikle karşındaki kişi o kadar güçlü bir özgüven, karakter veya duygusal zeka sergilediğinde ki beynin ilk yargısını geçersiz kılmak zorunda kalıyor. Zaman geçirmesine rağmen ick hâlâ devam ediyorsa, kendinle ve o kişiyle dürüst olmak neredeyse her zaman zorla sürdürülen bir bağlantıdan daha iyidir."
+        }
+      ],
+      conclusion: "Ick, modern flört dünyasının en çok konuşulan, en yaygın ve en acımasız fenomenlerinden biri. Çekimin her zaman tamamen mantıklı olmadığının bir hatırlatıcısı — vücudumuz ve beynimiz, hiçbir cazibinin her zaman yenemeyeceği karmaşık ve adil olmayan bir değerlendirme sistemi çalıştırıyor. En iyi yapabileceğin şey? Kendi ick tetikleyicilerini tanı, geldiğinde dürüst ol ve bunun gerçek bir uyumsuzluk işareti mi yoksa kendi kırılganlık korkunun mu sesini duyduğunu anlamaya çalış."
+    },
+    ctaLabel: "Vibe'ımı Kontrol Et",
+    ctaLink: "/",
   }
 ];
+
 
 export const trendsData = trendsDataEn; // fallback, but clients should use trendsDataEn/Tr explicitly

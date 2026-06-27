@@ -27,19 +27,25 @@ export const metadata: Metadata = {
   description:
     "Free AI-powered vibe check & photo roast app for Gen-Z. Upload your selfie, get brutally honest personality analysis, savage roasts, zodiac-based compatibility checks, and shareable result cards. Try the viral AI roast trend now!",
   keywords: [
-    // Core — High Intent
-    "AI vibe check", "AI photo roast", "vibe check app", "roast my selfie",
+    // Core — High Intent (Search Console Validated)
+    "vibe check", "vibe testi", "vibe check ne demek", "vibe checker",
+    "AI vibe check", "vibe check test", "vibe check image",
+    "AI photo roast", "vibe check app", "roast my selfie",
     "AI personality analysis", "photo analysis AI", "selfie analysis",
+    // Gen-Z Terms (Search Console Validated)
+    "ick nedir", "ick ne demek", "what is an ick", "ick meaning",
+    "delulucheck", "delulu check", "am i delulu", "delulu testi",
+    "vibe checker panel", "vibe check image",
     // Zodiac & Compatibility
     "zodiac personality quiz", "zodiac compatibility check", "AI astrology quiz",
     "zodiac sign analysis", "horoscope personality test",
     // Solo Features
     "AI aura reading", "soulmate profile AI", "brutal AI photo roast",
     // Duo Features
-    "duo compatibility test", "AI relationship test", "flirt compatibility AI", 
+    "duo compatibility test", "AI relationship test", "flirt compatibility AI",
     "ex relationship analyzer", "BFF roast AI", "platonic compatibility AI",
     // Extras Features
-    "toxic ex scanner", "situationship clarifier", "delulu check AI", 
+    "toxic ex scanner", "situationship clarifier", "delulu check AI",
     "rizz architect", "reply guru AI", "mood reset AI", "texting assistant AI",
     // Trending / Gen-Z
     "AI roast me", "AI roast generator", "viral AI photo trend",

@@ -15,11 +15,13 @@ import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
 import { auth } from "@/lib/firebase";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
 import { getApiUrl } from "@/lib/api";
+import { useRouter } from "next/navigation";
 
 
 
 export default function DuoResultCard() {
-  const resetWizard = useAppStore((s) => s.resetWizard);
+  const tryAgain = useAppStore((s) => s.tryAgain);
+  const newAnalysis = useAppStore((s) => s.newAnalysis);
   const duoResult = useAppStore((s) => s.duoResult);
   const duoRelationType = useAppStore((s) => s.duoRelationType);
   const person1 = useAppStore((s) => s.duoPerson1);
@@ -30,6 +32,7 @@ export default function DuoResultCard() {
   const [isDownloading, setIsDownloading] = useState(false);
   const t = useT();
   const cardRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
 
   // Anti-cheat chronometer state
   const [shareToast, setShareToast] = useState<{ message: string; type: "success" | "error" } | null>(null);
@@ -160,7 +163,7 @@ export default function DuoResultCard() {
 
   const handleReset = () => {
     hapticLight();
-    resetWizard();
+    tryAgain();
   };
 
   const renderTextWithBlurs = (text: string) => {
@@ -373,11 +376,13 @@ export default function DuoResultCard() {
             </div>
           </div>
 
+          {/* Watermark — visible in share image, prominent for viral sharing */}
           <div
-            className="absolute bottom-4 right-5 flex items-center gap-1.5 select-none"
+            className="mt-6 pt-4 flex items-center justify-center gap-2 select-none"
+            style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
           >
-            <WaveLogoIcon size={14} className="opacity-[0.35]" />
-            <span className="text-[11px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.15)" }}>VibeCheckr.</span>
+            <WaveLogoIcon size={13} className="opacity-60" />
+            <span className="text-[12px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.55)" }}>VibeCheckr.com</span>
           </div>
         </m.div>
 
@@ -457,6 +462,27 @@ export default function DuoResultCard() {
               </m.div>
             )}
           </AnimatePresence>
+
+          {/* Try Another Combo Button */}
+          {duoResult.isUnlocked !== false && (
+            <m.button
+              onClick={() => {
+                hapticLight();
+                newAnalysis();
+              }}
+              whileTap={{ scale: 0.97 }}
+              whileHover={{ y: -1 }}
+              className="w-full flex items-center justify-center gap-2.5 rounded-2xl px-8 py-[15px] text-[14px] font-semibold tracking-wide cursor-pointer transition-all duration-300 active:scale-95"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                color: "rgba(255,255,255,0.75)",
+              }}
+            >
+              <Trophy className="h-4 w-4" />
+              <span>{t.resultChallengeDuoBtn}</span>
+            </m.button>
+          )}
 
           <GlassButton
             variant="ghost"

@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Sparkles, Loader2, Sparkle, Share, Check, Download } from "lucide-react";
 import Image from "next/image";
 import { WaveLogoIcon } from "@/components/ui/WaveLogoIcon";
-import { db } from "@/lib/firebase";
+import { db, auth } from "@/lib/firebase";
 import { useAppStore } from "@/store/useAppStore";
 import { useT } from "@/hooks/useT";
 import { getApiUrl } from "@/lib/api";
@@ -22,6 +22,7 @@ export default function DailyVibeBanner() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSharing, setIsSharing] = useState(false);
   const [shared, setShared] = useState(false);
+  const [shareRewarded, setShareRewarded] = useState(false); // günde 1 kez token ödülü
   const bannerRef = useRef<HTMLDivElement>(null);
   const setSettingsOpen = useAppStore((s) => s.setSettingsOpen);
 
@@ -146,9 +147,7 @@ export default function DailyVibeBanner() {
       const filter = (node: HTMLElement) => {
         const exclusionClasses = ['google-translate', 'skiptranslate'];
         const securityFilterPassed = !exclusionClasses.some(cls => node.classList?.contains?.(cls));
-        
         const internalLoadingElementPassed = !(node.getAttribute?.('data-loading-feedback') === 'true');
-        
         return securityFilterPassed && internalLoadingElementPassed;
       };
 
@@ -164,25 +163,54 @@ export default function DailyVibeBanner() {
 
       const file = new File([blob], "vibecheckr-daily-vibe.png", { type: "image/png" });
 
+      // Locale-aware share text with URL
+      const shareTitle = locale === "tr"
+        ? "Bugünkü Vibe'ım — VibeCheckr"
+        : "My Daily Vibe — VibeCheckr";
+      const shareText = locale === "tr"
+        ? `Yapay zeka bugünkü vibe'ımı okudu 👀 Seninkini de görmek ister misin?\n👉 thevibecheckr.com`
+        : `AI just read my daily vibe and it's EERILY accurate 👀\nCheck yours 👉 thevibecheckr.com`;
+
+      let didShare = false;
+
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         try {
-          await navigator.share({
-            files: [file],
-            title: "Daily Vibe - VibeCheckr",
-          });
-          setShared(true);
-          setTimeout(() => setShared(false), 2000);
+          await navigator.share({ files: [file], title: shareTitle, text: shareText });
+          didShare = true;
         } catch (e: any) {
           if (e.name !== 'AbortError') {
             downloadBlob(blob, "vibecheckr-daily-vibe.png");
-            setShared(true);
-            setTimeout(() => setShared(false), 2000);
+            didShare = true;
           }
         }
       } else {
         downloadBlob(blob, "vibecheckr-daily-vibe.png");
+        didShare = true;
+      }
+
+      if (didShare) {
         setShared(true);
         setTimeout(() => setShared(false), 2000);
+
+        // Token ödülü — günde 1 kez, auth guard
+        if (!shareRewarded) {
+          setShareRewarded(true);
+          try {
+            const idToken = await auth.currentUser?.getIdToken();
+            if (idToken) {
+              await fetch(getApiUrl("/api/add-tokens"), {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${idToken}`,
+                },
+                body: JSON.stringify({ amount: 1, source: "daily_vibe_share" }),
+              });
+            }
+          } catch (err) {
+            console.error("[DailyVibe] Token reward failed:", err);
+          }
+        }
       }
     } catch (e) {
       console.error("Share error:", e);
@@ -298,20 +326,15 @@ export default function DailyVibeBanner() {
           </AnimatePresence>
         </div>
 
-        {/* Watermark for sharing */}
-        <AnimatePresence>
-          {isSharing && (
-            <motion.div
-              initial={{ opacity: 0, height: 0, marginTop: 0 }}
-              animate={{ opacity: 1, height: 'auto', marginTop: 12 }}
-              exit={{ opacity: 0, height: 0, marginTop: 0 }}
-              className="flex items-center justify-end gap-1.5 select-none pt-3 border-t border-white/5 overflow-hidden"
-            >
-              <WaveLogoIcon size={12} className="opacity-40" />
-              <span className="text-[10px] font-bold tracking-widest uppercase text-white/30">VibeCheckr.</span>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* Watermark — always visible for viral sharing */}
+        {vibe && !isLoading && (
+          <div
+            className="flex items-center justify-end gap-1.5 select-none pt-3 mt-1 border-t border-white/5"
+          >
+            <WaveLogoIcon size={11} className="opacity-50" />
+            <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.40)" }}>VibeCheckr.com</span>
+          </div>
+        )}
       </div>
     </motion.div>
   );
