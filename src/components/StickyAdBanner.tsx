@@ -24,9 +24,13 @@ export default function StickyAdBanner() {
   const [desktop, setDesktop] = useState(false);
   const pathname = usePathname();
 
-  const isSeoPage = ["/trends", "/faq", "/vibe-dictionary"].some((p) =>
-    pathname?.includes(p)
-  );
+  const isSeoPage = [
+    "/trends", "/faq", "/vibe-dictionary",
+    "/ai-roast-me", "/aura-battle", "/bff-vibe-check",
+    "/crush-calculator", "/delulu-check", "/duo-compatibility",
+    "/ex-compatibility", "/mood-reset", "/reply-guru",
+    "/situationship-clarifier", "/soulmate-radar", "/toxic-ex-scanner"
+  ].some((p) => pathname?.includes(p));
 
   const insRef = useRef<HTMLModElement>(null);
 

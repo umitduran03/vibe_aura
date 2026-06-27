@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Heart, Sparkles, HeartHandshake } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import InArticleAd from "@/components/InArticleAd";
 
 export default function SoulmateRadarLanding() {
   const params = useParams();
@@ -109,6 +110,8 @@ export default function SoulmateRadarLanding() {
             </div>
           </motion.div>
         </div>
+
+        <InArticleAd />
 
         {/* Features/How it works */}
         <div className="grid md:grid-cols-3 gap-6 mb-24">

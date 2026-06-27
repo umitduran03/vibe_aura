@@ -13,9 +13,13 @@ export default function DesktopAdBanner() {
   const pathname = usePathname();
 
   // SEO sayfalarında gizle
-  const isSeoPage = ["/trends", "/faq", "/vibe-dictionary"].some((p) =>
-    pathname?.includes(p)
-  );
+  const isSeoPage = [
+    "/trends", "/faq", "/vibe-dictionary",
+    "/ai-roast-me", "/aura-battle", "/bff-vibe-check",
+    "/crush-calculator", "/delulu-check", "/duo-compatibility",
+    "/ex-compatibility", "/mood-reset", "/reply-guru",
+    "/situationship-clarifier", "/soulmate-radar", "/toxic-ex-scanner"
+  ].some((p) => pathname?.includes(p));
 
   useEffect(() => {
     const check = () => setVisible(window.innerWidth >= 1024);
