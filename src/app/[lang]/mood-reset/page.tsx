@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, BatteryCharging } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 
 export default function MoodResetLanding() {
   const params = useParams();
@@ -146,6 +147,8 @@ export default function MoodResetLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="mood-reset" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 

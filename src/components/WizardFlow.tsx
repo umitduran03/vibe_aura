@@ -9,6 +9,7 @@ import ProgressDots from "@/components/ProgressDots";
 import ModeSelector from "@/components/ModeSelector";
 import DailyVibeBanner from "@/components/DailyVibeBanner";
 import SoloScenarioSelector from "@/components/SoloScenarioSelector";
+import InArticleAd from "@/components/InArticleAd";
 import AgeZodiacStep from "@/components/steps/AgeZodiacStep";
 import RelationshipStep from "@/components/steps/RelationshipStep";
 import MagicQuestionStep from "@/components/steps/MagicQuestionStep";

@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, MessageSquareQuote } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 
 export default function ReplyGuruLanding() {
   const params = useParams();
@@ -146,6 +147,8 @@ export default function ReplyGuruLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="reply-guru" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 

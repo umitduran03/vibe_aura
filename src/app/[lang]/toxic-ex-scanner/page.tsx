@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Skull, Sparkles, AlertTriangle } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 
 export default function ToxicExScannerLanding() {
   const params = useParams();
@@ -143,6 +144,8 @@ export default function ToxicExScannerLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="toxic-ex-scanner" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 

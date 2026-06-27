@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Heart, Sparkles, HeartHandshake } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
 
 export default function SoulmateRadarLanding() {
@@ -146,6 +147,8 @@ export default function SoulmateRadarLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="soulmate-radar" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 

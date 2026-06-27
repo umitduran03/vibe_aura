@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Zap, Sparkles, Swords } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 
 export default function AuraBattleLanding() {
   const params = useParams();
@@ -143,6 +144,8 @@ export default function AuraBattleLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="aura-battle" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 

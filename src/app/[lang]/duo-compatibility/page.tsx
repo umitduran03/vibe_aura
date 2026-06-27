@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Users, Sparkles, HeartCrack, Heart, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 
 export default function DuoCompatibilityLanding() {
   const params = useParams();
@@ -153,6 +154,8 @@ export default function DuoCompatibilityLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="duo-compatibility" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 

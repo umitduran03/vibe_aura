@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, HeartPulse, Infinity as InfinityIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
 
 export default function CrushCalculatorLanding() {
@@ -146,6 +147,8 @@ export default function CrushCalculatorLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="crush-calculator" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 

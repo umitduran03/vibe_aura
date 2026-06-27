@@ -5,6 +5,7 @@ import { Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useAppStore } from "@/store/useAppStore";
 import { useT } from "@/hooks/useT";
+import InArticleAd from "@/components/InArticleAd";
 
 export default function AnalyzingScreen() {
   const analysisMode = useAppStore((s) => s.analysisMode);
@@ -115,6 +116,11 @@ export default function AnalyzingScreen() {
             </div>
           ))}
         </m.div>
+      </div>
+
+      {/* Ad placement during analysis */}
+      <div className="w-full max-w-sm mt-4">
+        <InArticleAd />
       </div>
 
       {/* Bottom glow */}

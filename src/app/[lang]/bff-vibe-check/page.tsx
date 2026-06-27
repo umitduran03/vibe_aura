@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, Users, PartyPopper } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
 
 export default function BffVibeCheckLanding() {
@@ -146,6 +147,8 @@ export default function BffVibeCheckLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="bff-vibe-check" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 

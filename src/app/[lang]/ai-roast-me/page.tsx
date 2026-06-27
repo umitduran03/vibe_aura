@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Flame, Sparkles, AlertTriangle } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
 
 export default function AIRoastMeLanding() {
@@ -146,6 +147,8 @@ export default function AIRoastMeLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="ai-roast-me" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 

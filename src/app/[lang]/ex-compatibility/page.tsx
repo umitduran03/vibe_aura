@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, HeartCrack, AlertOctagon } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
 
 export default function ExCompatibilityLanding() {
@@ -146,6 +147,8 @@ export default function ExCompatibilityLanding() {
             </motion.div>
           ))}
         </div>
+
+        <FeatureSeoContent featureId="ex-compatibility" isTr={isTr} />
 
         {/* Bottom CTA */}
         <motion.div 
