@@ -30,6 +30,7 @@ const strings = {
     crushCalc: "Crush Calculator",
     bffCheck: "BFF Vibe Check",
     exCompat: "Ex Compatibility",
+    profileAutopsy: "Profile Autopsy",
   },
   tr: {
     tagline: "İnternetin en acımasız dürüst yapay zeka algoritması. Vibe'larını tara, karma sinyalleri çöz ve çok ihtiyacın olan gerçeklik kontrolünü al.",
@@ -55,6 +56,7 @@ const strings = {
     crushCalc: "Platonik / Crush Testi",
     bffCheck: "BFF Kanka Uyumu",
     exCompat: "Eski Sevgili Uyumu",
+    profileAutopsy: "Profil Otopsisi",
   },
 };
 
@@ -193,6 +195,14 @@ export default function SeoFooter() {
                   <ArrowRight className="w-3 h-3 text-slate-400" />
                 </span>
                 {s.exCompat}
+              </Link>
+            </li>
+            <li>
+              <Link href={`/${locale}/profile-autopsy`} className="text-white/70 hover:text-white transition-colors text-sm flex items-center gap-2 group">
+                <span className="opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+                  <ArrowRight className="w-3 h-3 text-violet-400" />
+                </span>
+                {s.profileAutopsy}
               </Link>
             </li>
           </ul>
