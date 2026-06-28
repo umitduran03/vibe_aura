@@ -320,7 +320,11 @@ export default function ExtrasResultCard() {
                   <span className="text-3xl font-black" style={{ color: getScoreColor(profile_overall_score) }}>
                     {profile_overall_score}
                   </span>
-                  <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider">/100</span>
+                  <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider mt-0.5">
+                    {profile_mode === "other" 
+                      ? (locale === "tr" ? "Vibe Skoru" : "Vibe Score") 
+                      : (locale === "tr" ? "Profil Skoru" : "Profile Score")}
+                  </span>
                 </div>
               </div>
             </m.div>
@@ -382,7 +386,9 @@ export default function ExtrasResultCard() {
               style={{ backgroundColor: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)" }}
             >
               <h3 className="text-[11px] font-bold text-violet-400 mb-2 uppercase tracking-wider">
-                🔧 {locale === "tr" ? "Acil Fix'ler" : "Top Fixes"}
+                {profile_mode === "other" 
+                  ? (locale === "tr" ? "🎯 Taktikler & Uyarılar" : "🎯 Approaching Tips")
+                  : (locale === "tr" ? "🔧 Acil Fix'ler" : "🔧 Top Fixes")}
               </h3>
               <ol className="space-y-2">
                 {profile_top_fixes.map((fix, i) => (
