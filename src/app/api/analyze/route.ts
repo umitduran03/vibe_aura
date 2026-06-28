@@ -452,6 +452,8 @@ Perform a brutally honest but BALANCED profile audit. You MUST:
 5. Write a memorable, one-line verdict that captures their profile's energy.
 6. Write a detailed analysis explaining your reasoning.
 
+CRITICAL RULE: Address the user directly as "you" (e.g., "your profile", "you look like..."). You are reviewing THEIR profile. Give them direct advice on how they should fix their profile.
+
 Platform-specific criteria:
 - Instagram: aesthetic consistency, bio quality, caption engagement, posting strategy
 - Tinder/Bumble/Hinge: photo order (first photo is most important), bio hook, conversation starters
@@ -484,6 +486,8 @@ Hem acımasız dürüst hem de dengeli bir profil denetimi yap:
 3. Öncelik sırasına göre 3 acil düzeltme (top fix) öner.
 4. 0-100 arasında genel puan ver (gerçekçi ol, çoğu profil 40-75 aralığındadır).
 5. Profilin enerjisini özetleyen unutulmaz bir karar cümlesi yaz.
+
+ÖNEMLİ KURAL: Kullanıcıya doğrudan hitap et ("senin profilin", "şöyle görünüyorsun", "şunu düzeltmelisin" gibi). Kullanıcının KENDİ profilini inceliyorsun. Tavsiyeleri doğrudan onun uygulaması için ver.
 
 Platform'a özel kriterler:
 - Instagram: estetik tutarlılık, bio kalitesi, caption'lar, vibe
