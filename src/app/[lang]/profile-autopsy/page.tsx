@@ -20,17 +20,37 @@ const platforms = [
 const modes = [
   {
     icon: "🔬",
-    titleEn: "Self Audit",
-    titleTr: "Kendi Otopsini Yap",
-    descEn: "Run your own profile through the AI operating table. Find out why you're getting left on seen.",
-    descTr: "Kendi profilini yapay zeka ameliyat masasına yatır. Neden ignored olduğunu öğren.",
+    titleEn: "Self Audit (Fix Your Profile)",
+    titleTr: "Kendi Profilin (Acil Müdahale)",
+    descEn: "Run your own profile through the AI operating table. Find out exactly why you're not getting matches or getting left on read.",
+    descTr: "Kendi profilini yapay zeka ameliyat masasına yatır. Neden eşleşme alamadığını veya ghostlandığını acımasızca öğren.",
+    bulletsEn: [
+      "Discover your hidden red flags and cringy habits",
+      "Find out if your bio is giving 'NPC' energy",
+      "Get a brutal priority list of exactly what to fix"
+    ],
+    bulletsTr: [
+      "Farkında olmadığın toksik sinyalleri (red flag) gör",
+      "Biyografinin 'NPC' enerjisi verip vermediğini öğren",
+      "Profilini kurtarmak için 3 acil taktik (top fix) al"
+    ]
   },
   {
     icon: "🕵️",
-    titleEn: "Detective Mode",
-    titleTr: "Dedektif Modu",
-    descEn: "Read someone else's profile. Decode their vibe before you even match.",
-    descTr: "Başkasının profilini oku. Match etmeden önce vibe'ını çöz.",
+    titleEn: "Detective Mode (Stalk Them)",
+    titleTr: "Dedektif Modu (Flörtünü Stalkla)",
+    descEn: "Upload someone else's profile. Decode their true vibe and hidden red flags before you even swipe right or text them.",
+    descTr: "Başkasının profilini yükle. Eşleşmeden veya mesaj atmadan önce o kişinin gerçek niyetini ve toksik aurasını çöz.",
+    bulletsEn: [
+      "Calculate their 'Swipe-Worthy' Vibe Score",
+      "Expose hidden 'pick-me' or narcissist energy",
+      "Get secret tips on how to approach them safely"
+    ],
+    bulletsTr: [
+      "Kişinin etkileşime girmeye değer olup olmadığını (Vibe Skoru) gör",
+      "Gizli 'pick-me' veya narsist enerjisini önceden ifşa et",
+      "O kişiye nasıl yaklaşman veya kaçman gerektiğine dair taktik al"
+    ]
   },
 ];
 
@@ -150,8 +170,8 @@ export default function ProfileAutopsyLanding() {
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr
-                ? "Profilinde tam olarak neyin yanlış (ve doğru) olduğunu söyleyen yapay zeka"
-                : "The AI that tells you EXACTLY what's wrong (and right) about your profile"}
+                ? "Kendi profilindeki toksik hataları yüzüne vuran veya Dedektif Moduyla flörtünü stalklayıp gerçek niyetini ifşa eden yapay zeka."
+                : "The AI that roasts your own profile's red flags, or uses Detective Mode to stalk your crush's true vibe before you swipe right."}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
@@ -244,9 +264,17 @@ export default function ProfileAutopsyLanding() {
                 <h3 className="text-lg font-bold text-white mb-2 group-hover:text-violet-300 transition-colors">
                   {isTr ? mode.titleTr : mode.titleEn}
                 </h3>
-                <p className="text-white/60 text-sm leading-relaxed">
+                <p className="text-white/60 text-sm leading-relaxed mb-5">
                   {isTr ? mode.descTr : mode.descEn}
                 </p>
+                <div className="space-y-2.5 pt-4 border-t border-white/10">
+                  {(isTr ? mode.bulletsTr : mode.bulletsEn).map((bullet, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5">
+                      <div className="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-violet-500 shadow-[0_0_8px_rgba(139,92,246,0.8)]" />
+                      <span className="text-sm text-white/80 leading-snug">{bullet}</span>
+                    </div>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
