@@ -462,7 +462,7 @@ Your output must be purely JSON and MUST USE GEN-Z SLANG ABUNDANTLY:
 {
   "title": "A memorable, Gen-Z verdict title for their profile (e.g., 'A 7 Hiding in a 5's Profile')",
   "verdict": "One savage but fair one-liner summarizing the profile's energy",
-  "analysis_text": "A detailed, entertaining, balanced paragraph explaining the audit findings. Mention what works and what doesn't. Use Gen-Z slang heavily (red flag, main character energy, delulu, etc.).",
+  "analysis_text": "A detailed, entertaining, balanced paragraph explaining the audit findings. Mention what works and what doesn't. Use Gen-Z slang naturally, but do NOT overdo it to the point of being cringe.",
   "profile_overall_score": 68,
   "profile_green_flags": ["Specific strength 1 (in Gen-Z tone)", "Specific strength 2", "Specific strength 3"],
   "profile_red_flags": ["Specific weakness 1 (in Gen-Z tone)", "Specific weakness 2"],
@@ -495,7 +495,7 @@ Platform'a özel kriterler:
 {
   "title": "Unutulmaz, Gen-Z tarzı profil başlığı (örn: '7'lik Biri 5'lik Profilinde Saklanıyor')",
   "verdict": "Profil enerjisini özetleyen tek bir sert ama adil cümle",
-  "analysis_text": "Detaylı, eğlenceli ve dengeli analiz paragrafı. Neyin işe yaradığını ve neyin patladığını açıkla. Gen-Z argosunu (red flag, green flag, aura, pick-me vb.) bolca kullan.",
+  "analysis_text": "Detaylı, eğlenceli ve dengeli analiz paragrafı. Neyin işe yaradığını ve neyin patladığını açıkla. Gen-Z argosunu doğal bir şekilde kullan ama cringe (zorlama) olma.",
   "profile_overall_score": 68,
   "profile_green_flags": ["Spesifik iyi yan 1 (Gen-Z diliyle)", "Spesifik iyi yan 2"],
   "profile_red_flags": ["Spesifik sıkıntı 1 (Gen-Z diliyle)", "Spesifik sıkıntı 2"],
@@ -522,7 +522,7 @@ Your output must be purely JSON and MUST USE GEN-Z SLANG ABUNDANTLY:
 {
   "title": "A dramatic Gen-Z title for the vibe read (e.g., 'Main Character Energy, NPC Execution')",
   "verdict": "One devastating one-liner summarizing this person's profile vibe",
-  "analysis_text": "A detailed, entertaining, brutally honest paragraph reading this person's profile. What are they giving? What are they hiding? Use Gen-Z slang heavily (red flags, ghosting, ick, etc.).",
+  "analysis_text": "A detailed, entertaining, brutally honest paragraph reading this person's profile. What are they giving? What are they hiding? Use Gen-Z slang naturally, but do NOT overdo it to the point of being cringe.",
   "profile_overall_score": 55,
   "profile_green_flags": ["Genuine green flag from their profile", "Another genuine positive signal"],
   "profile_red_flags": ["Specific red flag from profile", "Another red flag pattern"],
@@ -548,7 +548,7 @@ Bu kişinin profilinden acımasızca kişilik ve vibe okuması yap:
 {
   "title": "Dramatik Gen-Z tarzı bir başlık (örn: 'Main Character Enerjisi, NPC İcraatı')",
   "verdict": "Bu kişinin profil vibe'ını özetleyen tek bir acımasız cümle",
-  "analysis_text": "Bu kişinin profilini okuyan detaylı, eğlenceli ve acımasız dürüst analiz paragrafı. Bize ne veriyor? Neyi saklıyor? Gen-Z argosu (red flag, ghosting vb.) kullan.",
+  "analysis_text": "Bu kişinin profilini okuyan detaylı, eğlenceli ve acımasız dürüst analiz paragrafı. Bize ne veriyor? Neyi saklıyor? Gen-Z argosunu doğal bir şekilde kullan ama cringe (zorlama) olma.",
   "profile_overall_score": 55,
   "profile_green_flags": ["Profilden gerçek green flag 1", "Gerçek pozitif sinyal 2"],
   "profile_red_flags": ["Profilden spesifik red flag", "Başka bir toksik işaret"],
