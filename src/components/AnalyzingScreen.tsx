@@ -60,7 +60,7 @@ export default function AnalyzingScreen() {
       transition={{ duration: 0.5 }}
     >
       {/* Top Ad Slot (Pre-allocated space to prevent shift) */}
-      <div className="w-full max-w-sm z-10 px-4 pt-safe-top pt-8 min-h-[120px] flex items-start justify-center pointer-events-auto">
+      <div className="w-full max-w-sm z-10 px-4 pt-safe-top pt-8 min-h-[100px] sm:min-h-[120px] md:min-h-[150px] flex items-start justify-center pointer-events-auto">
         <DisplayAd />
       </div>
 
@@ -127,7 +127,7 @@ export default function AnalyzingScreen() {
       </div>
 
       {/* Bottom Ad Slot (Pre-allocated space to prevent shift) */}
-      <div className="w-full max-w-sm z-10 px-4 pb-safe-bottom pb-8 min-h-[120px] flex items-end justify-center pointer-events-auto">
+      <div className="w-full max-w-sm z-10 px-4 pb-safe-bottom pb-8 min-h-[100px] sm:min-h-[120px] md:min-h-[150px] flex items-end justify-center pointer-events-auto">
         <DisplayAd />
       </div>
 
