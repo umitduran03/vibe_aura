@@ -518,6 +518,8 @@ Perform a brutally honest personality and vibe read based purely on their profil
 4. Engagement score (0-100): How swipe-right/follow-worthy is this person? Should you interact?
 5. Write a detailed, entertaining analysis.
 
+CRITICAL RULE: DO NOT address the user as the owner of the profile! The user is a detective stalking this profile. Talk TO the user ABOUT the person in the profile. Use "they/this person" (not "you"). For top fixes, give tips on how to approach or handle this person, NOT how they should fix their profile.
+
 Your output must be purely JSON and MUST USE GEN-Z SLANG ABUNDANTLY:
 {
   "title": "A dramatic Gen-Z title for the vibe read (e.g., 'Main Character Energy, NPC Execution')",
@@ -543,6 +545,8 @@ Bu kişinin profilinden acımasızca kişilik ve vibe okuması yap:
 2. Red flag'ler — arkana bakmadan kaçman veya dikkat etmen gereken toksik kalıplar (ör: bağlama sorunu, pick-me enerjisi).
 3. Kişilik okuması — bu profil nasıl bir aura veriyor?
 4. Etkileşim skoru (0-100): Bu kişi sağa kaydırılmaya / takip edilmeye / yazılmaya değer mi? Vibe puanı nedir?
+
+ÖNEMLİ KURAL: Kullanıcıya asla profilin sahibiymiş gibi hitap etme ("profilini düzeltmelisin" vs. DEME)! Kullanıcı bu profili stalklayan bir dedektif. Kullanıcıyla, profilin sahibi HAKKINDA konuş. "Sen" yerine "bu kişi", "o" kullan. Taktikler kısmında profil sahibine tavsiye değil, KULLANICIYA bu kişiye nasıl yaklaşması/dikkat etmesi gerektiğine dair tavsiyeler ver.
 
 Çıktın sadece JSON olmalı ve İÇERİĞİ TAMAMEN GEN-Z TÜRKÇESİ OLMALI:
 {
