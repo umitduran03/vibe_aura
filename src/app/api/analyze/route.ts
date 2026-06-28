@@ -515,7 +515,7 @@ Perform a brutally honest personality and vibe read based purely on their profil
 1. Identify genuine green flags — things that suggest they're worth engaging with.
 2. Identify red flags — patterns that suggest potential issues (e.g., commitment phobia, attention-seeking, low effort).
 3. Give a personality read — what type of person does this profile suggest they are?
-4. Give an engagement score (0-100): how likely is this person to swipe right / follow back / respond?
+4. Engagement score (0-100): How swipe-right/follow-worthy is this person? Should you interact?
 5. Write a detailed, entertaining analysis.
 
 Your output must be purely JSON:
@@ -542,7 +542,7 @@ Bu kişinin profilinden acımasızca kişilik ve vibe okuması yap:
 1. Green flag'ler — bu kişiyle etkileşime girmeye değer olduğunu gösteren sinyaller.
 2. Red flag'ler — arkana bakmadan kaçman veya dikkat etmen gereken toksik kalıplar (ör: bağlama sorunu, pick-me enerjisi).
 3. Kişilik okuması — bu profil nasıl bir aura veriyor?
-4. Etkileşim skoru (0-100): Bu kişi sağa kaydırır/takip eder/yanıt verir mi?
+4. Etkileşim skoru (0-100): Bu kişi sağa kaydırılmaya / takip edilmeye / yazılmaya değer mi? Vibe puanı nedir?
 
 Çıktın sadece JSON olmalı ve İÇERİĞİ TAMAMEN GEN-Z TÜRKÇESİ OLMALI:
 {
