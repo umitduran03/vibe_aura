@@ -61,7 +61,7 @@ export default function AnalyzingScreen() {
     >
       {/* Top Ad Slot (Pre-allocated space to prevent shift) */}
       <div className="w-full max-w-sm z-10 px-4 pt-safe-top pt-8 min-h-[120px] flex items-start justify-center pointer-events-auto">
-        {/* <InArticleAd /> - Can be uncommented when a top ad is needed */}
+        <InArticleAd />
       </div>
 
       {/* Safely Centered Animation Area */}
