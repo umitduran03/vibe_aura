@@ -336,7 +336,7 @@ export default function ExtrasResultCard() {
               style={{ backgroundColor: "rgba(34,197,94,0.08)", border: "1px solid rgba(34,197,94,0.2)" }}
             >
               <h3 className="text-[11px] font-bold text-green-400 mb-2 uppercase tracking-wider flex items-center gap-1.5">
-                ✅ {locale === "tr" ? "Yeşil Bayraklar" : "Green Flags"}
+                ✅ {locale === "tr" ? "Green Flag'ler" : "Green Flags"}
               </h3>
               <ul className="space-y-1.5">
                 {profile_green_flags.map((flag, i) => (
@@ -359,7 +359,7 @@ export default function ExtrasResultCard() {
               style={{ backgroundColor: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)" }}
             >
               <h3 className="text-[11px] font-bold text-red-400 mb-2 uppercase tracking-wider flex items-center gap-1.5">
-                🚩 {locale === "tr" ? "Kırmızı Bayraklar" : "Red Flags"}
+                🚩 {locale === "tr" ? "Red Flag'ler" : "Red Flags"}
               </h3>
               <ul className="space-y-1.5">
                 {profile_red_flags.map((flag, i) => (
@@ -382,7 +382,7 @@ export default function ExtrasResultCard() {
               style={{ backgroundColor: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)" }}
             >
               <h3 className="text-[11px] font-bold text-violet-400 mb-2 uppercase tracking-wider">
-                🔧 {locale === "tr" ? "Öncelikli Düzeltmeler" : "Top Fixes"}
+                🔧 {locale === "tr" ? "Acil Fix'ler" : "Top Fixes"}
               </h3>
               <ol className="space-y-2">
                 {profile_top_fixes.map((fix, i) => (

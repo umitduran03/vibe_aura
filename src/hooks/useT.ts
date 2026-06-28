@@ -714,7 +714,7 @@ const STRINGS = {
     extrasRizzTitle: "Mesaj Gurusu",
     extrasRizzDesc: "Mesajda ne diyeceğini mi bilmiyorsun? Ekran görüntüsünü bırak — en toksik, havalı veya sağlıklı cevabı ben yazayım.",
     profileAutopsyTitle: "Profil Otopsisi",
-    profileAutopsyDesc: "Her sosyal medya veya dating profilinin acımasız dürüst yapay zeka denetimi. Yeşil bayraklar, kırmızı bayraklar ve tam olarak ne düzeltmeli.",
+    profileAutopsyDesc: "Sosyal medya veya dating profilini masaya yatırıyoruz. Red flag'leri, green flag'leri ve acil fix'lemen gerekenleri acımasızca yüzüne vuruyoruz.",
 
     comingSoon: "Yakında",
     tokenInsufficient: "Yeterli jeton yok! 💎",
