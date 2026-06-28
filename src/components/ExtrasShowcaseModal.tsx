@@ -125,7 +125,7 @@ export default function ExtrasShowcaseModal() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: "100%" }}
             transition={{ type: "spring", damping: 25, stiffness: 200 }}
-            className="relative w-full max-w-[430px] max-h-[85vh] overflow-y-auto bg-[#0a0a0a] rounded-t-3xl sm:rounded-3xl border border-white/10 shadow-2xl pb-8"
+            className="relative w-full max-w-[430px] max-h-[95dvh] overflow-y-auto bg-[#0a0a0a] rounded-t-3xl sm:rounded-3xl border border-white/10 shadow-2xl pb-8"
           >
             {/* Header */}
             <div className="sticky top-0 z-10 flex items-center justify-between p-5 bg-[#0a0a0a]/80 backdrop-blur-xl border-b border-white/5">
