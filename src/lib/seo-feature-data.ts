@@ -606,16 +606,18 @@ export const featureSeoData: Record<string, any> = {
       useCases: {
         title: "When You Need a Profile Autopsy",
         cases: [
-          { title: "Dead Profile Energy", desc: "Your bio is basically a red flag museum and you've been getting zero matches for weeks. Time to know why." },
+          { title: "The 'No Matches' Crisis", desc: "Your bio is basically a red flag museum and you've been getting zero matches. Run a Self Audit to find out exactly why." },
+          { title: "Pre-Date Background Check", desc: "You just matched with someone, but their vibe is slightly off. Run Detective Mode to decode their hidden red flags before you meet up." },
           { title: "Serve Looks, Not Confusion", desc: "You think your photos are fire, but you're still getting ghosted. Let the AI audit your profile before you waste another six months." },
-          { title: "Spy Mode", desc: "Your friend is clueless about why their profile isn't working. Run a Detective Mode autopsy and save them from themselves." }
+          { title: "The 'I Told You So' Autopsy", desc: "Your bestie is clueless about why their profile isn't working. Run a Detective Mode autopsy on their profile and save them from themselves." }
         ]
       },
       faq: {
         title: "Profile Autopsy FAQ",
         questions: [
-          { q: "Can it really tell what's wrong with my profile?", a: "If your bio is giving NPC energy and your first photo screams red flag museum, yes, it will tell you that directly." },
-          { q: "Which platforms does it work for?", a: "Tinder, Bumble, Hinge, Instagram, X, and BeReal. If you're on it, the AI can read it." },
+          { q: "Can it really tell what's wrong with my profile?", a: "If your bio is giving NPC energy and your first photo screams red flag, yes. The Self Audit mode will tell you that directly." },
+          { q: "Can I use it to analyze someone else's profile?", a: "Absolutely. Switch to Detective Mode to stalk a match, an ex, or a crush. It will calculate their swipe-worthy score and expose their hidden red flags." },
+          { q: "Which platforms does it work for?", a: "Tinder, Bumble, Hinge, Instagram, X, and BeReal. If you can screenshot it, the AI can read it." },
           { q: "Will it tell me I'm the problem?", a: "If you have zero main character energy on your profile, absolutely. The AI doesn't sugarcoat. That's the whole vibe." }
         ]
       }
@@ -632,17 +634,19 @@ export const featureSeoData: Record<string, any> = {
       useCases: {
         title: "Profil Otopsisine Ne Zaman İhtiyacın Var?",
         cases: [
-          { title: "Ölü Profil Enerjisi", desc: "Biyo'n tam bir red flag müzesi ve haftalardır sıfır eşleşme alıyorsun. Nedenini öğrenme vakti." },
-          { title: "Serve Looks, Kafa Karışıklığı Değil", desc: "Fotoğraflarının harika olduğunu düşünüyorsun ama hâlâ ghost yiyorsun. Altı ay daha boşa harcamadan önce yapay zekaya denetle." },
-          { title: "Ajan Modu", desc: "Arkadaşın neden match almadığını anlamıyor. Dedektif Modu otopsisi çalıştır ve onu kendinden kurtar." }
+          { title: "Sıfır Eşleşme Krizi", desc: "Biyo'n tam bir red flag müzesi ve haftalardır sıfır eşleşme alıyorsun. Kendi Profilin modunu aç ve acı gerçekle yüzleş." },
+          { title: "İlk Buluşma Öncesi Stalk", desc: "Biriyle yeni eşleştin ama aurasında bir gariplik seziyorsun. Buluşmadan önce Dedektif Modu ile gizli toksik sinyallerini ifşa et." },
+          { title: "Kafa Karışıklığını Bitir", desc: "Fotoğraflarının harika olduğunu düşünüyorsun ama hâlâ ghost yiyorsun. Altı ay daha boşa harcamadan önce yapay zekadan acil müdahale (top fix) iste." },
+          { title: "Arkadaşı Kurtarma Operasyonu", desc: "Arkadaşın neden match almadığını bir türlü anlamıyor. Dedektif Modu otopsisi çalıştır ve onu o cringy bio'sundan kurtar." }
         ]
       },
       faq: {
         title: "Sıkça Sorulan Sorular",
         questions: [
-          { q: "Profilimdeki sorunu gerçekten bulabilir mi?", a: "Biyo'n NPC enerjisi veriyorsa ve ilk fotoğrafın red flag müzesi gibiyse, evet, bunu sana direkt söyler." },
-          { q: "Hangi platformlar için çalışıyor?", a: "Tinder, Bumble, Hinge, Instagram, X ve BeReal. Üzerindeysen, yapay zeka okuyabilir." },
-          { q: "Benim sorun olduğumu söyler mi?", a: "Profilinde sıfır main character enerjisi varsa, kesinlikle. Yapay zeka tatlandırmaz. İşte tam da bu yüzden burada." }
+          { q: "Profilimdeki sorunu gerçekten bulabilir mi?", a: "Biyo'n NPC enerjisi veriyorsa ve ilk fotoğrafın çok kasıntıysa, evet. 'Kendi Profilim' modu hatalarını direkt yüzüne vurur." },
+          { q: "Başkasının profilini analiz edebilir miyim?", a: "Kesinlikle! Dedektif Modu'na geçerek flörtünü, eski sevgilini veya crush'ını stalkla. Yapay zeka onun gerçek niyetini ve gizli red flag'lerini anında döker." },
+          { q: "Hangi platformlar için çalışıyor?", a: "Tinder, Bumble, Hinge, Instagram, X ve BeReal. Ekran görüntüsünü alabildiğin her profili analiz ederiz." },
+          { q: "Benim sorun olduğumu söyler mi?", a: "Profilinde sıfır main character enerjisi varsa, kesinlikle. Yapay zeka lafı dolandırmaz." }
         ]
       }
     }

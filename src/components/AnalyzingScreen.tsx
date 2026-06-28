@@ -49,7 +49,7 @@ export default function AnalyzingScreen() {
 
   return (
     <m.div
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center gap-8"
+      className="fixed inset-0 z-50 flex flex-col justify-between items-center overflow-hidden"
       style={{
         background:
           "linear-gradient(145deg, #0a0a0f 0%, #1a1025 50%, #0d0d1a 100%)",
@@ -59,72 +59,80 @@ export default function AnalyzingScreen() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Pulsing rings */}
-      <div className="relative flex items-center justify-center">
-        {[1, 2, 3].map((ring) => (
+      {/* Top Ad Slot (Pre-allocated space to prevent shift) */}
+      <div className="w-full max-w-sm z-10 px-4 pt-safe-top pt-8 min-h-[120px] flex items-start justify-center pointer-events-auto">
+        {/* <InArticleAd /> - Can be uncommented when a top ad is needed */}
+      </div>
+
+      {/* Safely Centered Animation Area */}
+      <div className="flex-grow flex flex-col items-center justify-center gap-8 w-full pointer-events-none px-4">
+        {/* Pulsing rings */}
+        <div className="relative flex items-center justify-center">
+          {[1, 2, 3].map((ring) => (
+            <m.div
+              key={ring}
+              className="absolute rounded-full border border-accent/20"
+              style={{
+                width: `${ring * 80}px`,
+                height: `${ring * 80}px`,
+              }}
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.2, 0.5, 0.2],
+              }}
+              transition={{
+                duration: 2 + ring * 0.3,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: ring * 0.2,
+              }}
+            />
+          ))}
+
+          {/* Center icon */}
           <m.div
-            key={ring}
-            className="absolute rounded-full border border-accent/20"
-            style={{
-              width: `${ring * 80}px`,
-              height: `${ring * 80}px`,
-            }}
             animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.5, 0.2],
+              scale: [1, 1.15, 1],
+              rotate: [0, 180, 360],
             }}
             transition={{
-              duration: 2 + ring * 0.3,
+              scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
+              rotate: { duration: 4, repeat: Infinity, ease: "linear" },
+            }}
+          >
+            <Sparkles className="h-8 w-8 text-accent" />
+          </m.div>
+        </div>
+
+        {/* Cycling text */}
+        <div className="h-12 overflow-hidden w-full max-w-[320px]">
+          <m.div
+            animate={{ y: [0, -48, -96, -144, -192] }}
+            transition={{
+              duration: 8,
               repeat: Infinity,
               ease: "easeInOut",
-              delay: ring * 0.2,
+              times: [0, 0.25, 0.5, 0.75, 1],
             }}
-          />
-        ))}
-
-        {/* Center icon */}
-        <m.div
-          animate={{
-            scale: [1, 1.15, 1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            scale: { duration: 2, repeat: Infinity, ease: "easeInOut" },
-            rotate: { duration: 4, repeat: Infinity, ease: "linear" },
-          }}
-        >
-          <Sparkles className="h-8 w-8 text-accent" />
-        </m.div>
+          >
+            {loadingPhrases.map((phrase, i) => (
+              <div key={i} className="h-12 flex items-center justify-center px-4">
+                <p className="text-sm font-medium text-text-secondary tracking-widest uppercase text-center leading-relaxed">
+                  {phrase}
+                </p>
+              </div>
+            ))}
+          </m.div>
+        </div>
       </div>
 
-      {/* Cycling text */}
-      <div className="h-12 overflow-hidden w-full max-w-[320px]">
-        <m.div
-          animate={{ y: [0, -48, -96, -144, -192] }}
-          transition={{
-            duration: 8,
-            repeat: Infinity,
-            ease: "easeInOut",
-            times: [0, 0.25, 0.5, 0.75, 1],
-          }}
-        >
-          {loadingPhrases.map((phrase, i) => (
-            <div key={i} className="h-12 flex items-center justify-center px-4">
-              <p className="text-sm font-medium text-text-secondary tracking-widest uppercase text-center leading-relaxed">
-                {phrase}
-              </p>
-            </div>
-          ))}
-        </m.div>
-      </div>
-
-      {/* Ad placement during analysis */}
-      <div className="w-full max-w-sm mt-4">
+      {/* Bottom Ad Slot (Pre-allocated space to prevent shift) */}
+      <div className="w-full max-w-sm z-10 px-4 pb-safe-bottom pb-8 min-h-[120px] flex items-end justify-center pointer-events-auto">
         <InArticleAd />
       </div>
 
       {/* Bottom glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-48 w-48 rounded-full bg-accent/10 blur-[80px]" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-48 w-48 rounded-full bg-accent/10 blur-[80px] pointer-events-none" />
     </m.div>
   );
 }

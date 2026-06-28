@@ -57,26 +57,26 @@ const modes = [
 const featureCards = [
   {
     icon: <Star className="w-7 h-7" />,
-    titleEn: "Overall Score",
-    titleTr: "Genel Puan",
-    descEn: "A realistic 0-100 score. No cap.",
-    descTr: "Gerçekçi bir 0-100 puanı. Hiç abartısız.",
+    titleEn: "The Vibe Score (0-100)",
+    titleTr: "Vibe Skoru (0-100)",
+    descEn: "Not just a beauty rating. It calculates 'Main Character Energy' vs 'NPC Vibes' to tell you exactly how swipe-worthy the profile is.",
+    descTr: "Sadece dış görünüş puanı değil. 'Ana Karakter' enerjisi ile 'NPC' aurasını kıyaslar. O profilin sağa kaydırmaya veya takip edilmeye değip değmeyeceğini söyler.",
     color: "violet",
   },
   {
     icon: <CheckCircle className="w-7 h-7" />,
-    titleEn: "Green Flags",
-    titleTr: "Green Flag'ler",
-    descEn: "What's actually working on your profile",
-    descTr: "Profilinde gerçekten işe yarayan şeyler",
+    titleEn: "Green Flags & W Rizz",
+    titleTr: "Green Flag'ler & Çekicilik",
+    descEn: "What's actually working. Which photo goes hardest, and what specific details give off high-value, authentic energy.",
+    descTr: "Gerçekten işe yarayan detaylar. Hangi fotoğrafın en iyi olduğu ve biyografideki hangi detayın 'high-value' (kaliteli) enerji verdiği.",
     color: "emerald",
   },
   {
     icon: <AlertTriangle className="w-7 h-7" />,
-    titleEn: "Red Flags & Fixes",
-    titleTr: "Red Flag'ler & Düzeltmeler",
-    descEn: "What's killing your engagement + how to fix it",
-    descTr: "Etkileşimini öldüren şeyler + nasıl düzelteceğin",
+    titleEn: "Red Flags & Icks",
+    titleTr: "Red Flag'ler & Ick'ler",
+    descEn: "The cringy gym selfies, the generic bio lines, the hidden toxic traits. We brutally expose everything that ruins the vibe.",
+    descTr: "Klişe ayna selfie'leri, sıkıcı biyografi yazıları ve gizli toksik sinyaller. Vibe'ı mahveden ve itici (ick) gelen her şeyi acımasızca ifşa ederiz.",
     color: "rose",
   },
 ];
@@ -332,18 +332,18 @@ export default function ProfileAutopsyLanding() {
         >
           <Sparkles className="w-10 h-10 text-violet-400 mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
-            {isTr ? "Profilini Otopsiye Hazır Mısın?" : "Ready to put your profile on the table?"}
+            {isTr ? "Gerçeği Öğrenmeye Hazır Mısın?" : "Ready to face the brutal truth?"}
           </h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">
             {isTr
-              ? "%100 Ücretsiz. Egon biraz zarar görebilir. Ama en azından artık biliyorsun."
-              : "100% Free. Your ego might take a hit. But at least you'll finally know."}
+              ? "%100 Ücretsiz. İster kendi hatalarınla yüzleş, ister flörtünü stalklayıp toksik mi değil mi anında öğren."
+              : "100% Free. Face your own red flags, or stalk your crush to see if they're actually swipe-worthy."}
           </p>
           <Link
             href={`/${lang}?feature=profile-autopsy`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
-            {isTr ? "Profilimi Otopsiye Al" : "Get My Profile Autopsied"}
+            {isTr ? "Hemen Otopsiye Başla" : "Start The Autopsy"}
           </Link>
         </motion.div>
       </div>

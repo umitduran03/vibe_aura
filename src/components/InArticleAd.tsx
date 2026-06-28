@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /**
  * InArticleAd — SEO sayfaları için yazı içi reklam bileşeni.
@@ -11,6 +11,7 @@ import { useEffect, useRef } from "react";
  */
 export default function InArticleAd() {
   const insRef = useRef<HTMLModElement>(null);
+  const [isFilled, setIsFilled] = useState(false);
 
   useEffect(() => {
     try {
@@ -30,6 +31,8 @@ export default function InArticleAd() {
         if (insRef.current?.parentElement) {
           insRef.current.parentElement.style.display = "none";
         }
+      } else if (status === "filled") {
+        setIsFilled(true);
       }
     });
 
@@ -41,16 +44,18 @@ export default function InArticleAd() {
 
   return (
     <div style={{ margin: "32px 0", textAlign: "center" }}>
-      <p style={{
-        fontSize: "8px",
-        fontWeight: 700,
-        letterSpacing: "0.12em",
-        textTransform: "uppercase",
-        color: "rgba(255,255,255,0.18)",
-        marginBottom: "4px",
-      }}>
-        Reklam
-      </p>
+      {isFilled && (
+        <p style={{
+          fontSize: "8px",
+          fontWeight: 700,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.18)",
+          marginBottom: "4px",
+        }}>
+          Reklam
+        </p>
+      )}
       <ins
         ref={insRef}
         className="adsbygoogle"
