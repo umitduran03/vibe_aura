@@ -44,18 +44,6 @@ export default function InArticleAd() {
 
   return (
     <div style={{ margin: "32px 0", textAlign: "center" }}>
-      {isFilled && (
-        <p style={{
-          fontSize: "8px",
-          fontWeight: 700,
-          letterSpacing: "0.12em",
-          textTransform: "uppercase",
-          color: "rgba(255,255,255,0.18)",
-          marginBottom: "4px",
-        }}>
-          Reklam
-        </p>
-      )}
       <ins
         ref={insRef}
         className="adsbygoogle"
