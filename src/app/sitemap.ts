@@ -16,6 +16,7 @@ const highPriorityRoutes = [
   "/vibe-dictionary",   // 8+6 gösterim
   "/aura-battle",       // 3 gösterim - "aura-battle who is cooler" sorgusu
   "/trends",            // Blog hub - organik trafik kaynağı
+  "/profile-autopsy",   // Yeni ana özellik
 ];
 
 const standardRoutes = [

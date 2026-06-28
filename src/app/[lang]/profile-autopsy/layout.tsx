@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return {
       title: "Profil Otopsisi AI | Instagram, Tinder, Bumble Profil Analizi | VibeCheckr",
       description:
-        "Instagram, Tinder, Bumble, Hinge, X ve BeReal profilinizi yapay zeka ile analiz edin. 0-100 puan, green flag'ler, red flag'ler ve gerçek düzeltme önerileri.",
+        "Instagram, Tinder, Bumble profilini analiz et veya Dedektif Modu ile başkasının profilini stalkla. Yapay zeka ile green/red flag'leri ve gerçek vibe'ı öğren.",
       keywords: [
         "profil analizi yapay zeka",
         "tinder profil otopsisi",
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
       openGraph: {
         title: "Profil Otopsisi AI | VibeCheckr",
-        description: "Yapay zeka profilini mercek altına alıyor. Instagram, Tinder, Bumble, Hinge, X, BeReal — hangi platform olursa olsun red flag'leri bulur, fix'leri verir.",
+        description: "Kendi profilindeki hataları gör veya Dedektif Modu ile flörtünün profilindeki toksik sinyalleri stalkla. Yapay zeka destekli acımasız profil analizi.",
         url: `${baseUrl}/tr/profile-autopsy`,
         type: "website",
         locale: "tr_TR",
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "Profile Autopsy AI | Instagram, Tinder, Bumble & Hinge Profile Analyzer | VibeCheckr",
     description:
-      "Let AI dissect your Instagram, Tinder, Bumble, Hinge, X, and BeReal profiles. Get a brutal 0-100 score, your green flags, your red flags, and exactly how to fix them.",
+      "Audit your own Instagram/Tinder profile for red flags, or use Detective Mode to stalk someone else's vibe. Get a brutal AI score and relationship advice.",
     keywords: [
       "profile autopsy ai",
       "tinder profile analyzer",
@@ -70,7 +70,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     },
     openGraph: {
       title: "Profile Autopsy AI | VibeCheckr",
-      description: "AI puts your profile on the operating table. Instagram, Tinder, Bumble, Hinge, X, BeReal — it finds every red flag and tells you exactly how to fix them.",
+      description: "Fix your own profile's red flags or use Detective Mode to stalk someone else. Brutally honest AI analysis for Instagram, Tinder, Bumble, and more.",
       url: `${baseUrl}/en/profile-autopsy`,
       type: "website",
       locale: "en_US",
