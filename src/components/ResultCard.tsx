@@ -155,7 +155,7 @@ export default function ResultCard() {
           shareStartTimeRef.current = Date.now();
           await navigator.share({
             title: t.resultShareTitle.replace("{name}", auraResult.aura_name),
-            text: t.resultShareText.replace("{score}", auraResult.aura_score.toString()),
+            text: t.resultShareText.replace("{score}", auraResult.aura_score.toString()).replace("{name}", auraResult.aura_name),
             files: [file],
           });
         } catch (shareErr: any) {

@@ -141,9 +141,32 @@ export default function ExtrasResultCard() {
       if (navigator.share && navigator.canShare?.({ files: [file] })) {
         try {
           shareStartTimeRef.current = Date.now();
+          let shareTitle = "";
+          let shareText = "";
+
+          const score = typeof profile_overall_score === "number" ? profile_overall_score : delulu_score;
+          const hasScore = typeof score === "number";
+          const isOther = extrasType === "profile-autopsy" && profile_mode === "other";
+
+          if (isOther) {
+            shareTitle = t.resultShareTitleOther.replace("{name}", extrasResult.title);
+            if (hasScore) {
+              shareText = `${extrasResult.title}\n${t.resultShareTextOther.replace("{score}", score.toString()).replace("{name}", extrasResult.title)}`;
+            } else {
+              shareText = `${extrasResult.title}\n${t.resultShareTextOtherNoScore.replace("{name}", extrasResult.title)}`;
+            }
+          } else {
+            shareTitle = t.resultShareTitle.replace("{name}", extrasResult.title);
+            if (hasScore) {
+              shareText = `${extrasResult.title}\n${t.resultShareText.replace("{score}", score.toString()).replace("{name}", extrasResult.title)}`;
+            } else {
+              shareText = `${extrasResult.title}\n${t.resultShareTextNoScore.replace("{name}", extrasResult.title)}`;
+            }
+          }
+
           await navigator.share({
-            title: t.resultShareTitle.replace("{name}", extrasResult.title),
-            text: `${extrasResult.title}\n${t.resultShareText.replace("{score}", "").replace("{name}", extrasResult.title)}`,
+            title: shareTitle,
+            text: shareText,
             files: [file],
           });
         } catch (shareErr: any) {
