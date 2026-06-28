@@ -83,6 +83,10 @@ export default function Home() {
         store.setAnalysisMode("duo");
         store.setDuoRelationType("ex");
         store.setScreen("wizard");
+      } else if (feature === "profile-autopsy") {
+        store.setExtrasType("profile-autopsy");
+        store.setExtrasModalOpen(true);
+        store.setScreen("wizard");
       }
       
       // Clean up URL so it doesn't trigger again on refresh

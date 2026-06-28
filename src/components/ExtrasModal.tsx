@@ -65,6 +65,12 @@ export default function ExtrasModal() {
       { key:"screenshots", label:isTr ? "Ekran Görüntüsünü Bırak" : "Drop the Screenshot", type:"multi-photo", maxPhotos: 1 },
       { key:"draftText", label:isTr ? "Taslak Cevabın (opsiyonel)" : "Your Draft Reply (optional)", type:"textarea", placeholder:isTr ? "Ne cevap verecektin? Ben yargılamadan önce bir göreyim..." : "What were you going to reply? Let's see it before I judge..." },
     ],
+    "profile-autopsy": [
+      { key:"profileMode", label:isTr ? "Ne analiz ediyoruz?" : "What are we analyzing?", type:"select", options:isTr ? ["Kendi Profilim", "Başkasının Profili"] : ["My Own Profile", "Someone Else's Profile"] },
+      { key:"platform", label:isTr ? "Platform" : "Platform", type:"select", options:["Tinder", "Bumble", "Hinge", "Instagram", "X (Twitter)", "BeReal", isTr ? "Diğer" : "Other"] },
+      { key:"screenshots", label:isTr ? "Profil Ekran Görüntüleri" : "Profile Screenshots", type:"multi-photo", maxPhotos: 4 },
+      { key:"situation", label:isTr ? "Bize eklemek istediğin bir şey var mı? (opsiyonel)" : "Any context you want to add? (optional)", type:"textarea", placeholder:isTr ? "Hedefin ne? Özel endişen var mı?" : "What's your goal? Any specific concern?" },
+    ],
   };
 
   const META: Record<ExtrasType, { title:string; emoji:string; subtitle:string; cost:number; color:string }> = {
@@ -73,6 +79,7 @@ export default function ExtrasModal() {
     "mood-reset": { title: t.extrasMoodTitle, emoji:"🔋", subtitle:isTr ? "Acil vibe kontrolü..." : "Emergency vibe check...", cost:3, color:"#06b6d4" },
     "delulu-check": { title: t.extrasDeluluTitle, emoji:"📱", subtitle:isTr ? "Gerçeklerle yüzleşme zamanı..." : "Time for a reality check...", cost:10, color:"#f59e0b" },
     "rizz-architect": { title: t.extrasRizzTitle, emoji:"💬", subtitle:isTr ? "Mükemmel cevabı hazırlıyoruz..." : "Crafting the perfect reply...", cost:2, color:"#8b5cf6" },
+    "profile-autopsy": { title: isTr ? "Profil Otopsisi" : "Profile Autopsy", emoji:"🔬", subtitle:isTr ? "Profil masaya yatıyor..." : "Your profile, under the microscope...", cost:8, color:"#7c3aed" },
   };
 
   const isOpen = useAppStore((s) => s.isExtrasModalOpen);
@@ -111,7 +118,8 @@ export default function ExtrasModal() {
   };
 
   const uploadScreenshot = async (file: File) => {
-    if (screenshots.length >= 3) return;
+    const maxPhotos = fields.find(f => f.type === "multi-photo")?.maxPhotos || 3;
+    if (screenshots.length >= maxPhotos) return;
     setUploading("screenshot");
     try {
       const b = await compressAndEncodeImage(file);
@@ -124,13 +132,16 @@ export default function ExtrasModal() {
     setScreenshots(prev => prev.filter((_, i) => i !== index));
   };
 
-  // Validation: for delulu-check, user needs either screenshots OR chatText; for rizz-architect, at least 1 screenshot
+  // Validation
   const isDeluluCheck = extrasType === "delulu-check";
   const isRizzArchitect = extrasType === "rizz-architect";
+  const isProfileAutopsy = extrasType === "profile-autopsy";
   const valid = isDeluluCheck
     ? (screenshots.length > 0 || form.chatText?.trim())
     : isRizzArchitect
     ? screenshots.length > 0
+    : isProfileAutopsy
+    ? (screenshots.length > 0 && form.profileMode?.trim() && form.platform?.trim())
     : fields.filter(f=>f.type!=="photo" && f.type!=="multi-photo").every(f=>form[f.key]?.trim());
 
   const vip = useAppStore.getState().vipExpiry;
@@ -145,6 +156,13 @@ export default function ExtrasModal() {
     const formData: Record<string, any> = { ...form, ...photos };
     if ((isDeluluCheck || isRizzArchitect) && screenshots.length > 0) {
       formData.screenshots = screenshots;
+    }
+    // Profile Autopsy: include screenshots + map display label to internal value
+    if (isProfileAutopsy) {
+      formData.screenshots = screenshots;
+      // Map display labels to internal values
+      const selfLabels = ["Kendi Profilim", "My Own Profile"];
+      formData.profileMode = selfLabels.includes(form.profileMode || "") ? "self" : "other";
     }
     s.setExtrasFormData(formData);
     s.setExtrasModalOpen(false);

@@ -18,7 +18,8 @@ export default function DesktopAdBanner() {
     "/ai-roast-me", "/aura-battle", "/bff-vibe-check",
     "/crush-calculator", "/delulu-check", "/duo-compatibility",
     "/ex-compatibility", "/mood-reset", "/reply-guru",
-    "/situationship-clarifier", "/soulmate-radar", "/toxic-ex-scanner"
+    "/situationship-clarifier", "/soulmate-radar", "/toxic-ex-scanner",
+    "/profile-autopsy"
   ].some((p) => pathname?.includes(p));
 
   useEffect(() => {

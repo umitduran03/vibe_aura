@@ -80,6 +80,17 @@ export default function ExtrasShowcaseModal() {
       glowColor: "rgba(139, 92, 246, 0.15)",
       icon: Send,
     },
+    {
+      id: "profile-autopsy",
+      title: "Profile Autopsy",
+      emoji: "🔬",
+      description: "Brutally honest AI audit of any social media or dating profile. Green flags, red flags, and exactly what to fix.",
+      cost: 8,
+      gradient: "from-indigo-500/20 via-violet-500/10 to-transparent",
+      borderColor: "border-indigo-500/30",
+      glowColor: "rgba(124, 58, 237, 0.15)",
+      icon: Sparkles,
+    },
   ];
 
   const handleSelect = (type: ExtrasType) => {

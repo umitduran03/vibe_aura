@@ -301,7 +301,7 @@ export async function POST(req: NextRequest) {
       ? `ZORUNLU: Tüm yanıtı Türkçe yaz. Direkt çeviri yapma. Gerçek Türk Gen-Z internet argosu ve Twitter/TikTok dili kullan. ÖNEMLİ KURAL: Sürekli aynı argoları (örn: "kafanda kuruyorsun", "ghost moduna geç", "rezalet", "dram modu", "kendi kafasında film") TEKRAR ETME. Kelime dağarcığını çok geniş tut. Bazen evrensel terimleri (delulu, red flag, aura, pick-me) Türkçe içinde harmanla, bazen güncel yerel jargon (patladın, kilit, NPC gibi, boş yapma) kullan. Örnekleri BİREBİR KULLANMA, her seferinde ŞAŞIRTICI ve YENİ kelimeler seç. ÖNEMLİ UYARI: "Person 1", "Person 2", "Aries", "relationship", "zodiac", "taken", "single", "talking" gibi İngilizce kelimeleri (argo kelimeler hariç) ASLA KULLANMA. Bunları kesinlikle Türkçeleştir (örn: 1. Kişi, Koç burcu, sevgilisi var, bekar vb). KESİNLİKLE Farsça, Arapça veya başka bir dil kullanma ("خودش" vb. YASAKTIR).`
       : `MANDATORY: Write entirely in English. Use authentic global Gen-Z slang and TikTok/X vocabulary. CRITICAL RULE: Do NOT repeat the same slang words every time. Keep your vocabulary extremely diverse, unpredictable, and fresh. Do NOT just copy the typical examples, surprise the user with niche internet terms. NEVER use Persian, Arabic or any other languages.`;
 
-    const tokenCost = mode === "duo" ? 3 : mode === "extras" ? (body.extrasType === "delulu-check" ? 10 : body.extrasType === "situationship" ? 5 : body.extrasType === "rizz-architect" ? 2 : 3) : 1;
+    const tokenCost = mode === "duo" ? 3 : mode === "extras" ? (body.extrasType === "delulu-check" ? 10 : body.extrasType === "situationship" ? 5 : body.extrasType === "rizz-architect" ? 2 : body.extrasType === "profile-autopsy" ? 8 : 3) : 1;
 
     let isUnlocked = true;
     let currentBalance = 0;
@@ -344,12 +344,14 @@ export async function POST(req: NextRequest) {
         "mood-reset": `Sen acımasız dürüst bir mod sıfırlayıcısın. Kötü günden kurtarıcı bir sille ver — pratik, mistisizm içermeyen, anlık adımlar. Komikal, keskin ve saf gerçeklik. Sıfır kozmik söz. Detaylı ve tatmin edici uzunlukta bir analiz yaz. Kısa ve yüzeysel cevaplar verme; durumu derinlemesine incele. ${langInstruction}`,
         "delulu-check": `Sen nihai gerçeklik kontrol yapay zekasısın. Delulu puanlarını hesapla, sanrıları yık. Ekran görüntülerini veya mesajları analiz et, 0-100 arasında delulu_score hesapla. Çift mesaj atmadan önce gerçeklerle yüzleştir. Detaylı ve tatmin edici uzunlukta bir analiz yaz. Kısa ve yüzeysel cevaplar verme; durumu derinlemesine incele. ${langInstruction}`,
         "rizz-architect": `Sen resmi bir yapay zeka değilsin. Türk Gen-Z mesajlaşma uzmanısın — zekice, oyuncu, doğal. Resmi dil kullanma. Küçük harf, argo ve doğal sohbet tarzında yaz. Kullanıcının enerjisiyle eşleş. Detaylı ve tatmin edici uzunlukta bir analiz yaz. Kısa ve yüzeysel cevaplar verme; durumu derinlemesine incele. ${langInstruction}`,
+        "profile-autopsy": `Sen dünyanın en iyi sosyal medya ve dating profil danışmanısın — hem acımasız dürüstsün hem de gerçekten yararlı tavsiyelerin var. Görünüşe göre iyi olan şeyleri de takdir edersin, kötü olanları ise hiç acımadan gösterirsin. Ne aşırı övücü ne de saf roast yapan birisin. Verilen profil ekran görüntülerini analiz et, gerçekçi ve dengeli bir denetim yap. Türk Gen-Z argo ve internet dilini kullan. ${langInstruction}`,
       } : {
         "toxic-ex": `You are the internet's most savage Crisis Center detective. Fluent in Gen-Z slang. Your job: scan their ex situation and deliver a brutal red flag reality check before they do something stupid like texting them. Show zero mercy. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
         situationship: `You are a legendary Gen-Z relationship decoder. Fluent in slang like 'breadcrumbing', 'soft-launching', 'slow-fading'. Decode the 'what are we' mystery with brutal honesty, highlighting hard compatibility stats and spicy chemistry scores. Be dramatic and savage. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
         "mood-reset": `You are a brutally honest wake-up caller. Give them a savage, reality-based pep talk to snap them out of their bad day and recharge their vibe. Provide highly practical, non-mystical, immediate action steps. Be hilarious, sharp, and pure reality. ZERO cosmic words. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
         "delulu-check": `You are the ultimate reality check AI, specialized in destroying delusions. Analyze the provided screenshots or chat text to determine if the user is being delusional about their crush/situationship. Calculate a brutal 'delulu_score' from 0 to 100. Give an unfiltered reality check before they double text. Use heavy Gen-Z slang. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
         "rizz-architect": `You are NOT a formal AI. You are a Gen Z texting expert, highly manipulative and witty. DO NOT use formal language, punctuation, or robotic empathy. Use lowercase, casual slang, and natural texting behaviors. Match the user's energy. Write a detailed and satisfyingly long analysis. Do not give short generic answers; provide an in-depth reading. ${langInstruction}`,
+        "profile-autopsy": `You are the world's best social media and dating profile consultant — brutally honest but genuinely helpful and balanced. You praise what actually works, and you demolish what doesn't. You are NOT just a roast machine, and NOT a cheerleader. You are the friend who tells the hard truth. Analyze the provided profile screenshot(s) and deliver a balanced, actionable audit. Use authentic Gen-Z slang. ${langInstruction}`,
       };
 
       const systemInstruction = extrasSystemPrompts[extrasType] || extrasSystemPrompts["toxic-ex"];
@@ -430,6 +432,136 @@ Your output must be purely JSON:
   ],
   "theme_color_hex": "#8b5cf6"
 }`;
+      } else if (extrasType === "profile-autopsy") {
+        const profileMode = formData.profileMode || "self";
+        const platform = formData.platform || "Unknown";
+        const context = formData.situation || "";
+        const isSelfMode = profileMode === "self";
+
+        const selfPromptEN = `
+Profile Autopsy Request — SELF MODE (analyzing your own profile):
+- Platform: ${platform}
+- Context from user: ${context || "None"}
+
+You have been given ${formData.screenshots?.length || 0} screenshot(s) of this user's own ${platform} profile.
+Perform a brutally honest but BALANCED profile audit. You MUST:
+1. Identify genuine strengths (green flags) — things that are actually working well.
+2. Identify real weaknesses (red flags) — things that are hurting their performance.
+3. Give a specific, actionable top 3 fixes ranked by priority.
+4. Give an overall score from 0 to 100 (be realistic, most profiles are 40-75).
+5. Write a memorable, one-line verdict that captures their profile's energy.
+6. Write a detailed analysis explaining your reasoning.
+
+Platform-specific criteria:
+- Instagram: aesthetic consistency, bio quality, caption engagement, posting strategy
+- Tinder/Bumble/Hinge: photo order (first photo is most important), bio hook, conversation starters
+- X (Twitter): bio brevity, pinned post quality, overall identity clarity
+- BeReal: authenticity, frequency, engagement
+
+Your output must be purely JSON:
+{
+  "title": "A memorable, Gen-Z verdict title for their profile (e.g., 'A 7 Hiding in a 5's Profile')",
+  "verdict": "One savage but fair one-liner summarizing the profile's energy",
+  "analysis_text": "A detailed, entertaining, balanced paragraph explaining the audit findings. Mention what works and what doesn't. Use Gen-Z slang.",
+  "profile_overall_score": 68,
+  "profile_green_flags": ["Specific strength 1", "Specific strength 2", "Specific strength 3"],
+  "profile_red_flags": ["Specific weakness 1", "Specific weakness 2"],
+  "profile_top_fixes": ["Priority fix #1 (most impactful)", "Priority fix #2", "Priority fix #3"],
+  "profile_platform": "${platform}",
+  "profile_mode": "self",
+  "theme_color_hex": "#7c3aed"
+}`;
+
+        const selfPromptTR = `
+Profil Otopsisi İsteği — KENDİ PROFİLİN (kendi profilini analiz ediyoruz):
+- Platform: ${platform}
+- Bağlam: ${context || "Yok"}
+
+${formData.screenshots?.length || 0} adet ${platform} profil ekran görüntüsü verildi.
+Hem acımasız dürüst hem de dengeli bir profil denetimi yap:
+1. Gerçekten işe yarayan güçlü yanları (yeşil bayraklar) belirle.
+2. Gerçek zayıflıkları (kırmızı bayraklar) ortaya koy.
+3. Öncelik sırasına göre 3 somut düzeltme öner.
+4. 0-100 arasında genel puan ver (gerçekçi ol, çoğu profil 40-75 aralığındadır).
+5. Profilin enerjisini özetleyen unutulmaz bir karar cümlesi yaz.
+
+Platform'a özel kriterler:
+- Instagram: estetik tutarlılık, bio kalitesi, başlık etkileşimi
+- Tinder/Bumble/Hinge: fotoğraf sırası, bio hook'u, sohbet açıcı ipuçları
+- X (Twitter): bio özlülüğü, pin'li gönderi kalitesi
+
+Çıktın sadece JSON olmalı:
+{
+  "title": "Unutulmaz, Gen-Z tarzı profil başlığı (örn: '7'lik Biri 5'lik Profilinde Saklanıyor')",
+  "verdict": "Profil enerjisini özetleyen tek bir sert ama adil cümle",
+  "analysis_text": "Detaylı, eğlenceli ve dengeli analiz paragrafı. Neyin işe yaradığını ve neyin battığını açıkla. Gen-Z argosunu kullan.",
+  "profile_overall_score": 68,
+  "profile_green_flags": ["Spesifik güçlü yan 1", "Spesifik güçlü yan 2"],
+  "profile_red_flags": ["Spesifik zayıflık 1", "Spesifik zayıflık 2"],
+  "profile_top_fixes": ["Öncelikli düzeltme #1", "Öncelikli düzeltme #2", "Öncelikli düzeltme #3"],
+  "profile_platform": "${platform}",
+  "profile_mode": "self",
+  "theme_color_hex": "#7c3aed"
+}`;
+
+        const otherPromptEN = `
+Profile Autopsy Request — DETECTIVE MODE (analyzing someone else's profile):
+- Platform: ${platform}
+- Context from user: ${context || "None"}
+
+You have been given ${formData.screenshots?.length || 0} screenshot(s) of SOMEONE ELSE's ${platform} profile.
+Perform a brutally honest personality and vibe read based purely on their profile. You MUST:
+1. Identify genuine green flags — things that suggest they're worth engaging with.
+2. Identify red flags — patterns that suggest potential issues (e.g., commitment phobia, attention-seeking, low effort).
+3. Give a personality read — what type of person does this profile suggest they are?
+4. Give an engagement score (0-100): how likely is this person to swipe right / follow back / respond?
+5. Write a detailed, entertaining analysis.
+
+Your output must be purely JSON:
+{
+  "title": "A dramatic Gen-Z title for the vibe read (e.g., 'Main Character Energy, NPC Execution')",
+  "verdict": "One devastating one-liner summarizing this person's profile vibe",
+  "analysis_text": "A detailed, entertaining, brutally honest paragraph reading this person's profile. What are they giving? What are they hiding? Use Gen-Z slang.",
+  "profile_overall_score": 55,
+  "profile_green_flags": ["Genuine green flag from their profile", "Another genuine positive signal"],
+  "profile_red_flags": ["Specific red flag from profile", "Another red flag pattern"],
+  "profile_top_fixes": ["Should you engage? Here's tip 1 for approaching them", "Tip 2", "Tip 3 (warning sign to watch)"],
+  "profile_platform": "${platform}",
+  "profile_mode": "other",
+  "theme_color_hex": "#7c3aed"
+}`;
+
+        const otherPromptTR = `
+Profil Otopsisi İsteği — DEDEKTİF MODU (başkasının profilini analiz ediyoruz):
+- Platform: ${platform}
+- Bağlam: ${context || "Yok"}
+
+${formData.screenshots?.length || 0} adet BAŞKASININ ${platform} profil ekran görüntüsü verildi.
+Bu kişinin profilinden kişilik ve vibe okuması yap:
+1. Yeşil bayraklar — bu kişiyle etkileşime girmeye değdiğini gösteren sinyaller.
+2. Kırmızı bayraklar — sorun işareti olabilecek kalıplar.
+3. Kişilik okuması — bu profil nasıl bir insan olduğunu gösteriyor?
+4. Etkileşim skoru (0-100): Bu kişi sağa kaydırır/takip eder/yanıt verir mi?
+
+Çıktın sadece JSON olmalı:
+{
+  "title": "Dramatik Gen-Z tarzı bir başlık",
+  "verdict": "Bu kişinin profil vibe'ını özetleyen tek bir acımasız cümle",
+  "analysis_text": "Bu kişinin profilini okuyan detaylı, eğlenceli ve acımasız dürüst analiz paragrafı. Ne veriyor? Ne saklıyor? Gen-Z argosu kullan.",
+  "profile_overall_score": 55,
+  "profile_green_flags": ["Profilden gerçek yeşil bayrak 1", "Gerçek pozitif sinyal 2"],
+  "profile_red_flags": ["Profilden spesifik kırmızı bayrak", "Başka bir uyarı işareti"],
+  "profile_top_fixes": ["Bu kişiye yaklaşmalı mısın? İpucu 1", "İpucu 2", "Dikkat edilmesi gereken uyarı"],
+  "profile_platform": "${platform}",
+  "profile_mode": "other",
+  "theme_color_hex": "#7c3aed"
+}`;
+
+        if (isSelfMode) {
+          promptText = locale === "tr" ? selfPromptTR : selfPromptEN;
+        } else {
+          promptText = locale === "tr" ? otherPromptTR : otherPromptEN;
+        }
       } else {
         promptText = `
 Mood Reset Request:

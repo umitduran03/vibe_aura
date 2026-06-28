@@ -593,6 +593,60 @@ export const featureSeoData: Record<string, any> = {
       }
     }
   },
+  "profile-autopsy": {
+    en: {
+      howItWorks: {
+        title: "How It Works: The Profile Operating Table",
+        steps: [
+          { title: "Submit Your Profile", desc: "Drop your Tinder, Bumble, Hinge, Instagram, X, or BeReal profile. The AI doesn't judge... actually it does, that's the whole point." },
+          { title: "AI Runs the Autopsy", desc: "The algorithm checks your photos, bio, energy, and overall aesthetic. Is it main character energy or full NPC energy? We're about to find out." },
+          { title: "Get the Full Diagnosis", desc: "Receive a 0-100 score, a list of green flags that are actually working, and every red flag that's killing your engagement — with step-by-step fixes." }
+        ]
+      },
+      useCases: {
+        title: "When You Need a Profile Autopsy",
+        cases: [
+          { title: "Dead Profile Energy", desc: "Your bio is basically a red flag museum and you've been getting zero matches for weeks. Time to know why." },
+          { title: "Serve Looks, Not Confusion", desc: "You think your photos are fire, but you're still getting ghosted. Let the AI audit your profile before you waste another six months." },
+          { title: "Spy Mode", desc: "Your friend is clueless about why their profile isn't working. Run a Detective Mode autopsy and save them from themselves." }
+        ]
+      },
+      faq: {
+        title: "Profile Autopsy FAQ",
+        questions: [
+          { q: "Can it really tell what's wrong with my profile?", a: "If your bio is giving NPC energy and your first photo screams red flag museum, yes, it will tell you that directly." },
+          { q: "Which platforms does it work for?", a: "Tinder, Bumble, Hinge, Instagram, X, and BeReal. If you're on it, the AI can read it." },
+          { q: "Will it tell me I'm the problem?", a: "If you have zero main character energy on your profile, absolutely. The AI doesn't sugarcoat. That's the whole vibe." }
+        ]
+      }
+    },
+    tr: {
+      howItWorks: {
+        title: "Nasıl Çalışır: Profil Ameliyat Masası",
+        steps: [
+          { title: "Profilini Gönder", desc: "Tinder, Bumble, Hinge, Instagram, X veya BeReal profilini at. Yapay zeka yargılamaz... aslında yargılar, çünkü tam da bu iş için burada." },
+          { title: "Yapay Zeka Otopsisi Çalıştırır", desc: "Algoritma fotoğraflarını, biyo'nu, enerjini ve genel estetiğini kontrol eder. Main character enerjisi mi veriyor yoksa tam NPC enerjisi mi? Hemen öğreneceğiz." },
+          { title: "Tam Teşhisi Al", desc: "0-100 puan, işe yarayan green flag'lerin listesi ve etkileşimini öldüren her red flag — adım adım düzeltmelerle birlikte." }
+        ]
+      },
+      useCases: {
+        title: "Profil Otopsisine Ne Zaman İhtiyacın Var?",
+        cases: [
+          { title: "Ölü Profil Enerjisi", desc: "Biyo'n tam bir red flag müzesi ve haftalardır sıfır eşleşme alıyorsun. Nedenini öğrenme vakti." },
+          { title: "Serve Looks, Kafa Karışıklığı Değil", desc: "Fotoğraflarının harika olduğunu düşünüyorsun ama hâlâ ghost yiyorsun. Altı ay daha boşa harcamadan önce yapay zekaya denetle." },
+          { title: "Ajan Modu", desc: "Arkadaşın neden match almadığını anlamıyor. Dedektif Modu otopsisi çalıştır ve onu kendinden kurtar." }
+        ]
+      },
+      faq: {
+        title: "Sıkça Sorulan Sorular",
+        questions: [
+          { q: "Profilimdeki sorunu gerçekten bulabilir mi?", a: "Biyo'n NPC enerjisi veriyorsa ve ilk fotoğrafın red flag müzesi gibiyse, evet, bunu sana direkt söyler." },
+          { q: "Hangi platformlar için çalışıyor?", a: "Tinder, Bumble, Hinge, Instagram, X ve BeReal. Üzerindeysen, yapay zeka okuyabilir." },
+          { q: "Benim sorun olduğumu söyler mi?", a: "Profilinde sıfır main character enerjisi varsa, kesinlikle. Yapay zeka tatlandırmaz. İşte tam da bu yüzden burada." }
+        ]
+      }
+    }
+  },
   "toxic-ex-scanner": {
     en: {
       howItWorks: {

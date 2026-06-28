@@ -20,6 +20,7 @@ const getThemeLabel = (type: ExtrasType, t: any) => {
     case "mood-reset": return t.extrasTitleMood;
     case "delulu-check": return t.extrasTitleDelulu;
     case "rizz-architect": return t.extrasTitleRizz;
+    case "profile-autopsy": return "Profile Autopsy 🔬";
   }
 };
 
@@ -29,6 +30,7 @@ const THEME: Record<ExtrasType, { emoji: string; grad1: string; grad2: string }>
   "mood-reset": { emoji: "🔋", grad1: "#06b6d4", grad2: "#14b8a6" },
   "delulu-check": { emoji: "📱", grad1: "#f59e0b", grad2: "#eab308" },
   "rizz-architect": { emoji: "💬", grad1: "#8b5cf6", grad2: "#a855f7" },
+  "profile-autopsy": { emoji: "🔬", grad1: "#7c3aed", grad2: "#4f46e5" },
 };
 
 export default function ExtrasResultCard() {
@@ -174,8 +176,16 @@ export default function ExtrasResultCard() {
   if (!extrasResult || !extrasType) return null;
 
   const theme = THEME[extrasType];
-  const { title, analysis_text, verdict, theme_color_hex, delulu_score, vibe_check, roast, rizz_options } = extrasResult;
+  const { title, analysis_text, verdict, theme_color_hex, delulu_score, vibe_check, roast, rizz_options,
+    profile_overall_score, profile_green_flags, profile_red_flags, profile_top_fixes, profile_platform, profile_mode
+  } = extrasResult;
   const color = theme_color_hex || theme.grad1;
+
+  const getScoreColor = (score: number) => {
+    if (score >= 70) return "#22c55e";
+    if (score >= 45) return "#f59e0b";
+    return "#ef4444";
+  };
 
   const handleReset = () => { hapticLight(); resetWizard(); };
 
@@ -263,6 +273,127 @@ export default function ExtrasResultCard() {
                 style={{ backgroundColor: `${getDeluluColor(delulu_score)}15`, color: getDeluluColor(delulu_score), border: `1px solid ${getDeluluColor(delulu_score)}30` }}>
                 {getDeluluLabel(delulu_score)}
               </div>
+            </m.div>
+          )}
+
+          {/* Profile Autopsy — Overall Score */}
+          {extrasType === "profile-autopsy" && typeof profile_overall_score === "number" && (
+            <m.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.3, type: "spring", stiffness: 200 }}
+              className="mx-auto mb-5 flex flex-col items-center gap-2"
+            >
+              {/* Platform + Mode badge */}
+              {profile_platform && (
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide"
+                    style={{ backgroundColor: "rgba(124,58,237,0.15)", color: "#a78bfa", border: "1px solid rgba(124,58,237,0.3)" }}>
+                    {profile_platform}
+                  </span>
+                  {profile_mode && (
+                    <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide"
+                      style={{ backgroundColor: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)" }}>
+                      {profile_mode === "self" ? "Self Audit" : "Detective Mode"}
+                    </span>
+                  )}
+                </div>
+              )}
+              {/* Score circle */}
+              <div className="relative w-28 h-28 flex items-center justify-center">
+                <svg className="absolute inset-0 w-full h-full -rotate-90" viewBox="0 0 100 100">
+                  <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="6" />
+                  <m.circle
+                    cx="50" cy="50" r="42"
+                    fill="none"
+                    stroke={getScoreColor(profile_overall_score)}
+                    strokeWidth="6"
+                    strokeLinecap="round"
+                    strokeDasharray={`${2 * Math.PI * 42}`}
+                    initial={{ strokeDashoffset: 2 * Math.PI * 42 }}
+                    animate={{ strokeDashoffset: 2 * Math.PI * 42 * (1 - profile_overall_score / 100) }}
+                    transition={{ delay: 0.5, duration: 1.2, ease: "easeOut" }}
+                  />
+                </svg>
+                <div className="flex flex-col items-center">
+                  <span className="text-3xl font-black" style={{ color: getScoreColor(profile_overall_score) }}>
+                    {profile_overall_score}
+                  </span>
+                  <span className="text-[9px] font-bold text-white/40 uppercase tracking-wider">/100</span>
+                </div>
+              </div>
+            </m.div>
+          )}
+
+          {/* Profile Autopsy — Green Flags */}
+          {extrasType === "profile-autopsy" && profile_green_flags && profile_green_flags.length > 0 && (
+            <m.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="rounded-2xl p-4 mb-3"
+              style={{ backgroundColor: "rgba(34,197,94,0.08)", border: "1px solid rgba(34,197,94,0.2)" }}
+            >
+              <h3 className="text-[11px] font-bold text-green-400 mb-2 uppercase tracking-wider flex items-center gap-1.5">
+                ✅ Green Flags
+              </h3>
+              <ul className="space-y-1.5">
+                {profile_green_flags.map((flag, i) => (
+                  <li key={i} className="text-[14px] text-white/80 flex items-start gap-2">
+                    <span className="text-green-500 mt-0.5 flex-shrink-0">•</span>
+                    {flag}
+                  </li>
+                ))}
+              </ul>
+            </m.div>
+          )}
+
+          {/* Profile Autopsy — Red Flags */}
+          {extrasType === "profile-autopsy" && profile_red_flags && profile_red_flags.length > 0 && (
+            <m.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75 }}
+              className="rounded-2xl p-4 mb-3"
+              style={{ backgroundColor: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)" }}
+            >
+              <h3 className="text-[11px] font-bold text-red-400 mb-2 uppercase tracking-wider flex items-center gap-1.5">
+                🚩 Red Flags
+              </h3>
+              <ul className="space-y-1.5">
+                {profile_red_flags.map((flag, i) => (
+                  <li key={i} className="text-[14px] text-white/80 flex items-start gap-2">
+                    <span className="text-red-500 mt-0.5 flex-shrink-0">•</span>
+                    {flag}
+                  </li>
+                ))}
+              </ul>
+            </m.div>
+          )}
+
+          {/* Profile Autopsy — Top Fixes */}
+          {extrasType === "profile-autopsy" && profile_top_fixes && profile_top_fixes.length > 0 && (
+            <m.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.9 }}
+              className="rounded-2xl p-4 mb-4"
+              style={{ backgroundColor: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)" }}
+            >
+              <h3 className="text-[11px] font-bold text-violet-400 mb-2 uppercase tracking-wider">
+                🔧 Top Fixes
+              </h3>
+              <ol className="space-y-2">
+                {profile_top_fixes.map((fix, i) => (
+                  <li key={i} className="text-[14px] text-white/80 flex items-start gap-3">
+                    <span className="flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-black mt-0.5"
+                      style={{ backgroundColor: "rgba(124,58,237,0.3)", color: "#a78bfa" }}>
+                      {i + 1}
+                    </span>
+                    {fix}
+                  </li>
+                ))}
+              </ol>
             </m.div>
           )}
 

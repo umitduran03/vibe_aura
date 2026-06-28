@@ -36,6 +36,13 @@ export interface ExtrasResult {
   vibe_check?: string;
   roast?: string | null;
   rizz_options?: { type: string; text: string }[];
+  // Profile Autopsy specific fields
+  profile_overall_score?: number;
+  profile_green_flags?: string[];
+  profile_red_flags?: string[];
+  profile_top_fixes?: string[];
+  profile_platform?: string;
+  profile_mode?: "self" | "other";
 }
 
 export interface ExtrasFormData {
@@ -54,6 +61,9 @@ export interface ExtrasFormData {
   screenshots?: string[];
   chatText?: string;
   draftText?: string;
+  // Profile Autopsy specific fields
+  profileMode?: "self" | "other";
+  platform?: string;
   [key: string]: any;
 }
 
@@ -76,7 +86,7 @@ export interface DuoPersonData {
 export type AnalysisMode = "solo" | "duo";
 export type SoloScenario = "general" | "roast" | "soulmate";
 export type DuoRelationType = "flirt" | "ex" | "platonic" | "bff" | "battle";
-export type ExtrasType = "toxic-ex" | "situationship" | "mood-reset" | "delulu-check" | "rizz-architect";
+export type ExtrasType = "toxic-ex" | "situationship" | "mood-reset" | "delulu-check" | "rizz-architect" | "profile-autopsy";
 
 export type AppScreen = "splash" | "onboarding" | "wizard" | "analyzing" | "result" | "extras-result";
 
