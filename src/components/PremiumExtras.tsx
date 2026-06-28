@@ -17,7 +17,7 @@ export default function PremiumExtras() {
 
   return (
     <motion.div
-      className="mt-5 mb-5 px-1"
+      className="w-full"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.3, duration: 0.5 }}
@@ -26,18 +26,18 @@ export default function PremiumExtras() {
         onClick={handleClick}
         whileTap={{ scale: 0.98 }}
         whileHover={{ scale: 1.01 }}
-        className="relative w-full flex items-center justify-between p-4 rounded-2xl border border-fuchsia-500/30 bg-white/[0.03] backdrop-blur-xl cursor-pointer transition-all duration-300 hover:bg-white/[0.06] overflow-hidden group"
+        className="relative w-full flex items-center justify-between p-4 rounded-2xl border border-fuchsia-500/30 bg-white/[0.03] backdrop-blur-xl cursor-pointer transition-all duration-300 hover:bg-white/[0.06] overflow-hidden group shadow-[0_0_15px_rgba(217,70,239,0.1)]"
       >
         {/* Background glow */}
-        <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/10 via-purple-500/10 to-transparent opacity-50 pointer-events-none group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-gradient-to-r from-fuchsia-500/10 via-purple-500/5 to-transparent opacity-50 pointer-events-none group-hover:opacity-100 transition-opacity" />
 
-        <div className="relative flex items-center gap-3 flex-1 pr-4">
-          <div className="flex shrink-0 items-center justify-center w-10 h-10 rounded-full bg-white/5 border border-white/10 shadow-[0_0_15px_rgba(217,70,239,0.3)]">
-            <span className="text-xl">🔍</span>
+        <div className="relative flex items-center gap-4 flex-1 pr-4">
+          <div className="flex shrink-0 items-center justify-center w-12 h-12 rounded-xl bg-fuchsia-500/10 border border-fuchsia-500/20 shadow-[0_0_15px_rgba(217,70,239,0.2)]">
+            <span className="text-[22px]">🔍</span>
           </div>
           <div className="text-left flex-1">
-            <h3 className="text-[14px] font-bold text-white/90">{t.crisisCenter}</h3>
-            <p className="text-[12px] text-white/50">{t.crisisSub}</p>
+            <h3 className="text-[15px] font-bold text-white/95">{t.crisisCenter}</h3>
+            <p className="text-[12px] text-white/50 mt-0.5 font-medium">{t.crisisSub}</p>
           </div>
         </div>
 

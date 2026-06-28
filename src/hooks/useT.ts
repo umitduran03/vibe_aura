@@ -21,7 +21,7 @@ const STRINGS = {
 
     // PremiumExtras
     crisisCenter: "Crisis Center",
-    crisisSub: "Decoding the drama and serving brutally honest reality checks. No cap.",
+    crisisSub: "Mixed signals, toxic red flags, sudden mood drops, and much more... We solve the crises and dead-ends in your life with brutally honest analysis.",
 
     // SoloScenarioSelector
     analysisType: "Analysis Type",
@@ -301,7 +301,7 @@ const STRINGS = {
 
     // ExtrasModal & Showcase
     extrasShowcaseTitle: "Crisis Center 🔍",
-    extrasShowcaseDesc: "Decoding the drama and serving brutally honest reality checks. No cap.",
+    extrasShowcaseDesc: "Mixed signals, toxic red flags, sudden mood drops, and much more... We solve the crises and dead-ends in your life with brutally honest analysis.",
     extrasModalOr: "or",
     extrasModalUploading: "Uploading...",
     extrasModalUploadScreenshot: "Upload Screenshot",
@@ -406,13 +406,13 @@ const STRINGS = {
     // ModeSelector
     modeTitle: "Nasıl analiz edelim? ✨",
     modeSolo: "Bireysel",
-    modeSoloSub: "Kendi vibe'ını keşfet",
+    modeSoloSub: "Vibe'ını keşfet",
     modeDuo: "İkili",
     modeDuoSub: "Kimyanızı çöz",
 
     // PremiumExtras
     crisisCenter: "Kriz Merkezi",
-    crisisSub: "Dramayı çözüp acımasızca dürüst gerçekleri yüzüne vuruyoruz. Yalan yok.",
+    crisisSub: "Kafa karıştıran mesajlar, toksik sinyaller, ani mod düşüşleri ve çok daha fazlası... Hayatındaki krizleri ve kör düğümleri acımasızca dürüst analizlerle çözüyoruz.",
 
     // SoloScenarioSelector
     analysisType: "Analiz Türü",
@@ -692,7 +692,7 @@ const STRINGS = {
 
     // ExtrasModal & Showcase
     extrasShowcaseTitle: "Kriz Merkezi 🔍",
-    extrasShowcaseDesc: "Dramayı çözüp acımasızca dürüst gerçekleri yüzüne vuruyoruz. Yalan yok.",
+    extrasShowcaseDesc: "Kafa karıştıran mesajlar, toksik sinyaller, ani mod düşüşleri ve çok daha fazlası... Hayatındaki krizleri ve kör düğümleri acımasızca dürüst analizlerle çözüyoruz.",
     extrasModalOr: "veya",
     extrasModalUploading: "Yükleniyor...",
     extrasModalUploadScreenshot: "Ekran Görüntüsü Yükle",
