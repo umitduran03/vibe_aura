@@ -479,26 +479,27 @@ Profil Otopsisi İsteği — KENDİ PROFİLİN (kendi profilini analiz ediyoruz)
 
 ${formData.screenshots?.length || 0} adet ${platform} profil ekran görüntüsü verildi.
 Hem acımasız dürüst hem de dengeli bir profil denetimi yap:
-1. Gerçekten işe yarayan güçlü yanları (yeşil bayraklar) belirle.
-2. Gerçek zayıflıkları (kırmızı bayraklar) ortaya koy.
-3. Öncelik sırasına göre 3 somut düzeltme öner.
+1. Gerçekten işe yarayan güçlü yanları (green flag'leri) belirle.
+2. Profilini mahveden gerçek zayıflıkları (red flag'leri) ortaya koy.
+3. Öncelik sırasına göre 3 acil düzeltme (top fix) öner.
 4. 0-100 arasında genel puan ver (gerçekçi ol, çoğu profil 40-75 aralığındadır).
 5. Profilin enerjisini özetleyen unutulmaz bir karar cümlesi yaz.
 
 Platform'a özel kriterler:
-- Instagram: estetik tutarlılık, bio kalitesi, başlık etkileşimi
-- Tinder/Bumble/Hinge: fotoğraf sırası, bio hook'u, sohbet açıcı ipuçları
-- X (Twitter): bio özlülüğü, pin'li gönderi kalitesi
+- Instagram: estetik tutarlılık, bio kalitesi, caption'lar, vibe
+- Tinder/Bumble/Hinge: fotoğraf sırası (ilk fotoğraf en önemlisi), bio hook'u, sohbet açıcı ipuçları
+- X (Twitter): bio özlülüğü, pin'li gönderi kalitesi, genel aura
+- BeReal: samimiyet, aura
 
-Çıktın sadece JSON olmalı:
+Çıktın sadece JSON olmalı ve İÇERİĞİ TAMAMEN GEN-Z TÜRKÇESİ OLMALI:
 {
   "title": "Unutulmaz, Gen-Z tarzı profil başlığı (örn: '7'lik Biri 5'lik Profilinde Saklanıyor')",
   "verdict": "Profil enerjisini özetleyen tek bir sert ama adil cümle",
-  "analysis_text": "Detaylı, eğlenceli ve dengeli analiz paragrafı. Neyin işe yaradığını ve neyin battığını açıkla. Gen-Z argosunu kullan.",
+  "analysis_text": "Detaylı, eğlenceli ve dengeli analiz paragrafı. Neyin işe yaradığını ve neyin patladığını açıkla. Gen-Z argosunu (red flag, green flag, aura, pick-me vb.) bolca kullan.",
   "profile_overall_score": 68,
-  "profile_green_flags": ["Spesifik güçlü yan 1", "Spesifik güçlü yan 2"],
-  "profile_red_flags": ["Spesifik zayıflık 1", "Spesifik zayıflık 2"],
-  "profile_top_fixes": ["Öncelikli düzeltme #1", "Öncelikli düzeltme #2", "Öncelikli düzeltme #3"],
+  "profile_green_flags": ["Spesifik iyi yan 1 (Gen-Z diliyle)", "Spesifik iyi yan 2"],
+  "profile_red_flags": ["Spesifik sıkıntı 1 (Gen-Z diliyle)", "Spesifik sıkıntı 2"],
+  "profile_top_fixes": ["Öncelikli fix #1", "Öncelikli fix #2", "Öncelikli fix #3"],
   "profile_platform": "${platform}",
   "profile_mode": "self",
   "theme_color_hex": "#7c3aed"
@@ -537,21 +538,21 @@ Profil Otopsisi İsteği — DEDEKTİF MODU (başkasının profilini analiz ediy
 - Bağlam: ${context || "Yok"}
 
 ${formData.screenshots?.length || 0} adet BAŞKASININ ${platform} profil ekran görüntüsü verildi.
-Bu kişinin profilinden kişilik ve vibe okuması yap:
-1. Yeşil bayraklar — bu kişiyle etkileşime girmeye değdiğini gösteren sinyaller.
-2. Kırmızı bayraklar — sorun işareti olabilecek kalıplar.
-3. Kişilik okuması — bu profil nasıl bir insan olduğunu gösteriyor?
+Bu kişinin profilinden acımasızca kişilik ve vibe okuması yap:
+1. Green flag'ler — bu kişiyle etkileşime girmeye değer olduğunu gösteren sinyaller.
+2. Red flag'ler — arkana bakmadan kaçman veya dikkat etmen gereken toksik kalıplar (ör: bağlama sorunu, pick-me enerjisi).
+3. Kişilik okuması — bu profil nasıl bir aura veriyor?
 4. Etkileşim skoru (0-100): Bu kişi sağa kaydırır/takip eder/yanıt verir mi?
 
-Çıktın sadece JSON olmalı:
+Çıktın sadece JSON olmalı ve İÇERİĞİ TAMAMEN GEN-Z TÜRKÇESİ OLMALI:
 {
-  "title": "Dramatik Gen-Z tarzı bir başlık",
+  "title": "Dramatik Gen-Z tarzı bir başlık (örn: 'Main Character Enerjisi, NPC İcraatı')",
   "verdict": "Bu kişinin profil vibe'ını özetleyen tek bir acımasız cümle",
-  "analysis_text": "Bu kişinin profilini okuyan detaylı, eğlenceli ve acımasız dürüst analiz paragrafı. Ne veriyor? Ne saklıyor? Gen-Z argosu kullan.",
+  "analysis_text": "Bu kişinin profilini okuyan detaylı, eğlenceli ve acımasız dürüst analiz paragrafı. Bize ne veriyor? Neyi saklıyor? Gen-Z argosu (red flag, ghosting vb.) kullan.",
   "profile_overall_score": 55,
-  "profile_green_flags": ["Profilden gerçek yeşil bayrak 1", "Gerçek pozitif sinyal 2"],
-  "profile_red_flags": ["Profilden spesifik kırmızı bayrak", "Başka bir uyarı işareti"],
-  "profile_top_fixes": ["Bu kişiye yaklaşmalı mısın? İpucu 1", "İpucu 2", "Dikkat edilmesi gereken uyarı"],
+  "profile_green_flags": ["Profilden gerçek green flag 1", "Gerçek pozitif sinyal 2"],
+  "profile_red_flags": ["Profilden spesifik red flag", "Başka bir toksik işaret"],
+  "profile_top_fixes": ["Bu kişiye nasıl yaklaşmalısın? İpucu 1", "Dikkat etmen gereken uyarı işareti"],
   "profile_platform": "${platform}",
   "profile_mode": "other",
   "theme_color_hex": "#7c3aed"
