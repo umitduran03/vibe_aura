@@ -74,12 +74,12 @@ export default function ExtrasModal() {
   };
 
   const META: Record<ExtrasType, { title:string; emoji:string; subtitle:string; cost:number; color:string }> = {
-    "toxic-ex": { title: t.extrasToxicTitle, emoji:"💀", subtitle:isTr ? "Şu red flag'leri bir tarayalım..." : "Let's scan those red flags...", cost:3, color:"#ef4444" },
+    "toxic-ex": { title: t.extrasToxicTitle, emoji:"💀", subtitle:isTr ? "Şu red flag'leri bir tarayalım..." : "Let's scan those red flags...", cost:5, color:"#ef4444" },
     situationship: { title: t.extrasSitTitle, emoji:"🤡", subtitle:isTr ? "Ne olduğunuzu çözüyoruz..." : "Decoding what you are...", cost:5, color:"#d946ef" },
-    "mood-reset": { title: t.extrasMoodTitle, emoji:"🔋", subtitle:isTr ? "Acil vibe kontrolü..." : "Emergency vibe check...", cost:3, color:"#06b6d4" },
-    "delulu-check": { title: t.extrasDeluluTitle, emoji:"📱", subtitle:isTr ? "Gerçeklerle yüzleşme zamanı..." : "Time for a reality check...", cost:7, color:"#f59e0b" },
+    "mood-reset": { title: t.extrasMoodTitle, emoji:"🔋", subtitle:isTr ? "Acil vibe kontrolü..." : "Emergency vibe check...", cost:2, color:"#06b6d4" },
+    "delulu-check": { title: t.extrasDeluluTitle, emoji:"📱", subtitle:isTr ? "Gerçeklerle yüzleşme zamanı..." : "Time for a reality check...", cost:10, color:"#f59e0b" },
     "rizz-architect": { title: t.extrasRizzTitle, emoji:"💬", subtitle:isTr ? "Mükemmel cevabı hazırlıyoruz..." : "Crafting the perfect reply...", cost:2, color:"#8b5cf6" },
-    "profile-autopsy": { title: isTr ? "Profil Otopsisi" : "Profile Autopsy", emoji:"🔬", subtitle:isTr ? "Profil masaya yatıyor..." : "Your profile, under the microscope...", cost:8, color:"#7c3aed" },
+    "profile-autopsy": { title: isTr ? "Profil Otopsisi" : "Profile Autopsy", emoji:"🔬", subtitle:isTr ? "Profil masaya yatıyor..." : "Your profile, under the microscope...", cost:7, color:"#7c3aed" },
   };
 
   const isOpen = useAppStore((s) => s.isExtrasModalOpen);

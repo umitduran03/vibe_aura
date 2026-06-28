@@ -26,39 +26,6 @@ export default function ExtrasShowcaseModal() {
     icon: typeof Flame;
   }[] = [
     {
-      id: "toxic-ex",
-      title: t.extrasToxicTitle,
-      emoji: "💀",
-      description: t.extrasToxicDesc,
-      cost: 3,
-      gradient: "from-red-500/20 via-orange-500/10 to-transparent",
-      borderColor: "border-red-500/30",
-      glowColor: "rgba(239, 68, 68, 0.15)",
-      icon: HeartCrack,
-    },
-    {
-      id: "situationship",
-      title: t.extrasSitTitle,
-      emoji: "🤡",
-      description: t.extrasSitDesc,
-      cost: 5,
-      gradient: "from-fuchsia-500/20 via-purple-500/10 to-transparent",
-      borderColor: "border-fuchsia-500/30",
-      glowColor: "rgba(217, 70, 239, 0.15)",
-      icon: Zap,
-    },
-    {
-      id: "mood-reset",
-      title: t.extrasMoodTitle,
-      emoji: "🔋",
-      description: t.extrasMoodDesc,
-      cost: 3,
-      gradient: "from-cyan-500/20 via-teal-500/10 to-transparent",
-      borderColor: "border-cyan-500/30",
-      glowColor: "rgba(6, 182, 212, 0.15)",
-      icon: Sparkles,
-    },
-    {
       id: "delulu-check",
       title: t.extrasDeluluTitle,
       emoji: "📱",
@@ -81,14 +48,47 @@ export default function ExtrasShowcaseModal() {
       icon: Send,
     },
     {
+      id: "situationship",
+      title: t.extrasSitTitle,
+      emoji: "🤡",
+      description: t.extrasSitDesc,
+      cost: 5,
+      gradient: "from-fuchsia-500/20 via-purple-500/10 to-transparent",
+      borderColor: "border-fuchsia-500/30",
+      glowColor: "rgba(217, 70, 239, 0.15)",
+      icon: Zap,
+    },
+    {
+      id: "toxic-ex",
+      title: t.extrasToxicTitle,
+      emoji: "💀",
+      description: t.extrasToxicDesc,
+      cost: 5,
+      gradient: "from-red-500/20 via-orange-500/10 to-transparent",
+      borderColor: "border-red-500/30",
+      glowColor: "rgba(239, 68, 68, 0.15)",
+      icon: HeartCrack,
+    },
+    {
       id: "profile-autopsy",
       title: t.profileAutopsyTitle,
       emoji: "🔬",
       description: t.profileAutopsyDesc,
-      cost: 8,
+      cost: 7,
       gradient: "from-indigo-500/20 via-violet-500/10 to-transparent",
       borderColor: "border-indigo-500/30",
       glowColor: "rgba(124, 58, 237, 0.15)",
+      icon: Sparkles,
+    },
+    {
+      id: "mood-reset",
+      title: t.extrasMoodTitle,
+      emoji: "🔋",
+      description: t.extrasMoodDesc,
+      cost: 2,
+      gradient: "from-cyan-500/20 via-teal-500/10 to-transparent",
+      borderColor: "border-cyan-500/30",
+      glowColor: "rgba(6, 182, 212, 0.15)",
       icon: Sparkles,
     },
   ];
@@ -156,35 +156,32 @@ export default function ExtrasShowcaseModal() {
                     transition={{ delay: 0.1 + i * 0.1 }}
                     whileTap={{ scale: 0.97 }}
                     whileHover={{ scale: 1.01 }}
-                    className={`relative w-full flex items-start gap-4 p-4 rounded-2xl border ${card.borderColor} bg-white/[0.03] backdrop-blur-xl cursor-pointer transition-all duration-300 hover:bg-white/[0.06] overflow-hidden text-left`}
+                    className={`relative w-full flex items-center p-3.5 rounded-2xl border ${card.borderColor} bg-white/[0.03] backdrop-blur-xl cursor-pointer transition-all duration-300 hover:bg-white/[0.06] overflow-hidden text-left group`}
                     style={{
                       boxShadow: `0 8px 32px ${card.glowColor}`,
                     }}
                   >
                     {/* Background gradient */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${card.gradient} pointer-events-none`} />
+                    <div className={`absolute inset-0 bg-gradient-to-r ${card.gradient} opacity-0 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none`} />
 
-                    {/* Icon */}
-                    <div className="relative flex-shrink-0 w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                      <span className="text-2xl">{card.emoji}</span>
+                    {/* Left: Icon */}
+                    <div className="relative flex shrink-0 items-center justify-center w-11 h-11 rounded-xl bg-white/5 border border-white/10 mr-4">
+                      <span className="text-xl">{card.emoji}</span>
                     </div>
 
-                    {/* Content */}
-                    <div className="relative flex-1 min-w-0">
-                      <div className="flex items-center justify-between mb-1">
-                        <h3 className="text-[14px] font-bold text-white/90 truncate pr-2">
-                          {card.title}
-                        </h3>
-                        {/* Cost badge */}
-                        <div className="flex-shrink-0 px-2.5 py-1 rounded-full bg-white/10 border border-white/10 backdrop-blur-md">
-                          <span className="text-[10px] font-bold text-white/90">
-                            ✦ {card.cost}
-                          </span>
-                        </div>
-                      </div>
-                      <p className="text-[12px] leading-relaxed text-white/50">
+                    {/* Middle: Content */}
+                    <div className="relative flex-1 min-w-0 pr-3 py-1">
+                      <h3 className="text-[14px] font-bold text-white/90 mb-0.5 leading-snug">
+                        {card.title}
+                      </h3>
+                      <p className="text-[11px] text-white/50 leading-snug pr-1">
                         {card.description}
                       </p>
+                    </div>
+
+                    {/* Right: Token Badge */}
+                    <div className="relative flex shrink-0 items-center justify-center px-2.5 py-1 rounded-full bg-white/10 text-[10px] font-bold text-white/90 border border-white/10 backdrop-blur-md">
+                      ✦ {card.cost}
                     </div>
                   </motion.button>
                 );

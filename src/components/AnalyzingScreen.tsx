@@ -25,6 +25,7 @@ export default function AnalyzingScreen() {
         case "mood-reset": return t.analyzingMoodReset;
         case "delulu-check": return t.analyzingDeluluCheck;
         case "rizz-architect": return t.analyzingRizzArchitect;
+        case "profile-autopsy": return t.analyzingProfileAutopsy;
       }
     }
 
