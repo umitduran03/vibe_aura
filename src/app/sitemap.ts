@@ -21,12 +21,17 @@ const highPriorityRoutes = [
 
 const standardRoutes = [
   "",                       // Ana sayfa (priority 1.0)
+  "/ai-roast-me",
   "/toxic-ex-scanner",
   "/duo-compatibility",
   "/faq",
   "/situationship-clarifier",
   "/mood-reset",
   "/reply-guru",
+  "/bff-vibe-check",
+  "/crush-calculator",
+  "/ex-compatibility",
+  "/soulmate-radar",
 ];
 
 const legalRoutes = [
