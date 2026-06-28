@@ -43,7 +43,7 @@ export default function InArticleAd() {
   }, []);
 
   return (
-    <div style={{ margin: "32px 0", textAlign: "center" }}>
+    <div className="my-8 w-full text-center min-h-[100px] sm:min-h-[150px] md:min-h-[200px] flex items-center justify-center">
       <ins
         ref={insRef}
         className="adsbygoogle"

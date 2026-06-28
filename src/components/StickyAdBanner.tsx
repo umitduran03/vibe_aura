@@ -15,14 +15,14 @@ import { usePathname } from "next/navigation";
  * - Her sayfa/route değişiminde yeniden mount olur, yeni reklam varsa tekrar belirir.
  */
 
-const BANNER_H = 96;
-const TOTAL_OFFSET = BANNER_H + 8;
-
 export default function StickyAdBanner() {
+  const [bannerHeight, setBannerHeight] = useState(96);
   const [filled,  setFilled]  = useState(false);
   const [closed,  setClosed]  = useState(false);
   const [desktop, setDesktop] = useState(false);
   const pathname = usePathname();
+  
+  const TOTAL_OFFSET = bannerHeight + 8;
 
   const isSeoPage = [
     "/trends", "/faq", "/vibe-dictionary",
@@ -35,9 +35,14 @@ export default function StickyAdBanner() {
 
   const insRef = useRef<HTMLModElement>(null);
 
-  /* Masaüstü tespiti */
+  /* Masaüstü ve Yükseklik tespiti */
   useEffect(() => {
-    const check = () => setDesktop(window.innerWidth >= 1024);
+    const check = () => {
+      setDesktop(window.innerWidth >= 1024);
+      // Ekran genişliği 640px'den küçükse reklam kutusunu 72px'e daralt (50px banner + boşluklar için ideal)
+      // Daha büyükse 96px olarak bırak.
+      setBannerHeight(window.innerWidth < 640 ? 72 : 96);
+    };
     check();
     window.addEventListener("resize", check);
     return () => window.removeEventListener("resize", check);
@@ -101,7 +106,7 @@ export default function StickyAdBanner() {
         display: "flex",
         justifyContent: "center",
         // Reklam dolana kadar sıfır yükseklik — kullanıcı hiçbir şey görmez
-        height: filled && !closed ? `${BANNER_H}px` : 0,
+        height: filled && !closed ? `${bannerHeight}px` : 0,
         overflow: "hidden",
         transition: "height 0.35s cubic-bezier(0.34,1.56,0.64,1)",
       }}
@@ -110,7 +115,7 @@ export default function StickyAdBanner() {
         style={{
           width: "100%",
           maxWidth: "430px",
-          height: `${BANNER_H}px`,
+          height: `${bannerHeight}px`,
           background: "rgba(5,5,16,0.97)",
           borderTop: filled && !closed ? "1px solid rgba(255,255,255,0.09)" : "none",
           position: "relative",
