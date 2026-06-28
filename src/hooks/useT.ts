@@ -323,7 +323,7 @@ const STRINGS = {
     extrasRizzTitle: "The Reply Guru",
     extrasRizzDesc: "Mind games? Won. Drop the screenshot and let me craft the perfect toxic, cool, or safe reply.",
     profileAutopsyTitle: "Profile Autopsy",
-    profileAutopsyDesc: "Brutally honest AI audit of any social media or dating profile. Green flags, red flags, and exactly what to fix.",
+    profileAutopsyDesc: "Audit your own profile to fix your red flags, or use Detective Mode to stalk someone else's vibe. Brutally honest AI profile read.",
 
     comingSoon: "Coming Soon",
     tokenInsufficient: "Not enough tokens! 💎",
@@ -714,7 +714,7 @@ const STRINGS = {
     extrasRizzTitle: "Mesaj Gurusu",
     extrasRizzDesc: "Mesajda ne diyeceğini mi bilmiyorsun? Ekran görüntüsünü bırak — en toksik, havalı veya sağlıklı cevabı ben yazayım.",
     profileAutopsyTitle: "Profil Otopsisi",
-    profileAutopsyDesc: "Sosyal medya veya dating profilini masaya yatırıyoruz. Red flag'leri, green flag'leri ve acil fix'lemen gerekenleri acımasızca yüzüne vuruyoruz.",
+    profileAutopsyDesc: "İster kendi profilini analiz ettirip acil fix'leri öğren, ister Dedektif Moduyla flörtünün profilindeki red/green flag'leri stalkla. Acımasız ve dürüst.",
 
     comingSoon: "Yakında",
     tokenInsufficient: "Yeterli jeton yok! 💎",
