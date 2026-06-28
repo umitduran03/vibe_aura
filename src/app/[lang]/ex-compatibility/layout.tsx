@@ -14,15 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (isTr) {
     return {
       title: "Eski Sevgili (Ex) Uyum Testi & Ayrılık Analizi (YZ) | VibeCheckr",
-      description:
-        "Eski sevgiline mesaj atmadan önce yapay zekaya bir sor. Ayrılık sebebinizi, ego savaşını kimin kazandığını ve geri dönüş riskinizi analiz et.",
-      keywords: [
-        "eski sevgili testi",
-        "ex uyum testi",
-        "eski sevgilime mesaj atmalı mıyım",
-        "ayrılık analizi",
-        "yapay zeka ilişki testi",
-      ],
+      description: "Eski sevgiline mesaj atmadan önce yapay zekaya bir sor. Ayrılık sebebinizi, ego savaşını kimin kazandığını ve geri dönüş riskinizi analiz et.",
+      keywords: ["eski sevgili uyumu","ex uyum testi","ayrılık analizi","eski sevgiliye mesaj atılır mı"],
       alternates: {
         canonical: `${baseUrl}/tr/ex-compatibility`,
         languages: {
@@ -32,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Eski Sevgili (Ex) Uyum Testi & Ayrılık Analizi | VibeCheckr",
-        description: "Ayrılmanız dünya barışı için verilmiş en iyi karar mıydı? Eski sevgiline dönmeden önce YZ ile test et.",
+        title: "Eski Sevgili (Ex) Uyum Testi & Ayrılık Analizi (YZ)",
+        description: "Eski sevgiline mesaj atmadan önce yapay zekaya bir sor. Ayrılık sebebinizi, ego savaşını kimin kazandığını ve geri dönüş riskinizi analiz et.",
         url: `${baseUrl}/tr/ex-compatibility`,
         type: "website",
         locale: "tr_TR",
@@ -42,16 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Toxic Ex Breakup Autopsy & Compatibility AI | VibeCheckr",
-    description:
-      "Before you text your ex, let our AI do a breakup autopsy. Detect the aura mismatch, calculate the relapse risk, and see who won the ego battle.",
-    keywords: [
-      "should i text my ex quiz",
-      "toxic ex test ai",
-      "breakup analyzer",
-      "ex compatibility test",
-      "relationship aura check",
-    ],
+    title: "Ex Compatibility Test & Breakup Analysis AI | VibeCheckr",
+    description: "Ask the AI before texting your ex. Analyze your breakup reason, see who won the ego war, and calculate your relapse risk.",
+    keywords: ["ex compatibility","should i text my ex","breakup analysis","toxic ex relapse"],
     alternates: {
       canonical: `${baseUrl}/en/ex-compatibility`,
       languages: {
@@ -61,8 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Toxic Ex Breakup Autopsy & Compatibility AI | VibeCheckr",
-      description: "Do NOT text them. Let our AI expose why your relationship exploded and calculate your relapse risk.",
+      title: "Ex Compatibility Test & Breakup Analysis AI",
+      description: "Ask the AI before texting your ex. Analyze your breakup reason, see who won the ego war, and calculate your relapse risk.",
       url: `${baseUrl}/en/ex-compatibility`,
       type: "website",
       locale: "en_US",
@@ -70,6 +56,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ExCompatibilityLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

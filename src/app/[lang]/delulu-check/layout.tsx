@@ -14,20 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (isTr) {
     return {
       title: "Delulu Check — Delulu Muyum? Yapay Zeka Gerçeklik Testi | VibeCheckr",
-      description:
-        "Delulu check nedir? Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten seni seviyor mu, yoksa sen mi delusionalsın?",
-      keywords: [
-        "delulu check",
-        "delulu check nedir",
-        "delulu muyum",
-        "delulu testi",
-        "karışık sinyal",
-        "çift mesaj atmak",
-        "delulu ne demek",
-        "gerçeklik testi yapay zeka",
-        "beni seviyor mu",
-        "delulucheck",
-      ],
+      description: "Delulu check nedir? Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten seni seviyor mu, yoksa sen mi delusionalsın?",
+      keywords: ["delulu check","delulu muyum","gerçeklik testi","karışık sinyaller"],
       alternates: {
         canonical: `${baseUrl}/tr/delulu-check`,
         languages: {
@@ -37,9 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Delulu Check — Delulu Muyum? | VibeCheckr",
-        description:
-          "Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten mi ilgileniyor?",
+        title: "Delulu Check — Delulu Muyum? Yapay Zeka Gerçeklik Testi",
+        description: "Delulu check nedir? Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten seni seviyor mu, yoksa sen mi delusionalsın?",
         url: `${baseUrl}/tr/delulu-check`,
         type: "website",
         locale: "tr_TR",
@@ -48,22 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Am I Delulu? AI Delulu Check & Reality Test | VibeCheckr",
-    description:
-      "Am I delusional or are these real mixed signals? Take the free AI delulu check before you double text. Find out if you're being delulu or if they actually like you.",
-    keywords: [
-      "am i delulu",
-      "am i delusional",
-      "delulu check",
-      "delulucheck",
-      "mixed signals meaning",
-      "am i delulu test",
-      "delulu test",
-      "should i text him",
-      "should i text her",
-      "texting advice ai",
-      "reality check relationship",
-    ],
+    title: "Delulu Check — Am I Delusional? Reality Check AI | VibeCheckr",
+    description: "What is a delulu check? Getting mixed signals? Take the AI reality check before double texting. Do they really like you or are you delusional?",
+    keywords: ["delulu check test","am i delusional","mixed signals ai","stop double texting"],
     alternates: {
       canonical: `${baseUrl}/en/delulu-check`,
       languages: {
@@ -73,9 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Am I Delulu? AI Reality Check | VibeCheckr",
-      description:
-        "Drop the receipts and get an unfiltered AI reality check before you double text. Are you being delusional or do they actually like you?",
+      title: "Delulu Check — Am I Delusional? Reality Check AI",
+      description: "What is a delulu check? Getting mixed signals? Take the AI reality check before double texting. Do they really like you or are you delusional?",
       url: `${baseUrl}/en/delulu-check`,
       type: "website",
       locale: "en_US",
@@ -83,6 +56,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function DeluluCheckLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

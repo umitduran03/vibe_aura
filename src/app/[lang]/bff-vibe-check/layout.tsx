@@ -14,15 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (isTr) {
     return {
       title: "BFF Vibe Check & Kanka Uyumu (YZ) | VibeCheckr",
-      description:
-        "İki fotoğraf yükle ve yapay zeka en yakın arkadaşınla (BFF) aranızdaki kaos seviyesini, gizli rolleri ve dedikodu uyumunuzu ortaya çıkarsın.",
-      keywords: [
-        "bff testi",
-        "kanka uyumu testi",
-        "arkadaşlık testi yapay zeka",
-        "vibe check arkadaş",
-        "en yakın arkadaş testi",
-      ],
+      description: "İki fotoğraf yükle ve yapay zeka en yakın arkadaşınla (BFF) aranızdaki kaos seviyesini, gizli rolleri ve dedikodu uyumunuzu ortaya çıkarsın.",
+      keywords: ["bff vibe check","kanka uyumu","en yakın arkadaş testi","yapay zeka arkadaşlık"],
       alternates: {
         canonical: `${baseUrl}/tr/bff-vibe-check`,
         languages: {
@@ -32,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "BFF Vibe Check & Kanka Uyumu | VibeCheckr",
-        description: "En yakın arkadaşınla aranızdaki yıkıcı enerjiyi ve dedikodu potansiyelini YZ ile ölç.",
+        title: "BFF Vibe Check & Kanka Uyumu (YZ)",
+        description: "İki fotoğraf yükle ve yapay zeka en yakın arkadaşınla (BFF) aranızdaki kaos seviyesini, gizli rolleri ve dedikodu uyumunuzu ortaya çıkarsın.",
         url: `${baseUrl}/tr/bff-vibe-check`,
         type: "website",
         locale: "tr_TR",
@@ -42,16 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "BFF Vibe Check & Friendship Compatibility | VibeCheckr",
-    description:
-      "Upload two photos and let our AI calculate your friendship chaos level, secret group roles, and gossip sync with your best friend.",
-    keywords: [
-      "bff test",
-      "best friend compatibility",
-      "friendship test ai",
-      "vibe check friend",
-      "duo dynamic test",
-    ],
+    title: "BFF Vibe Check & Friendship Compatibility AI | VibeCheckr",
+    description: "Upload two photos and let AI reveal your chaos level, hidden roles, and gossip synergy with your best friend.",
+    keywords: ["bff vibe check","best friend compatibility","friendship ai test","duo vibe"],
     alternates: {
       canonical: `${baseUrl}/en/bff-vibe-check`,
       languages: {
@@ -61,8 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "BFF Vibe Check & Compatibility | VibeCheckr",
-      description: "Measure the exact percentage of destructive energy you emit when together with your BFF.",
+      title: "BFF Vibe Check & Friendship Compatibility AI",
+      description: "Upload two photos and let AI reveal your chaos level, hidden roles, and gossip synergy with your best friend.",
       url: `${baseUrl}/en/bff-vibe-check`,
       type: "website",
       locale: "en_US",
@@ -70,6 +56,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function BffVibeCheckLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }

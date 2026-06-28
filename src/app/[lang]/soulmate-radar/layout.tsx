@@ -14,15 +14,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (isTr) {
     return {
       title: "YZ Ruh Eşi Radarı & Aşk Falı | VibeCheckr",
-      description:
-        "Yapay zeka auranı tarasın ve senin için mükemmel ruh eşinin karakterini, nerede tanışacağınızı ve vibe uyumunuzu söylesin.",
-      keywords: [
-        "ruh eşi bulma testi",
-        "aşk falı yapay zeka",
-        "soulmate radar",
-        "kiminle evleneceğim testi",
-        "vibe uyumu",
-      ],
+      description: "Yapay zeka auranı tarasın ve senin için mükemmel ruh eşinin karakterini, nerede tanışacağınızı ve vibe uyumunuzu söylesin.",
+      keywords: ["ruh eşi bulucu","aşk falı yapay zeka","ruh ikizi testi","kiminle evleneceğim"],
       alternates: {
         canonical: `${baseUrl}/tr/soulmate-radar`,
         languages: {
@@ -32,8 +25,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "YZ Ruh Eşi Radarı | VibeCheckr",
-        description: "Ruh eşin seni nerede bekliyor? Yapay zeka auranı okuyup gelecekteki aşkını tahmin etsin.",
+        title: "YZ Ruh Eşi Radarı & Aşk Falı",
+        description: "Yapay zeka auranı tarasın ve senin için mükemmel ruh eşinin karakterini, nerede tanışacağınızı ve vibe uyumunuzu söylesin.",
         url: `${baseUrl}/tr/soulmate-radar`,
         type: "website",
         locale: "tr_TR",
@@ -42,16 +35,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "AI Soulmate Radar & Future Predictor | VibeCheckr",
-    description:
-      "Let AI scan your aura to predict exactly what your true soulmate acts like and where you will meet them. Free soulmate test.",
-    keywords: [
-      "ai soulmate test",
-      "soulmate predictor",
-      "who is my soulmate",
-      "aura compatibility",
-      "future partner test ai",
-    ],
+    title: "AI Soulmate Radar & Love Fortune | VibeCheckr",
+    description: "Let the AI scan your aura and reveal the personality of your perfect soulmate, where you'll meet, and your ultimate vibe compatibility.",
+    keywords: ["soulmate radar","ai love fortune","find my soulmate","aura compatibility"],
     alternates: {
       canonical: `${baseUrl}/en/soulmate-radar`,
       languages: {
@@ -61,8 +47,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "AI Soulmate Radar | VibeCheckr",
-      description: "Stop wasting time. Scan your aura and let AI accurately predict your exact soulmate.",
+      title: "AI Soulmate Radar & Love Fortune",
+      description: "Let the AI scan your aura and reveal the personality of your perfect soulmate, where you'll meet, and your ultimate vibe compatibility.",
       url: `${baseUrl}/en/soulmate-radar`,
       type: "website",
       locale: "en_US",
@@ -70,6 +56,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function SoulmateRadarLayout({ children }: { children: React.ReactNode }) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
