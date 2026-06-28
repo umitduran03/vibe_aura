@@ -458,14 +458,14 @@ Platform-specific criteria:
 - X (Twitter): bio brevity, pinned post quality, overall identity clarity
 - BeReal: authenticity, frequency, engagement
 
-Your output must be purely JSON:
+Your output must be purely JSON and MUST USE GEN-Z SLANG ABUNDANTLY:
 {
   "title": "A memorable, Gen-Z verdict title for their profile (e.g., 'A 7 Hiding in a 5's Profile')",
   "verdict": "One savage but fair one-liner summarizing the profile's energy",
-  "analysis_text": "A detailed, entertaining, balanced paragraph explaining the audit findings. Mention what works and what doesn't. Use Gen-Z slang.",
+  "analysis_text": "A detailed, entertaining, balanced paragraph explaining the audit findings. Mention what works and what doesn't. Use Gen-Z slang heavily (red flag, main character energy, delulu, etc.).",
   "profile_overall_score": 68,
-  "profile_green_flags": ["Specific strength 1", "Specific strength 2", "Specific strength 3"],
-  "profile_red_flags": ["Specific weakness 1", "Specific weakness 2"],
+  "profile_green_flags": ["Specific strength 1 (in Gen-Z tone)", "Specific strength 2", "Specific strength 3"],
+  "profile_red_flags": ["Specific weakness 1 (in Gen-Z tone)", "Specific weakness 2"],
   "profile_top_fixes": ["Priority fix #1 (most impactful)", "Priority fix #2", "Priority fix #3"],
   "profile_platform": "${platform}",
   "profile_mode": "self",
@@ -518,11 +518,11 @@ Perform a brutally honest personality and vibe read based purely on their profil
 4. Engagement score (0-100): How swipe-right/follow-worthy is this person? Should you interact?
 5. Write a detailed, entertaining analysis.
 
-Your output must be purely JSON:
+Your output must be purely JSON and MUST USE GEN-Z SLANG ABUNDANTLY:
 {
   "title": "A dramatic Gen-Z title for the vibe read (e.g., 'Main Character Energy, NPC Execution')",
   "verdict": "One devastating one-liner summarizing this person's profile vibe",
-  "analysis_text": "A detailed, entertaining, brutally honest paragraph reading this person's profile. What are they giving? What are they hiding? Use Gen-Z slang.",
+  "analysis_text": "A detailed, entertaining, brutally honest paragraph reading this person's profile. What are they giving? What are they hiding? Use Gen-Z slang heavily (red flags, ghosting, ick, etc.).",
   "profile_overall_score": 55,
   "profile_green_flags": ["Genuine green flag from their profile", "Another genuine positive signal"],
   "profile_red_flags": ["Specific red flag from profile", "Another red flag pattern"],
