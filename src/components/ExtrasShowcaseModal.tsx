@@ -82,9 +82,9 @@ export default function ExtrasShowcaseModal() {
     },
     {
       id: "profile-autopsy",
-      title: "Profile Autopsy",
+      title: t.profileAutopsyTitle,
       emoji: "🔬",
-      description: "Brutally honest AI audit of any social media or dating profile. Green flags, red flags, and exactly what to fix.",
+      description: t.profileAutopsyDesc,
       cost: 8,
       gradient: "from-indigo-500/20 via-violet-500/10 to-transparent",
       borderColor: "border-indigo-500/30",

@@ -20,7 +20,7 @@ const getThemeLabel = (type: ExtrasType, t: any) => {
     case "mood-reset": return t.extrasTitleMood;
     case "delulu-check": return t.extrasTitleDelulu;
     case "rizz-architect": return t.extrasTitleRizz;
-    case "profile-autopsy": return "Profile Autopsy 🔬";
+    case "profile-autopsy": return `${t.profileAutopsyTitle} 🔬`;
   }
 };
 
@@ -41,6 +41,7 @@ export default function ExtrasResultCard() {
   const [isExporting, setIsExporting] = useState(false);
   const [isDownloading, setIsDownloading] = useState(false);
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const locale = useAppStore((s) => s.locale);
   const t = useT();
   const cardRef = useRef<HTMLDivElement>(null);
 
@@ -294,7 +295,7 @@ export default function ExtrasResultCard() {
                   {profile_mode && (
                     <span className="px-3 py-1 rounded-full text-[11px] font-bold tracking-wide"
                       style={{ backgroundColor: "rgba(255,255,255,0.05)", color: "rgba(255,255,255,0.4)", border: "1px solid rgba(255,255,255,0.1)" }}>
-                      {profile_mode === "self" ? "Self Audit" : "Detective Mode"}
+                      {profile_mode === "self" ? (locale === "tr" ? "Kendi Profilim" : "Self Audit") : (locale === "tr" ? "Dedektif Modu" : "Detective Mode")}
                     </span>
                   )}
                 </div>
@@ -335,7 +336,7 @@ export default function ExtrasResultCard() {
               style={{ backgroundColor: "rgba(34,197,94,0.08)", border: "1px solid rgba(34,197,94,0.2)" }}
             >
               <h3 className="text-[11px] font-bold text-green-400 mb-2 uppercase tracking-wider flex items-center gap-1.5">
-                ✅ Green Flags
+                ✅ {locale === "tr" ? "Yeşil Bayraklar" : "Green Flags"}
               </h3>
               <ul className="space-y-1.5">
                 {profile_green_flags.map((flag, i) => (
@@ -358,7 +359,7 @@ export default function ExtrasResultCard() {
               style={{ backgroundColor: "rgba(239,68,68,0.08)", border: "1px solid rgba(239,68,68,0.2)" }}
             >
               <h3 className="text-[11px] font-bold text-red-400 mb-2 uppercase tracking-wider flex items-center gap-1.5">
-                🚩 Red Flags
+                🚩 {locale === "tr" ? "Kırmızı Bayraklar" : "Red Flags"}
               </h3>
               <ul className="space-y-1.5">
                 {profile_red_flags.map((flag, i) => (
@@ -381,7 +382,7 @@ export default function ExtrasResultCard() {
               style={{ backgroundColor: "rgba(124,58,237,0.08)", border: "1px solid rgba(124,58,237,0.2)" }}
             >
               <h3 className="text-[11px] font-bold text-violet-400 mb-2 uppercase tracking-wider">
-                🔧 Top Fixes
+                🔧 {locale === "tr" ? "Öncelikli Düzeltmeler" : "Top Fixes"}
               </h3>
               <ol className="space-y-2">
                 {profile_top_fixes.map((fix, i) => (

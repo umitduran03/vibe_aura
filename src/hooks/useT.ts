@@ -322,6 +322,8 @@ const STRINGS = {
     extrasDeluluDesc: "Mixed signals? Drop the receipts (max 3 screenshots) or paste the chat. Get an unfiltered reality check before you double text.",
     extrasRizzTitle: "The Reply Guru",
     extrasRizzDesc: "Mind games? Won. Drop the screenshot and let me craft the perfect toxic, cool, or safe reply.",
+    profileAutopsyTitle: "Profile Autopsy",
+    profileAutopsyDesc: "Brutally honest AI audit of any social media or dating profile. Green flags, red flags, and exactly what to fix.",
 
     comingSoon: "Coming Soon",
     tokenInsufficient: "Not enough tokens! 💎",
@@ -711,6 +713,8 @@ const STRINGS = {
     extrasDeluluDesc: "Kafan mı karıştı? Ekran görüntülerini at (maks 3) veya mesajları yapıştır. Çift mesaj atmadan önce kendine gel.",
     extrasRizzTitle: "Mesaj Gurusu",
     extrasRizzDesc: "Mesajda ne diyeceğini mi bilmiyorsun? Ekran görüntüsünü bırak — en toksik, havalı veya sağlıklı cevabı ben yazayım.",
+    profileAutopsyTitle: "Profil Otopsisi",
+    profileAutopsyDesc: "Her sosyal medya veya dating profilinin acımasız dürüst yapay zeka denetimi. Yeşil bayraklar, kırmızı bayraklar ve tam olarak ne düzeltmeli.",
 
     comingSoon: "Yakında",
     tokenInsufficient: "Yeterli jeton yok! 💎",
