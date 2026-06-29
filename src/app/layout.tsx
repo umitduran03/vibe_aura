@@ -56,9 +56,6 @@ export const metadata: Metadata = {
     "AI personality quiz with photo", "shareable AI roast cards",
     "energy check AI", "daily vibe AI",
   ],
-  alternates: {
-    canonical: "https://thevibecheckr.com",
-  },
   robots: {
     index: true,
     follow: true,

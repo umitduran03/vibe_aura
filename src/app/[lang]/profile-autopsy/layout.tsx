@@ -11,6 +11,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: isTr ? "Profil Otopsisi AI" : "Profile Autopsy AI",
+    applicationCategory: "EntertainmentApplication",
+    operatingSystem: "Web, Android, iOS",
+    url: isTr ? `${baseUrl}/tr/profile-autopsy` : `${baseUrl}/en/profile-autopsy`,
+    description: isTr
+      ? "Instagram, Tinder, Bumble, Hinge, X ve BeReal profilinizi yapay zeka ile analiz edin. 0-100 puan, green flag’ler ve red flag düzeltmeleri."
+      : "Let AI dissect your Instagram, Tinder, Bumble, Hinge, X, and BeReal profiles. Get a brutal 0-100 score, green flags, red flags, and exactly how to fix them.",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+    featureList: [
+      "Self Audit Mode — Analyze your own dating profile",
+      "Detective Mode — Stalk someone else's profile",
+      "0-100 Vibe Score",
+      "Red Flag & Ick Detection",
+      "Green Flag Analysis",
+      "Bio Strength Score",
+      "First Impression Rating",
+      "Supports Tinder, Bumble, Hinge, Instagram, X, BeReal",
+    ],
+    screenshot: `${baseUrl}/opengraph-image.png`,
+    creator: {
+      "@type": "Organization",
+      name: "VibeCheckr",
+      url: baseUrl,
+    },
+  };
+
   if (isTr) {
     return {
       title: "Profil Otopsisi AI | Instagram, Tinder, Bumble Profil Analizi | VibeCheckr",
@@ -41,6 +75,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         url: `${baseUrl}/tr/profile-autopsy`,
         type: "website",
         locale: "tr_TR",
+        images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
+      },
+      other: {
+        "application-ld+json": JSON.stringify(jsonLd),
       },
     };
   }
@@ -74,6 +112,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url: `${baseUrl}/en/profile-autopsy`,
       type: "website",
       locale: "en_US",
+      images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
+    },
+    other: {
+      "application-ld+json": JSON.stringify(jsonLd),
     },
   };
 }

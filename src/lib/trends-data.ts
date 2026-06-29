@@ -652,12 +652,12 @@ export const trendsDataEn: TrendArticle[] = [
   {
     slug: "what-is-an-ick",
     title: "What is an Ick? Why One Small Thing Can Kill All Attraction",
-    description: "The 'ick' is the sudden, overwhelming feeling of disgust that makes you lose all attraction instantly. Learn what triggers an ick, why it happens, and if it means you should walk away.",
+    description: "The 'ick' is the sudden, overwhelming feeling of disgust that makes you lose all attraction instantly. Learn what triggers an ick, why it happens, if it's different from a red flag, and whether you can ever come back from it.",
     category: "Dating Psychology",
     publishDate: "2026-06-27",
-    readTime: "5 min read",
-    keywords: ["what is an ick", "ick meaning", "what is ick in dating", "the ick", "ick examples", "getting the ick", "ick relationship", "why do i get the ick", "ick gen-z", "lost attraction"],
-    imageUrl: "/images/trends/situationship.png",
+    readTime: "6 min read",
+    keywords: ["what is an ick", "what is the ick", "ick meaning", "ick ne demek", "ick examples", "getting the ick", "ick in dating", "ick relationship", "why do i get the ick", "sudden loss of attraction", "ick vs red flag", "ick gen-z", "lost attraction"],
+    imageUrl: "/images/trends/the-ick.png",
     content: {
       intro: "You are on a perfectly good date. The chemistry is there, they look amazing, and the conversation is flowing. Then it happens. They laugh just a little too loudly at their own joke. Or they walk slightly too fast while swinging their arms in a weird way. Or they wave at you from across the street in an overly enthusiastic, double-handed wave. And just like that — it is gone. Every drop of attraction you had vanishes in an instant, replaced by a wave of visceral, irrational, overwhelming disgust. That, my friend, is the ick. And once you get it, it almost never goes away.",
       sections: [
@@ -666,12 +666,16 @@ export const trendsDataEn: TrendArticle[] = [
           paragraph: "The ick is a Gen-Z coined term for a sudden, involuntary loss of romantic attraction triggered by a specific behavior, habit, or quirk — usually something objectively small or harmless. It's the romantic equivalent of a switch being flipped. One moment you're completely into someone; the next, the mere thought of touching them gives you the shivers. What makes the ick so brutal is its irrationality. You can't logic your way out of it. You know perfectly well that the person waving enthusiastically isn't doing anything wrong. Yet your brain has decided: absolutely not. The attraction is dead. It cannot be revived."
         },
         {
-          heading: "The Most Common Ick Triggers",
-          paragraph: "While ick triggers are deeply personal, some are nearly universal. Being visibly too excited about impressing you — like running to open the car door, or ordering their food in a weird voice — triggers the ick at scale. Performing anything for an audience (laughing too hard, trying to be seen as the alpha of a group) is another classic. Then there are the logistical icks: watching someone struggle with parallel parking, seeing them hand their phone to the waiter to take a photo, or witnessing them eat with a tiny forkful of food while making direct eye contact. These are objectively minor. Yet they hit like a truck."
+          heading: "The Most Common Ick Triggers (Warning: You May Relate)",
+          paragraph: "While ick triggers are deeply personal, some are nearly universal. Being visibly too excited about impressing you — like running to open the car door, or ordering their food in a weird voice — triggers the ick at scale. Performing anything for an audience (laughing too hard, trying to be seen as the alpha of a group) is another classic. Then there are the logistical icks: watching someone struggle with parallel parking, seeing them hand their phone to the waiter to take a photo, or witnessing them eat with a tiny forkful of food while making direct eye contact. Oh, and the internet's greatest hits: running with a backpack on, clapping when the plane lands, using the word 'yummy,' wearing a lanyard, having their phone on full brightness. These are objectively minor. Yet they hit like a truck."
         },
         {
           heading: "The Psychology Behind the Ick",
           paragraph: "Psychologists suggest the ick might actually be a sophisticated evolutionary mating signal — your subconscious picking up on subtle social competency cues. An overly try-hard behavior might signal social anxiety or insecurity, which your brain registers as a potential long-term compatibility red flag. Alternatively, the ick could be rooted in your own emotional unavailability. Sometimes we develop the ick for genuinely good partners because something about their openness and vulnerability frightens us. It is worth asking yourself: am I experiencing the ick because of a real incompatibility, or am I running away from someone emotionally safe?"
+        },
+        {
+          heading: "Ick vs. Red Flag: Know the Critical Difference",
+          paragraph: "Here's the crucial distinction that people constantly mix up. An ick is an irrational, harmless trigger that kills your personal attraction — it says nothing about the other person's character. A red flag is a legitimate warning sign of toxic, manipulative, or dangerous behavior. Watching someone trip up the stairs is an ick. Watching someone scream at a waiter is a red flag. Both might make you lose attraction, but only one should genuinely concern you. The ick is about your taste in packaging; the red flag is the product itself being defective. Don't confuse them — and critically, don't dismiss actual red flags by telling yourself it's 'just an ick.'"
         },
         {
           heading: "Can You Come Back from the Ick?",
@@ -680,8 +684,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "The ick is one of the most discussed, most relatable, and most ruthless phenomena in modern dating. It is a reminder that attraction is not entirely logical — our bodies and brains are running a complex, often unfair evaluation system that no amount of charm can always override. The best you can do? Know your own ick triggers, be honest when it hits, and try to figure out whether it is a genuine incompatibility signal or your own fear of vulnerability doing the talking."
     },
-    ctaLabel: "Check My Vibe",
-    ctaLink: "/",
+    ctaLabel: "Scan Their Red Flags",
+    ctaLink: "/toxic-ex-scanner",
   }
 ];
 
@@ -1260,36 +1264,6 @@ export const trendsDataTr: TrendArticle[] = [
     ctaLink: "/duo-compatibility",
   },
   {
-    slug: "what-is-the-ick",
-    title: "'The Ick' Nedir? Ve Ondan Geri Dönebilir misin?",
-    description: "Bir an mükemmeller. Bir sonraki anda otobüse koştuklarını gördün ve artık onlara aynı gözle asla bakamayacaksın. 'The ick'e hoş geldin.",
-    category: "Kültür ve Slang",
-    publishDate: "2026-06-22",
-    readTime: "4 dk okuma",
-    keywords: ["the ick ne demek", "ick anlamı", "ick örnekleri", "flörtte ick", "ani çekim kaybı", "neden ick oldum", "ick vs kırmızı bayrak"],
-    imageUrl: "/images/trends/the-ick.png",
-    content: {
-      intro: "Onlardan hoşlanıyordun. Gerçekten, samimi bir şekilde hoşlanıyordun. Kelebekler gerçekti, kimya elektrikliydi ve zihnen geleceğinizi planlıyordun. Sonra bir gün, hiçbir uyarı veya mantıklı sebep olmaksızın, tamamen sıradan bir şey yapmalarını izledin — otobüse koştular, belirli bir şekilde sandviç yediler veya telefonda bebek sesi kullandılar — ve içindeki bir şey öldü. Anında, geri dönülemez biçimde ve tamamen. Her damla çekim buharlaştı, yerini açıklayamadığın, haklı çıkaramadığın veya geri alamadığın içgüdüsel bir itilme hissi aldı. Tebrikler: az önce 'ick' yaşadın.",
-      sections: [
-        {
-          heading: "Ick'in Arkasındaki Psikoloji",
-          paragraph: "Ick sadece bir TikTok trendi değil — gerçek bir psikolojik fenomen. Psikologlar bunun, 'halo etkisinin' (birine çekildiğin için olumlu görme) aniden çöktüğü algıda ani bir değişimle ilgili olduğuna inanıyor. Bir tetikleyici — genellikle kişiyi çocuksu, garip veya 'çekici olmayan' gösteren bir şey — büyüyü bozar. Beynin onları 'romantik ilgi'den 'garip insan'a yeniden sınıflandırdığında, geri dönüş neredeyse imkansızdır. Bilinçaltın aslında şunu söylüyor: 'Yeterince gördüm. Bu kişi uygun bir eş değil.'"
-        },
-        {
-          heading: "En Yaygın Ick'ler (Uyarı: Kendini Görebilirsin)",
-          paragraph: "İnternet binlerce ick'i katalogladı ve güzellikleri ne kadar absürd derecede spesifik olmaları. Sırt çantasıyla koşmak. Uçak indiğinde alkışlamak. 'Nefis' kelimesini kullanmak. Çok hızlı yürümek. Çok yavaş yürümek. Yemek sipariş etmesi çok uzun sürmek. Garsona el sallamak ve görmezden gelinmek. Ick'lerin meselesi şu ki rasyonel değiller — içgüdüsel. Var olduğunu bile bilmediğin bilinçaltı tercihler hakkında bir şeyler ortaya koyuyorlar."
-        },
-        {
-          heading: "Ick vs. Kırmızı Bayrak: Farkı Bilin",
-          paragraph: "İşte kritik ayrım. Ick, kişisel çekimini öldüren irrasyonel, zararsız bir tetikleyicidir. Kırmızı bayrak, toksik veya tehlikeli davranışın meşru bir uyarı işaretidir. Birinin merdivenlerde tökezlediğini izlemek ick'tir. Birinin garsona bağırdığını izlemek kırmızı bayraktır. İkisi de çekimi kaybettiribilir, ama sadece biri seni gerçekten endişelendirmelidir. Ick ambalaj zevkindir; kırmızı bayrak ürünün kendisinin kusurlu olmasıdır. Karıştırmayın."
-        }
-      ],
-      conclusion: "Ick, çekimin tamamen bilinçli kontrolümüz altında olmadığının bir hatırlatıcısıdır. Mantıkla çıkamazsın ve birini kesinlikle ick'lememiş hale getiremezsin. En iyi yaklaşım? Kabul et, devam et ve birisinin göreceği yerde otobüse koşarak asla ick vermemek için dua et."
-    },
-    ctaLabel: "Kırmızı Bayraklarını Tara",
-    ctaLink: "/toxic-ex-scanner",
-  },
-  {
     slug: "love-languages-which-one-are-you",
     title: "5 Sevgi Dili: Hangisisin (ve Neden Önemli)?",
     description: "Onaylama sözleri mi? Fiziksel temas mı? Kaliteli zaman mı? Sevgi dilini ve partnerinin dilini anlamak, daha sağlıklı ilişkilerin şifre kodu.",
@@ -1322,26 +1296,30 @@ export const trendsDataTr: TrendArticle[] = [
   {
     slug: "what-is-an-ick",
     title: "Ick Nedir? Neden Tek Bir Küçük Şey Tüm Çekimi Öldürüyor?",
-    description: "'Ick', birine olan tüm çekimin bir anda, büyük bir iğrenme dalgasıyla yok olması. Ick ne demek, nedenleri, tetikleyicileri ve gerçekten o kişiden uzaklaşman gerekip gerekmediği.",
+    description: "'Ick', birine olan tüm çekimin bir anda yok olması. Ick ne demek, ick nedir, tetikleyicileri, kırmızı bayraktan farkı ve o kişiden gerçekten uzaklaşman gerekip gerekmediği.",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-27",
-    readTime: "5 dk okuma",
-    keywords: ["ick nedir", "ick ne demek", "ick ne anlama gelir", "ick örnekleri", "ick almak", "ick ilişki", "çekim kaybı", "gen-z ick", "birinden ick almak", "ick neden olur"],
-    imageUrl: "/images/trends/situationship.png",
+    readTime: "6 dk okuma",
+    keywords: ["ick nedir", "ick ne demek", "the ick ne demek", "ick ne anlama gelir", "ick örnekleri", "ick almak", "ick ilişki", "çekim kaybı", "gen-z ick", "birinden ick almak", "ick neden olur", "ick vs kırmızı bayrak", "ani çekim kaybı"],
+    imageUrl: "/images/trends/the-ick.png",
     content: {
       intro: "Harika giden bir buluşmanın ortasındasın. Kimya var, kişi güzel görünüyor, sohbet akıyor. Sonra oluyor. Kendi şakasına biraz fazla yüksek sesle gülüyor. Ya da yürürken kollarını garip sallayarak biraz fazla hızlı yürüyor. Veya seni sokağın karşısından iki eliyle birden bayrak gibi sallayarak selamlıyor. Ve işte o an — bitti. İçinde birikmekte olan her damla çekim saniyeler içinde yerle bir oluyor, yerine korkunç, mantıksız ve seni yutacak gibi gelen bir iğrenme dalgası geçiyor. İşte bu dostum, 'ick'. Ve bir kez aldığında, neredeyse hiç geçmiyor.",
       sections: [
         {
           heading: "Bu 'Ick' Olayı Tam Olarak Nedir?",
-          paragraph: "Ick, birine olan romantik çekimin belirli bir davranış, alışkanlık veya küçük bir ayrıntı tarafından aniden, istemsizce yok edilmesi demek. Gen-Z'nin ortaya attığı bu terim, romantizmde bir düğmeye basılması gibidir. Bir an tamamen o kişiye çekiliyorsun; bir sonraki anda onun hakkında düşünmek bile seni rahatsız ediyor. İck'in en acımasız yanı irrasyonelliğidir. Mantık yoluyla çıkamazsın. İki eliyle selamlayan kişinin yanlış bir şey yapmadığını gayet iyi biliyorsun. Ama beynin karar verdi: Asla. Çekim öldü. Diriltilemiyor."
+          paragraph: "Ick, birine olan romantik çekimin belirli bir davranış, alışkanlık veya küçük bir ayrıntı tarafından aniden, istemsizce yok edilmesi demek. Gen-Z'nin ortaya attığı bu terim, romantizmde bir düğmeye basılması gibidir. Bir an tamamen o kişiye çekiliyorsun; bir sonraki anda onun hakkında düşünmek bile seni rahatsız ediyor. Ick'in en acımasız yanı irrasyonelliğidir. Mantık yoluyla çıkamazsın. İki eliyle selamlayan kişinin yanlış bir şey yapmadığını gayet iyi biliyorsun. Ama beynin karar verdi: Asla. Çekim öldü. Diriltilemiyor."
         },
         {
-          heading: "En Yaygın Ick Tetikleyicileri",
-          paragraph: "Ick tetikleyiciler çok kişisel olsa da bazıları neredeyse evrensel. Seni etkilemek için fazla çaba harcayan davranışlar — mesela arabanın kapısını açmak için neredeyse koşarak gelmek veya yemek siparişini garip bir tonlamayla vermek — büyük ick tetikleyicileri. Bir grup içinde kendini büyük göstermeye çalışmak da klasik bir ick. Bir de lojistik ick'ler var: paralel park yaparken paniğe kapılan birini izlemek, fotoğraf çektirmek için telefonu garsona vermek, ya da sana doğrudan bakarak ufacık çatal lokmaları alarak yemek yemek. Bunlar objektif olarak küçük şeyler. Ama bir kamyon gibi çarpıyorlar."
+          heading: "En Yaygın Ick Tetikleyicileri (Uyarı: Kendini Görebilirsin)",
+          paragraph: "Ick tetikleyiciler çok kişisel olsa da bazıları neredeyse evrensel. Seni etkilemek için fazla çaba harcayan davranışlar — mesela arabanın kapısını açmak için neredeyse koşarak gelmek veya yemek siparişini garip bir tonlamayla vermek — büyük ick tetikleyicileri. Bir grup içinde kendini büyük göstermeye çalışmak da klasik bir ick. Bir de lojistik ick'ler var: paralel park yaparken paniğe kapılan birini izlemek, fotoğraf çektirmek için telefonu garsona vermek, ya da sana doğrudan bakarak ufacık çatal lokmaları alarak yemek yemek. Ve internetin en çok paylaşılan ick'leri: sırt çantasıyla koşmak, uçak indiğinde alkışlamak, 'nefis' kelimesini kullanmak, telefonu tam parlaklıkta tutmak. Bunlar objektif olarak küçük şeyler. Ama bir kamyon gibi çarpıyorlar."
         },
         {
           heading: "Ick'in Arkasındaki Psikoloji",
           paragraph: "Psikologlar, ick'in aslında çok gelişmiş bir evrimsel eşleşme sinyali olabileceğini söylüyor — bilinçaltının sosyal yeterlilik ipuçlarını yakaladığı ince bir mekanizma. Fazla 'kasılan' bir davranış, sosyal kaygıyı veya güvensizliği işaret edebilir ve beynin bunu uzun vadeli uyumsuzluk işareti olarak kaydetmesine yol açar. Öte yandan ick, bazen kendi duygusal kaçınmanlığımızdan da kaynaklanabilir. Bazen gerçekten iyi olan birine karşı ick geliştiririz çünkü onların açıklığı ve kırılganlığı bizi korkutur. Şunu sormaya değer: Bu ick gerçek bir uyumsuzluk mu işaret ediyor, yoksa duygusal açıdan güvenli birinden mi kaçıyorum?"
+        },
+        {
+          heading: "Ick vs. Kırmızı Bayrak: Kritik Fark",
+          paragraph: "İnsanların sürekli karıştırdığı kritik ayrım bu. Ick, kişisel çekimini öldüren irrasyonel, zararsız bir tetikleyicidir — karşındaki kişinin karakteri hakkında hiçbir şey söylemez. Kırmızı bayrak ise toksik, manipülatif veya tehlikeli davranışın gerçek bir uyarı işaretidir. Birinin merdivenlerde tökezlediğini izlemek ick'tir. Birinin garsona bağırdığını izlemek kırmızı bayraktır. İkisi de çekimi kaybettiribilir, ama sadece biri seni gerçekten endişelendirmelidir. Ick ambalaj zevkindir; kırmızı bayrak ürünün kendisinin kusurlu olmasıdır. Karıştırmayın — ve gerçek kırmızı bayrakları 'sadece bir ick' diyerek geçiştirme."
         },
         {
           heading: "Ick'ten Geri Dönüş Mümkün mü?",
@@ -1350,8 +1328,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Ick, modern flört dünyasının en çok konuşulan, en yaygın ve en acımasız fenomenlerinden biri. Çekimin her zaman tamamen mantıklı olmadığının bir hatırlatıcısı — vücudumuz ve beynimiz, hiçbir cazibinin her zaman yenemeyeceği karmaşık ve adil olmayan bir değerlendirme sistemi çalıştırıyor. En iyi yapabileceğin şey? Kendi ick tetikleyicilerini tanı, geldiğinde dürüst ol ve bunun gerçek bir uyumsuzluk işareti mi yoksa kendi kırılganlık korkunun mu sesini duyduğunu anlamaya çalış."
     },
-    ctaLabel: "Vibe'ımı Kontrol Et",
-    ctaLink: "/",
+    ctaLabel: "Kırmızı Bayraklarını Tara",
+    ctaLink: "/toxic-ex-scanner",
   }
 ];
 

@@ -39,13 +39,21 @@ const legalRoutes = [
   "/terms",
 ];
 
-// Search Console'da gösterim alan trend makaleleri (yüksek öncelik)
+// Yüksek impact + potansiyelli trend makaleleri (priority 0.8)
 const highImpactTrendSlugs = [
-  "fix-negative-aura-mood",       // 4 gösterim
-  "aura-battle-who-is-cooler",    // 3 gösterim
-  "ai-photo-personality-test",    // 3 gösterim
-  "what-is-an-ick",               // Yeni - hedef keyword
+  // Search Console'da doğrulanmış gösterim alanlar
+  "fix-negative-aura-mood",           // 4 gösterim
+  "aura-battle-who-is-cooler",        // 3 gösterim
+  "ai-photo-personality-test",        // 3 gösterim
+  "what-is-an-ick",                   // Ana ick makalesi - hedef keyword
+  // Yüksek arama hacmi / delulu hub
+  "mixed-signals-or-delulu",          // delulu-check ile sinerji
+  "are-you-delulu",                   // delulu cluster
+  "situationship-vs-relationship",    // yüksek arama hacmi
+  "what-is-rizz",                     // viral Gen-Z keyword
+  "gen-z-dating-terms-2026",          // hub içerik - çok keyword
 ];
+
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [];

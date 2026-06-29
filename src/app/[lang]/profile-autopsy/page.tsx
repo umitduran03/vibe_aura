@@ -86,26 +86,9 @@ export default function ProfileAutopsyLanding() {
   const lang = (params?.lang as string) ?? "en";
   const isTr = lang === "tr";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: "Profile Autopsy AI",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Any",
-    description: isTr
-      ? "Instagram, Tinder, Bumble, Hinge, X ve BeReal profilinizi yapay zeka ile analiz edin. 0-100 puan, green flag'ler ve red flag düzeltmeleri."
-      : "Let AI dissect your Instagram, Tinder, Bumble, Hinge, X, and BeReal profiles. Get a brutal 0-100 score, green flags, red flags, and exactly how to fix them.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-violet-500/30 overflow-x-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
       {/* Background Glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[55%] h-[55%] rounded-full bg-violet-900/25 blur-[160px]" />
