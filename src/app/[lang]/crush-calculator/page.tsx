@@ -230,10 +230,10 @@ export default function CrushCalculatorLanding() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.08 }}
-                className="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white/5 border border-white/10"
+                className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 p-5 rounded-2xl bg-white/5 border border-white/10"
               >
-                <span className="text-white/70 text-sm shrink-0">💭 {s.input}</span>
-                <span className="text-purple-400 text-sm font-medium text-right">→ {s.output}</span>
+                <span className="text-white/70 text-sm font-medium">💭 {s.input}</span>
+                <span className="text-purple-400 text-sm font-bold sm:text-right">→ {s.output}</span>
               </motion.div>
             ))}
           </div>
