@@ -332,7 +332,7 @@ export default function DailyVibeBanner() {
             className="flex items-center justify-end gap-1.5 select-none pt-3 mt-1 border-t border-white/5"
           >
             <WaveLogoIcon size={11} className="opacity-50" />
-            <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.40)" }}>VibeCheckr.com</span>
+            <span className="text-[10px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.40)" }}>thevibecheckr.com</span>
           </div>
         )}
       </div>

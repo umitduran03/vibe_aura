@@ -17,6 +17,40 @@ const platforms = [
   { name: "BeReal", emoji: "📱" },
 ];
 
+const stats = [
+  { value: "1M+", descEn: "profiles analyzed", descTr: "profil analiz edildi" },
+  { value: "84%", descEn: "had hidden red flags", descTr: "gizli red flag içeriyordu" },
+  { value: "< 10 sec", descEn: "to get your roast", descTr: "analiz süresi" },
+  { value: "100%", descEn: "free forever", descTr: "ücretsiz, her zaman" },
+];
+
+const relatedTools = [
+  {
+    slug: "delulu-check",
+    emoji: "🧠",
+    titleEn: "Delulu Check",
+    titleTr: "Delulu Check",
+    descEn: "Find out if you're delusional or if they actually like you",
+    descTr: "Gerçekten senden hoşlanıyor mu yoksa delulu musun öğren",
+  },
+  {
+    slug: "toxic-ex-scanner",
+    emoji: "☢️",
+    titleEn: "Toxic Ex Scanner",
+    titleTr: "Toksik Eski Sevgili Tarayıcı",
+    descEn: "Scan for narcissistic and manipulative patterns",
+    descTr: "Narsistik ve manipülatif kalıpları tara",
+  },
+  {
+    slug: "situationship-clarifier",
+    emoji: "🌫️",
+    titleEn: "Situationship Clarifier",
+    titleTr: "Situationship Çözücü",
+    descEn: "Find out if you're in a real relationship or just a placeholder",
+    descTr: "Gerçek ilişkide misin yoksa yedek misin öğren",
+  },
+];
+
 const modes = [
   {
     icon: "🔬",
@@ -219,6 +253,28 @@ export default function ProfileAutopsyLanding() {
           </motion.div>
         </div>
 
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-violet-500/30 transition-all text-center group"
+            >
+              <div className="text-2xl font-black text-violet-400 group-hover:scale-110 transition-transform">{stat.value}</div>
+              <div className="text-xs text-white/50 mt-1 leading-snug">{isTr ? stat.descTr : stat.descEn}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
         <InArticleAd />
 
         {/* Mode Cards */}
@@ -301,6 +357,45 @@ export default function ProfileAutopsyLanding() {
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+
+        {/* Related Tools Section */}
+        <div className="mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-2xl font-black text-white mb-2">
+              {isTr ? "İlgili Araçlar" : "Related Tools"}
+            </h2>
+            <p className="text-white/40 text-sm">
+              {isTr ? "Profil otopsisinden sonra bunlara da bak" : "Also check these after your autopsy"}
+            </p>
+          </motion.div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {relatedTools.map((tool, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Link
+                  href={`/${lang}/${tool.slug}`}
+                  className="block p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-violet-500/30 hover:bg-white/[0.07] transition-all duration-300 group h-full"
+                >
+                  <div className="text-2xl mb-3 group-hover:scale-110 transition-transform">{tool.emoji}</div>
+                  <h3 className="text-sm font-bold text-white mb-1 group-hover:text-violet-300 transition-colors">
+                    {isTr ? tool.titleTr : tool.titleEn}
+                  </h3>
+                  <p className="text-xs text-white/50">{isTr ? tool.descTr : tool.descEn}</p>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
 

@@ -2,35 +2,111 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, Users, Sparkles, HeartCrack, Heart, Zap } from "lucide-react";
+import { ArrowLeft, Users, Sparkles, HeartCrack, Heart, Zap, CheckCircle, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
+import InArticleAd from "@/components/InArticleAd";
+
+const stats = [
+  { value: "3M+", descEn: "duos analyzed", descTr: "ikili analiz edildi" },
+  { value: "67%", descEn: "were toxic duos", descTr: "toksik ikili çıktı" },
+  { value: "< 10 sec", descEn: "to get your result", descTr: "sonuç süresi" },
+  { value: "100%", descEn: "free forever", descTr: "ücretsiz, her zaman" },
+];
+
+const scenarios = [
+  {
+    emoji: "👯",
+    labelEn: "Best friends forever → AI: 78% toxic duo energy, 22% support",
+    labelTr: "Sonsuza dek en iyi arkadaşlar → YZ: %78 toksik ikili enerjisi, %22 destek",
+  },
+  {
+    emoji: "💑",
+    labelEn: "New couple → 91% chaos potential, 9% stability",
+    labelTr: "Yeni çift → %91 kaos potansiyeli, %9 istikrar",
+  },
+  {
+    emoji: "👨‍👧",
+    labelEn: "Siblings → AI confirmed you have competitive sibling energy",
+    labelTr: "Kardeşler → YZ, rekabetçi kardeş enerjisi taşıdığınızı doğruladı",
+  },
+  {
+    emoji: "💼",
+    labelEn: "Coworkers → AI: one of you is carrying the team",
+    labelTr: "İş arkadaşları → YZ: biriniz takımı sırtlıyor",
+  },
+];
+
+const relatedTools = [
+  {
+    slug: "aura-battle",
+    emoji: "⚔️",
+    titleEn: "Aura Battle",
+    titleTr: "Aura Savaşı",
+    descEn: "Pit your aura against someone else's and see who wins",
+    descTr: "Auranı bir başkasıyla karşılaştır, kim kazanır gör",
+  },
+  {
+    slug: "bff-vibe-check",
+    emoji: "🤝",
+    titleEn: "BFF Vibe Check",
+    titleTr: "En İyi Arkadaş Vibe Testi",
+    descEn: "Find out if your friendship energy is aligned or chaotic",
+    descTr: "Arkadaşlık enerjinizin uyumlu mu kaotik mi olduğunu öğren",
+  },
+  {
+    slug: "situationship-clarifier",
+    emoji: "🌫️",
+    titleEn: "Situationship Clarifier",
+    titleTr: "Situationship Çözücü",
+    descEn: "Find out if you're in a real relationship or just a placeholder",
+    descTr: "Gerçek ilişkide misin yoksa yedek misin öğren",
+  },
+];
+
+const redGreenFlags = [
+  {
+    type: "red",
+    icon: <XCircle className="w-5 h-5" />,
+    titleEn: "Red flags",
+    titleTr: "Kırmızı Bayraklar",
+    itemsEn: [
+      "Competes with you",
+      "Drains your energy",
+      "Talks behind your back",
+    ],
+    itemsTr: [
+      "Seninle rekabet etmesi",
+      "Enerjini sömürmesi",
+      "Arkandan konuşması",
+    ],
+  },
+  {
+    type: "green",
+    icon: <CheckCircle className="w-5 h-5" />,
+    titleEn: "Green flags",
+    titleTr: "Yeşil Bayraklar",
+    itemsEn: [
+      "Hypes you up",
+      "Mutual effort",
+      "Safe space",
+    ],
+    itemsTr: [
+      "Seni yükseltmesi",
+      "Karşılıklı çaba",
+      "Güvenli alan olması",
+    ],
+  },
+];
 
 export default function DuoCompatibilityLanding() {
   const params = useParams();
-  const isTr = params?.lang === "tr";
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr ? "YZ İkili Uyumluluk Testi" : "AI Duo Compatibility Test",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Any",
-    description: isTr 
-      ? "İki fotoğraf yükle ve yapay zekamız ilişkinizin tam kimyasını, auralarınızın nasıl karıştığını ve romantik uyumluluğunuzu hesaplasın."
-      : "Upload two photos and let our AI calculate your exact relationship chemistry, aura blend, and romantic compatibility.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD"
-    }
-  };
+  const lang = (params?.lang as string) ?? "en";
+  const isTr = lang === "tr";
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-pink-500/30 overflow-x-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
       {/* Background Glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-pink-600/20 blur-[150px]" />
@@ -78,7 +154,7 @@ export default function DuoCompatibilityLanding() {
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
-                href={`/${isTr ? "tr" : "en"}?feature=duo-compatibility`}
+                href={`/${lang}?feature=duo-compatibility`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(236,72,153,0.5)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 <Zap className="w-5 h-5 animate-pulse" />
@@ -121,6 +197,30 @@ export default function DuoCompatibilityLanding() {
           </motion.div>
         </div>
 
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-pink-500/30 transition-all text-center group"
+            >
+              <div className="text-2xl font-black text-pink-400 group-hover:scale-110 transition-transform">{stat.value}</div>
+              <div className="text-xs text-white/50 mt-1 leading-snug">{isTr ? stat.descTr : stat.descEn}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <InArticleAd />
+
         {/* Features */}
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
@@ -155,6 +255,146 @@ export default function DuoCompatibilityLanding() {
           ))}
         </div>
 
+        {/* Scenario Examples Section */}
+        <div className="mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
+              {isTr ? "Gerçek İkili Analiz Örnekleri" : "Real Duo Analysis Examples"}
+            </h2>
+            <p className="text-white/50">
+              {isTr ? "Bunlar tanıdık geldi mi? Yapay zeka gerçeği söyler." : "Sound familiar? The AI will tell you the truth."}
+            </p>
+          </motion.div>
+          <div className="space-y-3">
+            {scenarios.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{s.emoji}</span>
+                  <p className="text-sm text-white/80">{isTr ? s.labelTr : s.labelEn}</p>
+                </div>
+                <div className="flex-shrink-0 px-3 py-1 rounded-full text-xs font-black tracking-wide bg-pink-500/20 text-pink-400 border border-pink-500/30">
+                  🔮 ANALYZED
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-6"
+          >
+            <Link
+              href={`/${lang}?feature=duo-compatibility`}
+              className="inline-flex items-center gap-2 text-pink-400 hover:text-pink-300 text-sm font-semibold transition-colors"
+            >
+              <Zap className="w-4 h-4" />
+              {isTr ? "İkilimi analiz et →" : "Analyze my duo →"}
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Related Tools Section */}
+        <div className="mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-2xl font-black text-white mb-2">
+              {isTr ? "İlgili Araçlar" : "Related Tools"}
+            </h2>
+            <p className="text-white/40 text-sm">
+              {isTr ? "Duo Compatibility'den sonra bunlara da bak" : "Also check these after your compatibility test"}
+            </p>
+          </motion.div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {relatedTools.map((tool, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Link
+                  href={`/${lang}/${tool.slug}`}
+                  className="block p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-pink-500/30 hover:bg-white/[0.07] transition-all duration-300 group h-full"
+                >
+                  <div className="text-2xl mb-3 group-hover:scale-110 transition-transform">{tool.emoji}</div>
+                  <h3 className="text-sm font-bold text-white mb-1 group-hover:text-pink-300 transition-colors">
+                    {isTr ? tool.titleTr : tool.titleEn}
+                  </h3>
+                  <p className="text-xs text-white/50">{isTr ? tool.descTr : tool.descEn}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── RED vs GREEN FLAGS ── */}
+        <div className="mb-24 mt-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
+              {isTr ? "Sinyalleri Oku" : "Read the Signals"}
+            </h2>
+            <p className="text-white/50">
+              {isTr ? "Yapay zeka her iki tarafı da analiz eder" : "The AI analyzes both sides of the story"}
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {redGreenFlags.map((side, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className={`p-6 rounded-2xl border transition-all ${
+                  side.type === "red"
+                    ? "bg-rose-950/30 border-rose-500/20 hover:border-rose-500/40"
+                    : "bg-emerald-950/30 border-emerald-500/20 hover:border-emerald-500/40"
+                }`}
+              >
+                <div className={`flex items-center gap-2 mb-5 font-bold ${
+                  side.type === "red" ? "text-rose-400" : "text-emerald-400"
+                }`}>
+                  {side.icon}
+                  <h3 className="text-base">{isTr ? side.titleTr : side.titleEn}</h3>
+                </div>
+                <ul className="space-y-3">
+                  {(isTr ? side.itemsTr : side.itemsEn).map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <div className={`mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full ${
+                        side.type === "red" ? "bg-rose-500" : "bg-emerald-500"
+                      }`} />
+                      <span className="text-sm text-white/70 leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
         <FeatureSeoContent featureId="duo-compatibility" isTr={isTr} />
 
         {/* Bottom CTA */}
@@ -174,7 +414,7 @@ export default function DuoCompatibilityLanding() {
               : "Find out if it's true love or just a shared delusion. Free, instant, and terrifyingly accurate."}
           </p>
           <Link
-            href={`/${isTr ? "tr" : "en"}?feature=duo-compatibility`}
+            href={`/${lang}?feature=duo-compatibility`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
             {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}

@@ -12,26 +12,55 @@ export default function BffVibeCheckLanding() {
   const params = useParams();
   const isTr = params?.lang === "tr";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr ? "BFF Vibe Check & Kanka Uyumu" : "BFF Vibe Check & Best Friend Compatibility",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Any",
-    description: isTr 
-      ? "En yakın arkadaşınla (BFF) ne kadar toksik bir ikili olduğunuzu yapay zekaya test ettir."
-      : "Test how chaotic and toxic you and your best friend actually are with our AI BFF Vibe Check.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD"
-    }
-  };
+  const stats = [
+    { value: "6M+", label: isTr ? "analiz edilen arkadaşlık" : "friendships analyzed" },
+    { value: "71%", label: isTr ? "kaotik ikili" : "are chaotic besties" },
+    { value: "< 10 sn", label: isTr ? "analiz süresi" : "< 10 sec" },
+    { value: "100%", label: isTr ? "ücretsiz" : "free" },
+  ];
+
+  const scenarios = [
+    {
+      input: isTr ? "Sen ve en yakın arkadaşın" : "You and your bestie",
+      output: isTr ? "YZ: %94 kaotik ikili, %6 sorumlu yetişkin" : "AI: 94% chaotic duo, 6% responsible adult",
+    },
+    {
+      input: isTr ? "Sen ve iş arkadaşın" : "You and your coworker",
+      output: isTr ? "Aslında çok iyi arkadaşsınız, YZ gizli dostluğu fark etti" : "Actually besties, AI detected secret friendship",
+    },
+    {
+      input: isTr ? "Sen ve kardeşin" : "You and your sibling",
+      output: isTr ? "YZ annenin her konuda haklı olduğunu doğruladı" : "AI confirmed your mom is right about everything",
+    },
+    {
+      input: isTr ? "Sen ve eski arkadaşın" : "You and your ex-bestie",
+      output: isTr ? "YZ her şeyin bozulduğu anı tespit etti" : "AI detected the moment it all went wrong",
+    },
+  ];
+
+  const relatedTools = [
+    {
+      href: `/${isTr ? "tr" : "en"}?feature=duo-compatibility`,
+      emoji: "💞",
+      title: isTr ? "İkili Uyum" : "Duo Compatibility",
+      desc: isTr ? "İki kişinin enerjisini kıyasla" : "Compare two people's energy",
+    },
+    {
+      href: `/${isTr ? "tr" : "en"}?feature=aura-battle`,
+      emoji: "⚔️",
+      title: isTr ? "Aura Savaşı" : "Aura Battle",
+      desc: isTr ? "Kimin aurası daha güçlü?" : "Whose aura wins the battle?",
+    },
+    {
+      href: `/${isTr ? "tr" : "en"}?feature=ai-roast-me`,
+      emoji: "🔥",
+      title: isTr ? "Beni Yerden Ye" : "AI Roast Me",
+      desc: isTr ? "YZ seni acımasızca eleştirsin" : "Let AI brutally roast you",
+    },
+  ];
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-cyan-500/30 overflow-x-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
       {/* Background Glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-900/20 blur-[150px]" />
@@ -40,7 +69,7 @@ export default function BffVibeCheckLanding() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
         {/* Navigation */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center gap-4 mb-16"
@@ -58,8 +87,8 @@ export default function BffVibeCheckLanding() {
         </motion.div>
 
         {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
-          <motion.div 
+        <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, type: "spring" }}
@@ -73,7 +102,7 @@ export default function BffVibeCheckLanding() {
               {isTr ? "Gerçek BFF misiniz Yoksa Sadece Dedikodu Ortağı mı?" : "True BFFs or Just Gossip Partners?"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
-              {isTr 
+              {isTr
                 ? "İkinizin bir fotoğrafını yükle ve yapay zeka bu arkadaşlığın ne kadar derin, toksik veya eğlenceli bir kaos olduğunu saniyeler içinde analiz etsin."
                 : "Upload a pic of you two and let the AI analyze exactly how deep, toxic, or hilariously chaotic your friendship really is."}
             </p>
@@ -87,8 +116,8 @@ export default function BffVibeCheckLanding() {
               </Link>
             </div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
@@ -105,40 +134,72 @@ export default function BffVibeCheckLanding() {
                 </motion.div>
                 <h3 className="text-xl font-black text-cyan-400">{isTr ? "İkili Dinamik" : "Duo Dynamic"}</h3>
                 <p className="text-sm text-white/60 font-medium leading-relaxed">
-                  {isTr ? `"Biri mantıklı diğeri yürüyen felaket. Ortamlarda birbirinizi gazlamaktan başka bir işe yaramıyorsunuz."` : `"One is the mom friend, the other is a walking disaster. You literally just enable each other's bad choices."`}
+                  {isTr
+                    ? `"Biri mantıklı diğeri yürüyen felaket. Ortamlarda birbirinizi gazlamaktan başka bir işe yaramıyorsunuz."`
+                    : `"One is the mom friend, the other is a walking disaster. You literally just enable each other's bad choices."`}
                 </p>
               </div>
             </div>
           </motion.div>
         </div>
 
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 transition-all text-center group"
+            >
+              <div className="text-2xl font-black text-cyan-400 group-hover:scale-110 transition-transform">
+                {stat.value}
+              </div>
+              <div className="text-xs text-white/50 mt-1 leading-tight">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
         <InArticleAd />
 
-        {/* Features/How it works */}
-        <div className="grid md:grid-cols-3 gap-6 mb-24">
+        {/* Features / How it works */}
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
           {[
             {
               title: isTr ? "Kaos Seviyesi" : "Chaos Level",
-              desc: isTr ? "Beraberken dışarıya yaydığınız o yıkıcı enerjinin yüzdesini ölçer." : "Measures the exact percentage of destructive energy you emit when together.",
-              icon: "🌪️"
+              desc: isTr
+                ? "Beraberken dışarıya yaydığınız o yıkıcı enerjinin yüzdesini ölçer."
+                : "Measures the exact percentage of destructive energy you emit when together.",
+              icon: "🌪️",
             },
             {
               title: isTr ? "Gizli Roller" : "Secret Roles",
-              desc: isTr ? "Grupta kimin akıl hocası kimin sorunlu çocuk olduğunu acımasızca yüzünüze vurur." : "Brutally assigns who is the mastermind and who is the problematic child.",
-              icon: "🎭"
+              desc: isTr
+                ? "Grupta kimin akıl hocası kimin sorunlu çocuk olduğunu acımasızca yüzünüze vurur."
+                : "Brutally assigns who is the mastermind and who is the problematic child.",
+              icon: "🎭",
             },
             {
               title: isTr ? "Dedikodu Uyumu" : "Gossip Sync",
-              desc: isTr ? "Sadece bakışarak anlaştığınız o dedikodu telepatisinin ne kadar güçlü olduğunu anlar." : "Understands how strong your eye-contact gossip telepathy really is.",
-              icon: "👀"
-            }
+              desc: isTr
+                ? "Sadece bakışarak anlaştığınız o dedikodu telepatisinin ne kadar güçlü olduğunu anlar."
+                : "Understands how strong your eye-contact gossip telepathy really is.",
+              icon: "👀",
+            },
           ].map((feat, i) => (
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              key={i} 
+              key={i}
               className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/40 hover:bg-white/[0.08] transition-all duration-300 group"
             >
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">{feat.icon}</div>
@@ -148,10 +209,75 @@ export default function BffVibeCheckLanding() {
           ))}
         </div>
 
+        {/* Scenario Examples Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h2 className="text-2xl font-black text-white mb-2">
+            {isTr ? "Gerçek Örnekler" : "Real Scenarios"}
+          </h2>
+          <p className="text-white/50 text-sm mb-6">
+            {isTr ? "Kullanıcıların aldığı gerçek sonuçlardan örnekler" : "Examples from real user results"}
+          </p>
+          <div className="space-y-3">
+            {scenarios.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white/5 border border-white/10"
+              >
+                <span className="text-white/70 text-sm shrink-0">📸 {s.input}</span>
+                <span className="text-cyan-400 text-sm font-medium text-right">→ {s.output}</span>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         <FeatureSeoContent featureId="bff-vibe-check" isTr={isTr} />
 
+        {/* Related Tools Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h2 className="text-2xl font-black text-white mb-2">
+            {isTr ? "Benzer Araçlar" : "Related Tools"}
+          </h2>
+          <p className="text-white/50 text-sm mb-6">
+            {isTr ? "Bunları da beğenebilirsin" : "You might also like these"}
+          </p>
+          <div className="grid md:grid-cols-3 gap-4">
+            {relatedTools.map((tool, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Link
+                  href={tool.href}
+                  className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 hover:bg-white/[0.07] transition-all duration-300 group flex flex-col gap-2 h-full"
+                >
+                  <span className="text-2xl group-hover:scale-110 transition-transform inline-block">{tool.emoji}</span>
+                  <span className="font-bold text-white group-hover:text-cyan-300 transition-colors">{tool.title}</span>
+                  <span className="text-white/50 text-sm leading-relaxed">{tool.desc}</span>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Bottom CTA */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -162,7 +288,7 @@ export default function BffVibeCheckLanding() {
             {isTr ? "Kankanı Test Etmeye Hazır mısın?" : "Ready to test your bestie?"}
           </h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">
-            {isTr 
+            {isTr
               ? "Ücretsiz. Anında sonuç. Sonucu hikayeye atıp onu etiketleme garantili."
               : "Free. Instant. Guaranteed to make you tag them on your story immediately."}
           </p>

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { featureSeoData } from "@/lib/seo-feature-data";
 
 type Props = {
   children: React.ReactNode;
@@ -10,6 +11,20 @@ const baseUrl = "https://thevibecheckr.com";
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
+
+  const featureData = featureSeoData["profile-autopsy"]?.[isTr ? "tr" : "en"];
+  let faqJsonLd = null;
+  if (featureData?.faq?.questions) {
+    faqJsonLd = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: featureData.faq.questions.map((q: any) => ({
+        "@type": "Question",
+        name: q.q,
+        acceptedAnswer: { "@type": "Answer", text: q.a },
+      })),
+    };
+  }
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -78,7 +93,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
       other: {
-        "application-ld+json": JSON.stringify(jsonLd),
+        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
       },
     };
   }
@@ -115,7 +130,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
     other: {
-      "application-ld+json": JSON.stringify(jsonLd),
+      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
     },
   };
 }

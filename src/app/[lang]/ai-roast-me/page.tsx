@@ -8,30 +8,70 @@ import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
 
+const stats = [
+  { value: "5M+", descEn: "roasts delivered", descTr: "gömleme tamamlandı" },
+  { value: "99%", descEn: "brutally honest", descTr: "acımasızca dürüst" },
+  { value: "< 10 sec", descEn: "to get your roast", descTr: "sonuç süresi" },
+  { value: "100%", descEn: "free forever", descTr: "ücretsiz, her zaman" },
+];
+
+const scenarios = [
+  {
+    emoji: "📚",
+    labelEn: "Library selfie → AI roasted your \"trying to look smart\" energy (score: 42/100)",
+    labelTr: "Kütüphane selfiesi → YZ \"akıllı görünmeye çalışıyorum\" auranı gömdü (puan: 42/100)",
+  },
+  {
+    emoji: "💪",
+    labelEn: "Gym mirror selfie → Roasted for the photographer not the gains (score: 31/100)",
+    labelTr: "Spor salonu ayna selfiesi → Kazanımlar değil, fotoğraf için gittiğin ifşalandı (puan: 31/100)",
+  },
+  {
+    emoji: "✈️",
+    labelEn: "Vacation photo → AI found 3 icks in your pose alone",
+    labelTr: "Tatil fotoğrafı → YZ tek pozunda 3 ayrı ick buldu",
+  },
+  {
+    emoji: "⏳",
+    labelEn: "Old photo vs new photo → AI said you peaked in 2019",
+    labelTr: "Eski fotoğraf vs yeni fotoğraf → YZ zirveni 2019'da yaşadığını söyledi",
+  },
+];
+
+const relatedTools = [
+  {
+    slug: "profile-autopsy",
+    emoji: "🔬",
+    titleEn: "Profile Autopsy",
+    titleTr: "Profil Otopsisi",
+    descEn: "Get a full dissection of your social media presence",
+    descTr: "Sosyal medya profilini baştan aşağı analiz et",
+  },
+  {
+    slug: "aura-battle",
+    emoji: "⚔️",
+    titleEn: "Aura Battle",
+    titleTr: "Aura Savaşı",
+    descEn: "Pit your aura against someone else's and see who wins",
+    descTr: "Auranı bir başkasıyla karşılaştır, kim kazanır gör",
+  },
+  {
+    slug: "duo-compatibility",
+    emoji: "👯",
+    titleEn: "Duo Compatibility",
+    titleTr: "İkili Uyumluluk",
+    descEn: "Find out if you and your friend are a power duo or a toxic pair",
+    descTr: "Arkadaşınla güçlü bir ikili mi yoksa toksik bir çift mi öğren",
+  },
+];
+
 export default function AIRoastMeLanding() {
   const params = useParams();
-  const isTr = params?.lang === "tr";
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr ? "YZ Fotoğraf Gömme & Aura Okuma" : "AI Photo Roast & Aura Reading",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Any",
-    description: isTr 
-      ? "Bir selfie yükle ve yapay zekanın tüm sırlarını, insecure davranışlarını ve red flag'lerini acımasızca yüzüne vurmasına hazır ol."
-      : "Upload a selfie and let our AI ruthlessly roast your aura, expose your insecurities, and highlight your red flags.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD"
-    }
-  };
+  const lang = (params?.lang as string) ?? "en";
+  const isTr = lang === "tr";
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-orange-500/30 overflow-x-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
       {/* Background Glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-orange-900/20 blur-[150px]" />
@@ -79,7 +119,7 @@ export default function AIRoastMeLanding() {
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
-                href={`/${isTr ? "tr" : "en"}?feature=ai-roast-me`}
+                href={`/${lang}?feature=ai-roast-me`}
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(234,88,12,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
               >
                 <Flame className="w-5 h-5 animate-pulse" />
@@ -111,6 +151,28 @@ export default function AIRoastMeLanding() {
             </div>
           </motion.div>
         </div>
+
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/30 transition-all text-center group"
+            >
+              <div className="text-2xl font-black text-orange-400 group-hover:scale-110 transition-transform">{stat.value}</div>
+              <div className="text-xs text-white/50 mt-1 leading-snug">{isTr ? stat.descTr : stat.descEn}</div>
+            </motion.div>
+          ))}
+        </motion.div>
 
         <InArticleAd />
 
@@ -148,6 +210,96 @@ export default function AIRoastMeLanding() {
           ))}
         </div>
 
+        {/* Scenario Examples Section */}
+        <div className="mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
+              {isTr ? "Gerçek Gömleme Örnekleri" : "Real Roast Examples"}
+            </h2>
+            <p className="text-white/50">
+              {isTr ? "Bunlar tanıdık geldi mi? Yapay zeka gerçeği söyler." : "Sound familiar? The AI doesn't hold back."}
+            </p>
+          </motion.div>
+          <div className="space-y-3">
+            {scenarios.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="flex items-center justify-between gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all"
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{s.emoji}</span>
+                  <p className="text-sm text-white/80">{isTr ? s.labelTr : s.labelEn}</p>
+                </div>
+                <div className="flex-shrink-0 px-3 py-1 rounded-full text-xs font-black tracking-wide bg-orange-500/20 text-orange-400 border border-orange-500/30">
+                  🔥 ROASTED
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mt-6"
+          >
+            <Link
+              href={`/${lang}?feature=ai-roast-me`}
+              className="inline-flex items-center gap-2 text-orange-400 hover:text-orange-300 text-sm font-semibold transition-colors"
+            >
+              <Flame className="w-4 h-4" />
+              {isTr ? "Beni de göm →" : "Roast me too →"}
+            </Link>
+          </motion.div>
+        </div>
+
+        {/* Related Tools Section */}
+        <div className="mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-2xl font-black text-white mb-2">
+              {isTr ? "İlgili Araçlar" : "Related Tools"}
+            </h2>
+            <p className="text-white/40 text-sm">
+              {isTr ? "AI Roast'tan sonra bunlara da bak" : "Also check these after your roast"}
+            </p>
+          </motion.div>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {relatedTools.map((tool, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Link
+                  href={`/${lang}/${tool.slug}`}
+                  className="block p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-orange-500/30 hover:bg-white/[0.07] transition-all duration-300 group h-full"
+                >
+                  <div className="text-2xl mb-3 group-hover:scale-110 transition-transform">{tool.emoji}</div>
+                  <h3 className="text-sm font-bold text-white mb-1 group-hover:text-orange-300 transition-colors">
+                    {isTr ? tool.titleTr : tool.titleEn}
+                  </h3>
+                  <p className="text-xs text-white/50">{isTr ? tool.descTr : tool.descEn}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
         <FeatureSeoContent featureId="ai-roast-me" isTr={isTr} />
 
         {/* Bottom CTA */}
@@ -167,7 +319,7 @@ export default function AIRoastMeLanding() {
               : "100% Free. You might cry a little. We never save your photos."}
           </p>
           <Link
-            href={`/${isTr ? "tr" : "en"}?feature=ai-roast-me`}
+            href={`/${lang}?feature=ai-roast-me`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
             {isTr ? "Beni Göm" : "Roast Me AI"}

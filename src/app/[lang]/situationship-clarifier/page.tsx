@@ -2,35 +2,168 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, Sparkles, MessageCircleHeart } from "lucide-react";
+import { ArrowLeft, Sparkles, MessageCircleHeart, ExternalLink, CheckCircle, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
+
+const redGreenFlags = [
+  {
+    type: "red",
+    icon: <XCircle className="w-5 h-5" />,
+    titleEn: "Red flags",
+    titleTr: "Kırmızı Bayraklar",
+    itemsEn: [
+      "Only texts late at night",
+      "Avoids DTR conversation",
+      "Hot and cold behavior",
+    ],
+    itemsTr: [
+      "Sadece gece geç saatlerde mesaj atması",
+      "İlişkinin adını koymaktan kaçınması",
+      "Bir sıcak bir soğuk davranması",
+    ],
+  },
+  {
+    type: "green",
+    icon: <CheckCircle className="w-5 h-5" />,
+    titleEn: "Green flags",
+    titleTr: "Yeşil Bayraklar",
+    itemsEn: [
+      "Plans real dates",
+      "Introduces you to friends",
+      "Clear communication",
+    ],
+    itemsTr: [
+      "Gerçek buluşmalar planlaması",
+      "Seni arkadaşlarıyla tanıştırması",
+      "Net iletişim kurması",
+    ],
+  },
+];
 
 export default function SituationshipClarifierLanding() {
   const params = useParams();
   const isTr = params?.lang === "tr";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr ? "Situationship Çözücü YZ" : "Situationship Clarifier AI",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Any",
-    description: isTr 
-      ? "'Biz şimdi neyiz?' gizemini çözüyoruz. Acımasız uyumluluk istatistikleri dahildir."
-      : "Decoding the 'What are we?' mystery. Brutal compatibility stats included.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD"
-    }
-  };
+  const stats = isTr
+    ? [
+        { value: "2M+", label: "Netleştirilen Durum" },
+        { value: "%89", label: "Situationship'te olduğunu bilmiyordu" },
+        { value: "3 sn", label: "Sonuç süresi" },
+        { value: "%100", label: "Ücretsiz" },
+      ]
+    : [
+        { value: "2M+", label: "Clarified" },
+        { value: "89%", label: "Were in situationships and didn't know" },
+        { value: "3 sec", label: "To get results" },
+        { value: "100%", label: "Free" },
+      ];
+
+  const scenarios = isTr
+    ? [
+        {
+          scenario: "6 aydır 'konuşuyoruz'",
+          verdict: "YZ kararı: %91 situationship, %0 ilişki",
+          badge: "Situationship 💀",
+          badgeColor: "text-purple-400 border-purple-500/40 bg-purple-500/10",
+        },
+        {
+          scenario: "3 kez randevuyu iptal etti ama her gece 'iyi geceler' mesajı atıyor",
+          verdict: "Dikkat dağıtıcı, ciddi değil.",
+          badge: "Mixed Signals",
+          badgeColor: "text-fuchsia-400 border-fuchsia-500/40 bg-fuchsia-500/10",
+        },
+        {
+          scenario: "Annesine 'bir arkadaşım' diye tanıttı",
+          verdict: "Bu kırmızı bayrak, sevgilim değil.",
+          badge: "Red Flag 🚩",
+          badgeColor: "text-red-400 border-red-500/40 bg-red-500/10",
+        },
+        {
+          scenario: "Birlikteykende mükemmel, sonra 2 gün hayalet oluyor",
+          verdict: "Sıcak-soğuk döngüsü: klasik situationship.",
+          badge: "Situationship 😶",
+          badgeColor: "text-indigo-400 border-indigo-500/40 bg-indigo-500/10",
+        },
+      ]
+    : [
+        {
+          scenario: "6 months in, still 'talking'",
+          verdict: "AI verdict: 91% situationship, 0% relationship",
+          badge: "Situationship 💀",
+          badgeColor: "text-purple-400 border-purple-500/40 bg-purple-500/10",
+        },
+        {
+          scenario: "They cancelled plans 3 times but text goodnight every day",
+          verdict: "Keeping you on the bench. Not serious.",
+          badge: "Mixed Signals",
+          badgeColor: "text-fuchsia-400 border-fuchsia-500/40 bg-fuchsia-500/10",
+        },
+        {
+          scenario: "Introduced you as 'a friend' to their mom",
+          verdict: "That's a red flag, not a slow burn.",
+          badge: "Red Flag 🚩",
+          badgeColor: "text-red-400 border-red-500/40 bg-red-500/10",
+        },
+        {
+          scenario: "Perfect when together, ghosts you for 2 days after",
+          verdict: "Hot-cold cycle: classic situationship behavior.",
+          badge: "Situationship 😶",
+          badgeColor: "text-indigo-400 border-indigo-500/40 bg-indigo-500/10",
+        },
+      ];
+
+  const relatedTools = isTr
+    ? [
+        {
+          href: "/tr/delulu-check",
+          title: "Delulu Check",
+          desc: "Onunla ilgili hayal mi kuruyorsun yoksa gerçekten bir şans var mı?",
+          emoji: "🤡",
+          color: "hover:border-pink-500/40",
+        },
+        {
+          href: "/tr/toxic-ex-scanner",
+          title: "Toksik Ex Tarayıcı",
+          desc: "Eski sevgilinin red flag'lerini YZ ile ifşa et.",
+          emoji: "🚩",
+          color: "hover:border-red-500/40",
+        },
+        {
+          href: "/tr/reply-guru",
+          title: "Reply Guru",
+          desc: "O mesaja ne cevap vereceğini bilemiyor musun? YZ sana yardım etsin.",
+          emoji: "💬",
+          color: "hover:border-cyan-500/40",
+        },
+      ]
+    : [
+        {
+          href: "/en/delulu-check",
+          title: "Delulu Check",
+          desc: "Are you manifesting or just delusional about this person?",
+          emoji: "🤡",
+          color: "hover:border-pink-500/40",
+        },
+        {
+          href: "/en/toxic-ex-scanner",
+          title: "Toxic Ex Scanner",
+          desc: "Expose your ex's red flags with brutal AI honesty.",
+          emoji: "🚩",
+          color: "hover:border-red-500/40",
+        },
+        {
+          href: "/en/reply-guru",
+          title: "Reply Guru",
+          desc: "Don't know how to respond to their text? Let AI craft the perfect reply.",
+          emoji: "💬",
+          color: "hover:border-cyan-500/40",
+        },
+      ];
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-purple-500/30 overflow-x-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
       {/* Background Glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-900/20 blur-[150px]" />
@@ -114,7 +247,29 @@ export default function SituationshipClarifierLanding() {
           </motion.div>
         </div>
 
-        {/* Features/How it works */}
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="p-5 rounded-2xl bg-white/5 border border-purple-500/20 text-center hover:border-purple-500/50 hover:bg-purple-500/5 transition-all duration-300"
+            >
+              <div className="text-2xl md:text-3xl font-black text-purple-400 mb-1">{stat.value}</div>
+              <div className="text-xs text-white/50 font-medium leading-snug">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* How It Works */}
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
             {
@@ -148,7 +303,130 @@ export default function SituationshipClarifierLanding() {
           ))}
         </div>
 
+        {/* Scenarios Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-24"
+        >
+          <h2 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">
+            {isTr ? "Tanıdık Geliyor mu?" : "Sound Familiar?"}
+          </h2>
+          <p className="text-white/50 text-sm mb-8">
+            {isTr ? "Gerçek situationship vakaları ve YZ sonuçları." : "Real situationship cases and AI verdicts."}
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {scenarios.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-white/[0.07] transition-all duration-300"
+              >
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <span className="text-sm font-semibold text-white/80">{s.scenario}</span>
+                  <span className={`shrink-0 text-xs font-bold px-2.5 py-1 rounded-full border ${s.badgeColor}`}>
+                    {s.badge}
+                  </span>
+                </div>
+                <p className="text-sm text-white/50 leading-relaxed">{s.verdict}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* ── RED vs GREEN FLAGS ── */}
+        <div className="mb-24 mt-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-10"
+          >
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
+              {isTr ? "Sinyalleri Oku" : "Read the Signals"}
+            </h2>
+            <p className="text-white/50">
+              {isTr ? "Yapay zeka her iki tarafı da analiz eder" : "The AI analyzes both sides of the story"}
+            </p>
+          </motion.div>
+          <div className="grid md:grid-cols-2 gap-6">
+            {redGreenFlags.map((side, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className={`p-6 rounded-2xl border transition-all ${
+                  side.type === "red"
+                    ? "bg-rose-950/30 border-rose-500/20 hover:border-rose-500/40"
+                    : "bg-emerald-950/30 border-emerald-500/20 hover:border-emerald-500/40"
+                }`}
+              >
+                <div className={`flex items-center gap-2 mb-5 font-bold ${
+                  side.type === "red" ? "text-rose-400" : "text-emerald-400"
+                }`}>
+                  {side.icon}
+                  <h3 className="text-base">{isTr ? side.titleTr : side.titleEn}</h3>
+                </div>
+                <ul className="space-y-3">
+                  {(isTr ? side.itemsTr : side.itemsEn).map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-2.5">
+                      <div className={`mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full ${
+                        side.type === "red" ? "bg-rose-500" : "bg-emerald-500"
+                      }`} />
+                      <span className="text-sm text-white/70 leading-snug">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
         <FeatureSeoContent featureId="situationship-clarifier" isTr={isTr} />
+
+        {/* Related Tools */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-24"
+        >
+          <h2 className="text-2xl font-black text-white mb-2 tracking-tight">
+            {isTr ? "İlgili Araçlar" : "Related Tools"}
+          </h2>
+          <p className="text-white/50 text-sm mb-8">
+            {isTr ? "Bunlar da işine yarayabilir." : "You might also like these."}
+          </p>
+          <div className="grid md:grid-cols-3 gap-4">
+            {relatedTools.map((tool, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Link
+                  href={tool.href}
+                  className={`block p-5 rounded-2xl bg-white/5 border border-white/10 ${tool.color} hover:bg-white/[0.08] transition-all duration-300 group h-full`}
+                >
+                  <div className="text-2xl mb-3 group-hover:scale-110 transition-transform inline-block">{tool.emoji}</div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-sm font-bold text-white group-hover:text-purple-300 transition-colors">{tool.title}</h3>
+                    <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-purple-400 transition-colors" />
+                  </div>
+                  <p className="text-xs text-white/50 leading-relaxed">{tool.desc}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Bottom CTA */}
         <motion.div 

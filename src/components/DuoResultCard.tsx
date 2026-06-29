@@ -382,7 +382,7 @@ export default function DuoResultCard() {
             style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}
           >
             <WaveLogoIcon size={13} className="opacity-60" />
-            <span className="text-[12px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.55)" }}>VibeCheckr.com</span>
+            <span className="text-[12px] font-bold tracking-widest uppercase" style={{ color: "rgba(255,255,255,0.55)" }}>thevibecheckr.com</span>
           </div>
         </m.div>
 

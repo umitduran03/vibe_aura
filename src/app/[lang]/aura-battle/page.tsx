@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { ArrowLeft, Zap, Sparkles, Swords } from "lucide-react";
+import { ArrowLeft, Zap, Sparkles, Swords, ExternalLink } from "lucide-react";
 import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
@@ -11,26 +11,124 @@ export default function AuraBattleLanding() {
   const params = useParams();
   const isTr = params?.lang === "tr";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr ? "Vibe Savaşları (Aura Battle) YZ" : "Aura Battle AI",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Any",
-    description: isTr 
-      ? "Kimin aurası daha yüksek? İki fotoğraf yükleyin ve yapay zeka ikinizi kıyaslayıp kazananı belirlesin, kaybedeni ise fena gömsün."
-      : "Who has the higher aura? Upload two photos and let the AI compare both of you, declare a winner, and brutally roast the loser.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD"
-    }
-  };
+  const stats = isTr
+    ? [
+        { value: "5M+", label: "Savaş Gerçekleşti" },
+        { value: "%74", label: "En iyi arkadaşına yenildi" },
+        { value: "< 10 sn", label: "Sonuç süresi" },
+        { value: "%100", label: "Ücretsiz" },
+      ]
+    : [
+        { value: "5M+", label: "Battles Fought" },
+        { value: "74%", label: "Lost to their best friend" },
+        { value: "< 10 sec", label: "To get results" },
+        { value: "100%", label: "Free" },
+      ];
+
+  const scenarios = isTr
+    ? [
+        {
+          scenario: "Sen ve en iyi arkadaşın",
+          verdict: "YZ arkadaşını 12 aura puanıyla seçti 💀",
+          badge: "Arkadaş Kazandı",
+          badgeColor: "text-amber-400 border-amber-500/40 bg-amber-500/10",
+        },
+        {
+          scenario: "Çift selfie'si",
+          verdict: "O 73 puan, o 89 puan aldı. O kazandı.",
+          badge: "Kız Kazandı",
+          badgeColor: "text-orange-400 border-orange-500/40 bg-orange-500/10",
+        },
+        {
+          scenario: "Aynı fotoğrafı iki kez yükledin",
+          verdict: "YZ yine de öbürünü seçti 🤡",
+          badge: "Kaybettin",
+          badgeColor: "text-red-400 border-red-500/40 bg-red-500/10",
+        },
+        {
+          scenario: "Sokaktaki yabancı vs sen",
+          verdict: "Rastgele birine yenildin",
+          badge: "Yabancı Kazandı",
+          badgeColor: "text-rose-400 border-rose-500/40 bg-rose-500/10",
+        },
+      ]
+    : [
+        {
+          scenario: "You vs your bestie",
+          verdict: "AI picked bestie by 12 aura points 💀",
+          badge: "Bestie Won",
+          badgeColor: "text-amber-400 border-amber-500/40 bg-amber-500/10",
+        },
+        {
+          scenario: "Couple selfie",
+          verdict: "He got 73, she got 89. She won.",
+          badge: "She Won",
+          badgeColor: "text-orange-400 border-orange-500/40 bg-orange-500/10",
+        },
+        {
+          scenario: "You submitted the same photo twice",
+          verdict: "AI still picked the other one 🤡",
+          badge: "You Lost",
+          badgeColor: "text-red-400 border-red-500/40 bg-red-500/10",
+        },
+        {
+          scenario: "Stranger on the street vs you",
+          verdict: "You lost to a random",
+          badge: "Stranger Won",
+          badgeColor: "text-rose-400 border-rose-500/40 bg-rose-500/10",
+        },
+      ];
+
+  const relatedTools = isTr
+    ? [
+        {
+          href: "/tr/delulu-check",
+          title: "Delulu Check",
+          desc: "Hayal mi kuruyorsun yoksa gerçek mi? YZ sana acı gerçeği söylesin.",
+          emoji: "🤡",
+          color: "hover:border-pink-500/40",
+        },
+        {
+          href: "/tr/duo-compatibility",
+          title: "İkili Uyum Testi",
+          desc: "İki kişinin gerçek uyumunu yapay zeka hesaplasın.",
+          emoji: "💞",
+          color: "hover:border-fuchsia-500/40",
+        },
+        {
+          href: "/tr/ai-roast-me",
+          title: "AI Roast Me",
+          desc: "Kendini YZ'ye linç ettir. Acımasız bir gömme seni bekliyor.",
+          emoji: "🔥",
+          color: "hover:border-red-500/40",
+        },
+      ]
+    : [
+        {
+          href: "/en/delulu-check",
+          title: "Delulu Check",
+          desc: "Are you manifesting or just delusional? Let the AI deliver the hard truth.",
+          emoji: "🤡",
+          color: "hover:border-pink-500/40",
+        },
+        {
+          href: "/en/duo-compatibility",
+          title: "Duo Compatibility",
+          desc: "Find out your real compatibility score with your partner or crush.",
+          emoji: "💞",
+          color: "hover:border-fuchsia-500/40",
+        },
+        {
+          href: "/en/ai-roast-me",
+          title: "AI Roast Me",
+          desc: "Get brutally roasted by our AI. No sugarcoating allowed.",
+          emoji: "🔥",
+          color: "hover:border-red-500/40",
+        },
+      ];
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-amber-500/30 overflow-x-hidden">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-
       {/* Background Glows */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-amber-900/20 blur-[150px]" />
@@ -111,7 +209,29 @@ export default function AuraBattleLanding() {
           </motion.div>
         </div>
 
-        {/* Features/How it works */}
+        {/* Stats Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
+        >
+          {stats.map((stat, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.08 }}
+              className="p-5 rounded-2xl bg-white/5 border border-amber-500/20 text-center hover:border-amber-500/50 hover:bg-amber-500/5 transition-all duration-300"
+            >
+              <div className="text-2xl md:text-3xl font-black text-amber-400 mb-1">{stat.value}</div>
+              <div className="text-xs text-white/50 font-medium leading-snug">{stat.label}</div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* How It Works */}
         <div className="grid md:grid-cols-3 gap-6 mb-24">
           {[
             {
@@ -145,7 +265,80 @@ export default function AuraBattleLanding() {
           ))}
         </div>
 
+        {/* Scenarios Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-24"
+        >
+          <h2 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">
+            {isTr ? "Gerçek Savaş Hikayeleri" : "Real Battle Stories"}
+          </h2>
+          <p className="text-white/50 text-sm mb-8">
+            {isTr ? "Aura Battle'da yaşanan acı gerçekler." : "The brutal truth from real aura battles."}
+          </p>
+          <div className="grid md:grid-cols-2 gap-4">
+            {scenarios.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/30 hover:bg-white/[0.07] transition-all duration-300"
+              >
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <span className="text-sm font-semibold text-white/80">{s.scenario}</span>
+                  <span className={`shrink-0 text-xs font-bold px-2.5 py-1 rounded-full border ${s.badgeColor}`}>
+                    {s.badge}
+                  </span>
+                </div>
+                <p className="text-sm text-white/50 leading-relaxed">{s.verdict}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         <FeatureSeoContent featureId="aura-battle" isTr={isTr} />
+
+        {/* Related Tools */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-24"
+        >
+          <h2 className="text-2xl font-black text-white mb-2 tracking-tight">
+            {isTr ? "İlgili Araçlar" : "Related Tools"}
+          </h2>
+          <p className="text-white/50 text-sm mb-8">
+            {isTr ? "Bunlar da işine yarayabilir." : "You might also like these."}
+          </p>
+          <div className="grid md:grid-cols-3 gap-4">
+            {relatedTools.map((tool, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+              >
+                <Link
+                  href={tool.href}
+                  className={`block p-5 rounded-2xl bg-white/5 border border-white/10 ${tool.color} hover:bg-white/[0.08] transition-all duration-300 group h-full`}
+                >
+                  <div className="text-2xl mb-3 group-hover:scale-110 transition-transform inline-block">{tool.emoji}</div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="text-sm font-bold text-white group-hover:text-amber-300 transition-colors">{tool.title}</h3>
+                    <ExternalLink className="w-3 h-3 text-white/30 group-hover:text-amber-400 transition-colors" />
+                  </div>
+                  <p className="text-xs text-white/50 leading-relaxed">{tool.desc}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Bottom CTA */}
         <motion.div 

@@ -18,27 +18,9 @@ export default function FeatureSeoContent({ featureId, isTr }: Props) {
 
   const { howItWorks, useCases, faq } = data;
 
-  // Generate FAQPage JSON-LD
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faq.questions.map((q: { q: string; a: string }) => ({
-      "@type": "Question",
-      name: q.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: q.a,
-      },
-    })),
-  };
 
   return (
     <div className="w-full max-w-4xl mx-auto px-6 py-12 md:py-24 space-y-24 border-t border-white/5">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-
       {/* HOW IT WORKS */}
       <section>
         <div className="text-center mb-12">
