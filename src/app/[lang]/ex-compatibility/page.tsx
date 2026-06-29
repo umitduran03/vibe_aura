@@ -240,7 +240,7 @@ export default function ExCompatibilityLanding() {
                   <p className="text-sm text-white/80">{isTr ? s.labelTr : s.labelEn}</p>
                 </div>
                 <div className="flex-shrink-0 px-3 py-1 rounded-full text-xs font-black tracking-wide bg-slate-500/20 text-slate-400 border border-slate-500/30">
-                  ⚖️ VERDICT
+                  ⚖️ {isTr ? 'KARAR' : 'VERDICT'}
                 </div>
               </motion.div>
             ))}

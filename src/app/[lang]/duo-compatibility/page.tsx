@@ -285,7 +285,7 @@ export default function DuoCompatibilityLanding() {
                   <p className="text-sm text-white/80">{isTr ? s.labelTr : s.labelEn}</p>
                 </div>
                 <div className="flex-shrink-0 px-3 py-1 rounded-full text-xs font-black tracking-wide bg-pink-500/20 text-pink-400 border border-pink-500/30">
-                  🔮 ANALYZED
+                  🔮 {isTr ? 'ANALİZ' : 'ANALYZED'}
                 </div>
               </motion.div>
             ))}

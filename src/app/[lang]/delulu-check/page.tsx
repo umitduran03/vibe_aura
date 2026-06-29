@@ -233,7 +233,7 @@ export default function DeluluCheckLanding() {
                 <div className="mt-4 p-3 rounded-2xl bg-gradient-to-r from-amber-950/80 to-black border border-amber-500/30">
                   <div className="flex items-center gap-2 mb-1">
                     <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-                    <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest">AI Verdict</span>
+                    <span className="text-[10px] font-bold text-amber-400 uppercase tracking-widest">{isTr ? 'YZ Kararı' : 'AI Verdict'}</span>
                   </div>
                   <p className="text-xs text-white/80 leading-relaxed">
                     {isTr
