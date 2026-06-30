@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
@@ -86,11 +87,17 @@ export default function SeoFooter() {
         
         {/* Brand Section */}
         <div className="md:col-span-1 space-y-4">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
-            <span className="font-bold text-xl text-white tracking-tight">VibeCheckr</span>
+          <div className="flex items-center gap-3">
+            <Image 
+              src="/v-wave.png" 
+              alt="VibeCheckr Logo" 
+              width={32} 
+              height={32} 
+              className="w-8 h-8 rounded-lg drop-shadow-[0_0_15px_rgba(139,92,246,0.3)]"
+            />
+            <span className="font-bold text-xl text-white tracking-tight">
+              VibeCheckr.
+            </span>
           </div>
           <p className="text-white/60 text-sm leading-relaxed">
             {s.tagline}

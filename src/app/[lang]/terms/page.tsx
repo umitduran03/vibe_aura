@@ -44,10 +44,14 @@ const termsData = {
     s8Desc: "To the maximum extent permitted by law, VibeCheckr and its developers shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of the App, including but not limited to emotional distress caused by AI-generated content, loss of data, or interruption of service.",
     s9Title: "9. Termination",
     s9Desc: "We reserve the right to suspend or terminate your access to the App at any time, with or without cause, including for violation of these Terms. Upon termination, your right to use the App ceases immediately and any unused tokens or active VIP time may be forfeited.",
-    s10Title: "10. Changes to Terms",
-    s10Desc: "We may update these Terms from time to time. Continued use of the App after changes are posted constitutes acceptance of the revised Terms. We recommend reviewing this page periodically.",
-    s11Title: "11. Contact",
-    s11Desc: "If you have questions about these Terms, please reach out at "
+    s10Title: "10. Indemnification",
+    s10Desc: "You agree to indemnify, defend, and hold harmless VibeCheckr and its developers from any claims, damages, liabilities, and expenses (including legal fees) arising out of your use of the App, your violation of these Terms, or your violation of any rights of a third party, including privacy violations from uploaded content.",
+    s11Title: "11. Dispute Resolution & Class Action Waiver",
+    s11Desc: "Any disputes arising from these Terms will be resolved on an individual basis. You agree to waive any right to participate in a class action lawsuit or class-wide arbitration against us.",
+    s12Title: "12. Changes to Terms",
+    s12Desc: "We may update these Terms from time to time. Continued use of the App after changes are posted constitutes acceptance of the revised Terms. We recommend reviewing this page periodically.",
+    s13Title: "13. Contact",
+    s13Desc: "If you have questions about these Terms, please reach out at "
   },
   tr: {
     back: "Uygulamaya Dön",
@@ -81,10 +85,14 @@ const termsData = {
     s8Desc: "Yasaların izin verdiği en geniş ölçüde; VibeCheckr ve geliştiricileri, yapay zekanın söylediği bir şey yüzünden canının sıkılması, veri kaybı veya hizmetin kesintiye uğraması gibi uygulamayı kullanmandan kaynaklanabilecek hiçbir dolaylı, tesadüfi veya özel zarardan sorumlu tutulamaz.",
     s9Title: "9. Hesabın Kapatılması",
     s9Desc: "Bu kuralları ihlal edersen veya herhangi bir geçerli nedenle, uygulamaya erişimini önceden haber vermeksizin durdurabilir veya hesabını silebiliriz. Böyle bir durumda, harcamadığın token'lar veya VIP süren yanabilir.",
-    s10Title: "10. Kuralların Değişmesi",
-    s10Desc: "Bu kullanım şartlarını zaman zaman güncelleyebiliriz. Değişiklikler yayınlandıktan sonra uygulamayı kullanmaya devam edersen, yeni kuralları da kabul etmiş sayılırsın. Arada bir buraya göz atman iyi olur.",
-    s11Title: "11. Bize Ulaş",
-    s11Desc: "Bu kurallarla ilgili aklına takılan bir şey olursa, bize buradan ulaşabilirsin: "
+    s10Title: "10. Tazminat ve Sorumluluk",
+    s10Desc: "Uygulamayı kullanımınızdan, bu kuralları ihlal etmenizden veya yüklediğiniz içeriklerle başkalarının (gizlilik vb.) haklarını ihlal etmenizden doğabilecek her türlü dava, zarar ve avukatlık masrafını karşılamayı ve VibeCheckr geliştiricilerini bu durumlarda savunup maddi/manevi zarara uğratmamayı kabul edersiniz.",
+    s11Title: "11. Uyuşmazlık Çözümü ve Toplu Dava Feragati",
+    s11Desc: "Bu şartlardan doğabilecek her türlü anlaşmazlık bireysel olarak çözülecektir. VibeCheckr'a karşı herhangi bir toplu davaya (class action) veya toplu tahkime katılma hakkınızdan feragat ettiğinizi kabul edersiniz.",
+    s12Title: "12. Kuralların Değişmesi",
+    s12Desc: "Bu kullanım şartlarını zaman zaman güncelleyebiliriz. Değişiklikler yayınlandıktan sonra uygulamayı kullanmaya devam edersen, yeni kuralları da kabul etmiş sayılırsın. Arada bir buraya göz atman iyi olur.",
+    s13Title: "13. Bize Ulaş",
+    s13Desc: "Bu kurallarla ilgili aklına takılan bir şey olursa, bize buradan ulaşabilirsin: "
   }
 };
 
@@ -232,8 +240,18 @@ export default async function TermsPage({ params }: { params: Promise<{ lang: st
 
           <section>
             <h2 className="text-lg font-semibold text-white/90 mb-3">{s.s11Title}</h2>
+            <p>{s.s11Desc}</p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-white/90 mb-3">{s.s12Title}</h2>
+            <p>{s.s12Desc}</p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-semibold text-white/90 mb-3">{s.s13Title}</h2>
             <p>
-              {s.s11Desc}
+              {s.s13Desc}
               <a href="mailto:vibecheckr.app@gmail.com" className="text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors">
                 vibecheckr.app@gmail.com
               </a>

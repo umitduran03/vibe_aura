@@ -27,6 +27,8 @@ const privacyData = {
     s2_2L1: "We use Firebase App Check (which may include reCAPTCHA) to protect our backend from abuse and verify legitimate traffic.",
     s2_2L2: "If you opt in to push notifications, your device token is stored to deliver notifications.",
     s2_2L3: "We may use Firebase Analytics to collect anonymized usage statistics (e.g., feature popularity, crashes) to improve the App.",
+    s2_3Title: "2.3 Cookies & Local Storage",
+    s2_3L1: "We use local storage on your device and essential cookies on our web platforms to keep you logged in and store your preferences securely.",
     s3Title: "3. Photos, Chat Screenshots & AI Training",
     s3Warn: "🔒 We do <strong>NOT</strong> store, sell, share, or use your photos or chat screenshots for any purpose beyond the immediate AI analysis you request. <strong>Your data is NEVER used to train AI models.</strong>",
     s3Desc: "Photos or chat screenshots uploaded for personality analysis or Reply Guru are processed in real-time by our AI models and are discarded immediately after the analysis is generated. We do not retain copies of your images on any server. We never sell or share your images with third parties, advertisers, or data brokers. When uploading chat screenshots, you should ensure you do not include sensitive Personal Identifiable Information (PII) of third parties without consent.",
@@ -36,6 +38,7 @@ const privacyData = {
     s4L3: "To secure our application and verify authentic traffic using Firebase App Check.",
     s4L4: "To send push notifications (only with your explicit consent).",
     s4L5: "To process payments securely via our payment providers (Polar for web, App Stores for mobile).",
+    s4L6: "To comply with legal obligations, respond to lawful requests from law enforcement, or protect our rights and user safety.",
     s5Title: "5. Third-Party Services",
     s5Pre: "We integrate the following trusted third-party services:",
     s5S1: "Authentication (Google Auth), database (Firestore), App Check, Analytics, and push notifications",
@@ -55,6 +58,7 @@ const privacyData = {
     s8L2: "Request correction or deletion of your data.",
     s8L3: "Withdraw consent for push notifications at any time.",
     s8L4: "Lodge a complaint with a data protection authority.",
+    s8L5: "If you are a California resident (CCPA), you have the right to opt-out of the sale of your data (which we already comply with by never selling data). If you are an EEA resident (GDPR), you have the right to data portability.",
     s9Title: "9. Security",
     s9Desc: "We use industry-standard security measures including encrypted communications (HTTPS/TLS), Firebase security rules, and server-side authentication to protect your data. However, no system is 100% secure, and we cannot guarantee absolute security.",
     s10Title: "10. Changes to This Policy",
@@ -77,6 +81,8 @@ const privacyData = {
     s2_2L1: "Sistemimizi botlardan ve kötü niyetli kullanımlardan korumak için Firebase App Check (reCAPTCHA dahil olabilir) kullanıyoruz.",
     s2_2L2: "Bildirimlere izin verirsen, sana bildirim gönderebilmek için cihaz token'ını kaydediyoruz.",
     s2_2L3: "Uygulamayı daha iyi hale getirmek için Firebase Analytics ile kimin neyi ne kadar kullandığına veya uygulamanın nerede çöktüğüne dair anonim (kimliğin belirsiz) istatistikler toplayabiliriz.",
+    s2_3Title: "2.3 Çerezler ve Yerel Depolama",
+    s2_3L1: "Oturumunu açık tutmak ve tercihlerini güvenle saklamak için cihazında yerel depolama (local storage) ve web platformlarımızda zorunlu çerezler kullanıyoruz.",
     s3Title: "3. Fotoğraflar, Ekran Görüntüleri ve Yapay Zeka Eğitimi",
     s3Warn: "🔒 Fotoğraflarını veya sohbet ekran görüntülerini analiz bittikten sonra ASLA saklamayız, satmayız veya başka hiçbir amaçla kullanmayız. <strong>Verilerin ASLA yapay zeka modellerini eğitmek için kullanılmaz.</strong>",
     s3Desc: "Kişilik analizi veya Reply Guru için yüklediğin fotoğraflar/yazışma ekran görüntüleri, yapay zeka modellerimiz tarafından o an işlenir ve sonuç çıkar çıkmaz anında kalıcı olarak silinir. Sunucularımızda görsellerinin bir kopyasını tutmuyoruz. Lütfen başkalarına ait ekran görüntülerini yüklerken, o kişilerin hassas kişisel verilerini (telefon, açık isim vb.) içermemesine dikkat et.",
@@ -86,6 +92,7 @@ const privacyData = {
     s4L3: "Uygulamayı güvende tutmak ve sahte trafiği engellemek için.",
     s4L4: "Sana bildirim göndermek için (tabii ki sadece sen izin verirsen).",
     s4L5: "Ödeme altyapılarımız üzerinden güvenli bir şekilde alışveriş yapabilmen için.",
+    s4L6: "Yasal zorunluluklara uymak, kolluk kuvvetleri veya mahkemelerden gelen resmi taleplere yanıt vermek ve platform güvenliğini sağlamak için.",
     s5Title: "5. Kullandığımız Üçüncü Taraf Araçları",
     s5Pre: "Uygulamanın çalışması için şu güvenilir servisleri kullanıyoruz:",
     s5S1: "Kimlik doğrulama ve veritabanı: Firebase & Google Cloud",
@@ -105,6 +112,7 @@ const privacyData = {
     s8L2: "Bilgilerinin düzeltilmesini veya tamamen silinmesini istemek.",
     s8L3: "Bildirim izinlerini istediğin zaman ayarlardan kapatmak.",
     s8L4: "Veri koruma kurulları veya yetkili mercilere şikayette bulunmak.",
+    s8L5: "Avrupa'da (GDPR) veya Kaliforniya'da (CCPA) yaşıyorsan, kişisel verilerinin satılmasını reddetme (ki zaten asla satmıyoruz) ve verilerini taşıma gibi özel yasal haklara da ek olarak sahipsin.",
     s9Title: "9. Güvenlik",
     s9Desc: "Verilerini korumak için HTTPS/TLS şifrelemesi, Firebase güvenlik kuralları gibi endüstri standartlarında önlemler alıyoruz. Ancak internet üzerindeki hiçbir sistem %100 hacklenemez değildir, bu yüzden mutlak bir garanti veremeyiz.",
     s10Title: "10. Politikadaki Değişiklikler",
@@ -191,6 +199,14 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
                 <span><strong className="text-white/90">Usage Analytics:</strong> {s.s2_2L3}</span>
               </li>
             </ul>
+
+            <h3 className="text-[15px] font-medium text-white/80 mt-4 mb-2">{s.s2_3Title}</h3>
+            <ul className="space-y-2 list-none">
+              <li className="flex gap-2">
+                <span className="text-cyan-400 mt-1">•</span>
+                <span>{s.s2_3L1}</span>
+              </li>
+            </ul>
           </section>
 
           <section>
@@ -231,6 +247,10 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
               <li className="flex gap-2">
                 <span className="text-purple-400 mt-1">→</span>
                 <span>{s.s4L5}</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="text-purple-400 mt-1">→</span>
+                <span>{s.s4L6}</span>
               </li>
             </ul>
           </section>
@@ -306,6 +326,10 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
               <li className="flex gap-2">
                 <span className="text-cyan-400 mt-1">✓</span>
                 <span>{s.s8L4}</span>
+              </li>
+              <li className="flex gap-2">
+                <span className="text-cyan-400 mt-1">✓</span>
+                <span>{s.s8L5}</span>
               </li>
             </ul>
           </section>
