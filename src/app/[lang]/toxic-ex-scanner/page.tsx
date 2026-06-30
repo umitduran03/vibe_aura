@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { ArrowLeft, Skull, Sparkles, AlertTriangle, ExternalLink, CheckCircle, XCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import InArticleAd from "@/components/InArticleAd";
 import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
 
@@ -299,6 +300,8 @@ export default function ToxicExScannerLanding() {
             </motion.div>
           ))}
         </div>
+
+        <InArticleAd />
 
         {/* Scenarios Section */}
         <motion.div

@@ -9,7 +9,7 @@ export interface TrendArticle {
   imageUrl?: string;
   content: {
     intro: string;
-    sections: { heading: string; paragraph: string }[];
+    sections: { heading: string; paragraph: string; items?: string[]; scenario?: string; }[];
     conclusion: string;
   };
   ctaLabel: string;
@@ -25,7 +25,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-02",
     readTime: "4 min read",
     keywords: ["AI face reading", "AI personality test photo", "aura reading face", "viral TikTok trend", "face analysis AI", "how to read auras", "digital vibe check", "facial micro expressions"],
-    imageUrl: "/images/trends/ai-face-scan.png",
+    imageUrl: "/images/trends/ai-face-scan.webp",
     content: {
       intro: "You've seen it all over TikTok, Instagram Reels, and X: people uploading their seemingly innocent selfies and getting brutally honest, shockingly accurate personality breakdowns from artificial intelligence. It's no longer just about reading your daily astrology horoscope or taking a generic 16-personalities quiz that tells you what you want to hear. The new wave of self-discovery is the AI photo personality test, and it's taking the internet by storm. But how exactly does a computer algorithm look at a JPEG of your face and immediately know that you text your ex when you're bored or that you have a severe caffeine addiction? Let's break down the psychology, the technology, and the undeniable appeal of getting roasted by code.",
       sections: [
@@ -55,7 +55,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-01",
     readTime: "5 min read",
     keywords: ["situationship meaning", "are we dating or friends", "situationship red flags", "dating advice 2026", "toxic relationships", "how to end a situationship", "mixed signals", "commitment issues"],
-    imageUrl: "/images/trends/situationship.png",
+    imageUrl: "/images/trends/situationship.webp",
     content: {
       intro: "You text them every single day from morning until night. You hang out every weekend, watching movies and ordering takeout. You've met their dog, you know their coffee order, and you've even heard about their annoying coworker. But when a friend casually asks, 'So, what are you guys?', your heart drops and you freeze. 'We're just... hanging out,' you mumble. Welcome to the 'Situationship'—undoubtedly the most stressful, confusing, and emotionally draining romantic dynamic of our generation. It's the grey area between friendship and commitment, and millions of people are currently trapped in it.",
       sections: [
@@ -89,7 +89,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-05-30",
     readTime: "4 min read",
     keywords: ["what are aura points", "aura points meme", "how to get aura points", "gen-z slang explained", "what is aura", "losing aura", "gaining aura", "tiktok aura trend"],
-    imageUrl: "/images/trends/aura-points.png",
+    imageUrl: "/images/trends/aura-points.webp",
     content: {
       intro: "If you've scrolled through any social media platform recently, you've definitely seen the phrase 'minus 1000 aura points' in the comment sections. In 2026, social status isn't strictly measured by your bank account, the car you drive, or even your follower count; it's increasingly measured by an invisible, entirely arbitrary metric known as your Aura Points. But what exactly are they? Where did this bizarre scoring system come from, and more importantly, how do you stop hemorrhaging points every time you step outside your house?",
       sections: [
@@ -123,7 +123,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-05-25",
     readTime: "6 min read",
     keywords: ["dating red flags", "narcissist dating signs", "toxic ex", "dating advice 2026", "love bombing signs", "gaslighting meaning", "modern dating problems", "avoidant attachment"],
-    imageUrl: "/images/trends/red-flags.png",
+    imageUrl: "/images/trends/red-flags.webp",
     content: {
       intro: "Let's be brutally honest: the modern dating pool is completely chaotic, and the red flags have evolved significantly. People aren't just 'bad communicators' or 'a little messy' anymore; they are utilizing complex psychological tactics like love-bombing, breadcrumbing, and gaslighting. Navigating dating apps and setups feels less like finding romance and more like dodging emotional landmines. If you want to protect your peace and avoid spending the next three years complaining to your therapist about someone who listens to podcasts at 2x speed, here are the absolute biggest dating red flags you cannot afford to ignore this year.",
       sections: [
@@ -157,7 +157,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-03",
     readTime: "5 min read",
     keywords: ["am I delusional", "mixed signals meaning", "delulu check", "are they flirting or just nice", "dating signs", "stop overthinking", "crush signs"],
-    imageUrl: "/images/trends/delulu.png",
+    imageUrl: "/images/trends/delulu.webp",
     content: {
       intro: "We've all been there. They held the door open for you, liked your Instagram story from two weeks ago, and used the '👀' emoji in a text. Suddenly, you're planning the wedding Pinterest board. But wait—are these actually mixed signals, or are you just deeply, chronically 'delulu'? In modern dating, the line between genuine interest and polite indifference is thinner than ever. Let's decode the behavior and give you the harsh reality check you desperately need.",
       sections: [
@@ -191,7 +191,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-04",
     readTime: "4 min read",
     keywords: ["texting anxiety", "why do they leave me on read", "overthinking texts", "reply guru", "dry texting", "double text meaning", "communication anxiety"],
-    imageUrl: "/images/trends/overthinking.png",
+    imageUrl: "/images/trends/overthinking.webp",
     content: {
       intro: "Your phone buzzes. It's them. You open the message and see three words: 'Okay sounds good.' Suddenly, your heart rate spikes. Why didn't they use an exclamation point? Why did it take them three hours to say that? Are they mad? Should you reply now or wait exactly three hours and one minute to assert dominance? Texting anxiety is paralyzing an entire generation. We have instant communication, yet we've never felt more misunderstood.",
       sections: [
@@ -225,7 +225,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-05",
     readTime: "7 min read",
     keywords: ["zodiac signs red flags", "astrology toxic traits", "gemini red flags", "scorpio manipulation", "zodiac dating guide", "astrology humor", "toxic zodiac signs"],
-    imageUrl: "/images/trends/zodiac.png",
+    imageUrl: "/images/trends/zodiac.webp",
     content: {
       intro: "We love looking at birth charts to see if our Venus aligns with their Mars, hoping the stars will bless our romantic endeavors. But let's be real—you shouldn't be looking at their chart for soulmate potential; you should be looking at it to predict exactly what kind of headache they are going to cause you. Every zodiac sign has a specific flavor of toxic behavior. Let's explore the biggest red flags for the astrological signs so you know exactly what you're getting yourself into.",
       sections: [
@@ -259,7 +259,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-06",
     readTime: "4 min read",
     keywords: ["negative aura meaning", "how to fix bad mood", "mood reset", "energy cleanse", "low vibe", "raising your vibration", "morning anxiety fix"],
-    imageUrl: "/images/trends/mood-reset.png",
+    imageUrl: "/images/trends/mood-reset.webp",
     content: {
       intro: "You open your eyes, grab your phone, and before you've even had your coffee, you feel it: the unmistakable weight of a negative aura. Everything is annoying. The lighting in your room looks wrong, the texts you received are irritating, and you just know that today is going to be a 0/10 vibe. But why does this happen even when nothing specifically bad occurred? Welcome to the science and spirituality of the 'off day'.",
       sections: [
@@ -293,7 +293,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-18",
     readTime: "5 min read",
     keywords: ["aura battle", "who is cooler", "vibe check", "friendship roast", "main character energy"],
-    imageUrl: "/images/trends/aura-points.png",
+    imageUrl: "/images/trends/aura-points.webp",
     content: {
       intro: "We all have that one friend who thinks they are the undisputed main character. They act like their aura is untouchable, and they never hesitate to let everyone know. For years, the debate of 'who is actually cooler' in a friend group was subjective and entirely based on who could roast the other better. But in 2026, we don't argue—we let the AI decide. The 'Aura Battle' is the newest trend tearing friend groups apart and putting egos in check.",
       sections: [
@@ -323,7 +323,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-19",
     readTime: "4 min read",
     keywords: ["what is rizz", "rizz meaning", "unspoken rizz", "how to have rizz", "gen-z slang 2026", "charisma tips", "dating confidence"],
-    imageUrl: "/images/trends/rizz.png",
+    imageUrl: "/images/trends/rizz.webp",
     content: {
       intro: "If you've spent any time on TikTok or Twitter in the last two years, you've definitely heard someone accused of having 'no rizz' or celebrated for their 'unspoken rizz'. It's the most dominant term in the Gen-Z social and dating lexicon right now, and it's being used to describe everything from smooth flirting to raw, unexplainable magnetic charisma. But what does rizz actually mean? Can you learn it? And most importantly — do you have it, or are you secretly a rizzless NPC in your own life story?",
       sections: [
@@ -353,7 +353,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-20",
     readTime: "5 min read",
     keywords: ["soft launch relationship", "hard launch dating", "relationship on social media", "posting your partner", "attachment style", "dating advice 2026", "instagram relationship"],
-    imageUrl: "/images/trends/soft-launch.png",
+    imageUrl: "/images/trends/soft-launch.webp",
     content: {
       intro: "You've just started seeing someone incredible. The butterflies are real, the dates are immaculate, and you are dangerously close to catching actual feelings. And then comes the most strategically complex decision of modern dating: how do you handle their social media debut? Do you go with the mysterious soft launch — a blurry hand in the corner of a brunch photo, a barely-visible shadow on your story — or do you go full hard launch with a face-forward couple photo and a tagged Instagram post? This decision, which previous generations never had to make, reveals more about your psychology than you might think.",
       sections: [
@@ -383,7 +383,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-21",
     readTime: "6 min read",
     keywords: ["emotionally unavailable man", "emotionally unavailable woman", "signs emotional unavailability", "avoidant attachment", "why they won't commit", "toxic relationship signs", "dating red flags"],
-    imageUrl: "/images/trends/emotionally-unavailable.png",
+    imageUrl: "/images/trends/emotionally-unavailable.webp",
     content: {
       intro: "You've been talking for two months. The conversations are great when they happen — funny, deep, electric. But something always feels slightly out of reach. They're there, but they're not fully there. They share details about their life but deflect the moment anything gets emotionally heavy. You feel connected, but only to a version of them they've carefully constructed and curated for your consumption. You might be falling for someone who is emotionally unavailable, and the painful truth is: they might not even know it themselves.",
       sections: [
@@ -413,7 +413,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "5 min read",
     keywords: ["toxic friendship signs", "how to know if a friend is toxic", "friendship red flags", "one-sided friendship", "draining friends", "how to end a toxic friendship", "friendship advice"],
-    imageUrl: "/images/trends/toxic-friendship.png",
+    imageUrl: "/images/trends/toxic-friendship.webp",
     content: {
       intro: "We spend enormous amounts of energy identifying toxic romantic partners, but we rarely apply the same critical lens to our friendships. Yet a toxic friendship can be just as devastating — and often more insidious — because the expectations are different and the betrayal cuts deeper. Friends are supposed to be your chosen family, your safe space. When that relationship becomes a source of anxiety, self-doubt, or exhaustion instead of joy, something has gone seriously wrong. Here are the undeniable signs that your friendship might be quietly destroying your aura.",
       sections: [
@@ -443,7 +443,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-20",
     readTime: "6 min read",
     keywords: ["gen-z dating terms 2026", "modern dating slang", "breadcrumbing meaning", "benching dating", "beige flag", "situationship", "dating glossary", "relationship terms"],
-    imageUrl: "/images/trends/gen-z-dating-terms.png",
+    imageUrl: "/images/trends/gen-z-dating-terms.webp",
     content: {
       intro: "Modern dating has developed an entirely new language, and if you're not fluent, you're going to find yourself completely lost in conversations about your own love life. Gen-Z has taken the messy, confusing, often painful experience of dating and given every single phenomenon its own precise, shareable term. From the manipulative to the mundane, these words capture emotional realities that previous generations didn't even have vocabulary for. Consider this your essential glossary for navigating romance in 2026.",
       sections: [
@@ -473,7 +473,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-21",
     readTime: "5 min read",
     keywords: ["delulu meaning", "delulu is the solulu", "am i delusional about my crush", "manifestation vs delusion", "gen-z mental health", "situationship delusion", "positive thinking"],
-    imageUrl: "/images/trends/delulu.png",
+    imageUrl: "/images/trends/delulu.webp",
     content: {
       intro: "'Delulu is the solulu.' It started as a joke, a self-aware declaration that your wildly unrealistic romantic fantasies were your greatest personality trait. The girl who's convinced the barista who remembered her name is her soulmate. The guy who interprets a two-letter text reply as a sign of deep emotional connection. Being 'delulu' became a badge of honor — a way of weaponizing optimism against the bleak realities of modern dating. But somewhere along the way, the joke stopped being funny. Because some of us aren't performing delulu. We're actually living it, and it's keeping us stuck.",
       sections: [
@@ -503,7 +503,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "6 min read",
     keywords: ["attachment styles", "anxious attachment", "avoidant attachment", "secure attachment", "fearful avoidant", "attachment theory dating", "why do i push people away", "relationship psychology"],
-    imageUrl: "/images/trends/attachment-styles.png",
+    imageUrl: "/images/trends/attachment-styles.webp",
     content: {
       intro: "Every time a relationship ends, you swear you'll do things differently next time. But somehow, the same patterns keep repeating. You either cling too hard and scare people away, or you run the moment things get real. You attract the same type of person, fall into the same traps, and feel the same heartbreak. This isn't bad luck — it's your attachment style. Developed in childhood and hardwired into your nervous system, your attachment style is the invisible blueprint that dictates how you love, fight, communicate, and ultimately sabotage your relationships. Understanding it is the single most transformative thing you can do for your love life.",
       sections: [
@@ -537,7 +537,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "5 min read",
     keywords: ["how to get over someone", "how to move on", "getting over a breakup", "heartbreak advice", "how to stop thinking about someone", "breakup recovery", "moving on from ex"],
-    imageUrl: "/images/trends/get-over-someone.png",
+    imageUrl: "/images/trends/get-over-someone.webp",
     content: {
       intro: "It's 2 AM. You're lying in bed, staring at the ceiling, replaying the same conversation for the 400th time. You've deleted their number — and re-saved it from memory. You've muted their Instagram — and checked it from a browser. Every song sounds like it was written about them. Every happy couple on the street feels like a personal attack. Getting over someone is one of the most universally painful human experiences, and the internet's advice of 'just focus on yourself' and 'time heals everything' feels insultingly insufficient when you're in the trenches. So here's the real guide — no sugarcoating, no toxic positivity, just the raw psychological truth about how to actually move on.",
       sections: [
@@ -567,7 +567,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "5 min read",
     keywords: ["signs someone likes you", "body language attraction", "how to know if someone likes you", "signs of attraction", "crush body language", "does my crush like me", "nonverbal attraction cues"],
-    imageUrl: "/images/trends/body-language-crush.png",
+    imageUrl: "/images/trends/body-language-crush.webp",
     content: {
       intro: "You've been analyzing their texts for hidden meanings, dissecting their emoji choices, and reading way too deeply into their response times. But here's the truth that most dating advice ignores: words lie. Texts can be calculated, captions can be performative, and people can say all the right things without meaning any of them. But the body doesn't lie. Nonverbal communication accounts for over 55% of human interaction, and when someone is genuinely attracted to you, their body broadcasts it in ways they can't consciously control. Here are the twelve science-backed signals to look for.",
       sections: [
@@ -597,7 +597,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "4 min read",
     keywords: ["what is the ick", "ick meaning", "ick examples", "ick in dating", "sudden loss of attraction", "why did i get the ick", "ick vs red flag"],
-    imageUrl: "/images/trends/the-ick.png",
+    imageUrl: "/images/trends/the-ick.webp",
     content: {
       intro: "You liked them. Like, genuinely liked them. The butterflies were real, the chemistry was electric, and you were mentally planning your future together. Then one day, without any warning or logical reason, you watched them do something completely mundane — run for a bus, eat a sandwich in a specific way, or use a baby voice on the phone — and something inside you died. Instantly, irreversibly, and completely. Every ounce of attraction evaporated, replaced by a visceral feeling of repulsion that you can't explain, justify, or undo. Congratulations: you just got the ick. And no, you cannot come back from it.",
       sections: [
@@ -627,7 +627,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "5 min read",
     keywords: ["love languages", "5 love languages", "what is my love language", "words of affirmation", "physical touch love language", "quality time", "acts of service", "relationship advice"],
-    imageUrl: "/images/trends/love-languages.png",
+    imageUrl: "/images/trends/love-languages.webp",
     content: {
       intro: "You cook them dinner, clean the apartment, and run their errands — and they complain that you never say 'I love you' enough. They text you compliments all day, write you love notes, and shower you with verbal adoration — and you feel unloved because they never just sit and watch a movie with you without scrolling their phone. This isn't incompatibility — it's a love language mismatch, and it's the silent killer of otherwise great relationships. Developed by Dr. Gary Chapman, the five love languages framework explains that people give and receive love in fundamentally different ways, and most relationship conflicts stem from speaking different emotional dialects.",
       sections: [
@@ -657,7 +657,7 @@ export const trendsDataEn: TrendArticle[] = [
     publishDate: "2026-06-27",
     readTime: "6 min read",
     keywords: ["what is an ick", "what is the ick", "ick meaning", "ick ne demek", "ick examples", "getting the ick", "ick in dating", "ick relationship", "why do i get the ick", "sudden loss of attraction", "ick vs red flag", "ick gen-z", "lost attraction"],
-    imageUrl: "/images/trends/the-ick.png",
+    imageUrl: "/images/trends/the-ick.webp",
     content: {
       intro: "You are on a perfectly good date. The chemistry is there, they look amazing, and the conversation is flowing. Then it happens. They laugh just a little too loudly at their own joke. Or they walk slightly too fast while swinging their arms in a weird way. Or they wave at you from across the street in an overly enthusiastic, double-handed wave. And just like that — it is gone. Every drop of attraction you had vanishes in an instant, replaced by a wave of visceral, irrational, overwhelming disgust. That, my friend, is the ick. And once you get it, it almost never goes away.",
       sections: [
@@ -687,7 +687,477 @@ export const trendsDataEn: TrendArticle[] = [
     ctaLabel: "Scan Their Red Flags",
     ctaLink: "/toxic-ex-scanner",
   }
+  ,
+  {
+    slug: "am-i-being-gaslighted",
+    title: "Am I Being Gaslighted? The Ultimate Reality Check",
+    description: "Gaslighting is a term we see everywhere on TikTok, but what does it actually look like in practice? Here is your ultimate guide to recognizing the signs.",
+    category: "Red Flags",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["gaslighting", "toxic relationship", "manipulation", "red flags", "dating advice", "gen-z dating"],
+    imageUrl: "/images/trends/am-i-being-gaslighted.webp",
+    content: {
+      intro: "Gaslighting isn't just a buzzword TikTok throws around when someone disagrees with you. It is a calculated and deeply damaging form of psychological manipulation where a person makes you question your own memory, perception, and sanity. When you are in the thick of a relationship, the signs can be incredibly subtle, masked as concern or simple forgetfulness. However, over time, the constant shifting of reality takes a massive toll on your mental health, leaving you feeling confused, anxious, and overly dependent on the very person who is tearing you down. The ultimate goal of a gaslighter is to gain control by undermining your confidence in your own reality. If you have ever felt like you're constantly apologizing for things you didn't do, or if you feel like you are constantly walking on eggshells to avoid triggering another 'misunderstanding,' it is time to take a massive step back and examine the dynamic. Let's break down the reality of gaslighting, how to spot it, and how to protect your peace before it completely erodes your sense of self.",
+      sections: [
+        {
+          heading: "The Rewrite of History",
+          paragraph: "One of the most common and damaging tactics used by a gaslighter is flat-out denial. Even when you have concrete proof—like texts, screenshots, or explicit memories—they will look you dead in the eye and say, 'I never said that.' This isn't just a lapse in memory; it is a deliberate attempt to rewrite history. When they consistently deny events, your brain starts to compromise to reduce the cognitive dissonance. You might think, 'Maybe I did hear them wrong,' or 'Maybe my memory is just bad.' This is exactly what they want. By controlling the narrative, they ensure that you can never hold them accountable for their actions, leaving you in a constant state of self-doubt.",
+          items: [
+            "Denying past conversations ever took place despite your clear memory.",
+            "Accusing you of making things up to start drama.",
+            "Claiming you are remembering things incorrectly because you are 'emotional.'",
+            "Shifting the blame to your 'poor memory' to dodge accountability."
+          ],
+          scenario: "You confront them about a hurtful comment they made last night. Instead of apologizing, they say, 'I never said that. You are literally making things up again. Why are you always trying to start a fight?' You end up apologizing for bringing it up."
+        },
+        {
+          heading: "The Weaponization of Your Insecurities",
+          paragraph: "A master gaslighter pays very close attention to what makes you tick. They learn your insecurities, your fears, and your vulnerabilities, not to help you heal, but to weaponize them against you later. If you have a fear of abandonment, they will subtly imply that you are too clingy and that your behavior is pushing them away. If you are insecure about your intelligence, they will speak to you in a condescending tone or dismiss your ideas as 'cute' but impractical. Over time, this targeted erosion of your self-esteem makes you believe that no one else would ever want you, keeping you trapped in their web of manipulation."
+        },
+        {
+          heading: "The Apology That Is Not An Apology",
+          paragraph: "When you finally push them into a corner and demand an apology, what you get is a masterclass in deflection. A gaslighter rarely offers a genuine 'I am sorry for what I did.' Instead, they offer variations of 'I am sorry you feel that way,' or 'I am sorry if you misunderstood me.' These are non-apologies designed to shift the blame back onto you. By framing the issue as a problem with your feelings or your understanding, they completely avoid taking responsibility for their actions. It leaves you feeling unheard and invalidated, which is exactly the point."
+        },
+        {
+          heading: "The Isolation Tactic",
+          paragraph: "Gaslighting thrives in isolation. To maintain their control over your reality, a gaslighter needs to cut you off from anyone who might offer an objective perspective. They might start by subtly criticizing your friends, pointing out their flaws, or claiming that your family doesn't truly understand your relationship. They might even try to convince you that your loved ones are secretly plotting against the two of you. Eventually, you may start distancing yourself from your support system because defending the relationship is just too exhausting. Once you are isolated, the gaslighter becomes your sole source of truth.",
+          items: [
+            "Badmouthing your closest friends and making up flaws.",
+            "Creating drama between you and your family members.",
+            "Making you feel guilty for spending time away from them.",
+            "Convincing you that they are the only one who truly cares about you."
+          ],
+          scenario: "You tell your partner that your best friend noticed you seem unhappy lately. Your partner immediately replies, 'Your friend has always been jealous of us. She just wants you to be single and miserable like her. You know I'm the only one who actually looks out for you, right?'"
+        },
+        {
+          heading: "Reclaiming Your Reality",
+          paragraph: "The first step to breaking free from gaslighting is recognizing that it is happening. Once you see the pattern, you can start taking steps to protect your reality. Keep a journal of conversations if you need to, take screenshots, and confide in a trusted friend or therapist who can provide an objective viewpoint. Do not engage in endless debates with the gaslighter; they are not interested in the truth, they are interested in winning. The most powerful thing you can do is trust your gut. If something feels wrong, it probably is. You do not need their validation to know your reality is valid."
+        }
+      ],
+      conclusion: "Gaslighting is emotional and psychological warfare, plain and simple. It is a slow, insidious process that chips away at your confidence and leaves you questioning everything you know to be true. But here is the reality check you actually need: You are not crazy, you are not too sensitive, and you are not imagining things. If your relationship constantly leaves you feeling confused and drained, it is time to stop looking for answers in the person who is causing the confusion. Walk away, reconnect with your support system, and start trusting yourself again. You deserve a reality rooted in respect and honesty."
+    },
+    ctaLabel: "Read More Red Flag Guides",
+    ctaLink: "/category/red-flags"
+  },
+  {
+    slug: "dry-texter-signs",
+    title: "Dry Texter Signs: Are They Busy or Just Boring?",
+    description: "You sent a masterpiece of a text, and they replied with 'lol'. Let's decode the dry texter to figure out if it's worth your time.",
+    category: "Communication",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["dry texter", "bad texter", "communication", "dating app tips", "mixed signals", "texting etiquette"],
+    imageUrl: "/images/trends/dry-texter-signs.webp",
+    content: {
+      intro: "We have all been there. You spend ten minutes crafting the perfect, funny, engaging message. You hit send, your heart does a little flutter, and you wait. Three hours later, your phone buzzes. You eagerly check the screen, only to be met with a soul-crushing, lower-case 'haha yeah'. Dealing with a dry texter is one of the most uniquely frustrating experiences in modern dating. It feels like you are carrying the entire weight of the conversation on your back, trying to squeeze blood from a stone. But the big question always remains: Are they just incredibly busy with their very important life, are they genuinely a bad texter who hates their phone, or are they simply just not that into you? In a world where we are constantly glued to our screens, a 'bad texter' excuse is wearing thin. Let's dive deep into the telltale signs of a dry texter and figure out whether you should keep trying or just leave them on read forever.",
+      sections: [
+        {
+          heading: "The One-Word Wonders",
+          paragraph: "The most classic and infuriating sign of a dry texter is their complete and utter inability to use more than three words at a time. You ask an open-ended question about their weekend, expecting a story, and they reply with 'it was chill'. You send a meme, they reply 'lol'. There is no elaboration, no detail, and absolutely no effort to keep the banter flowing. This forces you to continuously come up with new topics, making the interaction feel more like an exhausting job interview than a flirtatious chat. If you feel like you are pulling teeth just to get a sentence out of them, you are dealing with a severe case of dry texting.",
+          items: [
+            "Responding to long paragraphs with a single emoji.",
+            "Using abbreviations like 'wyd' or 'hru' without any context.",
+            "Never asking follow-up questions to your answers.",
+            "Consistently ending conversations abruptly without saying goodbye."
+          ],
+          scenario: "You text: 'Just saw the craziest movie! Have you seen the new sci-fi thriller that just came out? The ending completely blew my mind!' Their response four hours later: 'Nah haven't seen it'."
+        },
+        {
+          heading: "The Infinite Delay",
+          paragraph: "It is perfectly normal for people to be busy. We all have jobs, classes, and lives that take us away from our phones. However, if they consistently take 12 to 24 hours to reply to a simple 'how is your day going?' text, but you constantly see them active on Instagram or posting TikTok stories, you have a problem. The delay isn't about a lack of time; it is about a lack of priority. When someone is genuinely interested, they will find a spare thirty seconds in their day to shoot you a message. The infinite delay is a loud and clear message that you are at the absolute bottom of their to-do list."
+        },
+        {
+          heading: "They Never Ask About You",
+          paragraph: "A conversation is supposed to be a two-way street, a volley back and forth. But with a dry texter, you are the only one serving the ball. You ask about their day, their interests, their opinions, and they answer—albeit briefly—but they never, ever bounce the question back. The dreaded lack of 'wbu?' (what about you?) is a massive red flag. It shows a fundamental lack of curiosity about who you are and what is going on in your life. If you realize that they know everything about your week but you haven't been able to share a single detail about yours because they haven't asked, it is time to reevaluate.",
+          items: [
+            "They answer your questions but never follow up with 'and you?'.",
+            "Conversations strictly revolve around their schedule and needs.",
+            "They ignore the personal details you volunteer in the chat.",
+            "They change the subject back to themselves immediately."
+          ],
+          scenario: "You ask, 'How was that big presentation at work today?' They reply, 'It went really well, boss loved it.' You wait for them to ask about your big exam, but the screen stays blank. The conversation just dies there."
+        },
+        {
+          heading: "Great in Person, Awful on the Phone",
+          paragraph: "This is the one scenario where the 'bad texter' excuse might actually hold some weight. Some people are genuinely terrible at digital communication. If you go on a date with them and they are engaging, funny, attentive, and incredibly chatty, but they turn into a brick wall the moment you go your separate ways, they might just hate texting. In this case, you have to decide if that communication style works for you. Can you handle a relationship where digital banter is non-existent? If you are someone who needs constant witty banter throughout the day to feel connected, even the most amazing in-person connection might not be enough to sustain you."
+        },
+        {
+          heading: "How to Handle the Dry Texter",
+          paragraph: "So, what do you do? First, stop overcompensating. Stop sending double texts, stop asking a million questions, and stop trying to revive a dead conversation. Match their energy. If they give you a one-word answer, simply like the message and leave it. If they are actually interested, they will notice the shift in your behavior and step up their game. If they let the conversation die and never reach out again, congratulations, the trash just took itself out. You deserve someone who is excited to talk to you, not someone who treats your texts like an annoying chore."
+        }
+      ],
+      conclusion: "Dry texting is exhausting, soul-sucking, and completely antithetical to building a strong romantic connection. While there are rare exceptions of people who just genuinely despise looking at their screens, in most cases, the medium is the message. If they wanted to talk to you, they would. Do not exhaust your own energy trying to pull a personality out of someone who refuses to show one. Save your witty banter, your thoughtful questions, and your funny memes for someone who will actually match your freak and text you back with the same enthusiasm."
+    },
+    ctaLabel: "Find Better Texters",
+    ctaLink: "/matches"
+  },
+  {
+    slug: "main-character-energy",
+    title: "Main Character Energy: How to Stop Being the Sidekick in Your Own Love Life",
+    description: "Are you waiting around for someone else to make your life exciting? It's time to step into your main character energy.",
+    category: "Self-Love",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["main character energy", "self love", "dating confidence", "boundaries", "romanticizing your life"],
+    imageUrl: "/images/trends/main-character-energy.webp",
+    content: {
+      intro: "Are you currently sitting on your couch, staring at your phone, waiting for a text back while your own life is put on pause? Do you find yourself rearranging your entire schedule just on the off-chance that your crush might want to hang out? If so, you have accidentally slipped into the role of the sidekick in your own life. The concept of 'Main Character Energy' has taken over the internet, and for good reason. It is a fundamental shift in mindset. It means realizing that you are the star of your own movie, and your romantic interests are merely guest stars. Cultivating main character energy in dating isn't about being narcissistic or self-absorbed; it is about knowing your worth, setting uncompromising boundaries, and refusing to settle for anything less than a storyline that serves you. Let's explore how you can stop giving your power away and start romanticizing your own life.",
+      sections: [
+        {
+          heading: "Defining Main Character Energy",
+          paragraph: "At its core, main character energy is about radical self-centering. It is the deep, unwavering belief that your life is inherently interesting, valuable, and worthy of romance, regardless of your relationship status. A sidekick waits for the hero to make a decision; a main character makes their own choices and drives the plot forward. When you date with main character energy, you are no longer worried about whether they like you. Instead, your primary concern is whether YOU actually like THEM, and whether they fit into the beautiful, exciting life you are already building for yourself.",
+          items: [
+            "Making decisions based on what makes you happy, not what pleases them.",
+            "Refusing to cancel your own plans to accommodate someone else's last-minute invite.",
+            "Viewing rejection as a plot twist, not a tragedy.",
+            "Focusing on your own goals and passions above a romantic pursuit."
+          ],
+          scenario: "They text you at 9 PM on a Friday asking to hang out. Instead of dropping the self-care night you planned, you reply, 'I'm having a solo movie night tonight! Let's plan for something next week.' You prioritize your peace."
+        },
+        {
+          heading: "Romanticize Your Solo Dates",
+          paragraph: "You do not need a partner to go to that aesthetic coffee shop, visit the new museum exhibit, or buy yourself a ridiculously expensive bouquet of flowers. The main character doesn't wait for a romantic interest to validate their desires. Start taking yourself out on dates. Dress up, curate a perfect playlist, and learn to genuinely enjoy your own company. When you start treating yourself with the highest level of romance and respect, you set the standard for how others are allowed to treat you. Anyone who wants to enter your life has to be able to offer something better than the peace and joy you already provide for yourself."
+        },
+        {
+          heading: "Setting Unapologetic Boundaries",
+          paragraph: "A main character does not tolerate disrespect, breadcrumbing, or inconsistent behavior because they know they have places to be and things to do. Setting boundaries is the ultimate expression of main character energy. It means clearly communicating what you will and will not accept, and actually walking away when those boundaries are crossed. You do not write long paragraphs begging someone to treat you better. You simply revoke their access to your time and energy. If someone isn't enhancing your storyline, their character gets written off the show.",
+          items: [
+            "Communicating your needs clearly without apologizing for them.",
+            "Not accepting 'maybe' as an answer when making plans.",
+            "Protecting your peace by muting or blocking toxic individuals.",
+            "Refusing to engage in pointless arguments that drain your energy."
+          ],
+          scenario: "Your date flakes on you for the second time with a flimsy excuse. Instead of saying 'It's okay, no worries!' you say, 'I need someone who respects my time. This isn't working for me. Take care.' and you delete their number."
+        },
+        {
+          heading: "Walking Away With Grace",
+          paragraph: "Breakups and ghosting are inevitable parts of the dating landscape. But how you handle them dictates your energy. The sidekick begs for closure, stalks social media, and internalizes the rejection as a flaw in themselves. The main character understands that sometimes characters are only meant to be in a few episodes to teach a lesson. Walking away with grace means accepting that not every connection is meant to last, taking the lesson, and moving forward to the next exciting chapter of your life without looking back. You don't need closure from them; you give closure to yourself."
+        },
+        {
+          heading: "Rewriting Your Story",
+          paragraph: "If you have spent the last few years playing a supporting role, stepping into main character energy will feel uncomfortable at first. You might feel selfish or demanding. But rewriting your story takes practice. Start small. Say no to a date you don't really want to go on. Buy the expensive coffee. Post the selfie. Actively choose yourself every single day. The more you practice decentering romantic validation and centering your own joy, the more natural it will become. Eventually, you will look back and wonder why you ever settled for playing the sidekick."
+        }
+      ],
+      conclusion: "You are the author, the director, and the star of your own life. Do not hand the pen over to someone who doesn't even know how to text back. Embracing main character energy in your dating life will radically transform how you interact with potential partners. It filters out the people who just want a convenient background character and attracts those who are ready to co-star in an epic romance. Stop waiting for the plot to happen to you. Get up, put on your best outfit, and go write your own incredible story."
+    },
+    ctaLabel: "Embrace Your Main Character",
+    ctaLink: "/profile/edit"
+  },
+  {
+    slug: "what-is-limerence",
+    title: "What is Limerence? When a Crush Turns Into an Obsession",
+    description: "It feels like true love, but it might just be limerence. Here is how to tell the difference between a healthy crush and a toxic obsession.",
+    category: "Psychology",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["limerence", "obsession", "psychology of love", "infatuation", "dating mental health"],
+    imageUrl: "/images/trends/what-is-limerence.webp",
+    content: {
+      intro: "Have you ever met someone and instantly felt like they were the missing puzzle piece to your entire existence? Suddenly, every song on the radio is about them, you are checking their social media relentlessly, and your entire mood depends on whether or not they texted you back. We often romanticize this intense, all-consuming feeling as 'love at first sight' or a 'twin flame' connection. But psychology has a different, much less romantic term for it: Limerence. Coined by psychologist Dorothy Tennov in the 1970s, limerence is a state of involuntary infatuation and obsession with another person. It is not about building a healthy, mutual partnership; it is about an agonizing craving for reciprocation. If your crush feels more like a roller coaster of anxiety than a joyful addition to your life, you might be caught in the grip of limerence. Let's unpack what it is, why it happens, and how to break the spell.",
+      sections: [
+        {
+          heading: "The Anatomy of Limerence",
+          paragraph: "Limerence goes far beyond a normal crush. While a crush is a light, enjoyable attraction, limerence is heavy, intrusive, and deeply destabilizing. It is characterized by an obsessive need for your feelings to be reciprocated. Your brain fixates on the 'limerent object' (the person you are obsessed with) and analyzes every single interaction for hidden meanings. Did they use a period at the end of their text? Did they look at your story first? These tiny details dictate your emotional state. It is an emotional high when you receive a crumb of attention, followed by a devastating crash when they pull away. It is less about loving the person and more about being addicted to the fantasy of them.",
+          items: [
+            "Intrusive, uncontrollable thoughts about the person taking up your day.",
+            "Extreme emotional highs and lows based on their actions.",
+            "A desperate need for emotional reciprocation and validation.",
+            "Ignoring glaring red flags because they ruin the fantasy."
+          ],
+          scenario: "They send you a vague text saying 'Hey.' You spend the next two hours analyzing the lack of punctuation with your friends, convincing yourself it means they are secretly in love with you but afraid to show it, completely ignoring that they haven't spoken to you in three weeks."
+        },
+        {
+          heading: "Intrusive Thoughts and The Halo Effect",
+          paragraph: "One of the hallmarks of limerence is the 'Halo Effect.' Because you are obsessed with the fantasy of this person, your brain completely ignores their flaws. They become a flawless, idealized deity in your mind. Even if they are rude, inconsistent, or emotionally unavailable, you will make endless excuses for their behavior. 'They are just scared of commitment because they were hurt in the past,' you tell yourself. These intrusive thoughts make it impossible to focus on your work, your hobbies, or your friends. The limerent object consumes your entire mental bandwidth, leaving no room for reality to set in."
+        },
+        {
+          heading: "The Breadcrumbing Trap",
+          paragraph: "Limerence actually thrives on uncertainty. If someone is completely available and consistently shows you love, limerence usually fades, replaced by genuine, calm attachment (or sometimes boredom, if you are addicted to the chaos). But if someone gives you mixed signals—flirting one day and ignoring you the next—it acts like gasoline on the fire of limerence. This intermittent reinforcement, also known as breadcrumbing, keeps you constantly hooked, waiting for the next hit of dopamine. You become obsessed with 'cracking the code' to make them love you consistently.",
+          items: [
+            "Feeling addicted to the cycle of them pulling away and coming back.",
+            "Over-analyzing their mixed signals instead of walking away.",
+            "Believing that if you just act perfectly, they will finally commit.",
+            "Staying in a toxic dynamic just for the rare moments of affection."
+          ],
+          scenario: "They ghost you for a week, sending you into a spiral of depression. Then they reply to your Instagram story with a fire emoji. Immediately, your mood skyrockets, and you convince yourself that the connection is back on track."
+        },
+        {
+          heading: "Limerence vs. Love",
+          paragraph: "It is crucial to understand that limerence is not love. Love is rooted in reality. It involves seeing a person for who they truly are—flaws and all—and choosing to build a partnership with them based on mutual respect, trust, and consistent effort. Love brings peace to your nervous system. Limerence, on the other hand, is rooted in fantasy. It is about projecting your own unmet needs and desires onto a blank canvas. Limerence triggers your fight-or-flight response, keeping you in a constant state of anxiety and longing. If your connection feels like a constant battle for validation, you are not in love; you are in limerence."
+        },
+        {
+          heading: "Breaking the Spell",
+          paragraph: "Healing from limerence requires a brutal reality check. You have to force yourself to take them off the pedestal. Start writing down their actual flaws and the ways they have disappointed you. Go completely no-contact; you cannot heal an addiction while still taking hits of the drug. Stop checking their social media. More importantly, turn the focus inward. Limerence often happens when we are deeply unfulfilled in our own lives and are looking for someone else to save us. Invest that intense, obsessive energy into your own goals, therapy, and self-love. The spell will break when you realize you don't need them to make you whole."
+        }
+      ],
+      conclusion: "Limerence is an exhausting, emotionally draining experience that can steal months or even years of your life if left unchecked. By recognizing the signs—the obsessive thoughts, the halo effect, the addiction to mixed signals—you can start to pull yourself out of the fantasy and back into reality. True love should not feel like an agonizing guessing game or a constant rollercoaster of anxiety. True love feels like coming home. Break the cycle of limerence, choose yourself, and make space for a connection that actually brings you peace."
+    },
+    ctaLabel: "Learn Healthy Attachment",
+    ctaLink: "/resources/mental-health"
+  },
+  {
+    slug: "what-is-orbiting",
+    title: "What is Orbiting? They Ghosted You But Still Watch Your Stories",
+    description: "They ignored your text but are the first to view your Instagram story. Welcome to the confusing world of orbiting.",
+    category: "Dating Trends",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["orbiting", "ghosting", "social media", "modern dating", "exes", "toxic traits"],
+    imageUrl: "/images/trends/what-is-orbiting.webp",
+    content: {
+      intro: "You went on a few amazing dates, the chemistry was off the charts, and you were sure this was going somewhere. Then, without warning, they completely stop texting you. It is a classic case of ghosting, and while it hurts, you try to move on. But wait—there's a catch. Even though they haven't replied to your last message in three weeks, their name consistently pops up at the very top of your Instagram story viewers. They are liking your tweets, they are viewing your TikToks, and they might even drop a random reaction on your post. They are entirely absent from your real life, yet they are omnipresent on your social media. Welcome to the infuriating phenomenon known as 'orbiting.' This modern dating trend is arguably more confusing than straight-up ghosting because it leaves the door cracked open just enough to mess with your head. Let's break down why orbiter behavior happens, what it really means, and how you can reclaim your peace of mind.",
+      sections: [
+        {
+          heading: "The Definition of Orbiting",
+          paragraph: "Orbiting occurs when someone completely cuts off direct, meaningful communication with you—no texts, no calls, no dates—but continues to engage with you passively on social media. They hover in your digital atmosphere, close enough to see what you are doing but far enough away to avoid any actual commitment or conversation. Unlike ghosting, where the person disappears entirely into the void, an orbiter refuses to fully exit the stage. This creates an incredibly frustrating dynamic where you are constantly reminded of their existence, leaving you to overanalyze their every digital footprint. Are they regretting their decision? Are they testing the waters? Or are they just mindlessly scrolling?",
+          items: [
+            "They stop texting or making plans with you completely.",
+            "They watch every single one of your Instagram or Snapchat stories.",
+            "They occasionally like your posts but never initiate a direct message.",
+            "They engage with your content without ever addressing the fact that they ghosted you."
+          ],
+          scenario: "You send a text asking how their week is going. Complete radio silence. Two days later, you post a selfie on your story, and they view it within three minutes. They even leave a subtle heart reaction, but your text remains unanswered."
+        },
+        {
+          heading: "Why Do They Orbit?",
+          paragraph: "The reasons behind orbiting are usually rooted in a mix of curiosity, ego, and a desire to keep their options open. Often, orbiters suffer from FOMO (Fear Of Missing Out). They don't want to date you right now, but they also don't want to completely lose access to you. By watching your stories, they maintain a low-effort tether to your life. It is a way for them to 'keep you warm' on the back burner in case they change their mind in the future. Additionally, some orbiters simply lack the emotional maturity to cleanly cut ties, so they linger in the digital shadows to avoid the discomfort of a final goodbye."
+        },
+        {
+          heading: "The Psychological Toll on You",
+          paragraph: "Orbiting is uniquely cruel because it prevents you from getting the closure you need to move on. Every time you see their name pop up on your viewer list, it sends a spike of dopamine to your brain, instantly followed by a crash of disappointment when they don't actually reach out. It keeps you trapped in a cycle of hope and confusion. You might start curating your social media posts specifically for them, trying to show them how amazing your life is without them, hoping it will provoke a real text. This shifts your focus away from your own healing and keeps your energy tied up in a person who isn't giving you the bare minimum."
+        },
+        {
+          heading: "Are They Actually Interested?",
+          paragraph: "The harsh truth is: viewing a story takes zero effort. It requires a flick of a thumb. If someone is genuinely interested in you, they will not rely on cryptic story views to communicate that. They will text you, call you, and ask you out. An orbiter is interested in access, not connection. They want to know what you are doing without the responsibility of being a part of your life. Do not confuse digital surveillance with romantic interest. If their actions do not translate into real-world effort, their online presence is meaningless.",
+          items: [
+            "Story views do not equal romantic effort.",
+            "Liking a post is not a substitute for a genuine apology.",
+            "Their digital presence is about their ego, not their feelings for you.",
+            "If they wanted to talk to you, they would."
+          ],
+          scenario: "Your friends convince you that since they viewed all your vacation stories, they must miss you. You finally crack and send them a text. They reply 24 hours later with a dry 'Looks fun' and immediately kill the conversation again."
+        },
+        {
+          heading: "How to Deal with an Orbiter",
+          paragraph: "You have two choices when dealing with an orbiter: ignore it, or remove their access. If you have the emotional fortitude to truly not care that they are watching, you can leave them there and let them witness you glowing up. But for most people, seeing their name is a trigger. The healthiest move is to utilize the block or restrict button. You do not owe them a window into your life, especially after they slammed the door on a real relationship. Blocking an orbiter isn't petty; it is a profound act of self-care. It takes away their power and gives you the clean break you need to finally heal and move forward."
+        }
+      ],
+      conclusion: "Orbiting is the junk food of modern dating: it gives you a quick rush but leaves you feeling empty and sick afterward. Do not let someone who didn't respect you enough to send a parting text maintain front-row seats to your life. Your social media is your digital home, and you get to decide who is allowed inside. Evict the orbiters, hit the block button, and reserve your time and energy for people who show up for you in the real world, not just in your notifications."
+    },
+    ctaLabel: "Learn How to Move On",
+    ctaLink: "/category/breakups"
+  },
+  {
+    slug: "trauma-bonding-signs",
+    title: "Trauma Bonding Signs: Why You Can't Leave a Toxic Relationship",
+    description: "It feels like an unbreakable soul tie, but it might actually be a trauma bond. Here is how to recognize the signs and break free.",
+    category: "Psychology",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["trauma bonding", "toxic relationship", "narcissism", "breakup", "healing", "red flags"],
+    imageUrl: "/images/trends/trauma-bonding-signs.webp",
+    content: {
+      intro: "Have you ever been in a relationship that is undeniably toxic, incredibly painful, and yet, you feel completely incapable of walking away? Your friends are begging you to leave, you know deep down that you deserve better, but the thought of living without this person feels like physical agony. We often mistake this intense, desperate clinging for profound, once-in-a-lifetime love. In reality, it is often a psychological phenomenon known as trauma bonding. A trauma bond occurs when a victim forms a deep emotional attachment to their abuser, forged through a devastating cycle of intense highs and crushing lows. It is an addiction, purely biological and psychological, that keeps you tethered to the source of your pain. Understanding what a trauma bond is—and distinguishing it from real love—is the critical first step to untangling yourself from a toxic dynamic and reclaiming your life. Let's explore the signs that your 'soulmate' might actually be a trauma bond.",
+      sections: [
+        {
+          heading: "The Cycle of Abuse and Affection",
+          paragraph: "The foundation of a trauma bond is the cycle of abuse followed by intense affection. The relationship usually starts with 'love bombing'—an overwhelming influx of praise, attention, and promises for the future. They make you feel like the most special person in the world. But soon, the mask slips, and the devaluation begins. They become critical, cold, or emotionally abusive. Just when you are ready to give up and walk away, they abruptly switch back to the loving, attentive person you first met. They apologize profusely, buy you gifts, and promise to change. This whiplash creates a powerful chemical addiction in your brain. You become addicted to the relief that follows the pain.",
+          items: [
+            "Experiencing intense highs followed by devastating, confusing lows.",
+            "Feeling like you are constantly walking on eggshells.",
+            "Staying in the relationship purely for the brief moments of affection.",
+            "Believing their apologies even though their behavior never actually changes."
+          ],
+          scenario: "They start a massive argument over something trivial, calling you names and making you cry. The next morning, they show up with your favorite coffee, tears in their eyes, saying, 'I'm so sorry, I just love you so much I lose my mind.' You forgive them immediately."
+        },
+        {
+          heading: "Defending the Indefensible",
+          paragraph: "A major sign of a trauma bond is your instinct to fiercely defend your partner's toxic behavior to others. When your friends or family express concern about how you are being treated, you instantly jump to your partner's defense. You find yourself saying things like, 'You just don't understand them like I do,' or 'They had a really hard childhood, they don't mean it.' You hide the bad parts of the relationship from your loved ones because you know they will tell you to leave. In a trauma bond, you become your abuser's PR manager, constantly spinning their terrible actions to make them look acceptable, all while isolating yourself from the people who actually care about you."
+        },
+        {
+          heading: "The Illusion of an Unbreakable Connection",
+          paragraph: "In a trauma bond, the intensity of the pain is often confused with the depth of the connection. Because you have been through such extreme emotional turmoil together, you convince yourself that nobody else could ever understand this bond. You feel like you share a unique 'soul tie' that transcends logic. You might think, 'If we can survive this, we can survive anything.' This illusion keeps you chained to the relationship, believing that walking away would mean throwing away a profound, cosmic connection. In reality, healthy love is not built on surviving each other's emotional abuse; it is built on peace, consistency, and mutual respect.",
+          items: [
+            "Feeling like the two of you against the world.",
+            "Believing the intense pain means the love is equally intense.",
+            "Fearing that no one else will ever love or understand you the way they do.",
+            "Confusing anxiety and nervous system dysregulation with 'butterflies'."
+          ],
+          scenario: "After a brutal week of them ignoring you, they finally call and say, 'We are so messed up, but we belong together. Nobody else gets us.' You agree, mistaking this toxic codependency for a romantic, star-crossed love story."
+        },
+        {
+          heading: "Losing Your Sense of Self",
+          paragraph: "Over time, a trauma bond entirely erodes your identity. Your entire life, mood, and sense of worth become completely dependent on your partner's unpredictable behavior. If they are happy with you, you feel worthy; if they are angry, you feel worthless. You stop engaging in your hobbies, you distance yourself from your friends, and you forget what your life looked like before them. You exist solely to manage their emotions and keep the peace. The trauma bond hollows you out, leaving a shell of a person who is entirely tethered to the source of their own destruction."
+        },
+        {
+          heading: "How to Break the Bond",
+          paragraph: "Breaking a trauma bond is incredibly difficult because it feels like withdrawing from a heavy drug. It requires radical honesty and often professional help. The first step is acknowledging that the relationship is abusive, not romantic. You have to go completely no-contact; trying to remain friends will only pull you back into the cycle. Lean heavily on your support system, even if you previously pushed them away. Seek out therapy to understand the underlying wounds that made you susceptible to this dynamic. Remember that the intense pain of leaving will eventually subside, but the pain of staying will slowly destroy you."
+        }
+      ],
+      conclusion: "A trauma bond is a psychological trap that disguises itself as an epic romance. If your relationship feels like an emotional war zone where you are constantly fighting for scraps of affection, you are not experiencing true love. You are experiencing an addiction to an abusive cycle. Breaking free requires immense courage and a willingness to face the painful reality of the situation. You deserve a love that brings peace to your nervous system, not one that constantly shatters it. Choose your own healing, cut the tie, and walk toward the calm, safe life you deserve."
+    },
+    ctaLabel: "Seek Support Now",
+    ctaLink: "/resources/mental-health"
+  },
+  {
+    slug: "hyper-independence-in-dating",
+    title: "Hyper-Independence in Dating: When 'I Don't Need Anyone' Becomes a Red Flag",
+    description: "Being independent is great, but refusing to let anyone in might be destroying your love life. Here is how to spot hyper-independence.",
+    category: "Attachment Styles",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["hyper-independence", "avoidant attachment", "vulnerability", "dating fears", "relationships", "intimacy"],
+    imageUrl: "/images/trends/hyper-independence-in-dating.webp",
+    content: {
+      intro: "We live in an era that fiercely champions independence, especially in dating. 'I don't need a partner, I want a partner,' is the modern rallying cry. While self-sufficiency and having your own life are absolutely essential for a healthy relationship, there is a point where independence crosses a line and becomes a defense mechanism. Enter 'hyper-independence.' Often rooted in past trauma, betrayal, or an avoidant attachment style, hyper-independence is the extreme belief that you must rely solely on yourself and that relying on others is fundamentally unsafe. In the dating world, this looks like building a fortress around your heart and calling it 'boundaries.' It is refusing to ask for help, pushing people away when they get too close, and viewing vulnerability as a weakness. Let's examine how hyper-independence might be sabotaging your chance at true intimacy.",
+      sections: [
+        {
+          heading: "The Refusal to Accept Help",
+          paragraph: "One of the most glaring signs of hyper-independence is a visceral reaction to accepting help, even for the smallest things. You insist on paying for every single date, not out of equality, but out of a fear of 'owing' someone. If you are sick, you refuse to let a partner bring you soup. If you are overwhelmed, you suffer in silence rather than asking for support. To a hyper-independent person, accepting help feels like giving up control and opening the door to potential disappointment. But in a healthy relationship, interdependence is key. Allowing your partner to support you is how trust is built.",
+          items: [
+            "Getting angry or defensive when a partner offers to help you.",
+            "Viewing any form of reliance on another person as a weakness.",
+            "Keeping your struggles completely hidden until you reach a breaking point.",
+            "Insisting on absolute self-reliance to avoid feeling indebted."
+          ],
+          scenario: "Your car breaks down on the way to work. Your partner offers to leave their job to come pick you up. Instead of saying yes, you snap, 'I can handle it myself, I don't need you to rescue me,' and pay for an expensive tow truck."
+        },
+        {
+          heading: "Running at the First Sign of Intimacy",
+          paragraph: "Hyper-independent people are excellent at the early, casual stages of dating. They are fun, self-assured, and low-maintenance. But the moment the connection deepens and starts to require real vulnerability, they hit the panic button. When a partner starts asking deeper questions, expressing genuine feelings, or talking about the future, the hyper-independent person feels suffocated. They will suddenly find flaws in their partner, pick a fight, or pull away completely to re-establish their emotional distance. They confuse the natural progression of intimacy with a loss of their freedom."
+        },
+        {
+          heading: "The 'I Don't Need You' Armor",
+          paragraph: "A hyper-independent person wears their self-sufficiency like a suit of armor, constantly reminding their partner that they could easily walk away at any moment. They might frequently say things like, 'I am perfectly fine on my own,' or 'I don't actually need a relationship to be happy.' While these statements might be factually true, weaponizing them in a relationship is a way to keep your partner at arm's length. It creates a dynamic where the partner feels unvalued and unnecessary. A healthy relationship requires a willingness to say, 'I am fine on my own, but I am choosing you because you make my life better.'",
+          items: [
+            "Constantly reminding your partner that you are fine without them.",
+            "Treating the relationship as an entirely disposable accessory.",
+            "Refusing to make compromises or merge your lives in any meaningful way.",
+            "Feeling a constant need to prove that you are completely self-sufficient."
+          ],
+          scenario: "Your partner asks if you want to spend the holidays with their family this year. You immediately decline, saying, 'I always do my own thing for the holidays. I don't need to be part of a big family gathering to be happy.'"
+        },
+        {
+          heading: "The Fear of Vulnerability",
+          paragraph: "At the core of hyper-independence is a deep-seated fear of vulnerability. To truly connect with someone, you have to let them see your flaws, your fears, and your messy emotions. You have to risk being hurt, rejected, or disappointed. Hyper-independent people have usually learned somewhere in their past that being vulnerable is dangerous. They believe that if they never let anyone in, no one can ever betray them. But the tragic irony is that by protecting yourself so fiercely from pain, you also completely block yourself from experiencing deep, meaningful love."
+        },
+        {
+          heading: "Finding the Middle Ground",
+          paragraph: "Healing from hyper-independence doesn't mean becoming codependent. It means finding the healthy middle ground of interdependence, where two complete, autonomous people choose to lean on each other. Start by taking small risks. Ask your partner for a tiny favor. Tell them about a bad day at work instead of bottling it up. Practice saying 'thank you' instead of 'I didn't need your help' when they do something nice for you. Therapy can also be incredibly beneficial in unpacking the root causes of your avoidant tendencies. Learning to let your guard down is terrifying, but it is the only way to build a love that lasts."
+        }
+      ],
+      conclusion: "Independence is a beautiful, necessary trait, but hyper-independence is a trauma response disguised as empowerment. Refusing to let anyone support you, love you, or see your vulnerable side isn't strength; it is a fear of connection. A true partnership requires a willingness to take off the armor and trust that the other person won't use it against you. You do not have to carry the entire weight of the world on your shoulders. It is okay to want someone, it is okay to need support, and it is okay to let love in."
+    },
+    ctaLabel: "Understand Your Attachment Style",
+    ctaLink: "/quiz/attachment-style"
+  },
+  {
+    slug: "one-sided-effort-relationship",
+    title: "One-Sided Effort: Are You Dating Them, or Are You Doing PR for Them?",
+    description: "If you are planning the dates, carrying the conversations, and managing their emotions, you might be in a one-sided relationship.",
+    category: "Relationship Dynamics",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["one sided relationship", "emotional labor", "dating effort", "boundaries", "knowing your worth"],
+    imageUrl: "/images/trends/one-sided-effort-relationship.webp",
+    content: {
+      intro: "You plan the dates, you initiate the deep conversations, you check in on their mental health, and you carefully navigate around their moods. From the outside, you look like half of a perfectly functioning couple. But on the inside, you feel completely exhausted. Why? Because you are doing the emotional and logistical heavy lifting for two people. You aren't just dating this person; you are acting as their life coach, their therapist, and their PR manager. A one-sided relationship is a draining dynamic where one partner consistently invests massive amounts of time, energy, and effort, while the other partner simply coasts along, reaping the benefits without contributing. If you feel like your relationship would completely collapse the second you stopped putting in effort, you are caught in a one-sided trap. Let's examine the signs that you are over-functioning and how to address the imbalance before you burn out completely.",
+      sections: [
+        {
+          heading: "The Burden of Planning",
+          paragraph: "In a balanced relationship, both partners take turns coming up with ideas, making reservations, and initiating plans. In a one-sided relationship, you are the sole event coordinator. If you don't suggest a date, you simply don't go out. If you don't book the tickets, you don't go to the concert. When you bring this up, they might offer excuses like, 'I'm just really go-with-the-flow,' or 'You're just better at planning things.' This weaponized incompetence forces you to continuously take on the mental load of keeping the romance alive. They get to enjoy the relationship without ever having to lift a finger to sustain it.",
+          items: [
+            "You are always the one initiating texts, calls, and hangouts.",
+            "They never surprise you with a planned date or thoughtful gesture.",
+            "They rely on you to remind them of important events or deadlines.",
+            "The phrase 'whatever you want to do' is their default response to everything."
+          ],
+          scenario: "You tell them you are exhausted from always picking the restaurant. They say, 'Okay, I'll pick next time!' Next weekend rolls around, you ask where you are going, and they say, 'Oh, I didn't look anywhere up yet. Where do you want to go?'"
+        },
+        {
+          heading: "Doing Their Emotional Labor",
+          paragraph: "A one-sided relationship isn't just about logistical effort; it is heavily rooted in emotional labor. You find yourself constantly trying to 'fix' them or manage their moods. If they have a bad day at work, you spend hours talking them through it. But when you have a bad day, they offer a generic 'that sucks' and quickly change the subject. You do the hard work of bringing up relationship issues, analyzing the dynamic, and suggesting solutions, while they remain entirely passive. You are essentially doing all the emotional growth and maintenance for the entire relationship, acting more like a therapist than a romantic partner."
+        },
+        {
+          heading: "The 'Potential' Trap",
+          paragraph: "Why do we stay in one-sided relationships? Often, it is because we are dating the person's potential, rather than the reality of who they are right now. You see how great they could be if they just applied themselves, if they just went to therapy, or if they just put in a little more effort. So, you work overtime trying to pull that potential out of them. You make excuses for their lack of effort, telling your friends that they are 'just stressed' or 'going through a phase.' But potential doesn't pay the relationship bills. You cannot love someone into being a good partner if they don't want to put in the work themselves.",
+          items: [
+            "Constantly making excuses to your friends for their poor behavior.",
+            "Believing that your endless patience will eventually 'fix' them.",
+            "Focusing on the 10% of the time they are great, and ignoring the 90% they are absent.",
+            "Feeling more like their parent or life coach than their equal."
+          ],
+          scenario: "They forget your birthday, but instead of being angry, you tell your friends, 'They have just been so overwhelmed with their new job, I didn't want to make a big deal out of it.' You buy yourself a cake to make them feel less guilty."
+        },
+        {
+          heading: "The Resentment Build-Up",
+          paragraph: "You cannot pour from an empty cup indefinitely. Eventually, the immense effort of carrying the relationship entirely on your shoulders will curdle into deep resentment. You will start feeling bitter about the sacrifices you are making, snapping at small things, and feeling a profound sense of loneliness, even when they are sitting right next to you. This resentment is your body's alarm system telling you that the dynamic is fundamentally unfair. Ignoring the resentment will only lead to an explosive breakdown of the relationship later on."
+        },
+        {
+          heading: "Dropping the Rope",
+          paragraph: "The fastest way to test a one-sided relationship is to simply 'drop the rope.' Stop planning. Stop initiating texts. Stop managing their emotions. Match their level of effort exactly and see what happens. If the relationship immediately stalls and communication completely dies out, you have your answer: the relationship only existed because you were forcing it to. If they notice the shift and finally step up to the plate, there might be hope for a recalibration. But you have to be willing to communicate your needs clearly and establish firm boundaries regarding what you will and will not tolerate going forward."
+        }
+      ],
+      conclusion: "A healthy relationship is a partnership of equals, not a charity project where one person does all the heavy lifting. If you are doing all the planning, all the communicating, and all the emotional labor, you are not in a relationship; you are managing one. Stop over-functioning for someone who is perfectly content to under-function. Drop the rope, step back, and demand the reciprocity you deserve. If they are not willing to meet you halfway, it is time to find someone who will."
+    },
+    ctaLabel: "Evaluate Your Relationship",
+    ctaLink: "/resources/relationship-health"
+  },
+  {
+    slug: "when-to-walk-away",
+    title: "When to Walk Away: The Final Checklist Before You Block Them",
+    description: "Are you on the fence about ending it? Here is the definitive checklist to help you decide when it is finally time to walk away.",
+    category: "Breakups",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["breakups", "when to leave", "blocking", "red flags", "moving on", "dating advice"],
+    imageUrl: "/images/trends/when-to-walk-away.webp",
+    content: {
+      intro: "Deciding to end a relationship or cut ties in the early stages of dating is rarely easy. Your brain often becomes a battleground of conflicting thoughts: 'Maybe I'm overreacting,' 'But we have so much fun sometimes,' or 'What if I never find anyone else?' We tend to hold on to the good memories with a vice grip while actively rationalizing the bad behavior. This agonizing limbo can drag on for months, draining your energy and eroding your self-esteem. Knowing when to definitively walk away requires taking a harsh, objective look at the reality of the situation, stripping away the potential and the fantasy. If you are constantly debating whether you should stay or go, you probably already know the answer deep down. To help you clear the fog and make a firm decision, here is the final, definitive checklist you need before you hit the block button and reclaim your life.",
+      sections: [
+        {
+          heading: "Your Nervous System is Wrecked",
+          paragraph: "Your body often knows the truth long before your mind is willing to accept it. Pay close attention to how your nervous system reacts to this person. When their name pops up on your phone, do you feel a sense of calm and joy, or do you feel a sudden spike of anxiety and dread? If you feel like you are constantly walking on eggshells, monitoring their moods, and bracing yourself for the next conflict, your body is screaming at you to leave. A healthy relationship should serve as a safe harbor, a place where your nervous system can regulate and relax. If your partner is the primary source of your anxiety, it is time to walk away.",
+          items: [
+            "Experiencing constant physical anxiety, nausea, or a tight chest around them.",
+            "Dreading their texts or calls instead of looking forward to them.",
+            "Feeling exhausted and drained after spending time with them.",
+            "Losing sleep over arguments or the uncertainty of the relationship."
+          ],
+          scenario: "You hear their specific ringtone and your stomach immediately drops. You spend ten minutes staring at the screen, trying to formulate the 'perfect' response so they don't get angry or start an argument."
+        },
+        {
+          heading: "The Core Values Don't Align",
+          paragraph: "You can compromise on what movie to watch, where to eat, or how to load the dishwasher. You cannot compromise on your core values. If you fundamentally disagree on huge life issues—like whether to have children, how you view financial responsibility, your moral compass, or your vision for the future—no amount of love will bridge that gap. Often, we ignore these massive incompatibilities early on because the chemistry is so strong. But chemistry does not sustain a long-term partnership. If staying with them requires you to abandon or significantly alter your core beliefs and goals, the price of admission is simply too high."
+        },
+        {
+          heading: "The Bad Outweighs the Good",
+          paragraph: "This sounds incredibly simple, but when you are in the thick of a toxic dynamic, it is easy to lose perspective. Sit down and evaluate the actual, day-to-day reality of the relationship. Are you unhappy 80% of the time, just sticking around for the 20% where things are 'great'? We often cling to the rare, beautiful moments and use them to justify the constant misery. But a relationship shouldn't be a grueling endurance test punctuated by brief moments of relief. If you spend more time crying over them, complaining about them to your friends, or wishing they would change than you do genuinely enjoying their company, the math simply doesn't work.",
+          items: [
+            "Your friends are exhausted from hearing you complain about the same issues.",
+            "You frequently cry over their actions or lack of effort.",
+            "You are constantly hoping they will revert back to 'how they were in the beginning.'",
+            "The 'good times' are just periods where you aren't actively fighting."
+          ],
+          scenario: "You tell your best friend about how they finally planned a date for the first time in six months. Your friend looks at you with pity and says, 'You know that's the bare minimum, right?'"
+        },
+        {
+          heading: "Trust is Permanently Broken",
+          paragraph: "Trust is the foundational bedrock of any connection. If they have repeatedly lied, cheated, broken massive promises, or consistently hidden things from you, the foundation is shattered. While some couples can rebuild trust after a major betrayal, it requires massive, consistent effort from the person who broke it. If they are defensive, secretive, or irritated by your lack of trust after they betrayed you, the relationship cannot be salvaged. You cannot build a future with someone when you have to constantly act as a detective, checking their phone or verifying their location to feel safe."
+        },
+        {
+          heading: "You Are Losing Yourself",
+          paragraph: "The ultimate red flag is when you look in the mirror and no longer recognize the person staring back at you. If you have abandoned your hobbies, distanced yourself from your friends, and compromised your boundaries just to keep this person happy, the relationship has become destructive. True love expands your world; toxic relationships shrink it. If your entire universe has shrunk down to managing their moods and seeking their approval, it is time to pack up and leave. Walking away is an act of profound self-love and the first step to finding yourself again."
+        }
+      ],
+      conclusion: "Walking away is never easy, especially when you still have feelings for the person. But you have to love yourself more than you love the potential of who they could be. If this checklist resonated with you, stop waiting for a magical sign or a dramatic event to justify your departure. The consistent unhappiness is the sign. Take a deep breath, hit the block button, and step into the painful but incredibly liberating process of moving on. The right relationship will never require you to sacrifice your peace, your values, or your sanity."
+    },
+    ctaLabel: "How to Heal from a Breakup",
+    ctaLink: "/resources/healing"
+  }
 ];
+
 
 
 export const trendsDataTr: TrendArticle[] = [
@@ -699,7 +1169,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-02",
     readTime: "4 dk okuma",
     keywords: ["Yapay zeka yüz okuma", "Yapay zeka kişilik testi", "aura okuma yüz", "viral TikTok trendi", "yüz analizi yapay zeka"],
-    imageUrl: "/images/trends/ai-face-scan.png",
+    imageUrl: "/images/trends/ai-face-scan.webp",
     content: {
       intro: "Şu an TikTok'ta veya X'te (Twitter) kesin önüne düşmüştür: Millet en masum selfie'sini atıp yapay zekadan acımasız, tokat gibi gerçek bir analiz yiyor. Olay artık günlük burç yorumu okumak veya 'sana duymak istediğini söyleyen' o klasik testleri çözmek değil. Yeni trend: Yapay zeka ile yüzleşmek. Peki bir algoritma sadece bir JPEG'e bakıp da canın sıkıldığında eski sevgiline yazdığını veya kafein bağımlısı olduğunu nasıl şıp diye anlıyor? Gel bu işin psikolojisini, arkasındaki teknolojiyi ve bir koda resmen 'gömülmenin' neden bu kadar popüler olduğunu konuşalım.",
       sections: [
@@ -729,7 +1199,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-01",
     readTime: "5 dk okuma",
     keywords: ["situationship anlamı", "çıkıyor muyuz arkadaş mıyız", "situationship kırmızı bayrakları", "toksik ilişkiler"],
-    imageUrl: "/images/trends/situationship.png",
+    imageUrl: "/images/trends/situationship.webp",
     content: {
       intro: "Sabahtan akşama kadar mesajlaşıyorsunuz. Hafta sonu sürekli beraber takılıyorsunuz, dizi izliyorsunuz. Köpeğiyle bile tanıştın, kahveyi nasıl içtiğini ezbere biliyorsun. Ama arkadaşın sana dönüp 'E siz şimdi nesiniz?' dediğinde kalbin sıkışıyor ve buz kesiyorsun. 'Ya işte... takılıyoruz' diye geveliyorsun. Aramıza hoş geldin, burası 'Situationship'. Yani neslimizin açık ara en stresli, en yorucu ve adı konmamış flört batağı. Arkadaşlıkla sevgililik arasındaki o kafa karıştırıcı gri bölge ve şu an milyonlarca insan burada hapis kalmış durumda.",
       sections: [
@@ -763,7 +1233,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-05-30",
     readTime: "4 dk okuma",
     keywords: ["aura puanları nedir", "aura puanları mem", "aura nasıl kazanılır", "aura kaybetmek", "tiktok aura trendi"],
-    imageUrl: "/images/trends/aura-points.png",
+    imageUrl: "/images/trends/aura-points.webp",
     content: {
       intro: "Son dönemde TikTok veya Instagram'da takıldıysan kesin yorumlarda 'abi -10.000 aura puanı' veya '+500 aura kazandın' tarzı şeyler görmüşsündür. 2026'da statü artık banka hesabınla veya takipçi sayınla falan ölçülmüyor; olay tamamen Aura Puanında bitiyor. Tamamen görünmez, internet kültürünün uydurduğu bu saçma ama aşırı eğlenceli skor sistemi nereden çıktı? Ve en önemlisi: Her sokağa çıktığında aura kaybetmekten nasıl kurtulursun?",
       sections: [
@@ -797,7 +1267,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-05-25",
     readTime: "6 dk okuma",
     keywords: ["flört red flagleri", "narsist flört işaretleri", "toksik eski sevgili", "love bombing belirtileri", "gaslighting nedir"],
-    imageUrl: "/images/trends/red-flags.png",
+    imageUrl: "/images/trends/red-flags.webp",
     content: {
       intro: "Acı gerçekleri konuşalım: Flört piyasası şu an tam bir kaos ve Red Flag'ler (kırmızı bayraklar) da artık seviye atladı. İnsanlar eskisi gibi sadece 'iletişim özürlüsü' veya 'biraz dağınık' değiller; artık love-bombing, breadcrumbing ve gaslighting gibi ustaca psikolojik oyunlar oynuyorlar. Date uygulamalarında gezinmek romantizm aramaktan çok, mayın tarlasında yürümeye benziyor. Önümüzdeki 3 yılı terapistine 'podcastleri 2x hızında dinleyen o manyağı' anlatarak geçirmek istemiyorsan, bu yıl kesinlikle görmezden gelemeyeceğin o devasa red flag'lere iyi bak.",
       sections: [
@@ -831,7 +1301,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-03",
     readTime: "5 dk okuma",
     keywords: ["delüzyonel miyim", "karışık sinyaller ne anlama geliyor", "delulu kontrolü", "flört mü ediyorlar yoksa sadece kibarlar mı"],
-    imageUrl: "/images/trends/delulu.png",
+    imageUrl: "/images/trends/delulu.webp",
     content: {
       intro: "Hepimiz bu tuzağa düştük. Senin için kapıyı açık tuttu, 2 hafta önceki Instagram story'ni beğendi, mesaja '👀' emojisi koydu. Ve sen anında kafanda düğün mekanı bakmaya başladın. Ama bir saniye dur—bunlar gerçekten sana yürümek için atılan karışık sinyaller mi, yoksa sen kronik bir 'delulu' vakası mısın? Günümüzde birinin gerçekten ilgilenmesiyle, öylesine nazik olması arasındaki çizgi çok ince. Gel şu durumu bir çözelim ve sana ihtiyacın olan o acımasız gerçeklik kontrolünü yapalım.",
       sections: [
@@ -865,7 +1335,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-04",
     readTime: "4 dk okuma",
     keywords: ["mesajlaşma kaygısı", "neden beni görüldüde bırakıyorlar", "mesajları aşırı düşünmek", "reply guru", "kuru mesajlaşma"],
-    imageUrl: "/images/trends/overthinking.png",
+    imageUrl: "/images/trends/overthinking.webp",
     content: {
       intro: "Telefon titrer. O yazmıştır. Ekrana bakarsın, sadece üç kelime: 'Tamam uyar bana.' O an kalbin hızla atmaya başlar. Neden ünlem koymadı? Bunu yazması neden 3 saat sürdü? Acaba bana trip mi atıyor? Hemen mi cevap vermeliyim yoksa sırf ezik görünmemek için tam 3 saat 1 dakika mı beklemeliyim? Mesajlaşma anksiyetesi koca bir jenerasyonu rehin almış durumda. İletişim saniyelik, ama kendimizi hiç bu kadar yanlış anlaşılmış hissetmemiştik.",
       sections: [
@@ -899,7 +1369,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-05",
     readTime: "7 dk okuma",
     keywords: ["burçların kırmızı bayrakları", "astroloji toksik özellikleri", "ikizler kırmızı bayrakları", "akrep manipülasyonu"],
-    imageUrl: "/images/trends/zodiac.png",
+    imageUrl: "/images/trends/zodiac.webp",
     content: {
       intro: "Venüs'ümüz onun Mars'ına uyuyor mu, acaba yıldızlar aşkımızı destekliyor mu diye doğum haritalarına bakmayı çok seviyoruz. Ama dürüst olalım; haritaya ruh eşini bulmak için değil, başına ne tür bir bela açacağını önden görüp ona göre pozisyon almak için bakmalısın. Her burcun kendine has inanılmaz toksik bir huyu var. Neye bulaştığını tam olarak bilmen için burçların en büyük kırmızı bayraklarını (red flag) masaya döküyoruz.",
       sections: [
@@ -933,7 +1403,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-06",
     readTime: "4 dk okuma",
     keywords: ["negatif aura anlamı", "kötü ruh hali nasıl düzeltilir", "ruh hali sıfırlama", "enerji temizliği", "düşük vibe", "titreşiminizi yükseltmek", "sabah kaygısı düzeltmesi"],
-    imageUrl: "/images/trends/mood-reset.png",
+    imageUrl: "/images/trends/mood-reset.webp",
     content: {
       intro: "Sabah gözlerini açtın, telefonu eline aldın, daha ilk kahveni bile yudumlamadan o ağır hissi fark ettin: Üzerinde kapkara bir negatif aura var. Her şey gözüne batıyor. Odanın ışığı bile sinir bozucu, gelen mesajlar darlıyor ve bugünün tamamen 0/10 bir vibe ile geçeceğini iliklerine kadar hissediyorsun. Ortalıkta canını sıkacak spesifik bir olay yokken bile neden böyle oluyor? Gel bu 'kötü gün' olayının arkasındaki bilime ve enerji muhabbetine bakalım.",
       sections: [
@@ -967,7 +1437,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-18",
     readTime: "5 dk okuma",
     keywords: ["vibe savaşı", "kim daha havalı", "aura battle", "arkadaşlık", "ana karakter enerjisi"],
-    imageUrl: "/images/trends/aura-points.png",
+    imageUrl: "/images/trends/aura-points.webp",
     content: {
       intro: "Hepimizin o kendisini grubun tartışmasız ana karakteri sanan bir arkadaşı vardır. Sanki aurasına dokunulmazmış gibi davranır ve bunu herkese belli etmekten çekinmez. Yıllarca arkadaş gruplarında 'kim daha cool' tartışması hep sürdü ama artık 2026'dayız. Artık tartışmıyoruz, kararı yapay zekaya bırakıyoruz. 'Vibe Savaşları' (Aura Battle), arkadaş gruplarını birbirine düşüren ve o şişik egoları patlatan en yeni trend.",
       sections: [
@@ -997,7 +1467,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-19",
     readTime: "4 dk okuma",
     keywords: ["rizz ne demek", "rizz anlamı", "unspoken rizz", "nasıl rizz sahibi olunur", "gen-z slang 2026", "karizmatik olmak"],
-    imageUrl: "/images/trends/rizz.png",
+    imageUrl: "/images/trends/rizz.webp",
     content: {
       intro: "Son iki yılda TikTok veya Twitter'da biraz vakit geçirdiysen, birine 'hiç rizzo yok' dendiğini ya da 'unspoken rizzi var' diye övüldüğünü mutlaka duymuşsundur. Şu anda Gen-Z'nin sosyal ve flört sözlüğüne egemen olan en baskın terim bu: pürüzsüz flörtten tarif edilemez, manyetik karizmaya kadar her şeyi tanımlamak için kullanılıyor. Ama rizz gerçekte ne anlama geliyor? Öğrenilebilir mi? Ve daha da önemlisi — sende var mı, yoksa kendi hayat hikayende farkında olmadan bir NPC olarak mı geziniyorsun?",
       sections: [
@@ -1027,7 +1497,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-20",
     readTime: "5 dk okuma",
     keywords: ["soft launch ne demek", "hard launch ilişki", "sosyal medyada ilişki paylaşmak", "partneri tanıtmak", "bağlanma stili", "instagram ilişki"],
-    imageUrl: "/images/trends/soft-launch.png",
+    imageUrl: "/images/trends/soft-launch.webp",
     content: {
       intro: "Müthiş biriyle yeni tanışmaya başladın. Kelebekler gerçek, buluşmalar kusursuz ve gerçek anlamda duygular geliştirmekten tehlikeli derecede yakınsın. Ardından modern flörtün en stratejik açıdan karmaşık kararı geliyor: Sosyal medya debütlerini nasıl yöneteceksin? Gizemli soft launch'a mı gideceksin — brunch fotoğrafının köşesinde bulanık bir el, story'nde neredeyse görünmez bir gölge — yoksa yüz yüze bir çift fotoğrafı ve etiketli bir Instagram gönderisiyle tam hard launch'a mı? Önceki nesillerin hiç vermek zorunda kalmadığı bu karar, psikolojin hakkında düşündüğünden çok daha fazlasını ortaya koyuyor.",
       sections: [
@@ -1057,7 +1527,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-21",
     readTime: "6 dk okuma",
     keywords: ["duygusal olarak kapalı erkek", "duygusal olarak kapalı kadın", "duygusal kapalılık işaretleri", "kaçınmacı bağlanma", "toksik ilişki işaretleri"],
-    imageUrl: "/images/trends/emotionally-unavailable.png",
+    imageUrl: "/images/trends/emotionally-unavailable.webp",
     content: {
       intro: "İki aydır konuşuyorsunuz. Gerçekleştiğinde sohbetler harika — komik, derin, elektrikli. Ama bir şey her zaman biraz ulaşılamaz hissettiriyor. Oradalar, ama tam olarak orada değiller. Hayatlarından ayrıntılar paylaşıyorlar ama emotionell ağır bir şeye gelir gelmez savıyorlar. Bağlı hissediyorsun, ama yalnızca senin tüketimin için dikkatlice inşa ettikleri bir versiyonuna. Duygusal olarak kapalı birine aşık oluyor olabilirsin ve acı gerçek şu: kendileri bile bunun farkında olmayabilir.",
       sections: [
@@ -1087,7 +1557,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "5 dk okuma",
     keywords: ["toksik arkadaş işaretleri", "toksik arkadaşlık nasıl anlaşılır", "arkadaşlık kırmızı bayrakları", "tek taraflı arkadaşlık", "yorucu arkadaşlar"],
-    imageUrl: "/images/trends/toxic-friendship.png",
+    imageUrl: "/images/trends/toxic-friendship.webp",
     content: {
       intro: "Toksik romantik partnerleri tespit etmek için çok fazla enerji harcıyoruz, ancak aynı eleştirel bakışı pek nadiren arkadaşlıklarımıza uyguluyoruz. Oysa toksik bir arkadaşlık en az onlar kadar yıkıcı olabilir — ve çoğu zaman daha sinsi, çünkü beklentiler farklı ve ihanet daha derin acıtır. Arkadaşlar seçtiğimiz ailemiz, güvenli alanımız olmalıdır. O ilişki sevinç yerine kaygı, şüphe veya tükenme kaynağı haline geldiğinde, bir şeyler ciddi biçimde yanlış gitmiş demektir.",
       sections: [
@@ -1117,7 +1587,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-20",
     readTime: "6 dk okuma",
     keywords: ["gen-z flört terimleri 2026", "modern flört jargonu", "breadcrumbing ne demek", "benching flört", "beige flag", "situationship", "ilişki terimleri sözlüğü"],
-    imageUrl: "/images/trends/gen-z-dating-terms.png",
+    imageUrl: "/images/trends/gen-z-dating-terms.webp",
     content: {
       intro: "Modern flört tamamen yeni bir dil geliştirdi ve bu dile hâkim değilsen, kendi aşk hayatın hakkındaki sohbetlerde tamamen kaybolduğunu göreceksin. Gen-Z, flörtün dağınık, kafa karıştırıcı ve çoğu zaman acı verici deneyimini aldı ve her tek fenomene kendi kesin, paylaşılabilir terimini verdi. Manipülatif olandan sıradana kadar bu sözcükler, önceki nesillerin bile kelime hazinesi olmayan duygusal gerçeklikleri yakalıyor. Bu, 2026'da romantizmde yol almak için temel sözlüğün.",
       sections: [
@@ -1147,7 +1617,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-21",
     readTime: "5 dk okuma",
     keywords: ["delulu ne demek", "delulu is the solulu", "ezildiğim kişi gerçekten beni seviyor mu", "manifestasyon vs yanılsama", "gen-z ruh sağlığı", "situationship yanılsaması"],
-    imageUrl: "/images/trends/delulu.png",
+    imageUrl: "/images/trends/delulu.webp",
     content: {
       intro: "'Delulu is the solulu.' Şaka olarak başladı, vahşi derecede gerçekçi olmayan romantik fantezilerinin en büyük kişilik özelliğin olduğunun öz farkında bir ilanı. Adını hatırlayan baristanın ruh eşi olduğuna inanan kız. İki harfli bir mesaj yanıtını derin duygusal bağlantının işareti olarak yorumlayan erkek. 'Delulu' olmak bir onur nişanı haline geldi — iyimserliği modern flörtün kasvetli gerçekliklerine karşı bir silah olarak kullanmanın bir yolu. Ama bir yerde şaka artık komik olmaktan çıktı. Çünkü bazılarımız delulu performansı sergilemiyoruz. Gerçekten yaşıyoruz onu, ve bu bizi olduğumuz yerde tutuyor.",
       sections: [
@@ -1177,7 +1647,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "6 dk okuma",
     keywords: ["bağlanma stilleri", "kaygılı bağlanma", "kaçınmacı bağlanma", "güvenli bağlanma", "korkulu kaçınmacı", "ilişki psikolojisi", "neden insanları itiyorum"],
-    imageUrl: "/images/trends/attachment-styles.png",
+    imageUrl: "/images/trends/attachment-styles.webp",
     content: {
       intro: "Her ilişki bittiğinde bir dahaki sefere farklı yapacağına yemin edersin. Ama bir şekilde aynı kalıplar tekrarlanmaya devam eder. Ya çok sıkı yapışıp insanları kaçırırsın, ya da işler ciddileşince sen kaçarsın. Aynı tip insanı çekersin, aynı tuzaklara düşersin ve aynı kalp kırıklığını hissedersin. Bu kötü şans değil — bu senin bağlanma stilin. Çocuklukta gelişen ve sinir sistemine kodlanmış olan bağlanma stilin, nasıl sevdiğini, nasıl kavga ettiğini, nasıl iletişim kurduğunu ve nihayetinde ilişkilerini nasıl sabote ettiğini belirleyen görünmez bir plandır.",
       sections: [
@@ -1211,7 +1681,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "5 dk okuma",
     keywords: ["birini nasıl unuturum", "ayrılık sonrası ne yapmalı", "eski sevgiliyi unutmak", "kalp kırıklığı tavsiye", "birini düşünmeyi bırakmak", "ayrılık iyileşme"],
-    imageUrl: "/images/trends/get-over-someone.png",
+    imageUrl: "/images/trends/get-over-someone.webp",
     content: {
       intro: "Gece 2. Yatakta yatıyorsun, tavana bakıyorsun, aynı konuşmayı 400. kez kafanda tekrarlıyorsun. Numarasını sildin — ve hafızandan tekrar kaydettin. Instagram'ını sessize aldın — ve tarayıcıdan kontrol ettin. Her şarkı onlar hakkında yazılmış gibi geliyor. Sokaklardaki her mutlu çift kişisel bir saldırı hissettiriyor. Birini unutmak evrensel olarak en acı verici insan deneyimlerinden biridir ve internetin 'kendine odaklan' ve 'zaman her şeyi iyileştirir' tavsiyeleri siperlerdeyken hakaret edici derecede yetersiz hissettiriyor. İşte gerçek rehber — şekerleme yok, toksik pozitiflik yok.",
       sections: [
@@ -1241,7 +1711,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "5 dk okuma",
     keywords: ["birinin senden hoşlandığının işaretleri", "beden dili çekim", "hoşlanma belirtileri", "ezildiğim kişi beni seviyor mu", "sözsüz çekim ipuçları"],
-    imageUrl: "/images/trends/body-language-crush.png",
+    imageUrl: "/images/trends/body-language-crush.webp",
     content: {
       intro: "Mesajlarını gizli anlamlar için analiz ediyor, emoji seçimlerini inceliyor ve yanıt sürelerini çok fazla derinlemesine okuyorsun. Ama işte çoğu flört tavsiyesinin görmezden geldiği gerçek: kelimeler yalan söyler. Mesajlar hesaplanabilir, altyazılar performatif olabilir ve insanlar hiçbirini kastetmeden doğru şeyleri söyleyebilir. Ama beden yalan söylemez. Sözsüz iletişim insan etkileşiminin %55'inden fazlasını oluşturur ve biri sana gerçekten ilgi duyduğunda, bedeni bunu bilinçli olarak kontrol edemeyecekleri şekillerde yayınlar.",
       sections: [
@@ -1271,7 +1741,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-22",
     readTime: "5 dk okuma",
     keywords: ["sevgi dilleri", "5 sevgi dili", "benim sevgi dilim ne", "onaylama sözleri", "fiziksel temas sevgi dili", "kaliteli zaman", "hizmet eylemleri", "ilişki tavsiyesi"],
-    imageUrl: "/images/trends/love-languages.png",
+    imageUrl: "/images/trends/love-languages.webp",
     content: {
       intro: "Onlara akşam yemeği pişiriyorsun, evi temizliyorsun, işlerini hallediyorsun — ve yeterince 'seni seviyorum' demediğinden şikayet ediyorlar. Sana bütün gün iltifat mesajları atıyorlar, aşk notları yazıyorlar, sözlü sevgi yağmuruna tutuyorlar — ve sen sevilmemiş hissediyorsun çünkü telefonlarına bakmadan seninle oturup film izlemiyorlar. Bu uyumsuzluk değil — bu bir sevgi dili uyuşmazlığı ve başka türlü harika ilişkilerin sessiz katili. Dr. Gary Chapman tarafından geliştirilen beş sevgi dili çerçevesi, insanların temelden farklı şekillerde sevgi verip aldığını açıklıyor.",
       sections: [
@@ -1301,7 +1771,7 @@ export const trendsDataTr: TrendArticle[] = [
     publishDate: "2026-06-27",
     readTime: "6 dk okuma",
     keywords: ["ick nedir", "ick ne demek", "the ick ne demek", "ick ne anlama gelir", "ick örnekleri", "ick almak", "ick ilişki", "çekim kaybı", "gen-z ick", "birinden ick almak", "ick neden olur", "ick vs kırmızı bayrak", "ani çekim kaybı"],
-    imageUrl: "/images/trends/the-ick.png",
+    imageUrl: "/images/trends/the-ick.webp",
     content: {
       intro: "Harika giden bir buluşmanın ortasındasın. Kimya var, kişi güzel görünüyor, sohbet akıyor. Sonra oluyor. Kendi şakasına biraz fazla yüksek sesle gülüyor. Ya da yürürken kollarını garip sallayarak biraz fazla hızlı yürüyor. Veya seni sokağın karşısından iki eliyle birden bayrak gibi sallayarak selamlıyor. Ve işte o an — bitti. İçinde birikmekte olan her damla çekim saniyeler içinde yerle bir oluyor, yerine korkunç, mantıksız ve seni yutacak gibi gelen bir iğrenme dalgası geçiyor. İşte bu dostum, 'ick'. Ve bir kez aldığında, neredeyse hiç geçmiyor.",
       sections: [
@@ -1331,7 +1801,452 @@ export const trendsDataTr: TrendArticle[] = [
     ctaLabel: "Kırmızı Bayraklarını Tara",
     ctaLink: "/toxic-ex-scanner",
   }
+  ,
+  {
+    slug: "am-i-being-gaslighted",
+    title: "Gaslighting'e mi Uğruyorsun? Kendinden Şüphe Etmeyi Bırak",
+    description: "Sürekli 'ben mi abartıyorum' diyorsan ve hafızandan şüphe ediyorsan, belki de delulu değilsindir kanka. Gaslighting kurbanı olmanın işaretleri burada.",
+    category: "Toxcitiy Check",
+    publishDate: "2026-07-02",
+    readTime: "7 min read",
+    keywords: ["gaslighting", "red flag", "delulu", "toksik ilişki", "manipülasyon", "dating", "flört"],
+    imageUrl: "/images/trends/am-i-being-gaslighted.webp",
+    content: {
+      intro: "Kanka, hiç bir tartışmanın ortasında aniden kendi zihinsel sağlığından şüphe etmeye başladığın oldu mu? Yani, ortada bariz bir sorun var, bunu dile getiriyorsun ama bir şekilde olay senin 'fazla hassas' olmana, her şeyi yanlış anlamana ve hatta uydurmana bağlanıyor. Eğer sürekli 'ben mi abartıyorum ya?' diyerek kendini yiyip bitiriyorsan, belki de delulu değilsindir. Belki de karşındaki insan bir gaslighting masterclass'ı veriyordur ve sen bunun farkında değilsindir. Gaslighting, flört dünyasının en sinsi, en tehlikeli ve en zor fark edilen red flag'lerinden biridir. Seni sadece üzmekle kalmaz, aynı zamanda gerçeklik algını da darmadağın eder. Kendi hafızana, kendi duygularına ve hatta kendi mantığına güvenemez hale gelirsin. Bir situationship'in içinde bu kadar kaybolmuş hissetmek normal değil dostum. O yüzden şimdi arkana yaslan, çünkü senin delulu olmadığını ve aslında profesyonel bir şekilde manipüle edildiğini sana kanıtlayacağız. Kendi gerçeğine sahip çıkmanın ve bu zehirli döngüyü kırmanın vakti geldi de geçiyor bile.",
+      sections: [
+        {
+          heading: "1. Hafızanla Oynanan Küçük Oyunlar",
+          paragraph: "Gaslighting, genellikle çok masum görünen küçük yalanlarla başlar. O kadar ufak tefek şeylerdir ki, üzerinde durmaya bile değmez diye düşünürsün. 'Ben öyle demedim' veya 'Böyle bir şey asla yaşanmadı' gibi cümleler, gaslighter'ların en favori silahlarıdır. Başlangıçta sadece bir iletişim kopukluğu yaşadığınızı sanırsın. 'Acaba ben mi yanlış anladım?' diye düşünürsün. Ancak bu durum tekrarlanmaya başladıkça, olay bambaşka bir boyuta geçer. Senin net bir şekilde hatırladığın olaylar, onun tarafından tamamen farklı anlatılır ya da hiç yaşanmamış gibi reddedilir. Bu sadece basit bir unutkanlık değil, bilinçli bir gerçekliği çarpıtma eylemidir. Zamanla, kendi algılarına ve hafızana güvenmeyi bırakırsın. Bir tartışma anında kanıt sunsan bile, o kanıtı senin kafanda kurduğun bir senaryo olarak göstermeyi başarırlar. Bu noktada, karşındaki insanın sadece bir 'dry texter' ya da ilgisiz biri olmadığını, zihnini manipüle eden bir stratejist olduğunu anlarsın.",
+          scenario: "Sen: 'Geçen hafta eski sevgilinle buluştuğunu söylememiştin.' O: 'Söyledim ya kanka, sen dinlemiyordun herhalde. Son zamanlarda çok unutkansın zaten, kafan çok dolu.' (Halbuki asla söylememiştir.)"
+        },
+        {
+          heading: "2. Suçun Sürekli Sana Yansıtılması",
+          paragraph: "Gaslighting'in altın kurallarından biri: Asla sorumluluk alma. Eğer onu bir konuda haklı olarak eleştirirsen, konuyu öyle bir çevirirler ki günün sonunda sen ondan özür dilerken bulursun kendini. Bu tam olarak bir illüzyon numarası gibidir. Sen 'bana neden yalan söyledin?' dersin, o 'sen bana güvenmediğin için yalan söylemek zorunda kaldım' der. Kendi yaptıkları hataları, senin davranışlarının bir sonucu olarak gösterirler. Böylece bare minimum bir çaba bile gösterseler, bunu büyük bir lütufmuş gibi sunarlar. Sen ise kendini sürekli yetersiz, anlayışsız ve toksik olan tarafmış gibi hissedersin. Red flag'leri görmezden gelip suçu hep kendinde aramak, bu döngünün en tehlikeli kısmıdır. Bu durum o kadar sistematik hale gelir ki, artık kendi duygularını ifade etmekten bile korkarsın çünkü her şeyin dönüp dolaşıp senin 'hatalı' olmana bağlanacağını çok iyi bilirsin.",
+          items: [
+            "'Sen böyle davrandığın için ben de o tepkiyi verdim.'",
+            "'Beni kışkırtmasaydın bunlar yaşanmazdı.'",
+            "'Her şeyi drama malzemesi yapıyorsun, seni memnun etmek imkansız.'"
+          ]
+        },
+        {
+          heading: "3. 'Sen Çok Hassassın' (Duygularının Geçersiz Kılınması)",
+          paragraph: "Seni en çok delirten ve 'acaba cidden sorun bende mi?' diye düşündüren taktik budur. Hislerini, kırgınlıklarını veya öfkeni dile getirdiğinde, bunlar asla ciddiye alınmaz. Onun gözünde sen hep 'fazla dramatik', 'çok duygusal' veya 'her şeyi abartan' kişisindir. Bu, duygularını geçersiz kılmanın ve seni savunmasız bırakmanın en kolay yoludur. Gerçekten incinmiş olsan bile, sana o kadar histerikmişsin gibi davranırlar ki, bir süre sonra gerçekten histerik olduğuna sen de inanırsın. Bu, situationship içinde en sık karşılaşılan zehirli dinamiklerden biridir. Birisi senin sınırlarını ihlal ettiğinde, senin buna tepki göstermen kadar doğal bir şey yoktur. Ancak gaslighter, bu doğal tepkiyi sanki büyük bir anormallikmiş gibi lanse eder. Eğer birisi seni incittiğinde, özür dilemek yerine senin 'çok hassas' olduğunu iddia ediyorsa, orada durup büyük bir red flag dalgalandığını görmelisin.",
+          scenario: "Sen: 'Beni arkadaşlarının yanında bozman hiç hoş değildi, gerçekten kalbim kırıldı.' O: 'Kanka sadece ufak bir şaka yaptık, sen niye her şeyi bu kadar ciddiye alıyorsun ki? Eskiden böyle alıngan değildin.'"
+        },
+        {
+          heading: "4. İzolasyon: Seni Destek Sisteminden Koparmak",
+          paragraph: "Gaslighter'lar, en büyük gücü seni yalnızlaştırdıklarında elde ederler. Eğer sen kendi gerçeğinden şüphe ederken, dışarıdan mantıklı bir ses sana 'hayır, sen haklısın' derse, oyun bozulur. Bu yüzden, seni yavaş yavaş arkadaşlarından ve ailenden uzaklaştırmaya çalışırlar. 'Arkadaşların beni sevmiyor', 'O kankan sana hiç iyi gelmiyor, seni dolduruyor' veya 'Biz bize yeteriz' gibi cümlelerle seni izole ederler. Bir süre sonra, dertleşebileceğin veya gerçeklik kontrolü yapabileceğin kimse kalmaz. Sadece onun dünyasında, onun kurallarına göre yaşamaya başlarsın. Bu durum, trauma bonding'in de temelini oluşturur. Kötü hissettiğinde gidebileceğin tek kişi, sana o kötü hisleri yaşatan kişinin ta kendisi olur. Bu, kendi ayakları üzerinde duran, güçlü ve bağımsız bir insanın bile düşebileceği bir tuzaktır. Eğer birisi sürekli etrafındaki insanları kötülüyor ve seni onlardan koparmaya çalışıyorsa, orada büyük bir alarm çalmalıdır."
+        },
+        {
+          heading: "5. Sahte Umutlar ve Love Bombing Döngüsü",
+          paragraph: "Gaslighting her saniye kötü davranmak demek değildir. Zaten sürekli kötü davransa, alır çantanı gidersin. Onların en büyük numarası, arada sırada sana inanılmaz iyi davranmalarıdır. Sen tam 'artık dayanamıyorum, bitiriyorum' dediğinde, karşına eski o harika insan, o love bombing günlerinin prensi veya prensesi çıkar. Birden inanılmaz romantik, anlayışlı ve ilgili olurlar. Bu durum kafanı iyice karıştırır. 'İşte gerçek o bu, benim yüzümden bu hale geliyor demek ki' diye düşünmene sebep olur. Bu sıcak-soğuk taktiği, seni bağımlı hale getirir. Ne zaman kopmaya çalışsan, sana tam olarak duymak istediğin şeyleri söyleyip seni geri çekerler ve sonra süreç baştan başlar. Bu kısır döngüden çıkmak çok zordur çünkü o 'iyi' anların geri gelmesini beklersin. Ama kanka, o anlar sadece senin gitmeni engellemek için kullanılan birer manipülasyon aracıdır, gerçek bir sevgi göstergesi değil.",
+          items: [
+            "Tartışmalardan sonra aniden gelen devasa sürprizler ve hediyeler.",
+            "Terk edeceğini anladığında aniden 'değişeceğim, söz veriyorum' krizleri.",
+            "Seni yeniden kendine bağladıktan sadece birkaç gün sonra eski toksik haline geri dönmesi."
+          ]
+        }
+      ],
+      conclusion: "Kısacası kanka, sen delulu falan değilsin. Zihnin sana oyunlar oynamıyor. Eğer bir ilişkide sürekli kendi gerçeğinden şüphe ediyor, sürekli özür diliyor ve sürekli diken üstünde hissediyorsan, orada sağlıklı bir dinamik yoktur. Gaslighting'den kurtulmanın ilk adımı, bunun farkına varmak ve kendi algılarına yeniden güvenmeye başlamaktır. Arkadaşlarına danış, notlar al, sınırlarını keskin bir şekilde çiz. Ve unutma, sana kendini 'deli' gibi hissettiren birine ihtiyacın yok. Sen main character'sin, bu toksik hikayeden çıkış biletini alıp kendi yoluna bakmanın zamanı geldi."
+    },
+    ctaLabel: "Green Flag İnsanlarla Tanış",
+    ctaLink: "/match"
+  },
+  {
+    slug: "dry-texter-signs",
+    title: "Dry Texter İşaretleri: Gerçekten Meşgul mü Yoksa Sadece Sıkıcı mı?",
+    description: "Sen destan gibi mesajlar atarken o sadece 'Aynen', 'Olur', 'Tmm' diyorsa geçmiş olsun. Dry texter krizini çözmenin ve kendi değerini bilmenin yolları.",
+    category: "Communication",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["dry texter", "mesajlaşma", "flört", "ghosting", "red flag", "iletişim"],
+    imageUrl: "/images/trends/dry-texter-signs.webp",
+    content: {
+      intro: "Telefonun titriyor, heyecanla ekrana bakıyorsun... Ve karşında sadece şu üç harf: 'Aynen'. İçinden ufak bir çığlık attığını duyar gibiyim. Sen ona gününün nasıl geçtiğini, sabah kahvesini döken o sinir bozucu adamı, yeni keşfettiğin müzik grubunu destanlar yazarak anlatmışsın, o ise sana bir 'NPC' edasıyla sadece tek kelimelik cevaplar veriyor. Kanka, bu bir dry texter. Flört dünyasının enerjini sömüren, hevesini kursağında bırakan en büyük problemlerinden biri. Çoğu zaman kendi kendimize bahaneler üretiriz: 'Kesin çok çalışıyor', 'Mesajlaşmayı sevmiyor herhalde', 'Yüz yüzeyken çok farklı aslında...' Ama delulu olmayı bir kenara bırakalım. Gerçekten o kadar meşgul mü yoksa bare minimum çabayla seni elinin altında mı tutmaya çalışıyor? İletişim, bir ilişkinin ya da situationship'in oksijenidir. Eğer sen sürekli suni teneffüs yapmak zorunda kalıyorsan, o ilişki çoktan komaya girmiş demektir. Şimdi şu dry texter işaretlerine yakından bakalım ve seni bu sıkıcı döngüden kurtaralım.",
+      sections: [
+        {
+          heading: "1. Konuşmayı Asla O Başlatmaz",
+          paragraph: "Eğer mesajlaşmalarınızın loglarına baksan, her gün sohbeti başlatanın %99 oranında sen olduğunu görürsün. Günaydın diyen sen, 'Nasılsın?' diye soran sen, komik bir reels atıp etkileşim koparmaya çalışan sen... O ise sadece pasif bir şekilde senin attığın yemlere karşılık verir. Bu, klasik bir tek taraflı çaba (one-sided effort) göstergesidir. Dry texter'ların en büyük özelliği inisiyatif almamalarıdır. Sen yazmazsan, o gün konuşmazsınız. Hatta sen inat edip günlerce yazmasan, 'Öldün mü kaldın mı?' diye bile merak etmez. Bunu 'Ben mesaj atmayı sevmiyorum' kılıfına uydurmaya çalışabilirler ama bu tamamen bir bahanedir. İnsanlar, değer verdikleri ve merak ettikleri insanlarla iletişim kurmak için zaman yaratırlar. Eğer konuşmayı sürdürmek sadece senin sırtındaysa, kendini bir PR uzmanı veya menajer gibi hissetmen çok normal. Ama sen birinin sevgilisi veya flörtü olmak istiyorsun, iletişim danışmanı değil.",
+          items: [
+            "İlk mesajı her zaman ama her zaman senin atman.",
+            "Sen yazmayı bıraktığında araya günlerin, hatta haftaların girmesi.",
+            "Komik bir şey paylaştığında sadece 'haha' yazıp konuyu kapatması."
+          ]
+        },
+        {
+          heading: "2. Tek Kelimelik Cevaplar ve Emojisizlik",
+          paragraph: "Sen üç paragraf yazı yazıp içini dökmüşsün, o sadece 'Ok', 'Tmm', 'Aynen' veya 'Olabilir' yazıyor. Bu durum insana duvarla konuşuyormuş hissi verir. Bir sohbetin ilerleyebilmesi için iki tarafın da paslaşması gerekir. Sen topu atıyorsun, o topu alıp sahayı terk ediyor. Emojiler de cabası... Gen-Z dilinde emojiler, tonlamadır, duygudur, rizz'dir. Eğer mesajlarında hiç emoji, hiç mimik, hiçbir reaksiyon yoksa, karşında gerçekten bir robotla konuşuyormuşsun gibi hissedersin. 'Ya ben böyle yazıyorum, tarzım bu' diyebilirler, ama bu tarz senin hevesini kırıyorsa ortada ciddi bir uyumsuzluk var demektir. Hatta bu durum bir süre sonra sende bir kompleks yaratabilir, 'Acaba çok mu konuşuyorum?', 'Onu sıkıyor muyum?' diye kendini sorgulamaya başlarsın. Hayır kanka, sen çok konuşmuyorsun, o çok yetersiz bir texter.",
+          scenario: "Sen: 'Bugün sunumum o kadar harika geçti ki inanamazsın! Sonrasında kutlamak için en sevdiğim kahveciye gittim, tam istediğim gibi bir gün oldu.' O: 'İyi sevindim.'"
+        },
+        {
+          heading: "3. Soru Sorma Özürlüsü Olmaları",
+          paragraph: "İletişimin temel kuralı merak etmektir. Sen onun gününü sorarsın, o cevap verir ve sonra 'Senin günün nasıldı?' diye geri sorması beklenir, değil mi? Ama dry texter'lar soru sorma konusunda kronik bir tembellik içindedir. Sen bütün hayatını anlatırsın, onun hakkında her şeyi öğrenmek için sorular sorarsın, ama o sana tek bir soru bile yöneltmez. Bu sadece mesajlaşmada tembellik değil, aynı zamanda empati ve ilgi eksikliğidir. Birisi senin hayatını, fikirlerini veya duygularını merak etmiyorsa, o kişiyle nasıl derin bir bağ kurabilirsin ki? Konuşmalarınız tamamen röportaj formatına döner. Sen muhabir gibi soru sorarsın, o da sıkılmış bir ünlü gibi kısa kısa cevaplar verir. Bu iletişim tarzı, seni zamanla tüketir ve değersiz hissettirir. Senin düşüncelerini merak etmeyen birinin, senin kalbini hak etmediğini artık anlaman gerekiyor."
+        },
+        {
+          heading: "4. Storylerine Bakıp Mesajlarına Dönmemek",
+          paragraph: "Bu durum, dry texter'ların en sinir bozucu ve en anlaşılmaz davranışlarından biridir. Bir yandan mesajına 6 saat boyunca cevap vermezler, ama o sırada attığın story'leri saniyesinde izlerler. Hatta orbiting yapıp eski gönderilerini bile beğenebilirler ama gel gör ki o basit 'Nasılsın?' mesajına dönecek enerjiyi 'bulamazlar'. Bu tam anlamıyla bir breadcrumbing (ekmek kırıntısı) taktiğidir. Seni tamamen kaybetmemek için ufak tefek sinyaller verirler, radarında kalırlar ama asla gerçek, tatmin edici bir iletişim sunmazlar. Bu, 'Seni görüyorum ama seninle efor harcayacak kadar ilgilenmiyorum' demenin dijital yoludur. Bu tür davranışlar, kafanda sürekli soru işaretleri yaratır. 'Madem telefonu elinde ve story'me bakıyor, neden mesajıma dönmüyor?' diye kafayı yersin. Cevap çok basit kanka: Önceliği sen değilsin. Ve sen, kimsenin boş zamanlarını dolduracak bir opsiyon değilsin.",
+          scenario: "Saat 14:00'te 'Akşama planın var mı?' yazarsın. Mesaj 'iletildi' olarak kalır. Saat 16:30'da kahve story'ni izler. Saat 22:00'de mesajına 'Yok evdeydim naber' diye döner."
+        },
+        {
+          heading: "5. Yüz Yüzeyken Farklı, Ekranda Farklı",
+          paragraph: "Dry texter'ların savunucularının en büyük argümanı budur: 'Ama yüz yüzeyken çok tatlı konuşuyor!' Gerçekten mi? Yüz yüzeyken iyi olmanız harika, ama 2026 yılındayız ve ilişkilerin, situationship'lerin çok büyük bir kısmı ekran üzerinden ilerliyor. Eğer haftada sadece bir gün görüşüp geri kalan altı gün boyunca duvara konuşuyormuş gibi hissediyorsan, o ilişki sürdürülebilir değildir. Mesajlaşma tarzındaki bu uçurum, sana kendini güvensiz hissettirir. Yanındayken kendini dünyanın en değerli insanı gibi hissederken, mesajlaşırken değersiz bir piyon gibi hissedersin. Bu duygusal rollercoaster, uzun vadede yıpratıcıdır. İletişim, bütünsel bir şeydir. Senin ihtiyaçların mesajla ilgi görmek, gün içinde paylaşımlar yapmaksa, 'yüz yüzeyken iyi' bahanesi bir süre sonra seni tatmin etmeyecektir. Kendi standartlarını belirle ve bare minimum'a razı olma.",
+          items: [
+            "Buluştuğunuzda çok konuşkan ve esprili olması.",
+            "Ama ayrıldığınız an tekrar o soğuk ve mesafeli mesaja dönmesi.",
+            "Bu dengesizliğin sende sürekli bir anksiyete ve belirsizlik yaratması."
+          ]
+        }
+      ],
+      conclusion: "Kısacası kanka, dry texter ile uğraşmak, susuz bir arazide çiçek yetiştirmeye çalışmak gibidir. Ne kadar sularsan sula (ne kadar çok yazarsan yaz), o toprak yeşermeyecektir. Eğer birinin seninle konuşmak için çaba sarf etmediğini, sohbetin sürekli senin omuzlarında olduğunu hissediyorsan, geri adım atmanın zamanı gelmiştir. Kendi enerjini, seninle konuşmak için can atan, sana sayfalarca mesaj yazan, emojilerle, ses kayıtlarıyla hayatını renklendiren insanlara sakla. Kendini sürekli 'Acaba meşgul mü?' diye delulu bir şekilde kandırmayı bırak. Meşgul olan insan, 'Çok yoğunum, akşam arayacağım' diye mesaj atar. Aynen yazan değil. Enerjini topla ve kendi değerini bil!"
+    },
+    ctaLabel: "Sohbeti Sevenleri Keşfet",
+    ctaLink: "/match"
+  },
+  {
+    slug: "main-character-energy",
+    title: "Main Character Energy: Kendi Aşk Hayatında Figüran Olmayı Bırak",
+    description: "Sürekli başkalarının dramalarını çözmekten, kendi hayatının başrolünü oynamayı unuttun mu? Main Character Energy ile ipleri eline almanın tam zamanı.",
+    category: "Self-Love",
+    publishDate: "2026-07-02",
+    readTime: "8 min read",
+    keywords: ["main character", "özgüven", "self love", "ilişkiler", "bağımsızlık", "dating"],
+    imageUrl: "/images/trends/main-character-energy.webp",
+    content: {
+      intro: "Kanka, hayalindeki o mükemmel filmi düşün. Ekran açılıyor, müzik giriyor ve başrolde... sen yoksun! Nasıl yani? Sen kendi filminin setinde herkese çay dağıtan, herkesin derdini dinleyen, dramalarını çözen ama hikayenin asıl kızı/oğlanı olamayan o 'iyi arkadaş' mısın yoksa? Flört dünyasında sürekli başkalarının ihtiyaçlarını kendi önüne koyuyorsan, onların toksik hareketlerini tolere edip 'aman ağzımızın tadı kaçmasın' diyorsan, acı bir haberim var: Kendi hayatında bir 'NPC' (Non-Playable Character) veya bir yan karakter, figüran olmuş durumdasın. Ama merak etme, senaryoyu baştan yazmak senin elinde. İhtiyacın olan tek şey o efsanevi 'Main Character Energy' (Başrol Enerjisi). Bu, bencil olmak veya dünyayı kendi etrafında döndürmek demek değildir. Bu, kendi değerini bilmek, kendi mutluluğunu önceliklendirmek ve artık kimsenin sana bare minimum çabayla gelmesine izin vermemektir. Hadi, o tacı kafana geri takalım ve kendi hikayenin kontrolünü nasıl ele alacağına yakından bakalım.",
+      sections: [
+        {
+          heading: "1. Kendi Standartlarını Belirle ve Taviz Verme",
+          paragraph: "Main Character Energy'nin ilk kuralı, ne istediğini net bir şekilde bilmek ve bundan taviz vermemektir. Çoğu zaman flört ederken, 'karşımdakini nasıl etkilerim?' diye düşünmekten, 'bu kişi beni gerçekten hak ediyor mu?' sorusunu sormayı unutuyoruz. Pick-me davranışlarına girip, onun ilgisini çekmek için kendimizden ödün veriyoruz. Oysa başrol karakter, kendi standartlarını belirler ve kimseye göre şekil değiştirmez. Sen, birinin seni sevmesi için hobilerini, düşüncelerini veya giyim tarzını değiştirmek zorunda değilsin. Eğer birisi sana uyum sağlamıyorsa, seni değiştirmeye çalışıyorsa, onu senaryodan çıkarırsın. Bu kadar basit. Kırmızı çizgilerin olmalı ve biri o çizgiyi geçtiğinde, 'Bu durum bana uymuyor' diyebilecek kadar cesur olmalısın. Kendi sınırlarını korumak, kendine duyduğun saygının en büyük göstergesidir ve bu enerji dışarıdan anında fark edilir.",
+          items: [
+            "İstemediğin hiçbir buluşmaya veya plana 'hayır' diyebilmek.",
+            "Saygısızlık gördüğünde anında araya mesafe koymak.",
+            "Kendi ilgi alanlarını ve tutkularını, bir ilişki için asla ikinci plana atmamak."
+          ]
+        },
+        {
+          heading: "2. People Pleasing'i (Herkesi Memnun Etmeyi) Bırak",
+          paragraph: "Kanka, sen bir dondurma değilsin, herkesi mutlu edemezsin. Flört hayatında, sadece partnerini veya flörtünü mutlu etmek için kendi isteklerini sürekli bastırıyorsan, enerjini sömürtüyorsun demektir. People pleasing, travma bağlarının ve toksik ilişkilerin en sevdiği yemdir. Karşı taraf senin ne kadar verici olduğunu gördükçe, daha fazlasını istemeye başlar ve günün sonunda tükenmiş, paramparça bir halde kalırsın. Bir main character, başkalarının mutluluğu için kendini feda etmez. İhtiyaçlarını, korkularını, isteklerini açıkça dile getirir. Eğer 'Hayır' demek karşı tarafı kızdırıyorsa, zaten o kişinin senin hayatında yeri olmamalıdır. Unutma, sağlıklı bir ilişkide senin de fikirlerin, senin de gününün nasıl geçtiği, senin de nerede yemek yemek istediğin önemlidir. Herkesi memnun etmeye çalışmayı bıraktığın gün, asıl parladığın gün olacaktır."
+        },
+        {
+          heading: "3. Dramalara ve Toksik Döngülere 'Kestik' De",
+          paragraph: "Filmlerde dram ilgi çeker ama gerçek hayatta drama, sadece enerji emen bir kara deliktir. Eğer hayatındaki kişi sürekli kaos yaratıyorsa, bir gün 'love bombing' yapıp ertesi gün 'ghosting' atıyorsa, seni sürekli bir belirsizliğin içinde bırakıyorsa, bu düşük bütçeli dramadan çıkmanın vakti gelmiştir. Main character, kendi huzurunu koruyan kişidir. Toksik bir situationship'in içinde debelenmek yerine, 'Bu bana hizmet etmiyor' diyerek çekip gitmeyi bilir. Kendini sürekli olarak karşındakini 'kurtarmaya' veya onu 'düzeltmeye' çalışırken mi buluyorsun? Sen bir rehabilitasyon merkezi değilsin. Kendi sorunlarıyla baş edemeyen ve seni de aşağı çeken insanlara veda etmesini bilmelisin. Hayatına alacağın insanlar, senin enerjini yükselten, sana değer katan yan karakterler veya eş-başroller olmalıdır; seni dibe çeken kötü adamlar değil.",
+          scenario: "Flörtün: 'Ben çok karmaşık biriyim, seni üzerim, şu an ilişkiye hazır değilim.' Sen (NPC modu): 'Sorun değil, ben seni beklerim, sana iyi gelirim.' Sen (Main Character modu): 'Anlıyorum, o zaman hazır olduğunda kendi yoluna gidersin, bana müsaade.'"
+        },
+        {
+          heading: "4. Kendi Hayatını Romantize Et",
+          paragraph: "Main Character Energy, sadece ilişkilerle ilgili değildir; hayatı nasıl yaşadığınla da ilgilidir. Kendi başına geçirdiğin zamanı romantize et. Bir ilişki olmadan da hayatının ne kadar muhteşem olduğunu fark et. Tek başına kahve içmeye git, kulaklığını takıp sokaklarda yürürken kendini o müzik klibinin yıldızı gibi hisset, kendine çiçek al, en sevdiğin yemeği kendi kendine ısmarla. Mutluluğu veya 'tamamlanmışlık' hissini bir başkasının varlığına bağlarsan, her zaman bağımlı kalırsın. Ama sen kendi hayatının tek başına da çok güzel olduğunu bilirsen, hayatına giren kişi sadece bir 'ekstra' olur, bir ihtiyaç değil. Bağımsızlığını ve kendi kendine yetebilme gücünü hissettiğinde, yaydığın o özgüven aurası, etrafındaki herkesi büyüler. Birisi senin hayatına dahil olmak istiyorsa, senin bu harika düzenine ayak uydurmak ve değer katmak zorunda olduğunu hissetmelidir."
+        },
+        {
+          heading: "5. Reddedilmeyi Değil, 'Yönlendirilmeyi' Kutla",
+          paragraph: "Kanka, ghostlandın mı? Birinden red mi yedin? Veya çok umutlu olduğun bir flört hüsranla mı sonuçlandı? Bir NPC, köşeye çekilip günlerce ağlar, kendini yetersiz hisseder ve sorunu kendinde arar. 'Neyi yanlış yaptım?', 'Acaba yeterince güzel/yakışıklı değil miyim?' diye düşünür. Ama bir main character, bu durumu bambaşka yorumlar. Reddedilmeyi, evrenin bir 'redirection' (yönlendirme) hamlesi olarak görür. 'Demek ki bu benim hikayem için doğru kişi değildi', 'Beni hak etmeyen biriyle zaman kaybetmekten kurtuldum' der ve yoluna devam eder. Senin değerini, birinin sana atmadığı mesaj veya göstermediği ilgi belirlemez. Senin değerin, senin kim olduğundur. Bir filmde başrol karakter ilk engelde pes edip filmden çıkar mı? Hayır, daha da güçlenip yola devam eder. O yüzden sil gözyaşlarını, en iyi kombini yap ve dışarı çık, çünkü senin hikayen daha yeni başlıyor.",
+          items: [
+            "Ghostlandığında 'Sorun bende' demek yerine 'O kaybetti' diyebilmek.",
+            "Kötü giden bir date'i, komik bir anı olarak arkadaşlarına anlatıp eğlenmek.",
+            "Her sonun, daha iyi bir başlangıcın hazırlığı olduğuna inanmak."
+          ]
+        }
+      ],
+      conclusion: "Kanka, özetle; senin hayatın, senin kuralların, senin filmin! Kendi hayatında bir arka plan karakteri gibi yaşamayı bırakıp direksiyona geçmenin zamanı geldi. Kimseye senin değerini belirleme gücünü verme. Bare minimum ile yetinme, sana krallar/kraliçeler gibi davranmayan kimseyi hikayenin içine dahil etme. Main Character Energy, içindeki o özgüveni dışarı vurmak ve kendini dünyadaki en değerli insan olarak konumlandırmaktır. Birisi bu enerjiyi kaldıramıyorsa, senin sahnenden çıkabilir. Sen o spot ışıklarının altında parlamaya devam edeceksin."
+    },
+    ctaLabel: "Başrol Olanlarla Eşleş",
+    ctaLink: "/match"
+  },
+  {
+    slug: "what-is-limerence",
+    title: "Limerence Nedir? Bir Hoşlanma Ne Zaman Obsesif Bir Takıntıya Dönüşür?",
+    description: "Onun sadece adını gördüğünde kalbin yerinden çıkacak gibi mi oluyor? Delulu hayallerin tüm gününü mü ele geçirdi? Gerçek bir aşktan çok Limerence yaşıyor olabilirsin.",
+    category: "Psychology",
+    publishDate: "2026-07-02",
+    readTime: "7 min read",
+    keywords: ["limerence", "takıntı", "aşk", "psikoloji", "delulu", "red flag", "dating"],
+    imageUrl: "/images/trends/what-is-limerence.webp",
+    content: {
+      intro: "Kanka, hepimiz birilerinden hoşlanırız, hepimiz bazen biraz 'delulu' oluruz. Yeni tanıştığın o kişinin profilinde saatlerce gezinmek, mesaj atmasını beklerken tırnakları yemek flörtün doğasında vardır. Ama bazen bu durum çok daha karanlık, çok daha yoğun ve kontrol edilemez bir noktaya ulaşır. Onu düşünmediğin tek bir saniye bile yoktur. Onun ufak bir bakışından, mesajına koyduğu tek bir noktadan bile binlerce anlam çıkarırsın. Tüm ruh halin, onun sana vereceği minicik bir ilgi kırıntısına bağlıdır. Bu hissi 'büyük aşk' zannedebilirsin ama psikolojide bunun çok daha tehlikeli bir adı var: Limerence. Limerence, sıradan bir hoşlanmanın sınırlarını aşıp, karşındaki kişiye karşı geliştirilen obsesif, takıntılı ve tamamen mantık dışı bir bağımlılık halidir. Kişiyi bir insandan çok, kafanda yarattığın bir ideale aşık olduğun bu durum, enerjini sömüren ve seni gerçeklikten koparan bir tuzaktır. Eğer bu duyguların aşk mı yoksa saplantı mı olduğundan şüphe ediyorsan, gel Limerence'in karanlık sularına beraber dalalım.",
+      sections: [
+        {
+          heading: "1. Kontrol Edilemeyen Takıntılı Düşünceler",
+          paragraph: "Limerence'in en belirgin özelliği, beyninin 7/24 o kişiyi düşünmeye programlanmış gibi çalışmasıdır (intrusive thoughts). İştesin onu düşünürsün, arkadaşlarınlasın onu konuşursun, uyumadan önce onunla ilgili senaryolar kurarsın. Hatta bu senaryolar o kadar detaylıdır ki, bazen gerçekle hayali birbirine karıştırırsın. Bu düşünceler senin isteğin dışında belirir ve hayatına odaklanmanı imkansız hale getirir. Sıradan bir hoşlanmada, hayatına devam edebilirsin. Arada aklına gelir, gülümser geçersin. Ancak limerence durumunda, zihninde o kişiden başka hiçbir şeye yer yoktur. O, senin evreninin merkezi haline gelmiştir ve senin tüm günlük rutinin, enerjin, hatta hedeflerin onun etrafında şekillenir. Bu, beyninin dopamin döngüsüne hapsolmasının bir sonucudur ve aşktan çok bir bağımlılığa benzer.",
+          items: [
+            "Günde saatlerce o kişinin sosyal medya hesaplarını stalklamak.",
+            "Tüm geleceği (evlilik, isimler, ev vb.) o henüz senin varlığından zar zor haberdarken planlamak.",
+            "Düşüncelerinden kurtulamadığın için işinde veya okulunda odaklanma sorunları yaşamak."
+          ]
+        },
+        {
+          heading: "2. Duygusal Durumunun Tamamen Ona Bağlı Olması",
+          paragraph: "Eğer sabah uyandığında ilk hissettiğin duygu, onun sana gece mesaj atıp atmamasına bağlıysa, tehlike çanları çalıyor demektir. Limerence durumunda, ruh halin tamamen 'Limerent Object' (yani takıntı yaptığın kişi) tarafından kontrol edilir. Eğer sana gülümsediyse, dünyalar senin olur, enerjin tavan yapar. Ama eğer sana soğuk davrandıysa, 'Görüldü' attıysa veya beklentini karşılamadıysa, derin bir depresyona, anksiyeteye ve mutsuzluğa sürüklenirsin. Kendi mutluluğunun anahtarını tamamen başkasının cebine koymuş olursun. Sağlıklı bir flört dinamiğinde veya ilişkide, partnerin seni üzerse üzülürsün ama bu senin tüm hayat enerjini sıfırlamaz. Ancak limerence, duygusal bir rollercoaster'dır. Onay ve sevgi dilenmek, hayattaki tek amacın haline gelir. Bu durum, seni savunmasız, muhtaç ve inanılmaz kırılgan bir pozisyona düşürür.",
+          scenario: "Telefon çaldı. Ekranda onun adını gördüğünde kalbin yerinden çıkacak gibi atıyor, ellerin titriyor. Açtın ve sadece 'Şarj aletimi sende mi unuttum?' diye sordu. Beklediğin romantik konuşma olmadığı için anında tüm günün mahvoldu, ağlamaya başladın."
+        },
+        {
+          heading: "3. Red Flag'leri Kırmızı Halı Gibi Görmek",
+          paragraph: "Gerçek aşta, partnerinin hatalarını görürsün, toksik yanlarını eleştirirsin ve gerektiğinde araya sınır koyarsın. Ancak limerence, kişiyi tamamen kör eder. Karşındaki insanın tüm kusurlarını, red flag'lerini, toksik hareketlerini siler atarsın. Kafanda yarattığın o kusursuz illüzyonun içine yerleştirirsin onu. Sana ne kadar kötü davranırsa davransın, hep bir bahane bulursun. 'Aslında çok yaralı biri, travmaları var', 'Beni kırmak istemedi, sadece zor bir dönemden geçiyor' diyerek onu haklı çıkarırsın. İşin kötüsü, bu kişiyi gerçekte kim olduğu için değil, zihninde olmasını istediğin 'kurtarıcı' veya 'mükemmel eş' olduğu için seversin. O yüzden bir gün o illüzyon yıkıldığında, duyduğun acı çok daha derin olur. Kanka, eğer bütün arkadaşların 'Bu çocuk/kız sana zarar veriyor' diyor ve sen tek başına ona tapmaya devam ediyorsan, bu aşk değil, limerence körlüğüdür."
+        },
+        {
+          heading: "4. Ufacık Şeylerden Dev Anlamlar Çıkarmak (Breadcrumbing)",
+          paragraph: "Limerence yaşayan kişi, karşısındakinden gelen en ufak bir hareketi, en basit bir cümleyi saatlerce analiz eder. Sana 'Naber' yazdı diye, bunu evlilik teklifi sinyali olarak algılayacak kadar delulu bir boyuta geçebilirsin. Bu durum, genelde karşı tarafın verdiği 'breadcrumbing' (ekmek kırıntısı) ile beslenir. Karşı taraf sana asla net bir ilişki sözü vermez, seni sadece arada bir yoklar, storylerine bakar, ufak tefek mesajlar atar. Sen ise bu kırıntılarla ziyafet çekmeye çalışırsın. O ufacık ilgi belirtilerini toplayıp, onlardan büyük bir aşk destanı yazarsın. 'Bugün bana bakarken gözleri parladı', 'Storyme kalp attı, kesin benden hoşlanıyor' diye düşünerek kendini kandırmaya devam edersin. Ancak gerçek şudur: Eğer biri seni gerçekten istiyorsa, kırıntı bırakmaz, karşına geçer ve net olur. Sen şifre çözücü değilsin, iletişim bekleyen bir insansın."
+        },
+        {
+          heading: "5. Karşılık Beklentisi (Reciprocation Drive)",
+          paragraph: "Limerence'in en acı verici yanlarından biri, sürekli olarak karşılık bekleme dürtüsüdür. Sadece onu sevmek sana yetmez, onun da seni aynı yoğunlukta sevmesini ve istemesini takıntı haline getirirsin. Tüm eylemlerin, tüm davranışların sadece onun onayını ve sevgisini kazanmak için kurgulanır. Onun ilgisini çekmek için giyim tarzını değiştirir, onun sevdiği müzikleri dinler, onun gittiği mekanlarda 'tesadüfen' bulunmaya çalışırsın. Kendini kaybedip, onun beğeneceği bir avatar yaratırsın. Ve o karşılığı alamadığında (ki genellikle alamazsın, çünkü bu enerji dışarıdan bakıldığında boğucu ve korkutucudur), büyük bir çöküş yaşarsın. Limerence, kendi içindeki bir boşluğu, başka bir insanla doldurma çabasıdır. Ama kanka, o boşluğu sadece sen doldurabilirsin.",
+          items: [
+            "Onunla tesadüfen karşılaşmak için rotanı değiştirmek.",
+            "Tüm sosyal medya paylaşımlarını, sadece o görsün ve etkilensin diye kurgulamak.",
+            "Kendini sevdirmek için aşırı fedakarlıklar yapmak ve kendi sınırlarını yok saymak."
+          ]
+        }
+      ],
+      conclusion: "Kanka, Limerence'i aşkla karıştırmak en sık düşülen tuzaktır. Aşk huzurludur, güven verir, iki tarafı da besler. Limerence ise kaos doludur, anksiyete yaratır ve seni yavaş yavaş tüketir. Eğer kendini bu tarifin içinde buluyorsan, derin bir nefes al. Zihninde yarattığın o mükemmel illüzyondan uyanma vakti geldi. Onu olduğu gibi, tüm red flag'leriyle gör ve kendi hayatının merkezine yeniden 'kendini' koy. Bu takıntıdan kurtulmak zaman alabilir, gerekirse profesyonel destek almaktan çekinme. Ama unutma, senin bu yoğun enerjini hak eden gerçek ve sağlıklı aşklar dışarıda bir yerlerde seni bekliyor."
+    },
+    ctaLabel: "Sağlıklı Bağlar Kur",
+    ctaLink: "/match"
+  },
+  {
+    slug: "what-is-orbiting",
+    title: "Orbiting Nedir? Seni Ghostladılar Ama Hâlâ Bütün Storylerini İzliyorlar",
+    description: "Hayatından çıkıp giden ama sosyal medyada hayalet gibi seni izlemeye devam edenlere dikkat! Orbiting nedir ve bu sinir bozucu trendden nasıl kurtulursun?",
+    category: "Digital Dating",
+    publishDate: "2026-07-02",
+    readTime: "7 min read",
+    keywords: ["orbiting", "ghosting", "sosyal medya", "red flag", "flört", "iletişim"],
+    imageUrl: "/images/trends/what-is-orbiting.webp",
+    content: {
+      intro: "Kanka, hikaye şöyle başlar: Biriyle tanışırsın, her şey harika gider, flört edersiniz, belki birkaç date'e çıkarsınız. Sonra birden... puff! Karşı taraf bir duman gibi ortadan kaybolur. Mesajlarına cevap vermez, buluşmaları eker. Tam bir klasik 'ghosting' vakası dersin, önüne bakmaya çalışırsın. Ama sonra telefonuna o bildirim düşer. Senin attığın o çok havalı kafeden story'yi izlemiş! Hatta bir de eski bir fotoğrafını beğenmiş. 'Nasıl yani?' diye beyninden vurulmuşa dönersin. Hem benimle konuşmuyor, hem de hayatımı saniye saniye takip ediyor? İşte flört dünyasının bu en saçma, en kafa karıştırıcı ve en sinir bozucu trendine 'Orbiting' deniyor. Bir nevi gezegenin etrafında dönen ama asla iniş yapmayan bir uydu gibidirler. Seni tamamen hayatından çıkarmaz, ama tam olarak hayatına da girmez. Senin o tatlı, değerli zamanını ve zihnini işgal etmek için uzaktan varlıklarını hissettirirler. Eğer sen de bu uzay boşluğunda bir orbitere takılı kaldıysan, kemerlerini bağla, seni bu yörüngeden çıkarıyoruz.",
+      sections: [
+        {
+          heading: "1. Orbiting Neden Ghosting'den Daha Sinir Bozucudur?",
+          paragraph: "Ghosting acıtır, evet. Biri birdenbire iletişimi kestiğinde kalbin kırılır, anlam veremezsin. Ama en azından bir 'son' vardır. Bir süre sonra yasını tutar, durumu kabullenir ve hayatına devam edersin. Ancak orbiting, o yara bandını sürekli yavaş yavaş çekmek gibidir. Sen tam unuttum, artık aklıma bile gelmiyor dediğin an, bir story'ni beğenir, bir tweet'ini favoriler veya LinkedIn'den bile profilini görüntüler. (Evet, LinkedIn stalker'ları da orbitere dahildir!) Bu durum, zihninde sürekli 'Acaba geri mi dönecek?', 'Acaba benden hala hoşlanıyor mu?', 'Neden hala beni takip ediyor?' gibi soruların dönüp durmasına sebep olur. Tam 'move on' (yola devam) olacakken seni tekrar geçmişe, o kafa karışıklığının tam ortasına çekerler. Orbiting, senin kapanış (closure) yaşamana engel olan toksik bir döngüdür. Seni bir türlü tam anlamıyla özgür bırakmazlar.",
+          items: [
+            "Mesajlarına görüldü atıp, aynı saniye Instagram story'ni izlemesi.",
+            "Asla iletişime geçmemesine rağmen gönderilerini beğenmesi.",
+            "Sen tam unuttuğunda ansızın ateş emojisi atarak kafanı karıştırması."
+          ]
+        },
+        {
+          heading: "2. Peki Bunu Neden Yapıyorlar? (FOMO ve Ego)",
+          paragraph: "Bir insan neden hem konuşmak istemez hem de her adımını takip eder? Cevap çok basit: FOMO (Fear of Missing Out - Bir şeyleri kaçırma korkusu) ve devasa bir ego. Orbiter'lar, köprüleri tamamen yıkmak istemezler. Senin bir B planı, bir 'belki bir gün' opsiyonu olarak ellerinin altında kalmanı isterler. Ayrıca senin onsuz ne kadar eğlendiğini, ne kadar iyi göründüğünü, başka biriyle çıkıp çıkmadığını bilmek onların kontrol ve merak güdüsünü besler. Çoğu zaman seninle bir ilişki yaşamak istedikleri için değil, senin 'hala onlara ilgi duyup duymadığını' test etmek için bunu yaparlar. O küçücük like, 'Bak ben hala buradayım, beni unutma' demenin bencilce bir yoludur. Senin duygularını veya kafa karışıklığını zerre umursamazlar. Onların tek derdi, kendi egolarını okşamak ve radarlarında kalmaya devam etmendir."
+        },
+        {
+          heading: "3. Breadcrumbing (Ekmek Kırıntısı) ile Orbiting'in Dansı",
+          paragraph: "Orbiting genellikle 'breadcrumbing' ile el ele yürür. Seni yörüngede tutmak için sadece story izlemekle kalmaz, bazen çok küçük yemler atarlar. Aylarca sesleri çıkmaz, sonra aniden gece 2'de 'Bu şarkıyı dinlerken aklıma geldin' diye bir mesaj atarlar. Sen heyecanlanırsın, uzun bir cevap yazarsın ve bam! Ertesi gün yine yokturlar. Bu, seni o yörüngede tutmak için ihtiyaçları olan o ufak yakıttır. Seni tamamen kendilerinden uzaklaştırmayacak kadar ilgi gösterirler ama gerçek bir ilişki veya düzenli iletişim kuracak kadar da çaba sarf etmezler. Bu bir taktik oyunudur ve sen bu oyunda maalesef piyon durumundasın. Birisi sana sadece ekmek kırıntıları veriyorsa, onun ziyafet sofrasında yerin yoktur kanka. Senin tam bir porsiyon ilgiye, sevgiye ve netliğe ihtiyacın var, kırıntılara değil.",
+          scenario: "Sen: 'Üç haftadır hiç mesajlaşmıyoruz, sanırım bitti.' (O gece story'ne alev atar). Sen: 'Alev mi? Ne demek bu? Yeniden konuşmak mı istiyor?' (Ona mesaj atarsın, 2 gün görüldüde kalırsın.)"
+        },
+        {
+          heading: "4. Kendi Delulu Senaryolarını Yaratmanı Engelle",
+          paragraph: "Orbiting'in en büyük tehlikesi, senin kendi kafanda umut dolu senaryolar yazmana sebep olmasıdır. 'Story'lerime baktığına göre hala beni düşünüyor', 'Son post'umu beğendi, kesin pişman oldu geri dönecek' diye düşünür durursun. Kanka, acı gerçeği söyleyeyim: Çoğu zaman bir story'yi izlemek, parmağın sağa kaymasından başka bir anlam taşımaz. Bazen tuvalette otururken bile öylesine hikayeleri geçen insanlar var! Onun senin içeriğini tüketmesi, sana değer verdiği anlamına gelmez. Eğer gerçekten seninle olmak isteseydi, ekrana boş boş bakmak yerine sana bir mesaj atar, seni arar, seninle görüşmek için plan yapardı. Dijital ayak izlerinden devasa romantik anlamlar çıkarmayı bırak. 'Bare minimum' bir eforla senin zihnini işgal etmesine izin verme. Bir like, bir ilişki teklifi değildir."
+        },
+        {
+          heading: "5. Yörüngeden Çıkış: Engelle Geç!",
+          paragraph: "Eğer orbiting senin ruh sağlığını bozuyor, seni geriye çekiyor ve yeni insanlara şans vermeni engelliyorsa, yapman gereken şey çok net: Yörüngeyi tamamen kapatmak. 'Ama engellersem çok mu umursamış görünürüm?', 'Çocukça mı olur?' diye düşünme. Senin huzurun, dışarıdan nasıl 'cool' göründüğünden çok daha önemli. Eğer birisi hayatında yoksa, hayatının fragmanını da izleme hakkına sahip olmamalıdır. Mute'la, takipten çıkar, gerekirse engelle (Block). Kendi dijital sınırlarını çizmek, kendine duyduğun saygının en büyük adımıdır. Sen, kimsenin canı sıkıldığında kontrol edeceği bir sosyal medya hesabı değilsin. Kapıyı tam kapat ki, içeriye gerçekten o odada seninle kalmak isteyen, değerini bilen insanlar girebilsin.",
+          items: [
+            "Hemen bugün onu tüm platformlardan sessize al veya takipten çıkar.",
+            "Hikayelerini ondan gizle, böylece sana 'bakıyor mu' stresi yaşama.",
+            "Enerjini, sana gerçekten vakit ayıran ve mesajlarına cevap veren insanlara yönlendir."
+          ]
+        }
+      ],
+      conclusion: "Sonuç olarak kanka, orbiting, dijital çağın en korkakça ve en bencil iletişim kurma (veya kurmama) yöntemlerinden biridir. Senin enerjin, sadece uzaktan seni izleyen hayaletlere harcanamayacak kadar değerli. Seni gerçekten isteyen biri yörüngede dönmez; iniş yapar, kapını çalar ve hayatının tam ortasında yerini alır. O yüzden o uyduları sisteminden at, kendi galaksinin main character'i olmaya devam et. Gözünü telefon ekranındaki izleyici listesinden çekip, gerçek hayatta sana değer veren insanlara odaklanmanın vakti geldi!"
+    },
+    ctaLabel: "Gerçek İletişim Kur",
+    ctaLink: "/match"
+  },
+  {
+    slug: "trauma-bonding-signs",
+    title: "Trauma Bonding (Travma Bağı): Neden O Toksik İlişkiden Ayrılamıyorsun?",
+    description: "Sana zarar verdiğini bildiğin halde ondan kopamıyor musun? Belki de bu aşk değil, bir Trauma Bonding'dir. Toksik döngüyü kırma rehberi.",
+    category: "Toxcitiy Check",
+    publishDate: "2026-07-02",
+    readTime: "8 min read",
+    keywords: ["trauma bonding", "toksik ilişki", "red flag", "psikoloji", "manipülasyon"],
+    imageUrl: "/images/trends/trauma-bonding-signs.webp",
+    content: {
+      intro: "Kanka, hiç arkadaşlarına saatlerce sevgilinin ne kadar kötü biri olduğunu, sana nasıl yanlış yaptığını, ne kadar bencil davrandığını anlatıp; günün sonunda yine 'Ama onu çok seviyorum' diyerek onun kollarına geri döndüğün oldu mu? Dışarıdan bakan herkes sana 'Ayrıl, bırak şu çocuğu/kızı' derken, senin içinde sanki kopması imkansız çelikten bir halat varmış gibi hissedersin. Mantığın 'kaç' diye bağırırken, kalbin (veya daha doğrusu kimyan) seni ona doğru çeker. Sen kendini büyük, efsanevi ve aşılmaz bir aşk yaşıyor sanabilirsin ama psikoloji literatüründe bunun çok daha karanlık bir adı var: Trauma Bonding (Travma Bağı). Bu, sana en çok acı veren kişinin, aynı zamanda sığındığın tek güvenli liman haline gelmesi paradoksudur. Tam bir zehirli döngüdür. Eğer 'Ona katlanamıyorum ama onsuz da yaşayamıyorum' diyorsan, muhtemelen bir travma bağının tam ortasındasın demektir. Peki bu bağ nasıl oluşur ve bu görünmez zincirleri nasıl kırarsın? Gel, bu karanlık odaya biraz ışık tutalım.",
+      sections: [
+        {
+          heading: "1. Döngünün Başlangıcı: Yoğun Love Bombing",
+          paragraph: "Hiçbir travma bağı, kötü davranışlarla başlamaz. Eğer biri ilk günden sana kötü davransa, zaten anında arkanı döner gidersin. Travma bağı kuran toksik bireyler (genellikle narsistler veya manipülatörler), başlangıçta sana hayatının en inanılmaz, en yoğun, en rüya gibi günlerini yaşatırlar. Buna 'Love Bombing' (Aşk Bombardımanı) diyoruz. Seni iltifatlara boğar, sürekli mesaj atar, ruh eşi olduğunuzu hissettirir. Daha ilk haftadan gelecekle ilgili devasa planlar yaparsınız. Beynin bu yoğun ilgi ve şefkat karşısında adeta dopamin zehirlenmesi yaşar. O kişiyi 'kurtarıcı' veya 'hayatının aşkı' olarak kodlarsın. O harika maskenin arkasında aslında zehirli bir karakter yattığını fark edemezsin. İşte bu aşama, ileride yiyeceğin tüm duygusal darbeleri tolere etmeni sağlayacak olan o güçlü temelin atıldığı yerdir.",
+          items: [
+            "İlk haftadan 'Sen hayatımda gördüğüm en özel insansın' gibi devasa iltifatlar duymak.",
+            "7/24 sürekli iletişim halinde olmak ve senin tüm sınırlarını aşırı ilgiyle esnetmesi.",
+            "Sanki yıllardır tanışıyormuşsunuz gibi hızlıca derin ve yoğun bir bağ kurulması."
+          ]
+        },
+        {
+          heading: "2. Gerçek Yüzün Ortaya Çıkışı ve Değersizleştirme",
+          paragraph: "Sen tamamen ona bağlandıktan ve savunmalarını indirdikten sonra, o rüya aniden kabusa dönüşmeye başlar. Love bombing dönemi biter ve yerine eleştiriler, soğukluklar, aşağılamalar veya ghosting'ler başlar. Aniden çok yoğun ilgi gösteren o insan gitmiş, yerine sürekli seni eleştiren, sana kendini yetersiz hissettiren biri gelmiştir. Bu durum sende büyük bir şok ve anksiyete yaratır. 'Neyi yanlış yaptım?', 'Neden değişti?' diye kendini sorgulamaya başlarsın. Ve işte manipülasyon burada devreye girer: Sana, onun değişmesinin sebebinin 'senin hataların' olduğuna inandırır. (Evet, klasik gaslighting!) Sen de, kaybettiğin o ilk günlerdeki 'mükemmel' insanı geri getirebilmek için daha çok çabalamaya, tavizler vermeye ve kendi değerlerinden ödün vermeye başlarsın."
+        },
+        {
+          heading: "3. Ödül ve Ceza Sistemi (Aralıklı Güçlendirme)",
+          paragraph: "Travma bağının beynini bir uyuşturucu bağımlısı gibi çalıştıran en kritik noktası budur: Aralıklı Güçlendirme (Intermittent Reinforcement). Karşındaki kişi sana sürekli kötü davranmaz. Eğer öyle olsaydı, zaten pes ederdin. Onlar, sana günlerce cehennemi yaşattıktan sonra, aniden çok tatlı, çok sevgi dolu ve pişman bir şekilde geri dönerler. Bir tartışma sonrası gelen devasa bir çiçek, ağlayarak dilenen bir özür veya inanılmaz romantik bir mesaj... Beynin bu 'ödülü' aldığında, o kadar büyük bir rahatlama ve mutluluk yaşar ki, önceki tüm acıları unutur. Bu sıcak-soğuk taktiği, seni o minicik sevgi kırıntılarına bağımlı hale getirir. Her kötü davranışta 'Ama biliyorum içinde çok iyi biri var, geçen gün bana ne kadar aşık olduğunu söyledi' diyerek onu aklarsın. Bu döngü, seni ona fiziksel ve ruhsal olarak zincirler.",
+          scenario: "Cuma gecesi sana hiçbir sebep yokken bağırıp çağırır ve telefonu yüzüne kapatır. Cumartesi sabahı kapında elinde kahve ve ağlamaklı gözlerle belirir: 'Çok özür dilerim, sen benim her şeyimsin, sensiz yapamıyorum' der. Ve sen affedersin."
+        },
+        {
+          heading: "4. Savunma Mekanizması: Onu Dışarıya Karşı Korumak",
+          paragraph: "Bir süre sonra, etrafındaki insanlar (arkadaşların, ailen) durumun ne kadar toksik olduğunu fark etmeye başlar. Sana onun red flag'lerini göstermeye, ayrılman gerektiğini söylemeye başlarlar. Ancak travma bağındayken, sen dış dünyanın bu uyarısına karşı savunmaya geçersin. Arkadaşlarına yalan söylemeye, onun kötü hareketlerini gizlemeye başlarsın. 'Siz onu tanımıyorsunuz, aslında öyle demek istemedi', 'Onun da travmaları var, yardıma ihtiyacı var' diyerek onu korursun. Bu, Stockholm Sendromu'nun flört versiyonudur. Kendi acına sebep olan kişiyi, dünyadaki tek müttefikin gibi görmeye başlarsın. Çevrenden koptukça, izole oldukça, o kişiye olan bağımlılığın daha da derinleşir. Kendini kurtarmaya çalışan elleri iterken, seni boğan ellere daha sıkı sarılırsın."
+        },
+        {
+          heading: "5. Bağları Kesmek ve 'Yoksunluk' Gerçeği",
+          paragraph: "Travma bağından kurtulmak, sıradan bir ayrılıktan çok daha zordur. Bu bir ayrılık değil, bir rehabilitasyon sürecidir. Gittiğinde inanılmaz bir 'yoksunluk' (withdrawal) krizine girersin. Beynin o dopamin iniş çıkışlarını arar. Huzur ve sakinlik sana 'sıkıcı' gelmeye başlar, çünkü kaos ve dramaya alışmışsındır. Onu ne kadar özlersen özle, bu özlemin sevgi değil, bağımlılık olduğunu kendine hatırlatman gerekir. 'No Contact' (Sıfır İletişim) kuralı bu sürecin tek panzehiridir. Onu her yerden engellemek, stalklamamak ve o sahte 'özür' mesajlarına asla dönmemek zorundasın. İlk haftalar çok acı verici olacaktır, kalbin seni sürekli ona dönmen için kandırmaya çalışacaktır. Ama o karanlık tünelin sonunda, kendi değerini yeniden keşfettiğin ve huzur bulduğun o gerçek aydınlık var.",
+          items: [
+            "Kesinlikle No Contact (Sıfır İletişim) kuralını uygula.",
+            "Sana yaşattığı kötü şeyleri bir listeye yaz ve özlediğinde o listeyi oku.",
+            "Profesyonel terapi desteği almaktan çekinme, bu süreci tek başına atlatmak zorunda değilsin."
+          ]
+        }
+      ],
+      conclusion: "Kısacası kanka, yoğun acı, gözyaşı ve sürekli kaygı içeren bir şeyin adı 'aşk' olamaz. Aşk sana kendini değerli hissettirir, seni büyütür, sana huzur verir. Eğer birisi seni sürekli kırıp döküyor, sonra da yara bandı yapıştırıp kendini kurtarıcı ilan ediyorsa, bu bir travma bağıdır. Sen kimsenin rehabilitasyon merkezi veya oyun hamuru değilsin. O toksik senaryodan çıkış biletini al, o zincirleri kır ve kendi yaranı kendin sar. Zor olacak, evet. Ama o huzurlu, sessiz ve sağlıklı günlere ulaştığında, kendine 'iyi ki gitmişim' diyeceksin."
+    },
+    ctaLabel: "Sınırlarını Belirle",
+    ctaLink: "/match"
+  },
+  {
+    slug: "hyper-independence-in-dating",
+    title: "İlişkilerde Hyper-Independence: 'Kimseye İhtiyacım Yok' Ne Zaman Bir Kırmızı Bayrağa Dönüşür?",
+    description: "Sürekli 'ben hallederim' diyor ve kimsenin sana yardım etmesine izin vermiyor musun? Hyper-independence (aşırı bağımsızlık) aslında bir travma tepkisi olabilir.",
+    category: "Psychology",
+    publishDate: "2026-07-02",
+    readTime: "7 min read",
+    keywords: ["hyper independence", "psikoloji", "ilişkiler", "red flag", "bağlanma"],
+    imageUrl: "/images/trends/hyper-independence-in-dating.webp",
+    content: {
+      intro: "Kanka, bağımsız olmak, kendi ayaklarının üzerinde durmak, main character energy ile parlamak harika şeyler. 'Benim param var, kendi evim var, kimseye ihtiyacım yok' demek dışarıdan bakıldığında çok güçlü ve havalı duruyor, değil mi? Ama flört dünyasında, 'Hiç kimseye ihtiyacım yok' cümlesi bazen karanlık bir sokağa çıkabilir. Her şeyi tek başına çözmeye çalışmak, birisinin senin için ufak bir iyilik yapmasına bile tahammül edememek, bir ilişkide savunmasız kalmaktan (vulnerability) ölümüne korkmak... İşte buna 'Hyper-Independence' (Aşırı Bağımsızlık) diyoruz. Ve sürpriz kanka: Bu bir güç göstergesi değil, çoğu zaman derin bir travma tepkisidir! Eğer geçmişte birine güvenip yarı yolda kaldıysan, bilinçaltın 'Güvende olmanın tek yolu her şeyi kendim yapmam' duvarını örmüştür. Ancak bu çelikten duvarlar, seni sadece kötülüklerden değil, gerçek sevgiden ve derin bir bağ kurmaktan da korur (daha doğrusu alıkoyar). Eğer sen de 'Strong Independent' imajının arkasına saklanıp, insanları kendinden uzaklaştırıyorsan, gel bu duvarlarda birkaç pencere açalım.",
+      sections: [
+        {
+          heading: "1. Yardım İstemek = Zayıflık İllüzyonu",
+          paragraph: "Hyper-independent bireylerin en büyük kabusu, birinden yardım istemektir. En ufak bir işten tut (örneğin ağır bir kutuyu taşımak), duygusal bir çöküntü anına kadar, asla ve asla kimseden destek beklemezler. Eğer bir flörtleri onlara 'Sana yardım edeyim mi?' derse, bunu bir hakaret, kendi yeterliliklerine bir saldırı gibi algılarlar. 'Ne yani, ben beceriksiz miyim?' savunmasına geçerler. Halbuki, bir ilişkide veya situationship'te tarafların birbirine destek olması, bağ kurmanın en temel yoludur. Karşı taraf sana yardım etmek istiyor çünkü sana değer veriyor, senin hayatını kolaylaştırmak istiyor. Ama sen o yardımı her reddettiğinde, aslında 'Sana hayatımda ihtiyacım yok, aramızda bir mesafe kalmalı' mesajını verirsin. Sürekli her şeyi 'ben hallederim' diyerek hem kendini tükenmişliğe (burnout) sürüklersin hem de karşı tarafın kendini faydasız hissetmesine sebep olursun.",
+          items: [
+            "Hastasındır ama flörtünün çorba getirmesini şiddetle reddedersin.",
+            "Maddi veya manevi bir kriz anında derdini anlatmak yerine tamamen kendi içine kapanırsın.",
+            "Birisi sana kapıyı açtığında veya hesabı ödemek istediğinde aşırı tepki verirsin."
+          ]
+        },
+        {
+          heading: "2. Duygusal Duvarlar ve Vulnerability (Savunmasızlık) Korkusu",
+          paragraph: "Aşırı bağımsızlık, sadece fiziksel şeyleri tek başına yapmak demek değildir; asıl mesele duygusal olarak tamamen kapalı olmaktır. Gerçek ve derin bir ilişki kurabilmek için savunmasız (vulnerable) olabilmen, yaralarını ve zayıflıklarını karşı tarafa açabilmen gerekir. Ancak hyper-independent bir kişi için bu, ölümcül bir tehlikedir. 'Eğer zayıf yönlerimi gösterirsem, beni kırarlar veya terk ederler' inancı o kadar köklüdür ki, her zaman maskeli ve 'mükemmel, yıkılmaz' görünmeye çalışır. Flörtüyle derin, duygusal bir sohbete girmek yerine yüzeyde kalmayı tercih eder. Biri ona çok yaklaştığında, duvarlarını aştığını hissettiğinde aniden panikler ve 'ghosting' atar ya da sudan sebeplerle tartışma çıkarıp uzaklaşır. Bu bağlanma korkusu, seni o çok istediğin 'güvenli ve huzurlu' ilişkiden mahrum bırakır."
+        },
+        {
+          heading: "3. Sürekli Kontrol İhtiyacı (Control Freak)",
+          paragraph: "Eğer her şeyi sen yaparsan, hiçbir şey yanlış gitmez, değil mi? İşte hyper-independence'in arkasındaki temel mantık budur: Kontrol. Hayatındaki her detayı mikro seviyede yönetmek istersin. Buluşulacak mekanı sen seçmelisin, saati sen ayarlamalısın, hatta konuşmanın gidişatını bile sen belirlemelisin. Kontrolü karşı tarafa bıraktığında büyük bir anksiyete yaşarsın çünkü geçmişte ipleri başkasına verdiğinde hayal kırıklığına uğramışsındır. Ancak flört dinamiklerinde kontrolün sürekli sende olması, karşındaki insanı yorar ve pasifleştirir. Karşındaki kişi bir süre sonra 'Zaten o her şeyi biliyor, her şeyi o ayarlıyor' diyerek geri çekilir (ki bu da dry texter veya low-effort bir partner yaratır). Sonra sen de 'Neden kimse benim için çabalamıyor?' diye şikayet edersin. Cevap basit kanka: Çabalamalarına izin vermiyorsun ki!",
+          scenario: "Flörtün: 'Bu akşam sana çok güzel bir sürpriz planım var, saat 8'de hazır ol.' Sen: 'Nereye gideceğiz? Ne giymem lazım? Çok uzak mı? Ya ben sevmezsem orayı? En iyisi bildiğimiz yere gidelim ben rezervasyon yapayım.'"
+        },
+        {
+          heading: "4. Yalnızlığı 'Güvenli Alan' Olarak Görmek",
+          paragraph: "Bağımsızlık harikadır ama hyper-independence, yalnızlığı bir zırh olarak kullanır. Tek başına geçirdiğin vakitlerde kimse seni kıramaz, kimse seni yargılayamaz, kimse seni hayal kırıklığına uğratamaz. Bu yüzden, ne zaman bir ilişki ciddi bir boyuta geçmeye başlasa, 'Ben galiba ilişki insanı değilim, tek başıma daha mutluyum' bahanesine sığınırsın. Yalnızlık bir tercih değil, bir kaçış mekanizması haline gelmiştir. 'Benim kimseye ihtiyacım yok' cümlesi, aslında 'Birine ihtiyaç duymaktan çok korkuyorum' cümlesinin süslenmiş halidir. Kendi kendine yettiğini kanıtlamak uğruna, o sıcak, samimi ve destekleyici bağlardan kendini mahrum bırakıyorsundur. Hayat, sadece hayatta kalmaktan ve her şeyi tek başına başarmaktan ibaret değildir kanka; bazen yaslanacak bir omuz bulmak da bir başarıdır."
+        },
+        {
+          heading: "5. Duvarları Nasıl Yıkıp Dengeli Bir Bağ Kurarsın?",
+          paragraph: "Bu durumdan kurtulmanın yolu, bağımsızlığını tamamen çöpe atıp 'pick-me' veya aşırı bağımlı (codependent) birine dönüşmek değildir. Asıl hedef 'Interdependence' (Karşılıklı Bağımlılık) denilen sağlıklı noktaya ulaşmaktır. Bu, 'Kendi başıma iyiyim, ayaklarımın üzerinde durabiliyorum, ama sana da güveniyorum ve seninle hayatı paylaşmak istiyorum' demektir. İlk adım, kontrolü küçük dozlarda bırakmayı öğrenmektir. Karşı taraf sana ufak bir yardım teklif ettiğinde (örneğin sana kahve ısmarlamak veya bir eşyanı taşımak) derin bir nefes al ve sadece 'Teşekkür ederim' de. Kendi duygularını, korkularını ona yavaş yavaş açmaya başla. Göreceksin ki, insanlar sen savunmasız olduğunda kaçmayacaklar, aksine sana daha çok sarılacaklar.",
+          items: [
+            "Ufak tefek konularda ('Sence hangi filmi izleyelim?') kontrolü ona bırakmayı dene.",
+            "Kötü bir gün geçirdiğinde 'Ben iyiyim' demek yerine 'Bugün biraz yorgun ve üzgünüm, konuşabilir miyiz?' demeyi pratik et.",
+            "Güvenmenin bir zayıflık değil, büyük bir cesaret örneği olduğunu kendine hatırlat."
+          ]
+        }
+      ],
+      conclusion: "Sonuçta kanka, o çelik zırhlar seni dışarıdaki fırtınalardan korur, evet. Ama aynı zırhlar, güneşin tenini ısıtmasını, birinin sana sıkıca sarılmasını da engeller. Hyper-independence, geçmişteki kırılmışlıklarının bir rozetidir ama gelecekteki mutluluğunun da en büyük engelidir. Gerçek güç, her şeyi tek başına yapmakta değil; kırılmayı göze alıp, kalbini birine açabilmekte yatar. Güvenli alanından çık, o omuzlara yaslanmaktan korkma ve sevgiye izin ver. Çünkü inat etsen de, hayatta en güçlü insanların bile bazen arkalarını kollayacak birine ihtiyacı vardır."
+    },
+    ctaLabel: "Güvenli Bağlar Kur",
+    ctaLink: "/match"
+  },
+  {
+    slug: "one-sided-effort-relationship",
+    title: "Tek Taraflı Çaba: Onunla Çıkıyor musun Yoksa Onun PR Uzmanı mısın?",
+    description: "Tüm date'leri sen planlıyor, tüm konuşmaları sen başlatıyorsan dur! Tek taraflı çaba (one-sided effort) batağından çıkma rehberi.",
+    category: "Dating Dynamics",
+    publishDate: "2026-07-02",
+    readTime: "7 min read",
+    keywords: ["one sided", "flört", "çaba", "red flag", "ilişkiler"],
+    imageUrl: "/images/trends/one-sided-effort-relationship.webp",
+    content: {
+      intro: "Kanka, bir düşün bakalım... En son ne zaman o 'Seni şuraya götürmek istiyorum, rezervasyon yaptırdım' dedi? En son ne zaman sen hiçbir şey yapmadan, tamamen onun başlattığı, uzun, derin bir sohbetin içinde buldun kendini? Eğer bu soruların cevabını hatırlamak için beyninin derinliklerine inmen gerekiyorsa, tebrikler: Sen bir flörtün/partnerin değil, bir PR uzmanı, kişisel asistan ve etkinlik planlayıcısı olmuşsun! Flört dünyasının en sessiz ama en öldürücü red flag'lerinden biri 'One-Sided Effort' yani tek taraflı çabadır. İlişki denilen şey, iki kişinin kürek çektiği bir kayık gibidir. Eğer o kayıkta sadece sen kan ter içinde kürek çekiyor, karşıdaki kişi ise arkaya yaslanıp güneşleniyorsa, o kayık sadece senin etrafında döner durur ve sonunda batar. Sürekli inisiyatif alan, sürekli 'oldurmaya' çalışan taraf olmaktan yorulduysan, bu yazıyı okuduktan sonra o kürekleri denize fırlatma vaktin geldi demektir.",
+      sections: [
+        {
+          heading: "1. 'Ben Zaten Öyle Biriyim' Bahanesi",
+          paragraph: "Karşı tarafın efor sarf etmediğini dile getirdiğinde duyacağın en klasik, en bayat yalan şudur: 'Ya ben zaten mesajlaşmayı sevmem', 'Ben plan yapma konusunda çok kötüyüm', 'Beni biliyorsun, ben akışına bırakmayı severim.' Kanka, delulu olmayı bırakalım. Dünyanın en tembel, en programsız insanı bile eğer birini gerçekten istiyorsa ve onu kaybetmekten korkuyorsa o planı yapar! O mesaja anında döner, dağları deler, gerekirse Google'dan 'En iyi romantik mekanlar' diye aratıp seni oraya götürür. İnsanlar, öncelik verdikleri şeyler için her zaman efor sarf ederler. Eğer senin için o asgari çabayı (bare minimum) bile göstermiyorsa, bunun sebebi 'onun karakterinin böyle olması' değil, sana yeterince değer vermemesidir. Bu kılıfa sığınmasına izin verme ve 'Nasılsa o yapmıyor, ben halledeyim' diyerek onun bu tembelliğini ödüllendirmeyi bırak.",
+          items: [
+            "İlk mesajı her gün senin atman ve sohbeti senin yürütmen.",
+            "Tüm date fikirlerinin, mekanların ve saatlerin senin tarafından belirlenmesi.",
+            "Özel günlerin bile sadece senin çabanla kutlanması."
+          ]
+        },
+        {
+          heading: "2. Enerji Vampirliği ve Tükenmişlik Hissi",
+          paragraph: "Tek taraflı çaba gösterilen ilişkiler, insanın ruhunu kelimenin tam anlamıyla emer. Başlangıçta 'Ben onu çok seviyorum, yaparım ne olacak' diyerek kendini motive edersin. Onu sürekli düşünmek, ona sürprizler yapmak, onun hayatını kolaylaştırmak sana zevk verir. Ancak aylar geçtikçe ve karşıdan bir 'tepki' gelmedikçe, içindeki o heves yerini öfkeye ve derin bir yorgunluğa bırakır. Sanki boş bir kuyuya sürekli altın atıyormuşsun ama kuyu sana bir damla su bile vermiyormuş gibi hissedersin. Bu duygusal tükenmişlik, senin sadece o ilişkiye değil, hayata karşı olan enerjini de bitirir. Arkadaşlarına vakit ayıramaz, hobilerinden uzaklaşır ve sürekli 'Daha ne yapabilirim ki beni görsün?' stresiyle yaşarsın. Kendini değersiz, yetersiz ve sevilmeye layık olmayan biri gibi hissetmeye başlarsın. Oysa sorun senin yetersizliğin değil, yanlış kişiye yatırım yapmandır."
+        },
+        {
+          heading: "3. 'Geri Adım Atma' Testi",
+          paragraph: "Acı gerçekle yüzleşmek mi istiyorsun? Sana mükemmel bir test öneriyorum: Birkaç günlüğüne geri adım at. Mesaj atma, plan yapma, sohbete can suyu vermeye çalışma. Sadece dur ve izle. Eğer sen o kayığı çekmeyi bıraktığında kayık tamamen duruyorsa, hatta araya günlerce sessizlik giriyorsa, acı ama net bir cevabın var demektir. Karşındaki insan, ilişkinizi ayakta tutmak için kılını kıpırdatmayacaktır. Çoğu insan bu testi yapmaktan korkar çünkü sen bıraktığında onun gerçekten gideceğini içten içe bilirsin. Ama yüzleşmek zorundasın. Eğer sen bir adım geri attığında, o sana iki adım gelmiyorsa, o bağ zaten hiç var olmamıştır. Sadece senin 'tek kişilik dev kadronla' yürüttüğün bir hayal dünyasında yaşıyorsunuzdur.",
+          scenario: "Sen: (İçinden: 'Bugün hiç yazmayacağım, bakalım o ne zaman yazacak?'). Sonuç: Saat 23:45 olur ve ondan gelen tek bildirim senin Instagram hikayeni beğenmesidir."
+        },
+        {
+          heading: "4. Egonun Tatmini ve Convenience (Kolaylık) İlişkisi",
+          paragraph: "Bazen insanlar seni gerçekten sevmezler, ama onlara duyduğun sevgiyi, ilgiyi ve onlara sağladığın 'kolaylığı' severler. Sürekli onu öven, onun hayatını düzenleyen, her aradığında orada olan bedava bir destek sistemisindir. Neden bu konforu bozsun ki? Senin gösterdiğin bu tek taraflı çaba, onun egosunu öyle bir besler ki, kendini dünyanın en bulunmaz Hint kumaşı sanmasına sebep olur. O bir 'Main Character' havasında takılırken, sen arkada ışıkları tutan asistan olursun. Seninle kalmasının sebebi sana duyduğu tutku değil, ona sunduğun konfor alanıdır. Bu yüzden sen şikayet edip ayrılmak istediğinde, aniden ufak bir çaba gösterip (breadcrumbing) seni geri çeker. Çünkü o konfor alanını, o ego tatminini kaybetmek istemez."
+        },
+        {
+          heading: "5. Bare Minimum'u Kabul Etmeyi Bırak",
+          paragraph: "Artık uyanma vakti kanka. Kendi standartlarını yükseltmek zorundasın. Bir ilişkide ilgi görmek, senin için planlar yapılması, gününün nasıl geçtiğinin sorulması 'lüks' değildir, bunlar ilişkinin asgari gereklilikleridir (bare minimum). Eğer bir insan sana bu asgari şartları bile lütufmuş gibi sunuyorsa, o masadan kalkmanın vakti gelmiştir. Sen, seninle vakit geçirmek için can atan, seninle konuşmak için uykusundan feragat eden, plan yaparken heyecanlanan birini hak ediyorsun. Kendi enerjini, senin çabanı sömüren kara deliklere değil, sana aynadaki yansıma gibi aynı çabayla karşılık veren insanlara harca. Kürekleri bırak ve bırak o kayık batsın. Sen zaten yüzmeyi biliyorsun.",
+          items: [
+            "Bugünden itibaren 'Sen plan yapmazsan görüşmüyoruz' sınırını net bir şekilde koy.",
+            "Mesajlarına geç dönüyorsa, sen de anında dönmeyi bırakarak kendi hayatına odaklan.",
+            "Sana karşılık vermeyen biri için fedakarlık yapmanın romantik değil, toksik olduğunu kabullen."
+          ]
+        }
+      ],
+      conclusion: "Kısacası kanka, bir ilişkiyi tek başına sırtında taşıyamazsın, taşısan da o yük bir gün belini kırar. Karşındaki insan seni sevdiği için değil, sen her şeyi 'fazla' sevdiğin ve yaptığın için orada duruyorsa, bu bir ortaklık değil, sömürüdür. Kendi değerini bir başkasını 'oldurmaya' çalışarak kanıtlayamazsın. Main character enerjini geri kazan, asistanlık görevinden istifa et ve sahneyi gerçek bir 'eş-başrol' oyuncusuna bırakmak üzere temizle. Gözlerini aç; senin eforuna aynı coşkuyla karşılık verecek insanlar orada bir yerde seni bekliyor."
+    },
+    ctaLabel: "Sana Değer Verenleri Bul",
+    ctaLink: "/match"
+  },
+  {
+    slug: "when-to-walk-away",
+    title: "Ne Zaman Gitmelisin: Numarasını Engellemeden Önceki Son Kontrol Listesi",
+    description: "Sürekli 'Acaba düzelir mi?' diye beklemekten yoruldun mu? Toksik bir durumdan (situationship/ilişki) ne zaman arkanı dönüp gitmen gerektiğini gösteren son check-list.",
+    category: "Dating Advice",
+    publishDate: "2026-07-02",
+    readTime: "6 min read",
+    keywords: ["ayrılık", "ne zaman gitmeli", "red flag", "toksik ilişki", "öz değer"],
+    imageUrl: "/images/trends/when-to-walk-away.webp",
+    content: {
+      intro: "Kanka, o anı biliyorum. Ekranın başında saatlerce oturup o mesajı yazıp yazıp sildiğin, içindeki o ağır 'Acaba haksızlık mı yapıyorum?', 'Ya düzelirse?', 'Belki bu sefer farklı olur' sorularıyla boğuştuğumuz o karanlık dehliz. Bir ilişkiyi veya situationship'i bitirmek asla kolay değildir, özellikle de ortada güçlü bir çekim veya bir travma bağı varsa. Sürekli 'potansiyele' aşık oluruz, gerçekliğe değil. Kafamızda onun 'ne kadar harika biri olabileceği' ihtimaline o kadar sarılırız ki, şu an bize ne kadar zarar verdiğini görmezden geliriz. Ama bazen gemi çok su almıştır ve o gemiyi kurtarmaya çalışırken boğulan sen olursun. Eğer aklında sürekli 'Artık gitmeli miyim?' sorusu yankılanıyorsa, kalbin o kararı çoktan vermiştir; sadece mantığının o biletleri kesmesini bekliyordur. O halde derin bir nefes al, telefonu masaya bırak ve o 'Engelle' butonuna basmadan önce, sana neden gitmen gerektiğini kanıtlayacak bu son kontrol listesine beraber bakalım.",
+      sections: [
+        {
+          heading: "1. Sürekli Kendi Gerçekliğinden Şüphe Ediyorsan",
+          paragraph: "Eğer bir ilişkide bulunduğun süre boyunca sürekli 'Acaba ben mi abartıyorum?', 'Ben mi çok alınganım?', 'Deli miyim ben?' gibi sorularla kendi zihnini kemiriyorsan, o ortamdan koşarak uzaklaşmalısın. Sağlıklı bir partner sana güvende hissettirir, senin duygularını onaylar (validates). Eğer karşındaki kişi, sen kırıldığında özür dilemek yerine durumu öyle bir çevirip senin 'sorunlu' veya 'toksik' olduğuna seni inandırıyorsa, net bir gaslighting kurbanısındır. Kendi hafızana, kendi duygularına güvenemez hale geldiğin hiçbir ilişki, sana iyi bir son vaat etmez. Senin duyguların gerçektir, kırılmışsan kırılmışsındır, bunun tartışması yapılamaz. Seni delulu hissettiren biriyle gelecekte mutlu bir son yazamazsın.",
+          items: [
+            "Tartışmaların sonunda haklıyken özür dileyen taraf hep sen oluyorsan.",
+            "Duygularını ifade etmekten 'yine kavga çıkacak' korkusuyla kaçınıyorsan.",
+            "Kendi sınırlarını savunurken kendini suçlu hissediyorsan."
+          ]
+        },
+        {
+          heading: "2. Kelimeler ve Eylemler Asla Uyuşmuyorsa",
+          paragraph: "Ah, o süslü laflar, o destansı vaatler, o göz boyayan 'Seni dünyalar kadar seviyorum' cümleleri... Peki ya icraat? Sıfır. Karşındaki insan sana gelecekle ilgili mükemmel senaryolar çizip, pratikte bir kahve içmek için bile zaman yaratmıyorsa, o lafların hiçbir anlamı yoktur. Gen-Z flört dünyasında kelimeler çok ucuzdur kanka; kopyala-yapıştır yapmak sadece iki saniye sürer. Önemli olan o kelimelerin altının eylemlerle doldurulmasıdır. Sürekli 'Değişeceğim', 'Bir daha yapmayacağım', 'Senin için çabalayacağım' deyip, ertesi gün aynı toksik döngüyü tekrarlayan biri, sana sadece yalan söylemiyordur; senin zekanla alay ediyordur. Bir insanın ne söylediğine değil, sana nasıl davrandığına bakmalısın. Eğer bu ikisi arasında devasa bir uçurum varsa, o uçurumdan atlamadan hemen geri dönmelisin.",
+          scenario: "O: 'Sen benim için herkesten önemlisin, bu hafta sonu sadece sana ayıracağım tüm vaktimi.' (Hafta sonu gelir, o arkadaşlarıyla kampa gider, sana 6 saat mesaj atmaz). O: 'Ya kanka planlar çok ani gelişti, kızma hemen.'"
+        },
+        {
+          heading: "3. 'Potansiyele' Aşık Olup Gerçekliği Görmezden Geliyorsan",
+          paragraph: "Birçok insan 'aslında içinde çok iyi biri var', 'travmalarını aşarsa harika bir sevgili olacak' diyerek toksik ilişkilerde yıllarını heba eder. Kanka, sen bir Bob the Builder (İnşaatçı Bob) değilsin, sen bir rehabilitasyon merkezi değilsin. Bir insanın 'potansiyeli', onun sana şu an yaşattığı cehennemi aklamaz. Sen onunla şu an, bugünkü haliyle berabersin. 'Eğer şöyle olsaydı mükemmel olurduk' cümlesindeki o 'eğer' kelimesi, senin zamanını çalan bir hırsızdır. Karşındaki insan senin sevginle, senin sabrınla 'düzelmeyecek'. İnsanlar ancak kendileri değişmek isterse değişirler. Kendi hayatının enerjisini, bitmemiş bir projeyi tamir etmeye harcamayı bırak. Sen hazır, ne istediğini bilen ve sana değer veren birini hak ediyorsun; senin sevginle var olacak bir taslağı değil."
+        },
+        {
+          heading: "4. Bedenin Sana Alarm Veriyorsa (Anksiyete ve Stres)",
+          paragraph: "Bazen mantığın reddetse de bedenin gerçeği bilir. Onunla buluşmadan önce midene kramplar giriyorsa, mesaj atmasını beklerken ellerin titriyor, nefesin daralıyorsa, bu kelebeklerin uçuşması değil; panik atak belirtisidir! Beynindeki sinir sistemin sana 'Kaç, tehlikedeyiz!' sinyali gönderiyor. Sağlıklı bir aşk huzur verir, güven verir; senin kalp ritmini bozup seni sürekli bir savaş veya kaç (fight or flight) modunda tutmaz. Geceleri uyuyamıyor, onun hakkında arkadaşlarına saatlerce ağlıyor ve sürekli bir 'tetikte olma' hali yaşıyorsan, o ilişki senin psikolojini çoktan zehirlemiştir. İçgüdülerine ve bedenine güven; onlar senin dostun, seni uyarıyorlar."
+        },
+        {
+          heading: "5. Asgari Saygı (Bare Minimum) Bile Yoksa",
+          paragraph: "Flörtte veya ilişkide bazı şeyler ekstradır (hediyeler, sürprizler), bazı şeyler ise asgari temeldir (bare minimum). Sadakat, yalan söylememek, mesajlara makul sürede dönmek, planlara sadık kalmak ve senin düşüncelerine saygı duymak bir lütuf değildir. Eğer karşındaki insan seni arkadaşlarının yanında küçümsüyor, seninle dalga geçiyor, sınırlarını ihlal ediyor veya sürekli yalan yakalıyorsan, burada 'acaba düzelir mi?' diye düşünmenin bir mantığı yoktur. Saygının bittiği yerde sevgi zaten barınamaz. Sana bir eşya gibi, 'garantideki kişi' gibi davranan birine daha fazla kredi verme. Kapıyı çarpıp çıkmanın, sadece saygısızlığa değil, kendine olan saygısızlığına da son vermek olduğunu anla.",
+          items: [
+            "Tartışmalarda hakaret edilmesi, isim takılması veya ses yükseltilmesi.",
+            "Tüm çevrenin (arkadaşlarının ve ailenin) senin zarar gördüğünü söylemesi.",
+            "Artık o ilişkide kendini 'kendin gibi' değil, onun istediği biri gibi hissetmen."
+          ]
+        }
+      ],
+      conclusion: "Kanka, listenin sonuna geldik. Eğer bu maddeleri okurken içinden 'Evet, aynen bunu yaşıyorum' diye çığlıklar atıyorsan, o karar anı gelmiştir. 'Zaman harcadım, emek verdim' yanılgısına düşme (Sunk Cost Fallacy). Yanlış trene bindiğini ne kadar geç fark edersen, geri dönmek o kadar zor olur. Şimdi o telefona uzan, sana zarar veren o bağı kes, gerekiyorsa her yerden engelle ve arkana bakma. Kendine verebileceğin en büyük hediye, seni aşağı çeken ağırlıklardan kurtulmaktır. Bırak gitsin, çünkü senin hikayen o toksik karakter olmadan çok daha güzel yazılacak."
+    },
+    ctaLabel: "Yeni Bir Başlangıç Yap",
+    ctaLink: "/match"
+  }
 ];
+
 
 
 export const trendsData = trendsDataEn; // fallback, but clients should use trendsDataEn/Tr explicitly

@@ -6,32 +6,40 @@ export const dynamic = "force-static";
 const locales = ["en", "tr"];
 const baseUrl = "https://thevibecheckr.com";
 
-// Sayfaların önem sırasına göre gruplandı
-// Priority 1.0 → Ana sayfa
-// Priority 0.9 → Search Console'da gösterim alan yüksek değerli sayfalar
-// Priority 0.8 → İkincil önemli sayfalar
-// Priority 0.6 → Yasal / yardımcı sayfalar
-const highPriorityRoutes = [
-  "/delulu-check",      // 12 gösterim - en yüksek
-  "/vibe-dictionary",   // 8+6 gösterim
-  "/aura-battle",       // 3 gösterim - "aura-battle who is cooler" sorgusu
-  "/trends",            // Blog hub - organik trafik kaynağı
-  "/profile-autopsy",   // Yeni ana özellik
+// SEO Priority Pyramid:
+// 1.0 -> Homepage
+// 0.9 -> Tier 1 (Flagship features & hubs)
+// 0.8 -> Tier 2 (Highly popular tools & Top 7 viral articles)
+// 0.7 -> Tier 3 (Niche tools & Medium impact articles)
+// 0.6 -> Default articles
+// 0.5 -> Utility (FAQ)
+// 0.3 -> Legal
+
+const tier1Routes = [
+  "/delulu-check",      
+  "/vibe-dictionary",   
+  "/aura-battle",       
+  "/profile-autopsy",   
+  "/toxic-ex-scanner",
+  "/ai-roast-me",
 ];
 
-const standardRoutes = [
-  "",                       // Ana sayfa (priority 1.0)
-  "/ai-roast-me",
-  "/toxic-ex-scanner",
-  "/duo-compatibility",
-  "/faq",
+const tier2Routes = [
   "/situationship-clarifier",
+  "/crush-calculator",
+  "/soulmate-radar",
+  "/ex-compatibility",
+];
+
+const tier3Routes = [
   "/mood-reset",
   "/reply-guru",
   "/bff-vibe-check",
-  "/crush-calculator",
-  "/ex-compatibility",
-  "/soulmate-radar",
+  "/duo-compatibility", // Moved down slightly to balance weight
+];
+
+const utilityRoutes = [
+  "/faq",
 ];
 
 const legalRoutes = [
@@ -39,21 +47,30 @@ const legalRoutes = [
   "/terms",
 ];
 
-// Yüksek impact + potansiyelli trend makaleleri (priority 0.8)
-const highImpactTrendSlugs = [
-  // Search Console'da doğrulanmış gösterim alanlar
-  "fix-negative-aura-mood",           // 4 gösterim
-  "aura-battle-who-is-cooler",        // 3 gösterim
-  "ai-photo-personality-test",        // 3 gösterim
-  "what-is-an-ick",                   // Ana ick makalesi - hedef keyword
-  // Yüksek arama hacmi / delulu hub
-  "mixed-signals-or-delulu",          // delulu-check ile sinerji
-  "are-you-delulu",                   // delulu cluster
-  "situationship-vs-relationship",    // yüksek arama hacmi
-  "what-is-rizz",                     // viral Gen-Z keyword
-  "gen-z-dating-terms-2026",          // hub içerik - çok keyword
+// TOP viral articles (Strict limit to ~10 items for true high priority)
+const topTierTrends = [
+  "what-is-an-ick",
+  "are-you-delulu",
+  "am-i-being-gaslighted",
+  "what-is-limerence",
+  "mixed-signals-or-delulu",
+  "what-is-rizz",
+  "situationship-vs-relationship",
+  "what-are-aura-points",
+  "biggest-dating-red-flags-2026",
+  "gen-z-dating-terms-2026",
 ];
 
+// Secondary popular articles
+const midTierTrends = [
+  "fix-negative-aura-mood",           
+  "aura-battle-who-is-cooler",        
+  "ai-photo-personality-test",        
+  "what-is-orbiting",
+  "trauma-bonding-signs",
+  "dry-texter-signs",
+  "main-character-energy",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [];
@@ -66,63 +83,67 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1.0,
   });
 
-  // 1. Yüksek öncelikli sayfalar (her dil için)
-  locales.forEach((locale) => {
-    highPriorityRoutes.forEach((route) => {
-      routes.push({
-        url: `${baseUrl}/${locale}${route}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: 0.9,
+  // Helper to add static routes
+  const addRoutes = (routeList: string[], priority: number, freq: "daily" | "weekly" | "monthly" | "yearly") => {
+    locales.forEach((locale) => {
+      routeList.forEach((route) => {
+        routes.push({
+          url: `${baseUrl}/${locale}${route}`,
+          lastModified: new Date(),
+          changeFrequency: freq,
+          priority,
+        });
       });
     });
-  });
+  };
 
-  // 2. Standart önemli sayfalar (her dil için)
-  locales.forEach((locale) => {
-    standardRoutes.forEach((route) => {
-      routes.push({
-        url: route === "" ? `${baseUrl}/${locale}` : `${baseUrl}/${locale}${route}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly",
-        priority: route === "" ? 1.0 : 0.8,
-      });
-    });
-  });
-
-  // 3. Yasal sayfalar (her dil için)
-  locales.forEach((locale) => {
-    legalRoutes.forEach((route) => {
-      routes.push({
-        url: `${baseUrl}/${locale}${route}`,
-        lastModified: new Date(),
-        changeFrequency: "yearly",
-        priority: 0.4,
-      });
-    });
-  });
-
-  // 4. Trend makaleleri EN
-  trendsDataEn.forEach((article) => {
-    const isHighImpact = highImpactTrendSlugs.includes(article.slug);
+  // Add the Homepage locale roots explicitly
+  locales.forEach(locale => {
     routes.push({
-      url: `${baseUrl}/en/trends/${article.slug}`,
-      lastModified: new Date(article.publishDate),
-      changeFrequency: isHighImpact ? "weekly" : "monthly",
-      priority: isHighImpact ? 0.8 : 0.7,
+      url: `${baseUrl}/${locale}`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 1.0,
+    });
+
+    // Add /trends as daily explicitly for faster indexing of new articles
+    routes.push({
+      url: `${baseUrl}/${locale}/trends`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.9,
     });
   });
 
-  // 5. Trend makaleleri TR
-  trendsDataTr.forEach((article) => {
-    const isHighImpact = highImpactTrendSlugs.includes(article.slug);
+  addRoutes(tier1Routes, 0.9, "weekly");
+  addRoutes(tier2Routes, 0.8, "weekly");
+  addRoutes(tier3Routes, 0.7, "monthly");
+  addRoutes(utilityRoutes, 0.5, "monthly");
+  addRoutes(legalRoutes, 0.3, "yearly");
+
+  // Trend articles logic
+  const processArticle = (article: any, locale: string) => {
+    let priority = 0.6; // Default
+    let freq: "weekly" | "monthly" | "yearly" = "monthly";
+
+    if (topTierTrends.includes(article.slug)) {
+      priority = 0.8;
+      freq = "weekly";
+    } else if (midTierTrends.includes(article.slug)) {
+      priority = 0.7;
+      freq = "monthly";
+    }
+
     routes.push({
-      url: `${baseUrl}/tr/trends/${article.slug}`,
+      url: `${baseUrl}/${locale}/trends/${article.slug}`,
       lastModified: new Date(article.publishDate),
-      changeFrequency: isHighImpact ? "weekly" : "monthly",
-      priority: isHighImpact ? 0.8 : 0.7,
+      changeFrequency: freq,
+      priority,
     });
-  });
+  };
+
+  trendsDataEn.forEach((article) => processArticle(article, "en"));
+  trendsDataTr.forEach((article) => processArticle(article, "tr"));
 
   return routes;
 }

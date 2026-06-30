@@ -52,8 +52,11 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
     notFound();
   }
 
-  // Find 2 other related articles
-  const relatedArticles = currentTrends.filter((a) => a.slug !== resolvedParams.slug).slice(0, 2);
+  // Find 2 other related articles by shuffling the list to avoid always showing the same ones
+  const relatedArticles = currentTrends
+    .filter((a) => a.slug !== resolvedParams.slug)
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 2);
 
   // Article JSON-LD Schema for Google Discover and Rich Results
   const jsonLd: any = {
@@ -135,7 +138,6 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
           </div>
         )}
 
-        {/* Content */}
         <div className="space-y-12 mb-16 text-lg text-white/80 leading-relaxed">
           {article.content.sections.map((section, idx) => (
             <React.Fragment key={idx}>
@@ -145,6 +147,26 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
                   <span>{section.heading}</span>
                 </h2>
                 <p className="pl-9">{section.paragraph}</p>
+                {section.items && section.items.length > 0 && (
+                  <ul className="pl-9 mt-4 space-y-2">
+                    {section.items.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2 text-white/70 text-base">
+                        <span className="text-indigo-400 mt-1 shrink-0 font-bold">→</span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+                {section.scenario && (
+                  <div className="pl-9 mt-5">
+                    <div className="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/20 text-white/60 text-base italic leading-relaxed">
+                      <span className="not-italic text-indigo-400 font-semibold mr-2">
+                        {isTr ? "💬 Örnek:" : "💬 Example:"}
+                      </span>
+                      {section.scenario}
+                    </div>
+                  </div>
+                )}
               </section>
               {/* Her 2 bölümden sonra in-article reklam */}
               {idx > 0 && idx % 2 === 1 && <InArticleAd />}

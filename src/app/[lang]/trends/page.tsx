@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Flame, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowLeft, Flame, Sparkles, TrendingUp, Search } from "lucide-react";
+import { useState } from "react";
 import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
 import SeoFooter from "@/components/SeoFooter";
 import InArticleAd from "@/components/InArticleAd";
@@ -12,21 +13,25 @@ const strings = {
     title: "Vibe Culture Hub",
     intro: "The pulse of the internet.",
     introPara: "From viral TikTok challenges to the brutal psychology behind situationships. We break down the trends so you don't have to.",
+    searchPlaceholder: "Search for a trend, keyword, or red flag...",
     readMore: "Read full analysis",
     ctaTitle: "Less reading, more roasting.",
     ctaPara: "Experience our viral AI engine firsthand. Let our algorithm scan your face and tell you exactly what vibe you're giving off.",
     ctaBtn: "Start Vibe Check",
     ariaBack: "Go back home",
+    noResults: "No trends found for",
   },
   tr: {
     title: "Vibe Kültür Merkezi",
     intro: "İnternetin nabzı burada atıyor.",
     introPara: "Viral TikTok akımlarından situationship'lerin o lanet psikolojisine kadar her şeyi inceliyoruz. Sen araştırmakla uğraşma diye trendleri biz analiz ediyoruz.",
+    searchPlaceholder: "Trend, kelime veya red flag ara...",
     readMore: "Analizin tamamını oku",
     ctaTitle: "Okumayı bırak, yüzleşmeye bak.",
     ctaPara: "İnterneti sallayan yapay zeka motorumuzu kendi üzerinde dene. Algoritma yüzünü tarasın ve dışarıya tam olarak nasıl bir vibe verdiğini yüzüne vursun.",
     ctaBtn: "Vibe Check'i Başlat",
     ariaBack: "Ana sayfaya dön",
+    noResults: "Aramanızla eşleşen sonuç bulunamadı:",
   },
 };
 
@@ -34,7 +39,18 @@ export default function TrendsHubPage() {
   const locale = useAppStore((s) => s.locale) as "en" | "tr";
   const isTr = locale === "tr";
   const s = strings[locale] ?? strings.en;
-  const currentTrends = isTr ? trendsDataTr : trendsDataEn;
+  
+  const [searchQuery, setSearchQuery] = useState("");
+  
+  const allTrends = isTr ? trendsDataTr : trendsDataEn;
+  const currentTrends = allTrends.filter(article => {
+    const q = searchQuery.toLowerCase();
+    return (
+      article.title.toLowerCase().includes(q) ||
+      article.description.toLowerCase().includes(q) ||
+      (article.keywords && article.keywords.some(k => k.toLowerCase().includes(q)))
+    );
+  });
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white">
@@ -64,23 +80,47 @@ export default function TrendsHubPage() {
           </div>
         </div>
 
-        {/* Intro */}
-        <div className="mb-16">
-          <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">{s.intro}</h2>
-          <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl">
-            {s.introPara}
-          </p>
+        {/* Intro & Search */}
+        <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div className="flex-1 max-w-2xl">
+            <h2 className="text-4xl md:text-5xl font-black mb-6 tracking-tight">{s.intro}</h2>
+            <p className="text-white/70 text-lg md:text-xl leading-relaxed">
+              {s.introPara}
+            </p>
+          </div>
+          
+          <div className="w-full md:w-80 relative group">
+            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+              <Search className="h-5 w-5 text-white/40 group-focus-within:text-indigo-400 transition-colors" />
+            </div>
+            <input 
+              type="text"
+              placeholder={s.searchPlaceholder}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full bg-white/5 border border-white/10 hover:border-indigo-500/50 focus:border-indigo-400 focus:ring-1 focus:ring-indigo-400 rounded-2xl py-4 pl-12 pr-4 text-white placeholder-white/40 transition-all outline-none"
+            />
+          </div>
         </div>
+
+        {/* Empty State */}
+        {currentTrends.length === 0 && (
+          <div className="text-center py-20 px-6 rounded-3xl bg-white/5 border border-white/10">
+            <Search className="w-12 h-12 text-white/20 mx-auto mb-4" />
+            <p className="text-lg text-white/60">
+              {s.noResults} <span className="font-semibold text-white">"{searchQuery}"</span>
+            </p>
+          </div>
+        )}
 
         {/* Article Grid */}
         <div className="grid md:grid-cols-2 gap-6">
-          {currentTrends.map((article, idx) => (
+          {currentTrends.map((article) => (
             <Link 
               key={article.slug} 
               href={`/trends/${article.slug}`}
               className="group flex flex-col p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-indigo-500/30 hover:bg-white/[0.08] transition-all duration-300 relative overflow-hidden"
             >
-              {/* Card Glow Effect on Hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 to-cyan-500/0 group-hover:from-indigo-500/10 group-hover:to-cyan-500/10 transition-colors duration-500" />
               
               <div className="relative z-10">
@@ -108,8 +148,10 @@ export default function TrendsHubPage() {
           ))}
         </div>
 
-        {/* In-Article Ad — makale listesi ile CTA arası */}
-        <InArticleAd />
+        {/* In-Article Ad */}
+        <div className="mt-6">
+          <InArticleAd />
+        </div>
 
         {/* CTA */}
         <div className="mt-20 p-10 rounded-3xl bg-gradient-to-br from-indigo-950/50 to-black border border-indigo-900/30 text-center">
