@@ -153,7 +153,7 @@ async function generateWithGroqFallback(params: {
   systemInstruction: string;
 }, isVision: boolean = false): Promise<{ text: string }> {
   const messages = formatOpenAIMessages(params, isVision);
-  const model = isVision ? "llama-3.2-90b-vision-preview" : "llama-3.3-70b-versatile";
+  const model = isVision ? "llama-3.2-90b-vision-preview" : "gpt-oss-120b";
   
   const options: any = {
     model,

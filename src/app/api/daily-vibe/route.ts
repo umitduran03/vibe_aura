@@ -75,14 +75,14 @@ async function generateWithGeminiFallback(
 
 /* =============================================
    Aşama 2: Groq Fallback (Nihai Kurtarıcı)
-   Llama 3.3 70B via OpenAI-uyumlu API
+   GPT OSS 120B via OpenAI-uyumlu API
    ============================================= */
 async function generateWithGroqFallback(
   systemInstruction: string,
   promptText: string
 ): Promise<{ text: string }> {
   const completion = await groq.chat.completions.create({
-    model: "llama-3.3-70b-versatile",
+    model: "gpt-oss-120b",
     messages: [
       {
         role: "system",
