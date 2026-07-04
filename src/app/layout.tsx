@@ -232,7 +232,7 @@ export default function RootLayout({
             }
           `}} />
           
-          <Image src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} priority style={{ width: "auto", height: "auto" }} />
+          <Image src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} priority fetchPriority="high" style={{ width: "auto", height: "auto" }} />
         </div>
 
         <GlobalLoaderRemover />

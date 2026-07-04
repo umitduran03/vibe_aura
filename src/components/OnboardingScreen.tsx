@@ -140,6 +140,7 @@ export default function OnboardingScreen() {
                   height={66} 
                   priority 
                   fetchPriority="high"
+                  sizes="(max-width: 768px) 100vw, 220px"
                   className="object-contain h-auto" 
                 />
               </m.div>
