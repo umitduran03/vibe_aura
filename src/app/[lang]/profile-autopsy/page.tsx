@@ -1,9 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, Star, AlertTriangle, CheckCircle } from "lucide-react";
-import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
@@ -115,11 +111,9 @@ const featureCards = [
   },
 ];
 
-export default function ProfileAutopsyLanding() {
-  const params = useParams();
-  const lang = (params?.lang as string) ?? "en";
+export default async function ProfileAutopsyLanding({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   const isTr = lang === "tr";
-
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-violet-500/30 overflow-x-hidden">
@@ -132,11 +126,7 @@ export default function ProfileAutopsyLanding() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
         {/* Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-4 mb-16"
-        >
+        <div className="flex items-center gap-4 mb-16">
           <Link
             href="/"
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/30 transition-all cursor-pointer"
@@ -147,37 +137,24 @@ export default function ProfileAutopsyLanding() {
           <span className="text-sm font-medium tracking-widest text-violet-400 uppercase drop-shadow-[0_0_5px_rgba(124,58,237,0.5)]">
             {isTr ? "PROFİL OTOPSİSİ" : "PROFILE AUTOPSY"}
           </span>
-        </motion.div>
+        </div>
 
         {/* Platform Badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
-        >
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
           {platforms.map((p, i) => (
-            <motion.div
+            <div
               key={p.name}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.1 + i * 0.07 }}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm font-semibold text-white/80 hover:border-violet-500/40 hover:bg-violet-500/10 hover:text-violet-300 transition-all duration-200 cursor-default"
             >
               <span>{p.emoji}</span>
               <span>{p.name}</span>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="flex-1 space-y-6"
-          >
+          <div className="flex-1 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(124,58,237,0.2)]">
               <Sparkles className="w-4 h-4" />
               <span>{isTr ? "Yapay Zeka Profil Analizi" : "AI Profile Analysis"}</span>
@@ -199,24 +176,15 @@ export default function ProfileAutopsyLanding() {
                 {isTr ? "Profilimi Otopsiye Al" : "Get My Profile Autopsied"}
               </Link>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
-            className="flex-1 w-full max-w-sm relative"
-          >
+          <div className="flex-1 w-full max-w-sm relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/30 to-indigo-500/30 blur-3xl rounded-full" />
             <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-violet-500/20 shadow-[0_0_40px_rgba(124,58,237,0.2)] flex items-center justify-center bg-black/40">
               <div className="text-center p-6 space-y-5 w-full">
-                <motion.div
-                  animate={{ scale: [1, 1.15, 1], rotate: [0, -3, 3, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                  className="text-5xl mx-auto w-fit"
-                >
+                <div className="text-5xl mx-auto w-fit">
                   🔬
-                </motion.div>
+                </div>
                 <h3 className="text-lg font-black text-violet-300">
                   {isTr ? "Profil Otopsisi" : "Profile Autopsy"}
                 </h3>
@@ -233,10 +201,8 @@ export default function ProfileAutopsyLanding() {
                         <span className="text-white/80 font-bold">{item.val}</span>
                       </div>
                       <div className="h-1.5 rounded-full bg-white/10 overflow-hidden">
-                        <motion.div
-                          initial={{ width: 0 }}
-                          animate={{ width: `${item.val}%` }}
-                          transition={{ delay: 0.8, duration: 1, ease: "easeOut" }}
+                        <div
+                          style={{ width: `${item.val}%` }}
                           className={`h-full rounded-full ${item.color}`}
                         />
                       </div>
@@ -250,51 +216,33 @@ export default function ProfileAutopsyLanding() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
           {stats.map((stat, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
               className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-violet-500/30 transition-all text-center group"
             >
               <div className="text-2xl font-black text-violet-400 group-hover:scale-110 transition-transform">{stat.value}</div>
               <div className="text-xs text-white/50 mt-1 leading-snug">{isTr ? stat.descTr : stat.descEn}</div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <InArticleAd />
 
         {/* Mode Cards */}
         <div className="mb-16">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl font-black text-white mb-6 text-center tracking-tight"
-          >
+          <h2 className="text-2xl font-black text-white mb-6 text-center tracking-tight">
             {isTr ? "Modu Seç" : "Pick Your Mode"}
-          </motion.h2>
+          </h2>
           <div className="grid sm:grid-cols-2 gap-5">
             {modes.map((mode, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-violet-500/40 hover:bg-violet-500/5 transition-all duration-300 group cursor-default"
               >
                 <div className="text-4xl mb-3 group-hover:scale-110 transition-transform duration-200">
@@ -314,21 +262,16 @@ export default function ProfileAutopsyLanding() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* Feature Cards – What AI checks */}
         <div className="mb-24">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl font-black text-white mb-6 text-center tracking-tight"
-          >
+          <h2 className="text-2xl font-black text-white mb-6 text-center tracking-tight">
             {isTr ? "Yapay Zeka Ne Analiz Eder?" : "What Does the AI Check?"}
-          </motion.h2>
+          </h2>
           <div className="grid md:grid-cols-3 gap-6">
             {featureCards.map((feat, i) => {
               const colorMap: Record<string, string> = {
@@ -337,11 +280,7 @@ export default function ProfileAutopsyLanding() {
                 rose: "text-rose-400 border-rose-500/40 group-hover:border-rose-500/60",
               };
               return (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                <div
                   key={i}
                   className={`p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-all duration-300 group ${colorMap[feat.color]}`}
                 >
@@ -354,7 +293,7 @@ export default function ProfileAutopsyLanding() {
                   <p className="text-white/60 text-sm leading-relaxed">
                     {isTr ? feat.descTr : feat.descEn}
                   </p>
-                </motion.div>
+                </div>
               );
             })}
           </div>
@@ -362,28 +301,17 @@ export default function ProfileAutopsyLanding() {
 
         {/* Related Tools Section */}
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8"
-          >
+          <div className="text-center mb-8">
             <h2 className="text-2xl font-black text-white mb-2">
               {isTr ? "İlgili Araçlar" : "Related Tools"}
             </h2>
             <p className="text-white/40 text-sm">
               {isTr ? "Profil otopsisinden sonra bunlara da bak" : "Also check these after your autopsy"}
             </p>
-          </motion.div>
+          </div>
           <div className="grid sm:grid-cols-3 gap-4">
             {relatedTools.map((tool, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <div key={i}>
                 <Link
                   href={`/${lang}/${tool.slug}`}
                   className="block p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-violet-500/30 hover:bg-white/[0.07] transition-all duration-300 group h-full"
@@ -394,7 +322,7 @@ export default function ProfileAutopsyLanding() {
                   </h3>
                   <p className="text-xs text-white/50">{isTr ? tool.descTr : tool.descEn}</p>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -402,12 +330,7 @@ export default function ProfileAutopsyLanding() {
         <FeatureSeoContent featureId="profile-autopsy" isTr={isTr} />
 
         {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center p-10 rounded-3xl bg-gradient-to-br from-violet-950/60 to-black border border-violet-900/50 shadow-[0_0_50px_rgba(124,58,237,0.15)]"
-        >
+        <div className="text-center p-10 rounded-3xl bg-gradient-to-br from-violet-950/60 to-black border border-violet-900/50 shadow-[0_0_50px_rgba(124,58,237,0.15)]">
           <Sparkles className="w-10 h-10 text-violet-400 mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
             {isTr ? "Gerçeği Öğrenmeye Hazır Mısın?" : "Ready to face the brutal truth?"}
@@ -423,7 +346,7 @@ export default function ProfileAutopsyLanding() {
           >
             {isTr ? "Hemen Otopsiye Başla" : "Start The Autopsy"}
           </Link>
-        </motion.div>
+        </div>
       </div>
 
       <SeoFooter />

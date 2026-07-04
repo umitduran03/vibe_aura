@@ -1,16 +1,12 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, HeartPulse, Infinity as InfinityIcon } from "lucide-react";
-import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
 
-export default function CrushCalculatorLanding() {
-  const params = useParams();
-  const isTr = params?.lang === "tr";
+export default async function CrushCalculatorLanding({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+    const isTr = lang === "tr";
 
   const stats = [
     { value: "8M+", label: isTr ? "hesaplanan crush" : "crushes calculated" },
@@ -69,9 +65,7 @@ export default function CrushCalculatorLanding() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
         {/* Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="flex items-center gap-4 mb-16"
         >
           <Link
@@ -84,14 +78,11 @@ export default function CrushCalculatorLanding() {
           <span className="text-sm font-medium tracking-widest text-purple-400 uppercase drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]">
             {isTr ? "YZ CRUSH ANALİZİ" : "AI CRUSH ANALYSIS"}
           </span>
-        </motion.div>
+        </div>
 
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, type: "spring" }}
+          <div
             className="flex-1 space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(168,85,247,0.2)]">
@@ -115,23 +106,18 @@ export default function CrushCalculatorLanding() {
                 {isTr ? "Crush Uyumu Test Et" : "Test Crush Compatibility"}
               </Link>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
+          <div
             className="flex-1 w-full max-w-sm relative"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/30 to-pink-500/30 blur-3xl rounded-full" />
             <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-purple-500/20 shadow-[0_0_40px_rgba(168,85,247,0.2)] glass-strong flex items-center justify-center bg-black/40">
               <div className="text-center p-6 space-y-4">
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1], rotate: [0, -5, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                <div
                 >
                   <HeartPulse className="w-16 h-16 text-purple-500 mx-auto drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]" />
-                </motion.div>
+                </div>
                 <h3 className="text-xl font-black text-purple-400">{isTr ? "Uyum Sonucu" : "Compatibility Result"}</h3>
                 <p className="text-sm text-white/60 font-medium leading-relaxed">
                   {isTr
@@ -140,32 +126,25 @@ export default function CrushCalculatorLanding() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
         >
           {stats.map((stat, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
               className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all text-center group"
             >
               <div className="text-2xl font-black text-purple-400 group-hover:scale-110 transition-transform">
                 {stat.value}
               </div>
               <div className="text-xs text-white/50 mt-1 leading-tight">{stat.label}</div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <InArticleAd />
 
@@ -194,26 +173,19 @@ export default function CrushCalculatorLanding() {
               icon: "🎯",
             },
           ].map((feat, i) => (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+            <div
               key={i}
               className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/40 hover:bg-white/[0.08] transition-all duration-300 group"
             >
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">{feat.icon}</div>
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">{feat.title}</h3>
               <p className="text-white/60 text-sm leading-relaxed">{feat.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Scenario Examples Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="mb-16"
         >
           <h2 className="text-2xl font-black text-white mb-2">
@@ -224,28 +196,21 @@ export default function CrushCalculatorLanding() {
           </p>
           <div className="space-y-3">
             {scenarios.map((s, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
                 className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 p-5 rounded-2xl bg-white/5 border border-white/10"
               >
                 <span className="text-white/70 text-sm font-medium">💭 {s.input}</span>
                 <span className="text-purple-400 text-sm font-bold sm:text-right">→ {s.output}</span>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         <FeatureSeoContent featureId="crush-calculator" isTr={isTr} />
 
         {/* Related Tools Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="mb-16"
         >
           <h2 className="text-2xl font-black text-white mb-2">
@@ -256,12 +221,8 @@ export default function CrushCalculatorLanding() {
           </p>
           <div className="grid md:grid-cols-3 gap-4">
             {relatedTools.map((tool, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
               >
                 <Link
                   href={tool.href}
@@ -271,16 +232,13 @@ export default function CrushCalculatorLanding() {
                   <span className="font-bold text-white group-hover:text-purple-300 transition-colors">{tool.title}</span>
                   <span className="text-white/50 text-sm leading-relaxed">{tool.desc}</span>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Bottom CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center p-10 rounded-3xl bg-gradient-to-br from-purple-950/60 to-black border border-purple-900/50 shadow-[0_0_50px_rgba(168,85,247,0.15)]"
         >
           <Sparkles className="w-10 h-10 text-purple-400 mx-auto mb-6" />
@@ -298,7 +256,7 @@ export default function CrushCalculatorLanding() {
           >
             {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}
           </Link>
-        </motion.div>
+        </div>
       </div>
       <SeoFooter />
     </div>

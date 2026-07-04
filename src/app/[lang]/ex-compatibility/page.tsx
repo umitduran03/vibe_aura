@@ -1,9 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, HeartCrack, AlertOctagon } from "lucide-react";
-import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
@@ -65,10 +61,9 @@ const relatedTools = [
   },
 ];
 
-export default function ExCompatibilityLanding() {
-  const params = useParams();
-  const lang = (params?.lang as string) ?? "en";
-  const isTr = lang === "tr";
+export default async function ExCompatibilityLanding({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+      const isTr = lang === "tr";
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-slate-500/30 overflow-x-hidden">
@@ -80,9 +75,7 @@ export default function ExCompatibilityLanding() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
         {/* Navigation */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="flex items-center gap-4 mb-16"
         >
           <Link
@@ -95,14 +88,11 @@ export default function ExCompatibilityLanding() {
           <span className="text-sm font-medium tracking-widest text-slate-400 uppercase drop-shadow-[0_0_5px_rgba(148,163,184,0.5)]">
             {isTr ? "YZ ESKİ SEVGİLİ ANALİZİ" : "AI EX ANALYSIS"}
           </span>
-        </motion.div>
+        </div>
 
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, type: "spring" }}
+          <div
             className="flex-1 space-y-6"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-500/10 border border-slate-500/30 text-slate-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(148,163,184,0.2)]">
@@ -126,53 +116,41 @@ export default function ExCompatibilityLanding() {
                 {isTr ? "Eski Sevgili Uyumu Test Et" : "Test Ex Compatibility"}
               </Link>
             </div>
-          </motion.div>
+          </div>
           
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
+          <div
             className="flex-1 w-full max-w-sm relative"
           >
             <div className="absolute inset-0 bg-gradient-to-tr from-slate-500/30 to-indigo-500/30 blur-3xl rounded-full" />
             <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-slate-500/20 shadow-[0_0_40px_rgba(148,163,184,0.2)] glass-strong flex items-center justify-center bg-black/40">
               <div className="text-center p-6 space-y-4">
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1], rotate: [0, -5, 5, 0] }}
-                  transition={{ duration: 2, repeat: Infinity }}
+                <div
                 >
                   <HeartCrack className="w-16 h-16 text-slate-500 mx-auto drop-shadow-[0_0_15px_rgba(148,163,184,0.8)]" />
-                </motion.div>
+                </div>
                 <h3 className="text-xl font-black text-slate-400">{isTr ? "Acı Gerçekler" : "Brutal Truth"}</h3>
                 <p className="text-sm text-white/60 font-medium leading-relaxed">
                   {isTr ? `"Ayrılmanız dünya barışı için verilmiş en iyi karardı. Asla geri dönme."` : `"Your breakup was the best thing to happen for world peace. Do NOT text them."`}
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
         >
           {stats.map((stat, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
               className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-slate-500/30 transition-all text-center group"
             >
               <div className="text-2xl font-black text-slate-400 group-hover:scale-110 transition-transform">{stat.value}</div>
               <div className="text-xs text-white/50 mt-1 leading-snug">{isTr ? stat.descTr : stat.descEn}</div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         <InArticleAd />
 
@@ -195,27 +173,20 @@ export default function ExCompatibilityLanding() {
               icon: "⚠️"
             }
           ].map((feat, i) => (
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+            <div
               key={i} 
               className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-slate-500/40 hover:bg-white/[0.08] transition-all duration-300 group"
             >
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">{feat.icon}</div>
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-slate-300 transition-colors">{feat.title}</h3>
               <p className="text-white/60 text-sm leading-relaxed">{feat.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* Scenario Examples Section */}
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="text-center mb-10"
           >
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
@@ -224,15 +195,11 @@ export default function ExCompatibilityLanding() {
             <p className="text-white/50">
               {isTr ? "Bunlar tanıdık geldi mi? Yapay zeka gerçeği söyler." : "Sound familiar? The AI will tell you the truth."}
             </p>
-          </motion.div>
+          </div>
           <div className="space-y-3">
             {scenarios.map((s, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all"
               >
                 <div className="flex items-center gap-3">
@@ -242,13 +209,10 @@ export default function ExCompatibilityLanding() {
                 <div className="flex-shrink-0 px-3 py-1 rounded-full text-xs font-black tracking-wide bg-slate-500/20 text-slate-400 border border-slate-500/30">
                   ⚖️ {isTr ? 'KARAR' : 'VERDICT'}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+          <div
             className="text-center mt-6"
           >
             <Link
@@ -258,15 +222,12 @@ export default function ExCompatibilityLanding() {
               <HeartCrack className="w-4 h-4" />
               {isTr ? "Eskimi analiz et →" : "Analyze my ex →"}
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Related Tools Section */}
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+          <div
             className="text-center mb-8"
           >
             <h2 className="text-2xl font-black text-white mb-2">
@@ -275,15 +236,11 @@ export default function ExCompatibilityLanding() {
             <p className="text-white/40 text-sm">
               {isTr ? "Ex Compatibility'den sonra bunlara da bak" : "Also check these after your ex analysis"}
             </p>
-          </motion.div>
+          </div>
           <div className="grid sm:grid-cols-3 gap-4">
             {relatedTools.map((tool, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
               >
                 <Link
                   href={`/${lang}/${tool.slug}`}
@@ -295,7 +252,7 @@ export default function ExCompatibilityLanding() {
                   </h3>
                   <p className="text-xs text-white/50">{isTr ? tool.descTr : tool.descEn}</p>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -303,10 +260,7 @@ export default function ExCompatibilityLanding() {
         <FeatureSeoContent featureId="ex-compatibility" isTr={isTr} />
 
         {/* Bottom CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="text-center p-10 rounded-3xl bg-gradient-to-br from-slate-950/60 to-black border border-slate-900/50 shadow-[0_0_50px_rgba(148,163,184,0.15)]"
         >
           <Sparkles className="w-10 h-10 text-slate-400 mx-auto mb-6" />
@@ -324,7 +278,7 @@ export default function ExCompatibilityLanding() {
           >
             {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}
           </Link>
-        </motion.div>
+        </div>
       </div>
       <SeoFooter />
     </div>

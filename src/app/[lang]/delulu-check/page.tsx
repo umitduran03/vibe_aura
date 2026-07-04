@@ -1,9 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, SmartphoneNfc, Brain, MessageSquareWarning, ShieldAlert, Flame, CheckCircle, XCircle, HelpCircle } from "lucide-react";
-import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 import InArticleAd from "@/components/InArticleAd";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
@@ -113,9 +109,8 @@ const howItWorksSteps = [
   },
 ];
 
-export default function DeluluCheckLanding() {
-  const params = useParams();
-  const lang = (params?.lang as string) ?? "en";
+export default async function DeluluCheckLanding({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   const isTr = lang === "tr";
 
   return (
@@ -131,11 +126,7 @@ export default function DeluluCheckLanding() {
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
 
         {/* Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-4 mb-16"
-        >
+        <div className="flex items-center gap-4 mb-16">
           <Link
             href="/"
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-amber-500/30 transition-all cursor-pointer"
@@ -146,16 +137,11 @@ export default function DeluluCheckLanding() {
           <span className="text-sm font-medium tracking-widest text-amber-400 uppercase drop-shadow-[0_0_5px_rgba(251,191,36,0.5)]">
             {isTr ? "DELULU CHECK YZ" : "AI REALITY CHECK"}
           </span>
-        </motion.div>
+        </div>
 
         {/* ── HERO ── */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="flex-1 space-y-6"
-          >
+          <div className="flex-1 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(251,191,36,0.2)]">
               <Brain className="w-4 h-4" />
               <span>{isTr ? "Yapay Zeka Gerçeklik Testi" : "AI Reality Check"}</span>
@@ -190,15 +176,10 @@ export default function DeluluCheckLanding() {
                 {isTr ? "Situationship mi?" : "In a situationship?"}
               </Link>
             </div>
-          </motion.div>
+          </div>
 
           {/* Mock Phone UI */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
-            className="flex-1 w-full max-w-sm relative"
-          >
+          <div className="flex-1 w-full max-w-sm relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-amber-500/25 to-orange-500/20 blur-3xl rounded-full" />
             <div className="relative rounded-3xl overflow-hidden border border-amber-500/20 shadow-[0_0_40px_rgba(251,191,36,0.15)] bg-black/60 backdrop-blur-sm">
               {/* Fake chat header */}
@@ -243,39 +224,25 @@ export default function DeluluCheckLanding() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* ── STATS ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
           {stats.map((stat, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
               className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/30 transition-all text-center group"
             >
               <div className="text-2xl font-black text-amber-400 group-hover:scale-110 transition-transform">{stat.value}</div>
               <div className="text-xs text-white/50 mt-1 leading-snug">{isTr ? stat.descTr : stat.descEn}</div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* ── HOW IT WORKS ── */}
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
               {isTr ? "Nasıl Çalışır?" : "How It Works"}
             </h2>
@@ -284,15 +251,11 @@ export default function DeluluCheckLanding() {
                 ? "3 adımda o acı gerçeği öğren"
                 : "3 steps to learn the brutal truth"}
             </p>
-          </motion.div>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {howItWorksSteps.map((step, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.15 }}
                 className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/30 hover:bg-white/[0.07] transition-all duration-300 group"
               >
                 <div className="absolute -top-4 -left-4 w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center text-white font-black text-lg shadow-lg shadow-amber-500/30 group-hover:scale-110 transition-transform">
@@ -305,19 +268,14 @@ export default function DeluluCheckLanding() {
                 <p className="text-white/60 text-sm leading-relaxed">
                   {isTr ? step.descTr : step.descEn}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* ── SCENARIO SIMULATOR ── */}
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
               {isTr ? "Delulu musun? Örnekler" : "Are You Delulu? Examples"}
             </h2>
@@ -326,15 +284,11 @@ export default function DeluluCheckLanding() {
                 ? "Bunlar tanıdık geldi mi? Yapay zeka gerçeği söyler."
                 : "Sound familiar? The AI will tell you the truth."}
             </p>
-          </motion.div>
+          </div>
           <div className="space-y-3">
             {scenarios.map((s, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-white/20 transition-all"
               >
                 <div className="flex items-center gap-3">
@@ -348,15 +302,10 @@ export default function DeluluCheckLanding() {
                 }`}>
                   {isTr ? s.verdictTr : s.verdictEn}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-6"
-          >
+          <div className="text-center mt-6">
             <Link
               href={`/${lang}?feature=delulu-check`}
               id="delulu-check-cta-scenarios"
@@ -365,34 +314,25 @@ export default function DeluluCheckLanding() {
               <Flame className="w-4 h-4" />
               {isTr ? "Benim durumumu analiz et →" : "Analyze my situation →"}
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         <InArticleAd />
 
         {/* ── RED vs GREEN FLAGS ── */}
         <div className="mb-24 mt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
               {isTr ? "Sinyalleri Oku" : "Read the Signals"}
             </h2>
             <p className="text-white/50">
               {isTr ? "Yapay zeka her iki tarafı da analiz eder" : "The AI analyzes both sides of the story"}
             </p>
-          </motion.div>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             {redGreenFlags.map((side, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className={`p-6 rounded-2xl border transition-all ${
                   side.type === "red"
                     ? "bg-rose-950/30 border-rose-500/20 hover:border-rose-500/40"
@@ -415,26 +355,21 @@ export default function DeluluCheckLanding() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* ── RELATED TOOLS ── */}
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8"
-          >
+          <div className="text-center mb-8">
             <h2 className="text-2xl font-black text-white mb-2">
               {isTr ? "İlgili Araçlar" : "Related Tools"}
             </h2>
             <p className="text-white/40 text-sm">
               {isTr ? "Delulu Check'ten sonra bunlara da bak" : "Also check these after your reality check"}
             </p>
-          </motion.div>
+          </div>
           <div className="grid sm:grid-cols-3 gap-4">
             {[
               {
@@ -462,13 +397,7 @@ export default function DeluluCheckLanding() {
                 descTr: "Kafa karıştıran mesajlarına mükemmel cevabı al",
               },
             ].map((tool, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <div key={i}>
                 <Link
                   href={tool.href}
                   className="block p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-amber-500/30 hover:bg-white/[0.07] transition-all duration-300 group h-full"
@@ -479,7 +408,7 @@ export default function DeluluCheckLanding() {
                   </h3>
                   <p className="text-xs text-white/50">{isTr ? tool.descTr : tool.descEn}</p>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -488,12 +417,7 @@ export default function DeluluCheckLanding() {
         <FeatureSeoContent featureId="delulu-check" isTr={isTr} />
 
         {/* ── BOTTOM CTA ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center p-10 rounded-3xl bg-gradient-to-br from-amber-950/60 to-black border border-amber-900/50 shadow-[0_0_60px_rgba(217,119,6,0.15)] mt-8"
-        >
+        <div className="text-center p-10 rounded-3xl bg-gradient-to-br from-amber-950/60 to-black border border-amber-900/50 shadow-[0_0_60px_rgba(217,119,6,0.15)] mt-8">
           <div className="text-5xl mb-6">⏰</div>
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
             {isTr ? "Uyanma vakti geldi." : "Time to wake up."}
@@ -514,7 +438,7 @@ export default function DeluluCheckLanding() {
           <p className="text-white/30 text-xs mt-4">
             {isTr ? "Kayıt gerektirmez · 100% ücretsiz · Anında sonuç" : "No sign-up required · 100% free · Instant results"}
           </p>
-        </motion.div>
+        </div>
 
       </div>
 

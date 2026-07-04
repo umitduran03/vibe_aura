@@ -1,9 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, MessageSquareQuote, Zap } from "lucide-react";
-import { motion } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
@@ -117,9 +113,8 @@ const tagColorMap: Record<string, string> = {
   fuchsia: "bg-fuchsia-500/20 text-fuchsia-400 border-fuchsia-500/30",
 };
 
-export default function ReplyGuruLanding() {
-  const params = useParams();
-  const lang = (params?.lang as string) ?? "en";
+export default async function ReplyGuruLanding({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
   const isTr = lang === "tr";
 
   return (
@@ -135,11 +130,7 @@ export default function ReplyGuruLanding() {
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
 
         {/* Navigation */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-4 mb-16"
-        >
+        <div className="flex items-center gap-4 mb-16">
           <Link
             href="/"
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-violet-500/30 transition-all cursor-pointer"
@@ -150,16 +141,11 @@ export default function ReplyGuruLanding() {
           <span className="text-sm font-medium tracking-widest text-violet-400 uppercase drop-shadow-[0_0_5px_rgba(139,92,246,0.5)]">
             {isTr ? "YZ İFŞA RADARI" : "AI Feature Spotlight"}
           </span>
-        </motion.div>
+        </div>
 
         {/* ── HERO ── */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="flex-1 space-y-6"
-          >
+          <div className="flex-1 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(139,92,246,0.2)]">
               <span className="text-base leading-none">💬</span>
               <span>{isTr ? "Akıl Oyunlarını Kazan" : "Win The Mind Games"}</span>
@@ -182,24 +168,15 @@ export default function ReplyGuruLanding() {
                 {isTr ? "Cevap Üret" : "Generate Reply"}
               </Link>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
-            className="flex-1 w-full max-w-sm relative"
-          >
+          <div className="flex-1 w-full max-w-sm relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/30 to-indigo-500/30 blur-3xl rounded-full" />
             <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-violet-500/20 shadow-[0_0_40px_rgba(139,92,246,0.2)] glass-strong flex items-center justify-center bg-black/40">
               <div className="text-center p-6 space-y-4">
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-7xl drop-shadow-[0_0_15px_rgba(139,92,246,0.8)]"
-                >
+                <div className="text-7xl drop-shadow-[0_0_15px_rgba(139,92,246,0.8)]">
                   💬
-                </motion.div>
+                </div>
                 <h3 className="text-xl font-black text-violet-400">{isTr ? "YZ Tavsiyesi" : "AI Suggestion"}</h3>
                 <p className="text-sm text-white/60 font-medium leading-relaxed">
                   {isTr
@@ -208,23 +185,14 @@ export default function ReplyGuruLanding() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* ── STATS ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
           {stats.map((stat, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
               className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-violet-500/30 transition-all text-center group"
             >
               <div className="text-2xl font-black text-violet-400 group-hover:scale-110 transition-transform">
@@ -233,25 +201,20 @@ export default function ReplyGuruLanding() {
               <div className="text-xs text-white/50 mt-1 leading-snug">
                 {isTr ? stat.descTr : stat.descEn}
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* ── HOW IT WORKS (3-card grid) ── */}
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
+          <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
               {isTr ? "Nasıl Çalışır?" : "How It Works"}
             </h2>
             <p className="text-white/50 max-w-lg mx-auto">
               {isTr ? "3 adımda mükemmel cevabı al" : "3 steps to the perfect reply"}
             </p>
-          </motion.div>
+          </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
@@ -280,11 +243,7 @@ export default function ReplyGuruLanding() {
                   "Kız grubundan / kankalarından taktik dilenmeyi bırak. Anında sonuç al.",
               },
             ].map((feat, i) => (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+              <div
                 key={i}
                 className="relative p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-violet-500/40 hover:bg-white/[0.08] transition-all duration-300 group"
               >
@@ -300,19 +259,14 @@ export default function ReplyGuruLanding() {
                 <p className="text-white/60 text-sm leading-relaxed">
                   {isTr ? feat.descTr : feat.descEn}
                 </p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* ── SCENARIO EXAMPLES ── */}
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
               {isTr ? "Tanıdık Senaryolar" : "Relatable Scenarios"}
             </h2>
@@ -321,15 +275,11 @@ export default function ReplyGuruLanding() {
                 ? "Yapay zeka tam da bu durumlarda ne yazacağını bilir"
                 : "The AI knows exactly what to say in these situations"}
             </p>
-          </motion.div>
+          </div>
           <div className="space-y-4">
             {scenarios.map((s, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-violet-500/30 hover:bg-white/[0.07] transition-all duration-300"
               >
                 <div className="flex items-center justify-between gap-3 mb-3">
@@ -356,15 +306,10 @@ export default function ReplyGuruLanding() {
                     {isTr ? s.aiReply.tr : s.aiReply.en}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mt-6"
-          >
+          <div className="text-center mt-6">
             <Link
               href={`/${lang}?feature=reply-guru`}
               id="reply-guru-cta-scenarios"
@@ -373,7 +318,7 @@ export default function ReplyGuruLanding() {
               <MessageSquareQuote className="w-4 h-4" />
               {isTr ? "Benim cevabımı üret →" : "Generate my reply →"}
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         <InArticleAd />
@@ -383,12 +328,7 @@ export default function ReplyGuruLanding() {
 
         {/* ── RELATED TOOLS ── */}
         <div className="mb-24 mt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-8"
-          >
+          <div className="text-center mb-8">
             <h2 className="text-2xl font-black text-white mb-2">
               {isTr ? "İlgili Araçlar" : "Related Tools"}
             </h2>
@@ -397,16 +337,10 @@ export default function ReplyGuruLanding() {
                 ? "Reply Guru'dan sonra bunlara da bak"
                 : "Also check these after crafting your reply"}
             </p>
-          </motion.div>
+          </div>
           <div className="grid sm:grid-cols-3 gap-4">
             {relatedTools.map((tool, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <div key={i}>
                 <Link
                   href={`/${lang}/${tool.href}`}
                   className="block p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-violet-500/30 hover:bg-white/[0.07] transition-all duration-300 group h-full"
@@ -421,18 +355,13 @@ export default function ReplyGuruLanding() {
                     {isTr ? tool.descTr : tool.descEn}
                   </p>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
 
         {/* ── BOTTOM CTA ── */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center p-10 rounded-3xl bg-gradient-to-br from-violet-950/60 to-black border border-violet-900/50 shadow-[0_0_50px_rgba(109,40,217,0.15)]"
-        >
+        <div className="text-center p-10 rounded-3xl bg-gradient-to-br from-violet-950/60 to-black border border-violet-900/50 shadow-[0_0_50px_rgba(109,40,217,0.15)]">
           <Sparkles className="w-10 h-10 text-purple-400 mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
             {isTr ? "Artık onları görüldüde bırakmaya son." : "Leave them on read no more."}
@@ -454,7 +383,7 @@ export default function ReplyGuruLanding() {
               ? "Kayıt gerektirmez · 100% ücretsiz · Anında sonuç"
               : "No sign-up required · 100% free · Instant results"}
           </p>
-        </motion.div>
+        </div>
 
       </div>
       <SeoFooter />

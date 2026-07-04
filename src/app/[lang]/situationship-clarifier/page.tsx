@@ -1,9 +1,5 @@
-"use client";
-
 import Link from "next/link";
-import { useParams } from "next/navigation";
 import { ArrowLeft, Sparkles, MessageCircleHeart, ExternalLink, CheckCircle, XCircle } from "lucide-react";
-import { motion } from "framer-motion";
 import InArticleAd from "@/components/InArticleAd";
 import SeoFooter from "@/components/SeoFooter";
 import FeatureSeoContent from "@/components/FeatureSeoContent";
@@ -43,9 +39,9 @@ const redGreenFlags = [
   },
 ];
 
-export default function SituationshipClarifierLanding() {
-  const params = useParams();
-  const isTr = params?.lang === "tr";
+export default async function SituationshipClarifierLanding({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
 
   const stats = isTr
     ? [
@@ -173,11 +169,7 @@ export default function SituationshipClarifierLanding() {
 
       <div className="relative z-10 max-w-4xl mx-auto px-6 py-12 md:py-20">
         {/* Navigation */}
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex items-center gap-4 mb-16"
-        >
+        <div className="flex items-center gap-4 mb-16">
           <Link
             href="/"
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-purple-500/30 transition-all cursor-pointer"
@@ -188,16 +180,11 @@ export default function SituationshipClarifierLanding() {
           <span className="text-sm font-medium tracking-widest text-purple-400 uppercase drop-shadow-[0_0_5px_rgba(168,85,247,0.5)]">
             {isTr ? "YZ İFŞA RADARI" : "AI Feature Spotlight"}
           </span>
-        </motion.div>
+        </div>
 
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row items-center gap-12 mb-24">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="flex-1 space-y-6"
-          >
+          <div className="flex-1 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/30 text-purple-400 text-xs font-bold uppercase tracking-widest shadow-[0_0_15px_rgba(168,85,247,0.2)]">
               <span className="text-base leading-none">🤡</span>
               <span>{isTr ? `"Biz şimdi neyiz?" Çözücü` : `The "What are we?" Decoder`}</span>
@@ -219,24 +206,15 @@ export default function SituationshipClarifierLanding() {
                 {isTr ? "Gerçeği Öğren" : "Get Clarity Now"}
               </Link>
             </div>
-          </motion.div>
+          </div>
           
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.2, duration: 0.6, type: "spring" }}
-            className="flex-1 w-full max-w-sm relative"
-          >
+          <div className="flex-1 w-full max-w-sm relative">
             <div className="absolute inset-0 bg-gradient-to-tr from-purple-500/30 to-indigo-500/30 blur-3xl rounded-full" />
             <div className="relative aspect-[3/4] rounded-3xl overflow-hidden border border-purple-500/20 shadow-[0_0_40px_rgba(168,85,247,0.2)] glass-strong flex items-center justify-center bg-black/40">
               <div className="text-center p-6 space-y-4">
-                <motion.div
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                  className="text-7xl drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]"
-                >
+                <div className="text-7xl drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]">
                   🤡
-                </motion.div>
+                </div>
                 <h3 className="text-xl font-black text-purple-400">{isTr ? "Teşhis: Delulu" : "Diagnosis: Delusion"}</h3>
                 <p className="text-sm text-white/60 font-medium leading-relaxed">
                   {isTr 
@@ -245,30 +223,21 @@ export default function SituationshipClarifierLanding() {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Stats Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24"
-        >
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-24">
           {stats.map((stat, i) => (
-            <motion.div
+            <div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
               className="p-5 rounded-2xl bg-white/5 border border-purple-500/20 text-center hover:border-purple-500/50 hover:bg-purple-500/5 transition-all duration-300"
             >
               <div className="text-2xl md:text-3xl font-black text-purple-400 mb-1">{stat.value}</div>
               <div className="text-xs text-white/50 font-medium leading-snug">{stat.label}</div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
         {/* How It Works */}
         <div className="grid md:grid-cols-3 gap-6 mb-24">
@@ -289,30 +258,21 @@ export default function SituationshipClarifierLanding() {
               icon: "📈"
             }
           ].map((feat, i) => (
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
+            <div 
               key={i} 
               className="p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/40 hover:bg-white/[0.08] transition-all duration-300 group"
             >
               <div className="text-3xl mb-4 group-hover:scale-110 transition-transform">{feat.icon}</div>
               <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors">{feat.title}</h3>
               <p className="text-white/60 text-sm leading-relaxed">{feat.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         <InArticleAd />
 
         {/* Scenarios Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-24"
-        >
+        <div className="mb-24">
           <h2 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight">
             {isTr ? "Tanıdık Geliyor mu?" : "Sound Familiar?"}
           </h2>
@@ -321,12 +281,8 @@ export default function SituationshipClarifierLanding() {
           </p>
           <div className="grid md:grid-cols-2 gap-4">
             {scenarios.map((s, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, x: i % 2 === 0 ? -20 : 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-purple-500/30 hover:bg-white/[0.07] transition-all duration-300"
               >
                 <div className="flex items-start justify-between gap-3 mb-3">
@@ -336,34 +292,25 @@ export default function SituationshipClarifierLanding() {
                   </span>
                 </div>
                 <p className="text-sm text-white/50 leading-relaxed">{s.verdict}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* ── RED vs GREEN FLAGS ── */}
         <div className="mb-24 mt-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
+          <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
               {isTr ? "Sinyalleri Oku" : "Read the Signals"}
             </h2>
             <p className="text-white/50">
               {isTr ? "Yapay zeka her iki tarafı da analiz eder" : "The AI analyzes both sides of the story"}
             </p>
-          </motion.div>
+          </div>
           <div className="grid md:grid-cols-2 gap-6">
             {redGreenFlags.map((side, i) => (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
                 className={`p-6 rounded-2xl border transition-all ${
                   side.type === "red"
                     ? "bg-rose-950/30 border-rose-500/20 hover:border-rose-500/40"
@@ -386,7 +333,7 @@ export default function SituationshipClarifierLanding() {
                     </li>
                   ))}
                 </ul>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
@@ -394,12 +341,7 @@ export default function SituationshipClarifierLanding() {
         <FeatureSeoContent featureId="situationship-clarifier" isTr={isTr} />
 
         {/* Related Tools */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-24"
-        >
+        <div className="mb-24">
           <h2 className="text-2xl font-black text-white mb-2 tracking-tight">
             {isTr ? "İlgili Araçlar" : "Related Tools"}
           </h2>
@@ -408,13 +350,7 @@ export default function SituationshipClarifierLanding() {
           </p>
           <div className="grid md:grid-cols-3 gap-4">
             {relatedTools.map((tool, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-              >
+              <div key={i}>
                 <Link
                   href={tool.href}
                   className={`block p-5 rounded-2xl bg-white/5 border border-white/10 ${tool.color} hover:bg-white/[0.08] transition-all duration-300 group h-full`}
@@ -426,18 +362,13 @@ export default function SituationshipClarifierLanding() {
                   </div>
                   <p className="text-xs text-white/50 leading-relaxed">{tool.desc}</p>
                 </Link>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Bottom CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center p-10 rounded-3xl bg-gradient-to-br from-purple-950/60 to-black border border-purple-900/50 shadow-[0_0_50px_rgba(147,51,234,0.15)]"
-        >
+        <div className="text-center p-10 rounded-3xl bg-gradient-to-br from-purple-950/60 to-black border border-purple-900/50 shadow-[0_0_50px_rgba(147,51,234,0.15)]">
           <Sparkles className="w-10 h-10 text-fuchsia-400 mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
             {isTr ? "Tahmin etmeyi bırakmaya hazır mısın?" : "Ready to stop guessing?"}
@@ -453,7 +384,7 @@ export default function SituationshipClarifierLanding() {
           >
             {isTr ? "VibeCheckr'ı Başlat" : "Launch VibeCheckr"}
           </Link>
-        </motion.div>
+        </div>
       </div>
       <SeoFooter />
     </div>
