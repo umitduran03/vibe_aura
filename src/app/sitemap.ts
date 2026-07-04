@@ -75,13 +75,6 @@ const midTierTrends = [
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [];
 
-  // Root redirect için canonical entry
-  routes.push({
-    url: baseUrl,
-    lastModified: new Date(),
-    changeFrequency: "daily",
-    priority: 1.0,
-  });
 
   // Helper to add static routes
   const addRoutes = (routeList: string[], priority: number, freq: "daily" | "weekly" | "monthly" | "yearly") => {

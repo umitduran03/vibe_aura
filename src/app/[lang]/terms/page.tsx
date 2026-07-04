@@ -3,13 +3,25 @@ import Link from "next/link";
 import { ArrowLeft, Scale } from "lucide-react";
 import SeoFooter from "@/components/SeoFooter";
 
-export const metadata: Metadata = {
-  title: "Terms of Service",
-  description: "VibeCheckr Terms of Service — Read our terms and conditions for using the AI-powered vibe check and photo analysis app.",
-  alternates: {
-    canonical: "https://thevibecheckr.com/terms",
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const baseUrl = "https://thevibecheckr.com";
+  return {
+    title: isTr ? "Kullanım Koşulları" : "Terms of Service",
+    description: isTr
+      ? "VibeCheckr Kullanım Koşulları — Yapay zeka destekli vibe check uygulamasını kullanmak için koşullarımızı okuyun."
+      : "VibeCheckr Terms of Service — Read our terms and conditions for using the AI-powered vibe check and photo analysis app.",
+    alternates: {
+      canonical: `${baseUrl}/${lang}/terms`,
+      languages: {
+        en: `${baseUrl}/en/terms`,
+        tr: `${baseUrl}/tr/terms`,
+        "x-default": `${baseUrl}/en/terms`,
+      },
+    },
+  };
+}
 
 const termsData = {
   en: {

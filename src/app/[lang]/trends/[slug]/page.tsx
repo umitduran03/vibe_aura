@@ -8,9 +8,11 @@ import SeoFooter from "@/components/SeoFooter";
 import InArticleAd from "@/components/InArticleAd";
 
 export async function generateStaticParams() {
-  return trendsDataEn.map((article) => ({
-    slug: article.slug,
-  }));
+  const locales = ["en", "tr"];
+  const slugs = trendsDataEn.map((article) => article.slug);
+  return locales.flatMap((lang) =>
+    slugs.map((slug) => ({ lang, slug }))
+  );
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, lang: string }> }): Promise<Metadata> {
@@ -29,7 +31,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     description: article.description,
     keywords: article.keywords,
     alternates: {
-      canonical: `https://thevibecheckr.com/trends/${article.slug}`,
+      canonical: `https://thevibecheckr.com/${resolvedParams.lang}/trends/${article.slug}`,
+      languages: {
+        en: `https://thevibecheckr.com/en/trends/${article.slug}`,
+        tr: `https://thevibecheckr.com/tr/trends/${article.slug}`,
+        "x-default": `https://thevibecheckr.com/en/trends/${article.slug}`,
+      },
     },
     openGraph: {
       title: article.title,
@@ -80,7 +87,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
     datePublished: article.publishDate,
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://thevibecheckr.com/trends/${article.slug}`
+      "@id": `https://thevibecheckr.com/${resolvedParams.lang}/trends/${article.slug}`
     }
   };
 

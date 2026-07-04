@@ -3,13 +3,25 @@ import Link from "next/link";
 import { ArrowLeft, Shield } from "lucide-react";
 import SeoFooter from "@/components/SeoFooter";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "VibeCheckr Privacy Policy — Learn how we collect, use, and protect your personal data. Your privacy matters to us.",
-  alternates: {
-    canonical: "https://thevibecheckr.com/privacy",
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const baseUrl = "https://thevibecheckr.com";
+  return {
+    title: isTr ? "Gizlilik Politikası" : "Privacy Policy",
+    description: isTr
+      ? "VibeCheckr Gizlilik Politikası — Kişisel verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu öğrenin."
+      : "VibeCheckr Privacy Policy — Learn how we collect, use, and protect your personal data. Your privacy matters to us.",
+    alternates: {
+      canonical: `${baseUrl}/${lang}/privacy`,
+      languages: {
+        en: `${baseUrl}/en/privacy`,
+        tr: `${baseUrl}/tr/privacy`,
+        "x-default": `${baseUrl}/en/privacy`,
+      },
+    },
+  };
+}
 
 const privacyData = {
   en: {
