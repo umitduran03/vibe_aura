@@ -76,11 +76,11 @@ function AdColumn({ side }: { side: "left" | "right" }) {
       <ins
         ref={insRef}
         className="adsbygoogle"
-        style={{ display: "block", width: "160px", height: "100%" }}
+        style={{ display: "block", width: "160px" }}
         data-ad-client="ca-pub-4394628220494584"
         data-ad-slot="7073630645"
-        data-ad-format="auto"
-        data-full-width-responsive="true"
+        data-ad-format="vertical"
+        data-full-width-responsive="false"
       />
     </div>
   );

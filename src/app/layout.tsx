@@ -8,8 +8,7 @@ import InstallBanner from "@/components/InstallBanner";
 import TranslateFix from "@/components/TranslateFix";
 import GlobalLoaderRemover from "@/components/GlobalLoaderRemover";
 import PushNotificationManager from '@/components/PushNotificationManager';
-import DesktopAdBanner from "@/components/DesktopAdBanner";
-import StickyAdBanner from "@/components/StickyAdBanner";
+import AdBannerController from "@/components/AdBannerController";
 import "./globals.css";
 
 const inter = Inter({
@@ -237,8 +236,7 @@ export default function RootLayout({
         </div>
 
         <GlobalLoaderRemover />
-        <DesktopAdBanner />
-        <StickyAdBanner />
+        <AdBannerController />
         <TranslateFix />
         <OfflineBanner />
         <InstallBanner />

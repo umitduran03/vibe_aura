@@ -30,6 +30,15 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
     let isMounted = true;
     let unsubscribeAuth: (() => void) | undefined;
 
+    // 🛡️ Güvenlik zamanlayıcısı: Firebase 4 sn içinde yanıt vermezse
+    // (yavaş ağ, cold start vb.) kullanıcıyı spinner'da bırakmadan serbest bırak
+    const safetyTimer = setTimeout(() => {
+      if (isMounted) {
+        console.warn("[AuthProvider] Auth settling timed out after 4s — forcing unlock.");
+        setAuthSettling(false);
+      }
+    }, 4000);
+
     async function initAuth() {
       // 1️⃣ Redirect sonucunu ÖNCE çöz — bu bitmeden auth state dinlemeye BAŞLAMA
       try {
@@ -104,6 +113,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         }
 
         // 3️⃣ Auth state belirlendi — kilidi aç, UI'ı serbest bırak
+        clearTimeout(safetyTimer); // Firebase zamanında yanıt verdi, güvenlik timer'ına gerek yok
         if (isMounted) {
           setAuthSettling(false);
         }
@@ -114,6 +124,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
 
     return () => {
       isMounted = false;
+      clearTimeout(safetyTimer);
       unsubscribeAuth?.();
       unsubRef.current?.();
     };

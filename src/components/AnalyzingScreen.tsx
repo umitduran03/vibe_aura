@@ -5,7 +5,6 @@ import { Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useAppStore } from "@/store/useAppStore";
 import { useT } from "@/hooks/useT";
-import DisplayAd from "@/components/DisplayAd";
 
 export default function AnalyzingScreen() {
   const analysisMode = useAppStore((s) => s.analysisMode);
@@ -60,10 +59,6 @@ export default function AnalyzingScreen() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Top Ad Slot (Pre-allocated space to prevent shift) */}
-      <div className="w-full max-w-sm z-10 px-4 pt-safe-top pt-8 min-h-[100px] sm:min-h-[120px] md:min-h-[150px] flex items-start justify-center pointer-events-auto">
-        <DisplayAd />
-      </div>
 
       {/* Safely Centered Animation Area */}
       <div className="flex-grow flex flex-col items-center justify-center gap-8 w-full pointer-events-none px-4">
@@ -127,10 +122,6 @@ export default function AnalyzingScreen() {
         </div>
       </div>
 
-      {/* Bottom Ad Slot (Pre-allocated space to prevent shift) */}
-      <div className="w-full max-w-sm z-10 px-4 pb-safe-bottom pb-8 min-h-[100px] sm:min-h-[120px] md:min-h-[150px] flex items-end justify-center pointer-events-auto">
-        <DisplayAd />
-      </div>
 
       {/* Bottom glow */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 h-48 w-48 rounded-full bg-accent/10 blur-[80px] pointer-events-none" />
