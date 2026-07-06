@@ -104,6 +104,7 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
   const [purchasedTokens, setPurchasedTokens] = useState<number | string>(0);
   const [storeTokenPackages, setStoreTokenPackages] = useState<any[]>(TOKEN_PACKAGES as any);
   const [storeVipPackages, setStoreVipPackages] = useState<any[]>(VIP_PACKAGES as any);
+  const [isRestoring, setIsRestoring] = useState(false);
   const userId = useAppStore((s) => s.userId);
 
   useEffect(() => {
@@ -121,6 +122,20 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
       if (!isNative) return; // Web'de boşuna initialize etme
 
       try {
+        // iOS'ta: App Tracking Transparency (ATT) izni iste.
+        // Apple, AdMob kullanan uygulamalarda ATT pop-up'ının gösterilmesini zorunlu kılar.
+        // Info.plist'te NSUserTrackingUsageDescription zaten mevcut.
+        if (platform === "ios") {
+          try {
+            await AdMob.requestConsentInfo({
+              tagForUnderAgeOfConsent: false,
+            });
+            await AdMob.showConsentForm();
+          } catch (attErr) {
+            console.warn("[ATT] Consent/Tracking authorization failed (non-blocking):", attErr);
+          }
+        }
+
         // Initialize AdMob safely
         await AdMob.initialize({
           testingDevices: [],
@@ -207,6 +222,39 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
   const handleComingSoon = () => {
     hapticMedium();
     triggerToast(t.toastAppSoon);
+  };
+
+  const handleRestorePurchases = async () => {
+    hapticLight();
+
+    let isNative = false;
+    try {
+      const { Capacitor } = await import("@capacitor/core");
+      isNative = Capacitor.isNativePlatform();
+    } catch {
+      isNative = false;
+    }
+
+    if (!isNative) {
+      triggerToast(t.tokenModalRestoreError);
+      return;
+    }
+
+    setIsRestoring(true);
+    try {
+      const result = await Purchases.restorePurchases();
+      const activeEntitlements = Object.keys(result.customerInfo.entitlements.active ?? {});
+      if (activeEntitlements.length > 0) {
+        triggerToast(t.tokenModalRestoreSuccess);
+      } else {
+        triggerToast(t.tokenModalRestoreEmpty);
+      }
+    } catch (err) {
+      console.warn("[RestorePurchases] Error:", err);
+      triggerToast(t.tokenModalRestoreError);
+    } finally {
+      setIsRestoring(false);
+    }
   };
 
   const handlePurchase = async (pkg: any) => {
@@ -557,6 +605,23 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
                       >
                         {t.tokenModalGoBack}
                       </motion.button>
+
+                      {/* Restore Purchases — Apple Guideline 3.1.1 zorunlu */}
+                      <motion.button
+                        onClick={handleRestorePurchases}
+                        disabled={isRestoring}
+                        className="mt-2 w-full text-center text-[11px] text-text-secondary/30 hover:text-text-secondary/60 transition-colors cursor-pointer disabled:opacity-40 underline underline-offset-2"
+                        whileTap={!isRestoring ? { scale: 0.95 } : {}}
+                      >
+                        {isRestoring ? t.tokenModalRestoring : t.tokenModalRestorePurchases}
+                      </motion.button>
+
+                      {/* Legal links — Apple Guideline 3.1.2 zorunlu */}
+                      <div className="mt-4 flex items-center justify-center gap-3 text-[10px] text-text-secondary/25">
+                        <a href="/privacy" className="hover:text-text-secondary/50 transition-colors underline underline-offset-2">Privacy Policy</a>
+                        <span>·</span>
+                        <a href="/terms" className="hover:text-text-secondary/50 transition-colors underline underline-offset-2">Terms of Service</a>
+                      </div>
                     </motion.div>
                   )}
 

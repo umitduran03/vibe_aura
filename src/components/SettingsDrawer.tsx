@@ -15,6 +15,8 @@ import {
   Pencil,
   BookOpen,
   Download,
+  Trash2,
+  AlertTriangle,
 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { useStreakStore } from "@/store/useStreakStore";
@@ -22,7 +24,7 @@ import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { auth, db } from "@/lib/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { ZODIAC_SIGNS } from "@/lib/constants";
-import { logOut } from "@/lib/auth";
+import { logOut, deleteAccount } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
@@ -63,6 +65,9 @@ export default function SettingsDrawer() {
 
   const [userZodiac, setUserZodiac] = useState<string | null>(null);
   const [isEditingZodiac, setIsEditingZodiac] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [isDeletingAccount, setIsDeletingAccount] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
 
   // Profil Verileri
   const user = auth.currentUser;
@@ -121,6 +126,25 @@ export default function SettingsDrawer() {
     useAppStore.getState().setHasAcceptedTerms(null);
     setScreen("onboarding");
     close();
+  };
+
+  const handleDeleteAccount = async () => {
+    hapticMedium();
+    setIsDeletingAccount(true);
+    setDeleteError(null);
+    try {
+      await deleteAccount();
+      resetWizard();
+      useAppStore.getState().setHasAcceptedTerms(null);
+      setScreen("onboarding");
+      close();
+    } catch (err: any) {
+      console.error("[SettingsDrawer] Delete account error:", err);
+      setDeleteError(t.settingsDeleteAccountError);
+    } finally {
+      setIsDeletingAccount(false);
+      setShowDeleteConfirm(false);
+    }
   };
 
   const handleInstallClick = async () => {
@@ -572,6 +596,16 @@ export default function SettingsDrawer() {
                   {t.settingsLogout}
                 </motion.button>
 
+                {/* ─── Delete Account Button ─── */}
+                <motion.button
+                  onClick={() => { hapticMedium(); setShowDeleteConfirm(true); setDeleteError(null); }}
+                  className="w-full flex items-center justify-center gap-2 p-3 rounded-xl text-xs font-medium text-white/25 hover:text-red-400/60 transition-all duration-300 cursor-pointer mt-1"
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Trash2 className="h-3.5 w-3.5" />
+                  {t.settingsDeleteAccount}
+                </motion.button>
+
               </div>
 
               {/* ─── Footer ─── */}
@@ -585,6 +619,77 @@ export default function SettingsDrawer() {
                   {t.settingsForEntertainment}
                 </p>
               </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* ─── Delete Account Confirmation Modal ─── */}
+      <AnimatePresence>
+        {showDeleteConfirm && (
+          <>
+            <motion.div
+              className="fixed inset-0 z-[90] bg-black/70 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => !isDeletingAccount && setShowDeleteConfirm(false)}
+            />
+            <motion.div
+              className="fixed inset-0 z-[91] flex items-center justify-center px-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div
+                className="w-full max-w-[320px] rounded-2xl p-6"
+                style={{
+                  background: "linear-gradient(170deg, rgba(35,10,10,0.97) 0%, rgba(15,5,5,0.99) 100%)",
+                  border: "1px solid rgba(239,68,68,0.2)",
+                  boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
+                }}
+                initial={{ scale: 0.85, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.85, y: 20 }}
+                transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-red-500/10 border border-red-500/20 mx-auto mb-4">
+                  <AlertTriangle className="h-6 w-6 text-red-400" />
+                </div>
+                <h3 className="text-center text-[16px] font-bold text-white mb-2">
+                  {t.settingsDeleteAccountConfirmTitle}
+                </h3>
+                <p className="text-center text-[12px] text-white/50 leading-relaxed mb-6">
+                  {t.settingsDeleteAccountConfirmDesc}
+                </p>
+
+                {deleteError && (
+                  <p className="text-center text-[12px] text-red-400 mb-4">{deleteError}</p>
+                )}
+
+                <motion.button
+                  onClick={handleDeleteAccount}
+                  disabled={isDeletingAccount}
+                  className="w-full py-3 rounded-xl text-[14px] font-bold text-white mb-2 disabled:opacity-60 cursor-pointer"
+                  style={{
+                    background: "linear-gradient(135deg, #dc2626, #b91c1c)",
+                    boxShadow: "0 0 20px rgba(220,38,38,0.3)",
+                  }}
+                  whileTap={!isDeletingAccount ? { scale: 0.97 } : {}}
+                >
+                  {isDeletingAccount ? t.settingsDeleteAccountDeleting : t.settingsDeleteAccountConfirm}
+                </motion.button>
+
+                <motion.button
+                  onClick={() => setShowDeleteConfirm(false)}
+                  disabled={isDeletingAccount}
+                  className="w-full py-3 rounded-xl text-[13px] font-medium text-white/40 hover:text-white/70 transition-colors cursor-pointer disabled:opacity-40"
+                  whileTap={{ scale: 0.97 }}
+                >
+                  {t.settingsDeleteAccountCancel}
+                </motion.button>
+              </motion.div>
             </motion.div>
           </>
         )}

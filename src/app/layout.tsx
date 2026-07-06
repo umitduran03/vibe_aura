@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
-import Image from "next/image";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import OfflineBanner from "@/components/OfflineBanner";
@@ -184,13 +183,6 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://www.google.com" />
         <link rel="dns-prefetch" href="https://securetoken.googleapis.com" />
 
-        {/* Google AdSense Script */}
-        <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4394628220494584"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
       </head>
       <body className="min-h-full bg-background text-foreground antialiased" style={{ backgroundColor: "#050510" }}>
         <script
@@ -203,6 +195,13 @@ export default function RootLayout({
               });
             `,
           }}
+        />
+        {/* Google AdSense — afterInteractive: SSR sonrası yüklenir, hydration mismatch yaratmaz */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4394628220494584"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
         />
         {/* GLOBAL PRE-LOADER: Orijinal Neon V Wave */}
         <div 
@@ -232,7 +231,8 @@ export default function RootLayout({
             }
           `}} />
           
-          <Image src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} priority fetchPriority="high" style={{ width: "auto", height: "auto" }} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} />
         </div>
 
         <GlobalLoaderRemover />

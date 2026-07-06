@@ -2,12 +2,16 @@ import {
   onAuthStateChanged, 
   type User, 
   GoogleAuthProvider, 
+  OAuthProvider,
   signInWithRedirect,
   signInWithPopup,
   getRedirectResult,
-  signOut
+  signOut,
+  deleteUser,
+  reauthenticateWithPopup,
+  reauthenticateWithRedirect,
 } from "firebase/auth";
-import { doc, getDoc, setDoc, onSnapshot, serverTimestamp, updateDoc, increment, arrayUnion } from "firebase/firestore";
+import { doc, getDoc, setDoc, onSnapshot, serverTimestamp, updateDoc, increment, arrayUnion, deleteDoc } from "firebase/firestore";
 import { auth, db } from "./firebase";
 
 const INITIAL_TOKEN_BALANCE = 5;
@@ -32,6 +36,119 @@ export async function signInWithGoogle(): Promise<void> {
 
   await signInWithRedirect(auth, provider);
   // signInWithRedirect sayfayı yeniden yükler, bu satıra ulaşılmaz
+}
+
+/**
+ * Apple ile giriş yapar.
+ * Apple Sign In, üçüncü parti sosyal giriş sunan uygulamalarda App Store'da zorunludur.
+ * DEV ortamında popup, PROD ortamında redirect kullanır.
+ */
+export async function signInWithApple(): Promise<void> {
+  const provider = new OAuthProvider("apple.com");
+  provider.addScope("email");
+  provider.addScope("name");
+
+  if (process.env.NODE_ENV === "development") {
+    await signInWithPopup(auth, provider);
+    return;
+  }
+
+  await signInWithRedirect(auth, provider);
+}
+
+/**
+ * Kullanıcı hesabını kalıcı olarak siler.
+ * Apple App Store Guideline 5.1.1(v) uyarınca tüm uygulamalarda bulunması zorunludur.
+ * Önce re-authentication yapar (Firebase güvenlik gereği), ardından Firestore dokümanını
+ * ve Firebase Auth hesabını siler.
+ */
+export async function deleteAccount(): Promise<void> {
+  const user = auth.currentUser;
+  if (!user) throw new Error("No authenticated user.");
+
+  // Re-authentication: Firebase, hassas işlemler için bunu zorunlu kılar.
+  try {
+    const providerId = user.providerData[0]?.providerId;
+
+    if (providerId === "apple.com") {
+      const appleProvider = new OAuthProvider("apple.com");
+      if (process.env.NODE_ENV === "development") {
+        await reauthenticateWithPopup(user, appleProvider);
+      } else {
+        // Redirect modunda: pending_delete'i kaydet, redirect sonrası
+        // AuthProvider tarafından completePendingDelete çağrılır.
+        localStorage.setItem("pending_delete", "true");
+        await reauthenticateWithRedirect(user, appleProvider);
+        return; // Sayfa yeniden yüklenir, buraya ulaşılmaz
+      }
+    } else {
+      const googleProvider = new GoogleAuthProvider();
+      if (process.env.NODE_ENV === "development") {
+        await reauthenticateWithPopup(user, googleProvider);
+      } else {
+        localStorage.setItem("pending_delete", "true");
+        await reauthenticateWithRedirect(user, googleProvider);
+        return; // Sayfa yeniden yüklenir, buraya ulaşılmaz
+      }
+    }
+  } catch (err: any) {
+    localStorage.removeItem("pending_delete");
+    console.error("[deleteAccount] Re-authentication failed:", err);
+    throw err;
+  }
+
+  // Popup modu (dev / native): re-auth tamamlandı, direkt sil.
+  await _executeAccountDeletion(user);
+}
+
+/**
+ * Redirect sonrası bekleyen hesap silme işlemini tamamlar.
+ * AuthProvider tarafından handleRedirectResult() sonrası çağrılır.
+ * localStorage'da "pending_delete" varsa mevcut kullanıcıyı siler.
+ */
+export async function completePendingDelete(): Promise<boolean> {
+  const pending = localStorage.getItem("pending_delete");
+  if (!pending) return false;
+
+  localStorage.removeItem("pending_delete");
+
+  const user = auth.currentUser;
+  if (!user) return false;
+
+  await _executeAccountDeletion(user);
+  return true;
+}
+
+/**
+ * Hesap silme işleminin asıl mantığı: token kaydet, Firestore sil, Auth sil.
+ * Hem popup hem redirect akışı tarafından kullanılır.
+ */
+async function _executeAccountDeletion(user: User): Promise<void> {
+  // Kalan token bakıyesini oku ve deleted_accounts'a kaydet (token farming önlemi)
+  try {
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+    const remainingBalance = userSnap.exists()
+      ? (userSnap.data().token_balance ?? 0)
+      : 0;
+
+    if (user.email) {
+      const emailKey = user.email.replace(/\./g, "_dot_").replace(/@/g, "_at_");
+      const deletedRef = doc(db, "deleted_accounts", emailKey);
+      await setDoc(deletedRef, {
+        email: user.email,
+        token_balance: remainingBalance,
+        deletedAt: serverTimestamp(),
+      });
+    }
+
+    await deleteDoc(userRef);
+  } catch (err) {
+    console.warn("[deleteAccount] Pre-deletion snapshot failed (non-blocking):", err);
+  }
+
+  // Firebase Auth hesabını sil
+  await deleteUser(user);
 }
 
 /**
@@ -89,24 +206,39 @@ export async function ensureUserDoc(user: User): Promise<number> {
   if (snap.exists()) {
     // Mevcut kullanıcı, profil bilgilerini güncelle
     await setDoc(userRef, profileData, { merge: true });
-    
     const data = snap.data();
-    const balance = data.token_balance ?? INITIAL_TOKEN_BALANCE;
-
-    return balance;
+    return data.token_balance ?? INITIAL_TOKEN_BALANCE;
   }
 
-  // İlk kez giriş — hoş geldin hediyesi ve profil bilgileri
+  // Yeni kullanıcı — daha önce hesap açıp silmiş mi kontrol et.
+  // Silmişse kalan token bakiyesiyle başlatılır (token farming önlemi).
+  let startingBalance = INITIAL_TOKEN_BALANCE;
+  if (user.email) {
+    try {
+      const emailKey = user.email.replace(/\./g, "_dot_").replace(/@/g, "_at_");
+      const deletedRef = doc(db, "deleted_accounts", emailKey);
+      const deletedSnap = await getDoc(deletedRef);
+
+      if (deletedSnap.exists()) {
+        startingBalance = deletedSnap.data().token_balance ?? 0;
+        // Kullanıldı, temizle
+        await deleteDoc(deletedRef);
+      }
+    } catch (err) {
+      console.warn("[ensureUserDoc] deleted_accounts check failed (non-blocking):", err);
+    }
+  }
+
   await setDoc(userRef, {
     ...profileData,
-    token_balance: INITIAL_TOKEN_BALANCE,
+    token_balance: startingBalance,
     streakCount: 0,
     lastAnalysisDate: null,
     lostStreakCount: 0,
     createdAt: serverTimestamp(),
   });
 
-  return INITIAL_TOKEN_BALANCE;
+  return startingBalance;
 }
 
 /**

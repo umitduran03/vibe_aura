@@ -1,9 +1,5 @@
-"use client";
-
 import React from "react";
-import { motion } from "framer-motion";
-import { CheckCircle2, ChevronRight, HelpCircle } from "lucide-react";
-import InArticleAd from "@/components/InArticleAd";
+import { CheckCircle2, HelpCircle } from "lucide-react";
 import { featureSeoData } from "@/lib/seo-feature-data";
 
 type Props = {
@@ -31,12 +27,8 @@ export default function FeatureSeoContent({ featureId, isTr }: Props) {
         </div>
         <div className="grid md:grid-cols-3 gap-8">
           {howItWorks.steps.map((step: any, idx: number) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
               className="relative p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-cyan-500/40 transition-all duration-300 group"
             >
               <div className="absolute -top-5 -left-5 w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-cyan-500/30 group-hover:scale-110 transition-transform">
@@ -44,17 +36,11 @@ export default function FeatureSeoContent({ featureId, isTr }: Props) {
               </div>
               <h3 className="text-xl font-bold text-white mt-4 mb-3">{step.title}</h3>
               <p className="text-white/60 leading-relaxed">{step.desc}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
 
-      {/* AD BREAK */}
-      <div className="w-full flex justify-center">
-        <div className="w-full max-w-sm">
-          <InArticleAd />
-        </div>
-      </div>
 
       {/* USE CASES */}
       <section>
@@ -66,12 +52,8 @@ export default function FeatureSeoContent({ featureId, isTr }: Props) {
         </div>
         <div className="space-y-4 max-w-3xl mx-auto">
           {useCases.cases.map((uc: any, idx: number) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
               className="flex items-start gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] transition-colors"
             >
               <div className="mt-1 flex-shrink-0">
@@ -81,7 +63,7 @@ export default function FeatureSeoContent({ featureId, isTr }: Props) {
                 <h3 className="text-lg font-bold text-white mb-1">{uc.title}</h3>
                 <p className="text-white/70 leading-relaxed">{uc.desc}</p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>
@@ -96,12 +78,8 @@ export default function FeatureSeoContent({ featureId, isTr }: Props) {
         </div>
         <div className="max-w-3xl mx-auto space-y-6">
           {faq.questions.map((q: any, idx: number) => (
-            <motion.div
+            <div
               key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
               className="p-6 rounded-2xl bg-black/40 border border-white/10 glass-strong"
             >
               <h3 className="text-xl font-bold text-amber-400 mb-3 flex items-start gap-3">
@@ -110,7 +88,7 @@ export default function FeatureSeoContent({ featureId, isTr }: Props) {
               <p className="text-white/70 leading-relaxed pl-8 border-l-2 border-white/10">
                 {q.a}
               </p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </section>

@@ -7,6 +7,7 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
-  // Chrome requires a fetch handler to consider the PWA installable.
-  // This just lets all requests pass through normally.
+  // Passthrough: all requests go to the network as normal.
+  // A real respondWith is required to avoid the Chrome "no-op handler" warning.
+  e.respondWith(fetch(e.request));
 });

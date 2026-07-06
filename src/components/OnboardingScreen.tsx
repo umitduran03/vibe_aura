@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import { Sparkles, ExternalLink, Loader2, ArrowRight } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
-import { signInWithGoogle, acceptTerms } from "@/lib/auth";
+import { signInWithGoogle, signInWithApple, acceptTerms } from "@/lib/auth";
 import { hapticLight, hapticMedium, hapticHeavy } from "@/lib/haptics";
 import Image from "next/image";
 
@@ -27,10 +27,21 @@ export default function OnboardingScreen() {
   const [view, setView] = useState<OnboardingView>("landing");
   const [hasConsented, setHasConsented] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
+  const [isAppleLoggingIn, setIsAppleLoggingIn] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
+  const [isNativeIOS, setIsNativeIOS] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
+
+  // Detect native iOS for Apple Sign-In requirement
+  useEffect(() => {
+    import("@capacitor/core").then(({ Capacitor }) => {
+      if (Capacitor.isNativePlatform() && Capacitor.getPlatform() === "ios") {
+        setIsNativeIOS(true);
+      }
+    }).catch(() => {});
+  }, []);
 
   // User logged in + terms accepted → go to wizard
   useEffect(() => {
@@ -65,6 +76,26 @@ export default function OnboardingScreen() {
       setIsLoggingIn(false);
     }
   }, [isLoggingIn, view, hasConsented]);
+
+  const handleAppleLogin = useCallback(async () => {
+    if (isAppleLoggingIn) return;
+    hapticMedium();
+    setIsAppleLoggingIn(true);
+    setLoginError(null);
+    try {
+      if (view === "terms" && hasConsented) {
+        localStorage.setItem("pending_terms_accept", "true");
+      }
+      await signInWithApple();
+    } catch (err: any) {
+      console.error("[Onboarding] Apple login failed:", err);
+      localStorage.removeItem("pending_terms_accept");
+      setLoginError(err?.code === "auth/unauthorized-domain"
+        ? t.onboardingDomainError
+        : t.onboardingGenericError);
+      setIsAppleLoggingIn(false);
+    }
+  }, [isAppleLoggingIn, view, hasConsented]);
 
   const handleAcceptTerms = useCallback(async () => {
     if (!hasConsented || !userId) return;
@@ -139,9 +170,9 @@ export default function OnboardingScreen() {
                   width={220} 
                   height={66} 
                   priority 
-                  fetchPriority="high"
-                  sizes="(max-width: 768px) 100vw, 220px"
-                  className="object-contain h-auto" 
+                  sizes="220px"
+                  className="object-contain" 
+                  style={{ width: "auto", height: "auto" }}
                 />
               </m.div>
             </div>
@@ -331,6 +362,30 @@ export default function OnboardingScreen() {
                         </>
                       )}
                     </m.button>
+
+                    {/* Apple Sign-In — iOS native için App Store Guideline 4.8 zorunlu */}
+                    {isNativeIOS && (
+                      <m.button
+                        onClick={handleAppleLogin}
+                        disabled={!hasConsented || isAppleLoggingIn}
+                        className={`w-full py-4 rounded-2xl text-[15px] font-bold flex items-center justify-center gap-3 mt-2 ${hasConsented ? "cursor-pointer text-white" : "cursor-not-allowed opacity-50 text-white/50"}`}
+                        style={{
+                          background: hasConsented ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.04)",
+                          border: "1px solid rgba(255,255,255,0.15)",
+                        }}
+                        whileHover={hasConsented && !isAppleLoggingIn ? { scale: 1.02 } : {}}
+                        whileTap={hasConsented && !isAppleLoggingIn ? { scale: 0.96 } : {}}
+                      >
+                        {isAppleLoggingIn ? (<><Loader2 className="h-5 w-5 animate-spin" /> {t.onboardingConnecting}</>) : (
+                          <>
+                            <svg className="h-5 w-5 fill-white" viewBox="0 0 24 24">
+                              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.1 2.48-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91 1.65.17 2.47.81 3.01 1.59-4.32 1.51-3.61 7.33.68 9.07zM13 3.5c.73-.89 1.22-2.13 1.08-3.38-1.08.04-2.39.71-3.16 1.61-.69.79-1.3 2.05-1.14 3.26 1.2.1 2.43-.59 3.22-1.5z"/>
+                            </svg>
+                            {t.settingsSignInApple}
+                          </>
+                        )}
+                      </m.button>
+                    )}
                   </>
                 )}
 
@@ -403,6 +458,30 @@ export default function OnboardingScreen() {
                     </>
                   )}
                 </m.button>
+
+                {/* Apple Sign-In — iOS native için App Store Guideline 4.8 zorunlu */}
+                {isNativeIOS && (
+                  <m.button
+                    onClick={handleAppleLogin}
+                    disabled={isAppleLoggingIn}
+                    className="w-full py-4 rounded-2xl text-[15px] font-bold text-white cursor-pointer flex items-center justify-center gap-3 mt-2"
+                    style={{
+                      background: "rgba(255,255,255,0.1)",
+                      border: "1px solid rgba(255,255,255,0.15)",
+                    }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.96 }}
+                  >
+                    {isAppleLoggingIn ? (<><Loader2 className="h-5 w-5 animate-spin" /> {t.onboardingConnecting}</>) : (
+                      <>
+                        <svg className="h-5 w-5 fill-white" viewBox="0 0 24 24">
+                          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.1 2.48-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91 1.65.17 2.47.81 3.01 1.59-4.32 1.51-3.61 7.33.68 9.07zM13 3.5c.73-.89 1.22-2.13 1.08-3.38-1.08.04-2.39.71-3.16 1.61-.69.79-1.3 2.05-1.14 3.26 1.2.1 2.43-.59 3.22-1.5z"/>
+                        </svg>
+                        {t.settingsSignInApple}
+                      </>
+                    )}
+                  </m.button>
+                )}
 
                 <button onClick={() => setView("landing")} className="w-full mt-3 text-xs text-white/30 hover:text-white/50 transition-colors">
                   {t.onboardingBack}

@@ -43,11 +43,11 @@ export default function InArticleAd() {
   }, []);
 
   return (
-    <div className="my-8 w-full text-center min-h-[100px] sm:min-h-[150px] md:min-h-[200px] flex items-center justify-center">
+    <div className="my-8 w-full text-center flex items-center justify-center">
       <ins
         ref={insRef}
         className="adsbygoogle"
-        style={{ display: "block", textAlign: "center" }}
+        style={{ display: "block", textAlign: "center", width: "100%" }}
         data-ad-layout="in-article"
         data-ad-format="fluid"
         data-ad-client="ca-pub-4394628220494584"

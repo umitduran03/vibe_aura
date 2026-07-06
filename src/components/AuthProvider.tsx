@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useAppStore } from "@/store/useAppStore";
-import { onAuthChange, ensureUserDoc, listenUserData, handleRedirectResult } from "@/lib/auth";
+import { onAuthChange, ensureUserDoc, listenUserData, handleRedirectResult, completePendingDelete } from "@/lib/auth";
 import { useStreakStore } from "@/store/useStreakStore";
 
 /**
@@ -45,6 +45,21 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         await handleRedirectResult();
       } catch (err) {
         console.warn("[AuthProvider] Redirect result check failed:", err);
+      }
+
+      // Redirect sonrası bekleyen hesap silme işlemi varsa tamamla.
+      // completePendingDelete true dönerse kullanıcı silindi demektir;
+      // onAuthChange user=null ile zaten tetiklenecek, başka bir şey yapmaya gerek yok.
+      try {
+        const deleted = await completePendingDelete();
+        if (deleted) {
+          // Silme tamamlandı — onAuthChange user=null ile devam edecek
+          clearTimeout(safetyTimer);
+          if (isMounted) setAuthSettling(false);
+          return;
+        }
+      } catch (err) {
+        console.warn("[AuthProvider] completePendingDelete failed:", err);
       }
 
       // 2️⃣ Redirect çözüldü — artık güvenle auth state dinleyebiliriz

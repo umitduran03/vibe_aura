@@ -49,5 +49,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Vibecheckr requires access to your camera to capture photos for your vibes.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Vibecheckr requires access to your photo library to select photos for your vibes.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Vibecheckr requires access to save photos to your library.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Vibecheckr needs this permission to provide personalized ads and improve your experience.</string>
 </dict>
 </plist>
