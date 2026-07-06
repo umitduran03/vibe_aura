@@ -138,7 +138,14 @@ export default function Home() {
       import("@/components/DuoResultCard");
       import("@/lib/services"); // Groq'un hızını kesmemek için bunu da prefetch et
 
-      const timer = setTimeout(() => setScreen("onboarding"), 1800);
+      const timer = setTimeout(() => {
+        const store = useAppStore.getState();
+        if (store.userId && store.hasAcceptedTerms === true) {
+          setScreen("wizard");
+        } else {
+          setScreen("onboarding");
+        }
+      }, 1800);
       return () => clearTimeout(timer);
     }
   }, [screen, setScreen]);
