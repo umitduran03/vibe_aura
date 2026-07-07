@@ -110,8 +110,8 @@ export default function OnboardingScreen() {
 
   if (!mounted) return null;
 
-  // Auth settling → loading screen
-  if (isAuthSettling) {
+  // Auth settling veya Firestore'dan sözleşme bilgisi beklenirken → loading screen
+  if (isAuthSettling || (userId && hasAcceptedTerms === undefined)) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-transparent w-full overflow-hidden relative">
         <m.div 
