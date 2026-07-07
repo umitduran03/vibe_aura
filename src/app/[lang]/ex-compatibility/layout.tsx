@@ -55,9 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Eski Sevgili (Ex) Uyum Testi & Ayrılık Analizi (YZ) | VibeCheckr",
+      title: "Ex Uyum Testi & Ayrılık Analizi (YZ) | VibeCheckr",
       description:
-        "Eski sevgiline mesaj atmadan önce yapay zekaya bir sor. Ayrılık sebebinizi, ego savaşını kimin kazandığını ve geri dönüş riskinizi analiz et.",
+        "Eski sevgiline mesaj atmadan önce yapay zekaya sor. Ego savaşını kimin kazandığını ve geri dönüş riskini analiz et. → Hemen dene!",
       keywords: [
         "eski sevgili uyumu",
         "ex uyum testi",
@@ -79,9 +79,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Eski Sevgili (Ex) Uyum Testi & Ayrılık Analizi (YZ)",
+        title: "Ex Uyum Testi & Ayrılık Analizi (YZ) | VibeCheckr",
         description:
-          "Eski sevgiline mesaj atmadan önce yapay zekaya bir sor. Ayrılık sebebinizi, ego savaşını kimin kazandığını ve geri dönüş riskinizi analiz et.",
+          "Eski sevgiline mesaj atmadan önce yapay zekaya sor. Ego savaşını kimin kazandığını ve geri dönüş riskini analiz et. → Hemen dene!",
         url: `${baseUrl}/tr/ex-compatibility`,
         type: "website",
         locale: "tr_TR",
@@ -96,7 +96,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "Ex Compatibility Test & Breakup Analysis AI | VibeCheckr",
     description:
-      "Ask the AI before texting your ex. Analyze your breakup reason, see who won the ego war, and calculate your relapse risk.",
+      "Ask AI before texting your ex. Analyze your breakup reason, who won the ego war, and calculate your relapse risk. → Try free!",
     keywords: [
       "ex compatibility",
       "should i text my ex",
@@ -118,9 +118,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Ex Compatibility Test & Breakup Analysis AI",
+      title: "Ex Compatibility Test & Breakup Analysis AI | VibeCheckr",
       description:
-        "Ask the AI before texting your ex. Analyze your breakup reason, see who won the ego war, and calculate your relapse risk.",
+        "Ask AI before texting your ex. Analyze your breakup reason, who won the ego war, and calculate your relapse risk. → Try free!",
       url: `${baseUrl}/en/ex-compatibility`,
       type: "website",
       locale: "en_US",

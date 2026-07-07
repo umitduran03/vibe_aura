@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { ArrowLeft, Flame, Sparkles, TrendingUp, Search } from "lucide-react";
 import { useState } from "react";
+import { useParams } from "next/navigation";
 import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
 import SeoFooter from "@/components/SeoFooter";
 import InArticleAd from "@/components/InArticleAd";
@@ -36,7 +37,11 @@ const strings = {
 };
 
 export default function TrendsHubPage() {
-  const locale = useAppStore((s) => s.locale) as "en" | "tr";
+  const params = useParams();
+  const routeLang = (params?.lang as string) ?? "en";
+  const storeLocale = useAppStore((s) => s.locale);
+  // Prefer route param over store to avoid flicker on first render
+  const locale = (routeLang || storeLocale) as "en" | "tr";
   const isTr = locale === "tr";
   const s = strings[locale] ?? strings.en;
   
@@ -64,7 +69,7 @@ export default function TrendsHubPage() {
         {/* Navigation */}
         <div className="flex items-center gap-4 mb-12">
           <Link
-            href="/"
+            href={`/${locale}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
             aria-label={s.ariaBack}
           >
@@ -118,7 +123,7 @@ export default function TrendsHubPage() {
           {currentTrends.map((article) => (
             <Link 
               key={article.slug} 
-              href={`/trends/${article.slug}`}
+              href={`/${locale}/trends/${article.slug}`}
               className="group flex flex-col p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-indigo-500/30 hover:bg-white/[0.08] transition-all duration-300 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/0 to-cyan-500/0 group-hover:from-indigo-500/10 group-hover:to-cyan-500/10 transition-colors duration-500" />
@@ -161,7 +166,7 @@ export default function TrendsHubPage() {
             {s.ctaPara}
           </p>
           <Link
-            href="/"
+            href={`/${locale}`}
             className="inline-block px-10 py-4 rounded-full bg-white text-black font-bold tracking-wide hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
           >
             {s.ctaBtn}

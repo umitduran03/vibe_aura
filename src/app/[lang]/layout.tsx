@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getDictionary, hasLocale, type Locale, SUPPORTED_LOCALES } from "@/lib/dictionaries";
 import LocaleSync from "@/components/LocaleSync";
+import HtmlLangSync from "@/components/HtmlLangSync";
 
 type Props = {
   children: React.ReactNode;
@@ -20,6 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const canonicalBase = "https://thevibecheckr.com";
 
   return {
+    metadataBase: new URL("https://thevibecheckr.com"),
     title: dict.seo.title,
     description: dict.seo.description,
     alternates: {
@@ -35,6 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: dict.seo.description,
       url: `${canonicalBase}/${lang}`,
       locale: lang === "tr" ? "tr_TR" : "en_US",
+      alternateLocale: lang === "tr" ? ["en_US"] : ["tr_TR"],
+      images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
   };
 }
@@ -51,6 +55,8 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <>
+      {/* Kritik: <html lang> attribute'unu locale'e göre dinamik ayarlar */}
+      <HtmlLangSync lang={lang} />
       <LocaleSync lang={lang} />
       {children}
     </>

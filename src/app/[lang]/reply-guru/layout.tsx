@@ -51,9 +51,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Reply Guru (YZ) — Mükemmel Cevabı Üret | VibeCheckr",
+      title: "Reply Guru YZ — Mükemmel Cevabı Üret | VibeCheckr",
       description:
-        "Akıl oyunları mı? Kazandın. Ekran görüntüsünü at, yapay zeka senin için mükemmel toksik, havalı veya güvenli cevabı yazsın. Mesajlaşma stresine son.",
+        "Akıl oyunları mı? Kazandın. Ekran görüntüsünü at, yapay zeka mükemmel toksik, havalı veya güvenli cevabı yazsın. → Hemen dene!",
       keywords: [
         "nasıl cevap verilir",
         "reply guru",
@@ -74,12 +74,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Reply Guru (YZ) — Mükemmel Cevabı Üret",
+        title: "Reply Guru YZ — Mükemmel Cevabı Üret | VibeCheckr",
         description:
-          "Akıl oyunları mı? Kazandın. Ekran görüntüsünü at, yapay zeka senin için mükemmel toksik, havalı veya güvenli cevabı yazsın. Mesajlaşma stresine son.",
+          "Akıl oyunları mı? Kazandın. Yapay zeka mükemmel toksik, havalı veya güvenli cevabı yazsın. → Hemen dene!",
         url: `${baseUrl}/tr/reply-guru`,
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
       other: {
@@ -89,9 +90,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "The Reply Guru AI — Craft the Perfect Text | VibeCheckr",
+    title: "Reply Guru AI — Craft the Perfect Text | VibeCheckr",
     description:
-      "Mind games? Won. Drop the screenshot and let our AI craft the perfect toxic, cool, or safe reply. Never stress about what to text back again.",
+      "Mind games? Won. Drop the screenshot & let AI craft the perfect toxic, cool, or safe reply. Never stress about what to text back. → Try free!",
     keywords: [
       "rizz ai",
       "text reply generator",
@@ -112,12 +113,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "The Reply Guru AI — Craft the Perfect Text",
+      title: "Reply Guru AI — Craft the Perfect Text | VibeCheckr",
       description:
-        "Mind games? Won. Drop the screenshot and let our AI craft the perfect toxic, cool, or safe reply. Never stress about what to text back again.",
+        "Mind games? Won. Drop the screenshot & let AI craft the perfect toxic, cool, or safe reply. Never stress about what to text back. → Try free!",
       url: `${baseUrl}/en/reply-guru`,
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
     other: {

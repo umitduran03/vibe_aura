@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const images = article.imageUrl ? [article.imageUrl] : [];
 
   return {
-    title: `${article.title} | VibeCheckr Trends`,
+    title: `${article.title} | VibeCheckr`,
     description: article.description,
     keywords: article.keywords,
     alternates: {
@@ -43,8 +43,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: article.description,
       type: "article",
       publishedTime: article.publishDate,
+      modifiedTime: new Date().toISOString(),
       authors: ["VibeCheckr AI"],
       images: images,
+      locale: resolvedParams.lang === "tr" ? "tr_TR" : "en_US",
+      alternateLocale: resolvedParams.lang === "tr" ? ["en_US"] : ["tr_TR"],
     }
   };
 }
@@ -85,6 +88,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
       }
     },
     datePublished: article.publishDate,
+    dateModified: new Date().toISOString().split("T")[0],
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://thevibecheckr.com/${resolvedParams.lang}/trends/${article.slug}`

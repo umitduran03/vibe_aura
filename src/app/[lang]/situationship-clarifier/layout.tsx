@@ -44,8 +44,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Situationship Netleştirici (YZ) — Sinyalleri Çöz | VibeCheckr",
-      description: "Aranızdaki durumu anlamıyor musun? Yapay zeka situationship'ini netleştirsin. Acımasız uyum istatistiklerini al ve 'Biz neyiz?' gizemini anında çöz.",
+      title: "Situationship Netleştirici — Sinyalleri Çöz | VibeCheckr",
+      description: "'Biz neyiz?' gizemini çöz. Yapay zeka situationship'ini netleştirsin, acımasız uyum istatistiklerini anında al. → Hemen dene!",
       keywords: ["situationship nedir", "biz neyiz testi", "karışık sinyaller", "ilişki analizi", "situationship mi ilişki mi", "biz neyiz yapay zeka"],
       alternates: {
         canonical: `${baseUrl}/tr/situationship-clarifier`,
@@ -56,8 +56,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Situationship Netleştirici (YZ) — Sinyalleri Çöz",
-        description: "Aranızdaki durumu anlamıyor musun? Yapay zeka situationship'ini netleştirsin. Acımasız uyum istatistiklerini al ve 'Biz neyiz?' gizemini anında çöz.",
+        title: "Situationship Netleştirici — Sinyalleri Çöz | VibeCheckr",
+        description: "'Biz neyiz?' gizemini çöz. Yapay zeka situationship'ini netleştirsin, acımasız uyum istatistiklerini anında al. → Hemen dene!",
         url: `${baseUrl}/tr/situationship-clarifier`,
         type: "website",
         locale: "tr_TR",
@@ -70,8 +70,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Situationship Clarifier AI — Decode the Mixed Signals | VibeCheckr",
-    description: "Confused about what you are? Let our AI clarify your situationship. Get brutal compatibility stats and decode the 'What are we?' mystery instantly.",
+    title: "Situationship Clarifier AI — Decode Signals | VibeCheckr",
+    description: "Confused about what you are? Let AI clarify your situationship. Get brutal compatibility stats & decode the 'What are we?' mystery. → Try free!",
     keywords: ["situationship clarifier", "what is a situationship", "situationship or relationship", "decode mixed signals", "what are we test", "situationship ai", "am i in a situationship"],
     alternates: {
       canonical: `${baseUrl}/en/situationship-clarifier`,
@@ -82,8 +82,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Situationship Clarifier AI — Decode the Mixed Signals",
-      description: "Confused about what you are? Let our AI clarify your situationship. Get brutal compatibility stats and decode the 'What are we?' mystery instantly.",
+      title: "Situationship Clarifier AI — Decode Signals | VibeCheckr",
+      description: "Confused about what you are? Let AI clarify your situationship. Get brutal compatibility stats & decode the 'What are we?' mystery. → Try free!",
       url: `${baseUrl}/en/situationship-clarifier`,
       type: "website",
       locale: "en_US",

@@ -136,9 +136,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Delulu Check — Delulu Muyum? Yapay Zeka Gerçeklik Testi | VibeCheckr",
+      title: "Delulu Check — Delulu Muyum? Yapay Zeka Reality Check | VibeCheckr",
       description:
-        "Delulu check nedir? Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten seni seviyor mu, yoksa sen mi delusional'sın? Ücretsiz dene.",
+        "Delulu check nedir? Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten seni seviyor mu? → Hemen dene!",
       keywords: [
         "delulu check",
         "delulu muyum",
@@ -160,12 +160,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Delulu Check — Delulu Muyum? Yapay Zeka Gerçeklik Testi",
+        title: "Delulu Check — Delulu Muyum? Yapay Zeka Reality Check",
         description:
-          "Delulu check nedir? Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten seni seviyor mu, yoksa sen mi delusional'sın?",
+          "Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten seni seviyor mu? → Hemen dene!",
         url: `${baseUrl}/tr/delulu-check`,
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
       other: {
@@ -201,10 +202,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: "Delulu Check — Am I Delusional? AI Reality Check",
       description:
-        "Getting mixed signals? Take the AI reality check before double texting. Are they really interested or are you just being delusional? Find out instantly.",
+        "Getting mixed signals? Take the AI reality check before double texting. Are they really into you or are you just delusional? Find out instantly. → Try free!",
       url: `${baseUrl}/en/delulu-check`,
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
     other: {

@@ -62,9 +62,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Profil Otopsisi AI | Instagram, Tinder, Bumble Profil Analizi | VibeCheckr",
+      title: "Profil Otopsisi AI — Tinder & Instagram | VibeCheckr",
       description:
-        "Instagram, Tinder, Bumble profilini analiz et veya Dedektif Modu ile başkasının profilini stalkla. Yapay zeka ile green/red flag'leri ve gerçek vibe'ı öğren.",
+        "Tinder, Bumble, Instagram profilini analiz et veya Dedektif Modu ile başkasını stalkla. Yapay zeka ile red flag'leri öğren. → Hemen dene!",
       keywords: [
         "profil analizi yapay zeka",
         "tinder profil otopsisi",
@@ -85,8 +85,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Profil Otopsisi AI | VibeCheckr",
-        description: "Kendi profilindeki hataları gör veya Dedektif Modu ile flörtünün profilindeki toksik sinyalleri stalkla. Yapay zeka destekli acımasız profil analizi.",
+        title: "Profil Otopsisi AI — Tinder & Instagram | VibeCheckr",
+        description: "Tinder, Bumble, Instagram profilini analiz et veya Dedektif Modu ile başkasını stalkla. Yapay zeka ile red flag'leri öğren. → Hemen dene!",
         url: `${baseUrl}/tr/profile-autopsy`,
         type: "website",
         locale: "tr_TR",
@@ -99,9 +99,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Profile Autopsy AI | Instagram, Tinder, Bumble & Hinge Profile Analyzer | VibeCheckr",
+    title: "Profile Autopsy AI — Tinder & Instagram | VibeCheckr",
     description:
-      "Audit your own Instagram/Tinder profile for red flags, or use Detective Mode to stalk someone else's vibe. Get a brutal AI score and relationship advice.",
+      "Audit your Tinder/Instagram profile for red flags, or use Detective Mode to stalk someone's vibe. Brutal AI score & advice. → Try free!",
     keywords: [
       "profile autopsy ai",
       "tinder profile analyzer",
@@ -122,8 +122,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Profile Autopsy AI | VibeCheckr",
-      description: "Fix your own profile's red flags or use Detective Mode to stalk someone else. Brutally honest AI analysis for Instagram, Tinder, Bumble, and more.",
+      title: "Profile Autopsy AI — Tinder & Instagram | VibeCheckr",
+      description: "Audit your Tinder/Instagram profile for red flags, or use Detective Mode to stalk someone's vibe. Brutal AI score & advice. → Try free!",
       url: `${baseUrl}/en/profile-autopsy`,
       type: "website",
       locale: "en_US",

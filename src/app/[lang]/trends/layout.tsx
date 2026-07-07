@@ -13,9 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Vibe Kültür Merkezi — Gen-Z Trendleri, Aura & İlişki Analizleri | VibeCheckr",
+      title: "Vibe Kültür Merkezi — Gen-Z Trendleri | VibeCheckr",
       description:
-        "Gen-Z internet trendleri, aura savaşları, situationship psikolojisi, toksik ilişki rehberleri ve daha fazlası. Vibe kültürünün merkezine hoş geldin.",
+        "Gen-Z trendleri, aura savaşları, situationship psikolojisi, toksik ilişki rehberleri. Vibe kültürünün merkezine hoş geldin. → Keşfet!",
       keywords: [
         "vibe trendleri",
         "gen-z trendleri 2026",
@@ -37,20 +37,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Vibe Kültür Merkezi — Gen-Z Trend Analizleri | VibeCheckr",
+        title: "Vibe Kültür Merkezi — Gen-Z Trendleri | VibeCheckr",
         description:
-          "Situationship, ick, delulu, aura savaşları ve daha fazlası. Gen-Z internet kültürünün tüm trendlerini analiz ediyoruz.",
+          "Situationship, ick, delulu, aura savaşları ve daha fazlası. Gen-Z internet kültürünün tüm trendlerini analiz ediyoruz. → Keşfet!",
         url: `${baseUrl}/tr/trends`,
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
       },
     };
   }
 
   return {
-    title: "Vibe Culture Hub — Gen-Z Trends, Aura & Relationship Analysis | VibeCheckr",
+    title: "Vibe Culture Hub — Gen-Z Trends & Aura Analysis | VibeCheckr",
     description:
-      "The internet's pulse on Gen-Z dating trends, aura battles, situationship psychology, toxic red flags, rizz guides, and viral vibe culture. Stay ahead of the trends.",
+      "The internet's pulse on Gen-Z dating trends, aura battles, situationship psychology, toxic red flags, rizz guides & viral vibe culture. → Explore now!",
     keywords: [
       "gen-z trends 2026",
       "vibe check culture",
@@ -74,12 +75,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Vibe Culture Hub — Gen-Z Trends & Relationship Insights | VibeCheckr",
+      title: "Vibe Culture Hub — Gen-Z Trends & Aura Analysis | VibeCheckr",
       description:
-        "Deep dives into Gen-Z dating trends, aura battles, situationships, toxic red flags, rizz, and viral vibe culture. Stay ahead of the trends.",
+        "Deep dives into Gen-Z dating trends, aura battles, situationships, toxic red flags, rizz & viral vibe culture. → Explore now!",
       url: `${baseUrl}/en/trends`,
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
     },
   };
 }

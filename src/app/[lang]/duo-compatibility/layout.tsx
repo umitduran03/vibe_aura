@@ -55,9 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Yapay Zeka İkili Uyum Testi — Kimyanızı Ölçün | VibeCheckr",
+      title: "Yapay Zeka İkili Uyum Testi | VibeCheckr",
       description:
-        "İki fotoğraf yükle ve yapay zeka ilişkinizin tam kimyasını, aura uyumunu ve romantik potansiyelini hesaplasın. Ücretsiz, anında ve acımasızca dürüst.",
+        "İki fotoğraf yükle, yapay zeka ilişki kimyasını, aura uyumunu ve romantik potansiyelinizi hesaplasın. → Hemen dene!",
       keywords: [
         "ikili uyum testi",
         "ilişki kimyası",
@@ -81,10 +81,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       openGraph: {
         title: "Yapay Zeka İkili Uyum Testi — Kimyanızı Ölçün",
         description:
-          "İki fotoğraf yükle ve yapay zeka ilişkinizin tam kimyasını, aura uyumunu ve romantik potansiyelini hesaplasın. Ücretsiz, anında ve acımasızca dürüst.",
+          "İki fotoğraf yükle, yapay zeka ilişki kimyasını, aura uyumunu ve romantik potansiyelinizi hesaplasın. → Hemen dene!",
         url: `${baseUrl}/tr/duo-compatibility`,
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
       other: {
@@ -96,7 +97,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "AI Duo Compatibility Test — Check Your Chemistry | VibeCheckr",
     description:
-      "Upload two photos and let our AI calculate your exact relationship chemistry, aura blend, and romantic compatibility. Free, instant, and brutally honest.",
+      "Upload two photos & let AI calculate your exact relationship chemistry, aura blend & romantic compatibility. Brutal honesty. → Try free!",
     keywords: [
       "duo compatibility",
       "relationship chemistry test",
@@ -118,12 +119,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "AI Duo Compatibility Test — Check Your Chemistry",
+      title: "AI Duo Compatibility Test — Check Your Chemistry | VibeCheckr",
       description:
-        "Upload two photos and let our AI calculate your exact relationship chemistry, aura blend, and romantic compatibility. Free, instant, and brutally honest.",
+        "Upload two photos & let AI calculate your exact relationship chemistry, aura blend & romantic compatibility. Brutal honesty. → Try free!",
       url: `${baseUrl}/en/duo-compatibility`,
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
     other: {

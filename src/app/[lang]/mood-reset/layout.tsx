@@ -55,9 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Mood Reset (YZ) — Acımasızca Dürüst Uyanış Çağrısı | VibeCheckr",
+      title: "Mood Reset YZ — Acımasız Uyanış Çağrısı | VibeCheckr",
       description:
-        "Kötü bir gün mü geçiriyorsun? Ruh halini düzeltmek, sızlanmayı bırakmak ve vibe'ını şarj etmek için yapay zekadan acımasızca dürüst bir reset al.",
+        "Kötü bir gün mü? Yapay zeka sızlanmayı bırakman, vibe'ını şarj etmen için acımasızca dürüst bir reset verir. → Hemen dene!",
       keywords: [
         "mood reset",
         "ruh hali düzeltici",
@@ -79,12 +79,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Mood Reset (YZ) — Acımasızca Dürüst Uyanış Çağrısı",
+        title: "Mood Reset YZ — Acımasız Uyanış Çağrısı | VibeCheckr",
         description:
-          "Kötü bir gün mü geçiriyorsun? Ruh halini düzeltmek, sızlanmayı bırakmak ve vibe'ını şarj etmek için yapay zekadan acımasızca dürüst bir reset al.",
+          "Kötü bir gün mü? Yapay zeka sızlanmayı bırakman, vibe'ını şarj etmen için acımasızca dürüst bir reset verir. → Hemen dene!",
         url: `${baseUrl}/tr/mood-reset`,
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
       other: {
@@ -94,9 +95,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Mood Reset AI — Brutally Honest Wake-up Call | VibeCheckr",
+    title: "Mood Reset AI — Brutal Wake-up Call | VibeCheckr",
     description:
-      "Having a bad day? Get a brutally honest wake-up call from our AI to fix your mood, stop complaining, and recharge your vibe instantly.",
+      "Bad day? Get a brutally honest AI wake-up call to fix your mood & recharge your vibe instantly. Stop spiraling. → Try free!",
     keywords: [
       "mood reset ai",
       "fix bad mood",
@@ -118,12 +119,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Mood Reset AI — Brutally Honest Wake-up Call",
+      title: "Mood Reset AI — Brutal Wake-up Call | VibeCheckr",
       description:
-        "Having a bad day? Get a brutally honest wake-up call from our AI to fix your mood, stop complaining, and recharge your vibe instantly.",
+        "Bad day? Get a brutally honest AI wake-up call to fix your mood & recharge your vibe instantly. Stop spiraling. → Try free!",
       url: `${baseUrl}/en/mood-reset`,
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
     other: {

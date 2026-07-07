@@ -44,8 +44,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Aura Savaşı — Kim Daha Cool? Yapay Zeka Aura Battle | VibeCheckr",
-      description: "Arkadaşınla aura savaşına gir! İki fotoğrafı yükle, yapay zeka kimin aura puanının daha yüksek olduğuna karar versin. Arkadaş grubundaki tartışmayı bitir.",
+      title: "Aura Savaşı — Kim Daha Cool? | VibeCheckr",
+      description: "Arkadaşınla aura savaşına gir! İki fotoğraf yükle, yapay zeka kimin aura puanı daha yüksek karar versin. Tartışmayı bitir. → Hemen dene!",
       keywords: ["aura savaşı", "kim daha cool", "aura puanı karşılaştırma", "aura battle yapay zeka", "arkadaş aura testi"],
       alternates: {
         canonical: `${baseUrl}/tr/aura-battle`,
@@ -56,8 +56,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Aura Savaşı — Kim Daha Cool? Yapay Zeka Aura Battle",
-        description: "Arkadaşınla aura savaşına gir! İki fotoğrafı yükle, yapay zeka kimin aura puanının daha yüksek olduğuna karar versin. Arkadaş grubundaki tartışmayı bitir.",
+        title: "Aura Savaşı — Kim Daha Cool? | VibeCheckr",
+        description: "Arkadaşınla aura savaşına gir! İki fotoğraf yükle, yapay zeka kimin aura puanı daha yüksek karar versin. Tartışmayı bitir. → Hemen dene!",
         url: `${baseUrl}/tr/aura-battle`,
         type: "website",
         locale: "tr_TR",
@@ -70,8 +70,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Aura Battle — Who is Cooler? AI Aura Clash | VibeCheckr",
-    description: "Enter an aura battle with your friend! Upload two photos and let the AI decide who has a higher aura score. End the debate in your group chat.",
+    title: "Aura Battle — Who Has More Aura? | VibeCheckr",
+    description: "Enter an aura battle with your friend! Upload two photos, let AI decide who has a higher aura score. End the group chat debate. → Try free!",
     keywords: ["aura battle", "who has more aura", "aura battle who is cooler", "aura score battle", "friend aura comparison ai", "aura points test", "aura fight"],
     alternates: {
       canonical: `${baseUrl}/en/aura-battle`,
@@ -82,8 +82,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Aura Battle — Who is Cooler? AI Aura Clash",
-      description: "Enter an aura battle with your friend! Upload two photos and let the AI decide who has a higher aura score. End the debate in your group chat.",
+      title: "Aura Battle — Who Has More Aura? | VibeCheckr",
+      description: "Enter an aura battle with your friend! Upload two photos, let AI decide who has a higher aura score. End the group chat debate. → Try free!",
       url: `${baseUrl}/en/aura-battle`,
       type: "website",
       locale: "en_US",

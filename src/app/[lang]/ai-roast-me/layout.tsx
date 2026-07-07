@@ -55,9 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Yapay Zeka (AI) Fotoğraf Gömmesi & Vibe Check | VibeCheckr",
+      title: "AI Fotoğraf Gömmesi & Vibe Check | VibeCheckr",
       description:
-        "Bir selfie yükle ve yapay zekanın acımasız gerçeklerle yüzleşmeni sağlamasına izin ver. En dürüst AI vibe check ve aura analizi uygulaması.",
+        "Selfie yükle, yapay zeka acımasız gerçeklerle yüzleşmeni sağlasın. En dürüst AI aura analizi ve vibe check uygulaması. → Hemen dene!",
       keywords: [
         "yapay zeka fotoğraf gömme",
         "ai roast me türkçe",
@@ -79,9 +79,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Yapay Zeka (AI) Fotoğraf Gömmesi & Vibe Check",
+        title: "AI Fotoğraf Gömmesi & Vibe Check | VibeCheckr",
         description:
-          "Bir selfie yükle ve yapay zekanın acımasız gerçeklerle yüzleşmeni sağlamasına izin ver. En dürüst AI vibe check ve aura analizi uygulaması.",
+          "Selfie yükle, yapay zeka acımasız gerçeklerle yüzleşmeni sağlasın. En dürüst AI aura analizi ve vibe check uygulaması. → Hemen dene!",
         url: `${baseUrl}/tr/ai-roast-me`,
         type: "website",
         locale: "tr_TR",
@@ -96,7 +96,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "AI Roast Me & Photo Vibe Check | VibeCheckr",
     description:
-      "Upload a selfie and let the AI roast you with brutal facts. The most honest AI vibe check and aura analysis app.",
+      "Upload a selfie and let AI roast you with brutal facts. The most honest aura analysis & vibe check app. → Try free!",
     keywords: [
       "ai roast me",
       "vibe check app",
@@ -118,9 +118,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "AI Roast Me & Photo Vibe Check",
+      title: "AI Roast Me & Photo Vibe Check | VibeCheckr",
       description:
-        "Upload a selfie and let the AI roast you with brutal facts. The most honest AI vibe check and aura analysis app.",
+        "Upload a selfie and let AI roast you with brutal facts. The most honest aura analysis & vibe check app. → Try free!",
       url: `${baseUrl}/en/ai-roast-me`,
       type: "website",
       locale: "en_US",

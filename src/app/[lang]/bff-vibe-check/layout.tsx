@@ -55,9 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "BFF Vibe Check & Kanka Uyumu (YZ) | VibeCheckr",
+      title: "BFF Vibe Check & Kanka Uyumu | VibeCheckr",
       description:
-        "İki fotoğraf yükle ve yapay zeka en yakın arkadaşınla (BFF) aranızdaki kaos seviyesini, gizli rolleri ve dedikodu uyumunuzu ortaya çıkarsın.",
+        "İki fotoğraf yükle, yapay zeka BFF'inizin kaos seviyesini, gizli rolleri ve dedikodu uyumunu ortaya çıkarsın. → Hemen dene!",
       keywords: [
         "bff vibe check",
         "kanka uyumu testi",
@@ -79,9 +79,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "BFF Vibe Check & Kanka Uyumu (YZ)",
+        title: "BFF Vibe Check & Kanka Uyumu | VibeCheckr",
         description:
-          "İki fotoğraf yükle ve yapay zeka en yakın arkadaşınla (BFF) aranızdaki kaos seviyesini, gizli rolleri ve dedikodu uyumunuzu ortaya çıkarsın.",
+          "İki fotoğraf yükle, yapay zeka BFF'inizin kaos seviyesini, gizli rolleri ve dedikodu uyumunu ortaya çıkarsın. → Hemen dene!",
         url: `${baseUrl}/tr/bff-vibe-check`,
         type: "website",
         locale: "tr_TR",
@@ -96,7 +96,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "BFF Vibe Check & Friendship Compatibility AI | VibeCheckr",
     description:
-      "Upload two photos and let AI reveal your chaos level, hidden roles, and gossip synergy with your best friend.",
+      "Upload two photos and let AI reveal your chaos level, hidden roles, and gossip synergy with your best friend. → Try free!",
     keywords: [
       "bff vibe check",
       "best friend compatibility test",
@@ -118,9 +118,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "BFF Vibe Check & Friendship Compatibility AI",
+      title: "BFF Vibe Check & Friendship Compatibility AI | VibeCheckr",
       description:
-        "Upload two photos and let AI reveal your chaos level, hidden roles, and gossip synergy with your best friend.",
+        "Upload two photos and let AI reveal your chaos level, hidden roles, and gossip synergy with your best friend. → Try free!",
       url: `${baseUrl}/en/bff-vibe-check`,
       type: "website",
       locale: "en_US",

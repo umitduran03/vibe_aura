@@ -19,11 +19,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://thevibecheckr.com"),
   title: {
-    default: "VibeCheckr — AI Vibe Check, Photo Analysis, Roast & Personality Test",
+    default: "VibeCheckr — AI Vibe Check & Photo Roast 🔥",
     template: "%s | VibeCheckr",
   },
   description:
-    "Free AI-powered vibe check & photo roast app for Gen-Z. Upload your selfie, get brutally honest personality analysis, savage roasts, zodiac-based compatibility checks, and shareable result cards. Try the viral AI roast trend now!",
+    "Upload your selfie → get a brutally honest AI personality analysis, aura score & savage roast. Zodiac compatibility, duo chemistry checks & shareable cards. Free & instant. Try now →",
   keywords: [
     // Core — High Intent (Search Console Validated)
     "vibe check", "vibe testi", "vibe check ne demek", "vibe checker",
@@ -66,8 +66,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "VibeCheckr — AI Vibe Check, Photo Analysis, Roast & Personality Test",
-    description: "Upload your selfie, get brutally honest AI personality analysis & savage roasts. Zodiac compatibility, duo chemistry checks, and viral shareable result cards. Free & instant!",
+    title: "VibeCheckr — AI Vibe Check & Photo Roast 🔥",
+    description: "Upload your selfie → AI reveals your aura score, toxic traits & gives a savage roast. Zodiac compatibility, duo chemistry checks & viral result cards. 100% free, instant results →",
     url: "https://thevibecheckr.com",
     siteName: "VibeCheckr",
     type: "website",
@@ -83,8 +83,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "VibeCheckr — AI Vibe Check & Photo Roast 🔥",
-    description: "Upload your selfie. Get roasted by AI. Share the chaos. The viral Gen-Z personality analysis app. 💀✨",
+    title: "VibeCheckr — AI Vibe Check & Savage Photo Roast 🔥",
+    description: "Drop your selfie. Get roasted by AI. Share the chaos 💀✨ Free aura scan, personality analysis & zodiac compatibility. Gen-Z's favorite app → Try now!",
     images: ["/opengraph-image.png"],
     creator: "@vibecheckr",
   },
@@ -114,7 +114,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
       <head>
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="D41h1N2A_WHp7CwkRMW19KP1XYPFdQ6YdXXH_edJ1xQ" />
@@ -124,51 +124,69 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "WebApplication",
-              name: "VibeCheckr",
-              url: "https://thevibecheckr.com",
-              description: "Free AI-powered vibe check & photo roast app. Upload your selfie, get brutally honest personality analysis, savage roasts, and zodiac-based compatibility checks.",
-              applicationCategory: "EntertainmentApplication",
-              operatingSystem: "Web, Android, iOS",
-              browserRequirements: "Requires JavaScript",
-              softwareVersion: "2.0",
-              isAccessibleForFree: true,
-              audience: {
-                "@type": "Audience",
-                audienceType: "Gen-Z, Young Adults, Singles, Couples"
-              },
-              offers: {
-                "@type": "Offer",
-                price: "0",
-                priceCurrency: "USD",
-                availability: "https://schema.org/InStock",
-              },
-              creator: {
-                "@type": "Organization",
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
                 name: "VibeCheckr",
                 url: "https://thevibecheckr.com",
+                inLanguage: ["en", "tr"],
+                description: "Free AI-powered vibe check & photo roast app. Upload your selfie, get brutally honest personality analysis, savage roasts, and zodiac-based compatibility checks.",
+                applicationCategory: "EntertainmentApplication",
+                operatingSystem: "Web, Android, iOS",
+                browserRequirements: "Requires JavaScript",
+                softwareVersion: "2.0",
+                isAccessibleForFree: true,
+                audience: {
+                  "@type": "Audience",
+                  audienceType: "Gen-Z, Young Adults, Singles, Couples"
+                },
+                offers: {
+                  "@type": "Offer",
+                  price: "0",
+                  priceCurrency: "USD",
+                  availability: "https://schema.org/InStock",
+                },
+                creator: {
+                  "@type": "Organization",
+                  name: "VibeCheckr",
+                  url: "https://thevibecheckr.com",
+                },
+                featureList: [
+                  "AI Photo Personality Analysis",
+                  "Savage AI Photo Roast",
+                  "AI Soulmate Finder",
+                  "Duo Flirt Compatibility Check",
+                  "Ex Relationship Analyzer",
+                  "BFF Roast",
+                  "Platonic Compatibility",
+                  "Zodiac-Based Daily Vibe",
+                  "Toxic Ex Scanner",
+                  "Situationship Clarifier",
+                  "Delulu Check",
+                  "Rizz Architect",
+                  "Reply Guru",
+                  "Mood Reset",
+                  "Shareable Result Cards",
+                ],
+                screenshot: "https://thevibecheckr.com/opengraph-image.png",
               },
-              featureList: [
-                "AI Photo Personality Analysis",
-                "Savage AI Photo Roast",
-                "AI Soulmate Finder",
-                "Duo Flirt Compatibility Check",
-                "Ex Relationship Analyzer",
-                "BFF Roast",
-                "Platonic Compatibility",
-                "Zodiac-Based Daily Vibe",
-                "Toxic Ex Scanner",
-                "Situationship Clarifier",
-                "Delulu Check",
-                "Rizz Architect",
-                "Reply Guru",
-                "Mood Reset",
-                "Shareable Result Cards",
-              ],
-              screenshot: "https://thevibecheckr.com/opengraph-image.png",
-            }),
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "VibeCheckr",
+                url: "https://thevibecheckr.com",
+                inLanguage: ["en", "tr"],
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: {
+                    "@type": "EntryPoint",
+                    urlTemplate: "https://thevibecheckr.com/en/trends?q={search_term_string}"
+                  },
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]),
           }}
         />
 

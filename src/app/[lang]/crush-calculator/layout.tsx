@@ -55,9 +55,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Crush Uyumu & Platonik Aşk Testi (YZ) | VibeCheckr",
+      title: "Crush Uyumu & Platonik Aşk Testi | VibeCheckr",
       description:
-        "Platonik aşkınla aranızda gerçekten bir kıvılcım var mı, yoksa hepsi senin kafanda mı? İki fotoğraf yükle, yapay zeka delulu seviyeni ölçsün.",
+        "Gerçekten bir kıvılcım var mı, yoksa hepsi kafanda mı? İki fotoğraf yükle, yapay zeka delulu seviyeni ölçsün. → Hemen dene!",
       keywords: [
         "crush uyumu",
         "platonik aşk testi",
@@ -79,9 +79,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Crush Uyumu & Platonik Aşk Testi (YZ)",
+        title: "Crush Uyumu & Platonik Aşk Testi | VibeCheckr",
         description:
-          "Platonik aşkınla aranızda gerçekten bir kıvılcım var mı, yoksa hepsi senin kafanda mı? İki fotoğraf yükle, yapay zeka delulu seviyeni ölçsün.",
+          "Gerçekten bir kıvılcım var mı, yoksa hepsi kafanda mı? İki fotoğraf yükle, yapay zeka delulu seviyeni ölçsün. → Hemen dene!",
         url: `${baseUrl}/tr/crush-calculator`,
         type: "website",
         locale: "tr_TR",
@@ -96,7 +96,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: "Crush Calculator & Platonic Love Test AI | VibeCheckr",
     description:
-      "Is there a real spark, or is it all in your head? Upload two photos and let the AI measure your delulu level with your crush.",
+      "Real spark or all in your head? Upload two photos and let AI measure your delulu level with your crush. Instant results. → Try free!",
     keywords: [
       "crush calculator",
       "does my crush like me test",
@@ -118,9 +118,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Crush Calculator & Platonic Love Test AI",
+      title: "Crush Calculator & Platonic Love Test AI | VibeCheckr",
       description:
-        "Is there a real spark, or is it all in your head? Upload two photos and let the AI measure your delulu level with your crush.",
+        "Real spark or all in your head? Upload two photos and let AI measure your delulu level with your crush. Instant results. → Try free!",
       url: `${baseUrl}/en/crush-calculator`,
       type: "website",
       locale: "en_US",
