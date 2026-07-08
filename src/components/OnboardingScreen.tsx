@@ -111,7 +111,9 @@ export default function OnboardingScreen() {
   if (!mounted) return null;
 
   // Auth settling veya Firestore'dan sözleşme bilgisi beklenirken → loading screen
-  if (isAuthSettling || (userId && hasAcceptedTerms === undefined)) {
+  // hasAcceptedTerms null = henüz Firestore'dan gelmedi, undefined = hiç set edilmedi
+  // Her iki durumda da userId varsa loader göster, login ekranını asla gösterme
+  if (isAuthSettling || (userId && hasAcceptedTerms == null)) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-transparent w-full overflow-hidden relative">
         <m.div 
