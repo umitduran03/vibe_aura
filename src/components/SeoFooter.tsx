@@ -102,6 +102,18 @@ export default function SeoFooter() {
           <p className="text-white/60 text-sm leading-relaxed">
             {s.tagline}
           </p>
+          <div className="pt-2 hover:opacity-90 transition-opacity">
+            <a href="https://www.producthunt.com/products/vibecheckr?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-vibecheckr" target="_blank" rel="noopener noreferrer">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img 
+                src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1191384&theme=dark" 
+                alt="VibeCheckr - Drop your selfie. Get roasted by AI. Share the chaos 🔥 | Product Hunt" 
+                style={{ width: '250px', height: '54px' }} 
+                width="250" 
+                height="54" 
+              />
+            </a>
+          </div>
         </div>
 
         {/* AI Features */}
