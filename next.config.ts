@@ -8,15 +8,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: isMobileBuild,
   },
-  /**
-   * Performans: Critical CSS'i inline et, geri kalanı defer et.
-   * Bu özellik Critters küttüphanesini kullanır (Next.js built-in).
-   * Render-blocking CSS chunk’larını kritik yoldan kaldırır (−~620 ms FCP).
-   * Sadece server render (non-mobile) build'lerde etkin.
-   */
-  experimental: isMobileBuild ? {} : {
-    optimizeCss: true,
-  },
+
   ...(isMobileBuild ? {} : {
     /**
      * Security Headers — Tüm sayfalara güvenlik başlıkları ekler.

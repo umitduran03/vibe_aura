@@ -191,10 +191,9 @@ export default function RootLayout({
         />
 
 
-        {/* Firebase API'larına DNS Prefetch (preconnect değil — ilk yüklemede kullanılmıyor) */}
-        {/* Lighthouse: "Unused preconnect" uyarısını bu değişiklik giderir */}
-        <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
-        <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
+        {/* Preconnect to Critical Firebase APIs (Lighthouse Fix: Max 2-3 preconnects) */}
+        <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
         
         {/* Sadece DNS-prefetch yap (Network'ü tıkamaz ama DNS'i hazır eder) */}
         <link rel="dns-prefetch" href="https://firebaseinstallations.googleapis.com" />
