@@ -190,9 +190,11 @@ export default function RootLayout({
           }}
         />
 
-        {/* Preconnect to Critical Firebase APIs (Lighthouse Fix: Max 2-3 preconnects) */}
-        <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
+
+        {/* Firebase API'larına DNS Prefetch (preconnect değil — ilk yüklemede kullanılmıyor) */}
+        {/* Lighthouse: "Unused preconnect" uyarısını bu değişiklik giderir */}
+        <link rel="dns-prefetch" href="https://identitytoolkit.googleapis.com" />
+        <link rel="dns-prefetch" href="https://firestore.googleapis.com" />
         
         {/* Sadece DNS-prefetch yap (Network'ü tıkamaz ama DNS'i hazır eder) */}
         <link rel="dns-prefetch" href="https://firebaseinstallations.googleapis.com" />
@@ -214,12 +216,14 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Google AdSense — afterInteractive: SSR sonrası yüklenir, hydration mismatch yaratmaz */}
+        {/* Google AdSense — lazyOnload: Tüm sayfa kaynakları yüklendikten SONRA başlar.
+             afterInteractive → lazyOnload geçişi: LCP/FCP etkilenmez, TBT azalır.
+             Kullanıcı etkileşimine göre değil, load event'e göre tetiklenir. */}
         <Script
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4394628220494584"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
         {/* GLOBAL PRE-LOADER: Orijinal Neon V Wave */}
         <div 
@@ -250,7 +254,11 @@ export default function RootLayout({
           `}} />
           
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} />
+          {/* WebP: ~49 KB | PNG fallback: 73 KB (eski tarayıcılar için) */}
+          <picture>
+            <source srcSet="/v-wave.webp" type="image/webp" />
+            <img src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} />
+          </picture>
         </div>
 
         <GlobalLoaderRemover />
