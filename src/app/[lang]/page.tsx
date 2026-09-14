@@ -4,7 +4,7 @@
  * Bu dosya kasitli olarak Server Component'tir.
  * Googlebot SSR ile render edilen SEO icerigini buradan okur.
  *
- * HomeSeoContent: Gorunmez ama taranabilir semantik HTML (h1, h2, linkler)
+ * HomeSeoContent: GORUNUR semantik HTML (h1, h2, feature grid, trend linkler)
  * HomeClient: Tum uygulama mantigi, 'use client' ile calisir
  */
 
@@ -21,11 +21,11 @@ export default async function Home({ params }: Props) {
 
   return (
     <>
-      {/* SSR: Googlebot icin semantik icerik. Kullanici gormez. */}
-      <HomeSeoContent lang={locale} />
-
       {/* Client: Tum uygulama mantigi */}
       <HomeClient />
+
+      {/* SSR: Gorunur SEO icerigi — feature grid, trend linkler */}
+      <HomeSeoContent lang={locale} />
     </>
   );
 }

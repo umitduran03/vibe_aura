@@ -9,9 +9,11 @@ import InArticleAd from "@/components/InArticleAd";
 
 export async function generateStaticParams() {
   const locales = ["en", "tr"];
-  const slugs = trendsDataEn.map((article) => article.slug);
+  const enSlugs = trendsDataEn.map((article) => article.slug);
+  const trSlugs = trendsDataTr.map((article) => article.slug);
+  const allSlugs = [...new Set([...enSlugs, ...trSlugs])];
   return locales.flatMap((lang) =>
-    slugs.map((slug) => ({ lang, slug }))
+    allSlugs.map((slug) => ({ lang, slug }))
   );
 }
 
@@ -43,7 +45,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       description: article.description,
       type: "article",
       publishedTime: article.publishDate,
-      modifiedTime: new Date().toISOString(),
+      modifiedTime: article.publishDate,
       authors: ["VibeCheckr AI"],
       images: images,
       locale: resolvedParams.lang === "tr" ? "tr_TR" : "en_US",
@@ -88,7 +90,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
       }
     },
     datePublished: article.publishDate,
-    dateModified: new Date().toISOString().split("T")[0],
+    dateModified: article.publishDate,
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": `https://thevibecheckr.com/${resolvedParams.lang}/trends/${article.slug}`

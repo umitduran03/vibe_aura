@@ -51,8 +51,10 @@ export function proxy(request: NextRequest) {
   );
 
   if (pathnameLocale) {
-    // Zaten doğru locale'de, devam et
-    return NextResponse.next();
+    // Zaten doğru locale'de — x-locale header ekle ve devam et
+    const response = NextResponse.next();
+    response.headers.set("x-locale", pathnameLocale);
+    return response;
   }
 
   // Locale yok → tespit et ve yönlendir

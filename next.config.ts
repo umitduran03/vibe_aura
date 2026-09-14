@@ -9,6 +9,16 @@ const nextConfig: NextConfig = {
     unoptimized: isMobileBuild,
   },
 
+  // Büyük paketlerde otomatik tree-shaking — bundle boyutunu küçültür
+  experimental: {
+    optimizePackageImports: ["lucide-react", "framer-motion"],
+  },
+
+  // Production build'de console.log'ları kaldır — TBT iyileştirmesi
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error", "warn"] } : false,
+  },
+
   ...(isMobileBuild ? {} : {
     /**
      * Security Headers — Tüm sayfalara güvenlik başlıkları ekler.

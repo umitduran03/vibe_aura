@@ -1,12 +1,9 @@
 /**
  * HomeSeoContent — Server Component
  *
- * Googlebot ve diger arama motoru botlarinin tarayabilecegi statik SEO icerigi.
- * Mevcut "use client" page.tsx hicbir logic degistirmeden ustune eklenir.
- *
- * Strateji: position:absolute; left:-9999px ile gorunmez ama DOM icinde var.
- * Googlebot JavaScript gerektirmeden okuyabilir.
- * NOT: display:none veya visibility:hidden KULLANILMAZ — spam sinyali sayilir.
+ * Ana sayfadaki SEO içeriği. Hem kullanıcıya hem Googlebot'a GÖRÜNÜR şekilde sunulur.
+ * Gizli metin tekniği (clip, position:absolute, 1px) Google tarafından spam olarak
+ * algılanır ve sıralama cezası verir — bu yüzden içerik normal şekilde render edilir.
  */
 
 import Link from "next/link";
@@ -23,7 +20,7 @@ const seoContent = {
     featuresTitle: "AI-Powered Features",
     features: [
       { name: "AI Vibe Check", desc: "Upload your selfie for a free AI personality analysis and aura score.", href: "/en" },
-      { name: "AI Photo Roast", desc: "Get roasted by AI. Savage, brutally honest, and hilarious results.", href: "/en?feature=ai-roast-me" },
+      { name: "AI Photo Roast", desc: "Get roasted by AI. Savage, brutally honest, and hilarious results.", href: "/en/ai-roast-me" },
       { name: "Delulu Check", desc: "Am I delusional? Take the AI reality check before you double text.", href: "/en/delulu-check" },
       { name: "Aura Battle", desc: "Upload two photos. AI decides who has the stronger aura.", href: "/en/aura-battle" },
       { name: "Duo Compatibility", desc: "Test your relationship chemistry with AI photo analysis.", href: "/en/duo-compatibility" },
@@ -56,7 +53,7 @@ const seoContent = {
     featuresTitle: "Yapay Zeka Özellikleri",
     features: [
       { name: "Yapay Zeka Vibe Check", desc: "Selfie yükle, ücretsiz yapay zeka kişilik analizi ve aura skoru al.", href: "/tr" },
-      { name: "Fotoğraf Roast", desc: "Yapay zeka seni acımasızca eleştiriyor. Dene.", href: "/tr?feature=ai-roast-me" },
+      { name: "Fotoğraf Roast", desc: "Yapay zeka seni acımasızca eleştiriyor. Dene.", href: "/tr/ai-roast-me" },
       { name: "Delulu Check", desc: "Delulu muyum? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap.", href: "/tr/delulu-check" },
       { name: "Aura Savaşı", desc: "İki fotoğraf yükle, yapay zeka kimin aurasının güçlü olduğuna karar versin.", href: "/tr/aura-battle" },
       { name: "İkili Uyum Testi", desc: "Fotoğraflarla ilişki kimyasını test et. Romantik veya platonik uyumunu öğren.", href: "/tr/duo-compatibility" },
@@ -85,58 +82,76 @@ const seoContent = {
 };
 
 /**
- * Gorsel olarak gizli ama DOM ve botlar icin erisebilir SEO icerigi.
- * Kullanici goremez, Googlebot okuyabilir.
+ * SEO içeriği — kullanıcıya GÖRÜNÜR, sayfanın alt kısmında yer alır.
+ * Feature listesi, trend linkleri ve sözlük bağlantısı içerir.
  */
 export default function HomeSeoContent({ lang }: Props) {
   const c = seoContent[lang] ?? seoContent.en;
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        width: "1px",
-        height: "1px",
-        padding: 0,
-        margin: "-1px",
-        overflow: "hidden",
-        clip: "rect(0, 0, 0, 0)",
-        whiteSpace: "nowrap",
-        border: 0,
-      }}
-    >
-      <h1>{c.h1}</h1>
-      <p>{c.tagline}</p>
+    <div className="relative z-10 max-w-4xl mx-auto px-6 py-16 border-t border-white/10">
+      <h1 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
+        {c.h1}
+      </h1>
+      <p className="text-lg text-white/70 mb-12 leading-relaxed max-w-2xl">
+        {c.tagline}
+      </p>
 
-      <section>
-        <h2>{c.featuresTitle}</h2>
-        <ul>
+      <section className="mb-12">
+        <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+          {c.featuresTitle}
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {c.features.map((f) => (
-            <li key={f.href}>
-              <Link href={f.href}>
-                <strong>{f.name}</strong>
-              </Link>
-              <span> {f.desc}</span>
-            </li>
+            <Link
+              key={f.href}
+              href={f.href}
+              className="group block p-4 rounded-xl bg-white/5 border border-white/10 hover:bg-white/[0.08] hover:border-indigo-500/30 transition-all"
+            >
+              <strong className="text-white text-sm font-semibold group-hover:text-indigo-300 transition-colors">
+                {f.name}
+              </strong>
+              <p className="text-white/50 text-xs mt-1 leading-relaxed">
+                {f.desc}
+              </p>
+            </Link>
           ))}
-        </ul>
+        </div>
       </section>
 
-      <section>
-        <h2>{c.trendsTitle}</h2>
-        <ul>
+      <section className="mb-12">
+        <h2 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-pink-500" />
+          {c.trendsTitle}
+        </h2>
+        <div className="flex flex-wrap gap-2">
           {c.trends.map((t) => (
-            <li key={t.href}>
-              <Link href={t.href}>{t.name}</Link>
-            </li>
+            <Link
+              key={t.href}
+              href={t.href}
+              className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/70 text-sm hover:bg-indigo-500/20 hover:border-indigo-500/30 hover:text-white transition-all"
+            >
+              {t.name}
+            </Link>
           ))}
-        </ul>
+        </div>
       </section>
 
       <section>
-        <h2>{c.dictionaryTitle}</h2>
-        <p>{c.dictionaryDesc}</p>
-        <Link href={c.dictionaryHref}>{c.dictionaryTitle}</Link>
+        <h2 className="text-xl font-bold text-white mb-3 flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          {c.dictionaryTitle}
+        </h2>
+        <p className="text-white/60 text-sm mb-4 leading-relaxed max-w-xl">
+          {c.dictionaryDesc}
+        </p>
+        <Link
+          href={c.dictionaryHref}
+          className="inline-flex items-center text-indigo-400 text-sm font-medium hover:text-indigo-300 transition-colors"
+        >
+          {c.dictionaryTitle} →
+        </Link>
       </section>
     </div>
   );

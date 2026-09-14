@@ -590,36 +590,6 @@ export const trendsDataEn: TrendArticle[] = [
     ctaLink: "/duo-compatibility",
   },
   {
-    slug: "what-is-the-ick",
-    title: "What is 'The Ick'? And Can You Ever Come Back From It?",
-    description: "One moment they're perfect. The next, you watched them run for the bus and now you can never look at them the same way again. Welcome to the ick.",
-    category: "Culture & Slang",
-    publishDate: "2026-06-22",
-    readTime: "4 min read",
-    keywords: ["what is the ick", "ick meaning", "ick examples", "ick in dating", "sudden loss of attraction", "why did i get the ick", "ick vs red flag"],
-    imageUrl: "/images/trends/the-ick.webp",
-    content: {
-      intro: "You liked them. Like, genuinely liked them. The butterflies were real, the chemistry was electric, and you were mentally planning your future together. Then one day, without any warning or logical reason, you watched them do something completely mundane — run for a bus, eat a sandwich in a specific way, or use a baby voice on the phone — and something inside you died. Instantly, irreversibly, and completely. Every ounce of attraction evaporated, replaced by a visceral feeling of repulsion that you can't explain, justify, or undo. Congratulations: you just got the ick. And no, you cannot come back from it.",
-      sections: [
-        {
-          heading: "The Psychology Behind the Ick",
-          paragraph: "The ick isn't just a TikTok trend — it's a genuine psychological phenomenon. Psychologists believe it's related to a sudden shift in perception where the 'halo effect' (viewing someone favorably because you're attracted to them) collapses instantaneously. One trigger — usually something that makes the person seem childish, awkward, or 'unsexy' — breaks the spell. Once your brain reclassifies them from 'romantic interest' to 'awkward human,' it's almost impossible to reverse. Your subconscious is essentially saying: 'I've seen enough. This person is not a viable mate.' It's brutal, it's unfair, and it's devastatingly permanent."
-        },
-        {
-          heading: "The Most Common Icks (Warning: You May Relate)",
-          paragraph: "The internet has catalogued thousands of icks, and the beauty of them is how absurdly specific they are. Running with a backpack on. Clapping when the plane lands. Using the word 'yummy.' Walking too fast. Walking too slow. Taking too long to order food. Saying 'that's what she said' in 2026. Wearing a lanyard. Having their phone on full brightness. Waving for a waiter and being ignored. The thing about icks is that they're not rational — they're instinctive. They reveal something about your subconscious preferences that you didn't even know existed."
-        },
-        {
-          heading: "Ick vs. Red Flag: Know the Difference",
-          paragraph: "Here's the crucial distinction. An ick is an irrational, harmless trigger that kills your personal attraction. A red flag is a legitimate warning sign of toxic or dangerous behavior. Watching someone trip up the stairs is an ick. Watching someone scream at a waiter is a red flag. Both might make you lose attraction, but only one should genuinely concern you. The ick is your taste in packaging; the red flag is the product itself being defective. Don't confuse them — and don't ignore actual red flags by dismissing them as 'just an ick.'"
-        }
-      ],
-      conclusion: "The ick is a reminder that attraction is not entirely within our conscious control. You can't logic your way out of it, and you definitely can't force yourself to un-ick someone. The best approach? Accept it, move on, and pray that you never give someone the ick by running for a bus in their line of sight."
-    },
-    ctaLabel: "Scan Their Red Flags",
-    ctaLink: "/toxic-ex-scanner",
-  },
-  {
     slug: "love-languages-which-one-are-you",
     title: "The 5 Love Languages: Which One Are You (and Why It Matters)?",
     description: "Words of affirmation? Physical touch? Quality time? Understanding your love language — and your partner's — is the cheat code to healthier relationships.",
