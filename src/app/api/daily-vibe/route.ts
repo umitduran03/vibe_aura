@@ -23,8 +23,8 @@ const groq = new OpenAI({
 // Model fallback zinciri: ilki meşgulse sıradakini dene
 const MODEL_CHAIN = [
   "gemini-2.5-flash",
-  "gemini-2.0-flash",
   "gemini-3-flash-preview",
+  "gemini-flash-lite-latest", // gemini-2.0-flash ve 2.5-flash-lite 404 döndüğü için aktif lite takma adı
 ];
 
 /* =============================================
@@ -82,7 +82,8 @@ async function generateWithGroqFallback(
   promptText: string
 ): Promise<{ text: string }> {
   const completion = await groq.chat.completions.create({
-    model: "gpt-oss-120b",
+    // "openai/" ön eki zorunlu — eski "gpt-oss-120b" model_not_found veriyordu (2026-10-16)
+    model: "openai/gpt-oss-120b",
     messages: [
       {
         role: "system",
@@ -95,6 +96,8 @@ async function generateWithGroqFallback(
     ],
     temperature: 0.95,
     max_tokens: 800,
+    // Reasoning token'ları max_tokens'tan yer; düşük tut ki yanıt kesilmesin
+    reasoning_effort: "low",
   });
 
   const responseText = completion.choices?.[0]?.message?.content || "";

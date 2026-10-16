@@ -36,11 +36,24 @@ const openRouter = new OpenAI({
   apiKey: process.env.OPENROUTER_API_KEY || "",
 });
 
+// Son canlı kontrol: 2026-10-16
 const MODEL_CHAIN = [
   "gemini-2.5-flash",
-  "gemini-2.0-flash",
   "gemini-3-flash-preview",
+  "gemini-flash-lite-latest", // gemini-2.0-flash ve 2.5-flash-lite 404 döndüğü için aktif lite takma adı
 ];
+
+// Groq model id'leri artık "openai/" ön ekli — eski "gpt-oss-120b" model_not_found veriyordu.
+// Groq'ta şu an görsel destekli model YOK (llama-3.2-90b-vision-preview kaldırıldı);
+// fotoğraf modunda Groq son çare olarak fotoğrafsız (sadece metin verisiyle) çalışır.
+const GROQ_TEXT_MODEL = "openai/gpt-oss-120b";
+
+// ─── Zaman Bütçesi ────────────────────────────────────────────
+// Vercel maxDuration = 60 sn. Aşılırsa Vercel fonksiyonu öldürür ve kullanıcı HİÇ yanıt alamaz.
+// Waterfall'a 50 sn veriyoruz; kalan ~10 sn JSON parse + Firestore token düşümü için.
+const WATERFALL_BUDGET_MS = 50_000;
+const MIN_ATTEMPT_MS = 4_000;       // Bundan az süre kaldıysa yeni deneme başlatma
+const MAX_ATTEMPTS_PER_MODEL = 2;   // İlk deneme + 1 tekrar
 
 // NOT: Ücretsiz OpenRouter modelleri sık kaldırılıyor. Güncel liste:
 // https://openrouter.ai/api/v1/models  (id'si ":free" ile bitenler)
@@ -118,161 +131,185 @@ function formatOpenAIMessages(params: { contents: any[], systemInstruction: stri
 }
 
 /* =============================================
-   Retry with Gemini model fallback
+   Ortak Deneme Motoru (retry + zaman bütçesi)
    ============================================= */
-async function generateWithGeminiFallback(params: {
-  contents: any[];
-  systemInstruction: string;
-}) {
-  let lastError: any = null;
+type AIParams = { contents: any[]; systemInstruction: string };
+type AIResult = { text: string };
 
-  for (const model of MODEL_CHAIN) {
-    try {
-      const response = await ai.models.generateContent({
-        model,
-        contents: params.contents,
-        config: {
-          systemInstruction: params.systemInstruction,
-          responseMimeType: "application/json",
-        },
-      });
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-      return response;
-    } catch (err: any) {
-      lastError = err;
-      const code = err?.status || err?.code || err?.message || "";
-      console.warn(`[Gemini] ✗ ${model} başarısız (${code}), sıradaki deneniyor...`);
-      // Bütün hatalarda bir sonraki Gemini modelini dene
-      continue;
+function isTimeoutError(err: any) {
+  const name = String(err?.name || "");
+  const msg = String(err?.message || "").toLowerCase();
+  return (
+    name === "TimeoutError" ||
+    name === "AbortError" ||
+    name === "APIConnectionTimeoutError" ||
+    msg.includes("timed out") ||
+    msg.includes("timeout") ||
+    msg.includes("aborted")
+  );
+}
+
+/**
+ * Aynı modeli bir kez daha denemeye değer mi?
+ * - 429 / 5xx / ağ hatası / boş ya da bozuk JSON → EVET (geçici sorun, 2. deneme sık sık tutuyor)
+ * - Zaman aşımı → HAYIR (model yavaş; tekrar beklemek bütçeyi yer, sıradaki modele geç)
+ * - Diğer 4xx (404 model yok, 400 geçersiz istek) → HAYIR (tekrar denense de aynı sonuç)
+ */
+function isRetryable(err: any) {
+  if (isTimeoutError(err)) return false;
+  const status = Number(err?.status);
+  if (!status || Number.isNaN(status)) return true;
+  return status === 408 || status === 429 || status >= 500;
+}
+
+/** Çağıran kodun parse mantığıyla birebir aynı kontrol — bozuk çıktı kullanıcıya 500 olarak gitmesin. */
+function assertParsableJson(text: string) {
+  const clean = text.replace(/```json/g, "").replace(/```/g, "").trim();
+  if (!clean) throw new Error("Empty response");
+  JSON.parse(clean);
+}
+
+/**
+ * Model listesini sırayla dener. Her model en fazla MAX_ATTEMPTS_PER_MODEL kez denenir,
+ * her deneme hem attemptCapMs hem de kalan süre (deadline) ile sınırlıdır.
+ */
+async function tryModels(
+  label: string,
+  models: string[],
+  deadline: number,
+  attemptCapMs: number,
+  call: (model: string, timeoutMs: number) => Promise<string>
+): Promise<AIResult> {
+  let lastError: any = new Error(`[${label}] time budget exhausted before any attempt`);
+
+  for (const model of models) {
+    for (let attempt = 1; attempt <= MAX_ATTEMPTS_PER_MODEL; attempt++) {
+      const left = deadline - Date.now();
+      if (left < MIN_ATTEMPT_MS) throw lastError;
+
+      try {
+        const text = await call(model, Math.min(attemptCapMs, left));
+        assertParsableJson(text);
+        if (attempt > 1) console.log(`[${label}] ✓ ${model} ${attempt}. denemede başarılı`);
+        return { text };
+      } catch (err: any) {
+        lastError = err;
+        const code = err?.status || err?.code || err?.name || err?.message || "";
+        const willRetry = attempt < MAX_ATTEMPTS_PER_MODEL && isRetryable(err);
+        console.warn(
+          `[${label}] ✗ ${model} deneme ${attempt} başarısız (${code})` +
+            (willRetry ? ", tekrar deneniyor..." : ", sıradaki modele geçiliyor...")
+        );
+        if (!willRetry) break;
+        await sleep(err?.status === 429 ? 1500 : 500);
+      }
     }
   }
-  throw lastError || new Error("All Gemini models are currently busy.");
+  throw lastError;
 }
 
 /* =============================================
-   Groq Fallback
+   Sağlayıcılar
    ============================================= */
-async function generateWithGroqFallback(params: {
-  contents: any[];
-  systemInstruction: string;
-}, isVision: boolean = false): Promise<{ text: string }> {
-  const messages = formatOpenAIMessages(params, isVision);
-  const model = isVision ? "llama-3.2-90b-vision-preview" : "gpt-oss-120b";
-  
-  const options: any = {
-    model,
-    messages,
-    temperature: 0.9,
-    max_tokens: 2048,
-  };
-  
-  // Groq Vision modelleri json_object formatını desteklemez, sadece Text modellerinde kullanıyoruz
-  if (!isVision) {
-    options.response_format = { type: "json_object" };
-  }
-
-  const completion = await groq.chat.completions.create(options);
-
-  return { text: completion.choices?.[0]?.message?.content || "" };
+function runGemini(params: AIParams, deadline: number) {
+  return tryModels("Gemini", MODEL_CHAIN, deadline, 25_000, async (model, timeoutMs) => {
+    const response = await ai.models.generateContent({
+      model,
+      contents: params.contents,
+      config: {
+        systemInstruction: params.systemInstruction,
+        responseMimeType: "application/json",
+        abortSignal: AbortSignal.timeout(timeoutMs),
+      },
+    });
+    return response.text || "";
+  });
 }
 
-/* =============================================
-   OpenRouter Fallback
-   ============================================= */
-async function generateWithOpenRouterFallback(params: {
-  contents: any[];
-  systemInstruction: string;
-}, isVision: boolean): Promise<{ text: string }> {
+function runGroq(params: AIParams, deadline: number) {
+  // Groq'ta görsel model olmadığı için her zaman metin formatı; fotoğraf varsa
+  // formatOpenAIMessages "fotoğraflar işlenemiyor, metne göre analiz et" notunu ekler.
+  const messages = formatOpenAIMessages(params, false);
+  return tryModels("Groq", [GROQ_TEXT_MODEL], deadline, 20_000, async (model, timeoutMs) => {
+    const completion = await groq.chat.completions.create(
+      {
+        model,
+        messages,
+        temperature: 0.9,
+        max_tokens: 4096,
+        // gpt-oss bir reasoning modeli; düşünme token'ları max_tokens'tan yer, JSON yarım kalmasın
+        reasoning_effort: "low",
+        response_format: { type: "json_object" },
+      },
+      { timeout: timeoutMs, maxRetries: 0 }
+    );
+    return completion.choices?.[0]?.message?.content || "";
+  });
+}
+
+function runOpenRouter(params: AIParams, deadline: number, isVision: boolean) {
   const messages = formatOpenAIMessages(params, isVision);
   const pool = isVision ? OPENROUTER_VISION_POOL : OPENROUTER_TEXT_POOL;
-  let lastError: any = null;
-
-  for (const model of pool) {
-    try {
-      const completion = await openRouter.chat.completions.create({
+  return tryModels("OpenRouter", pool, deadline, 25_000, async (model, timeoutMs) => {
+    const completion = await openRouter.chat.completions.create(
+      {
         model,
         messages,
         temperature: 0.9,
         max_tokens: 2048,
-        // Ücretsiz OpenRouter modellerinin hepsi strict JSON formatını desteklemediği için bunu kaldırıyoruz.
-        // Zaten System Prompt'ta sadece JSON döndürmesi talimatı verildi.
-      }, {
-        // Ücretsiz modeller bazen dakikalarca asılı kalabiliyor — model başına üst sınır
-        timeout: 25_000,
-        // SDK varsayılanı 2 tekrar deneme; 429'da bekleme süresini 3'e katlıyordu. Havuz zaten sıradakine geçiyor.
-        maxRetries: 0,
-      });
-      const text = completion.choices?.[0]?.message?.content || "";
-      if (!text.trim()) throw new Error("Empty response");
-      return { text };
-    } catch (err: any) {
-      lastError = err;
-      const code = err?.status || err?.code || err?.message || "";
-      console.warn(`[OpenRouter] ✗ ${model} başarısız (${code}), sıradaki deneniyor...`);
-      continue;
-    }
-  }
-  throw lastError || new Error("All OpenRouter models failed.");
+        // Ücretsiz OpenRouter modellerinin hepsi strict JSON formatını desteklemediği için response_format yok.
+        // System Prompt'ta sadece JSON döndürmesi talimatı var; çıktı assertParsableJson ile doğrulanıyor.
+      },
+      // Tekrar denemeyi SDK değil tryModels yönetiyor (bütçeye duyarlı olsun diye)
+      { timeout: timeoutMs, maxRetries: 0 }
+    );
+    return completion.choices?.[0]?.message?.content || "";
+  });
 }
 
 /* =============================================
    Akıllı Waterfall Orkestratörü
+   ---------------------------------------------
+   📸 Fotoğraf: Gemini → OpenRouter Vision → Groq (fotoğrafsız, son çare)
+   📝 Metin:    Groq → Gemini → OpenRouter
+   Her aşamanın kendi süre tavanı var; böylece yavaş bir aşama
+   sonrakilerin süresini yiyip toplamı 60 sn'yi aşmıyor.
    ============================================= */
-async function generateWithWaterfall(params: {
-  contents: any[];
-  systemInstruction: string;
-}) {
+async function generateWithWaterfall(params: AIParams): Promise<AIResult> {
   const hasImages = params.contents.some((p: any) => p.inlineData);
+  const mode = hasImages ? "foto" : "text";
+  const start = Date.now();
+  const deadline = start + WATERFALL_BUDGET_MS;
+  const stageUntil = (ms: number) => Math.min(deadline, Date.now() + ms);
 
-  if (hasImages) {
-    // 📸 FOTOĞRAF MODU: 1. Gemini -> 2. OpenRouter Vision -> 3. Groq Vision
+  const stages: { name: string; run: () => Promise<AIResult> }[] = hasImages
+    ? [
+        { name: "Gemini", run: () => runGemini(params, stageUntil(28_000)) },
+        { name: "OpenRouter Vision", run: () => runOpenRouter(params, deadline - 8_000, true) },
+        { name: "Groq (fotoğrafsız)", run: () => runGroq(params, deadline) },
+      ]
+    : [
+        { name: "Groq", run: () => runGroq(params, stageUntil(15_000)) },
+        { name: "Gemini", run: () => runGemini(params, stageUntil(20_000)) },
+        { name: "OpenRouter", run: () => runOpenRouter(params, deadline, false) },
+      ];
+
+  let firstError: any = null;
+  for (const stage of stages) {
     try {
-      const response = await generateWithGeminiFallback(params);
-      console.log("[Waterfall/foto] ✅ Gemini başarılı.");
-      return response;
-    } catch (geminiError: any) {
-      console.warn(`[Waterfall/foto] ⚠️ Gemini çöktü, OpenRouter Vision'a geçiliyor...`);
-      try {
-        const response = await generateWithOpenRouterFallback(params, true);
-        console.log("[Waterfall/foto] ✅ OpenRouter Vision başarılı.");
-        return response;
-      } catch (openRouterError: any) {
-        console.warn(`[Waterfall/foto] ⚠️ OpenRouter çöktü, Groq Vision'a geçiliyor...`);
-        try {
-          const response = await generateWithGroqFallback(params, true);
-          console.log("[Waterfall/foto] ✅ Groq Vision başarılı.");
-          return response;
-        } catch (groqError: any) {
-          console.error("[Waterfall/foto] ❌ Tüm Vision servisleri başarısız!");
-          throw geminiError; // En anlamlı hatayı (genelde ilk hata) fırlatıyoruz
-        }
-      }
-    }
-  } else {
-    // 📝 METİN MODU: 1. Groq Text -> 2. Gemini -> 3. OpenRouter Text
-    try {
-      const response = await generateWithGroqFallback(params, false);
-      console.log("[Waterfall/text] ✅ Groq Text başarılı.");
-      return response;
-    } catch (groqError: any) {
-      console.warn(`[Waterfall/text] ⚠️ Groq çöktü, Gemini'ye geçiliyor...`);
-      try {
-        const response = await generateWithGeminiFallback(params);
-        console.log("[Waterfall/text] ✅ Gemini başarılı.");
-        return response;
-      } catch (geminiError: any) {
-        console.warn(`[Waterfall/text] ⚠️ Gemini çöktü, OpenRouter Text'e geçiliyor...`);
-        try {
-          const response = await generateWithOpenRouterFallback(params, false);
-          console.log("[Waterfall/text] ✅ OpenRouter Text başarılı.");
-          return response;
-        } catch (openRouterError: any) {
-          console.error("[Waterfall/text] ❌ Tüm Text servisleri başarısız!");
-          throw groqError; // İlk hatayı fırlatıyoruz
-        }
-      }
+      const result = await stage.run();
+      console.log(`[Waterfall/${mode}] ✅ ${stage.name} başarılı (${Date.now() - start}ms)`);
+      return result;
+    } catch (err: any) {
+      firstError ??= err;
+      console.warn(`[Waterfall/${mode}] ⚠️ ${stage.name} başarısız, sıradakine geçiliyor...`);
     }
   }
+
+  console.error(`[Waterfall/${mode}] ❌ Tüm servisler başarısız (${Date.now() - start}ms)`);
+  throw firstError; // En anlamlı hata genelde ilk aşamanınki
 }
 
 export async function POST(req: NextRequest) {
