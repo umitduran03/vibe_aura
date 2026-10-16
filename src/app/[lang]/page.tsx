@@ -2,30 +2,17 @@
  * [lang]/page.tsx - Server Component Wrapper
  *
  * Bu dosya kasitli olarak Server Component'tir.
- * Googlebot SSR ile render edilen SEO icerigini buradan okur.
+ * HomeClient: Tum uygulama mantigi, 'use client' ile calisir.
  *
- * HomeSeoContent: GORUNUR semantik HTML (h1, h2, feature grid, trend linkler)
- * HomeClient: Tum uygulama mantigi, 'use client' ile calisir
+ * NOT: Eskiden burada HomeSeoContent vardi. Once gizli metin (Google spam
+ * sinyali) olarak, sonra gorunur blok olarak render edildi; ancak gorunur hali
+ * mobil uygulama kabinin (max-w-[430px] min-h-dvh) disinda kaldigi icin sayfa
+ * yenilemede ziplama/flash yapiyordu. Kaldirildi. Anasayfa SEO'su metadata +
+ * JSON-LD (layout) ile, arac SEO'su ise kendi landing sayfalariyla saglaniyor.
  */
 
-import HomeSeoContent from '@/components/HomeSeoContent';
 import HomeClient from '@/components/HomeClient';
 
-type Props = {
-  params: Promise<{ lang: string }>;
-};
-
-export default async function Home({ params }: Props) {
-  const { lang } = await params;
-  const locale = lang === 'tr' ? 'tr' : 'en';
-
-  return (
-    <>
-      {/* Client: Tum uygulama mantigi */}
-      <HomeClient />
-
-      {/* SSR: Gorunur SEO icerigi — feature grid, trend linkler */}
-      <HomeSeoContent lang={locale} />
-    </>
-  );
+export default function Home() {
+  return <HomeClient />;
 }

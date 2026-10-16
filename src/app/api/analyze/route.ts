@@ -42,16 +42,20 @@ const MODEL_CHAIN = [
   "gemini-3-flash-preview",
 ];
 
+// NOT: Ücretsiz OpenRouter modelleri sık kaldırılıyor. Güncel liste:
+// https://openrouter.ai/api/v1/models  (id'si ":free" ile bitenler)
+// Son kontrol: 2026-10-16
+// Sıralama canlı teste göre: çalışanlar önde, sık rate-limit yiyen Gemma'lar yedekte.
 const OPENROUTER_VISION_POOL = [
-  "google/gemini-2.0-flash-lite-preview-02-05:free",
-  "meta-llama/llama-3.2-11b-vision-instruct:free"
+  "nvidia/nemotron-3.5-super-vl:free",
+  "google/gemma-4-31b-it:free",
+  "google/gemma-4-26b-a4b-it:free",
 ];
 
 const OPENROUTER_TEXT_POOL = [
-  "google/gemma-2-27b-it:free",
-  "meta-llama/llama-3.1-8b-instruct:free",
-  "mistralai/mistral-7b-instruct:free",
-  "openchat/openchat-7b:free"
+  "nvidia/nemotron-3-super-120b-a12b:free",
+  "google/gemma-4-31b-it:free",
+  "google/gemma-4-26b-a4b-it:free",
 ];
 
 /* =============================================
@@ -192,8 +196,15 @@ async function generateWithOpenRouterFallback(params: {
         max_tokens: 2048,
         // Ücretsiz OpenRouter modellerinin hepsi strict JSON formatını desteklemediği için bunu kaldırıyoruz.
         // Zaten System Prompt'ta sadece JSON döndürmesi talimatı verildi.
+      }, {
+        // Ücretsiz modeller bazen dakikalarca asılı kalabiliyor — model başına üst sınır
+        timeout: 25_000,
+        // SDK varsayılanı 2 tekrar deneme; 429'da bekleme süresini 3'e katlıyordu. Havuz zaten sıradakine geçiyor.
+        maxRetries: 0,
       });
-      return { text: completion.choices?.[0]?.message?.content || "" };
+      const text = completion.choices?.[0]?.message?.content || "";
+      if (!text.trim()) throw new Error("Empty response");
+      return { text };
     } catch (err: any) {
       lastError = err;
       const code = err?.status || err?.code || err?.message || "";
