@@ -51,8 +51,15 @@ export default function HomeClient() {
     
     if (feature) {
       const store = useAppStore.getState();
-      if (["toxic-ex", "situationship", "mood-reset", "delulu-check", "rizz-architect"].includes(feature)) {
-        store.setExtrasType(feature as any);
+      const normalizedFeature =
+        feature === "reply-guru"
+          ? "rizz-architect"
+          : feature === "situationship-clarifier"
+          ? "situationship"
+          : feature;
+
+      if (["toxic-ex", "situationship", "mood-reset", "delulu-check", "rizz-architect"].includes(normalizedFeature)) {
+        store.setExtrasType(normalizedFeature as any);
         store.setExtrasModalOpen(true);
         store.setScreen("wizard");
       } else if (feature === "duo-compatibility") {
