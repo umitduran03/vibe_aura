@@ -93,60 +93,92 @@ export default function HomeSeoContent({ lang }: Props) {
   const c = seoContent[lang] ?? seoContent.en;
 
   return (
-    <div
-      className="sr-only"
-      style={{
-        position: "absolute",
-        width: "1px",
-        height: "1px",
-        padding: 0,
-        margin: "-1px",
-        overflow: "hidden",
-        clip: "rect(0, 0, 0, 0)",
-        whiteSpace: "nowrap",
-        border: 0,
-      }}
+    <footer
+      aria-label={c.heading}
+      className="relative z-10 mx-auto w-full max-w-[430px] px-5 pt-10 pb-16 border-t border-white/[0.06] text-white/60"
     >
-      <h1>{c.heading}</h1>
-      <p>{c.tagline}</p>
+      <section className="mb-8">
+        <h1 className="text-sm font-bold text-white/80 tracking-tight mb-2">
+          {c.heading}
+        </h1>
+        <p className="text-xs text-white/50 leading-relaxed">
+          {c.tagline}
+        </p>
+      </section>
 
-      <section>
-        <h2>{c.featuresTitle}</h2>
-        <ul>
+      <section className="mb-8">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-3">
+          {c.featuresTitle}
+        </h2>
+        <ul className="grid grid-cols-2 gap-2 list-none p-0 m-0">
           {c.features.map((f) => (
             <li key={f.href}>
-              <Link href={f.href}>
-                <strong>{f.name}</strong>
+              <Link
+                href={f.href}
+                className="block h-full rounded-xl bg-white/[0.03] border border-white/[0.06] px-3 py-2.5 hover:bg-white/[0.06] hover:border-white/15 transition-colors"
+              >
+                <strong className="block text-xs font-semibold text-white/80">
+                  {f.name}
+                </strong>
+                <span className="block text-[11px] text-white/45 mt-0.5 leading-snug line-clamp-2">
+                  {f.desc}
+                </span>
               </Link>
-              <span> {f.desc}</span>
             </li>
           ))}
         </ul>
       </section>
 
-      <section>
-        <h2>{c.trendsTitle}</h2>
-        <ul>
+      <section className="mb-8">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-3">
+          {c.trendsTitle}
+        </h2>
+        <ul className="flex flex-wrap gap-1.5 list-none p-0 m-0">
           {c.trends.map((t) => (
             <li key={t.href}>
-              <Link href={t.href}>{t.name}</Link>
+              <Link
+                href={t.href}
+                className="inline-block rounded-full bg-white/[0.03] border border-white/[0.06] px-3 py-1 text-[11px] text-white/65 hover:text-white hover:border-white/20 transition-colors"
+              >
+                {t.name}
+              </Link>
             </li>
           ))}
         </ul>
       </section>
 
-      <section>
-        <h2>{c.dictionaryTitle}</h2>
-        <p>{c.dictionaryDesc}</p>
-        <Link href={c.dictionaryHref}>{c.dictionaryTitle}</Link>
+      <section className="mb-8 rounded-xl bg-white/[0.03] border border-white/[0.06] p-3.5">
+        <h2 className="text-xs font-semibold text-white/80 mb-1">
+          {c.dictionaryTitle}
+        </h2>
+        <p className="text-[11px] text-white/45 leading-relaxed mb-2">
+          {c.dictionaryDesc}
+        </p>
+        <Link
+          href={c.dictionaryHref}
+          className="inline-block text-[11px] font-semibold text-purple-300 hover:text-purple-200 transition-colors"
+        >
+          {c.dictionaryTitle} →
+        </Link>
       </section>
 
-      <nav aria-label={c.resourcesTitle}>
-        <Link href={`/${lang}/trends`}>{c.allTrendsLabel}</Link>
-        <Link href={`/${lang}/faq`}>{c.faqLabel}</Link>
-        <Link href={`/${lang}/privacy`}>{c.privacyLabel}</Link>
-        <Link href={`/${lang}/terms`}>{c.termsLabel}</Link>
+      <nav
+        aria-label={c.resourcesTitle}
+        className="pt-4 border-t border-white/[0.06] flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-white/45"
+      >
+        <Link href={`/${lang}/trends`} className="hover:text-white/80 transition-colors">
+          {c.allTrendsLabel}
+        </Link>
+        <Link href={`/${lang}/faq`} className="hover:text-white/80 transition-colors">
+          {c.faqLabel}
+        </Link>
+        <Link href={`/${lang}/privacy`} className="hover:text-white/80 transition-colors">
+          {c.privacyLabel}
+        </Link>
+        <Link href={`/${lang}/terms`} className="hover:text-white/80 transition-colors">
+          {c.termsLabel}
+        </Link>
       </nav>
-    </div>
+    </footer>
   );
 }

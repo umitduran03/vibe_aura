@@ -8,6 +8,7 @@
 
 import HomeClient from "@/components/HomeClient";
 import HomeSeoContent from "@/components/HomeSeoContent";
+import HomeSeoVisibility from "@/components/HomeSeoVisibility";
 
 type Props = {
   params: Promise<{ lang: string }>;
@@ -20,7 +21,9 @@ export default async function Home({ params }: Props) {
   return (
     <>
       <HomeClient />
-      <HomeSeoContent lang={locale} />
+      <HomeSeoVisibility>
+        <HomeSeoContent lang={locale} />
+      </HomeSeoVisibility>
     </>
   );
 }
