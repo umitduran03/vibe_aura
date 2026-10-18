@@ -92,7 +92,7 @@ export default function VibeDictionaryPage() {
         {/* Navigation */}
         <div className="flex items-center gap-4 mb-10">
           <Link
-            href="/"
+            href={`/${locale}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors"
             aria-label={s.ariaBack}
           >
@@ -159,7 +159,7 @@ export default function VibeDictionaryPage() {
           <h2 className="text-xl font-bold text-white mb-2">{s.ctaTopTitle}</h2>
           <p className="text-white/70 mb-5">{s.ctaTopDesc}</p>
           <Link
-            href="/"
+            href={`/${locale}`}
             className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-black font-semibold hover:scale-105 transition-transform"
           >
             {s.ctaTopBtn}
@@ -182,7 +182,7 @@ export default function VibeDictionaryPage() {
             {s.ctaBottomDesc}
           </p>
           <Link
-            href="/"
+            href={`/${locale}`}
             className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold hover:shadow-[0_0_20px_rgba(168,85,247,0.4)] transition-all hover:-translate-y-1"
           >
             {s.ctaBottomBtn}

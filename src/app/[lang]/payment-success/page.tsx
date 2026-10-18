@@ -3,7 +3,9 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useT } from "@/hooks/useT";
+import { useAppStore } from "@/store/useAppStore";
 
 /**
  * PaymentSuccessPage — Premium Static Success Screen
@@ -13,6 +15,9 @@ import { useT } from "@/hooks/useT";
  */
 export default function PaymentSuccessPage() {
   const t = useT();
+  const params = useParams();
+  const storeLocale = useAppStore((s) => s.locale);
+  const locale = params?.lang === "tr" ? "tr" : storeLocale === "tr" ? "tr" : "en";
   const [particles, setParticles] = useState<Array<{
     top: string;
     left: string;
@@ -124,7 +129,7 @@ export default function PaymentSuccessPage() {
           className="w-full space-y-5"
         >
           <Link
-            href="/"
+            href={`/${locale}`}
             className="group w-full bg-white text-black font-bold py-5 rounded-2xl shadow-[0_0_40px_rgba(255,255,255,0.2)] active:scale-95 transition-all flex items-center justify-center gap-3"
           >
             {t.paymentSuccessButton}

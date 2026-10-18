@@ -707,8 +707,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "Gaslighting is emotional and psychological warfare, plain and simple. It is a slow, insidious process that chips away at your confidence and leaves you questioning everything you know to be true. But here is the reality check you actually need: You are not crazy, you are not too sensitive, and you are not imagining things. If your relationship constantly leaves you feeling confused and drained, it is time to stop looking for answers in the person who is causing the confusion. Walk away, reconnect with your support system, and start trusting yourself again. You deserve a reality rooted in respect and honesty."
     },
-    ctaLabel: "Read More Red Flag Guides",
-    ctaLink: "/category/red-flags"
+    ctaLabel: "Scan Their Red Flags",
+    ctaLink: "/toxic-ex-scanner"
   },
   {
     slug: "dry-texter-signs",
@@ -759,8 +759,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "Dry texting is exhausting, soul-sucking, and completely antithetical to building a strong romantic connection. While there are rare exceptions of people who just genuinely despise looking at their screens, in most cases, the medium is the message. If they wanted to talk to you, they would. Do not exhaust your own energy trying to pull a personality out of someone who refuses to show one. Save your witty banter, your thoughtful questions, and your funny memes for someone who will actually match your freak and text you back with the same enthusiasm."
     },
-    ctaLabel: "Find Better Texters",
-    ctaLink: "/matches"
+    ctaLabel: "Use The Reply Guru",
+    ctaLink: "/reply-guru"
   },
   {
     slug: "main-character-energy",
@@ -811,8 +811,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "You are the author, the director, and the star of your own life. Do not hand the pen over to someone who doesn't even know how to text back. Embracing main character energy in your dating life will radically transform how you interact with potential partners. It filters out the people who just want a convenient background character and attracts those who are ready to co-star in an epic romance. Stop waiting for the plot to happen to you. Get up, put on your best outfit, and go write your own incredible story."
     },
-    ctaLabel: "Embrace Your Main Character",
-    ctaLink: "/profile/edit"
+    ctaLabel: "Calculate My Aura Score",
+    ctaLink: "/"
   },
   {
     slug: "what-is-limerence",
@@ -863,8 +863,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "Limerence is an exhausting, emotionally draining experience that can steal months or even years of your life if left unchecked. By recognizing the signs—the obsessive thoughts, the halo effect, the addiction to mixed signals—you can start to pull yourself out of the fantasy and back into reality. True love should not feel like an agonizing guessing game or a constant rollercoaster of anxiety. True love feels like coming home. Break the cycle of limerence, choose yourself, and make space for a connection that actually brings you peace."
     },
-    ctaLabel: "Learn Healthy Attachment",
-    ctaLink: "/resources/mental-health"
+    ctaLabel: "Check My Delulu Level",
+    ctaLink: "/delulu-check"
   },
   {
     slug: "what-is-orbiting",
@@ -915,8 +915,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "Orbiting is the junk food of modern dating: it gives you a quick rush but leaves you feeling empty and sick afterward. Do not let someone who didn't respect you enough to send a parting text maintain front-row seats to your life. Your social media is your digital home, and you get to decide who is allowed inside. Evict the orbiters, hit the block button, and reserve your time and energy for people who show up for you in the real world, not just in your notifications."
     },
-    ctaLabel: "Learn How to Move On",
-    ctaLink: "/category/breakups"
+    ctaLabel: "Scan Their Red Flags",
+    ctaLink: "/toxic-ex-scanner"
   },
   {
     slug: "trauma-bonding-signs",
@@ -967,8 +967,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "A trauma bond is a psychological trap that disguises itself as an epic romance. If your relationship feels like an emotional war zone where you are constantly fighting for scraps of affection, you are not experiencing true love. You are experiencing an addiction to an abusive cycle. Breaking free requires immense courage and a willingness to face the painful reality of the situation. You deserve a love that brings peace to your nervous system, not one that constantly shatters it. Choose your own healing, cut the tie, and walk toward the calm, safe life you deserve."
     },
-    ctaLabel: "Seek Support Now",
-    ctaLink: "/resources/mental-health"
+    ctaLabel: "Scan Their Red Flags",
+    ctaLink: "/toxic-ex-scanner"
   },
   {
     slug: "hyper-independence-in-dating",
@@ -1019,8 +1019,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "Independence is a beautiful, necessary trait, but hyper-independence is a trauma response disguised as empowerment. Refusing to let anyone support you, love you, or see your vulnerable side isn't strength; it is a fear of connection. A true partnership requires a willingness to take off the armor and trust that the other person won't use it against you. You do not have to carry the entire weight of the world on your shoulders. It is okay to want someone, it is okay to need support, and it is okay to let love in."
     },
-    ctaLabel: "Understand Your Attachment Style",
-    ctaLink: "/quiz/attachment-style"
+    ctaLabel: "Analyze My Attachment Style",
+    ctaLink: "/"
   },
   {
     slug: "one-sided-effort-relationship",
@@ -1071,8 +1071,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "A healthy relationship is a partnership of equals, not a charity project where one person does all the heavy lifting. If you are doing all the planning, all the communicating, and all the emotional labor, you are not in a relationship; you are managing one. Stop over-functioning for someone who is perfectly content to under-function. Drop the rope, step back, and demand the reciprocity you deserve. If they are not willing to meet you halfway, it is time to find someone who will."
     },
-    ctaLabel: "Evaluate Your Relationship",
-    ctaLink: "/resources/relationship-health"
+    ctaLabel: "Clarify My Situationship",
+    ctaLink: "/situationship-clarifier"
   },
   {
     slug: "when-to-walk-away",
@@ -1123,8 +1123,8 @@ export const trendsDataEn: TrendArticle[] = [
       ],
       conclusion: "Walking away is never easy, especially when you still have feelings for the person. But you have to love yourself more than you love the potential of who they could be. If this checklist resonated with you, stop waiting for a magical sign or a dramatic event to justify your departure. The consistent unhappiness is the sign. Take a deep breath, hit the block button, and step into the painful but incredibly liberating process of moving on. The right relationship will never require you to sacrifice your peace, your values, or your sanity."
     },
-    ctaLabel: "How to Heal from a Breakup",
-    ctaLink: "/resources/healing"
+    ctaLabel: "Check Ex Compatibility",
+    ctaLink: "/ex-compatibility"
   }
 ];
 
@@ -1819,8 +1819,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Kısacası kanka, sen delulu falan değilsin. Zihnin sana oyunlar oynamıyor. Eğer bir ilişkide sürekli kendi gerçeğinden şüphe ediyor, sürekli özür diliyor ve sürekli diken üstünde hissediyorsan, orada sağlıklı bir dinamik yoktur. Gaslighting'den kurtulmanın ilk adımı, bunun farkına varmak ve kendi algılarına yeniden güvenmeye başlamaktır. Arkadaşlarına danış, notlar al, sınırlarını keskin bir şekilde çiz. Ve unutma, sana kendini 'deli' gibi hissettiren birine ihtiyacın yok. Sen main character'sin, bu toksik hikayeden çıkış biletini alıp kendi yoluna bakmanın zamanı geldi."
     },
-    ctaLabel: "Green Flag İnsanlarla Tanış",
-    ctaLink: "/match"
+    ctaLabel: "Red Flag'lerini Tara",
+    ctaLink: "/toxic-ex-scanner"
   },
   {
     slug: "dry-texter-signs",
@@ -1869,8 +1869,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Kısacası kanka, dry texter ile uğraşmak, susuz bir arazide çiçek yetiştirmeye çalışmak gibidir. Ne kadar sularsan sula (ne kadar çok yazarsan yaz), o toprak yeşermeyecektir. Eğer birinin seninle konuşmak için çaba sarf etmediğini, sohbetin sürekli senin omuzlarında olduğunu hissediyorsan, geri adım atmanın zamanı gelmiştir. Kendi enerjini, seninle konuşmak için can atan, sana sayfalarca mesaj yazan, emojilerle, ses kayıtlarıyla hayatını renklendiren insanlara sakla. Kendini sürekli 'Acaba meşgul mü?' diye delulu bir şekilde kandırmayı bırak. Meşgul olan insan, 'Çok yoğunum, akşam arayacağım' diye mesaj atar. Aynen yazan değil. Enerjini topla ve kendi değerini bil!"
     },
-    ctaLabel: "Sohbeti Sevenleri Keşfet",
-    ctaLink: "/match"
+    ctaLabel: "Reply Guru'yu Kullan",
+    ctaLink: "/reply-guru"
   },
   {
     slug: "main-character-energy",
@@ -1918,8 +1918,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Kanka, özetle; senin hayatın, senin kuralların, senin filmin! Kendi hayatında bir arka plan karakteri gibi yaşamayı bırakıp direksiyona geçmenin zamanı geldi. Kimseye senin değerini belirleme gücünü verme. Bare minimum ile yetinme, sana krallar/kraliçeler gibi davranmayan kimseyi hikayenin içine dahil etme. Main Character Energy, içindeki o özgüveni dışarı vurmak ve kendini dünyadaki en değerli insan olarak konumlandırmaktır. Birisi bu enerjiyi kaldıramıyorsa, senin sahnenden çıkabilir. Sen o spot ışıklarının altında parlamaya devam edeceksin."
     },
-    ctaLabel: "Başrol Olanlarla Eşleş",
-    ctaLink: "/match"
+    ctaLabel: "Aura Puanımı Hesapla",
+    ctaLink: "/"
   },
   {
     slug: "what-is-limerence",
@@ -1967,8 +1967,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Kanka, Limerence'i aşkla karıştırmak en sık düşülen tuzaktır. Aşk huzurludur, güven verir, iki tarafı da besler. Limerence ise kaos doludur, anksiyete yaratır ve seni yavaş yavaş tüketir. Eğer kendini bu tarifin içinde buluyorsan, derin bir nefes al. Zihninde yarattığın o mükemmel illüzyondan uyanma vakti geldi. Onu olduğu gibi, tüm red flag'leriyle gör ve kendi hayatının merkezine yeniden 'kendini' koy. Bu takıntıdan kurtulmak zaman alabilir, gerekirse profesyonel destek almaktan çekinme. Ama unutma, senin bu yoğun enerjini hak eden gerçek ve sağlıklı aşklar dışarıda bir yerlerde seni bekliyor."
     },
-    ctaLabel: "Sağlıklı Bağlar Kur",
-    ctaLink: "/match"
+    ctaLabel: "Delulu Seviyemi Ölç",
+    ctaLink: "/delulu-check"
   },
   {
     slug: "what-is-orbiting",
@@ -2016,8 +2016,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Sonuç olarak kanka, orbiting, dijital çağın en korkakça ve en bencil iletişim kurma (veya kurmama) yöntemlerinden biridir. Senin enerjin, sadece uzaktan seni izleyen hayaletlere harcanamayacak kadar değerli. Seni gerçekten isteyen biri yörüngede dönmez; iniş yapar, kapını çalar ve hayatının tam ortasında yerini alır. O yüzden o uyduları sisteminden at, kendi galaksinin main character'i olmaya devam et. Gözünü telefon ekranındaki izleyici listesinden çekip, gerçek hayatta sana değer veren insanlara odaklanmanın vakti geldi!"
     },
-    ctaLabel: "Gerçek İletişim Kur",
-    ctaLink: "/match"
+    ctaLabel: "Red Flag'lerini Tara",
+    ctaLink: "/toxic-ex-scanner"
   },
   {
     slug: "trauma-bonding-signs",
@@ -2065,8 +2065,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Kısacası kanka, yoğun acı, gözyaşı ve sürekli kaygı içeren bir şeyin adı 'aşk' olamaz. Aşk sana kendini değerli hissettirir, seni büyütür, sana huzur verir. Eğer birisi seni sürekli kırıp döküyor, sonra da yara bandı yapıştırıp kendini kurtarıcı ilan ediyorsa, bu bir travma bağıdır. Sen kimsenin rehabilitasyon merkezi veya oyun hamuru değilsin. O toksik senaryodan çıkış biletini al, o zincirleri kır ve kendi yaranı kendin sar. Zor olacak, evet. Ama o huzurlu, sessiz ve sağlıklı günlere ulaştığında, kendine 'iyi ki gitmişim' diyeceksin."
     },
-    ctaLabel: "Sınırlarını Belirle",
-    ctaLink: "/match"
+    ctaLabel: "Red Flag'lerini Tara",
+    ctaLink: "/toxic-ex-scanner"
   },
   {
     slug: "hyper-independence-in-dating",
@@ -2114,8 +2114,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Sonuçta kanka, o çelik zırhlar seni dışarıdaki fırtınalardan korur, evet. Ama aynı zırhlar, güneşin tenini ısıtmasını, birinin sana sıkıca sarılmasını da engeller. Hyper-independence, geçmişteki kırılmışlıklarının bir rozetidir ama gelecekteki mutluluğunun da en büyük engelidir. Gerçek güç, her şeyi tek başına yapmakta değil; kırılmayı göze alıp, kalbini birine açabilmekte yatar. Güvenli alanından çık, o omuzlara yaslanmaktan korkma ve sevgiye izin ver. Çünkü inat etsen de, hayatta en güçlü insanların bile bazen arkalarını kollayacak birine ihtiyacı vardır."
     },
-    ctaLabel: "Güvenli Bağlar Kur",
-    ctaLink: "/match"
+    ctaLabel: "Bağlanma Stilimi Analiz Et",
+    ctaLink: "/"
   },
   {
     slug: "one-sided-effort-relationship",
@@ -2163,8 +2163,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Kısacası kanka, bir ilişkiyi tek başına sırtında taşıyamazsın, taşısan da o yük bir gün belini kırar. Karşındaki insan seni sevdiği için değil, sen her şeyi 'fazla' sevdiğin ve yaptığın için orada duruyorsa, bu bir ortaklık değil, sömürüdür. Kendi değerini bir başkasını 'oldurmaya' çalışarak kanıtlayamazsın. Main character enerjini geri kazan, asistanlık görevinden istifa et ve sahneyi gerçek bir 'eş-başrol' oyuncusuna bırakmak üzere temizle. Gözlerini aç; senin eforuna aynı coşkuyla karşılık verecek insanlar orada bir yerde seni bekliyor."
     },
-    ctaLabel: "Sana Değer Verenleri Bul",
-    ctaLink: "/match"
+    ctaLabel: "Situationship'imi Netleştir",
+    ctaLink: "/situationship-clarifier"
   },
   {
     slug: "when-to-walk-away",
@@ -2212,8 +2212,8 @@ export const trendsDataTr: TrendArticle[] = [
       ],
       conclusion: "Kanka, listenin sonuna geldik. Eğer bu maddeleri okurken içinden 'Evet, aynen bunu yaşıyorum' diye çığlıklar atıyorsan, o karar anı gelmiştir. 'Zaman harcadım, emek verdim' yanılgısına düşme (Sunk Cost Fallacy). Yanlış trene bindiğini ne kadar geç fark edersen, geri dönmek o kadar zor olur. Şimdi o telefona uzan, sana zarar veren o bağı kes, gerekiyorsa her yerden engelle ve arkana bakma. Kendine verebileceğin en büyük hediye, seni aşağı çeken ağırlıklardan kurtulmaktır. Bırak gitsin, çünkü senin hikayen o toksik karakter olmadan çok daha güzel yazılacak."
     },
-    ctaLabel: "Yeni Bir Başlangıç Yap",
-    ctaLink: "/match"
+    ctaLabel: "Eski Sevgili Uyumuna Bak",
+    ctaLink: "/ex-compatibility"
   }
 ];
 

@@ -79,7 +79,7 @@ export default async function ExCompatibilityLanding({ params }: { params: Promi
           className="flex items-center gap-4 mb-16"
         >
           <Link
-            href="/"
+            href={`/${lang}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-slate-500/30 transition-all cursor-pointer"
             aria-label="Go back home"
           >

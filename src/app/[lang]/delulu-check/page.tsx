@@ -128,7 +128,7 @@ export default async function DeluluCheckLanding({ params }: { params: Promise<{
         {/* Navigation */}
         <div className="flex items-center gap-4 mb-16">
           <Link
-            href="/"
+            href={`/${lang}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-amber-500/30 transition-all cursor-pointer"
             aria-label={isTr ? "Ana sayfaya dön" : "Go back home"}
           >

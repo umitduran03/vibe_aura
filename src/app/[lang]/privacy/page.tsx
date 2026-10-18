@@ -150,7 +150,7 @@ export default async function PrivacyPage({ params }: { params: Promise<{ lang: 
       <div className="relative z-10 mx-auto max-w-2xl px-6 py-12">
         {/* ─── Header ─── */}
         <Link
-          href="/"
+          href={`/${resolvedParams.lang}`}
           className="inline-flex items-center gap-2 text-sm text-white/50 hover:text-white/80 transition-colors mb-8 group"
         >
           <ArrowLeft className="h-4 w-4 group-hover:-translate-x-1 transition-transform" />

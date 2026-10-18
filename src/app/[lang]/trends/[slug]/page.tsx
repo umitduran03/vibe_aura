@@ -199,7 +199,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
             {isTr ? "İnternetin en acımasızca dürüst yapay zeka algoritmasını kendin deneyimle. Ücretsiz ve anında." : "Experience the internet's most brutally honest AI algorithm for yourself. Free and instant."}
           </p>
           <Link
-            href={article.ctaLink}
+            href={article.ctaLink === "/" ? `/${resolvedParams.lang}` : `/${resolvedParams.lang}${article.ctaLink}`}
             className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-indigo-500 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(99,102,241,0.5)] transition-all hover:-translate-y-1"
           >
             {article.ctaLabel}

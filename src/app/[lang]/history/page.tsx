@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ChevronLeft, Sparkles, AlertCircle, Calendar, ChevronDown, Share2, Loader2 } from "lucide-react";
 import { getAuraHistory } from "@/lib/services";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
@@ -16,7 +17,9 @@ export default function HistoryPage() {
   const [error, setError] = useState(false);
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const t = useT();
-  const locale = useAppStore((s) => s.locale);
+  const params = useParams();
+  const storeLocale = useAppStore((s) => s.locale);
+  const locale = params?.lang === "tr" ? "tr" : storeLocale === "tr" ? "tr" : "en";
   const userId = useAppStore((s) => s.userId);
   
   // Infinite scroll states
@@ -230,7 +233,7 @@ export default function HistoryPage() {
 
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-8 pb-4 z-10 sticky top-0 bg-bg-primary/80 backdrop-blur-xl border-b border-white/5">
-        <Link href="/" prefetch={false} onClick={() => hapticLight()}>
+        <Link href={`/${locale}`} prefetch={false} onClick={() => hapticLight()}>
           <motion.button
             className="flex items-center gap-1 text-sm text-text-secondary hover:text-text-primary transition-colors cursor-pointer"
             whileTap={{ scale: 0.95 }}
@@ -285,7 +288,7 @@ export default function HistoryPage() {
             <Sparkles className="w-12 h-12 text-text-secondary mb-4 opacity-50" />
             <h3 className="text-xl font-bold mb-2">{t.historyEmptyTitle}</h3>
             <p className="text-sm text-text-secondary px-8">{t.historyEmptyDesc}</p>
-            <Link href="/" prefetch={false} className="mt-6">
+            <Link href={`/${locale}`} prefetch={false} className="mt-6">
               <button 
                 onClick={() => hapticLight()}
                 className="px-8 py-4 bg-white/10 hover:bg-white/20 transition-all active:scale-95 rounded-full text-sm font-semibold border border-white/10"

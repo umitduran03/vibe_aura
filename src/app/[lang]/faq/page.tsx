@@ -155,7 +155,7 @@ export default function FAQPage() {
           className="flex items-center gap-4 mb-10"
         >
           <Link
-            href="/"
+            href={`/${locale}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cyan-500/30 transition-all cursor-pointer"
             aria-label={s.ariaBack}
           >
@@ -224,7 +224,7 @@ export default function FAQPage() {
             <h2 className="text-2xl md:text-3xl font-black text-white mb-4 tracking-tight">{s.ctaTitle}</h2>
             <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">{s.ctaDesc}</p>
             <Link
-              href="/"
+              href={`/${locale}`}
               className="inline-flex items-center justify-center px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold tracking-wide hover:shadow-[0_0_30px_rgba(6,182,212,0.6)] transition-all duration-300 hover:-translate-y-1 active:scale-95"
             >
               {s.ctaBtn}
