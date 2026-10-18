@@ -36,9 +36,12 @@ const seoContent = {
       { name: "Attachment Styles Explained", href: "/en/trends/attachment-styles-explained" },
       { name: "Gen-Z Dating Terms 2026", href: "/en/trends/gen-z-dating-terms-2026" },
     ],
+    dictionaryTitle: "Vibe Dictionary — Gen-Z Slang & Dating Glossary",
+    dictionaryDesc:
+      "The complete encyclopedia for modern internet and dating slang: ick, rizz, delulu, vibe check, situationship, aura points, love bombing, ghosting, red flags, and more.",
+    dictionaryHref: "/en/vibe-dictionary",
     resourcesTitle: "Explore More",
     allTrendsLabel: "All Trends & Articles",
-    dictionaryLabel: "Vibe Dictionary (Gen-Z Slang)",
     faqLabel: "FAQ",
     privacyLabel: "Privacy Policy",
     termsLabel: "Terms of Service",
@@ -74,9 +77,12 @@ const seoContent = {
       { name: "Bağlanma Stilleri Rehberi", href: "/tr/trends/attachment-styles-explained" },
       { name: "2026 Gen-Z İlişki Terimleri", href: "/tr/trends/gen-z-dating-terms-2026" },
     ],
+    dictionaryTitle: "Vibe Sözlüğü — Gen-Z Terimleri ve İlişki Rehberi",
+    dictionaryDesc:
+      "Gen-Z internet ve ilişki terimlerinin kapsamlı sözlüğü: ick ne demek, rizz ne demek, delulu, vibe check, situationship, aura puanı, ghosting, red flag ve yüzlerce terim.",
+    dictionaryHref: "/tr/vibe-dictionary",
     resourcesTitle: "Keşfet",
     allTrendsLabel: "Tüm Trendler ve Makaleler",
-    dictionaryLabel: "Vibe Sözlüğü (Gen-Z Terimleri)",
     faqLabel: "Sıkça Sorulan Sorular",
     privacyLabel: "Gizlilik Politikası",
     termsLabel: "Kullanım Koşulları",
@@ -87,75 +93,60 @@ export default function HomeSeoContent({ lang }: Props) {
   const c = seoContent[lang] ?? seoContent.en;
 
   return (
-    <footer
-      aria-label={c.heading}
-      className="relative z-10 mx-auto w-full max-w-[430px] px-5 pt-10 pb-16 border-t border-white/[0.06] text-white/60"
+    <div
+      className="sr-only"
+      style={{
+        position: "absolute",
+        width: "1px",
+        height: "1px",
+        padding: 0,
+        margin: "-1px",
+        overflow: "hidden",
+        clip: "rect(0, 0, 0, 0)",
+        whiteSpace: "nowrap",
+        border: 0,
+      }}
     >
-      <section className="mb-8">
-        <h2 className="text-sm font-bold text-white/80 tracking-tight mb-2">
-          {c.heading}
-        </h2>
-        <p className="text-xs text-white/50 leading-relaxed">
-          {c.tagline}
-        </p>
-      </section>
+      <h1>{c.heading}</h1>
+      <p>{c.tagline}</p>
 
-      <section className="mb-8">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-3">
-          {c.featuresTitle}
-        </h3>
-        <div className="grid grid-cols-2 gap-2">
+      <section>
+        <h2>{c.featuresTitle}</h2>
+        <ul>
           {c.features.map((f) => (
-            <Link
-              key={f.href}
-              href={f.href}
-              className="block rounded-xl bg-white/[0.03] border border-white/[0.06] px-3 py-2.5 hover:bg-white/[0.06] hover:border-white/15 transition-colors"
-            >
-              <span className="block text-xs font-semibold text-white/80">
-                {f.name}
-              </span>
-              <span className="block text-[11px] text-white/45 mt-0.5 leading-snug line-clamp-2">
-                {f.desc}
-              </span>
-            </Link>
+            <li key={f.href}>
+              <Link href={f.href}>
+                <strong>{f.name}</strong>
+              </Link>
+              <span> {f.desc}</span>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
-      <section className="mb-8">
-        <h3 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-3">
-          {c.trendsTitle}
-        </h3>
-        <div className="flex flex-wrap gap-1.5">
+      <section>
+        <h2>{c.trendsTitle}</h2>
+        <ul>
           {c.trends.map((t) => (
-            <Link
-              key={t.href}
-              href={t.href}
-              className="rounded-full bg-white/[0.03] border border-white/[0.06] px-3 py-1 text-[11px] text-white/65 hover:text-white hover:border-white/20 transition-colors"
-            >
-              {t.name}
-            </Link>
+            <li key={t.href}>
+              <Link href={t.href}>{t.name}</Link>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
-      <nav aria-label={c.resourcesTitle} className="pt-4 border-t border-white/[0.06] flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-white/45">
-        <Link href={`/${lang}/trends`} className="hover:text-white/80 transition-colors">
-          {c.allTrendsLabel}
-        </Link>
-        <Link href={`/${lang}/vibe-dictionary`} className="hover:text-white/80 transition-colors">
-          {c.dictionaryLabel}
-        </Link>
-        <Link href={`/${lang}/faq`} className="hover:text-white/80 transition-colors">
-          {c.faqLabel}
-        </Link>
-        <Link href={`/${lang}/privacy`} className="hover:text-white/80 transition-colors">
-          {c.privacyLabel}
-        </Link>
-        <Link href={`/${lang}/terms`} className="hover:text-white/80 transition-colors">
-          {c.termsLabel}
-        </Link>
+      <section>
+        <h2>{c.dictionaryTitle}</h2>
+        <p>{c.dictionaryDesc}</p>
+        <Link href={c.dictionaryHref}>{c.dictionaryTitle}</Link>
+      </section>
+
+      <nav aria-label={c.resourcesTitle}>
+        <Link href={`/${lang}/trends`}>{c.allTrendsLabel}</Link>
+        <Link href={`/${lang}/faq`}>{c.faqLabel}</Link>
+        <Link href={`/${lang}/privacy`}>{c.privacyLabel}</Link>
+        <Link href={`/${lang}/terms`}>{c.termsLabel}</Link>
       </nav>
-    </footer>
+    </div>
   );
 }

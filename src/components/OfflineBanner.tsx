@@ -55,7 +55,7 @@ export default function OfflineBanner() {
     };
   }, [setIsOnline]);
 
-  const isVisible = mounted && !isOnline;
+  if (!mounted || isOnline) return null;
 
   return (
     <div
@@ -66,9 +66,6 @@ export default function OfflineBanner() {
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
         borderBottom: "1px solid rgba(255,255,255,0.08)",
-        transform: isVisible ? "translateY(0)" : "translateY(-60px)",
-        opacity: isVisible ? 1 : 0,
-        pointerEvents: isVisible ? "auto" : "none",
       }}
     >
       <WifiOff className="h-4 w-4 text-red-400" />

@@ -23,9 +23,11 @@ export default function InstallBanner() {
   const deferredPrompt = useAppStore((s) => s.deferredPrompt);
   const setIsInstallable = useAppStore((s) => s.setIsInstallable);
 
+  const [mounted, setMounted] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     if (typeof window !== "undefined") {
       setIsStandalone(
         window.matchMedia("(display-mode: standalone)").matches ||
@@ -62,7 +64,9 @@ export default function InstallBanner() {
     setHasDismissed(true);
   };
 
-  const isVisible = !isStandalone && !hasDismissed;
+  const isVisible = mounted && !isStandalone && !hasDismissed;
+
+  if (!isVisible) return null;
 
   return (
     <div
@@ -70,13 +74,10 @@ export default function InstallBanner() {
       style={{
         background:
           "linear-gradient(135deg, rgba(139,92,246,0.15) 0%, rgba(236,72,153,0.15) 100%)",
-        transform: isVisible ? "translateY(0)" : "translateY(100px)",
-        opacity: isVisible ? 1 : 0,
-        pointerEvents: isVisible ? "auto" : "none",
       }}
     >
       <div className="flex-1">
-        <h3 className="text-white font-bold text-[14px]">{t.installTitle}</h3>
+        <p className="text-white font-bold text-[14px]">{t.installTitle}</p>
         <p className="text-white/60 text-[11px] font-medium mt-0.5 tracking-wide">
           {t.installSub}
         </p>

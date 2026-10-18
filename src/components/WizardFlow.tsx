@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useTransition } from "react";
+import { useCallback, useEffect, useRef, useTransition } from "react";
 import { m, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ChevronLeft, ChevronRight, Sparkles, Clock, Heart, Loader2 } from "lucide-react";
@@ -50,6 +50,13 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
   const updateUserData = useAppStore((s) => s.updateUserData);
   const locale = useAppStore((s) => s.locale);
   const wt = WIZARD_STRINGS[locale];
+  const stepContentRef = useRef<HTMLDivElement>(null);
+
+  // Adım ("Devam Et" / "Geri") veya mod değiştiğinde sayfayı ve iç kutuyu anında en üste hizala
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+    stepContentRef.current?.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, [step, analysisMode]);
 
   const isDuo = analysisMode === "duo";
   const totalSteps = isDuo ? DUO_TOTAL_STEPS : TOTAL_STEPS;
@@ -203,8 +210,15 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
       </div>
 
       {/* Step Content */}
-      <div className="flex-1 px-5 overflow-y-auto overflow-x-hidden relative">
-        <AnimatePresence mode="wait" custom={direction}>
+      <div ref={stepContentRef} className="flex-1 px-5 overflow-y-auto overflow-x-hidden relative">
+        <AnimatePresence
+          mode="wait"
+          custom={direction}
+          onExitComplete={() => {
+            window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+            stepContentRef.current?.scrollTo({ top: 0, left: 0, behavior: "instant" });
+          }}
+        >
           <m.div
             key={`${analysisMode}-${step}`}
             custom={direction}

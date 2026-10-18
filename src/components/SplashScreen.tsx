@@ -52,11 +52,11 @@ export default function SplashScreen() {
       >
         <div className="relative">
           <Sparkles className="absolute -right-6 -top-2 h-5 w-5 text-accent animate-float" />
-          <h1 className="text-4xl font-bold tracking-tight">
+          <div className="text-4xl font-bold tracking-tight">
             <span className="bg-gradient-to-r from-accent via-purple-300 to-pink-400 bg-clip-text text-transparent">
               VibeCheckr.
             </span>
-          </h1>
+          </div>
           <Sparkles className="absolute -bottom-1 -left-5 h-4 w-4 text-pink-400/70 animate-float" style={{ animationDelay: "1s" }} />
         </div>
       </m.div>

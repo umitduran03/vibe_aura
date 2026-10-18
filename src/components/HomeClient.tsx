@@ -45,12 +45,12 @@ export default function HomeClient() {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, []);
 
-  // Ekran (result -> wizard vb.) her değiştiğinde en üste çık
+  // Ekran (result -> wizard vb.) her değiştiğinde anında en üste çık
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
   }, [screen]);
 
   // Pathname'den locale'yi ve query'den feature'ı tespit et
@@ -332,7 +332,10 @@ export default function HomeClient() {
         <main className="relative mx-auto w-full max-w-[430px] min-h-dvh overflow-hidden flex flex-col">
           <OnboardingBanner />
           <WelcomeTour />
-          <AnimatePresence mode="wait">
+          <AnimatePresence
+            mode="wait"
+            onExitComplete={() => window.scrollTo({ top: 0, left: 0, behavior: "instant" })}
+          >
             {screen === "splash" && <SplashScreen key="splash" />}
             
             {screen === "onboarding" && <OnboardingScreen key="onboarding" />}

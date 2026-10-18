@@ -2,10 +2,8 @@
  * [lang]/page.tsx - Server Component Wrapper
  *
  * HomeClient: Tüm uygulama mantığı (min-h-dvh tam ekran mobil uygulama kabı).
- * HomeSeoContent: Tam ekran uygulama kabının altında (katlamanın altında), aynı
- * 430px genişlikte yer alan SSR SEO ve iç link bölümü. HomeClient her ekran
- * geçişinde ve yenilemede scrollTo(0,0) yaptığı için sayfa her zaman en üstteki
- * uygulama ekranından başlar.
+ * HomeSeoContent: SSR HTML içinde yer alan ancak sr-only ile 0px yer kaplayan
+ * semantik başlık, açıklama ve iç link yapısı (uygulama ekranını kaydırmaz).
  */
 
 import HomeClient from "@/components/HomeClient";
