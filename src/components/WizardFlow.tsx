@@ -195,7 +195,7 @@ export default function WizardFlow({ onComplete }: WizardFlowProps) {
           </div>
           <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             <TokenBadge />
-            <Link href="/history" prefetch={false} onClick={() => hapticLight()}>
+            <Link href={`/${locale}/history`} prefetch={false} onClick={() => hapticLight()}>
               <m.div 
                 className="flex items-center justify-center p-1.5 sm:p-2 rounded-full bg-white/5 border border-white/10 text-text-secondary hover:text-text-primary hover:bg-white/10 transition-colors"
                 whileTap={{ scale: 0.9 }}

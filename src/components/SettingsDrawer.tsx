@@ -398,7 +398,7 @@ export default function SettingsDrawer() {
                 <div className="space-y-1.5 mb-6">
                   {/* ─── Trends & Articles ─── */}
                   <Link
-                    href="/trends"
+                    href={`/${locale}/trends`}
                     prefetch={true}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{
@@ -422,7 +422,7 @@ export default function SettingsDrawer() {
 
                   {/* ─── Gen-Z Dictionary ─── */}
                   <Link
-                    href="/vibe-dictionary"
+                    href={`/${locale}/vibe-dictionary`}
                     prefetch={true}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{
@@ -446,7 +446,7 @@ export default function SettingsDrawer() {
 
                   {/* ─── FAQ ─── */}
                   <Link
-                    href="/faq"
+                    href={`/${locale}/faq`}
                     prefetch={true}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{
@@ -474,7 +474,7 @@ export default function SettingsDrawer() {
                 </p>
                 <div className="space-y-1.5 mb-6">
                   <Link
-                    href="/terms"
+                    href={`/${locale}/terms`}
                     prefetch={false}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{
@@ -497,7 +497,7 @@ export default function SettingsDrawer() {
                   </Link>
 
                   <Link
-                    href="/privacy"
+                    href={`/${locale}/privacy`}
                     prefetch={false}
                     className="flex items-center gap-3 p-3.5 rounded-xl transition-all duration-200 hover:bg-white/5 group cursor-pointer"
                     style={{

@@ -287,11 +287,11 @@ export default function OnboardingScreen() {
                 </div>
 
                 <div className="flex items-center justify-center gap-4 mb-6">
-                  <a href="/terms" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline">
+                  <a href={`/${locale}/terms`} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline">
                     {t.onboardingTermsLink} <ExternalLink className="h-3 w-3 opacity-60 group-hover:opacity-100" />
                   </a>
                   <span className="text-white/15">|</span>
-                  <a href="/privacy" target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline">
+                  <a href={`/${locale}/privacy`} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline">
                     {t.onboardingPrivacyLink} <ExternalLink className="h-3 w-3 opacity-60 group-hover:opacity-100" />
                   </a>
                 </div>

@@ -618,9 +618,9 @@ export default function TokenModal({ isOpen, onClose }: TokenModalProps) {
 
                       {/* Legal links — Apple Guideline 3.1.2 zorunlu */}
                       <div className="mt-4 flex items-center justify-center gap-3 text-[10px] text-text-secondary/25">
-                        <a href="/privacy" className="hover:text-text-secondary/50 transition-colors underline underline-offset-2">Privacy Policy</a>
+                        <a href={`/${locale}/privacy`} className="hover:text-text-secondary/50 transition-colors underline underline-offset-2">Privacy Policy</a>
                         <span>·</span>
-                        <a href="/terms" className="hover:text-text-secondary/50 transition-colors underline underline-offset-2">Terms of Service</a>
+                        <a href={`/${locale}/terms`} className="hover:text-text-secondary/50 transition-colors underline underline-offset-2">Terms of Service</a>
                       </div>
                     </motion.div>
                   )}

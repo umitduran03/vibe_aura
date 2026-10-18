@@ -15,6 +15,7 @@ export default function ConsentModal() {
   const t = useT();
   const [showModal, setShowModal] = useState(false);
   const userId = useAppStore((s) => s.userId);
+  const locale = useAppStore((s) => s.locale);
 
   useEffect(() => {
     // Check localStorage for existing consent
@@ -133,7 +134,7 @@ export default function ConsentModal() {
                 {/* ─── Links ─── */}
                 <div className="flex items-center justify-center gap-4 mb-6">
                   <a
-                    href="/terms"
+                    href={`/${locale}/terms`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors"
@@ -143,7 +144,7 @@ export default function ConsentModal() {
                   </a>
                   <span className="text-white/20">|</span>
                   <a
-                    href="/privacy"
+                    href={`/${locale}/privacy`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1 text-xs text-purple-400 hover:text-purple-300 underline underline-offset-2 transition-colors"
