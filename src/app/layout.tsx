@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import Script from "next/script";
 import { Inter } from "next/font/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -109,17 +108,13 @@ export const viewport: Viewport = {
   themeColor: "#050510",
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Middleware'den gelen x-locale header'ı ile dil tespiti
-  const headersList = await headers();
-  const lang = headersList.get("x-locale") || "en";
-
   return (
-    <html lang={lang} suppressHydrationWarning className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
       <head>
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="D41h1N2A_WHp7CwkRMW19KP1XYPFdQ6YdXXH_edJ1xQ" />

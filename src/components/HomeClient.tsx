@@ -40,6 +40,19 @@ export default function HomeClient() {
   const setLocale = useAppStore((s) => s.setLocale);
   const locale = useAppStore((s) => s.locale);
 
+  // Tarayıcının yenilemede veya geri dönüşte sayfanın alt kısmında kalmasını engelle
+  useEffect(() => {
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
+  // Ekran (result -> wizard vb.) her değiştiğinde en üste çık
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [screen]);
+
   // Pathname'den locale'yi ve query'den feature'ı tespit et
   useEffect(() => {
     const pathLocale = window.location.pathname.startsWith("/tr") ? "tr" : "en";

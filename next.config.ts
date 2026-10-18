@@ -67,6 +67,15 @@ const nextConfig: NextConfig = {
         },
       ];
     },
+    async redirects() {
+      return [
+        {
+          source: "/:lang(en|tr)/trends/what-is-the-ick",
+          destination: "/:lang/trends/what-is-an-ick",
+          permanent: true,
+        },
+      ];
+    },
   })
 };
 

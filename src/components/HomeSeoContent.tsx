@@ -1,0 +1,161 @@
+import Link from "next/link";
+
+interface Props {
+  lang: "en" | "tr";
+}
+
+const seoContent = {
+  en: {
+    heading: "VibeCheckr — AI Vibe Check, Aura Score & Photo Roast",
+    tagline:
+      "Upload a selfie or describe your situation for an unfiltered AI personality analysis, aura score, relationship compatibility test, and savage roast.",
+    featuresTitle: "AI Vibe & Relationship Tools",
+    features: [
+      { name: "AI Photo Roast", desc: "Brutally honest AI comedy roast of your selfie and vibe.", href: "/en/ai-roast-me" },
+      { name: "Delulu Check", desc: "Am I delusional? Decode mixed signals before you double text.", href: "/en/delulu-check" },
+      { name: "Aura Battle", desc: "Upload two photos and let AI decide who has higher main character energy.", href: "/en/aura-battle" },
+      { name: "Duo Compatibility", desc: "Test romantic chemistry and zodiac aura alignment.", href: "/en/duo-compatibility" },
+      { name: "Toxic Ex Scanner", desc: "Expose hidden red flags and toxic patterns before texting back.", href: "/en/toxic-ex-scanner" },
+      { name: "Situationship Clarifier", desc: "Find out where you actually stand in your talking stage.", href: "/en/situationship-clarifier" },
+      { name: "Crush Calculator", desc: "Calculate platonic vs. romantic energy from your photos.", href: "/en/crush-calculator" },
+      { name: "Soulmate Radar", desc: "Discover your ideal partner profile and zodiac match.", href: "/en/soulmate-radar" },
+      { name: "Profile Autopsy", desc: "Get a ruthless AI audit of your dating or social profile.", href: "/en/profile-autopsy" },
+      { name: "BFF Vibe Check", desc: "Test best-friend compatibility and chaos levels.", href: "/en/bff-vibe-check" },
+      { name: "Ex Compatibility", desc: "Should you get back together or block them forever?", href: "/en/ex-compatibility" },
+      { name: "Reply Guru", desc: "Generate the perfect witty, flirty, or savage text reply.", href: "/en/reply-guru" },
+      { name: "Mood Reset", desc: "Snap out of a bad day with a sharp, no-nonsense reality check.", href: "/en/mood-reset" },
+    ],
+    trendsTitle: "Trending Relationship & Gen-Z Guides",
+    trends: [
+      { name: "What is an Ick?", href: "/en/trends/what-is-an-ick" },
+      { name: "Are You Delulu?", href: "/en/trends/are-you-delulu" },
+      { name: "Situationship vs Relationship", href: "/en/trends/situationship-vs-relationship" },
+      { name: "What Are Aura Points?", href: "/en/trends/what-are-aura-points" },
+      { name: "What is Rizz?", href: "/en/trends/what-is-rizz" },
+      { name: "Biggest Dating Red Flags 2026", href: "/en/trends/biggest-dating-red-flags-2026" },
+      { name: "Attachment Styles Explained", href: "/en/trends/attachment-styles-explained" },
+      { name: "Gen-Z Dating Terms 2026", href: "/en/trends/gen-z-dating-terms-2026" },
+    ],
+    resourcesTitle: "Explore More",
+    allTrendsLabel: "All Trends & Articles",
+    dictionaryLabel: "Vibe Dictionary (Gen-Z Slang)",
+    faqLabel: "FAQ",
+    privacyLabel: "Privacy Policy",
+    termsLabel: "Terms of Service",
+  },
+  tr: {
+    heading: "VibeCheckr — Yapay Zeka Vibe Check, Aura Skoru ve Fotoğraf Analizi",
+    tagline:
+      "Selfie yükle veya durumunu anlat; yapay zeka ile acımasız kişilik analizi, aura puanı, ilişki uyumu testi ve eğlenceli roast sonucunu anında öğren.",
+    featuresTitle: "Yapay Zeka Vibe ve İlişki Araçları",
+    features: [
+      { name: "YZ Fotoğraf Roast", desc: "Selfie'ni yükle, yapay zeka auranı acımasızca ve esprili dille yorumlasın.", href: "/tr/ai-roast-me" },
+      { name: "Delulu Check", desc: "Delulu muyum? İkinci mesajı atmadan önce karışık sinyalleri çöz.", href: "/tr/delulu-check" },
+      { name: "Aura Savaşı", desc: "İki fotoğraf yükle, kimin ana karakter enerjisinin daha yüksek olduğunu gör.", href: "/tr/aura-battle" },
+      { name: "İkili Uyum Testi", desc: "Fotoğraf ve burçlarla romantik kimya ve enerji uyumunu test et.", href: "/tr/duo-compatibility" },
+      { name: "Toksik Ex Tarayıcı", desc: "Eski sevgiline mesaj atmadan önce gizli red flag'leri ortaya çıkar.", href: "/tr/toxic-ex-scanner" },
+      { name: "Situationship Çözücü", desc: "Belirsiz ilişkide gerçekten ne durumda olduğunuzu netleştir.", href: "/tr/situationship-clarifier" },
+      { name: "Platonik / Crush Testi", desc: "Hoşlandığın kişiyle aranızdaki platonik ve romantik enerjiyi ölç.", href: "/tr/crush-calculator" },
+      { name: "Ruh Eşi Radarı", desc: "Auranıza en uygun ideal partner profilini ve burç uyumunu keşfet.", href: "/tr/soulmate-radar" },
+      { name: "Profil Otopsisi", desc: "Sosyal medya veya tanışma uygulaması profilini yapay zekaya denetlet.", href: "/tr/profile-autopsy" },
+      { name: "BFF Kanka Uyumu", desc: "En yakın arkadaşınla uyumunu ve kaos seviyenizi test et.", href: "/tr/bff-vibe-check" },
+      { name: "Eski Sevgili Uyumu", desc: "Yeniden denemeli mi yoksa tamamen engellemeli mi? YZ analizi.", href: "/tr/ex-compatibility" },
+      { name: "Mesaj Gurusu", desc: "Zor mesajlara verilecek en zekice, flörtöz veya net yanıtı üret.", href: "/tr/reply-guru" },
+      { name: "Mod Sıfırlama", desc: "Kötü bir günü geride bırakmak için net ve pratik farkındalık adımları.", href: "/tr/mood-reset" },
+    ],
+    trendsTitle: "Popüler İlişki ve Gen-Z Rehberleri",
+    trends: [
+      { name: "Ick Nedir?", href: "/tr/trends/what-is-an-ick" },
+      { name: "Delulu Muyum?", href: "/tr/trends/are-you-delulu" },
+      { name: "Situationship ve İlişki Farkı", href: "/tr/trends/situationship-vs-relationship" },
+      { name: "Aura Puanı Nedir?", href: "/tr/trends/what-are-aura-points" },
+      { name: "Rizz Ne Demek?", href: "/tr/trends/what-is-rizz" },
+      { name: "2026 En Büyük Red Flag'ler", href: "/tr/trends/biggest-dating-red-flags-2026" },
+      { name: "Bağlanma Stilleri Rehberi", href: "/tr/trends/attachment-styles-explained" },
+      { name: "2026 Gen-Z İlişki Terimleri", href: "/tr/trends/gen-z-dating-terms-2026" },
+    ],
+    resourcesTitle: "Keşfet",
+    allTrendsLabel: "Tüm Trendler ve Makaleler",
+    dictionaryLabel: "Vibe Sözlüğü (Gen-Z Terimleri)",
+    faqLabel: "Sıkça Sorulan Sorular",
+    privacyLabel: "Gizlilik Politikası",
+    termsLabel: "Kullanım Koşulları",
+  },
+};
+
+export default function HomeSeoContent({ lang }: Props) {
+  const c = seoContent[lang] ?? seoContent.en;
+
+  return (
+    <footer
+      aria-label={c.heading}
+      className="relative z-10 mx-auto w-full max-w-[430px] px-5 pt-10 pb-16 border-t border-white/[0.06] text-white/60"
+    >
+      <section className="mb-8">
+        <h2 className="text-sm font-bold text-white/80 tracking-tight mb-2">
+          {c.heading}
+        </h2>
+        <p className="text-xs text-white/50 leading-relaxed">
+          {c.tagline}
+        </p>
+      </section>
+
+      <section className="mb-8">
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-3">
+          {c.featuresTitle}
+        </h3>
+        <div className="grid grid-cols-2 gap-2">
+          {c.features.map((f) => (
+            <Link
+              key={f.href}
+              href={f.href}
+              className="block rounded-xl bg-white/[0.03] border border-white/[0.06] px-3 py-2.5 hover:bg-white/[0.06] hover:border-white/15 transition-colors"
+            >
+              <span className="block text-xs font-semibold text-white/80">
+                {f.name}
+              </span>
+              <span className="block text-[11px] text-white/45 mt-0.5 leading-snug line-clamp-2">
+                {f.desc}
+              </span>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="mb-8">
+        <h3 className="text-xs font-semibold uppercase tracking-wider text-white/40 mb-3">
+          {c.trendsTitle}
+        </h3>
+        <div className="flex flex-wrap gap-1.5">
+          {c.trends.map((t) => (
+            <Link
+              key={t.href}
+              href={t.href}
+              className="rounded-full bg-white/[0.03] border border-white/[0.06] px-3 py-1 text-[11px] text-white/65 hover:text-white hover:border-white/20 transition-colors"
+            >
+              {t.name}
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <nav aria-label={c.resourcesTitle} className="pt-4 border-t border-white/[0.06] flex flex-wrap gap-x-4 gap-y-2 text-[11px] text-white/45">
+        <Link href={`/${lang}/trends`} className="hover:text-white/80 transition-colors">
+          {c.allTrendsLabel}
+        </Link>
+        <Link href={`/${lang}/vibe-dictionary`} className="hover:text-white/80 transition-colors">
+          {c.dictionaryLabel}
+        </Link>
+        <Link href={`/${lang}/faq`} className="hover:text-white/80 transition-colors">
+          {c.faqLabel}
+        </Link>
+        <Link href={`/${lang}/privacy`} className="hover:text-white/80 transition-colors">
+          {c.privacyLabel}
+        </Link>
+        <Link href={`/${lang}/terms`} className="hover:text-white/80 transition-colors">
+          {c.termsLabel}
+        </Link>
+      </nav>
+    </footer>
+  );
+}
