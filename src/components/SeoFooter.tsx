@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
@@ -63,7 +64,10 @@ const strings = {
 
 export default function SeoFooter() {
   const currentYear = new Date().getFullYear();
-  const locale = useAppStore((s) => s.locale) as "en" | "tr";
+  const params = useParams();
+  const routeLang = (params?.lang as string) ?? "";
+  const storeLocale = useAppStore((s) => s.locale);
+  const locale = (routeLang || storeLocale) as "en" | "tr";
   const isTr = locale === "tr";
   const s = strings[locale] ?? strings.en;
   const currentTrends = isTr ? trendsDataTr : trendsDataEn;

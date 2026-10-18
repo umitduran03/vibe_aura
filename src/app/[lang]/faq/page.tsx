@@ -3,6 +3,7 @@
 import React from "react";
 
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft, HelpCircle, MessageCircleQuestion, Sparkles } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import SeoFooter from "@/components/SeoFooter";
@@ -113,7 +114,10 @@ const itemVariants: Variants = {
 };
 
 export default function FAQPage() {
-  const locale = useAppStore((s) => s.locale) as "en" | "tr";
+  const params = useParams();
+  const routeLang = (params?.lang as string) ?? "";
+  const storeLocale = useAppStore((s) => s.locale);
+  const locale = (routeLang || storeLocale) as "en" | "tr";
   const s = pageStrings[locale] ?? pageStrings.en;
   const faqList = faqs[locale] ?? faqs.en;
 

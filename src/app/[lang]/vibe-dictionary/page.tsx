@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft, BookOpen, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import VibeDictionaryClient from "@/components/VibeDictionaryClient";
@@ -47,7 +48,10 @@ const strings = {
 };
 
 export default function VibeDictionaryPage() {
-  const locale = useAppStore((s) => s.locale) as "en" | "tr";
+  const params = useParams();
+  const routeLang = (params?.lang as string) ?? "";
+  const storeLocale = useAppStore((s) => s.locale);
+  const locale = (routeLang || storeLocale) as "en" | "tr";
   const isTr = locale === "tr";
   const s = strings[locale] ?? strings.en;
 
