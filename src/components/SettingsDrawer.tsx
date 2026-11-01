@@ -17,6 +17,7 @@ import {
   Download,
   Trash2,
   AlertTriangle,
+  Loader2,
 } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { useStreakStore } from "@/store/useStreakStore";
@@ -24,7 +25,7 @@ import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { auth, db } from "@/lib/firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { ZODIAC_SIGNS } from "@/lib/constants";
-import { logOut, deleteAccount } from "@/lib/auth";
+import { logOut, deleteAccount, linkGuestAccount, type LinkProvider } from "@/lib/auth";
 import Image from "next/image";
 import Link from "next/link";
 import { ZodiacIcon } from "@/components/ZodiacIcon";
@@ -66,13 +67,29 @@ export default function SettingsDrawer() {
   const [userZodiac, setUserZodiac] = useState<string | null>(null);
   const [isEditingZodiac, setIsEditingZodiac] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [showGuestLogoutConfirm, setShowGuestLogoutConfirm] = useState(false);
   const [isDeletingAccount, setIsDeletingAccount] = useState(false);
   const [deleteError, setDeleteError] = useState<string | null>(null);
+  const [isLinking, setIsLinking] = useState(false);
+  const [linkFeedback, setLinkFeedback] = useState<{ text: string; type: "success" | "info" | "error" } | null>(null);
+  const [isNativeIOS, setIsNativeIOS] = useState(false);
+
+  const isGuest = useAppStore((s) => s.isGuest);
+  const storeDisplayName = useAppStore((s) => s.displayName);
+  const storePhotoUrl = useAppStore((s) => s.profilePhotoUrl);
+
+  useEffect(() => {
+    import("@capacitor/core").then(({ Capacitor }) => {
+      if (Capacitor.isNativePlatform() && Capacitor.getPlatform() === "ios") {
+        setIsNativeIOS(true);
+      }
+    }).catch(() => {});
+  }, []);
 
   // Profil Verileri
   const user = auth.currentUser;
-  const displayName = user?.displayName || "Vibe Seeker";
-  const photoURL = user?.photoURL;
+  const displayName = storeDisplayName || user?.displayName || "Vibe Seeker";
+  const photoURL = storePhotoUrl || user?.photoURL;
   const initial = displayName.charAt(0).toUpperCase();
 
   useEffect(() => {
@@ -121,11 +138,58 @@ export default function SettingsDrawer() {
 
   const handleLogout = async () => {
     hapticMedium();
+    setShowGuestLogoutConfirm(false);
     await logOut();
     resetWizard();
     useAppStore.getState().setHasAcceptedTerms(null);
     setScreen("onboarding");
     close();
+  };
+
+  const handleLinkAccount = async (provider: LinkProvider) => {
+    if (isLinking) return;
+    hapticMedium();
+    setIsLinking(true);
+    setLinkFeedback(null);
+    try {
+      const result = await linkGuestAccount(provider);
+      setShowGuestLogoutConfirm(false);
+      if (result.status === "linked") {
+        useAppStore.getState().setIsGuest(false);
+        if (auth.currentUser?.displayName) {
+          useAppStore.getState().setDisplayName(auth.currentUser.displayName);
+        }
+        if (auth.currentUser?.photoURL) {
+          useAppStore.getState().setProfilePhotoUrl(auth.currentUser.photoURL);
+        }
+        setLinkFeedback({
+          text: result.awarded > 0 ? t.settingsLinkRewardSuccess : t.settingsLinkSuccessNoBonus,
+          type: "success",
+        });
+      } else if (result.status === "switched") {
+        useAppStore.getState().setIsGuest(false);
+        if (auth.currentUser?.displayName) {
+          useAppStore.getState().setDisplayName(auth.currentUser.displayName);
+        }
+        if (auth.currentUser?.photoURL) {
+          useAppStore.getState().setProfilePhotoUrl(auth.currentUser.photoURL);
+        }
+        setLinkFeedback({
+          text: t.settingsLinkSwitchedNotice,
+          type: "info",
+        });
+      }
+    } catch (err: any) {
+      console.error("[SettingsDrawer] Link account failed:", err);
+      if (err?.code !== "auth/popup-closed-by-user" && err?.code !== "auth/cancelled-popup-request") {
+        setLinkFeedback({
+          text: t.onboardingGenericError,
+          type: "error",
+        });
+      }
+    } finally {
+      setIsLinking(false);
+    }
   };
 
   const handleDeleteAccount = async () => {
@@ -256,6 +320,8 @@ export default function SettingsDrawer() {
                               <Sparkles className="h-3 w-3 text-purple-400" />
                               <span className="text-purple-300">{t.settingsVipMember}</span>
                             </>
+                          ) : isGuest ? (
+                            <span className="text-amber-300/90 font-medium">{t.settingsGuestAccount}</span>
                           ) : (
                             t.settingsFreeAccount
                           )}
@@ -362,6 +428,87 @@ export default function SettingsDrawer() {
 
               {/* ─── Menu Items ─── */}
               <div className="flex-1 overflow-y-auto px-5">
+
+                {/* ─── Misafir Hesabı Google Bağlama Kartı (+5 Jeton) ─── */}
+                {linkFeedback && (
+                  <div
+                    className={`mb-4 p-3.5 rounded-2xl border text-xs font-medium leading-relaxed ${
+                      linkFeedback.type === "success"
+                        ? "bg-emerald-500/15 border-emerald-500/30 text-emerald-200"
+                        : linkFeedback.type === "info"
+                        ? "bg-purple-500/15 border-purple-500/30 text-purple-200"
+                        : "bg-red-500/15 border-red-500/30 text-red-300"
+                    }`}
+                  >
+                    {linkFeedback.text}
+                  </div>
+                )}
+
+                {isGuest && (
+                  <div
+                    className="mb-5 p-4 rounded-2xl relative overflow-hidden"
+                    style={{
+                      background: "linear-gradient(135deg, rgba(139,92,246,0.22) 0%, rgba(236,72,153,0.18) 100%)",
+                      border: "1px solid rgba(236,72,153,0.35)",
+                      boxShadow: "0 10px 30px rgba(139,92,246,0.2)",
+                    }}
+                  >
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <div>
+                        <p className="text-sm font-bold text-white flex items-center gap-1.5">
+                          <Sparkles className="h-4 w-4 text-pink-400 shrink-0" />
+                          {t.settingsLinkGoogleTitle}
+                        </p>
+                        <p className="text-[11px] text-white/70 mt-0.5 leading-snug">
+                          {t.settingsLinkGoogleSub}
+                        </p>
+                      </div>
+                      <span className="shrink-0 px-2.5 py-1 rounded-full text-[10px] font-extrabold tracking-wider bg-amber-400/20 text-amber-300 border border-amber-400/40">
+                        {t.settingsLinkGoogleBadge}
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => handleLinkAccount("google")}
+                      disabled={isLinking}
+                      className="w-full mt-2 py-2.5 px-3 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2 cursor-pointer transition-transform active:scale-95 disabled:opacity-60"
+                      style={{
+                        background: "linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)",
+                        boxShadow: "0 0 16px rgba(139,92,246,0.45)",
+                      }}
+                    >
+                      {isLinking ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                          {t.onboardingConnecting}
+                        </>
+                      ) : (
+                        <>
+                          <svg className="h-4 w-4 bg-white rounded-full p-[1.5px] shrink-0" viewBox="0 0 24 24">
+                            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                          </svg>
+                          {t.settingsLinkGoogleBtn}
+                        </>
+                      )}
+                    </button>
+
+                    {isNativeIOS && (
+                      <button
+                        onClick={() => handleLinkAccount("apple")}
+                        disabled={isLinking}
+                        className="w-full mt-2 py-2.5 px-3 rounded-xl text-xs font-bold text-white flex items-center justify-center gap-2 cursor-pointer bg-white/10 border border-white/15 active:scale-95 disabled:opacity-60"
+                      >
+                        <svg className="h-4 w-4 fill-white shrink-0" viewBox="0 0 24 24">
+                          <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.1 2.48-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91 1.65.17 2.47.81 3.01 1.59-4.32 1.51-3.61 7.33.68 9.07zM13 3.5c.73-.89 1.22-2.13 1.08-3.38-1.08.04-2.39.71-3.16 1.61-.69.79-1.3 2.05-1.14 3.26 1.2.1 2.43-.59 3.22-1.5z"/>
+                        </svg>
+                        {t.settingsLinkAppleBtn}
+                      </button>
+                    )}
+                  </div>
+                )}
 
                 {/* ─── Share & Earn Banner ─── */}
                 <ShareEarnBanner />
@@ -578,7 +725,14 @@ export default function SettingsDrawer() {
 
                 {/* ─── Log Out Button ─── */}
                 <motion.button
-                  onClick={handleLogout}
+                  onClick={() => {
+                    if (isGuest) {
+                      hapticMedium();
+                      setShowGuestLogoutConfirm(true);
+                    } else {
+                      handleLogout();
+                    }
+                  }}
                   className="w-full flex items-center justify-center gap-2 p-3.5 rounded-xl text-sm font-medium text-red-400/90 transition-all duration-300 cursor-pointer group"
                   style={{
                     background: "rgba(239, 68, 68, 0.05)",
@@ -619,6 +773,89 @@ export default function SettingsDrawer() {
                   {t.settingsForEntertainment}
                 </p>
               </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* ─── Guest Logout Warning Modal ─── */}
+      <AnimatePresence>
+        {showGuestLogoutConfirm && (
+          <>
+            <motion.div
+              className="fixed inset-0 z-[90] bg-black/70 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => !isLinking && setShowGuestLogoutConfirm(false)}
+            />
+            <motion.div
+              className="fixed inset-0 z-[91] flex items-center justify-center px-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              <motion.div
+                className="w-full max-w-[320px] rounded-2xl p-6"
+                style={{
+                  background: "linear-gradient(170deg, rgba(25,16,40,0.98) 0%, rgba(12,8,20,0.99) 100%)",
+                  border: "1px solid rgba(139,92,246,0.3)",
+                  boxShadow: "0 20px 60px rgba(0,0,0,0.6)",
+                }}
+                initial={{ scale: 0.85, y: 20 }}
+                animate={{ scale: 1, y: 0 }}
+                exit={{ scale: 0.85, y: 20 }}
+                transition={{ type: "spring", stiffness: 350, damping: 25 }}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-amber-500/10 border border-amber-500/25 mx-auto mb-4">
+                  <AlertTriangle className="h-6 w-6 text-amber-400" />
+                </div>
+                <h3 className="text-center text-[16px] font-bold text-white mb-2">
+                  {t.settingsGuestLogoutConfirmTitle}
+                </h3>
+                <p className="text-center text-[12px] text-white/60 leading-relaxed mb-5">
+                  {t.settingsGuestLogoutConfirmDesc}
+                </p>
+
+                <motion.button
+                  onClick={() => handleLinkAccount("google")}
+                  disabled={isLinking}
+                  className="w-full py-3 rounded-xl text-[13px] font-bold text-white mb-2 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-60"
+                  style={{
+                    background: "linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%)",
+                    boxShadow: "0 0 20px rgba(139,92,246,0.35)",
+                  }}
+                  whileTap={!isLinking ? { scale: 0.97 } : {}}
+                >
+                  {isLinking ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      {t.onboardingConnecting}
+                    </>
+                  ) : (
+                    t.settingsLinkGoogleBtn
+                  )}
+                </motion.button>
+
+                <motion.button
+                  onClick={handleLogout}
+                  disabled={isLinking}
+                  className="w-full py-2.5 rounded-xl text-[13px] font-semibold text-red-400/90 hover:text-red-300 bg-red-500/10 border border-red-500/20 mb-1 cursor-pointer disabled:opacity-40"
+                  whileTap={{ scale: 0.97 }}
+                >
+                  {t.settingsGuestLogoutConfirmBtn}
+                </motion.button>
+
+                <motion.button
+                  onClick={() => setShowGuestLogoutConfirm(false)}
+                  disabled={isLinking}
+                  className="w-full py-2.5 rounded-xl text-[12px] font-medium text-white/40 hover:text-white/70 transition-colors cursor-pointer disabled:opacity-40"
+                  whileTap={{ scale: 0.97 }}
+                >
+                  {t.settingsDeleteAccountCancel}
+                </motion.button>
+              </motion.div>
             </motion.div>
           </>
         )}

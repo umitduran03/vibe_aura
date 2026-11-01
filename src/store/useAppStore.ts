@@ -93,6 +93,9 @@ export type AppScreen = "splash" | "onboarding" | "wizard" | "analyzing" | "resu
 interface AppState {
   // — Auth —
   userId: string | null;
+  isGuest: boolean;
+  displayName: string | null;
+  profilePhotoUrl: string | null;
 
   // — Locale (dil) —
   locale: "en" | "tr";
@@ -164,6 +167,9 @@ interface AppState {
 
   // ========== Actions ==========
   setUserId: (uid: string | null) => void;
+  setIsGuest: (isGuest: boolean) => void;
+  setDisplayName: (displayName: string | null) => void;
+  setProfilePhotoUrl: (url: string | null) => void;
   setLocale: (locale: "en" | "tr") => void;
   setTokenBalance: (balance: number) => void;
   setBalanceLoaded: (loaded: boolean) => void;
@@ -226,6 +232,9 @@ const initialDuoPerson: DuoPersonData = {
 export const useAppStore = create<AppState>((set, get) => ({
   // — Auth —
   userId: null,
+  isGuest: false,
+  displayName: null,
+  profilePhotoUrl: null,
 
   // — Locale (dil) —
   locale: "en" as "en" | "tr",
@@ -281,6 +290,9 @@ export const useAppStore = create<AppState>((set, get) => ({
 
   // ========== Actions ==========
   setUserId: (uid) => set({ userId: uid }),
+  setIsGuest: (isGuest) => set({ isGuest }),
+  setDisplayName: (displayName) => set({ displayName }),
+  setProfilePhotoUrl: (profilePhotoUrl) => set({ profilePhotoUrl }),
   setLocale: (locale) => set({ locale }),
   setTokenBalance: (balance) => set({ tokenBalance: balance, isBalanceLoaded: true }),
   setBalanceLoaded: (loaded) => set({ isBalanceLoaded: loaded }),

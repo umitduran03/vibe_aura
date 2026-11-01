@@ -2,9 +2,9 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { m, AnimatePresence } from "framer-motion";
-import { Sparkles, ExternalLink, Loader2, ArrowRight } from "lucide-react";
+import { Sparkles, ExternalLink, Loader2, ArrowRight, UserRound } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
-import { signInWithGoogle, signInWithApple, acceptTerms } from "@/lib/auth";
+import { signInWithGoogle, signInWithApple, signInAsGuest, acceptTerms } from "@/lib/auth";
 import { hapticLight, hapticMedium, hapticHeavy } from "@/lib/haptics";
 import Image from "next/image";
 
@@ -28,6 +28,7 @@ export default function OnboardingScreen() {
   const [hasConsented, setHasConsented] = useState(false);
   const [isLoggingIn, setIsLoggingIn] = useState(false);
   const [isAppleLoggingIn, setIsAppleLoggingIn] = useState(false);
+  const [isGuestLoggingIn, setIsGuestLoggingIn] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
   const [isNativeIOS, setIsNativeIOS] = useState(false);
@@ -96,6 +97,25 @@ export default function OnboardingScreen() {
       setIsAppleLoggingIn(false);
     }
   }, [isAppleLoggingIn, view, hasConsented]);
+
+  const handleGuestLogin = useCallback(async () => {
+    if (isGuestLoggingIn || isLoggingIn || isAppleLoggingIn || !hasConsented) return;
+    hapticMedium();
+    setIsGuestLoggingIn(true);
+    setIsConnecting(true);
+    setLoginError(null);
+    try {
+      localStorage.setItem("pending_terms_accept", "true");
+      await signInAsGuest();
+    } catch (err: any) {
+      console.error("[Onboarding] Guest login failed:", err);
+      localStorage.removeItem("pending_terms_accept");
+      setLoginError(t.onboardingGenericError);
+      setIsGuestLoggingIn(false);
+    } finally {
+      setIsConnecting(false);
+    }
+  }, [isGuestLoggingIn, isLoggingIn, isAppleLoggingIn, hasConsented, setIsConnecting, t.onboardingGenericError]);
 
   const handleAcceptTerms = useCallback(async () => {
     if (!hasConsented || !userId) return;
@@ -204,6 +224,18 @@ export default function OnboardingScreen() {
               whileTap={{ scale: 0.96 }}
             >
               {t.onboardingLogIn}
+            </m.button>
+
+            {/* Guest Button on Landing → opens Terms */}
+            <m.button
+              onClick={() => { hapticLight(); setView("terms"); }}
+              className="w-full py-3.5 mt-2.5 rounded-2xl text-[14px] font-medium text-white/55 hover:text-white/80 flex items-center justify-center gap-2 transition-colors cursor-pointer"
+              style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.06)" }}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.96 }}
+            >
+              <UserRound className="w-4 h-4 text-purple-400/80" />
+              {t.onboardingGuestBtn}
             </m.button>
 
             {/* Language Toggle */}
@@ -369,7 +401,7 @@ export default function OnboardingScreen() {
                     {isNativeIOS && (
                       <m.button
                         onClick={handleAppleLogin}
-                        disabled={!hasConsented || isAppleLoggingIn}
+                        disabled={!hasConsented || isAppleLoggingIn || isGuestLoggingIn}
                         className={`w-full py-4 rounded-2xl text-[15px] font-bold flex items-center justify-center gap-3 mt-2 ${hasConsented ? "cursor-pointer text-white" : "cursor-not-allowed opacity-50 text-white/50"}`}
                         style={{
                           background: hasConsented ? "rgba(255,255,255,0.1)" : "rgba(255,255,255,0.04)",
@@ -388,6 +420,30 @@ export default function OnboardingScreen() {
                         )}
                       </m.button>
                     )}
+
+                    {/* Misafir Girişi — Sözleşme onaylandıktan sonra aktif */}
+                    <m.button
+                      onClick={handleGuestLogin}
+                      disabled={!hasConsented || isGuestLoggingIn || isLoggingIn || isAppleLoggingIn}
+                      className={`w-full py-3.5 rounded-2xl text-[14px] font-semibold flex items-center justify-center gap-2.5 mt-2.5 transition-all ${hasConsented ? "cursor-pointer text-white/85 hover:text-white" : "cursor-not-allowed opacity-40 text-white/40"}`}
+                      style={{
+                        background: hasConsented ? "rgba(255,255,255,0.06)" : "rgba(255,255,255,0.02)",
+                        border: "1px solid rgba(255,255,255,0.12)",
+                      }}
+                      whileHover={hasConsented && !isGuestLoggingIn ? { scale: 1.02 } : {}}
+                      whileTap={hasConsented && !isGuestLoggingIn ? { scale: 0.96 } : {}}
+                    >
+                      {isGuestLoggingIn ? (
+                        <>
+                          <Loader2 className="h-4 w-4 animate-spin" /> {t.onboardingConnecting}
+                        </>
+                      ) : (
+                        <>
+                          <UserRound className="h-4 w-4 text-purple-400" />
+                          {t.onboardingGuestBtn}
+                        </>
+                      )}
+                    </m.button>
                   </>
                 )}
 
@@ -484,6 +540,15 @@ export default function OnboardingScreen() {
                     )}
                   </m.button>
                 )}
+
+                <button
+                  onClick={() => { hapticLight(); setView("terms"); }}
+                  className="w-full py-3.5 mt-2.5 rounded-2xl text-[14px] font-medium text-white/60 hover:text-white/85 flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                  style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}
+                >
+                  <UserRound className="w-4 h-4 text-purple-400/80" />
+                  {t.onboardingGuestBtn}
+                </button>
 
                 <button onClick={() => setView("landing")} className="w-full mt-3 text-xs text-white/30 hover:text-white/50 transition-colors">
                   {t.onboardingBack}

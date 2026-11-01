@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useAppStore } from "@/store/useAppStore";
-import { onAuthChange, ensureUserDoc, listenUserData, handleRedirectResult, completePendingDelete } from "@/lib/auth";
+import { onAuthChange, ensureUserDoc, listenUserData, handleRedirectResult, completePendingDelete, completePendingGuestLink } from "@/lib/auth";
 import { useStreakStore } from "@/store/useStreakStore";
 
 /**
@@ -19,6 +19,9 @@ import { useStreakStore } from "@/store/useStreakStore";
  */
 export default function AuthProvider({ children }: { children: React.ReactNode }) {
   const setUserId = useAppStore((s) => s.setUserId);
+  const setIsGuest = useAppStore((s) => s.setIsGuest);
+  const setDisplayName = useAppStore((s) => s.setDisplayName);
+  const setProfilePhotoUrl = useAppStore((s) => s.setProfilePhotoUrl);
   const setTokenBalance = useAppStore((s) => s.setTokenBalance);
   const setVipExpiry = useAppStore((s) => s.setVipExpiry);
   const setBalanceLoaded = useAppStore((s) => s.setBalanceLoaded);
@@ -69,17 +72,28 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
         unsubRef.current = null;
 
         if (user) {
-          if (user.isAnonymous) {
-            import("@/lib/auth").then((m) => m.logOut());
-            return;
+          setUserId(user.uid);
+          setIsGuest(user.isAnonymous);
+          if (user.displayName) {
+            setDisplayName(user.displayName);
+          }
+          if (user.photoURL) {
+            setProfilePhotoUrl(user.photoURL);
           }
 
-          setUserId(user.uid);
-
           try {
-            // Firestore dökümanını garanti et
+            // Firestore dökümanını garanti et (misafirler için GuestXXXXXXXXXX adı üretir ve 5 jeton verir)
             const balance = await ensureUserDoc(user);
             setTokenBalance(balance);
+            if (user.displayName) {
+              setDisplayName(user.displayName);
+            }
+            if (user.photoURL) {
+              setProfilePhotoUrl(user.photoURL);
+            }
+
+            // Redirect ile misafir hesabı Google/Apple'a bağlandıysa +5 jeton ödülünü tamamla
+            await completePendingGuestLink();
 
             let isPendingTerms = false;
             try {
@@ -96,15 +110,20 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
               console.warn("[AuthProvider] localStorage error:", storageErr);
             }
 
-            // Gerçek zamanlı dinleme başlat — hasAcceptedTerms de buradan gelir
-            unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference, hasAcceptedTerms, streakCount, lastAnalysisDate, lostStreakCount }) => {
+            // Gerçek zamanlı dinleme başlat — hasAcceptedTerms, displayName, photoURL ve isGuest de buradan gelir
+            unsubRef.current = listenUserData(user.uid, ({ balance, vipExpiry, gender, preference, hasAcceptedTerms, displayName, photoURL, isGuest, streakCount, lastAnalysisDate, lostStreakCount }) => {
               setTokenBalance(balance);
               setVipExpiry(vipExpiry);
+              setDisplayName(displayName || user.displayName || null);
+              setProfilePhotoUrl(photoURL || user.photoURL || null);
+              // Firestore'da isGuest alanı bağlama sonrası anında false olur (linkWithPopup UID değiştirmediği için
+              // closure içindeki eski user.isAnonymous yerine Firestore kaynağını baz alıyoruz).
+              setIsGuest(isGuest);
               useAppStore.getState().setUserPreferences(gender, preference);
               
               useStreakStore.setState((state) => ({
                 streakCount: streakCount ?? state.streakCount,
-                lastAnalysisDate: lastAnalysisDate ?? state.lastAnalysisDate,
+                lastAnalysisDate: lastAnalysisDate !== undefined ? lastAnalysisDate : state.lastAnalysisDate,
                 lostStreakCount: lostStreakCount ?? state.lostStreakCount,
               }));
               
@@ -119,12 +138,16 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
           }
         } else {
           setUserId(null);
+          setIsGuest(false);
+          setDisplayName(null);
+          setProfilePhotoUrl(null);
           setTokenBalance(0);
           setBalanceLoaded(false);
           setVipExpiry(null);
           setHasAcceptedTerms(null);
           useAppStore.getState().setUserPreferences(null, null);
           useAppStore.setState({ isPreferencesLoaded: false });
+          useStreakStore.setState({ streakCount: 0, lastAnalysisDate: null, lostStreakCount: 0, isRecoveryModalOpen: false });
         }
 
         // 3️⃣ Auth state belirlendi — kilidi aç, UI'ı serbest bırak
@@ -143,7 +166,7 @@ export default function AuthProvider({ children }: { children: React.ReactNode }
       unsubscribeAuth?.();
       unsubRef.current?.();
     };
-  }, [setUserId, setTokenBalance, setVipExpiry, setBalanceLoaded, setAuthSettling, setHasAcceptedTerms]);
+  }, [setUserId, setIsGuest, setDisplayName, setProfilePhotoUrl, setTokenBalance, setVipExpiry, setBalanceLoaded, setAuthSettling, setHasAcceptedTerms]);
 
   return <>{children}</>;
 }

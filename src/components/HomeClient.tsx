@@ -172,6 +172,7 @@ export default function HomeClient() {
 
 
   const isConnecting = useAppStore((s) => s.isConnecting);
+  const isAuthSettling = useAppStore((s) => s.isAuthSettling);
   const [prevIsConnecting, setPrevIsConnecting] = useState(false);
 
   // Login Success Toast — ONLY after isConnecting becomes false
@@ -182,6 +183,32 @@ export default function HomeClient() {
     }
     setPrevIsConnecting(isConnecting);
   }, [isConnecting, prevIsConnecting, userId]);
+
+  // Redirect ile misafir hesabı Google/Apple'a bağlandığında bilgilendirme toast'ı göster
+  useEffect(() => {
+    if (!userId || isAuthSettling) return;
+    try {
+      const raw = localStorage.getItem("guest_link_notice");
+      if (!raw) return;
+      localStorage.removeItem("guest_link_notice");
+      const parsed = JSON.parse(raw);
+      if (parsed?.status === "linked") {
+        setToast({
+          message: parsed.awarded > 0 ? t.settingsLinkRewardSuccess : t.settingsLinkSuccessNoBonus,
+          type: "success",
+        });
+        setTimeout(() => setToast(null), 4500);
+      } else if (parsed?.status === "switched") {
+        setToast({
+          message: t.settingsLinkSwitchedNotice,
+          type: "success",
+        });
+        setTimeout(() => setToast(null), 4500);
+      }
+    } catch (_) {
+      // ignore
+    }
+  }, [userId, isAuthSettling, tokenBalance, t.settingsLinkRewardSuccess, t.settingsLinkSuccessNoBonus, t.settingsLinkSwitchedNotice]);
 
   // ===== EXTRAS ANALYSIS TRIGGER =====
   useEffect(() => {

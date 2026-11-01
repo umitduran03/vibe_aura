@@ -10,11 +10,159 @@ import {
   deleteUser,
   reauthenticateWithPopup,
   reauthenticateWithRedirect,
+  signInAnonymously,
+  linkWithPopup,
+  linkWithRedirect,
+  signInWithCredential,
+  updateProfile,
+  type AuthCredential,
 } from "firebase/auth";
 import { doc, getDoc, setDoc, onSnapshot, serverTimestamp, updateDoc, increment, arrayUnion, deleteDoc } from "firebase/firestore";
 import { auth, db } from "./firebase";
+import { getApiUrl } from "./api";
 
 const INITIAL_TOKEN_BALANCE = 5;
+
+// ─── Misafir (Guest) Hesap Sabitleri ───
+// Redirect ile hesap bağlama sonrası ödülün tamamlanması için kullanılan bayrak
+const PENDING_LINK_KEY = "pending_link_reward";
+// Redirect sonrası kullanıcıya gösterilecek bağlama sonucu (toast için)
+export const LINK_NOTICE_KEY = "guest_link_notice";
+
+export type LinkProvider = "google" | "apple";
+
+export type LinkResult =
+  | { status: "linked"; awarded: number }
+  | { status: "switched" }
+  | { status: "redirecting" };
+
+/**
+ * Rastgele misafir kullanıcı adı üretir: "Guest" + 10 haneli sayı (örn. Guest4275585745).
+ * İlk hane 1-9 arası seçilir, böylece ad her zaman 10 hanelidir.
+ */
+export function generateGuestName(): string {
+  const digits = new Uint8Array(10);
+  crypto.getRandomValues(digits);
+  let num = String((digits[0] % 9) + 1);
+  for (let i = 1; i < 10; i++) num += String(digits[i] % 10);
+  return `Guest${num}`;
+}
+
+/**
+ * Misafir olarak (Firebase Anonymous Auth) giriş yapar.
+ * Kullanıcı adı ve Firestore dökümanı, onAuthStateChanged → ensureUserDoc içinde oluşturulur.
+ */
+export async function signInAsGuest(): Promise<void> {
+  await signInAnonymously(auth);
+}
+
+function buildLinkProvider(type: LinkProvider) {
+  if (type === "apple") {
+    const p = new OAuthProvider("apple.com");
+    p.addScope("email");
+    p.addScope("name");
+    return p;
+  }
+  return new GoogleAuthProvider();
+}
+
+function credentialFromLinkError(err: any): AuthCredential | null {
+  return (
+    GoogleAuthProvider.credentialFromError(err) ||
+    OAuthProvider.credentialFromError(err) ||
+    null
+  );
+}
+
+/**
+ * Misafir hesabı Google/Apple hesabına bağlar (aynı UID korunur → jetonlar, geçmiş, seri kaybolmaz).
+ *
+ * DEV: linkWithPopup → sonuç anında döner.
+ * PROD: linkWithRedirect (Safari ITP uyumlu) → sayfa yenilenir, ödül AuthProvider'da tamamlanır.
+ *
+ * Seçilen hesap zaten kayıtlıysa (credential-already-in-use) iki hesap birleştirilemez;
+ * kullanıcı mevcut hesaba geçirilir ve bağlama ödülü verilmez.
+ */
+export async function linkGuestAccount(type: LinkProvider): Promise<LinkResult> {
+  const user = auth.currentUser;
+  if (!user || !user.isAnonymous) throw new Error("Current user is not a guest.");
+
+  const provider = buildLinkProvider(type);
+
+  if (process.env.NODE_ENV === "development") {
+    try {
+      const credRes = await linkWithPopup(user, provider);
+      await credRes.user.reload().catch(() => {});
+    } catch (err: any) {
+      if (err?.code === "auth/credential-already-in-use" || err?.code === "auth/email-already-in-use") {
+        const cred = credentialFromLinkError(err);
+        if (cred) {
+          await signInWithCredential(auth, cred);
+          return { status: "switched" };
+        }
+      }
+      throw err;
+    }
+    const awarded = await finalizeGuestLink();
+    return { status: "linked", awarded };
+  }
+
+  localStorage.setItem(PENDING_LINK_KEY, "true");
+  await linkWithRedirect(user, provider);
+  return { status: "redirecting" }; // Sayfa yeniden yüklenir
+}
+
+/**
+ * Bağlama sonrası: Auth profilini Google/Apple bilgileriyle günceller ve
+ * sunucudan tek seferlik bağlama ödülünü talep eder. Verilen jeton miktarını döner.
+ */
+export async function finalizeGuestLink(): Promise<number> {
+  const user = auth.currentUser;
+  if (!user || user.isAnonymous) return 0;
+
+  const linked = user.providerData.find(
+    (p) => p.providerId === "google.com" || p.providerId === "apple.com"
+  );
+
+  try {
+    await updateProfile(user, {
+      displayName: linked?.displayName || user.displayName,
+      photoURL: linked?.photoURL || user.photoURL,
+    });
+  } catch (err) {
+    console.warn("[finalizeGuestLink] updateProfile failed (non-blocking):", err);
+  }
+
+  const idToken = await user.getIdToken(true);
+  const res = await fetch(getApiUrl("/api/guest/claim-link-reward"), {
+    method: "POST",
+    headers: { Authorization: `Bearer ${idToken}` },
+  });
+  if (!res.ok) {
+    console.error("[finalizeGuestLink] claim failed:", res.status);
+    return 0;
+  }
+  const data = await res.json().catch(() => ({}));
+  return typeof data.awarded === "number" ? data.awarded : 0;
+}
+
+/**
+ * Redirect ile bağlama sonrası bekleyen ödül varsa tamamlar.
+ * AuthProvider tarafından, kullanıcı (artık anonim olmayan) yüklendikten sonra çağrılır.
+ */
+export async function completePendingGuestLink(): Promise<void> {
+  if (localStorage.getItem(PENDING_LINK_KEY) !== "true") return;
+  const user = auth.currentUser;
+  if (!user) return;
+  if (user.isAnonymous) {
+    // Bağlama tamamlanmadı (iptal / hata) — bayrağı temizle
+    localStorage.removeItem(PENDING_LINK_KEY);
+    return;
+  }
+  localStorage.removeItem(PENDING_LINK_KEY);
+  const awarded = await finalizeGuestLink();
+  localStorage.setItem(LINK_NOTICE_KEY, JSON.stringify({ status: "linked", awarded }));
+}
 
 /**
  * Google ile giriş yapar.
@@ -65,6 +213,12 @@ export async function signInWithApple(): Promise<void> {
 export async function deleteAccount(): Promise<void> {
   const user = auth.currentUser;
   if (!user) throw new Error("No authenticated user.");
+
+  // Misafir (anonim) kullanıcılar için OAuth re-authentication gerekmez / yapılamaz
+  if (user.isAnonymous || user.providerData.length === 0) {
+    await _executeAccountDeletion(user);
+    return;
+  }
 
   // Re-authentication: Firebase, hassas işlemler için bunu zorunlu kılar.
   try {
@@ -169,12 +323,27 @@ export async function handleRedirectResult(): Promise<User | null> {
     const result = await Promise.race([redirectPromise, timeoutPromise]);
 
     if (result && "user" in result && result.user) {
-      console.info("[Auth] Redirect sign-in successful:", result.user.email);
+      console.info("[Auth] Redirect sign-in successful:", result.user.email || result.user.uid);
       return result.user;
     }
     return null;
   } catch (err: any) {
     console.error("[Auth] Redirect result error:", err?.code, err?.message);
+    // Misafir hesabı bağlanırken seçilen Google/Apple hesabı zaten kayıtlıysa,
+    // mevcut hesaba geçiş yap ve kullanıcıyı bilgilendir.
+    if (err?.code === "auth/credential-already-in-use" || err?.code === "auth/email-already-in-use") {
+      try {
+        localStorage.removeItem(PENDING_LINK_KEY);
+        const cred = credentialFromLinkError(err);
+        if (cred) {
+          const switched = await signInWithCredential(auth, cred);
+          localStorage.setItem(LINK_NOTICE_KEY, JSON.stringify({ status: "switched" }));
+          return switched.user;
+        }
+      } catch (switchErr) {
+        console.error("[Auth] Credential switch failed:", switchErr);
+      }
+    }
     return null;
   }
 }
@@ -196,15 +365,67 @@ export async function ensureUserDoc(user: User): Promise<number> {
   const userRef = doc(db, "users", user.uid);
   const snap = await getDoc(userRef);
 
+  // ─── Misafir (Anonim) Kullanıcı Akışı ───
+  if (user.isAnonymous) {
+    if (snap.exists()) {
+      const data = snap.data();
+      let guestName = data.displayName || user.displayName;
+      if (!guestName) {
+        guestName = generateGuestName();
+      }
+      if (user.displayName !== guestName) {
+        updateProfile(user, { displayName: guestName }).catch(() => {});
+      }
+      await setDoc(
+        userRef,
+        {
+          displayName: guestName,
+          isGuest: true,
+          lastLoginAt: serverTimestamp(),
+        },
+        { merge: true }
+      );
+      return data.token_balance ?? INITIAL_TOKEN_BALANCE;
+    }
+
+    const guestName = user.displayName || generateGuestName();
+    try {
+      await updateProfile(user, { displayName: guestName });
+    } catch (_) {
+      // non-blocking
+    }
+
+    await setDoc(userRef, {
+      displayName: guestName,
+      email: null,
+      photoURL: null,
+      isGuest: true,
+      token_balance: INITIAL_TOKEN_BALANCE,
+      streakCount: 0,
+      lastAnalysisDate: null,
+      lostStreakCount: 0,
+      lastLoginAt: serverTimestamp(),
+      createdAt: serverTimestamp(),
+    });
+
+    return INITIAL_TOKEN_BALANCE;
+  }
+
+  // ─── Kalıcı (Google / Apple) Kullanıcı Akışı ───
+  const linkedProvider = user.providerData.find(
+    (p) => p.providerId === "google.com" || p.providerId === "apple.com"
+  ) || user.providerData[0];
+
   const profileData = {
-    displayName: user.displayName || null,
-    email: user.email || null,
-    photoURL: user.photoURL || null,
+    displayName: linkedProvider?.displayName || user.displayName || null,
+    email: linkedProvider?.email || user.email || null,
+    photoURL: linkedProvider?.photoURL || user.photoURL || null,
+    isGuest: false,
     lastLoginAt: serverTimestamp(),
   };
 
   if (snap.exists()) {
-    // Mevcut kullanıcı, profil bilgilerini güncelle
+    // Mevcut kullanıcı (veya misafirden Google'a bağlanan kullanıcı), profil bilgilerini güncelle
     await setDoc(userRef, profileData, { merge: true });
     const data = snap.data();
     return data.token_balance ?? INITIAL_TOKEN_BALANCE;
@@ -213,9 +434,9 @@ export async function ensureUserDoc(user: User): Promise<number> {
   // Yeni kullanıcı — daha önce hesap açıp silmiş mi kontrol et.
   // Silmişse kalan token bakiyesiyle başlatılır (token farming önlemi).
   let startingBalance = INITIAL_TOKEN_BALANCE;
-  if (user.email) {
+  if (profileData.email) {
     try {
-      const emailKey = user.email.replace(/\./g, "_dot_").replace(/@/g, "_at_");
+      const emailKey = profileData.email.replace(/\./g, "_dot_").replace(/@/g, "_at_");
       const deletedRef = doc(db, "deleted_accounts", emailKey);
       const deletedSnap = await getDoc(deletedRef);
 
@@ -253,6 +474,9 @@ export function listenUserData(
     gender: string | null; 
     preference: string | null; 
     hasAcceptedTerms: boolean;
+    displayName: string | null;
+    photoURL: string | null;
+    isGuest: boolean;
     streakCount?: number;
     lastAnalysisDate?: string | null;
     lostStreakCount?: number;
@@ -281,6 +505,9 @@ export function listenUserData(
         gender: data.gender || null,
         preference: data.preference || null,
         hasAcceptedTerms: !!data.hasAcceptedTerms,
+        displayName: data.displayName || null,
+        photoURL: data.photoURL || null,
+        isGuest: !!data.isGuest,
         streakCount: data.streakCount ?? 0,
         lastAnalysisDate: data.lastAnalysisDate || null,
         lostStreakCount: data.lostStreakCount ?? 0,
