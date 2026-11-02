@@ -34,11 +34,110 @@ import { useStreakStore } from "@/store/useStreakStore";
 import { auth } from "@/lib/firebase";
 import { useT } from "@/hooks/useT";
 
+const PENDING_FEATURE_KEY = "vibecheckr_pending_feature";
+const PENDING_FEATURE_TTL_MS = 15 * 60 * 1000;
+
+function savePendingFeature(feature: string) {
+  try {
+    localStorage.setItem(PENDING_FEATURE_KEY, JSON.stringify({ feature, ts: Date.now() }));
+  } catch {
+    // ignore storage errors
+  }
+}
+
+function readPendingFeature(): string | null {
+  try {
+    const raw = localStorage.getItem(PENDING_FEATURE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed?.feature || typeof parsed?.ts !== "number") {
+      localStorage.removeItem(PENDING_FEATURE_KEY);
+      return null;
+    }
+    if (Date.now() - parsed.ts > PENDING_FEATURE_TTL_MS) {
+      localStorage.removeItem(PENDING_FEATURE_KEY);
+      return null;
+    }
+    return parsed.feature;
+  } catch {
+    return null;
+  }
+}
+
+function clearPendingFeature() {
+  try {
+    localStorage.removeItem(PENDING_FEATURE_KEY);
+  } catch {
+    // ignore storage errors
+  }
+}
+
+function applyFeatureToStore(feature: string) {
+  const store = useAppStore.getState();
+  store.setSettingsOpen(false);
+  store.setExtrasShowcaseOpen(false);
+
+  const normalizedFeature =
+    feature === "reply-guru"
+      ? "rizz-architect"
+      : feature === "situationship-clarifier"
+      ? "situationship"
+      : feature === "toxic-ex-scanner"
+      ? "toxic-ex"
+      : feature;
+
+  if (["toxic-ex", "situationship", "mood-reset", "delulu-check", "rizz-architect"].includes(normalizedFeature)) {
+    store.setExtrasType(normalizedFeature as any);
+    store.setExtrasModalOpen(true);
+    store.setScreen("wizard");
+  } else if (feature === "duo-compatibility") {
+    store.setExtrasModalOpen(false);
+    store.setAnalysisMode("duo");
+    store.setDuoRelationType("flirt");
+    store.setScreen("wizard");
+  } else if (feature === "aura-battle") {
+    store.setExtrasModalOpen(false);
+    store.setAnalysisMode("duo");
+    store.setDuoRelationType("battle");
+    store.setScreen("wizard");
+  } else if (feature === "ai-roast-me") {
+    store.setExtrasModalOpen(false);
+    store.setAnalysisMode("solo");
+    store.setSoloScenario("roast");
+    store.setScreen("wizard");
+  } else if (feature === "soulmate-radar") {
+    store.setExtrasModalOpen(false);
+    store.setAnalysisMode("solo");
+    store.setSoloScenario("soulmate");
+    store.setScreen("wizard");
+  } else if (feature === "crush-calculator") {
+    store.setExtrasModalOpen(false);
+    store.setAnalysisMode("duo");
+    store.setDuoRelationType("platonic");
+    store.setScreen("wizard");
+  } else if (feature === "bff-vibe-check") {
+    store.setExtrasModalOpen(false);
+    store.setAnalysisMode("duo");
+    store.setDuoRelationType("bff");
+    store.setScreen("wizard");
+  } else if (feature === "ex-compatibility") {
+    store.setExtrasModalOpen(false);
+    store.setAnalysisMode("duo");
+    store.setDuoRelationType("ex");
+    store.setScreen("wizard");
+  } else if (feature === "profile-autopsy") {
+    store.setExtrasType("profile-autopsy");
+    store.setExtrasModalOpen(true);
+    store.setScreen("wizard");
+  }
+}
+
 export default function HomeClient() {
   const screen = useAppStore((s) => s.currentScreen);
   const setScreen = useAppStore((s) => s.setScreen);
   const setLocale = useAppStore((s) => s.setLocale);
   const locale = useAppStore((s) => s.locale);
+  const hasAcceptedTerms = useAppStore((s) => s.hasAcceptedTerms);
 
   // Tarayıcının yenilemede veya geri dönüşte sayfanın alt kısmında kalmasını engelle
   useEffect(() => {
@@ -54,6 +153,9 @@ export default function HomeClient() {
   }, [screen]);
 
   // Pathname'den locale'yi ve query'den feature'ı tespit et
+  // ÖNEMLİ: Giriş yapmamış kullanıcıyı doğrudan wizard'a ("Vibe Seeker" / 0 jeton) sokma!
+  // Seçilen aracı 15 dk TTL ile localStorage'a kaydet (Google OAuth redirect geçişlerinde de korunur);
+  // giriş (Google veya Misafir) tamamlanınca otomatik aç.
   useEffect(() => {
     const pathLocale = window.location.pathname.startsWith("/tr") ? "tr" : "en";
     setLocale(pathLocale);
@@ -63,52 +165,7 @@ export default function HomeClient() {
     const feature = params.get("feature");
     
     if (feature) {
-      const store = useAppStore.getState();
-      const normalizedFeature =
-        feature === "reply-guru"
-          ? "rizz-architect"
-          : feature === "situationship-clarifier"
-          ? "situationship"
-          : feature;
-
-      if (["toxic-ex", "situationship", "mood-reset", "delulu-check", "rizz-architect"].includes(normalizedFeature)) {
-        store.setExtrasType(normalizedFeature as any);
-        store.setExtrasModalOpen(true);
-        store.setScreen("wizard");
-      } else if (feature === "duo-compatibility") {
-        store.setAnalysisMode("duo");
-        store.setDuoRelationType("flirt");
-        store.setScreen("wizard");
-      } else if (feature === "aura-battle") {
-        store.setAnalysisMode("duo");
-        store.setDuoRelationType("battle");
-        store.setScreen("wizard");
-      } else if (feature === "ai-roast-me") {
-        store.setAnalysisMode("solo");
-        store.setSoloScenario("roast");
-        store.setScreen("wizard");
-      } else if (feature === "soulmate-radar") {
-        store.setAnalysisMode("solo");
-        store.setSoloScenario("soulmate");
-        store.setScreen("wizard");
-      } else if (feature === "crush-calculator") {
-        store.setAnalysisMode("duo");
-        store.setDuoRelationType("platonic");
-        store.setScreen("wizard");
-      } else if (feature === "bff-vibe-check") {
-        store.setAnalysisMode("duo");
-        store.setDuoRelationType("bff");
-        store.setScreen("wizard");
-      } else if (feature === "ex-compatibility") {
-        store.setAnalysisMode("duo");
-        store.setDuoRelationType("ex");
-        store.setScreen("wizard");
-      } else if (feature === "profile-autopsy") {
-        store.setExtrasType("profile-autopsy");
-        store.setExtrasModalOpen(true);
-        store.setScreen("wizard");
-      }
-      
+      savePendingFeature(feature);
       // Clean up URL so it doesn't trigger again on refresh
       window.history.replaceState({}, document.title, window.location.pathname);
     }
@@ -174,6 +231,35 @@ export default function HomeClient() {
   const isConnecting = useAppStore((s) => s.isConnecting);
   const isAuthSettling = useAppStore((s) => s.isAuthSettling);
   const [prevIsConnecting, setPrevIsConnecting] = useState(false);
+
+  // Auth Guard & Deep Link (?feature=...) Yönlendiricisi:
+  // 1) Kullanıcı giriş yapmışsa ve bekleyen bir landing page aracı varsa anında o aracı açar.
+  // 2) Kullanıcı giriş yapmamışsa asla "Vibe Seeker / 0 jeton" olarak wizard'da kalmasına izin vermez;
+  //    doğrudan giriş seçeneklerine (Google / Misafir) yönlendirir.
+  useEffect(() => {
+    if (isAuthSettling) return;
+    // userId var ama Firestore'dan hasAcceptedTerms henüz gelmediyse bekle
+    if (userId && hasAcceptedTerms === null) return;
+
+    const pendingFeature = readPendingFeature();
+
+    if (userId && hasAcceptedTerms === true) {
+      if (pendingFeature) {
+        clearPendingFeature();
+        applyFeatureToStore(pendingFeature);
+      }
+      return;
+    }
+
+    // Giriş yapmamış (veya sözleşmeyi onaylamamış) kullanıcı:
+    // Landing page'den geldiyse beklemeden giriş ekranını göster; ayrıca hiçbir koşulda wizard'a sızmasın.
+    if (pendingFeature || screen === "wizard") {
+      useAppStore.getState().setExtrasModalOpen(false);
+      if (screen !== "onboarding") {
+        setScreen("onboarding");
+      }
+    }
+  }, [isAuthSettling, userId, hasAcceptedTerms, screen, setScreen]);
 
   // Login Success Toast — ONLY after isConnecting becomes false
   useEffect(() => {

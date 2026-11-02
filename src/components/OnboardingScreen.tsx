@@ -30,10 +30,29 @@ export default function OnboardingScreen() {
   const [isAppleLoggingIn, setIsAppleLoggingIn] = useState(false);
   const [isGuestLoggingIn, setIsGuestLoggingIn] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [hasPendingFeature, setHasPendingFeature] = useState(false);
   const [loginError, setLoginError] = useState<string | null>(null);
   const [isNativeIOS, setIsNativeIOS] = useState(false);
 
-  useEffect(() => { setMounted(true); }, []);
+  useEffect(() => {
+    setMounted(true);
+    try {
+      const urlFeature = new URLSearchParams(window.location.search).get("feature");
+      if (urlFeature) {
+        setHasPendingFeature(true);
+        return;
+      }
+      const raw = localStorage.getItem("vibecheckr_pending_feature");
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed?.feature && typeof parsed?.ts === "number" && Date.now() - parsed.ts <= 15 * 60 * 1000) {
+          setHasPendingFeature(true);
+        }
+      }
+    } catch {
+      // ignore storage errors
+    }
+  }, []);
 
   // Detect native iOS for Apple Sign-In requirement
   useEffect(() => {
@@ -199,7 +218,19 @@ export default function OnboardingScreen() {
               </m.div>
             </div>
 
-            <p className="text-sm text-white/40 mb-10">{t.onboardingTagline}</p>
+            <p className={`text-sm text-white/40 ${hasPendingFeature ? "mb-5" : "mb-10"}`}>{t.onboardingTagline}</p>
+
+            {hasPendingFeature && (
+              <div
+                className="w-full mb-5 px-4 py-3 rounded-2xl text-center text-[13px] font-medium text-purple-100/90 leading-snug"
+                style={{
+                  background: "linear-gradient(135deg, rgba(139,92,246,0.16) 0%, rgba(236,72,153,0.12) 100%)",
+                  border: "1px solid rgba(139,92,246,0.32)",
+                }}
+              >
+                {t.onboardingFeatureLoginNotice}
+              </div>
+            )}
 
             {/* Sign Up Button */}
             <m.button
