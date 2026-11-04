@@ -19,11 +19,47 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const dict = await getDictionary(lang as Locale);
   const canonicalBase = "https://thevibecheckr.com";
+  const isTr = lang === "tr";
 
   return {
     metadataBase: new URL("https://thevibecheckr.com"),
-    title: dict.seo.title,
+    title: {
+      absolute: dict.seo.title,
+      template: "%s | VibeCheckr",
+    },
     description: dict.seo.description,
+    keywords: isTr
+      ? [
+          "vibe check",
+          "vibe check testi",
+          "vibe check ne demek",
+          "vibe testi",
+          "yapay zeka vibe check",
+          "aura skoru",
+          "yapay zeka fotoğraf analizi",
+          "beni göm ai",
+          "delulu testi",
+          "delulu check türkçe",
+          "ikili uyum testi",
+          "situationship testi",
+          "toksik eski sevgili testi",
+          "vibecheckr",
+        ]
+      : [
+          "vibe check",
+          "AI vibe check",
+          "vibe check test",
+          "what is a vibe check",
+          "free vibe check online",
+          "aura score test",
+          "AI photo roast",
+          "roast my selfie AI",
+          "delulu check",
+          "situationship clarifier",
+          "duo compatibility test",
+          "toxic ex scanner",
+          "vibecheckr",
+        ],
     alternates: {
       canonical: `${canonicalBase}/${lang}`,
       languages: {
@@ -36,8 +72,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: dict.seo.title,
       description: dict.seo.description,
       url: `${canonicalBase}/${lang}`,
-      locale: lang === "tr" ? "tr_TR" : "en_US",
-      alternateLocale: lang === "tr" ? ["en_US"] : ["tr_TR"],
+      siteName: "VibeCheckr",
+      type: "website",
+      locale: isTr ? "tr_TR" : "en_US",
+      alternateLocale: isTr ? ["en_US"] : ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
   };

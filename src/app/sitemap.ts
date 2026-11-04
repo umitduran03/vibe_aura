@@ -11,7 +11,7 @@ const tier3Routes = ["/mood-reset","/reply-guru","/bff-vibe-check","/duo-compati
 const utilityRoutes = ["/faq"];
 const legalRoutes = ["/privacy", "/terms"];
 
-const topTierTrends = ["what-is-an-ick","are-you-delulu","am-i-being-gaslighted","what-is-limerence","mixed-signals-or-delulu","what-is-rizz","situationship-vs-relationship","what-are-aura-points","biggest-dating-red-flags-2026","gen-z-dating-terms-2026"];
+const topTierTrends = ["what-is-a-vibe-check","what-is-an-ick","are-you-delulu","am-i-being-gaslighted","what-is-limerence","mixed-signals-or-delulu","what-is-rizz","situationship-vs-relationship","what-are-aura-points","biggest-dating-red-flags-2026","gen-z-dating-terms-2026"];
 const midTierTrends = ["fix-negative-aura-mood","aura-battle-who-is-cooler","ai-photo-personality-test","what-is-orbiting","trauma-bonding-signs","dry-texter-signs","main-character-energy"];
 
 const STATIC_LAST_MODIFIED = new Date("2026-08-23");

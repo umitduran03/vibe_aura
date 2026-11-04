@@ -73,6 +73,7 @@ export default function SeoFooter() {
   const currentTrends = isTr ? trendsDataTr : trendsDataEn;
   const topReads = currentTrends.filter((t) => 
     [
+      "what-is-a-vibe-check",
       "ai-photo-personality-test", 
       "aura-battle-who-is-cooler", 
       "zodiac-signs-red-flags", 

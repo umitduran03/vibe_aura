@@ -18,6 +18,46 @@ export interface TrendArticle {
 
 export const trendsDataEn: TrendArticle[] = [
   {
+    slug: "what-is-a-vibe-check",
+    title: "What Is a Vibe Check? Meaning, Slang & Free AI Vibe Check Test",
+    description: "What does vibe check mean on TikTok, texting, and dating? Learn the real definition and take a free AI vibe check test to scan your selfie, aura score, and red flags.",
+    category: "Culture & Slang",
+    publishDate: "2026-06-03",
+    readTime: "4 min read",
+    keywords: ["vibe check", "what is a vibe check", "vibe check meaning", "AI vibe check", "vibe check test", "pass the vibe check", "vibe check quiz", "digital aura test"],
+    content: {
+      intro: "Whether someone says 'you passed the vibe check' in a TikTok comment or texts 'quick vibe check' before a first date, the phrase 'vibe check' has become the universal radar for reading energy, intentions, and personality. Originally internet slang for a spontaneous assessment of someone's mood or character, a vibe check in 2026 has evolved into an AI-powered way to decode selfies, text messages, and relationship chemistry in seconds.",
+      sections: [
+        {
+          heading: "What Does 'Vibe Check' Actually Mean?",
+          paragraph: "At its core, a vibe check is an instant evaluation of the energy, attitude, or atmosphere a person gives off. Passing the vibe check means your energy feels authentic, safe, magnetic, and effortless. Failing the vibe check means something feels off—forced confidence, hidden red flags, dry texting, or chaotic main-character delusion.",
+          items: [
+            "Social Vibe Check: Checking how a friend or group is feeling mentally and emotionally.",
+            "Dating Vibe Check: Testing whether a crush's actions match their words before getting attached.",
+            "AI Photo & Chat Vibe Check: Uploading a selfie or screenshot so an objective algorithm can score your aura, roast your aesthetic, and expose mixed signals."
+          ],
+          scenario: "When your crush says 'I'm just really busy right now' but updates their playlist at 2 AM—that's an instant failed vibe check."
+        },
+        {
+          heading: "How an AI Vibe Check Test Works",
+          paragraph: "Human intuition is great until you have a crush and suddenly start ignoring every red flag in sight. That is why the AI vibe check trend exploded. Instead of guessing how you come across—or overanalyzing a three-word text for hours—VibeCheckr uses multimodal AI to scan facial micro-expressions, lighting, aesthetic cues, zodiac dynamics, and texting patterns.",
+          items: [
+            "Solo Vibe Check & AI Roast: Upload a selfie to get your exact Aura Score (0–100), personality archetype, and a brutally honest roast.",
+            "Duo Compatibility & Aura Battle: Compare two photos and zodiac signs to measure romantic chemistry or see who has stronger main-character energy.",
+            "Crisis Center (Delulu Check & Reply Guru): Drop chat screenshots to decode situationships, scan toxic ex behavior, or craft the perfect reply."
+          ]
+        },
+        {
+          heading: "Signs You Pass (or Fail) the Vibe Check",
+          paragraph: "Wondering what separates immaculate aura from instant ick? AI personality scans consistently pick up on subtle visual and conversational patterns that humans miss at first glance. Self-awareness, relaxed posture, and consistent communication score high, while performative mysteriousness and mixed signals tank your score immediately."
+        }
+      ],
+      conclusion: "A real vibe check isn't about perfection—it's about self-awareness and unfiltered honesty. Ready to find out what your selfie or latest situationship actually says about your energy? Put your aura to the test and see if you pass."
+    },
+    ctaLabel: "Take the Free AI Vibe Check",
+    ctaLink: "/",
+  },
+  {
     slug: "ai-photo-personality-test",
     title: "AI Photo Personality Test: What Your Face Actually Says About You",
     description: "The viral TikTok trend explained. Find out how AI analyzes your facial micro-expressions to determine your true aura and toxic traits.",
@@ -1131,6 +1171,46 @@ export const trendsDataEn: TrendArticle[] = [
 
 
 export const trendsDataTr: TrendArticle[] = [
+  {
+    slug: "what-is-a-vibe-check",
+    title: "Vibe Check Ne Demek? Yapay Zeka Vibe Testi ve Enerji Analizi Rehberi",
+    description: "Vibe check ne demek, sosyal medyada ve ilişkilerde nasıl kullanılır? Ücretsiz yapay zeka vibe check testi ile fotoğrafından ve mesajlarından auranı anında ölç.",
+    category: "Kültür & Jargon",
+    publishDate: "2026-06-03",
+    readTime: "4 dk okuma",
+    keywords: ["vibe check", "vibe check ne demek", "vibe testi", "vibe check testi", "yapay zeka vibe check", "vibe ne demek", "aura skoru testi", "online vibe analizi"],
+    content: {
+      intro: "TikTok yorumlarında 'vibe check'i geçti' lafını duymuşsundur ya da flörtün buluşmadan önce 'hızlı bir vibe check yapalım' yazmıştır. İngilizce 'vibration' (titreşim/enerji) kelimesinden gelen 'vibe check', bir insanın, fotoğrafın, mesajın veya ortamın yaydığı enerjiyi ve samimiyeti saniyeler içinde tartmak demektir. 2026'da ise bu kavram sadece bir sosyal medya jargonu olmaktan çıkıp; selfie'lerden, burçlardan ve WhatsApp/Instagram ekran görüntülerinden kişilik ile ilişki analizi yapan yapay zeka vibe testine dönüştü.",
+      sections: [
+        {
+          heading: "Vibe Check Ne Demek? Günlük Hayatta ve Flörtte Kullanımı",
+          paragraph: "En net tanımıyla vibe check; karşındaki kişinin enerjisinin, niyetinin ve dışarıya verdiği havanın 'yerinde olup olmadığını' kontrol etmektir. Birinin vibe check'i geçmesi (passing the vibe check), enerjisinin doğal, güvenilir ve çekici olduğu anlamına gelir. Vibe check'te sınıfta kalmak ise gizli red flag'lerin, yapmacık tavırların veya toksik sinyallerin alarm vermesidir.",
+          items: [
+            "Sosyal Ortamda Vibe Check: Arkadaş grubunun modunu, enerjisini veya bir mekanın atmosferini yoklamak.",
+            "İlişki ve Flörtte Vibe Check: Hoşlandığın kişinin sözleriyle davranışlarının tutarlı olup olmadığını, seni oyalayıp oyalamadığını (situationship) çözmek.",
+            "Yapay Zeka (AI) Vibe Check Testi: Selfie'ni veya sohbet ekran görüntünü yükleyerek yapay zekadan tarafsız Aura Skoru, kişilik analizi ve acımasız roast almak."
+          ],
+          scenario: "Flörtün 'Şu sıralar çok yoğunum' deyip gece 02:30'da Spotify listesini güncelliyorsa, o vibe check'ten net olarak kalmıştır."
+        },
+        {
+          heading: "Yapay Zeka ile Vibe Check Testi Nasıl Yapılır?",
+          paragraph: "İnsan gözü özellikle işin içinde duygular veya ego olduğunda gerçekleri görmekte zorlanır; görmek istediğine inanır. VibeCheckr yapay zeka motoru ise fotoğrafındaki mikro ifadeleri, duruşunu, ışık seçimini, burç enerjini ve mesajlaşma tonunu tamamen tarafsızca tarayarak sana filtreli olmayan gerçeği söyler.",
+          items: [
+            "Bireysel Vibe Check & Beni Göm (AI Roast): Selfie'ni yükle; 100 üzerinden Aura Skorunu, dışarıya verdiğin gerçek enerjiyi ve en komik zayıf noktalarını öğren.",
+            "İkili Uyum & Aura Savaşı: İki fotoğraf ve burç bilgisiyle flört uyumunuzu, platonik şansınızı veya kimin ana karakter enerjisinin daha yüksek olduğunu test et.",
+            "Kriz Merkezi (Delulu Check & Mesaj Gurusu): Karışık mesajların ekran görüntüsünü bırak; kafada mı kuruyorsun (delulu musun) yoksa haklı mısın anında gör."
+          ]
+        },
+        {
+          heading: "Yüksek Vibe (High Aura) vs. Düşük Vibe Sinyalleri",
+          paragraph: "Yapay zeka analizlerinde en yüksek aura puanını alan profillerin ortak noktası kusursuz görünmek değil, kendiyle barışık ve net bir enerji yaymaktır. Aşırı kasıntı pozlar, belirsiz mesajlar ('bakarız', 'bilmem ki') ve tutarsız iletişim ise hem algoritmada hem gerçek hayatta anında eksi aura puanı olarak geri döner."
+        }
+      ],
+      conclusion: "Kısacası vibe check; hem kendi yaydığın enerjiyle yüzleşmenin hem de ilişkilerdeki sis perdesini kaldırmanın en eğlenceli ve en dürüst yoludur. Dışarıya nasıl bir sinyal verdiğini merak ediyorsan tahmin yürütmeyi bırak, fotoğrafını veya mesajını yükle ve gerçek Vibe Skorunu hemen gör."
+    },
+    ctaLabel: "Ücretsiz Vibe Check Testini Başlat",
+    ctaLink: "/",
+  },
   {
     slug: "ai-photo-personality-test",
     title: "Yapay Zeka Yüz Analizi: O Suratın Gerçekte Ne Anlatıyor?",
