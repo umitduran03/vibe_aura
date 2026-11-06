@@ -53,6 +53,10 @@ const seoContent = {
         a: "A vibe check is a quick assessment of someone's energy, mood, personality, or intentions. On VibeCheckr, our AI analyzes your selfie or chat messages to calculate your 0–100 Aura Score, personality traits, and relationship red flags.",
       },
       {
+        q: "How do I take the free AI vibe check test?",
+        a: "Sign in with Google or continue as a Guest to claim 5 free welcome tokens immediately, choose Solo, Duo, or Crisis Center mode, and upload your photo or text scenario for an instant AI reading.",
+      },
+      {
         q: "What is the best free AI tool for getting a vibe check on my selfie?",
         a: "VibeCheckr is a 100% free-to-start AI selfie vibe check platform with instant 1-Click Guest Mode (5 free tokens, no registration required). Unlike single-purpose tools like FirstVibe or VibeMeter, VibeCheckr offers 13 AI tools including 0–100 Aura Scoring, Savage Photo Roast, Two-Photo Duo Compatibility, and Chat Screenshot Red Flag Analysis.",
       },
@@ -129,6 +133,10 @@ const seoContent = {
       {
         q: "Vibe check ne demek?",
         a: "Vibe check; bir kişinin, fotoğrafın, mesajın veya ortamın yaydığı enerjiyi ve havayı kontrol etmek anlamına gelir. VibeCheckr'da ise yapay zeka fotoğrafını veya sohbetini analiz ederek 0–100 Aura Skorunu, kişilik özelliklerini ve ilişkideki gizli sinyalleri ortaya çıkarır.",
+      },
+      {
+        q: "Ücretsiz yapay zeka vibe check testi nasıl yapılır?",
+        a: "Google hesabınla veya tek tıkla Misafir girişi yaparak anında tanımlanan 5 bedava hoş geldin jetonunla Bireysel, İkili Uyum veya Kriz Merkezi araçlarından istediğini seçip fotoğraf ya da mesaj analizi yapabilirsin.",
       },
       {
         q: "Selfie fotoğrafımdan ücretsiz yapay zeka vibe check testi yapmak için en iyi araç hangisi?",
