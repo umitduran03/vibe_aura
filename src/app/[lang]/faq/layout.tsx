@@ -13,15 +13,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Sıkça Sorulan Sorular (S.S.S) | VibeCheckr YZ Vibe Testi",
+      title: "Sıkça Sorulan Sorular (S.S.S) — Ücretsiz YZ Vibe Testi & Gizlilik",
       description:
-        "VibeCheckr hakkında merak edilen her şey. Yapay zeka nasıl çalışır, fotoğraflar kaydedilir mi, aura testi ücretsiz mi? Tüm cevaplar burada.",
+        "VibeCheckr ücretsiz mi, hesap açmak şart mı, yüklenen fotoğraflar siliniyor mu? Yapay zeka aura skoru, sohbet red flag analizi ve ikili uyum testi hakkında tüm cevaplar.",
       keywords: [
         "vibecheckr sss",
         "yapay zeka vibe testi",
         "fotoğraf gömme",
         "aura analizi nasıl yapılır",
         "ücretsiz vibe check",
+        "vibecheckr güvenli mi",
+        "fotoğraflar kaydediliyor mu",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/faq`,
@@ -32,26 +34,31 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Sıkça Sorulan Sorular (S.S.S) | VibeCheckr",
+        title: "Sıkça Sorulan Sorular (S.S.S) — Ücretsiz YZ Vibe Testi | VibeCheckr",
         description:
-          "VibeCheckr uygulaması hakkında tüm detaylar, gizlilik politikası ve yapay zekanın auranızı nasıl okuduğu hakkında bilgiler.",
+          "VibeCheckr ücretsiz mi, fotoğraflar kaydedilir mi, yapay zeka auranı nasıl okur? Merak edilen tüm soruların net yanıtları.",
         url: `${baseUrl}/tr/faq`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
+        images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
     };
   }
 
   return {
-    title: "FAQ — VibeCheckr AI Vibe Check & Photo Roast",
+    title: "FAQ — How Free AI Vibe Check, Aura Score & Photo Privacy Work",
     description:
-      "Frequently asked questions about VibeCheckr — the free AI-powered vibe check, photo roast, and personality analysis app. Learn about features, privacy, and how the AI reads your aura.",
+      "Is VibeCheckr free without signing up? Are selfies or chat screenshots stored? Answers on how our AI calculates 0–100 aura scores, red flags, and duo compatibility.",
     keywords: [
       "vibecheckr faq",
       "ai vibe check questions",
       "photo roast app help",
       "ai personality analysis faq",
       "zodiac compatibility questions",
+      "is vibecheckr free",
+      "is vibecheckr safe",
     ],
     alternates: {
       canonical: `${baseUrl}/en/faq`,
@@ -62,12 +69,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "FAQ — VibeCheckr AI Vibe Check & Photo Roast",
+      title: "FAQ — Free AI Vibe Check, Aura Score & Privacy | VibeCheckr",
       description:
-        "Everything you need to know about VibeCheckr. How the AI works, privacy, features, and more.",
+        "Everything you need to know about VibeCheckr: 1-Click Guest Mode, zero photo storage, 0–100 aura scoring, and chat red flag tools.",
       url: `${baseUrl}/en/faq`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
+      images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
   };
 }

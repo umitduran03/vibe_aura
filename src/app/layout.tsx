@@ -270,6 +270,11 @@ export default function RootLayout({
             <img src="/v-wave.png" alt="Loading Vibe" className="wave-img" width={250} height={176} />
           </picture>
         </div>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var p=location.pathname.replace(/\\/+$/,"");if(p&&p!=="/en"&&p!=="/tr"){var l=document.getElementById("global-loader");if(l)l.style.display="none";}}catch(e){}})();`,
+          }}
+        />
 
         <GlobalLoaderRemover />
         <AdBannerController />

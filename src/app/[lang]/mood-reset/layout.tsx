@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,52 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["mood-reset"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr
-      ? "Mood Reset Yapay Zeka — VibeCheckr"
-      : "Mood Reset AI — VibeCheckr",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Web, Android, iOS",
-    url: isTr
-      ? `${baseUrl}/tr/mood-reset`
-      : `${baseUrl}/en/mood-reset`,
-    description: isTr
-      ? "Kötü bir gün mü geçiriyorsun? Ruh halini düzeltmek, sızlanmayı bırakmak ve vibe'ını şarj etmek için yapay zekadan acımasızca dürüst bir reset al."
-      : "Having a bad day? Get a brutally honest wake-up call from our AI to fix your mood, stop complaining, and recharge your vibe instantly.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      url: baseUrl,
-    },
-  };
-
   if (isTr) {
     return {
-      title: "Mood Reset YZ — Acımasız Uyanış Çağrısı | VibeCheckr",
+      title: "Mood Reset YZ — Eksi Auranı Sıfırla & Modunu Yükselt (Ücretsiz)",
       description:
-        "Kötü bir gün mü? Yapay zeka sızlanmayı bırakman, vibe'ını şarj etmen için acımasızca dürüst bir reset verir. → Hemen dene!",
+        "Modun yerlerde mi? Kafana taktığın şeyi yaz → yapay zeka sızlanmayı bitiren acımasız bir uyanış planı ve enerji reseti versin! Ücretsiz & hesapsız →",
       keywords: [
         "mood reset",
         "ruh hali düzeltici",
@@ -79,25 +38,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Mood Reset YZ — Acımasız Uyanış Çağrısı | VibeCheckr",
+        title: "Mood Reset YZ — Eksi Auranı Sıfırla & Modunu Yükselt | VibeCheckr",
         description:
-          "Kötü bir gün mü? Yapay zeka sızlanmayı bırakman, vibe'ını şarj etmen için acımasızca dürüst bir reset verir. → Hemen dene!",
+          "Kötü bir gün mü? Yapay zekadan 3 saniyede acımasız uyanış çağrısı ve vibe şarjı al. Ücretsiz & hesapsız!",
         url: `${baseUrl}/tr/mood-reset`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
         alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-      },
     };
   }
 
   return {
-    title: "Mood Reset AI — Brutal Wake-up Call | VibeCheckr",
+    title: "Mood Reset AI — Fix Negative Aura & Stop Spiraling (Free Instant Tool)",
     description:
-      "Bad day? Get a brutally honest AI wake-up call to fix your mood & recharge your vibe instantly. Stop spiraling. → Try free!",
+      "Woke up with negative aura? Vent what's draining you → get a brutally honest AI wake-up call & step-by-step vibe recharge in seconds. Free & no sign-up →",
     keywords: [
       "mood reset ai",
       "fix bad mood",
@@ -109,6 +66,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "vibe reset app",
       "instant mood fix",
       "ai mental wellness",
+      "fix negative aura",
     ],
     alternates: {
       canonical: `${baseUrl}/en/mood-reset`,
@@ -119,21 +77,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Mood Reset AI — Brutal Wake-up Call | VibeCheckr",
+      title: "Mood Reset AI — Fix Negative Aura & Recharge Your Vibe | VibeCheckr",
       description:
-        "Bad day? Get a brutally honest AI wake-up call to fix your mood & recharge your vibe instantly. Stop spiraling. → Try free!",
+        "Having a rough day? Get a brutally honest AI wake-up call to stop spiraling and reset your energy instantly. 100% free!",
       url: `${baseUrl}/en/mood-reset`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
       alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-    },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function Layout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const jsonLd = buildToolJsonLd({
+    slug: "mood-reset",
+    lang,
+    name: isTr ? "Mood Reset Yapay Zeka" : "Mood Reset AI",
+    breadcrumbName: isTr ? "Mod Sıfırlama" : "Mood Reset",
+    description: isTr
+      ? "Eksi aurayı ve aşırı düşünme sarmalını kırmak için acımasızca dürüst aksiyon adımları sunan ücretsiz yapay zeka mod sıfırlama aracı."
+      : "Free AI mood reset tool delivering a tough-love wake-up call and actionable steps to break overthinking spirals and recharge your aura.",
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

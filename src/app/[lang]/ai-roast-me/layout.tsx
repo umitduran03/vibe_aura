@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,52 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["ai-roast-me"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr
-      ? "Yapay Zeka Fotoğraf Gömmesi & Vibe Check"
-      : "AI Roast Me & Photo Vibe Check",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Web, Android, iOS",
-    url: isTr
-      ? `${baseUrl}/tr/ai-roast-me`
-      : `${baseUrl}/en/ai-roast-me`,
-    description: isTr
-      ? "Bir selfie yükle ve yapay zekanın acımasız gerçeklerle yüzleşmeni sağlamasına izin ver. En dürüst AI vibe check ve aura analizi uygulaması."
-      : "Upload a selfie and let the AI roast you with brutal facts. The most honest AI vibe check and aura analysis app.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      url: baseUrl,
-    },
-  };
-
   if (isTr) {
     return {
-      title: "AI Fotoğraf Gömmesi & Vibe Check | VibeCheckr",
+      title: "AI Fotoğraf Gömmesi & Selfie Vibe Check (Ücretsiz & Hesapsız)",
       description:
-        "Selfie yükle, yapay zeka acımasız gerçeklerle yüzleşmeni sağlasın. En dürüst AI aura analizi ve vibe check uygulaması. → Hemen dene!",
+        "Selfie yükle → 0–100 Aura Skoru, gizli red flag'lerin ve acımasız AI fotoğraf roast kartın 3 saniyede hazır! Ücretsiz, kayıt gerektirmez → Hemen dene!",
       keywords: [
         "yapay zeka fotoğraf gömme",
         "ai roast me türkçe",
@@ -69,6 +28,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "vibe check fotoğraf",
         "yapay zeka aura testi",
         "en dürüst ai uygulaması",
+        "beni göm yapay zeka",
+        "ücretsiz selfie testi",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/ai-roast-me`,
@@ -79,24 +40,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "AI Fotoğraf Gömmesi & Vibe Check | VibeCheckr",
+        title: "AI Fotoğraf Gömmesi & Selfie Vibe Check | VibeCheckr",
         description:
-          "Selfie yükle, yapay zeka acımasız gerçeklerle yüzleşmeni sağlasın. En dürüst AI aura analizi ve vibe check uygulaması. → Hemen dene!",
+          "Selfie yükle → 0–100 Aura Skoru ve acımasız yapay zeka fotoğraf roast analizi saniyeler içinde gelsin. Ücretsiz & hesapsız!",
         url: `${baseUrl}/tr/ai-roast-me`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-      },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
       },
     };
   }
 
   return {
-    title: "AI Roast Me & Photo Vibe Check | VibeCheckr",
+    title: "AI Roast Me — Free Selfie Roast & 0–100 Aura Score (No Sign-Up)",
     description:
-      "Upload a selfie and let AI roast you with brutal facts. The most honest aura analysis & vibe check app. → Try free!",
+      "Upload a selfie and get roasted by AI in 3 seconds: 0–100 Aura Score, Vibe Archetype, hidden red flags & shareable roast card. 100% free, no account needed →",
     keywords: [
       "ai roast me",
       "vibe check app",
@@ -108,6 +68,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "brutal ai roast",
       "ai selfie analyzer",
       "vibe check photo analysis",
+      "free ai roast generator",
+      "roast my picture ai",
     ],
     alternates: {
       canonical: `${baseUrl}/en/ai-roast-me`,
@@ -118,20 +80,48 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "AI Roast Me & Photo Vibe Check | VibeCheckr",
+      title: "AI Roast Me — Free Selfie Roast & 0–100 Aura Score | VibeCheckr",
       description:
-        "Upload a selfie and let AI roast you with brutal facts. The most honest aura analysis & vibe check app. → Try free!",
+        "Drop your selfie → get a brutal AI photo roast, 0–100 aura score, and shareable neon result card instantly. Free & no sign-up!",
       url: `${baseUrl}/en/ai-roast-me`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-    },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
     },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function Layout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const jsonLd = buildToolJsonLd({
+    slug: "ai-roast-me",
+    lang,
+    name: isTr
+      ? "Yapay Zeka Fotoğraf Gömmesi & Vibe Check"
+      : "AI Roast Me & Photo Vibe Check",
+    breadcrumbName: isTr ? "AI Fotoğraf Gömmesi" : "AI Roast Me",
+    description: isTr
+      ? "Selfie fotoğrafından 0–100 aura skoru, kişilik arketipi ve acımasız fotoğraf gömmesi üreten ücretsiz yapay zeka aracı."
+      : "Free AI selfie roast and vibe check tool that calculates a 0–100 aura score, personality archetype, and savage first-impression roast.",
+    featureList: [
+      "Instant 0–100 Selfie Aura Score",
+      "Brutal AI Photo Roast",
+      "Vibe Archetype & First Impression Read",
+      "Shareable Story Result Card",
+      "1-Click Guest Mode (No Sign-Up Required)",
+    ],
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

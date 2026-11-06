@@ -57,8 +57,53 @@ export default function TrendsHubPage() {
     );
   });
 
+  const baseUrl = "https://thevibecheckr.com";
+  const localeKey = isTr ? "tr" : "en";
+  const hubJsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: s.title,
+      url: `${baseUrl}/${localeKey}/trends`,
+      inLanguage: isTr ? "tr-TR" : "en-US",
+      description: s.introPara,
+      mainEntity: {
+        "@type": "ItemList",
+        numberOfItems: allTrends.length,
+        itemListElement: allTrends.map((article, idx) => ({
+          "@type": "ListItem",
+          position: idx + 1,
+          name: article.title,
+          url: `${baseUrl}/${localeKey}/trends/${article.slug}`,
+        })),
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: isTr ? "Ana Sayfa" : "Home",
+          item: `${baseUrl}/${localeKey}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: s.title,
+          item: `${baseUrl}/${localeKey}/trends`,
+        },
+      ],
+    },
+  ];
+
   return (
     <div className="min-h-dvh bg-[#050510] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(hubJsonLd) }}
+      />
       {/* Background Glow */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-indigo-600/20 blur-[150px]" />

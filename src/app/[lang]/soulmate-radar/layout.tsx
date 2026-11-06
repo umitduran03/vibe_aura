@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,52 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["soulmate-radar"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr
-      ? "YZ Ruh Eşi Radarı & Aşk Falı — VibeCheckr"
-      : "AI Soulmate Radar & Love Fortune — VibeCheckr",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Web, Android, iOS",
-    url: isTr
-      ? `${baseUrl}/tr/soulmate-radar`
-      : `${baseUrl}/en/soulmate-radar`,
-    description: isTr
-      ? "Yapay zeka auranı tarasın ve senin için mükemmel ruh eşinin karakterini, nerede tanışacağınızı ve vibe uyumunuzu söylesin."
-      : "Let the AI scan your aura and reveal the personality of your perfect soulmate, where you'll meet, and your ultimate vibe compatibility.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      url: baseUrl,
-    },
-  };
-
   if (isTr) {
     return {
-      title: "Ruh Eşi Radarı & Aşk Falı (YZ) | VibeCheckr",
+      title: "Ruh Eşi Radarı & YZ Aşk Falı — Ruh Eşim Kim? (Ücretsiz Selfie Testi)",
       description:
-        "Yapay zeka auranı tarasın, ruh eşinin karakterini, nerede tanışacağınızı ve vibe uyumunuzu açıklasın. → Hemen dene!",
+        "Selfie yükle → yapay zeka auranı tarasın; ideal ruh eşinin burcunu, karakterini ve nerede tanışacağınızı anında açıklasın! Ücretsiz & hesapsız →",
       keywords: [
         "ruh eşi bulucu",
         "aşk falı yapay zeka",
@@ -79,24 +38,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Ruh Eşi Radarı & Aşk Falı (YZ) | VibeCheckr",
+        title: "Ruh Eşi Radarı & YZ Aşk Falı (Ücretsiz) | VibeCheckr",
         description:
-          "Yapay zeka auranı tarasın, ruh eşinin karakterini, nerede tanışacağınızı ve vibe uyumunuzu açıklasın. → Hemen dene!",
+          "Auranı tarat → mükemmel ruh eşinin karakterini, burç uyumunu ve nerede karşılaşacağınızı saniyeler içinde öğren!",
         url: `${baseUrl}/tr/soulmate-radar`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-      },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
       },
     };
   }
 
   return {
-    title: "AI Soulmate Radar & Love Fortune | VibeCheckr",
+    title: "AI Soulmate Radar — Who Is My Soulmate? Free Selfie Aura Match",
     description:
-      "Let AI scan your aura and reveal your perfect soulmate's personality, where you'll meet, and your vibe compatibility. → Try free!",
+      "Upload a selfie → AI scans your aura to reveal your ideal soulmate's personality, best zodiac match, and where you'll meet. 100% free, no sign-up →",
     keywords: [
       "soulmate radar",
       "ai love fortune",
@@ -118,20 +76,41 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "AI Soulmate Radar & Love Fortune | VibeCheckr",
+      title: "AI Soulmate Radar — Reveal Your Ideal Match | VibeCheckr",
       description:
-        "Let AI scan your aura and reveal your perfect soulmate's personality, where you'll meet, and your vibe compatibility. → Try free!",
+        "Let AI scan your aura to reveal your soulmate's archetype, zodiac sign, and meeting scenario. Free & instant!",
       url: `${baseUrl}/en/soulmate-radar`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-    },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
     },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function Layout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const jsonLd = buildToolJsonLd({
+    slug: "soulmate-radar",
+    lang,
+    name: isTr
+      ? "YZ Ruh Eşi Radarı & Aşk Falı"
+      : "AI Soulmate Radar & Love Fortune",
+    breadcrumbName: isTr ? "Ruh Eşi Radarı" : "Soulmate Radar",
+    description: isTr
+      ? "Selfie auranızı ve burcunuzu analiz ederek ideal ruh eşi profilinizi ve tanışma senaryonuzu çıkaran ücretsiz yapay zeka aracı."
+      : "Free AI soulmate finder that scans your selfie aura and zodiac traits to predict your ideal partner archetype and meeting vibe.",
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

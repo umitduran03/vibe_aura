@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,48 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["reply-guru"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr ? "Mesaj Gurusu YZ" : "The Reply Guru AI",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Web, Android, iOS",
-    url: isTr ? `${baseUrl}/tr/reply-guru` : `${baseUrl}/en/reply-guru`,
-    description: isTr
-      ? "Ekran görüntüsünü sal ve yapay zekamızın o en mükemmel toksik, cool veya risksiz cevabı kurgulamasına izin ver. Bir daha asla 'buna ne yazsam' diye strese girme."
-      : "Drop the screenshot and let our AI craft the perfect toxic, cool, or safe reply. Never stress about what to text back again.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      url: baseUrl,
-    },
-  };
-
   if (isTr) {
     return {
-      title: "Reply Guru YZ — Mükemmel Cevabı Üret | VibeCheckr",
+      title: "Reply Guru (Rizz YZ) — Sohbet Ekran Görüntüsünden Hazır Cevap Üret",
       description:
-        "Akıl oyunları mı? Kazandın. Ekran görüntüsünü at, yapay zeka mükemmel toksik, havalı veya güvenli cevabı yazsın. → Hemen dene!",
+        "'Buna ne yazsam?' derdi bitti! WhatsApp veya DM ekran görüntüsünü at → yapay zeka en cool, flörtöz veya güvenli cevabı saniyede yazsın. Ücretsiz & hesapsız →",
       keywords: [
         "nasıl cevap verilir",
         "reply guru",
@@ -74,25 +37,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Reply Guru YZ — Mükemmel Cevabı Üret | VibeCheckr",
+        title: "Reply Guru (Rizz YZ) — Mükemmel Mesaj Cevabını Üret | VibeCheckr",
         description:
-          "Akıl oyunları mı? Kazandın. Yapay zeka mükemmel toksik, havalı veya güvenli cevabı yazsın. → Hemen dene!",
+          "Sohbet ekran görüntüsünü yükle → flörtöz, cool, toksik veya güvenli en iyi cevabı 3 saniyede al! Ücretsiz & hesapsız.",
         url: `${baseUrl}/tr/reply-guru`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
         alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-      },
     };
   }
 
   return {
-    title: "Reply Guru AI — Craft the Perfect Text | VibeCheckr",
+    title: "Reply Guru AI — Free Rizz & Text Reply Generator from Screenshots",
     description:
-      "Mind games? Won. Drop the screenshot & let AI craft the perfect toxic, cool, or safe reply. Never stress about what to text back. → Try free!",
+      "Stuck on what to text back? Drop a chat screenshot → AI crafts the smoothest flirty, cool, savage, or safe reply in 3 seconds. Free & no sign-up required →",
     keywords: [
       "rizz ai",
       "text reply generator",
@@ -103,6 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "text game ai",
       "what to text back",
       "toxic reply generator",
+      "chat screenshot reply ai",
     ],
     alternates: {
       canonical: `${baseUrl}/en/reply-guru`,
@@ -113,21 +75,39 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Reply Guru AI — Craft the Perfect Text | VibeCheckr",
+      title: "Reply Guru AI — Free Rizz & Text Reply Generator | VibeCheckr",
       description:
-        "Mind games? Won. Drop the screenshot & let AI craft the perfect toxic, cool, or safe reply. Never stress about what to text back. → Try free!",
+        "Upload your chat screenshot → get instant flirty, cool, or savage text replies crafted by AI. 100% free & no sign-up!",
       url: `${baseUrl}/en/reply-guru`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
       alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-    },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function Layout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const jsonLd = buildToolJsonLd({
+    slug: "reply-guru",
+    lang,
+    name: isTr ? "Mesaj Gurusu (Reply Guru YZ)" : "The Reply Guru — AI Rizz Assistant",
+    breadcrumbName: isTr ? "Mesaj Gurusu" : "Reply Guru",
+    description: isTr
+      ? "Sohbet ekran görüntülerinden flörtöz, cool, toksik veya güvenli hazır mesaj cevapları üreten ücretsiz Rizz yapay zeka asistanı."
+      : "Free AI rizz and texting assistant that reads chat screenshots to generate tailored flirty, cool, savage, or safe replies.",
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

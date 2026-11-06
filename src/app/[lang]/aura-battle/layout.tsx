@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,41 +12,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["aura-battle"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr ? "Aura Savaşı YZ — Kim Daha Cool?" : "Aura Battle AI — Who Has More Aura?",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Any",
-    description: isTr
-      ? "Arkadaşınla aura savaşına gir! İki fotoğrafı yükle, yapay zeka kimin aura puanının daha yüksek olduğuna karar versin."
-      : "Enter an aura battle with your friend! Upload two photos and let the AI decide who has a higher aura score.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
-  };
-
   if (isTr) {
     return {
-      title: "Aura Savaşı — Kim Daha Cool? | VibeCheckr",
-      description: "Arkadaşınla aura savaşına gir! İki fotoğraf yükle, yapay zeka kimin aura puanı daha yüksek karar versin. Tartışmayı bitir. → Hemen dene!",
-      keywords: ["aura savaşı", "kim daha cool", "aura puanı karşılaştırma", "aura battle yapay zeka", "arkadaş aura testi"],
+      title: "Aura Savaşı (Aura Battle) — Kim Daha Cool? 1v1 YZ Aura Puanı",
+      description:
+        "İki fotoğraf yükle, yapay zeka ikinize ayrı ayrı 0–100 Aura Puanı versin ve kimin kazandığını ilan etsin! Ücretsiz & hesapsız tartışmayı bitir →",
+      keywords: [
+        "aura savaşı",
+        "kim daha cool",
+        "aura puanı karşılaştırma",
+        "aura battle yapay zeka",
+        "arkadaş aura testi",
+        "aura points testi",
+        "iki fotoğraf karşılaştırma ai",
+      ],
       alternates: {
         canonical: `${baseUrl}/tr/aura-battle`,
         languages: {
@@ -56,23 +35,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Aura Savaşı — Kim Daha Cool? | VibeCheckr",
-        description: "Arkadaşınla aura savaşına gir! İki fotoğraf yükle, yapay zeka kimin aura puanı daha yüksek karar versin. Tartışmayı bitir. → Hemen dene!",
+        title: "Aura Savaşı — Kim Daha Cool? 1v1 YZ Aura Puanı | VibeCheckr",
+        description:
+          "İki fotoğraf yükle → yapay zeka ikinizin ayrı ayrı vibe skorunu hesaplasın ve kazananı seçsin! Ücretsiz & hesapsız.",
         url: `${baseUrl}/tr/aura-battle`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-      },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
       },
     };
   }
 
   return {
-    title: "Aura Battle — Who Has More Aura? | VibeCheckr",
-    description: "Enter an aura battle with your friend! Upload two photos, let AI decide who has a higher aura score. End the group chat debate. → Try free!",
-    keywords: ["aura battle", "who has more aura", "aura battle who is cooler", "aura score battle", "friend aura comparison ai", "aura points test", "aura fight"],
+    title: "Aura Battle AI — Who Has More Aura? Free 1v1 Photo Score",
+    description:
+      "Upload two photos → AI scores Person 1 vs Person 2 (0–100 Aura Points), crowns the winner, and roasts the loser. Settle the group chat debate free, no sign-up!",
+    keywords: [
+      "aura battle",
+      "who has more aura",
+      "aura battle who is cooler",
+      "aura score battle",
+      "friend aura comparison ai",
+      "aura points test",
+      "aura fight",
+      "compare two photos aura ai",
+    ],
     alternates: {
       canonical: `${baseUrl}/en/aura-battle`,
       languages: {
@@ -82,19 +71,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Aura Battle — Who Has More Aura? | VibeCheckr",
-      description: "Enter an aura battle with your friend! Upload two photos, let AI decide who has a higher aura score. End the group chat debate. → Try free!",
+      title: "Aura Battle AI — Who Has More Aura? (1v1 Score) | VibeCheckr",
+      description:
+        "Upload 2 photos → get individual 0–100 Aura Scores, crown the winner, and end the group chat debate. 100% free & instant!",
       url: `${baseUrl}/en/aura-battle`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-    },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
     },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function Layout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const jsonLd = buildToolJsonLd({
+    slug: "aura-battle",
+    lang,
+    name: isTr ? "Aura Savaşı YZ — Kim Daha Cool?" : "Aura Battle AI — Who Has More Aura?",
+    breadcrumbName: isTr ? "Aura Savaşı" : "Aura Battle",
+    description: isTr
+      ? "İki fotoğrafı karşılaştırarak Kişi 1 ve Kişi 2 için ayrı ayrı 0–100 Aura Puanı hesaplayan ve kazananı belirleyen ücretsiz yapay zeka aracı."
+      : "Head-to-head AI photo comparison tool that calculates separate 0–100 Aura Scores for Person 1 and Person 2, crowns the winner, and roasts the loser.",
+    featureList: [
+      "1v1 Head-to-Head Photo Aura Comparison",
+      "Separate 0–100 Vibe Scores for Person 1 & Person 2",
+      "Winner Crown & Loser Roast Verdict",
+      "Shareable Dual Scoreboard Card",
+    ],
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

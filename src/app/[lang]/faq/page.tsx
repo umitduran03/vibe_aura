@@ -141,15 +141,15 @@ const pageStrings = {
 };
 
 const containerVariants: Variants = {
-  hidden: { opacity: 0 },
+  hidden: { opacity: 1 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { staggerChildren: 0.06 },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 1, y: 0 },
   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
 };
 
@@ -158,21 +158,42 @@ export default function FAQPage() {
   const routeLang = (params?.lang as string) ?? "";
   const storeLocale = useAppStore((s) => s.locale);
   const locale = (routeLang || storeLocale) as "en" | "tr";
+  const isTr = locale === "tr";
   const s = pageStrings[locale] ?? pageStrings.en;
   const faqList = faqs[locale] ?? faqs.en;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqList.map((faq) => ({
-      "@type": "Question",
-      name: faq.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.answer,
-      },
-    })),
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqList.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: isTr ? "Ana Sayfa" : "Home",
+          item: `https://thevibecheckr.com/${isTr ? "tr" : "en"}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: isTr ? "Sıkça Sorulan Sorular" : "FAQ",
+          item: `https://thevibecheckr.com/${isTr ? "tr" : "en"}/faq`,
+        },
+      ],
+    },
+  ];
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-cyan-500/30">
@@ -190,7 +211,7 @@ export default function FAQPage() {
       <div className="relative z-10 max-w-3xl mx-auto px-6 py-12 md:py-20">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
           className="flex items-center gap-4 mb-10"
         >
@@ -213,9 +234,8 @@ export default function FAQPage() {
 
         {/* Intro */}
         <motion.p
-          initial={{ opacity: 0 }}
+          initial={false}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.2 }}
           className="text-white/70 text-lg md:text-xl mb-12 leading-relaxed"
         >
           {s.intro}
@@ -224,7 +244,7 @@ export default function FAQPage() {
         {/* FAQs */}
         <motion.div
           variants={containerVariants}
-          initial="hidden"
+          initial={false}
           animate="show"
           className="space-y-4"
         >
@@ -250,9 +270,8 @@ export default function FAQPage() {
 
         {/* CTA Banner (Bottom) */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, type: "spring" }}
           className="mt-16 p-8 rounded-3xl bg-gradient-to-br from-cyan-900/40 to-blue-900/40 border border-cyan-500/20 text-center backdrop-blur-md relative overflow-hidden group"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,133 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["delulu-check"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  // SoftwareApplication + FAQPage combined JSON-LD — SSR so Googlebot sees it
-  const jsonLd = [
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      name: isTr ? "Delulu Check YZ" : "Delulu Check AI",
-      applicationCategory: "EntertainmentApplication",
-      operatingSystem: "Web, Android, iOS",
-      url: isTr ? `${baseUrl}/tr/delulu-check` : `${baseUrl}/en/delulu-check`,
-      description: isTr
-        ? "Karışık sinyaller mi alıyorsun yoksa tamamen delulu musun? Yapay zeka gerçeklik testini çift mesaj atmadan önce yap."
-        : "Getting mixed signals or just being delusional? Take the AI reality check before you double text.",
-      offers: {
-        "@type": "Offer",
-        price: "0",
-        priceCurrency: "USD",
-        availability: "https://schema.org/InStock",
-      },
-      featureList: [
-        "AI Reality Check",
-        "Mixed Signal Analysis",
-        "Delulu Score (0-100%)",
-        "Red Flag Detection",
-        "Next Step Recommendations",
-        "Turkish & English Support",
-      ],
-      screenshot: `${baseUrl}/opengraph-image.png`,
-      creator: {
-        "@type": "Organization",
-        name: "VibeCheckr",
-        url: baseUrl,
-      },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: isTr
-        ? [
-            {
-              "@type": "Question",
-              name: "Delulu check nedir?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Delulu check, aşk hayatında yaşanan belirsiz durumlara (karışık sinyaller, ghostlama, read-delivered durumu) yapay zeka aracılığıyla gerçekçi bir bakış açısı sunan bir reality check aracıdır. 'Delulu muyum yoksa haklı mıyım?' sorusuna yanıt verir.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Delulu check nasıl yapılır?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Durumu veya mesajları VibeCheckr Delulu Check özelliğine yapıştır. Yapay zeka anlattıklarını gerçek davranış kalıpları ve red flag veritabanıyla kıyaslayarak sana bir gerçeklik puanı ve 'sırada ne yapmalısın' tavsiyesi verir.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Delulu muyum nasıl anlarım?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Aynı mesajları defalarca okuyorsan, yapılan planlar hep iptal ediliyorsa, 'görüldü' kalıp cevap gelmiyorsa veya davranışlara sürekli bahane buluyorsan delulu olma ihtimalin yüksek. Yapay zeka kesin cevabı verir.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Delulu check ücretsiz mi?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Evet, VibeCheckr Delulu Check tamamen ücretsizdir. Google ile giriş yap ve anında reality check'ini al.",
-              },
-            },
-          ]
-        : [
-            {
-              "@type": "Question",
-              name: "What is a delulu check?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "A delulu check is an AI-powered reality check that analyzes confusing romantic situations — mixed signals, ghosting, being left on read — and tells you honestly whether you are being delusional or actually valid.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Am I delusional or getting mixed signals?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "If you have re-read the same conversation multiple times, made excuses for cancelled plans, or think a one-word reply has hidden meaning, there's a high chance you're being delulu. The AI will give you the definitive answer.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "How does the delulu check AI work?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Paste their messages or describe the situation in VibeCheckr's Delulu Check tool. The AI cross-references your story against real behavioral patterns, attachment styles, and red flag databases — then gives you a reality score and next steps.",
-              },
-            },
-            {
-              "@type": "Question",
-              name: "Is the delulu check free?",
-              acceptedAnswer: {
-                "@type": "Answer",
-                text: "Yes, VibeCheckr's Delulu Check is completely free. Sign in with Google and get your instant reality check.",
-              },
-            },
-          ],
-    },
-  ];
-
   if (isTr) {
     return {
-      title: "Delulu Check — Delulu Muyum? Yapay Zeka Reality Check | VibeCheckr",
+      title: "Delulu Check Testi — Delulu Muyum? Ücretsiz YZ Gerçeklik Kontrolü",
       description:
-        "Delulu check nedir? Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten seni seviyor mu? → Hemen dene!",
+        "Karışık sinyaller mi alıyorsun yoksa delulu musun? Mesaj ekran görüntüsünü at veya durumu yaz → 0–100 Delulu Skorunu hesapsız & ücretsiz 3 saniyede öğren!",
       keywords: [
         "delulu check",
         "delulu muyum",
@@ -150,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "yapay zeka ilişki analizi",
         "mixed signal ne demek",
         "delulu testi ücretsiz",
+        "delulu ne demek",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/delulu-check`,
@@ -160,30 +39,29 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Delulu Check — Delulu Muyum? Yapay Zeka Reality Check",
+        title: "Delulu Check Testi — Delulu Muyum? (Ücretsiz YZ) | VibeCheckr",
         description:
-          "Karışık sinyaller mi alıyorsun? Çift mesaj atmadan önce yapay zeka gerçeklik testini yap. O gerçekten seni seviyor mu? → Hemen dene!",
+          "İkinci mesajı atmadan önce dur! Mesajları yapay zekaya okut, 0–100 Delulu Skorunu hesapsız & ücretsiz anında öğren.",
         url: `${baseUrl}/tr/delulu-check`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
         alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-      },
     };
   }
 
   return {
-    title: "Delulu Check — Am I Delusional? AI Reality Check | VibeCheckr",
+    title: "Delulu Check — Am I Delusional? Free AI Text & Mixed Signal Test",
     description:
-      "What is a delulu check? Getting mixed signals? Take the AI reality check before double texting. Are they really interested or are you delusional? Find out instantly — 100% free.",
+      "Are they actually into you or are you delulu? Paste texts or drop a chat screenshot → get an unfiltered 0–100% Delulu Score in 3 sec. Free & no sign-up!",
     keywords: [
       "delulu check",
       "am i delusional",
       "delulu check ai",
       "am i being delusional",
+      "am i delulu quiz",
       "mixed signals ai",
       "stop double texting",
       "should i text them",
@@ -200,21 +78,86 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Delulu Check — Am I Delusional? AI Reality Check",
+      title: "Delulu Check — Am I Delusional? Free AI Reality Check | VibeCheckr",
       description:
-        "Getting mixed signals? Take the AI reality check before double texting. Are they really into you or are you just delusional? Find out instantly. → Try free!",
+        "Getting mixed signals? Take the free AI Delulu Check before double texting. 0–100% reality score in 3 seconds — no sign-up needed!",
       url: `${baseUrl}/en/delulu-check`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
       alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-    },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function Layout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+
+  const extraFaqs = isTr
+    ? [
+        {
+          q: "Delulu check nedir?",
+          a: "Delulu check, aşk hayatında yaşanan belirsiz durumlara (karışık sinyaller, ghostlama, görüldü bırakma) yapay zeka aracılığıyla gerçekçi bir bakış açısı sunan bir reality check aracıdır. 'Delulu muyum yoksa haklı mıyım?' sorusuna 0–100 arası skorla yanıt verir.",
+        },
+        {
+          q: "Delulu check nasıl yapılır?",
+          a: "Durumu yaz veya sohbet ekran görüntüsünü VibeCheckr Delulu Check aracına yükle. Yapay zeka anlattıklarını gerçek davranış kalıpları ve red flag veritabanıyla kıyaslayarak sana bir gerçeklik puanı ve sıradaki hamleni verir.",
+        },
+        {
+          q: "Delulu muyum nasıl anlarım?",
+          a: "Aynı mesajları defalarca okuyorsan, planlar sürekli iptal ediliyorsa, görüldü kalıp saatlerce cevap gelmiyorsa veya davranışlara sürekli bahane buluyorsan delulu olma ihtimalin yüksektir.",
+        },
+        {
+          q: "Delulu check ücretsiz mi? Kayıt gerekir mi?",
+          a: "Evet, VibeCheckr Delulu Check tamamen ücretsizdir ve tek tıkla Misafir Girişi sayesinde hesap açmadan anında kullanılabilir.",
+        },
+      ]
+    : [
+        {
+          q: "What is a delulu check?",
+          a: "A delulu check is a free AI-powered reality check that analyzes confusing romantic situations—mixed signals, dry texts, ghosting, or being left on read—and scores from 0–100% whether you are being delusional or actually valid.",
+        },
+        {
+          q: "Am I delusional or getting mixed signals?",
+          a: "If you have re-read the same conversation 10+ times, made excuses for cancelled plans, or think a one-word reply has hidden meaning, there is a high chance you are being delulu. Our AI checks your receipts objectively.",
+        },
+        {
+          q: "How does the Delulu Check AI work?",
+          a: "Paste messages, upload a chat screenshot, or describe the situation in VibeCheckr's Delulu Check tool. The AI cross-references texting effort, attachment patterns, and red flags to give you a brutal reality score and next steps.",
+        },
+        {
+          q: "Is the Delulu Check completely free without signing up?",
+          a: "Yes! VibeCheckr's Delulu Check is free to start via 1-Click Guest Mode with 5 instant welcome tokens—no account registration required.",
+        },
+      ];
+
+  const jsonLd = buildToolJsonLd({
+    slug: "delulu-check",
+    lang,
+    name: isTr ? "Delulu Check YZ — Gerçeklik Testi" : "Delulu Check AI — Reality Check",
+    breadcrumbName: "Delulu Check",
+    description: isTr
+      ? "Karışık sinyalleri ve mesaj ekran görüntülerini analiz ederek 0–100 Delulu Skoru veren ücretsiz yapay zeka gerçeklik testi."
+      : "Free AI reality check tool that analyzes chat screenshots and mixed signals to deliver an unfiltered 0–100% Delulu Score.",
+    featureList: [
+      "AI Reality Check & Mixed Signal Decoder",
+      "Chat Screenshot & Text Receipt Analysis",
+      "0–100% Delulu Score",
+      "Red Flag & Breadcrumbing Detection",
+      "1-Click Guest Mode (No Sign-Up Required)",
+    ],
+    extraFaqs,
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

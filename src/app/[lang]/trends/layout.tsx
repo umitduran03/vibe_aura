@@ -13,9 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Vibe Kültür Merkezi — Gen-Z Trendleri | VibeCheckr",
+      title: "Vibe Kültür Merkezi — Gen-Z İlişki Rehberleri, Red Flag & Aura Trendleri",
       description:
-        "Gen-Z trendleri, aura savaşları, situationship psikolojisi, toksik ilişki rehberleri. Vibe kültürünün merkezine hoş geldin. → Keşfet!",
+        "Situationship psikolojisi, ick nedir, delulu belirtileri, burç red flag'leri ve aura puanı rehberleri. 30+ analiz yazısını oku ve ücretsiz YZ testlerini dene!",
       keywords: [
         "vibe trendleri",
         "gen-z trendleri 2026",
@@ -37,21 +37,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Vibe Kültür Merkezi — Gen-Z Trendleri | VibeCheckr",
+        title: "Vibe Kültür Merkezi — Gen-Z İlişki & Aura Trendleri | VibeCheckr",
         description:
-          "Situationship, ick, delulu, aura savaşları ve daha fazlası. Gen-Z internet kültürünün tüm trendlerini analiz ediyoruz. → Keşfet!",
+          "Situationship, ick, delulu, aura savaşları ve toksik ilişki psikolojisi üzerine 30+ derinlemesine analiz rehberi.",
         url: `${baseUrl}/tr/trends`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
         alternateLocale: ["en_US"],
+        images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
     };
   }
 
   return {
-    title: "Vibe Culture Hub — Gen-Z Trends & Aura Analysis | VibeCheckr",
+    title: "Vibe Culture Hub — Gen-Z Dating Psychology, Red Flags & Aura Guides",
     description:
-      "The internet's pulse on Gen-Z dating trends, aura battles, situationship psychology, toxic red flags, rizz guides & viral vibe culture. → Explore now!",
+      "30+ deep dives on Gen-Z dating trends, aura points, situationship red flags, attachment styles, rizz & texting anxiety — plus free instant AI vibe tests!",
     keywords: [
       "gen-z trends 2026",
       "vibe check culture",
@@ -75,13 +77,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Vibe Culture Hub — Gen-Z Trends & Aura Analysis | VibeCheckr",
+      title: "Vibe Culture Hub — Gen-Z Dating & Aura Guides | VibeCheckr",
       description:
-        "Deep dives into Gen-Z dating trends, aura battles, situationships, toxic red flags, rizz & viral vibe culture. → Explore now!",
+        "Explore 30+ guides on Gen-Z dating trends, aura battles, situationships, toxic red flags, rizz & viral vibe culture.",
       url: `${baseUrl}/en/trends`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
       alternateLocale: ["tr_TR"],
+      images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
   };
 }

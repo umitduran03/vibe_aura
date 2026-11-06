@@ -3,22 +3,37 @@ import Link from "next/link";
 import { ArrowLeft, Shield } from "lucide-react";
 import SeoFooter from "@/components/SeoFooter";
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
   const baseUrl = "https://thevibecheckr.com";
+  const pageUrl = `${baseUrl}/${isTr ? "tr" : "en"}/privacy`;
   return {
-    title: isTr ? "Gizlilik Politikası" : "Privacy Policy",
+    title: isTr
+      ? "Gizlilik Politikası — Fotoğraf & Mesaj Güvenliği"
+      : "Privacy Policy — Zero Photo Storage & Data Protection",
     description: isTr
-      ? "VibeCheckr Gizlilik Politikası — Kişisel verilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu öğrenin."
-      : "VibeCheckr Privacy Policy — Learn how we collect, use, and protect your personal data. Your privacy matters to us.",
+      ? "VibeCheckr Gizlilik Politikası — Yüklenen selfie ve mesaj ekran görüntüleri asla saklanmaz veya YZ eğitiminde kullanılmaz. Veri güvenliği detaylarını inceleyin."
+      : "VibeCheckr Privacy Policy — Uploaded selfies and chat screenshots are processed in real-time memory, never stored, and never used to train AI models.",
     alternates: {
-      canonical: `${baseUrl}/${lang}/privacy`,
+      canonical: pageUrl,
       languages: {
         en: `${baseUrl}/en/privacy`,
         tr: `${baseUrl}/tr/privacy`,
         "x-default": `${baseUrl}/en/privacy`,
       },
+    },
+    openGraph: {
+      title: isTr ? "Gizlilik Politikası | VibeCheckr" : "Privacy Policy | VibeCheckr",
+      description: isTr
+        ? "Fotoğraflarınız ve sohbet ekran görüntüleriniz asla sunucularda tutulmaz veya YZ eğitiminde kullanılmaz."
+        : "Your selfies and chat screenshots are never stored on servers or used for AI training.",
+      url: pageUrl,
+      siteName: "VibeCheckr",
+      type: "website",
+      locale: isTr ? "tr_TR" : "en_US",
+      alternateLocale: isTr ? ["en_US"] : ["tr_TR"],
+      images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
   };
 }
@@ -137,10 +152,33 @@ const privacyData = {
 export default async function PrivacyPage({ params }: { params: Promise<{ lang: string }> }) {
   const resolvedParams = await params;
   const isTr = resolvedParams.lang === "tr";
+  const localeKey = isTr ? "tr" : "en";
   const s = isTr ? privacyData.tr : privacyData.en;
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isTr ? "Ana Sayfa" : "Home",
+        item: `https://thevibecheckr.com/${localeKey}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: s.title,
+        item: `https://thevibecheckr.com/${localeKey}/privacy`,
+      },
+    ],
+  };
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* ─── Background Glow ─── */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-0 right-0 w-80 h-80 rounded-full bg-cyan-600/8 blur-[120px]" />

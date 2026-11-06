@@ -26,80 +26,129 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return { title: "Not Found" };
   }
 
-  const images = article.imageUrl ? [article.imageUrl] : [];
+  const baseUrl = "https://thevibecheckr.com";
+  const localeKey = resolvedParams.lang === "tr" ? "tr" : "en";
+  const resolvedImage = article.imageUrl
+    ? article.imageUrl.startsWith("http")
+      ? article.imageUrl
+      : `${baseUrl}${article.imageUrl}`
+    : `${baseUrl}/opengraph-image.png`;
 
   return {
     title: `${article.title} | VibeCheckr`,
     description: article.description,
     keywords: article.keywords,
     alternates: {
-      canonical: `https://thevibecheckr.com/${resolvedParams.lang}/trends/${article.slug}`,
+      canonical: `${baseUrl}/${localeKey}/trends/${article.slug}`,
       languages: {
-        en: `https://thevibecheckr.com/en/trends/${article.slug}`,
-        tr: `https://thevibecheckr.com/tr/trends/${article.slug}`,
-        "x-default": `https://thevibecheckr.com/en/trends/${article.slug}`,
+        en: `${baseUrl}/en/trends/${article.slug}`,
+        tr: `${baseUrl}/tr/trends/${article.slug}`,
+        "x-default": `${baseUrl}/en/trends/${article.slug}`,
       },
     },
     openGraph: {
-      title: article.title,
+      title: `${article.title} | VibeCheckr`,
       description: article.description,
+      url: `${baseUrl}/${localeKey}/trends/${article.slug}`,
+      siteName: "VibeCheckr",
       type: "article",
       publishedTime: article.publishDate,
-      modifiedTime: article.publishDate,
+      modifiedTime: "2026-11-06",
       authors: ["VibeCheckr AI"],
-      images: images,
-      locale: resolvedParams.lang === "tr" ? "tr_TR" : "en_US",
-      alternateLocale: resolvedParams.lang === "tr" ? ["en_US"] : ["tr_TR"],
-    }
+      images: [resolvedImage],
+      locale: localeKey === "tr" ? "tr_TR" : "en_US",
+      alternateLocale: localeKey === "tr" ? ["en_US"] : ["tr_TR"],
+    },
   };
 }
 
 export default async function TrendArticlePage({ params }: { params: Promise<{ slug: string, lang: string }> }) {
   const resolvedParams = await params;
   const isTr = resolvedParams.lang === "tr";
+  const localeKey = isTr ? "tr" : "en";
+  const baseUrl = "https://thevibecheckr.com";
   const currentTrends = isTr ? trendsDataTr : trendsDataEn;
-  const article = currentTrends.find((a) => a.slug === resolvedParams.slug);
+  const currentIdx = currentTrends.findIndex((a) => a.slug === resolvedParams.slug);
+  const article = currentIdx >= 0 ? currentTrends[currentIdx] : undefined;
 
   if (!article) {
     notFound();
   }
 
-  // Find 2 other related articles by shuffling the list to avoid always showing the same ones
-  const relatedArticles = currentTrends
-    .filter((a) => a.slug !== resolvedParams.slug)
-    .sort(() => 0.5 - Math.random())
-    .slice(0, 2);
+  // Deterministic 4-article ring cross-linking so every article receives 4 incoming internal links
+  const relatedOffsets = [1, 2, 5, 11];
+  const relatedArticles = relatedOffsets
+    .map((offset) => currentTrends[(currentIdx + offset) % currentTrends.length])
+    .filter(
+      (a, idx, arr) =>
+        a &&
+        a.slug !== resolvedParams.slug &&
+        arr.findIndex((x) => x.slug === a.slug) === idx
+    );
 
-  // Article JSON-LD Schema for Google Discover and Rich Results
-  const jsonLd: any = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: article.title,
-    description: article.description,
-    author: {
-      "@type": "Organization",
-      name: "VibeCheckr AI",
-      url: "https://thevibecheckr.com"
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://thevibecheckr.com/v-wave.png"
-      }
-    },
-    datePublished: article.publishDate,
-    dateModified: article.publishDate,
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": `https://thevibecheckr.com/${resolvedParams.lang}/trends/${article.slug}`
-    }
-  };
+  const resolvedImageUrl = article.imageUrl
+    ? article.imageUrl.startsWith("http")
+      ? article.imageUrl
+      : `${baseUrl}${article.imageUrl}`
+    : `${baseUrl}/opengraph-image.png`;
 
-  if (article.imageUrl) {
-    jsonLd.image = [article.imageUrl];
-  }
+  const pageUrl = `${baseUrl}/${localeKey}/trends/${article.slug}`;
+
+  // Article + BreadcrumbList JSON-LD Schema for Google Discover and Rich Results
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: article.title,
+      description: article.description,
+      inLanguage: isTr ? "tr-TR" : "en-US",
+      image: [resolvedImageUrl],
+      author: {
+        "@type": "Organization",
+        name: "VibeCheckr AI",
+        url: baseUrl,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "VibeCheckr",
+        url: baseUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: `${baseUrl}/v-wave.png`,
+        },
+      },
+      datePublished: article.publishDate,
+      dateModified: "2026-11-06",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": pageUrl,
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: isTr ? "Ana Sayfa" : "Home",
+          item: `${baseUrl}/${localeKey}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: isTr ? "Vibe Kültür Merkezi" : "Vibe Culture Hub",
+          item: `${baseUrl}/${localeKey}/trends`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: article.title,
+          item: pageUrl,
+        },
+      ],
+    },
+  ];
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-indigo-500/30">

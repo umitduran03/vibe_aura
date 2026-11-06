@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildDictionaryJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,48 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["vibe-dictionary"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr ? "Vibe Sözlüğü" : "Vibe Dictionary",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Web, Android, iOS",
-    url: isTr ? `${baseUrl}/tr/vibe-dictionary` : `${baseUrl}/en/vibe-dictionary`,
-    description: isTr
-      ? "Vibe check ne demek? Rizz nedir? Gen-Z slang ve internet jargonunun tam sözlüğü. Red flag, delulu, situationship ve daha fazlasını öğren."
-      : "What does vibe check mean? Complete Gen-Z slang dictionary: rizz, red flag, situationship, delulu, aura points, main character energy and more — all explained.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      url: baseUrl,
-    },
-  };
-
   if (isTr) {
     return {
-      title: "Vibe Sözlüğü — Gen-Z Slang: Vibe Check Ne Demek? | VibeCheckr",
+      title: "Vibe Sözlüğü (300+ Terim) — Vibe Check, Ick, Delulu & Rizz Ne Demek?",
       description:
-        "Vibe check ne demek? Ick nedir? Rizz ne anlama gelir? Gen-Z slang'in tam sözlüğü. → Hemen keşfet!",
+        "Vibe check ne demek? Ick nedir, delulu ve rizz ne anlama gelir? 300+ Gen-Z slang, ilişki terimi ve red flag sözlüğü (2026 güncel) → Ücretsiz keşfet!",
       keywords: [
         "vibe check ne demek",
         "ick nedir",
@@ -64,6 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "red flag ne demek",
         "situationship ne demek",
         "delulu ne demek",
+        "orbiting ne demek",
         "internet jargonu sözlüğü",
         "vibe ne demek",
         "vibe testi",
@@ -77,25 +41,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Vibe Sözlüğü — Vibe Check Ne Demek? Gen-Z Slang | VibeCheckr",
+        title: "Vibe Sözlüğü (300+ Terim) — Vibe Check, Ick & Rizz Ne Demek? | VibeCheckr",
         description:
-          "Vibe check ne demek, ick nedir, rizz nedir? Gen-Z internet jargonunun tam sözlüğü VibeCheckr'da. → Keşfet!",
+          "Vibe check ne demek, ick nedir, delulu ve situationship ne anlama gelir? 300+ Gen-Z internet jargonu teriminin tam sözlüğü.",
         url: `${baseUrl}/tr/vibe-dictionary`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
         alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-      },
     };
   }
 
   return {
-    title: "Vibe Dictionary — Gen-Z Slang & Vibe Check Meaning | VibeCheckr",
+    title: "Gen-Z Slang & Vibe Dictionary (300+ Terms) — Ick, Delulu, Rizz Meaning",
     description:
-      "What does vibe check mean? What is an ick? Gen-Z slang dictionary: rizz, red flag, situationship, delulu, aura points & more explained. → Explore!",
+      "What does vibe check mean? What is an ick, delulu, rizz, situationship, or aura points? Search 300+ modern Gen-Z dating & slang definitions free →",
     keywords: [
       "gen z slang dictionary",
       "what does delulu mean",
@@ -107,6 +69,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "what is an ick",
       "situationship meaning",
       "aura points meaning",
+      "orbiting meaning dating",
     ],
     alternates: {
       canonical: `${baseUrl}/en/vibe-dictionary`,
@@ -117,21 +80,30 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Vibe Dictionary — Gen-Z Slang & Vibe Check Meaning | VibeCheckr",
+      title: "Gen-Z Slang & Vibe Dictionary (300+ Terms) | VibeCheckr",
       description:
-        "What does vibe check mean? What is an ick? Gen-Z slang dictionary: rizz, red flag, situationship, delulu, aura points & more. → Explore!",
+        "What does vibe check mean? Decode 300+ Gen-Z slang & dating terms: the ick, delulu, rizz, situationship, aura points & more.",
       url: `${baseUrl}/en/vibe-dictionary`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
       alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-    },
   };
 }
 
-export default function VibeDictionaryLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function VibeDictionaryLayout({ children, params }: Props) {
+  const { lang } = await params;
+  const jsonLd = buildDictionaryJsonLd(lang);
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

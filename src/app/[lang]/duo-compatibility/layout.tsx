@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,52 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["duo-compatibility"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr
-      ? "Yapay Zeka İkili Uyum Testi — VibeCheckr"
-      : "AI Duo Compatibility Test — VibeCheckr",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Web, Android, iOS",
-    url: isTr
-      ? `${baseUrl}/tr/duo-compatibility`
-      : `${baseUrl}/en/duo-compatibility`,
-    description: isTr
-      ? "İki fotoğraf yükle ve yapay zeka ilişkinizin tam kimyasını, aura uyumunu ve romantik potansiyelini hesaplasın. Ücretsiz, anında ve acımasızca dürüst."
-      : "Upload two photos and let our AI calculate your exact relationship chemistry, aura blend, and romantic compatibility. Free, instant, and brutally honest.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      url: baseUrl,
-    },
-  };
-
   if (isTr) {
     return {
-      title: "Yapay Zeka İkili Uyum Testi | VibeCheckr",
+      title: "Yapay Zeka İkili Uyum Testi — 2 Fotoğraftan İlişki Kimyası (Ücretsiz)",
       description:
-        "İki fotoğraf yükle, yapay zeka ilişki kimyasını, aura uyumunu ve romantik potansiyelinizi hesaplasın. → Hemen dene!",
+        "İki fotoğraf yükle → yapay zeka 0–100 çift uyumunuzu, burç kimyanızı, green/red flag'leri ve paylaşılabilir kartınızı anında çıkarsın! Hesapsız & ücretsiz →",
       keywords: [
         "ikili uyum testi",
         "ilişki kimyası",
@@ -79,25 +38,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Yapay Zeka İkili Uyum Testi — Kimyanızı Ölçün",
+        title: "Yapay Zeka İkili Uyum Testi — Kimyanızı Ölçün | VibeCheckr",
         description:
-          "İki fotoğraf yükle, yapay zeka ilişki kimyasını, aura uyumunu ve romantik potansiyelinizi hesaplasın. → Hemen dene!",
+          "İki fotoğraf yükle → ilişki kimyası, aura uyumu ve romantik potansiyel skorunuz saniyeler içinde gelsin. Ücretsiz & hesapsız!",
         url: `${baseUrl}/tr/duo-compatibility`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
         alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
       },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-      },
     };
   }
 
   return {
-    title: "AI Duo Compatibility Test — Check Your Chemistry | VibeCheckr",
+    title: "AI Duo Compatibility Test — Free 2-Photo Couple Chemistry Check",
     description:
-      "Upload two photos & let AI calculate your exact relationship chemistry, aura blend & romantic compatibility. Brutal honesty. → Try free!",
+      "Upload two photos → AI calculates your 0–100% couple chemistry, zodiac match, aura blend & hidden red flags in seconds. Free & no sign-up required →",
     keywords: [
       "duo compatibility",
       "relationship chemistry test",
@@ -109,6 +66,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "are we compatible",
       "aura blend test",
       "love chemistry calculator",
+      "two photo compatibility test",
     ],
     alternates: {
       canonical: `${baseUrl}/en/duo-compatibility`,
@@ -119,21 +77,47 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "AI Duo Compatibility Test — Check Your Chemistry | VibeCheckr",
+      title: "AI Duo Compatibility Test — 2-Photo Chemistry Check | VibeCheckr",
       description:
-        "Upload two photos & let AI calculate your exact relationship chemistry, aura blend & romantic compatibility. Brutal honesty. → Try free!",
+        "Upload two photos & let AI score your relationship chemistry, aura blend & romantic compatibility. Free, instant, no sign-up!",
       url: `${baseUrl}/en/duo-compatibility`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
       alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
-    },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function Layout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const jsonLd = buildToolJsonLd({
+    slug: "duo-compatibility",
+    lang,
+    name: isTr
+      ? "Yapay Zeka İkili Uyum Testi"
+      : "AI Duo Compatibility Test",
+    breadcrumbName: isTr ? "İkili Uyumluluk" : "Duo Compatibility",
+    description: isTr
+      ? "İki fotoğraf yükleyerek çift kimyasını, burç uyumunu ve 0–100 ilişki potansiyelini hesaplayan ücretsiz yapay zeka testi."
+      : "Free AI couple compatibility platform that analyzes two photos and zodiac signs to calculate 0–100% romantic chemistry and aura harmony.",
+    featureList: [
+      "Two-Photo AI Chemistry & Aura Match",
+      "0–100% Romantic Compatibility Score",
+      "Zodiac Sign Synergy & Red Flag Read",
+      "Shareable Neon Duo Card",
+    ],
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

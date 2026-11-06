@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,59 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["profile-autopsy"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr ? "Profil Otopsisi AI" : "Profile Autopsy AI",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Web, Android, iOS",
-    url: isTr ? `${baseUrl}/tr/profile-autopsy` : `${baseUrl}/en/profile-autopsy`,
-    description: isTr
-      ? "Instagram, Tinder, Bumble, Hinge, X ve BeReal profilinizi yapay zeka ile analiz edin. 0-100 puan, green flag’ler ve red flag düzeltmeleri."
-      : "Let AI dissect your Instagram, Tinder, Bumble, Hinge, X, and BeReal profiles. Get a brutal 0-100 score, green flags, red flags, and exactly how to fix them.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    featureList: [
-      "Self Audit Mode — Analyze your own dating profile",
-      "Detective Mode — Stalk someone else's profile",
-      "0-100 Vibe Score",
-      "Red Flag & Ick Detection",
-      "Green Flag Analysis",
-      "Bio Strength Score",
-      "First Impression Rating",
-      "Supports Tinder, Bumble, Hinge, Instagram, X, BeReal",
-    ],
-    screenshot: `${baseUrl}/opengraph-image.png`,
-    creator: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      url: baseUrl,
-    },
-  };
-
   if (isTr) {
     return {
-      title: "Profil Otopsisi AI — Tinder & Instagram | VibeCheckr",
+      title: "Profil Otopsisi AI — Tinder, Bumble & Instagram Profil Analizi (Ücretsiz)",
       description:
-        "Tinder, Bumble, Instagram profilini analiz et veya Dedektif Modu ile başkasını stalkla. Yapay zeka ile red flag'leri öğren. → Hemen dene!",
+        "Tinder, Bumble, Hinge veya Instagram profil ekran görüntüsünü yükle → 0–100 çekicilik skoru, bio hataları ve Dedektif Modu ile gizli red flag'leri ücretsiz gör!",
       keywords: [
         "profil analizi yapay zeka",
         "tinder profil otopsisi",
@@ -85,23 +37,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Profil Otopsisi AI — Tinder & Instagram | VibeCheckr",
-        description: "Tinder, Bumble, Instagram profilini analiz et veya Dedektif Modu ile başkasını stalkla. Yapay zeka ile red flag'leri öğren. → Hemen dene!",
+        title: "Profil Otopsisi AI — Tinder & Instagram Analizi | VibeCheckr",
+        description:
+          "Kendi flört profilini puanlat veya Dedektif Modu ile karşı tarafın gizli red flag'lerini yakala! Ücretsiz & hesapsız.",
         url: `${baseUrl}/tr/profile-autopsy`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-      },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
       },
     };
   }
 
   return {
-    title: "Profile Autopsy AI — Tinder & Instagram | VibeCheckr",
+    title: "Profile Autopsy AI — Free Tinder, Hinge & Instagram Profile Analyzer",
     description:
-      "Audit your Tinder/Instagram profile for red flags, or use Detective Mode to stalk someone's vibe. Brutal AI score & advice. → Try free!",
+      "Upload a Tinder, Bumble, Hinge, or Instagram screenshot → get a 0–100 profile score, ick fixes, bio tips, or stalk red flags in Detective Mode. Free, no sign-up!",
     keywords: [
       "profile autopsy ai",
       "tinder profile analyzer",
@@ -112,6 +64,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       "x twitter profile analyzer",
       "dating profile tips ai",
       "social media profile score",
+      "free dating profile review ai",
     ],
     alternates: {
       canonical: `${baseUrl}/en/profile-autopsy`,
@@ -122,19 +75,45 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Profile Autopsy AI — Tinder & Instagram | VibeCheckr",
-      description: "Audit your Tinder/Instagram profile for red flags, or use Detective Mode to stalk someone's vibe. Brutal AI score & advice. → Try free!",
+      title: "Profile Autopsy AI — Free Tinder, Hinge & IG Audit | VibeCheckr",
+      description:
+        "Audit your dating profile for hidden icks & red flags—or use Detective Mode to decode someone else's vibe. 100% free!",
       url: `${baseUrl}/en/profile-autopsy`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-    },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
     },
   };
 }
 
-export default function ProfileAutopsyLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function ProfileAutopsyLayout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const jsonLd = buildToolJsonLd({
+    slug: "profile-autopsy",
+    lang,
+    name: isTr ? "Profil Otopsisi AI" : "Profile Autopsy AI",
+    breadcrumbName: isTr ? "Profil Otopsisi" : "Profile Autopsy",
+    description: isTr
+      ? "Instagram, Tinder, Bumble, Hinge ve X profillerini analiz ederek 0–100 puan, bio gücü ve red/green flag raporu sunan ücretsiz yapay zeka aracı."
+      : "Free AI profile analyzer for Tinder, Bumble, Hinge, Instagram, and X with Self Audit Mode, Detective Mode, and 0–100 vibe scoring.",
+    featureList: [
+      "Self Audit Mode — Fix Your Own Dating Profile",
+      "Detective Mode — Scan Someone Else's Profile for Red Flags",
+      "0–100 First Impression & Bio Strength Score",
+      "Supports Tinder, Bumble, Hinge, Instagram, X & BeReal",
+    ],
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

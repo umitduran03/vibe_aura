@@ -3,22 +3,37 @@ import Link from "next/link";
 import { ArrowLeft, Scale } from "lucide-react";
 import SeoFooter from "@/components/SeoFooter";
 
-export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
   const baseUrl = "https://thevibecheckr.com";
+  const pageUrl = `${baseUrl}/${isTr ? "tr" : "en"}/terms`;
   return {
-    title: isTr ? "Kullanım Koşulları" : "Terms of Service",
+    title: isTr
+      ? "Kullanım Koşulları — Ücretsiz Jetonlar & Hizmet Şartları"
+      : "Terms of Service — Free Tokens, AI Usage & Rules",
     description: isTr
-      ? "VibeCheckr Kullanım Koşulları — Yapay zeka destekli vibe check uygulamasını kullanmak için koşullarımızı okuyun."
-      : "VibeCheckr Terms of Service — Read our terms and conditions for using the AI-powered vibe check and photo analysis app.",
+      ? "VibeCheckr Kullanım Koşulları — Yapay zeka vibe check testi, ücretsiz hoş geldin jetonları, misafir modu ve platform kuralları hakkında detaylar."
+      : "VibeCheckr Terms of Service — Read our guidelines on free welcome tokens, AI entertainment readings, user privacy, and platform usage.",
     alternates: {
-      canonical: `${baseUrl}/${lang}/terms`,
+      canonical: pageUrl,
       languages: {
         en: `${baseUrl}/en/terms`,
         tr: `${baseUrl}/tr/terms`,
         "x-default": `${baseUrl}/en/terms`,
       },
+    },
+    openGraph: {
+      title: isTr ? "Kullanım Koşulları | VibeCheckr" : "Terms of Service | VibeCheckr",
+      description: isTr
+        ? "VibeCheckr yapay zeka vibe check platformu kullanım şartları ve kuralları."
+        : "Terms and conditions for using the VibeCheckr AI vibe check and compatibility platform.",
+      url: pageUrl,
+      siteName: "VibeCheckr",
+      type: "website",
+      locale: isTr ? "tr_TR" : "en_US",
+      alternateLocale: isTr ? ["en_US"] : ["tr_TR"],
+      images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     },
   };
 }
@@ -111,10 +126,33 @@ const termsData = {
 export default async function TermsPage({ params }: { params: Promise<{ lang: string }> }) {
   const resolvedParams = await params;
   const isTr = resolvedParams.lang === "tr";
+  const localeKey = isTr ? "tr" : "en";
   const s = isTr ? termsData.tr : termsData.en;
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: isTr ? "Ana Sayfa" : "Home",
+        item: `https://thevibecheckr.com/${localeKey}`,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: s.title,
+        item: `https://thevibecheckr.com/${localeKey}/terms`,
+      },
+    ],
+  };
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       {/* ─── Background Glow ─── */}
       <div className="fixed inset-0 pointer-events-none z-0">
         <div className="absolute top-0 left-0 w-80 h-80 rounded-full bg-purple-600/10 blur-[120px]" />

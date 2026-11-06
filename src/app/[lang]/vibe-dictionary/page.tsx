@@ -61,19 +61,19 @@ export default function VibeDictionaryPage() {
 
   const relatedTools = [
     {
-      href: `/${isTr ? "tr" : "en"}?feature=delulu-check`,
+      href: `/${isTr ? "tr" : "en"}/delulu-check`,
       emoji: "🤡",
       title: isTr ? "Delulu Kontrol" : "Delulu Check",
       desc: isTr ? "Gerçekten delulu musun, yoksa haklı mısın?" : "Are you actually delusional or just right?",
     },
     {
-      href: `/${isTr ? "tr" : "en"}?feature=reply-guru`,
+      href: `/${isTr ? "tr" : "en"}/reply-guru`,
       emoji: "💬",
       title: isTr ? "Mesaj Gurusu" : "Reply Guru",
       desc: isTr ? "Ne yazacağını bilemiyor musun?" : "Don't know what to text back?",
     },
     {
-      href: `/${isTr ? "tr" : "en"}?feature=situationship-clarifier`,
+      href: `/${isTr ? "tr" : "en"}/situationship-clarifier`,
       emoji: "🌀",
       title: isTr ? "Situationship Netleştirici" : "Situationship Clarifier",
       desc: isTr ? "Bu ilişkinin ne olduğunu öğren" : "Figure out what this even is",
@@ -108,9 +108,8 @@ export default function VibeDictionaryPage() {
 
         {/* Hero Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={false}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           className="mb-12 space-y-4"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest">
@@ -127,18 +126,15 @@ export default function VibeDictionaryPage() {
 
         {/* Stats Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
         >
           {s.statsLabels.map((label, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
+              initial={false}
+              animate={{ opacity: 1, y: 0 }}
               className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-cyan-500/30 transition-all text-center group"
             >
               <div className="text-2xl font-black text-cyan-400 group-hover:scale-110 transition-transform">
@@ -191,9 +187,8 @@ export default function VibeDictionaryPage() {
 
         {/* Related Tools Section */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          initial={false}
+          animate={{ opacity: 1, y: 0 }}
           className="mt-16"
         >
           <h2 className="text-2xl font-black text-white mb-2">{s.relatedTitle}</h2>
@@ -202,10 +197,8 @@ export default function VibeDictionaryPage() {
             {relatedTools.map((tool, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                initial={false}
+                animate={{ opacity: 1, y: 0 }}
               >
                 <Link
                   href={tool.href}

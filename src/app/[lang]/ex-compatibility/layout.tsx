@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,52 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["ex-compatibility"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr
-      ? "Eski Sevgili Uyum Testi & Ayrılık Analizi — VibeCheckr"
-      : "Ex Compatibility Test & Breakup Analysis AI — VibeCheckr",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Web, Android, iOS",
-    url: isTr
-      ? `${baseUrl}/tr/ex-compatibility`
-      : `${baseUrl}/en/ex-compatibility`,
-    description: isTr
-      ? "Eski sevgiline mesaj atmadan önce yapay zekaya bir sor. Ayrılık sebebinizi, ego savaşını kimin kazandığını ve geri dönüş riskinizi analiz et."
-      : "Ask the AI before texting your ex. Analyze your breakup reason, see who won the ego war, and calculate your relapse risk.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      url: baseUrl,
-    },
-  };
-
   if (isTr) {
     return {
-      title: "Ex Uyum Testi & Ayrılık Analizi (YZ) | VibeCheckr",
+      title: "Ex Uyum Testi & Ayrılık Analizi — Mesaj Atmalı Mıyım? (Ücretsiz YZ)",
       description:
-        "Eski sevgiline mesaj atmadan önce yapay zekaya sor. Ego savaşını kimin kazandığını ve geri dönüş riskini analiz et. → Hemen dene!",
+        "Eski sevgiline mesaj atmadan önce dur! İki fotoğraf yükle → ayrılık sebebinizi, ego savaşını kimin kazandığını ve geri dönüş riskini hesapsız & ücretsiz öğren!",
       keywords: [
         "eski sevgili uyumu",
         "ex uyum testi",
@@ -79,24 +38,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Ex Uyum Testi & Ayrılık Analizi (YZ) | VibeCheckr",
+        title: "Ex Uyum Testi & Ayrılık Analizi (Ücretsiz YZ) | VibeCheckr",
         description:
-          "Eski sevgiline mesaj atmadan önce yapay zekaya sor. Ego savaşını kimin kazandığını ve geri dönüş riskini analiz et. → Hemen dene!",
+          "Eski sevgiline yazmadan önce yapay zekaya sor: Ego savaşını kim kazandı, geri dönüş riski % kaç? Ücretsiz & hesapsız!",
         url: `${baseUrl}/tr/ex-compatibility`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-      },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
       },
     };
   }
 
   return {
-    title: "Ex Compatibility Test & Breakup Analysis AI | VibeCheckr",
+    title: "Ex Compatibility Test AI — Should I Text My Ex? Free Relapse Check",
     description:
-      "Ask AI before texting your ex. Analyze your breakup reason, who won the ego war, and calculate your relapse risk. → Try free!",
+      "Thinking of texting your ex? Upload two photos → AI analyzes your breakup, crowns who won the ego war & scores your relapse risk. Free & no sign-up →",
     keywords: [
       "ex compatibility",
       "should i text my ex",
@@ -118,20 +76,41 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Ex Compatibility Test & Breakup Analysis AI | VibeCheckr",
+      title: "Ex Compatibility Test AI — Should I Text My Ex? | VibeCheckr",
       description:
-        "Ask AI before texting your ex. Analyze your breakup reason, who won the ego war, and calculate your relapse risk. → Try free!",
+        "Analyze your breakup reason, see who won the ego war, and check your 0–100% relapse risk before texting your ex. 100% free!",
       url: `${baseUrl}/en/ex-compatibility`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-    },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
     },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function Layout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const jsonLd = buildToolJsonLd({
+    slug: "ex-compatibility",
+    lang,
+    name: isTr
+      ? "Eski Sevgili Uyum Testi & Ayrılık Analizi"
+      : "Ex Compatibility Test & Breakup Analysis AI",
+    breadcrumbName: isTr ? "Eski Sevgili Uyumu" : "Ex Compatibility",
+    description: isTr
+      ? "Eski sevgilinle iki fotoğrafınızı analiz ederek ayrılık sebebini, ego savaşını ve geri dönüş riskini hesaplayan ücretsiz yapay zeka aracı."
+      : "Free AI breakup and ex-compatibility analyzer that scores relapse risk, ego-war winner, and lingering chemistry from two photos.",
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

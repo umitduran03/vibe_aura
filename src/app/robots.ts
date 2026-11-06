@@ -8,7 +8,15 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/payment-success", "/history"],
+        disallow: [
+          "/api/",
+          "/payment-success",
+          "/en/payment-success",
+          "/tr/payment-success",
+          "/history",
+          "/en/history",
+          "/tr/history",
+        ],
       },
       {
         userAgent: [

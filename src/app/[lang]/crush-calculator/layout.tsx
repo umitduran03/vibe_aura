@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { featureSeoData } from "@/lib/seo-feature-data";
+import { buildToolJsonLd } from "@/lib/seo-schema";
 
 type Props = {
   children: React.ReactNode;
@@ -12,52 +12,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
   const isTr = lang === "tr";
 
-  const featureData = featureSeoData["crush-calculator"]?.[isTr ? "tr" : "en"];
-  let faqJsonLd = null;
-  if (featureData?.faq?.questions) {
-    faqJsonLd = {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: featureData.faq.questions.map((q: any) => ({
-        "@type": "Question",
-        name: q.q,
-        acceptedAnswer: { "@type": "Answer", text: q.a },
-      })),
-    };
-  }
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name: isTr
-      ? "Crush Uyumu & Platonik Aşk Testi (YZ)"
-      : "Crush Calculator & Platonic Love Test AI",
-    applicationCategory: "EntertainmentApplication",
-    operatingSystem: "Web, Android, iOS",
-    url: isTr
-      ? `${baseUrl}/tr/crush-calculator`
-      : `${baseUrl}/en/crush-calculator`,
-    description: isTr
-      ? "Platonik aşkınla aranızda gerçekten bir kıvılcım var mı, yoksa hepsi senin kafanda mı? İki fotoğraf yükle, yapay zeka delulu seviyeni ölçsün."
-      : "Is there a real spark, or is it all in your head? Upload two photos and let the AI measure your delulu level with your crush.",
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-      availability: "https://schema.org/InStock",
-    },
-    creator: {
-      "@type": "Organization",
-      name: "VibeCheckr",
-      url: baseUrl,
-    },
-  };
-
   if (isTr) {
     return {
-      title: "Crush Uyumu & Platonik Aşk Testi | VibeCheckr",
+      title: "Crush Uyumu & Platonik Aşk Testi — Benden Hoşlanıyor mu? (Ücretsiz YZ)",
       description:
-        "Gerçekten bir kıvılcım var mı, yoksa hepsi kafanda mı? İki fotoğraf yükle, yapay zeka delulu seviyeni ölçsün. → Hemen dene!",
+        "Gerçek bir kıvılcım var mı yoksa kafanda mı kuruyorsun? İki fotoğraf yükle, yapay zeka 0–100 crush uyum yüzdesini ve çekimi ölçsün! Hesapsız & ücretsiz →",
       keywords: [
         "crush uyumu",
         "platonik aşk testi",
@@ -79,24 +38,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         },
       },
       openGraph: {
-        title: "Crush Uyumu & Platonik Aşk Testi | VibeCheckr",
+        title: "Crush Uyumu & Platonik Aşk Testi (Ücretsiz YZ) | VibeCheckr",
         description:
-          "Gerçekten bir kıvılcım var mı, yoksa hepsi kafanda mı? İki fotoğraf yükle, yapay zeka delulu seviyeni ölçsün. → Hemen dene!",
+          "İki fotoğraf yükle → yapay zeka platonik aşkınla 0–100 çekim yüzdesini ve delulu seviyeni anında hesaplasın!",
         url: `${baseUrl}/tr/crush-calculator`,
+        siteName: "VibeCheckr",
         type: "website",
         locale: "tr_TR",
+        alternateLocale: ["en_US"],
         images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-      },
-      other: {
-        "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
       },
     };
   }
 
   return {
-    title: "Crush Calculator & Platonic Love Test AI | VibeCheckr",
+    title: "Crush Calculator AI — Does My Crush Like Me? Free 2-Photo Test",
     description:
-      "Real spark or all in your head? Upload two photos and let AI measure your delulu level with your crush. Instant results. → Try free!",
+      "Real spark or all in your head? Upload two photos → AI calculates your 0–100% crush compatibility, unspoken tension & delulu level. Free & no sign-up →",
     keywords: [
       "crush calculator",
       "does my crush like me test",
@@ -118,20 +76,41 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       },
     },
     openGraph: {
-      title: "Crush Calculator & Platonic Love Test AI | VibeCheckr",
+      title: "Crush Calculator AI — Does My Crush Like Me? | VibeCheckr",
       description:
-        "Real spark or all in your head? Upload two photos and let AI measure your delulu level with your crush. Instant results. → Try free!",
+        "Upload two photos and let AI measure your 0–100% crush spark, attraction signs, and delulu score instantly. 100% free!",
       url: `${baseUrl}/en/crush-calculator`,
+      siteName: "VibeCheckr",
       type: "website",
       locale: "en_US",
+      alternateLocale: ["tr_TR"],
       images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
-    },
-    other: {
-      "application-ld+json": JSON.stringify(faqJsonLd ? [jsonLd, faqJsonLd] : jsonLd),
     },
   };
 }
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+export default async function Layout({ children, params }: Props) {
+  const { lang } = await params;
+  const isTr = lang === "tr";
+  const jsonLd = buildToolJsonLd({
+    slug: "crush-calculator",
+    lang,
+    name: isTr
+      ? "Crush Uyumu & Platonik Aşk Testi (YZ)"
+      : "Crush Calculator & Platonic Love Test AI",
+    breadcrumbName: isTr ? "Platonik / Crush Testi" : "Crush Calculator",
+    description: isTr
+      ? "İki fotoğraftan platonik çekim yüzdesini, aura uyumunu ve delulu seviyesini hesaplayan ücretsiz yapay zeka aşk testi."
+      : "Free AI crush compatibility calculator that analyzes two photos to score mutual spark, chemistry percentage, and delusion risk.",
+  });
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      {children}
+    </>
+  );
 }

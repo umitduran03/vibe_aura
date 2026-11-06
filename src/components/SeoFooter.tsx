@@ -76,15 +76,17 @@ export default function SeoFooter() {
       "what-is-a-vibe-check",
       "ai-photo-personality-test", 
       "aura-battle-who-is-cooler", 
+      "fix-negative-aura-mood",
+      "how-to-stop-overthinking-texts",
       "zodiac-signs-red-flags", 
+      "what-is-an-ick",
       "situationship-vs-relationship", 
       "mixed-signals-or-delulu",
       "biggest-dating-red-flags-2026",
-      "how-to-stop-overthinking-texts",
       "what-are-aura-points",
       "are-you-delulu"
     ].includes(t.slug)
-  ).slice(0, 9);
+  ).slice(0, 12);
 
   return (
     <footer className="w-full border-t border-white/10 bg-black/40 backdrop-blur-md py-12 px-6 mt-20 relative z-20">
