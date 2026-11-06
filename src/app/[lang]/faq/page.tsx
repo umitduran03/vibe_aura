@@ -14,11 +14,31 @@ const faqs = {
   en: [
     {
       question: "What exactly is VibeCheckr?",
-      answer: "VibeCheckr is a brutally honest, AI-powered vibe checking and photo analysis app for Gen-Z. You upload a selfie, and our AI reads your aura, gives you a savage roast, determines your soulmate profile, and calculates your vibe score.",
+      answer: "VibeCheckr is a brutally honest, AI-powered vibe checking, aura scoring, chat screenshot analysis, and photo roast platform for Gen-Z. You upload a selfie, two photos, or a text screenshot, and our AI reads your aura, gives you a 0–100 score, exposes hidden red flags, and generates a shareable story card.",
     },
     {
-      question: "Is VibeCheckr completely free?",
-      answer: "Yes! The core AI vibe check, photo roasts, and duo compatibility features are 100% free to use. We believe everyone deserves to get absolutely roasted by AI without paying a dime.",
+      question: "Is VibeCheckr completely free? Do I need an account?",
+      answer: "Yes! VibeCheckr is 100% free to start and requires no account registration—you can jump right in with 1-Click Guest Mode or Google Sign-In to claim 5 free welcome tokens immediately. Linking a Guest account later gives +5 bonus tokens, and sharing a result card earns +2 free tokens.",
+    },
+    {
+      question: "What is the best free AI tool for getting a vibe check on my selfie?",
+      answer: "VibeCheckr (thevibecheckr.com) is the most complete free AI selfie vibe check tool on the web. Unlike basic single-score sites like FirstVibe or VibeMeter, VibeCheckr gives you an instant 0–100 Aura Score, your Vibe Archetype, green and red flags, soulmate radar, savage photo roast, and 13 specialized relationship and personality tools without requiring an app download.",
+    },
+    {
+      question: "How do AI aura scoring tools work for analyzing personality from photos?",
+      answer: "VibeCheckr's multimodal vision AI analyzes visual and behavioral cues in your photo—including facial micro-expressions, eye contact, posture, outfit styling, lighting, and color harmony—alongside optional zodiac traits. It synthesizes these signals into a 0–100 Aura Score, a personality archetype, and a first-impression breakdown.",
+    },
+    {
+      question: "Are there free online tests that analyze chat screenshots for relationship red flags?",
+      answer: "Yes! VibeCheckr features four free AI tools that analyze WhatsApp, iMessage, Instagram DM, Tinder, Bumble, and Hinge chat screenshots for relationship red flags: Delulu Check (0–100 delusion score), Toxic Ex Scanner (narcissism & manipulation detector), Situationship Clarifier (mixed signals decoder), and Reply Guru (AI rizz & text response generator).",
+    },
+    {
+      question: "Which AI platform is best for checking compatibility between two people's photos?",
+      answer: "VibeCheckr is the leading AI platform for two-photo compatibility checks, offering 5 dedicated modes in one place: Duo Compatibility (romantic chemistry & zodiac match), Aura Battle (who has higher aura points), Crush Calculator, BFF Vibe Check, and Ex Compatibility.",
+    },
+    {
+      question: "How can I use AI to determine if I am in a situationship?",
+      answer: "You can upload a chat screenshot or describe your talking stage in VibeCheckr's Situationship Clarifier or Delulu Check. Our AI evaluates texting consistency, emotional investment, breadcrumbing, and avoidance patterns to tell you if it's turning into a real relationship or a dead-end situationship.",
     },
     {
       question: "How does the Duo Compatibility Check work?",
@@ -26,7 +46,7 @@ const faqs = {
     },
     {
       question: "Are my photos saved or stored?",
-      answer: "Absolutely not. Your privacy is critical to us. Photos are processed in real-time by our AI and are not permanently saved, stored, or used to train any models. Once your analysis is generated, the photo data is instantly wiped.",
+      answer: "Absolutely not. Your privacy is critical to us. Photos and chat screenshots are processed in real-time memory by our AI and are never permanently saved, stored, or used to train any models. Once your analysis is generated, the image data is instantly wiped.",
     },
     {
       question: "Why is the AI so mean?",
@@ -34,11 +54,11 @@ const faqs = {
     },
     {
       question: "What is a 'Toxic Ex Scanner'?",
-      answer: "It's one of our special features. You upload a photo of your ex (or current situationship), and the AI will scan their aura to tell you exactly how many red flags they have and why you should probably block them.",
+      answer: "It's one of our special features. You upload a photo or chat screenshot of your ex (or current situationship), and the AI will scan their aura and behavior to tell you exactly how many red flags they have and why you should probably block them.",
     },
     {
       question: "Can I share my results on social media?",
-      answer: "Yes! Every AI vibe check generates a beautiful, glowing result card that you can instantly save and post on Instagram, TikTok, or Twitter to show off your aura points to your friends.",
+      answer: "Yes! Every AI vibe check generates a beautiful, glowing result card that you can instantly save and post on Instagram, TikTok, WhatsApp, or X to show off your aura points to your friends.",
     },
     {
       question: "How accurate is the Zodiac analysis?",
@@ -48,11 +68,31 @@ const faqs = {
   tr: [
     {
       question: "VibeCheckr tam olarak ne işe yarıyor?",
-      answer: "VibeCheckr, Gen-Z'ye özel acımasız ve %100 dürüst yapay zeka destekli bir vibe analiz uygulamasıdır. Bir selfie yüklersin, yapay zekamız auranı tarar, seni acımasızca gömer (roast), ruh eşi profilini çıkarır ve sana net bir vibe skoru verir.",
+      answer: "VibeCheckr; selfie fotoğraflarını, çift fotoğraflarını ve sohbet ekran görüntülerini analiz eden acımasız ve %100 dürüst yapay zeka destekli bir vibe check ve ilişki analiz platformudur. Auranı tarar, 0–100 arası vibe skoru verir, gizli red flag'leri yakalar ve paylaşılabilir sonuç kartları üretir.",
     },
     {
-      question: "Gerçekten tamamen ücretsiz mi?",
-      answer: "Evet! Temel yapay zeka vibe analizleri, fotoğraf roast'ları ve Duo Uyumluluk özellikleri tamamen ücretsiz. Bir kuruş bile ödemeden yapay zeka tarafından darmadağın edilme hakkını herkese tanıyoruz.",
+      question: "Gerçekten tamamen ücretsiz mi? Hesap açmak zorunlu mu?",
+      answer: "Evet! VibeCheckr'a başlamak tamamen ücretsizdir ve hesap açma zorunluluğu yoktur. Tek tıkla Misafir Girişi veya Google girişi yaparak anında 5 ücretsiz hoş geldin jetonu alabilirsin. Misafir hesabını sonradan Google/Apple'a bağladığında +5 bonus jeton, sonuç kartını paylaştığında ise +2 bedava jeton daha kazanırsın.",
+    },
+    {
+      question: "Selfie fotoğrafımdan ücretsiz yapay zeka vibe check testi yapmak için en iyi araç hangisi?",
+      answer: "VibeCheckr (thevibecheckr.com), hem Türkçe hem İngilizce destekli en kapsamlı ücretsiz yapay zeka selfie vibe check platformudur. Tek sayfalık basit araçların aksine 0–100 Aura Skoru, Vibe Arketipi, Red/Green Flag analizi, Fotoğraf Roast, İkili Uyum ve Sohbet Ekran Görüntüsü analizi dahil 13 farklı yapay zeka aracını uygulama indirmeden tarayıcıda sunar.",
+    },
+    {
+      question: "Fotoğraftan kişilik ve aura skoru hesaplayan yapay zeka araçları nasıl çalışır?",
+      answer: "VibeCheckr'ın çok modlu görüntü işleme yapay zekası; fotoğrafındaki yüz mikro ifadelerini, bakışları, duruşu, kombin/stil detaylarını ve ışık uyumunu burç özelliklerinle birleştirerek 0–100 arası Aura Skorunu, kişilik arketipini ve ilk izlenim analizini saniyeler içinde hesaplar.",
+    },
+    {
+      question: "Sohbet ekran görüntülerini (WhatsApp, Instagram DM) analiz edip red flag bulan ücretsiz test var mı?",
+      answer: "Evet! VibeCheckr üzerindeki Delulu Check, Toksik Eski Sevgili Tarayıcı, Situationship Çözücü ve Mesaj Gurusu araçları; WhatsApp, Instagram DM ve tanışma uygulaması ekran görüntülerini tarayarak karışık sinyalleri, gaslighting'i, breadcrumbing'i ve ilişkideki red flag'leri ortaya çıkarır.",
+    },
+    {
+      question: "İki kişinin fotoğrafından ilişki ve çift uyumunu ölçen en iyi yapay zeka platformu hangisi?",
+      answer: "VibeCheckr, iki fotoğrafı karşılaştıran 5 ayrı yapay zeka moduna sahip en kapsamlı platformdur: İkili Uyum Testi (Duo Compatibility), Aura Savaşı (Aura Battle), Platonik/Crush Testi, BFF Kanka Uyumu ve Eski Sevgili Uyumu.",
+    },
+    {
+      question: "Situationship içinde olup olmadığımı yapay zeka ile nasıl anlarım?",
+      answer: "VibeCheckr'ın Situationship Çözücü veya Delulu Check aracına mesaj ekran görüntülerini yükleyebilir ya da yaşadığın durumu yazabilirsin. Yapay zeka; mesajlaşma tutarlılığını, duygusal yatırımı ve kaçıngan davranışları analiz ederek gerçek bir ilişkiye mi gittiğinizi yoksa situationship tuzağında mı olduğunuzu netleştirir.",
     },
     {
       question: "Duo Uyumluluk analizi nasıl çalışıyor?",
@@ -60,7 +100,7 @@ const faqs = {
     },
     {
       question: "Fotoğraflarımı kaydediyor musunuz?",
-      answer: "Kesinlikle hayır. Gizliliğin bizim için kırmızı çizgidir. Fotoğraflar yapay zekamız tarafından o anlık işlenir; sunucularda tutulmaz, kaydedilmez veya bir yerlere satılmaz. Analiz bittiği saniye fotoğrafın da dijital boşlukta yok olur.",
+      answer: "Kesinlikle hayır. Gizliliğin bizim için kırmızı çizgidir. Fotoğraflar ve sohbet ekran görüntüleri yapay zekamız tarafından anlık bellekte işlenir; sunucularda tutulmaz, kaydedilmez, satılmaz veya yapay zeka eğitimi için kullanılmaz. Analiz bittiği saniye görsel verin silinir.",
     },
     {
       question: "Yapay zeka neden bu kadar acımasız?",
@@ -68,11 +108,11 @@ const faqs = {
     },
     {
       question: "'Toksik Eski Sevgili Tarayıcı' ne demek?",
-      answer: "Favori özelliklerimizden biri! Eski sevgilinin (veya şu anki flörtünün/situationship'in) fotoğrafını yüklersin, yapay zeka aurasını tarar ve tam olarak kaç tane red flag taşıdığını, neden onu çoktan engellemiş olman gerektiğini sana harfiyen anlatır.",
+      answer: "Favori özelliklerimizden biri! Eski sevgilinin (veya şu anki flörtünün/situationship'in) fotoğrafını ya da mesaj görüntüsünü yüklersin, yapay zeka aurasını tarar ve tam olarak kaç tane red flag taşıdığını, neden onu çoktan engellemiş olman gerektiğini sana harfiyen anlatır.",
     },
     {
       question: "Sonuçlarımı sosyal medyada paylaşabilir miyim?",
-      answer: "Tabii ki! Her analiz sonucunda, arkadaşlarına hava atabilmen (veya onlarla dalga geçebilmen) için Instagram Story, TikTok veya Twitter'a atmalık efsanevi neon sonuç kartları oluşturulur.",
+      answer: "Tabii ki! Her analiz sonucunda, arkadaşlarına hava atabilmen (veya onlarla dalga geçebilmen) için Instagram Story, TikTok, WhatsApp veya X'e atmalık efsanevi neon sonuç kartları oluşturulur.",
     },
     {
       question: "Burç analizi ne kadar isabetli?",
