@@ -18,6 +18,9 @@ export interface AuraResult {
 // AI'dan beklenen JSON formatı (Duo)
 export interface DuoResult {
   duoScore: number;
+  person1Score?: number;
+  person2Score?: number;
+  winner?: 1 | 2;
   title: string;
   toxicComment: string;
   redFlag: string;

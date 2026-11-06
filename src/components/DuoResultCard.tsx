@@ -199,6 +199,10 @@ export default function DuoResultCard() {
 
   // Score color
   const scoreColor = duoResult.duoScore > 70 ? "#22c55e" : duoResult.duoScore > 40 ? "#eab308" : "#ef4444";
+  const p1Score = typeof duoResult.person1Score === "number" ? duoResult.person1Score : duoResult.duoScore;
+  const p2Score = typeof duoResult.person2Score === "number" ? duoResult.person2Score : Math.max(12, duoResult.duoScore - 27);
+  const isP1Winner = p1Score >= p2Score;
+  const isBattleLocked = duoResult.isUnlocked === false;
 
   return (
     <m.div
@@ -314,22 +318,122 @@ export default function DuoResultCard() {
             </h1>
           </div>
 
-          {/* Score Ring */}
-          <div className="mx-auto mb-5 flex items-center gap-3 rounded-full px-5 py-2.5"
-            style={{
-              backgroundColor: "rgba(255,255,255,0.05)",
-              border: "1px solid rgba(255,255,255,0.1)",
-            }}
-          >
-            <Sparkles className="h-4 w-4" style={{ color: scoreColor }} />
-            <span className="text-sm font-medium" style={{ color: "#a1a1aa" }}>
-              <span>{t.resultVibeScore}</span>
-            </span>
-            <span className="text-xl font-bold" style={{ color: scoreColor }}>
-              <span>{duoResult.duoScore}</span>
-              <span style={{ color: "rgba(161,161,170,0.6)", fontSize: "14px" }}>/100</span>
-            </span>
-          </div>
+          {/* Score Ring / Aura Battle Dual Scoreboard */}
+          {duoRelationType === "battle" ? (
+            <div className="mb-5 grid grid-cols-2 gap-3 w-full">
+              {/* Person 1 Score Box */}
+              <div
+                onClick={isBattleLocked ? () => setTokenModalOpen(true) : undefined}
+                className={`rounded-2xl p-3.5 flex flex-col justify-between relative overflow-hidden ${isBattleLocked ? "cursor-pointer" : ""}`}
+                style={{
+                  backgroundColor: !isBattleLocked && isP1Winner ? "rgba(34,197,94,0.09)" : "rgba(239,68,68,0.06)",
+                  border: !isBattleLocked && isP1Winner ? "1px solid rgba(34,197,94,0.35)" : "1px solid rgba(239,68,68,0.22)",
+                }}
+              >
+                <div className="flex items-center justify-between gap-1 mb-1.5">
+                  <span className="text-[10px] font-bold uppercase tracking-wider truncate" style={{ color: "#e4e4e7" }}>
+                    {t.duoP1Title} · {z1Name}
+                  </span>
+                  <span
+                    className={`text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded-full shrink-0 ${isBattleLocked ? "blur-[5px] select-none" : ""}`}
+                    style={{
+                      backgroundColor: isP1Winner ? "rgba(34,197,94,0.2)" : "rgba(239,68,68,0.18)",
+                      color: isP1Winner ? "#4ade80" : "#f87171",
+                    }}
+                  >
+                    {isP1Winner ? t.resultBattleWinner : t.resultBattleLoser}
+                  </span>
+                </div>
+                <div className={`flex items-baseline gap-0.5 ${isBattleLocked ? "blur-[6px] select-none" : ""}`}>
+                  <span
+                    className="text-2xl font-black tabular-nums leading-none"
+                    style={{ color: isP1Winner ? "#4ade80" : "#f87171" }}
+                  >
+                    {p1Score}
+                  </span>
+                  <span className="text-xs font-semibold" style={{ color: "rgba(161,161,170,0.65)" }}>
+                    /100
+                  </span>
+                </div>
+                <div
+                  className="mt-2.5 h-1.5 w-full rounded-full overflow-hidden"
+                  style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+                >
+                  <div
+                    className={`h-full rounded-full ${isBattleLocked ? "blur-[4px]" : ""}`}
+                    style={{
+                      width: `${Math.max(8, Math.min(100, p1Score))}%`,
+                      backgroundColor: isP1Winner ? "#22c55e" : "#ef4444",
+                    }}
+                  />
+                </div>
+              </div>
+
+              {/* Person 2 Score Box */}
+              <div
+                onClick={isBattleLocked ? () => setTokenModalOpen(true) : undefined}
+                className={`rounded-2xl p-3.5 flex flex-col justify-between relative overflow-hidden ${isBattleLocked ? "cursor-pointer" : ""}`}
+                style={{
+                  backgroundColor: !isBattleLocked && !isP1Winner ? "rgba(34,197,94,0.09)" : "rgba(239,68,68,0.06)",
+                  border: !isBattleLocked && !isP1Winner ? "1px solid rgba(34,197,94,0.35)" : "1px solid rgba(239,68,68,0.22)",
+                }}
+              >
+                <div className="flex items-center justify-between gap-1 mb-1.5">
+                  <span className="text-[10px] font-bold uppercase tracking-wider truncate" style={{ color: "#e4e4e7" }}>
+                    {t.duoP2Title} · {z2Name}
+                  </span>
+                  <span
+                    className={`text-[9px] font-extrabold uppercase tracking-wider px-1.5 py-0.5 rounded-full shrink-0 ${isBattleLocked ? "blur-[5px] select-none" : ""}`}
+                    style={{
+                      backgroundColor: !isP1Winner ? "rgba(34,197,94,0.2)" : "rgba(239,68,68,0.18)",
+                      color: !isP1Winner ? "#4ade80" : "#f87171",
+                    }}
+                  >
+                    {!isP1Winner ? t.resultBattleWinner : t.resultBattleLoser}
+                  </span>
+                </div>
+                <div className={`flex items-baseline gap-0.5 ${isBattleLocked ? "blur-[6px] select-none" : ""}`}>
+                  <span
+                    className="text-2xl font-black tabular-nums leading-none"
+                    style={{ color: !isP1Winner ? "#4ade80" : "#f87171" }}
+                  >
+                    {p2Score}
+                  </span>
+                  <span className="text-xs font-semibold" style={{ color: "rgba(161,161,170,0.65)" }}>
+                    /100
+                  </span>
+                </div>
+                <div
+                  className="mt-2.5 h-1.5 w-full rounded-full overflow-hidden"
+                  style={{ backgroundColor: "rgba(255,255,255,0.08)" }}
+                >
+                  <div
+                    className={`h-full rounded-full ${isBattleLocked ? "blur-[4px]" : ""}`}
+                    style={{
+                      width: `${Math.max(8, Math.min(100, p2Score))}%`,
+                      backgroundColor: !isP1Winner ? "#22c55e" : "#ef4444",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="mx-auto mb-5 flex items-center gap-3 rounded-full px-5 py-2.5"
+              style={{
+                backgroundColor: "rgba(255,255,255,0.05)",
+                border: "1px solid rgba(255,255,255,0.1)",
+              }}
+            >
+              <Sparkles className="h-4 w-4" style={{ color: scoreColor }} />
+              <span className="text-sm font-medium" style={{ color: "#a1a1aa" }}>
+                <span>{t.resultVibeScore}</span>
+              </span>
+              <span className="text-xl font-bold" style={{ color: scoreColor }}>
+                <span>{duoResult.duoScore}</span>
+                <span style={{ color: "rgba(161,161,170,0.6)", fontSize: "14px" }}>/100</span>
+              </span>
+            </div>
+          )}
 
           {/* Red Flag */}
           <div className="rounded-2xl p-4 mb-4 flex items-start gap-3"

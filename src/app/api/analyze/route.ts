@@ -720,11 +720,15 @@ Your output must be purely JSON:
       const isBattle = duoRelationType === "battle";
       const titleStr = isBattle ? "Aura Battle Analysis" : "Duo Soulmate Analysis";
       const baseInstruction = isBattle 
-        ? `Based on these details (and photos if any), compare their auras, decide who has the higher aura, and brutally roast the loser. DO NOT treat this as a romantic relationship or compatibility test. This is a pure vibe competition.` 
+        ? `Based on these details (and photos if any), compare their auras, give EACH person their own separate Vibe/Aura Score between 1 and 100 ("person1Score" and "person2Score" — they MUST NOT be equal, and the winner MUST have a strictly higher score than the loser), set "winner" to 1 or 2, and brutally roast the loser (the person with the lower score) in "redFlag". DO NOT treat this as a romantic relationship or compatibility test. This is a pure vibe competition.` 
         : `Based on these details (and photos if any), analyze their vibe, energy, and compatibility.`;
       
+      const battleScoreFields = isBattle
+        ? `\n  "person1Score": 84,\n  "person2Score": 41,\n  "winner": 1,`
+        : "";
+
       const redFlagUnlocked = isBattle
-        ? `"redFlag": "Person 1 (or Person 2) — Explicitly state who LOST the battle and aggressively roast them."`
+        ? `"redFlag": "Person 1 (or Person 2) — Explicitly state who LOST the battle (must be the person with the lower score) and aggressively roast them."`
         : `"redFlag": "Person 1 (or Person 2) — Explain who is the ultimate red flag and why"`;
 
       const redFlagLocked = isBattle
@@ -741,7 +745,7 @@ ${titleStr}:
 ${magicText ? `- User's Context / Note: ${magicText}\n` : ""}
 ${baseInstruction} ${langInstruction} Your output must be purely JSON and strictly follow this exact structure:
 {
-  "duoScore": 65,
+  "duoScore": 84,${battleScoreFields}
   "title": "A sassy, Gen-Z title (e.g., Toxic but Iconic)",
   "toxicComment": "Being together is like... (a savage, hilarious one-liner or short paragraph full of Gen-Z slang)",
   ${redFlagUnlocked},
@@ -766,7 +770,7 @@ CRITICAL TEASER INSTRUCTIONS:
 
 Your output must be purely JSON and strictly follow this exact structure:
 {
-  "duoScore": 65,
+  "duoScore": 84,${battleScoreFields}
   "title": "A sassy, Gen-Z title (e.g., Toxic but Iconic)",
   "toxicComment": "Being together is like... (a savage, hilarious one-liner or short paragraph full of Gen-Z slang)",
   ${redFlagLocked},
@@ -814,6 +818,63 @@ Your output must be purely JSON and strictly follow this exact structure:
           { error: "Failed to parse AI response." },
           { status: 500 }
         );
+      }
+
+      // Aura Battle: Her iki kişi için ayrı skor ve kazanan/kaybeden tutarlılık garantisi
+      if (isBattle && parsedJson) {
+        const toNum = (v: any) => {
+          const n = Number(v);
+          return Number.isFinite(n) ? Math.max(1, Math.min(100, Math.round(n))) : NaN;
+        };
+
+        let p1 = toNum(parsedJson.person1Score);
+        let p2 = toNum(parsedJson.person2Score);
+        const baseScore = toNum(parsedJson.duoScore);
+
+        if (Number.isNaN(p1) && Number.isNaN(p2)) {
+          p1 = !Number.isNaN(baseScore) ? Math.max(55, baseScore) : 82;
+          p2 = Math.max(12, p1 - 29);
+        } else if (Number.isNaN(p1)) {
+          p1 = p2 >= 60 ? Math.max(15, p2 - 25) : Math.min(96, p2 + 25);
+        } else if (Number.isNaN(p2)) {
+          p2 = p1 >= 60 ? Math.max(15, p1 - 25) : Math.min(96, p1 + 25);
+        }
+
+        if (p1 === p2) {
+          if (p1 <= 90) p1 += 7;
+          else p2 -= 7;
+        }
+
+        // redFlag metninde kaybeden olarak kimin yazıldığını tespit et (tutarlılık için)
+        const rf = String(parsedJson.redFlag || "");
+        const p1Idx = rf.search(/(?:person\s*1|1\.\s*kişi|kişi\s*1)/i);
+        const p2Idx = rf.search(/(?:person\s*2|2\.\s*kişi|kişi\s*2)/i);
+
+        let loserIsP1: boolean | null = null;
+        if (p1Idx !== -1 && (p2Idx === -1 || p1Idx < p2Idx)) {
+          loserIsP1 = true;
+        } else if (p2Idx !== -1 && (p1Idx === -1 || p2Idx < p1Idx)) {
+          loserIsP1 = false;
+        } else if (Number(parsedJson.winner) === 1) {
+          loserIsP1 = false;
+        } else if (Number(parsedJson.winner) === 2) {
+          loserIsP1 = true;
+        }
+
+        if (loserIsP1 === true && p1 > p2) {
+          const tmp = p1;
+          p1 = p2;
+          p2 = tmp;
+        } else if (loserIsP1 === false && p2 > p1) {
+          const tmp = p1;
+          p1 = p2;
+          p2 = tmp;
+        }
+
+        parsedJson.person1Score = p1;
+        parsedJson.person2Score = p2;
+        parsedJson.winner = p1 > p2 ? 1 : 2;
+        parsedJson.duoScore = Math.max(p1, p2);
       }
 
       // Jeton düşme işlemi (Backend'de güvence altına alınıyor)
