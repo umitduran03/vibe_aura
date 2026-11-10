@@ -36,19 +36,19 @@ export default async function CrushCalculatorLanding({ params }: { params: Promi
 
   const relatedTools = [
     {
-      href: `/${isTr ? "tr" : "en"}?feature=delulu-check`,
+      href: `/${isTr ? "tr" : "en"}/delulu-check`,
       emoji: "🤡",
       title: isTr ? "Delulu Kontrol" : "Delulu Check",
       desc: isTr ? "Kafanda mı yoksa gerçek mi?" : "Is it in your head or real?",
     },
     {
-      href: `/${isTr ? "tr" : "en"}?feature=situationship-clarifier`,
+      href: `/${isTr ? "tr" : "en"}/situationship-clarifier`,
       emoji: "🌀",
       title: isTr ? "Situationship Netleştirici" : "Situationship Clarifier",
       desc: isTr ? "Bu ilişki ne?" : "What even is this relationship?",
     },
     {
-      href: `/${isTr ? "tr" : "en"}?feature=reply-guru`,
+      href: `/${isTr ? "tr" : "en"}/reply-guru`,
       emoji: "💬",
       title: isTr ? "Mesaj Gurusu" : "Reply Guru",
       desc: isTr ? "Ne yazacağını bilemiyor musun?" : "Don't know what to text?",
@@ -90,7 +90,7 @@ export default async function CrushCalculatorLanding({ params }: { params: Promi
               <span>{isTr ? "Delulu Seviyesi: %99" : "Delulu Level: 99%"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500">
-              {isTr ? "Crush'ınla Gerçekten Oluru Var Mı?" : "Do You And Your Crush Actually Have A Chance?"}
+              {isTr ? "Platonik & Crush Uyum Testi — Crush'ınla Gerçekten Oluru Var Mı?" : "AI Crush Calculator — Do You And Your Crush Actually Have A Chance?"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr

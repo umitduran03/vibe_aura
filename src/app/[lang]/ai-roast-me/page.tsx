@@ -100,7 +100,7 @@ export default async function AIRoastMeLanding({ params }: { params: Promise<{ l
               <span>{isTr ? "Uyarı: Egonuz Zarar Görebilir" : "Warning: Ego Damage Inbound"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-500 to-red-500">
-              {isTr ? "Yapay Zeka Seni Çiğ Çiğ Yesin" : "Let the AI Roast Your Entire Existence"}
+              {isTr ? "AI Fotoğraf Roast — Yapay Zeka Seni Çiğ Çiğ Yesin" : "AI Roast Me — Let the AI Roast Your Entire Existence"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr 

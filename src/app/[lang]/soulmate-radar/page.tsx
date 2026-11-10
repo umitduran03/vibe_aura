@@ -36,19 +36,19 @@ export default async function SoulmateRadarLanding({ params }: { params: Promise
 
   const relatedTools = [
     {
-      href: `/${isTr ? "tr" : "en"}?feature=duo-compatibility`,
+      href: `/${isTr ? "tr" : "en"}/duo-compatibility`,
       emoji: "💞",
       title: isTr ? "İkili Uyum" : "Duo Compatibility",
       desc: isTr ? "İki kişinin enerjisini kıyasla" : "Compare two people's energy",
     },
     {
-      href: `/${isTr ? "tr" : "en"}?feature=crush-calculator`,
+      href: `/${isTr ? "tr" : "en"}/crush-calculator`,
       emoji: "💘",
       title: isTr ? "Crush Hesaplayıcı" : "Crush Calculator",
       desc: isTr ? "Crush'ınla şansın var mı?" : "Do you have a shot?",
     },
     {
-      href: `/${isTr ? "tr" : "en"}?feature=ex-compatibility`,
+      href: `/${isTr ? "tr" : "en"}/ex-compatibility`,
       emoji: "💔",
       title: isTr ? "Eski Uyumu" : "Ex Compatibility",
       desc: isTr ? "Eski sevgilini gerçekten unuttun mu?" : "Did you ever really move on?",
@@ -90,7 +90,7 @@ export default async function SoulmateRadarLanding({ params }: { params: Promise
               <span>{isTr ? "Ruh Eşin Seni Bekliyor" : "Your Soulmate is Waiting"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-rose-500 to-purple-500">
-              {isTr ? "Ruh Eşinin Profilini Çıkar" : "Discover Your True Soulmate"}
+              {isTr ? "Ruh Eşi Radarı — Ruh Eşinin Profilini Çıkar" : "AI Soulmate Radar — Discover Your True Soulmate"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr

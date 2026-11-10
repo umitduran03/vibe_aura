@@ -84,9 +84,13 @@ export default function SeoFooter() {
       "mixed-signals-or-delulu",
       "biggest-dating-red-flags-2026",
       "what-are-aura-points",
-      "are-you-delulu"
+      "are-you-delulu",
+      "what-is-rizz",
+      "am-i-being-gaslighted",
+      "what-is-limerence",
+      "gen-z-dating-terms-2026"
     ].includes(t.slug)
-  ).slice(0, 12);
+  ).slice(0, 16);
 
   return (
     <footer className="w-full border-t border-white/10 bg-black/40 backdrop-blur-md py-12 px-6 mt-20 relative z-20">

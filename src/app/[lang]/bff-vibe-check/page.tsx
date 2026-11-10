@@ -36,19 +36,19 @@ export default async function BffVibeCheckLanding({ params }: { params: Promise<
 
   const relatedTools = [
     {
-      href: `/${isTr ? "tr" : "en"}?feature=duo-compatibility`,
+      href: `/${isTr ? "tr" : "en"}/duo-compatibility`,
       emoji: "💞",
       title: isTr ? "İkili Uyum" : "Duo Compatibility",
       desc: isTr ? "İki kişinin enerjisini kıyasla" : "Compare two people's energy",
     },
     {
-      href: `/${isTr ? "tr" : "en"}?feature=aura-battle`,
+      href: `/${isTr ? "tr" : "en"}/aura-battle`,
       emoji: "⚔️",
       title: isTr ? "Aura Savaşı" : "Aura Battle",
       desc: isTr ? "Kimin aurası daha güçlü?" : "Whose aura wins the battle?",
     },
     {
-      href: `/${isTr ? "tr" : "en"}?feature=ai-roast-me`,
+      href: `/${isTr ? "tr" : "en"}/ai-roast-me`,
       emoji: "🔥",
       title: isTr ? "Beni Yerden Ye" : "AI Roast Me",
       desc: isTr ? "YZ seni acımasızca eleştirsin" : "Let AI brutally roast you",
@@ -90,7 +90,7 @@ export default async function BffVibeCheckLanding({ params }: { params: Promise<
               <span>{isTr ? "Kaos İkilisi" : "Chaotic Duo"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
-              {isTr ? "Gerçek BFF misiniz Yoksa Sadece Dedikodu Ortağı mı?" : "True BFFs or Just Gossip Partners?"}
+              {isTr ? "BFF Kanka Uyum Testi — Gerçek BFF misiniz Yoksa Dedikodu Ortağı mı?" : "BFF Vibe Check — True BFFs or Just Gossip Partners?"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr

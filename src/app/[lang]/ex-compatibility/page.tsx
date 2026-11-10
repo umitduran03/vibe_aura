@@ -100,7 +100,7 @@ export default async function ExCompatibilityLanding({ params }: { params: Promi
               <span>{isTr ? "Kapatılan Defterleri Açıyoruz" : "Opening Closed Chapters"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-400 via-gray-500 to-indigo-500">
-              {isTr ? "O Gerçekten 'Kaçan Balık' Mıydı?" : "Was It Really The 'One That Got Away'?"}
+              {isTr ? "Eski Sevgili Uyum Testi — O Gerçekten 'Kaçan Balık' Mıydı?" : "Ex Compatibility Test — Was It Really The 'One That Got Away'?"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr 

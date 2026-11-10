@@ -85,7 +85,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "The AI photo personality test isn't just a fleeting trend; it's a fascinating intersection of technology and human psychology. It forces us to confront how we present ourselves to the world versus how we actually feel inside. So, the ultimate question remains: Are you brave enough to upload your selfie and get completely roasted by an algorithm? Or are you secretly terrified that a machine might know you better than you know yourself?"
     },
     ctaLabel: "Scan My Face Now",
-    ctaLink: "/",
+    ctaLink: "/ai-roast-me",
   },
   {
     slug: "situationship-vs-relationship",
@@ -383,7 +383,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "Rizz isn't just a silly internet word. It's a shorthand for a deeply human desire: to be magnetic, compelling, and irresistible. The good news is that your baseline rizz level is not your destiny. The first step is knowing where you actually stand. Are you ready to find out?"
     },
     ctaLabel: "Test My Rizz Level",
-    ctaLink: "/",
+    ctaLink: "/reply-guru",
   },
   {
     slug: "soft-launch-hard-launch",
@@ -413,7 +413,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "There is no universally correct answer in the soft launch vs. hard launch debate. But your instinctive choice is a window into your relationship psychology. Are you protecting yourself? Are you performing? Or are you genuinely, securely happy — and just want the world to know?"
     },
     ctaLabel: "Check Our Compatibility",
-    ctaLink: "/duo-compatibility",
+    ctaLink: "/profile-autopsy",
   },
   {
     slug: "emotionally-unavailable-signs",
@@ -473,7 +473,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "Ending a friendship is one of the most painful things you can do, precisely because society doesn't give it the same legitimacy as a romantic breakup. But your aura — your energy, your mental health, your sense of self — is worth protecting, even from people who once felt like family. You deserve friendships that feel like sunlight, not like work."
     },
     ctaLabel: "Do an Aura Battle",
-    ctaLink: "/aura-battle",
+    ctaLink: "/bff-vibe-check",
   },
   {
     slug: "gen-z-dating-terms-2026",
@@ -503,7 +503,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "Language shapes reality. By having a precise vocabulary for these experiences, Gen-Z has made it significantly easier to identify, articulate, and process the confusing dynamics of modern dating. The first step to escaping a toxic pattern is being able to name it."
     },
     ctaLabel: "Check Your Vibe",
-    ctaLink: "/",
+    ctaLink: "/profile-autopsy",
   },
   {
     slug: "are-you-delulu",
@@ -533,7 +533,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "Being delulu is sometimes necessary for survival in the brutal arena of modern dating. But chronic delusion is a way of abandoning yourself — choosing a comfortable fiction over a reality where you could actually find genuine connection. Check yourself before you wreck yourself."
     },
     ctaLabel: "Run My Delulu Check",
-    ctaLink: "/",
+    ctaLink: "/delulu-check",
   },
   {
     slug: "attachment-styles-explained",
@@ -567,7 +567,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "Your attachment style is not your destiny — it's your starting point. The first step toward healthier relationships is understanding the pattern you're unconsciously repeating. Once you see it, you can't unsee it. And that's when real change begins."
     },
     ctaLabel: "Analyze My Attachment Style",
-    ctaLink: "/",
+    ctaLink: "/soulmate-radar",
   },
   {
     slug: "how-to-get-over-someone",
@@ -627,7 +627,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "The next time you're wondering if someone likes you, put down your phone and start watching. Their body is telling you everything their words won't. And if you want an AI-powered second opinion on whether the chemistry is real, our Duo Compatibility feature can analyze the dynamic between you two with brutal honesty."
     },
     ctaLabel: "Test Our Chemistry",
-    ctaLink: "/duo-compatibility",
+    ctaLink: "/crush-calculator",
   },
   {
     slug: "love-languages-which-one-are-you",
@@ -657,7 +657,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "The love languages framework isn't a magic solution, but it is an incredibly powerful diagnostic tool. Most relationship problems aren't about a lack of love — they're about a lack of translation. When you learn to speak your partner's language, the love that was always there finally gets through."
     },
     ctaLabel: "Check Our Compatibility",
-    ctaLink: "/duo-compatibility",
+    ctaLink: "/soulmate-radar",
   },
   {
     slug: "what-is-an-ick",
@@ -852,7 +852,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "You are the author, the director, and the star of your own life. Do not hand the pen over to someone who doesn't even know how to text back. Embracing main character energy in your dating life will radically transform how you interact with potential partners. It filters out the people who just want a convenient background character and attracts those who are ready to co-star in an epic romance. Stop waiting for the plot to happen to you. Get up, put on your best outfit, and go write your own incredible story."
     },
     ctaLabel: "Calculate My Aura Score",
-    ctaLink: "/"
+    ctaLink: "/ai-roast-me"
   },
   {
     slug: "what-is-limerence",
@@ -1060,7 +1060,7 @@ export const trendsDataEn: TrendArticle[] = [
       conclusion: "Independence is a beautiful, necessary trait, but hyper-independence is a trauma response disguised as empowerment. Refusing to let anyone support you, love you, or see your vulnerable side isn't strength; it is a fear of connection. A true partnership requires a willingness to take off the armor and trust that the other person won't use it against you. You do not have to carry the entire weight of the world on your shoulders. It is okay to want someone, it is okay to need support, and it is okay to let love in."
     },
     ctaLabel: "Analyze My Attachment Style",
-    ctaLink: "/"
+    ctaLink: "/soulmate-radar"
   },
   {
     slug: "one-sided-effort-relationship",
@@ -1239,7 +1239,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Kısacası bu yapay zeka analizleri geçici bir trend değil. Dışarıya nasıl göründüğümüzle içeride aslında nasıl hissettiğimizin teknolojik bir çarpışması. Şimdi asıl soru şu: O selfie'yi yükleyip bir algoritma tarafından darmadağın edilmeye hazır mısın? Yoksa bir makinenin seni senden daha iyi tanımasından gizliden gizliye tırsıyor musun?"
     },
     ctaLabel: "Hemen Yüzümü Tara",
-    ctaLink: "/",
+    ctaLink: "/ai-roast-me",
   },
   {
     slug: "situationship-vs-relationship",
@@ -1537,7 +1537,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Rizz sadece saçma bir internet kelimesi değil. Derin bir insani arzunun özeti: manyetik, etkileyici ve karşı konulmaz olmak. İyi haber şu ki temel rizz seviyeniz kaderiniz değil. İlk adım gerçekte nerede durduğunu bilmek. Öğrenmeye hazır mısın?"
     },
     ctaLabel: "Rizz Seviyemi Test Et",
-    ctaLink: "/",
+    ctaLink: "/reply-guru",
   },
   {
     slug: "soft-launch-hard-launch",
@@ -1567,7 +1567,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Soft launch - hard launch tartışmasında evrensel olarak doğru bir cevap yok. Ama içgüdüsel seçimin ilişki psikolojine açılan bir penceredir. Kendini mi koruyorsun? Performans mı sergiliyorsun? Yoksa gerçekten, güvenli bir şekilde mutlu musun — ve sadece dünyanın bilmesini mi istiyorsun?"
     },
     ctaLabel: "Uyumumuzu Kontrol Et",
-    ctaLink: "/duo-compatibility",
+    ctaLink: "/profile-autopsy",
   },
   {
     slug: "emotionally-unavailable-signs",
@@ -1627,7 +1627,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Bir arkadaşlığı bitirmek, yapabileceğin en acı verici şeylerden biridir. Ama aura'n — enerjin, ruh sağlığın, kendin olma hissin — bir zamanlar aile gibi hissettiren insanlardan bile korunmaya değer. Güneş ışığı gibi hissettiren arkadaşlıkları hak ediyorsun, iş gibi değil."
     },
     ctaLabel: "Aura Savaşı Yap",
-    ctaLink: "/aura-battle",
+    ctaLink: "/bff-vibe-check",
   },
   {
     slug: "gen-z-dating-terms-2026",
@@ -1657,7 +1657,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Dil gerçekliği şekillendirir. Bu deneyimler için kesin bir kelime hazinesine sahip olarak Gen-Z, modern flörtün kafa karıştırıcı dinamiklerini tespit etmeyi, ifade etmeyi ve işlemeyi önemli ölçüde kolaylaştırdı. Toksik bir kalıptan kaçmanın ilk adımı onu adlandırabilmektir."
     },
     ctaLabel: "Vibe'ımı Kontrol Et",
-    ctaLink: "/",
+    ctaLink: "/profile-autopsy",
   },
   {
     slug: "are-you-delulu",
@@ -1687,7 +1687,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Delulu olmak, modern flörtün acımasız arenasında bazen hayatta kalmak için gereklidir. Ama kronik yanılsama, kendini terk etmenin bir yoludur — gerçek bir bağlantı bulabileceğin bir gerçekliğin yerine rahat bir kurguyu seçmek. Kendini mahvetmeden önce kendini kontrol et."
     },
     ctaLabel: "Delulu Kontrolümü Yap",
-    ctaLink: "/",
+    ctaLink: "/delulu-check",
   },
   {
     slug: "attachment-styles-explained",
@@ -1721,7 +1721,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Bağlanma stilin kaderin değil — başlangıç noktandır. Daha sağlıklı ilişkilere giden ilk adım, bilinçsizce tekrarladığın kalıbı anlamaktır. Bir kez gördüğünde, görmezden gelemezsin. Ve gerçek değişim o zaman başlar."
     },
     ctaLabel: "Bağlanma Stilimi Analiz Et",
-    ctaLink: "/",
+    ctaLink: "/soulmate-radar",
   },
   {
     slug: "how-to-get-over-someone",
@@ -1781,7 +1781,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Bir dahaki sefere birinin senden hoşlanıp hoşlanmadığını merak ettiğinde, telefonunu bırak ve izlemeye başla. Bedenleri, sözlerinin söylemeyeceği her şeyi sana anlatıyor. Kimyanın gerçek olup olmadığı hakkında yapay zeka destekli ikinci bir görüş istersen, Duo Compatibility özelliğimiz ikiniz arasındaki dinamiği acımasız bir dürüstlükle analiz edebilir."
     },
     ctaLabel: "Kimyamızı Test Et",
-    ctaLink: "/duo-compatibility",
+    ctaLink: "/crush-calculator",
   },
   {
     slug: "love-languages-which-one-are-you",
@@ -1811,7 +1811,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Sevgi dilleri çerçevesi sihirli bir çözüm değildir, ama inanılmaz güçlü bir teşhis aracıdır. Çoğu ilişki sorunu sevgi eksikliğinden değil — çeviri eksikliğinden kaynaklanır. Partnerinin dilini konuşmayı öğrendiğinde, her zaman orada olan sevgi nihayet karşı tarafa ulaşır."
     },
     ctaLabel: "Uyumumuzu Kontrol Et",
-    ctaLink: "/duo-compatibility",
+    ctaLink: "/soulmate-radar",
   },
   {
     slug: "what-is-an-ick",
@@ -1999,7 +1999,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Kanka, özetle; senin hayatın, senin kuralların, senin filmin! Kendi hayatında bir arka plan karakteri gibi yaşamayı bırakıp direksiyona geçmenin zamanı geldi. Kimseye senin değerini belirleme gücünü verme. Bare minimum ile yetinme, sana krallar/kraliçeler gibi davranmayan kimseyi hikayenin içine dahil etme. Main Character Energy, içindeki o özgüveni dışarı vurmak ve kendini dünyadaki en değerli insan olarak konumlandırmaktır. Birisi bu enerjiyi kaldıramıyorsa, senin sahnenden çıkabilir. Sen o spot ışıklarının altında parlamaya devam edeceksin."
     },
     ctaLabel: "Aura Puanımı Hesapla",
-    ctaLink: "/"
+    ctaLink: "/ai-roast-me"
   },
   {
     slug: "what-is-limerence",
@@ -2195,7 +2195,7 @@ export const trendsDataTr: TrendArticle[] = [
       conclusion: "Sonuçta kanka, o çelik zırhlar seni dışarıdaki fırtınalardan korur, evet. Ama aynı zırhlar, güneşin tenini ısıtmasını, birinin sana sıkıca sarılmasını da engeller. Hyper-independence, geçmişteki kırılmışlıklarının bir rozetidir ama gelecekteki mutluluğunun da en büyük engelidir. Gerçek güç, her şeyi tek başına yapmakta değil; kırılmayı göze alıp, kalbini birine açabilmekte yatar. Güvenli alanından çık, o omuzlara yaslanmaktan korkma ve sevgiye izin ver. Çünkü inat etsen de, hayatta en güçlü insanların bile bazen arkalarını kollayacak birine ihtiyacı vardır."
     },
     ctaLabel: "Bağlanma Stilimi Analiz Et",
-    ctaLink: "/"
+    ctaLink: "/soulmate-radar"
   },
   {
     slug: "one-sided-effort-relationship",
