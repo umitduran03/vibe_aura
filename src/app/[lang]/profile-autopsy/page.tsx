@@ -160,7 +160,7 @@ export default async function ProfileAutopsyLanding({ params }: { params: Promis
               <span>{isTr ? "Yapay Zeka Profil Analizi" : "AI Profile Analysis"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400">
-              {isTr ? "Profil Otopsisi" : "Profile Autopsy"}
+              {isTr ? "Profil Otopsisi — Instagram, Tinder & Bumble Profil Analizi" : "Profile Autopsy AI — Free Tinder, Hinge & Instagram Profile Analyzer"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr

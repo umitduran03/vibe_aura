@@ -6,19 +6,19 @@ interface Props {
 
 const seoContent = {
   en: {
-    badge: "AI Vibe Check & Aura Analysis",
-    heading: "VibeCheckr — AI Vibe Check Test, Aura Score & Photo Roast",
+    badge: "Free AI Vibe Check & Aura Analysis",
+    heading: "VibeCheckr — Free AI Vibe Check Test, 0–100 Aura Score, Photo Roast & Text Analyzer",
     tagline:
-      "What is your vibe? Upload a selfie or chat screenshot for an unfiltered AI vibe check test, aura score, relationship compatibility analysis, and savage roast.",
-    whatIsTitle: "What Is an AI Vibe Check & How Does It Work?",
+      "What is your vibe? Upload a selfie, two photos, or a chat screenshot for a free AI vibe check test, 0–100 aura score, savage photo roast, delulu check, crush calculator & couple compatibility—instant, no sign-up required.",
+    whatIsTitle: "What Is an AI Vibe Check Test & How Does It Work?",
     whatIsDesc:
-      "A vibe check measures the energy, personality cues, and unspoken signals you give off in photos and text messages. VibeCheckr combines multimodal AI face/chat reading with zodiac psychology to score your aura from 0 to 100, expose hidden red flags, and generate shareable result cards in seconds.",
+      "A vibe check measures the energy, personality cues, and unspoken signals you give off in selfies and text messages. VibeCheckr combines multimodal AI face/chat reading with zodiac psychology to score your aura from 0 to 100, decode mixed signals in WhatsApp/iMessage/Instagram DM screenshots, test two-photo compatibility, and generate shareable story cards in seconds.",
     steps: [
-      { step: "1", title: "Upload Selfie or Chat", desc: "Drop a photo, two photos for Duo mode, or a text screenshot." },
-      { step: "2", title: "AI Scans Your Vibe", desc: "Our AI reads micro-expressions, aura energy, and hidden signals." },
-      { step: "3", title: "Get Your Score & Roast", desc: "Unlock your 0–100 Aura Score, red flags, and shareable story card." },
+      { step: "1", title: "Upload Selfie or Chat", desc: "Drop a selfie, two photos for Duo/Crush mode, or a text screenshot." },
+      { step: "2", title: "AI Scans Your Vibe", desc: "Our AI reads micro-expressions, 0–100 aura energy, and hidden red flags." },
+      { step: "3", title: "Get Your Score & Roast", desc: "Unlock your 0–100 Aura Score, compatibility %, and shareable story card." },
     ],
-    featuresTitle: "AI Vibe & Relationship Tools",
+    featuresTitle: "13 Free AI Vibe Check, Aura & Relationship Tools",
     features: [
       { emoji: "🔥", name: "AI Photo Roast", desc: "Brutally honest AI comedy roast of your selfie and vibe.", href: "/en/ai-roast-me" },
       { emoji: "🤡", name: "Delulu Check", desc: "Am I delusional? Decode mixed signals before you double text.", href: "/en/delulu-check" },
@@ -88,19 +88,19 @@ const seoContent = {
     termsLabel: "Terms of Service",
   },
   tr: {
-    badge: "Yapay Zeka Vibe Check & Aura Testi",
-    heading: "VibeCheckr — Yapay Zeka Vibe Check Testi, Aura Skoru ve Fotoğraf Analizi",
+    badge: "Ücretsiz Yapay Zeka Vibe Check & Aura Testi",
+    heading: "VibeCheckr — Ücretsiz Yapay Zeka Vibe Check Testi, 0–100 Aura Skoru, Fotoğraf & Mesaj Analizi",
     tagline:
-      "Vibe check ne demek? Selfie'ni veya mesaj ekran görüntünü yükle; yapay zeka ile ücretsiz vibe check testi, aura puanı, ikili ilişki uyumu ve acımasız roast analizini anında öğren.",
-    whatIsTitle: "Vibe Check Nedir? Yapay Zeka Vibe Testi Nasıl Çalışır?",
+      "Vibe check ne demek? Selfie'ni, iki fotoğrafı veya WhatsApp/DM mesaj ekran görüntünü yükle; yapay zeka ile ücretsiz vibe check testi, 0–100 aura puanı, ikili çift/crush uyumu, delulu testi ve acımasız fotoğraf roast analizini hesapsız anında öğren.",
+    whatIsTitle: "Vibe Check Nedir? Ücretsiz Yapay Zeka Vibe & Aura Testi Nasıl Çalışır?",
     whatIsDesc:
-      "Vibe check; bir kişinin fotoğrafından, duruşundan veya mesajlarından dışarıya yaydığı enerjiyi (vibe), samimiyeti ve gizli sinyalleri ölçen enerji kontrolüdür. VibeCheckr yapay zeka motoru; yüz ifadelerini, burç dinamiklerini ve sohbet metinlerini analiz ederek 0–100 arası Aura Skorunu hesaplar, red flag'leri yakalar ve paylaşılabilir sonuç kartları üretir.",
+      "Vibe check; bir kişinin fotoğrafından, duruşundan veya mesajlarından dışarıya yaydığı enerjiyi (vibe), samimiyeti ve gizli sinyalleri ölçen enerji kontrolüdür. VibeCheckr yapay zeka motoru; yüz ifadelerini, burç dinamiklerini ve WhatsApp/Instagram DM sohbet ekran görüntülerini analiz ederek 0–100 arası Aura Skorunu hesaplar, red flag'leri yakalar ve paylaşılabilir sonuç kartları üretir.",
     steps: [
-      { step: "1", title: "Fotoğraf veya Mesaj Yükle", desc: "Selfie'ni, İkili (Duo) mod için iki fotoğrafı veya sohbet görüntünü seç." },
-      { step: "2", title: "YZ Auranı & Sinyalleri Okusun", desc: "Algoritma mikro ifadeleri, enerji uyumunu ve gizli red flag'leri tarar." },
-      { step: "3", title: "Vibe Skorunu & Kartını Al", desc: "100 üzerinden Aura Skorunu, acımasız roast yorumunu ve story kartını gör." },
+      { step: "1", title: "Fotoğraf veya Mesaj Yükle", desc: "Selfie'ni, İkili/Crush mod için iki fotoğrafı veya sohbet ekran görüntünü seç." },
+      { step: "2", title: "YZ Auranı & Sinyalleri Okusun", desc: "Algoritma mikro ifadeleri, 0–100 enerji uyumunu ve gizli red flag'leri tarar." },
+      { step: "3", title: "Vibe Skorunu & Kartını Al", desc: "100 üzerinden Aura Skorunu, uyum yüzdesini ve story kartını gör." },
     ],
-    featuresTitle: "Yapay Zeka Vibe ve İlişki Araçları",
+    featuresTitle: "13 Ücretsiz Yapay Zeka Vibe, Aura ve İlişki Aracı",
     features: [
       { emoji: "🔥", name: "YZ Fotoğraf Roast", desc: "Selfie'ni yükle, yapay zeka auranı acımasızca ve esprili dille yorumlasın.", href: "/tr/ai-roast-me" },
       { emoji: "🤡", name: "Delulu Check", desc: "Delulu muyum? İkinci mesajı atmadan önce karışık sinyalleri çöz.", href: "/tr/delulu-check" },

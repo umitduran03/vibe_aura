@@ -2,53 +2,55 @@ export const featureSeoData: Record<string, any> = {
   "ai-roast-me": {
     en: {
       howItWorks: {
-        title: "How It Works: Getting Humbled by AI",
+        title: "How It Works: Free AI Photo Roast & 0–100 Selfie Aura Score",
         steps: [
-          { title: "Drop Your Pic", desc: "Upload your favorite selfie or a fit check. Don't worry, we won't leak it, but we will judge it." },
-          { title: "The AI Scanning...", desc: "Our neural network scans your aura, drip, and overall vibe to find your weak spots." },
-          { title: "Get Cooked", desc: "Receive a brutally honest roast. Prepare to lose all your aura points and get humbled instantly." }
+          { title: "Upload Any Selfie or Outfit Pic", desc: "Drop a mirror selfie, gym photo, dating app pic, or IG story. Processed instantly in memory—never saved." },
+          { title: "AI Reads Your Facial Vibe & Energy", desc: "Our multimodal AI scans micro-expressions, posture, outfit aesthetics, lighting, and unspoken aura signals." },
+          { title: "Get Your 0–100 Aura Score & Savage Roast", desc: "Receive a brutally funny AI photo roast, your Vibe Archetype, hidden red flags, and a shareable story card." }
         ]
       },
       useCases: {
-        title: "When to use AI Roast Me",
+        title: "When to Use the AI Selfie Roast & Vibe Check",
         cases: [
-          { title: "Ego Check", desc: "When your friends are hyping you up too much and you need a reality check." },
-          { title: "Group Chat Material", desc: "Send the roast to the group chat to let everyone laugh at your expense." },
-          { title: "Testing Your Fits", desc: "Find out if your new outfit is giving main character energy or NPC vibes." }
+          { title: "Before Posting on Instagram or TikTok", desc: "Check what vibe your photo actually gives off before your followers or crush see it." },
+          { title: "Testing Dating App Photos (Tinder, Hinge, Bumble)", desc: "Find out if your first photo screams Main Character Energy or instant 'ick' before people swipe left." },
+          { title: "Roasting Friends in the Group Chat", desc: "Run your friends' selfies through the AI roaster and drop the shareable roast card in the group chat." }
         ]
       },
       faq: {
-        title: "Frequently Asked Questions",
+        title: "AI Photo Roast & Selfie Vibe Check — FAQ",
         questions: [
-          { q: "Is the AI actually mean?", a: "It's brutally honest. If you can't take the heat, stay out of the kitchen. It's all for the plot though." },
-          { q: "Do I lose real aura points?", a: "Yes, spiritually. The roast might leave you in the negatives." },
-          { q: "Can I roast my friends?", a: "Absolutely. Upload their pic and let the AI do the dirty work. Massive W." }
+          { q: "How do I get AI to roast my photo for free?", a: "Open VibeCheckr's AI Roast Me tool, use 1-Click Guest Mode (5 free welcome tokens, no sign-up required), and upload any selfie. You will get an unfiltered comedy roast and a 0–100 Aura Score in 3 seconds." },
+          { q: "What vibe do I give off in my selfie?", a: "Our AI analyzes your facial expression, pose, background, and style to identify your exact Vibe Archetype (such as Main Character, Mysterious Villain, Golden Retriever, or Chaos Magnet) along with your green and red flags." },
+          { q: "How is the 0–100 Aura Score calculated from a photo?", a: "The algorithm evaluates visual confidence, authenticity, lighting aesthetics, and micro-expressions to score your aura from 0 (NPC energy) to 100 (untouchable main character aura)." },
+          { q: "Are my uploaded selfies saved or shared anywhere?", a: "Never. All photos are analyzed in real-time memory and deleted immediately after your roast card is generated. We never store, sell, or train AI models on your photos." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Yapay Zeka Tarafından Humbled Olmak",
+        title: "Nasıl Çalışır: Ücretsiz YZ Fotoğraf Roast & 0–100 Aura Puanı Hesaplama",
         steps: [
-          { title: "Fotonu Sal", desc: "En iyi selfieni veya fit check'ini yükle. Korkma sızdırmayacağız ama yargılayacağız." },
-          { title: "Yapay Zeka Tarıyor...", desc: "Sinir ağımız auranı, drip'ini ve genel vibe'ını tarayıp zayıf noktalarını buluyor." },
-          { title: "Fırınlanma Vakti", desc: "Acımasız ve dürüst bir linç ye. Tüm aura puanlarını kaybetmeye ve anında humbled olmaya hazır ol." }
+          { title: "Selfie veya Kombin Fotoğrafını Yükle", desc: "Ayna selfie'si, spor salonu pozu, Instagram hikayesi veya flört uygulaması fotoğrafını seç. Fotoğraflar asla kaydedilmez." },
+          { title: "Yapay Zeka Yüz İfadeni ve Auranı Okur", desc: "Çok modlu yapay zeka; mikro ifadelerini, duruşunu, kombin estetiğini ve dışarıya yaydığın gizli sinyalleri tarar." },
+          { title: "0–100 Aura Skorunu ve Acımasız Roast Kartını Al", desc: "3 saniyede 0–100 Aura Puanını, Vibe Arketipini, gizli red flag'lerini ve paylaşılabilir gömme (roast) kartını gör." }
         ]
       },
       useCases: {
-        title: "AI Roast Me Ne Zaman Kullanılır?",
+        title: "Yapay Zeka Fotoğraf Gömmesi (AI Roast) Ne Zaman Kullanılır?",
         cases: [
-          { title: "Ego Kontrolü", desc: "Arkadaşların seni çok gazladığında ve bir gerçeklik kontrolüne ihtiyacın olduğunda." },
-          { title: "Grup Sohbeti Malzemesi", desc: "Linci gruba at ve herkesin senin üzerinden prim yapmasına izin ver." },
-          { title: "Kombin Testi", desc: "Yeni kombinin main character enerjisi mi yoksa NPC vibe'ı mı veriyor öğren." }
+          { title: "Instagram veya Story Atmadan Önce", desc: "Fotoğrafı paylaşmadan önce dışarıya nasıl bir enerji (main character mı yoksa kasıntı mı) verdiğini test et." },
+          { title: "Tinder, Bumble ve Flört Fotoğraflarını Seçerken", desc: "Profil fotoğrafının çekici mi yoksa anında 'ick' (itici) mi durduğunu başkaları sola kaydırmadan önce öğren." },
+          { title: "Arkadaş Grubunda Eğlence & Meydan Okuma", desc: "Kankalarının fotoğraflarını yapay zekaya gömdür ve çıkan neon sonuç kartını WhatsApp grubuna at." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "YZ Fotoğraf Roast & Aura Testi — Sıkça Sorulan Sorular",
         questions: [
-          { q: "Yapay Zeka cidden acımasız mı?", a: "Fazlasıyla dürüst. Kaldıramayacaksan hiç bulaşma. Her şey plot için sonuçta." },
-          { q: "Gerçekten aura kaybeder miyim?", a: "Ruhsal olarak, evet. Linç seni eksilere düşürebilir." },
-          { q: "Arkadaşlarımı linçletebilir miyim?", a: "Kesinlikle. Onların fotosunu yükle ve yapay zekanın işi bitirmesini izle. Massive W." }
+          { q: "Fotoğrafımı yapay zekaya ücretsiz nasıl yorumlatıp gömdürebilirim?", a: "VibeCheckr AI Roast Me sayfasında hesap açmadan tek tıkla Misafir Girişi yaparak (anında 5 ücretsiz jeton verilir) selfie'ni yükleyebilir, 3 saniye içinde acımasız roast yorumunu ve 0–100 Aura Skorunu alabilirsin." },
+          { q: "Fotoğrafımdan dışarıya nasıl bir enerji (vibe) verdiğimi nasıl anlarım?", a: "Yapay zeka yüz ifadeni, bakışlarını, duruşunu ve tarzını analiz ederek sana tam Vibe Arketipini, dışarıdan ilk bakışta fark edilen green flag ve red flag özelliklerini açıklar." },
+          { q: "Fotoğraftan 0–100 Aura Puanı nasıl hesaplanıyor?", a: "Algoritma; özgüven duruşu, doğallık, ışık/estetik uyumu ve mikro ifadeleri puanlayarak 0 (NPC enerjisi) ile 100 (zirve ana karakter aurası) arasında net bir skor üretir." },
+          { q: "Yüklediğim fotoğraflar kaydediliyor mu?", a: "Hayır. Yüklediğin tüm fotoğraflar yalnızca anlık analiz için bellekte işlenir ve sonuç ekranın oluştuğu anda kalıcı olarak silinir." }
         ]
       }
     }
@@ -56,53 +58,55 @@ export const featureSeoData: Record<string, any> = {
   "aura-battle": {
     en: {
       howItWorks: {
-        title: "How It Works: The Ultimate Mogging Match",
+        title: "How It Works: 1v1 AI Aura Battle & Two-Photo Vibe Comparison",
         steps: [
-          { title: "Choose Your Fighter", desc: "Upload a pic of you and a pic of your friend. It's time to see who is the real deal." },
-          { title: "Vibe Calculation", desc: "The AI calculates who has more aura points, better drip, and stronger main character energy." },
-          { title: "Declare the Victor", desc: "See who gets the W and who takes the L. It's a brutal ratio." }
+          { title: "Upload Two Contender Photos", desc: "Drop your photo and a friend's, partner's, or rival's photo side by side for a head-to-head showdown." },
+          { title: "AI Scores Both Auras (0–100)", desc: "The algorithm evaluates presence, style, confidence, and main character energy for Person 1 vs. Person 2." },
+          { title: "Crown the Winner & Roast the Loser", desc: "See the exact score gap, why the winner mogged the loser, and share the battle verdict card." }
         ]
       },
       useCases: {
-        title: "When to Start an Aura Battle",
+        title: "When to Run an AI Aura Battle",
         cases: [
-          { title: "Settling Debates", desc: "Finally prove to your friend that you mog them effortlessly." },
-          { title: "Friendly Fire", desc: "Start some drama in the friend group for the plot." },
-          { title: "Couples Edition", desc: "See who is the reacher and who is the settler in the relationship." }
+          { title: "Settling Group Chat Debates", desc: "Find out objectively who has higher aura points in your friend group with an unbiased AI referee." },
+          { title: "Couple Who-Wore-It-Better Showdowns", desc: "Compare date-night outfits or solo selfies with your partner to see who carries the aesthetic." },
+          { title: "Comparing Two Photos of Yourself", desc: "Can't decide which selfie to post? Pit two of your own photos against each other and post the winner." }
         ]
       },
       faq: {
-        title: "FAQ",
+        title: "AI Aura Battle (1v1 Photo Comparison) — FAQ",
         questions: [
-          { q: "What is an aura battle?", a: "A scientific AI comparison to see who has the better vibe and aesthetic." },
-          { q: "Can I win if my picture is low quality?", a: "Aura transcends pixels. If your vibe is immaculate, you'll still get the W." },
-          { q: "What if it's a tie?", a: "The AI rarely gives a tie. Someone's always getting mogged." }
+          { q: "How do you compare two photos to see who has more aura?", a: "Upload two photos into VibeCheckr's Aura Battle tool. The AI independently calculates a 0–100 Aura Score for each person, compares their facial presence and aesthetic energy, and declares the 1v1 winner." },
+          { q: "Can I use Aura Battle to choose between two of my own photos?", a: "Yes! Uploading two different selfies or outfit photos of yourself is one of the best ways to see which picture gives off higher confidence and main character energy before posting." },
+          { q: "What determines who wins the Aura Battle?", a: "The AI looks at posture, expression naturalness, styling, lighting, and overall 'unbothered confidence'—trying too hard lowers your score while effortless presence boosts it." },
+          { q: "Is the 1v1 Aura Battle free to play with friends?", a: "Yes, you can start immediately with 5 free welcome tokens via 1-Click Guest Mode without creating an account." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Nihai Moglama Maçı",
+        title: "Nasıl Çalışır: 1v1 Yapay Zeka Aura Savaşı & İki Fotoğraf Karşılaştırma",
         steps: [
-          { title: "Savaşçını Seç", desc: "Kendi fotonu ve arkadaşının fotosunu yükle. Kimin asıl olay olduğunu görme vakti." },
-          { title: "Vibe Hesaplaması", desc: "Yapay zeka kimin daha çok aura puanı, daha iyi drip'i ve daha güçlü main character enerjisi olduğunu hesaplar." },
-          { title: "Kazananı İlan Et", desc: "Kimin W, kimin L aldığını gör. Acımasız bir ratio." }
+          { title: "İki Rakip Fotoğraf Yükle", desc: "Kendi fotoğrafını ve arkadaşının, sevgilinin veya rakibinin fotoğrafını yan yana yükle." },
+          { title: "Yapay Zeka İki Auranı da Puanlar (0–100)", desc: "Algoritma her iki kişinin duruşunu, tarzını, özgüvenini ve ana karakter enerjisini ayrı ayrı 100 üzerinden hesaplar." },
+          { title: "Kazanan İlan Edilir, Kaybeden Gömülür", desc: "Puan farkını, kazananın hangi detayla öne geçtiğini ve paylaşılabilir karşılaşma kartını anında gör." }
         ]
       },
       useCases: {
-        title: "Aura Battle Ne Zaman Başlatılır?",
+        title: "Aura Savaşı (Kim Daha Cool Testi) Ne Zaman Kullanılır?",
         cases: [
-          { title: "Tartışmaları Bitirmek", desc: "Sonunda arkadaşına onu zahmetsizce mogladığını kanıtla." },
-          { title: "Dost Ateşi", desc: "Plot uğruna arkadaş grubunda biraz kaos ve drama başlat." },
-          { title: "Çiftler Sürümü", desc: "İlişkide kimin daha üstün, kimin şanslı olduğunu gör." }
+          { title: "Arkadaş Grubunda 'Kim Daha Cool?' Tartışmaları", desc: "Grupta kimin aurasının daha yüksek olduğunu tarafsız yapay zeka hakemiyle kanıtla." },
+          { title: "Çiftler Arası Kombin ve Vibe Yarışı", desc: "Partnerinle veya flörtünle fotoğraflarınızı yarıştırıp ilişkide estetik yükü kimin taşıdığını gör." },
+          { title: "Kendi İki Fotoğrafın Arasında Seçim Yapmak", desc: "Instagram'a hangi fotoğrafı atacağına karar veremediğinde iki pozunu yarıştır, yüksek puan alanı paylaş." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Aura Savaşı & İki Fotoğraf Karşılaştırma — SSS",
         questions: [
-          { q: "Aura savaşı nedir?", a: "Kimin daha iyi bir vibe ve estetiğe sahip olduğunu görmek için bilimsel bir yapay zeka karşılaştırması." },
-          { q: "Fotoğraf kalitem kötüyse kazanabilir miyim?", a: "Aura piksellerin ötesindedir. Vibe'ın kusursuzsa yine de W'yu alırsın." },
-          { q: "Ya berabere biterse?", a: "Yapay zeka nadiren berabere bırakır. Biri her zaman moglanır." }
+          { q: "İki fotoğrafı karşılaştırıp kimin aurasının daha yüksek olduğunu nasıl ölçerim?", a: "VibeCheckr Aura Savaşı aracına iki fotoğraf yüklemen yeterli. Yapay zeka her iki kişiye 0–100 arası Aura Puanı verir, enerji ve duruş üstünlüğünü kıyaslar ve kazananı seçer." },
+          { q: "Hangi fotoğrafımın daha iyi olduğunu seçmek için kendi iki fotoğrafımı yarıştırabilir miyim?", a: "Kesinlikle! Sosyal medyada paylaşmadan önce kendi iki farklı fotoğrafını yükleyerek hangisinin daha yüksek özgüven ve aura puanı aldığını test edebilirsin." },
+          { q: "Aura Savaşı'nda kazananı hangi kriterler belirliyor?", a: "Yapay zeka; doğal özgüven, bakışlar, kombin uyumu, ışık kalitesi ve 'zahmetsiz cool' (main character) enerjisini ölçer; aşırı kasıntı pozlar puan kaybettirir." },
+          { q: "Aura Savaşı testi ücretsiz mi?", a: "Evet, tek tıkla Misafir Girişi ile hesap açmadan anında 5 ücretsiz hoş geldin jetonuyla kullanabilirsin." }
         ]
       }
     }
@@ -110,53 +114,55 @@ export const featureSeoData: Record<string, any> = {
   "bff-vibe-check": {
     en: {
       howItWorks: {
-        title: "How It Works: BFF Compatibility Test",
+        title: "How It Works: Free AI Best Friend (BFF) Compatibility Test from 2 Photos",
         steps: [
-          { title: "Spill the Tea", desc: "Drop info about you and your bestie. How you met, inside jokes, and your chaos levels." },
-          { title: "Analyzing the Bond", desc: "The AI calculates if you're twin flames or just trauma bonded." },
-          { title: "The Verdict", desc: "Get your exact compatibility score and a read on your shared braincell count." }
+          { title: "Upload Selfies of You & Your Bestie", desc: "Drop a photo of yourself and a photo of your best friend (plus optional zodiac signs)." },
+          { title: "AI Analyzes Your Friendship Synergy", desc: "Our AI compares your facial energy, chaos potential, loyalty vibe, and dynamic roles." },
+          { title: "Unlock Your 0–100% BFF Score & Roles", desc: "See your friendship compatibility score, who the instigator vs. therapist is, and your chaos rating." }
         ]
       },
       useCases: {
-        title: "Why You Need a BFF Vibe Check",
+        title: "When to Take the BFF Friendship Compatibility Test",
         cases: [
-          { title: "New Friendships", desc: "Testing the waters to see if a new friend has bestie potential or if they're an NPC." },
-          { title: "Anniversary Post", desc: "Getting cute and chaotic stats to use for an Instagram story dump." },
-          { title: "Checking Toxicity", desc: "Finding out if you enable each other's delulu behavior." }
+          { title: "Testing Ride-or-Die Best Friends", desc: "Prove scientifically that you and your bestie are soulmate-level friends—or absolute chaos enablers." },
+          { title: "Vibe-Checking a New Friend or Roommate", desc: "See if a new college roommate, coworker, or travel buddy actually matches your energy before committing." },
+          { title: "Sharing Bestie Result Cards on Stories", desc: "Generate a custom BFF synergy card to tag your best friend on Instagram Stories or TikTok." }
         ]
       },
       faq: {
-        title: "BFF Check FAQ",
+        title: "BFF Vibe Check & Friendship Compatibility Test — FAQ",
         questions: [
-          { q: "Will this ruin my friendship?", a: "Only if you're both secretly ops. Otherwise, it's just a fun reality check." },
-          { q: "Does it count trauma dumping as compatibility?", a: "Yes, shared trauma is a massive boost to the BFF score." },
-          { q: "What if the score is low?", a: "Time to find a new bestie, or just blame the algorithm." }
+          { q: "How do I test my compatibility with my best friend using photos?", a: "Upload your photo and your best friend's photo in VibeCheckr's BFF Vibe Check tool. The AI reads both auras to calculate a 0–100% Friendship Compatibility Score, Chaos Level, and Gossip Synergy." },
+          { q: "What roles does the AI BFF test assign to friends?", a: "Based on your vibe readings, the AI identifies who plays the 'Chaos Instigator', the 'Unpaid Therapist', the 'Voice of Reason', or the 'Delulu Enabler' in your duo." },
+          { q: "Can I add our zodiac signs to the friendship compatibility check?", a: "Yes! Adding both of your zodiac signs lets the AI combine visual aura reading with astrological friendship dynamics (Earth, Air, Fire, Water compatibility)." },
+          { q: "Is the BFF Vibe Check free without signing up?", a: "Yes, use 1-Click Guest Mode for 5 free instant tokens and run your BFF compatibility check in seconds with no registration." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Kanki Vibe Kontrolü",
+        title: "Nasıl Çalışır: 2 Fotoğraflı Ücretsiz Kanka & Arkadaşlık Uyum Testi (BFF Testi)",
         steps: [
-          { title: "Dedikoduyu Sal", desc: "Sen ve kankan hakkında bilgi ver. Nasıl tanıştığınız, aranızdaki şakalar ve kaos seviyeniz." },
-          { title: "Bağ Analizi", desc: "Yapay zeka ruh ikizi mi yoksa sadece travma bağı mı (trauma bond) olduğunuzu hesaplar." },
-          { title: "Karar", desc: "Tam uyum puanınızı ve ortak beyin hücrenizin sayısını öğrenin." }
+          { title: "Kendinin ve Kankanın Fotoğrafını Yükle", desc: "Senin ve en yakın arkadaşının birer fotoğrafını seç (istersen burçlarınızı da ekle)." },
+          { title: "Yapay Zeka Dostluk Enerjinizi Analiz Eder", desc: "Algoritma ikinizin yüz enerjisini, kaos potansiyelini, sadakat uyumunu ve dedikodu sinerjisini karşılaştırır." },
+          { title: "0–100 Kanka Uyum Skorunu ve Rollerinizi Gör", desc: "Arkadaşlık uyum yüzdesini, grupta kimin 'akıl hocası' kimin 'kaos başlatıcı' olduğunu ve paylaşılabilir BFF kartını al." }
         ]
       },
       useCases: {
-        title: "Neden BFF Vibe Check'e İhtiyacın Var?",
+        title: "Arkadaşlık Uyum Testi (BFF Vibe Check) Ne Zaman Yapılır?",
         cases: [
-          { title: "Yeni Arkadaşlıklar", desc: "Yeni bir arkadaşın kanki potansiyeli mi var yoksa NPC mi test etmek." },
-          { title: "Yıldönümü Postu", desc: "Instagram story dump'ları için tatlı ve kaotik istatistikler almak." },
-          { title: "Toksiklik Kontrolü", desc: "Birbirinizin delulu davranışlarını körükleyip körüklemediğinizi öğrenmek." }
+          { title: "En Yakın Arkadaşınla (Can Dostunla) Test Etmek", desc: "Yıllardır süren dostluğunuzun gerçekten ruh ikizi mi yoksa karşılıklı delulu ortaklığı mı olduğunu kanıtla." },
+          { title: "Yeni Arkadaş, Ev Arkadaşı veya Tatil Ortağı Seçerken", desc: "Tatile çıkmadan veya aynı eve girmeden önce enerjinizin çarpışıp çarpışmayacağını önceden ölç." },
+          { title: "Instagram Story'de Kankanı Etiketlemek", desc: "Çıkan BFF uyum ve kaos kartını indirip Instagram hikayende en yakın arkadaşını etiketleyerek paylaş." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Kanka Uyum Testi & Arkadaşlık Analizi — SSS",
         questions: [
-          { q: "Bu arkadaşlığımı bozar mı?", a: "Sadece gizliden op'sanız. Yoksa sadece eğlenceli bir reality check." },
-          { q: "Travma kusmak uyum sayılır mı?", a: "Evet, ortak travma BFF puanını devasa arttırır." },
-          { q: "Puan düşük çıkarsa ne yapmalıyım?", a: "Yeni bir kanki bulma vakti, ya da sadece algoritmayı suçla." }
+          { q: "En yakın arkadaşımla uyum testimizi fotoğrafla nasıl yapabiliriz?", a: "VibeCheckr BFF Vibe Check sayfasına kendi fotoğrafını ve kankanın fotoğrafını yükle. Yapay zeka 3 saniyede 0–100 arası Arkadaşlık Uyum Puanınızı, kaos seviyenizi ve gizli rollerinizi hesaplar." },
+          { q: "Arkadaşlık testinde yapay zeka neleri analiz ediyor?", a: "Yüz ifadelerinizdeki enerji uyumunu, bir araya geldiğinizde oluşan kaos/eğlence dengesini, dedikodu potansiyelinizi ve kimin kimi yoldan çıkardığını analiz eder." },
+          { q: "Arkadaşlık uyumunda burçlarımızı da seçebilir miyiz?", a: "Evet! İkinizin burcunu da seçerek fotoğraf analiziyle birlikte astrolojik dostluk ve element uyumunuzu da sonuca dahil edebilirsin." },
+          { q: "BFF arkadaşlık uyum testi ücretsiz mi?", a: "Evet, hesap açmadan tek tıkla Misafir Girişi yaparak anında verilen 5 ücretsiz jetonla kanka uyumunuzu hemen ölçebilirsin." }
         ]
       }
     }
@@ -164,53 +170,55 @@ export const featureSeoData: Record<string, any> = {
   "crush-calculator": {
     en: {
       howItWorks: {
-        title: "How It Works: Crush Compatibility",
+        title: "How It Works: Free AI Crush Calculator — Does My Crush Like Me? (2-Photo Test)",
         steps: [
-          { title: "Enter the Deets", desc: "Put in your names, zodiac signs, and how they text you." },
-          { title: "AI Reads the Room", desc: "Our algorithm scans the vibes to see if there's actual chemistry or if you're just delusional." },
-          { title: "The Truth Hurts", desc: "Get your real score. Find out if it's an endgame or if you're deep in the friendzone." }
+          { title: "Upload Your Photo & Your Crush's Photo", desc: "Drop a photo of yourself and a photo of your crush (plus optional zodiac signs for deeper chemistry)." },
+          { title: "AI Measures Romantic Spark vs. Friendzone Odds", desc: "Our AI compares both auras, attraction cues, and energetic polarity to score your romantic potential." },
+          { title: "Get Your 0–100% Crush Compatibility & First-Move Advice", desc: "See your exact Crush Match %, whether the tension is mutual or delulu, and how to make your move." }
         ]
       },
       useCases: {
-        title: "When to use Crush Calculator",
+        title: "When to Use the AI Crush Compatibility Calculator",
         cases: [
-          { title: "Late Night Overthinking", desc: "When it's 3 AM and you're analyzing their one-word reply." },
-          { title: "Pre-Confession Anxiety", desc: "Checking the odds before you risk it all and shoot your shot." },
-          { title: "Moving On", desc: "Finding out it's a 0% match so you can finally let go of the delulu." }
+          { title: "Before Confessing or Sliding Into Their DMs", desc: "Check if your aesthetics and auras actually align before risking it all in their DMs." },
+          { title: "Decoding Eye Contact & Unspoken Tension", desc: "Find out if your school, gym, or work crush gives off compatible romantic energy or pure friendzone vibes." },
+          { title: "Testing Celebrity or Fictional Crushes", desc: "Run your selfie against your celebrity crush to see if you'd actually stand a chance." }
         ]
       },
       faq: {
-        title: "Crush FAQ",
+        title: "AI Crush Calculator & Attraction Test — FAQ",
         questions: [
-          { q: "Is this accurate?", a: "More accurate than your friends telling you 'they totally like you back'." },
-          { q: "What if it says we're incompatible?", a: "Take the L and move on, or stay delulu. Your choice." },
-          { q: "Does it work for celebs?", a: "Yes, you can calculate your compatibility with Pedro Pascal. Go crazy." }
+          { q: "How do I know if my crush likes me or if we are compatible?", a: "Upload both of your photos into VibeCheckr's AI Crush Calculator. The AI analyzes visual chemistry, aura polarity, and optional zodiac signs to calculate a 0–100% Crush Compatibility Score and friendzone risk." },
+          { q: "How does a photo crush calculator work?", a: "Unlike random name calculators, our multimodal AI reads facial micro-expressions, aesthetic harmony, and personality archetypes from both photos to estimate romantic tension vs. platonic energy." },
+          { q: "Will my crush know I uploaded their photo?", a: "Never. Your test is 100% private and anonymous, and uploaded photos are deleted from memory immediately after generating your result." },
+          { q: "Is the AI Crush Calculator free to use online?", a: "Yes! Click Guest Mode to get 5 free welcome tokens instantly—no sign-up or credit card needed." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Crush Uyum Testi",
+        title: "Nasıl Çalışır: Platonik Aşk & Crush Uyum Testi — Benden Hoşlanıyor Mu? (2 Fotoğraflı)",
         steps: [
-          { title: "Detayları Gir", desc: "İsimlerinizi, burçlarınızı ve sana nasıl mesaj attığını yaz." },
-          { title: "Yapay Zeka Ortamı Okuyor", desc: "Algoritmamız aranızda gerçek bir kimya mı var yoksa sadece delusional mısın diye tarar." },
-          { title: "Gerçekler Acıtır", desc: "Gerçek puanını gör. Endgame mi yoksa fena halde friendzone'da mısın öğren." }
+          { title: "Kendi Fotoğrafını ve Crush'ının Fotoğrafını Yükle", desc: "Senin ve hoşlandığın kişinin (platonik aşkının) birer fotoğrafını seç, istersen burçlarınızı da ekle." },
+          { title: "Yapay Zeka Romantik Çekim ve Friendzone İhtimalini Ölçer", desc: "Algoritma iki fotoğraf arasındaki enerji çekimini, estetik uyumu ve platonik/romantik dengeyi tarar." },
+          { title: "0–100 Crush Uyum Yüzdesini ve İlk Adım Taktiğini Al", desc: "Aranızdaki kıvılcımın gerçek mi yoksa delulu mu olduğunu, % uyum skorunu ve nasıl yürümen gerektiğini öğren." }
         ]
       },
       useCases: {
-        title: "Crush Calculator Ne Zaman Kullanılır?",
+        title: "Platonik Aşk & Crush Uyum Hesaplayıcı Ne Zaman Kullanılır?",
         cases: [
-          { title: "Gece Yarısı Overthinking", desc: "Saat gece 3'te attığı tek kelimelik cevabı analiz ederken." },
-          { title: "İtiraf Öncesi Anksiyete", desc: "Her şeyi riske atıp yürümeye karar vermeden önce şansını test etmek." },
-          { title: "Yola Devam Etmek", desc: "Uyumun %0 çıktığını görüp sonunda delulu'luktan kurtulmak." }
+          { title: "DM Atmadan veya Açılmadan Önce", desc: "Hoşlandığın kişiye mesaj atıp rezil olma riskine girmeden önce auralarınızın ne kadar uyuştuğunu kontrol et." },
+          { title: "Okul, İş veya Spor Salonu Crush'ını Çözmek", desc: "Sürekli göz göze geldiğin kişinin enerjisi seninle sevgili olmaya mı uygun yoksa friendzone (arkadaş bölgesi) mu, öğren." },
+          { title: "Ünlü Crush'ınla Uyumunu Test Etmek", desc: "Hayran olduğun ünlüyle fotoğraflarınızı yan yana koyup kaç puan uyum yakaladığınızı gör." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Crush Hesaplayıcı & Hoşlandığım Kişi Testi — SSS",
         questions: [
-          { q: "Bu sonuçlar doğru mu?", a: "'Kesin senden hoşlanıyor' diyen arkadaşlarından çok daha doğru." },
-          { q: "Uyumsuz çıkarsak ne olacak?", a: "L'yi al ve yoluna bak, ya da delulu kal. Seçim senin." },
-          { q: "Ünlüler için de çalışıyor mu?", a: "Evet, Pedro Pascal ile uyumunu hesaplayabilirsin. Çıldır." }
+          { q: "Hoşlandığım kişinin (crush'ımın) benimle uyumlu olup olmadığını nasıl anlarım?", a: "VibeCheckr Crush Hesaplayıcıya ikinizin fotoğrafını yükleyerek 0–100 arası romantik çekim yüzdesini, friendzone riskini ve burç/aura uyumunuzu 3 saniyede öğrenebilirsin." },
+          { q: "Fotoğraftan platonik aşk ve crush uyum testi nasıl çalışır?", a: "Sadece isim yazılan basit testlerin aksine yapay zekamız; iki fotoğraftaki yüz ifadelerini, tarz uyumunu ve enerji kutuplaşmasını analiz ederek aranızdaki potansiyel kimyayı hesaplar." },
+          { q: "Fotoğrafını yüklediğim kişi bunu görebilir mi?", a: "Asla göremez. Test tamamen gizlidir ve yüklenen fotoğraflar analiz biter bitmez sistem belleğinden kalıcı olarak silinir." },
+          { q: "Crush uyum testi ücretsiz mi, kayıt gerekiyor mu?", a: "Tamamen ücretsizdir! Tek tıkla Misafir Girişi yaparak hesap açmadan 5 bedava jetonla hemen test edebilirsin." }
         ]
       }
     }
@@ -218,53 +226,55 @@ export const featureSeoData: Record<string, any> = {
   "delulu-check": {
     en: {
       howItWorks: {
-        title: "How It Works: The Reality Check",
+        title: "How It Works: Free AI Delulu Check — Mixed Signals & Text Screenshot Analyzer",
         steps: [
-          { title: "Spill the Scenario", desc: "Explain what they said, what they did, and what you think it means." },
-          { title: "Processing the Delusion", desc: "The AI compares your narrative against actual logic and red flags." },
-          { title: "Get Humbled", desc: "Receive a diagnosis: Are you valid, or are you severely delulu?" }
+          { title: "Paste Texts, Upload Chat Screenshots, or Drop the Lore", desc: "Upload WhatsApp, iMessage, Instagram DM, or Tinder screenshots—or describe the mixed signals keeping you awake." },
+          { title: "AI Cross-Checks Receipts vs. Reality", desc: "Our AI analyzes reply speed, effort balance, excuses, and attachment behavior without your rose-colored glasses." },
+          { title: "Get Your 0–100% Delulu Score & Next Move", desc: "Find out instantly if they actually like you (Valid) or if you are 99% delusional—plus whether to text or walk away." }
         ]
       },
       useCases: {
-        title: "When to take a Delulu Check",
+        title: "When to Take the Free Delulu Check Quiz",
         cases: [
-          { title: "Mixed Signals", desc: "When they watch all your stories but leave you on delivered for 12 hours." },
-          { title: "Overanalyzing Texts", desc: "Thinking a thumbs up emoji means they're secretly in love with you." },
-          { title: "Post-Date Confusion", desc: "Figuring out if the date was actually good or if you made it all up in your head." }
+          { title: "Before Sending a Double Text", desc: "They viewed your story 6 hours ago but haven't replied to your text. Check your Delulu Score before texting again." },
+          { title: "Decoding Dry Texts, Cancelled Plans & Mixed Signals", desc: "When they act obsessed in person but text like a stranger, let AI translate what their behavior actually means." },
+          { title: "Late-Night Overthinking & Group Chat Reality Checks", desc: "When your friends are too nice to tell you the truth, get an objective, unfiltered AI reality check in 3 seconds." }
         ]
       },
       faq: {
-        title: "Delulu FAQ",
+        title: "Delulu Check & Mixed Signal Text Analyzer — FAQ",
         questions: [
-          { q: "Is being delulu the solulu?", a: "Sometimes, but usually it's just the pipeline to heartbreak. We'll tell you which one it is." },
-          { q: "Will the AI sugarcoat it?", a: "Absolutely not. Expect to be roasted if you're reaching." },
-          { q: "Can I use it for friendships?", a: "Yes, platonic delusion is very real. Get checked." }
+          { q: "How do I know if I am being delusional (delulu) or if they actually like me?", a: "Upload your chat screenshot or describe their behavior in VibeCheckr's free Delulu Check tool. The AI evaluates effort vs. excuses and gives you a 0–100% Delulu Score so you know whether their interest is real or all in your head." },
+          { q: "Can AI analyze text screenshots for mixed signals and red flags?", a: "Yes! You can upload screenshots from iMessage, WhatsApp, Instagram DM, Snapchat, Hinge, or Tinder. The AI reads message length, response tone, breadcrumbing, and dry-texting patterns." },
+          { q: "What does it mean if someone watches my stories but doesn't text back?", a: "Watching your story takes one tap with zero effort, while replying requires intentional engagement. In 90% of Delulu Check scans, story-watching without replying is a classic breadcrumb or orbiting sign." },
+          { q: "Is the Delulu Check test free without creating an account?", a: "Yes, click Guest Mode to claim 5 free welcome tokens immediately and run your AI Delulu Check in 3 seconds with no sign-up." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Reality Check",
+        title: "Nasıl Çalışır: Ücretsiz Delulu Check Testi — Mesaj & Karışık Sinyal Analizi",
         steps: [
-          { title: "Senaryoyu Dökül", desc: "Ne dediğini, ne yaptığını ve senin bundan ne anladığını açıkla." },
-          { title: "Delüzyon İşleniyor", desc: "Yapay zeka senin kurduğun hikayeyi gerçek mantık ve red flag'lerle kıyaslar." },
-          { title: "Humbled Ol", desc: "Teşhisini al: Haklı mısın yoksa ağır delulu musun?" }
+          { title: "Mesaj Ekran Görüntüsü Yükle veya Durumu Anlat", desc: "WhatsApp, Instagram DM veya flört uygulaması ekran görüntüsünü yükle ya da kafanı karıştıran olayı yaz." },
+          { title: "Yapay Zeka Bahaneleri Değil Kanıtları Okur", desc: "Algoritma; mesajlaşma çabasını, görüldü (mavi tik) sürelerini, iptal edilen planları ve bağlanma sinyallerini tarafsızca inceler." },
+          { title: "0–100 Delulu Skorunu ve Hamleni Öğren", desc: "3 saniyede gerçekten senden hoşlanıp hoşlanmadığını (Haklısın / Delulu) ve ikinci mesajı atıp atmaman gerektiğini gör." }
         ]
       },
       useCases: {
-        title: "Delulu Check Ne Zaman Kullanılır?",
+        title: "Delulu Testi (Gerçeklik Kontrolü) Ne Zaman Yapılır?",
         cases: [
-          { title: "Karışık Sinyaller", desc: "Tüm story'lerine bakıp mesajını 12 saat delivered'da bıraktığında." },
-          { title: "Mesajları Fazla Analiz Etmek", desc: "Attığı başparmak emojisinin gizliden aşık olduğu anlamına geldiğini sanmak." },
-          { title: "Date Sonrası Kafa Karışıklığı", desc: "Date cidden iyi miydi yoksa her şeyi kafanda mı kurdun anlamak." }
+          { title: "İkinci Mesajı (Double Text) Atmadan Hemen Önce", desc: "Story'ni izleyip mesajına saatlerdir cevap vermediğinde elin klavyeye gitmeden önce yapay zekadan gerçeklik tokadı al." },
+          { title: "Sıcak-Soğuk Davranışları ve Karışık Sinyalleri Çözmek İçin", desc: "Yüz yüzeyken harika davranıp mesajda soğuk yapıyorsa, bunun yoğunluk mu yoksa ilgisizlik mi olduğunu netleştir." },
+          { title: "Gece Aşırı Düşünme (Overthinking) Krizlerinde", desc: "Aynı 3 mesajı 10 kez okuyup gizli anlam aradığında yapay zekaya okut ve gerçek niyetini saniyeler içinde öğren." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Delulu Check & Mesaj Analizi — Sıkça Sorulan Sorular",
         questions: [
-          { q: "Being delulu is the solulu mu cidden?", a: "Bazen, ama genelde sadece kalb kırıklığına giden bir yoldur. Hangisi olduğunu sana söyleyeceğiz." },
-          { q: "Yapay zeka acıyıp yumuşatır mı?", a: "Asla. Eğer fazla hayal kuruyorsan linçlenmeye hazır ol." },
-          { q: "Arkadaşlıklar için kullanabilir miyim?", a: "Evet, platonik delüzyon diye bir gerçek var. Kontrol et." }
+          { q: "Delulu muyum yoksa gerçekten benden hoşlanıyor mu nasıl anlarım?", a: "VibeCheckr Delulu Check aracına sohbet ekran görüntüsünü yükle veya yaşadığın durumu yaz. Yapay zeka karşı tarafın eylemleri ile sözlerini kıyaslayarak sana 0–100 arası net bir Delulu Skoru verir." },
+          { q: "WhatsApp ve Instagram DM ekran görüntüsünden ilişki analizi yapılabilir mi?", a: "Evet! Sohbet ekran görüntüsünü yüklediğinde yapay zeka; tek kelimelik (dry) cevapları, geç yazma bahanelerini, breadcrumbing (umut kırıntısı verme) taktiklerini ve gerçek ilgi sinyallerini otomatik okur." },
+          { q: "Mesajıma cevap vermeyip hikayelerimi (story) izlemesi ne anlama gelir?", a: "Story izlemek sıfır çaba gerektirir; mesaja cevap vermek ise bilinçli bir önceliktir. Delulu Check analizlerinde bu durum çoğunlukla 'yedekte tutma' (orbiting) olarak teşhis edilir." },
+          { q: "Delulu Check testi ücretsiz mi, hesap açmak gerekir mi?", a: "Tamamen ücretsizdir. Tek tıkla Misafir Girişi yaparak kayıt olmadan anında 5 ücretsiz jetonla mesajlarını analiz ettirebilirsin." }
         ]
       }
     }
@@ -272,53 +282,55 @@ export const featureSeoData: Record<string, any> = {
   "duo-compatibility": {
     en: {
       howItWorks: {
-        title: "How It Works: General Duo Aura Sync",
+        title: "How It Works: Free AI Couple & Duo Compatibility Test from 2 Photos",
         steps: [
-          { title: "Select the Duo", desc: "Enter details or upload pics of any two people. Co-workers, siblings, or randoms." },
-          { title: "Vibe Matching", desc: "The AI checks if your energies clash or if you're the ultimate dynamic duo." },
-          { title: "Sync Results", desc: "Find out if you're giving iconic duo energy or if you shouldn't be left in a room together." }
+          { title: "Upload Two Photos & Optional Zodiac Signs", desc: "Drop a photo of each person and select your zodiac signs for a combined visual + astrological reading." },
+          { title: "AI Analyzes Couple Chemistry & Aura Blend", desc: "Our algorithm measures facial harmony, energy balance, dominant vs. chill dynamics, and relationship stability." },
+          { title: "Get Your 0–100% Compatibility Score & Forecast", desc: "Unlock your couple match percentage, green flags, hidden toxic triggers, and a shareable duo card." }
         ]
       },
       useCases: {
-        title: "When to check Duo Compatibility",
+        title: "When to Use the 2-Photo Duo Compatibility Test",
         cases: [
-          { title: "New Roommates", desc: "Checking if you're going to survive the lease or end up in a lawsuit." },
-          { title: "Work Besties", desc: "Seeing if you and your coworker can take over the company together." },
-          { title: "Sibling Dynamics", desc: "Proving scientifically that your sibling is the toxic one." }
+          { title: "Testing Romantic Chemistry With a Partner or Date", desc: "See if you and your partner are soulmate material or a chaotic situationship waiting to happen." },
+          { title: "Checking Zodiac & Aura Alignment Before Dating", desc: "Combine your birth signs with photo aura analysis to spot communication clashes early." },
+          { title: "Sharing Couple Vibe Cards on TikTok & Instagram", desc: "Create an instant neon compatibility card showing your exact match % and relationship dynamic." }
         ]
       },
       faq: {
-        title: "Duo Sync FAQ",
+        title: "AI Couple & Duo Compatibility Test — FAQ",
         questions: [
-          { q: "What does it measure?", a: "Aura synchronization, chaos potential, and overall vibe compatibility." },
-          { q: "Can I test fictional characters?", a: "Yes! See if Batman and Joker are actually meant to be." },
-          { q: "Is a low score bad?", a: "Not always. Sometimes toxic duos make the best content." }
+          { q: "How can I check compatibility between two people using photos?", a: "Upload both photos into VibeCheckr's AI Duo Compatibility Test. In seconds, the AI analyzes both auras and optional zodiac signs to deliver a 0–100% Couple Chemistry Score, green flags, and potential red flags." },
+          { q: "Does the Duo Compatibility test include zodiac sign matching?", a: "Yes! You can select both people's zodiac signs alongside your photos so the AI blends astrological synastry with visual vibe analysis." },
+          { q: "What is the difference between Duo Compatibility and Crush Calculator?", a: "Duo Compatibility measures overall relationship dynamics, long-term stability, and couple chemistry for any pair, while Crush Calculator specifically focuses on unspoken attraction, friendzone odds, and making the first move." },
+          { q: "Is the 2-photo couple compatibility test free?", a: "Yes, start immediately with 1-Click Guest Mode (5 free welcome tokens, no sign-up required)." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Genel İkili Aura Uyumu",
+        title: "Nasıl Çalışır: 2 Fotoğraflı Ücretsiz Çift, Sevgili ve Burç Uyum Testi",
         steps: [
-          { title: "İkiliyi Seç", desc: "Herhangi iki kişinin detaylarını veya fotolarını gir. İş arkadaşı, kardeş veya random birileri." },
-          { title: "Vibe Eşleştirmesi", desc: "Yapay zeka enerjilerinizin çakışıp çakışmadığını veya efsane bir ikili olup olmadığınızı test eder." },
-          { title: "Uyum Sonuçları", desc: "İkonik duo enerjisi mi veriyorsunuz yoksa aynı odada yalnız mı bırakılmamalısınız öğren." }
+          { title: "İki Fotoğraf Yükle ve Burçları Seç", desc: "Kendinin ve partnerinin/flörtünün fotoğrafını yükle; hem görsel hem astrolojik analiz için burçlarınızı seç." },
+          { title: "Yapay Zeka Çift Kimyasını ve Enerji Dengesini Ölçer", desc: "Algoritma; yüz uyumunu, baskın/sakin karakter dengesini, burç sinerjisini ve ilişki istikrarını hesaplar." },
+          { title: "0–100 Çift Uyum Yüzdesini ve İlişki Karnesini Al", desc: "Uyum skorunuzu, ilişkinizi güçlendiren green flag'leri, olası kavga sebeplerini (red flag) ve paylaşılabilir kartınızı görün." }
         ]
       },
       useCases: {
-        title: "İkili Uyumu Ne Zaman Test Edilir?",
+        title: "İkili Çift ve İlişki Uyum Testi Ne Zaman Yapılır?",
         cases: [
-          { title: "Yeni Ev Arkadaşları", desc: "Kira sözleşmesinin sonunu görebilecek misiniz yoksa davalık mı olacaksınız anlamak." },
-          { title: "İşteki Kankalar", desc: "İş arkadaşınla beraber şirketi ele geçirip geçiremeyeceğinizi görmek." },
-          { title: "Kardeş Dinamikleri", desc: "Kardeşinin asıl toksik taraf olduğunu bilimsel olarak kanıtlamak." }
+          { title: "Sevgilinle veya Flörtünle Kimyanızı Ölçmek", desc: "'Yakışıyor muyuz?' veya 'Ruh eşi miyiz yoksa toksik ikili mi?' sorusunun cevabını yapay zekadan öğrenin." },
+          { title: "Fotoğraf + Burç Uyumunu Birlikte Hesaplamak", desc: "Sadece burç yorumuyla kalmayıp fotoğraflarınızdaki aura enerjisiyle burçlarınızın nasıl çarpıştığını görün." },
+          { title: "Instagram ve TikTok'ta Çift Kartı Paylaşmak", desc: "Çıkan % uyum skorunu ve esprili ilişki özetini neon story kartı olarak indirip paylaşın." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "İki Fotoğraftan Çift ve Burç Uyumu Hesaplama — SSS",
         questions: [
-          { q: "Tam olarak neyi ölçüyor?", a: "Aura senkronizasyonunu, kaos potansiyelini ve genel vibe uyumunu." },
-          { q: "Kurgusal karakterleri test edebilir miyim?", a: "Evet! Batman ve Joker aslında birbirleri için mi yaratılmış görebilirsin." },
-          { q: "Düşük puan kötü bir şey mi?", a: "Her zaman değil. Bazen toksik ikililer en iyi contenti çıkarır." }
+          { q: "İki kişinin fotoğrafından çift ve sevgili uyumu nasıl hesaplanır?", a: "VibeCheckr İkili Uyum Testi sayfasına iki fotoğraf yükleyip burçları seçtiğinde yapay zeka; görsel aura uyumu, karakter dengesi ve astrolojik çekimi birleştirerek 0–100 arası net bir uyum yüzdesi çıkarır." },
+          { q: "Testte burç uyumu da hesaplanıyor mu?", a: "Evet! Fotoğrafların yanı sıra her iki kişinin burcunu seçerek hem yüz/enerji analizini hem de detaylı burç uyumunu tek raporda görebilirsin." },
+          { q: "Düşük uyum puanı çıkması ne anlama gelir?", a: "Düşük puan enerjilerinizin zıt veya yüksek kaoslu olduğunu gösterir; yapay zeka hangi konularda çatışma yaşayabileceğinizi açıkça listeler." },
+          { q: "Fotoğraflı çift uyum testi ücretsiz mi?", a: "Evet, tek tıkla Misafir Girişi ile hesap açmadan anında verilen 5 ücretsiz jetonla çift uyumunuzu hemen test edebilirsiniz." }
         ]
       }
     }
@@ -326,53 +338,55 @@ export const featureSeoData: Record<string, any> = {
   "ex-compatibility": {
     en: {
       howItWorks: {
-        title: "How It Works: Toxic Ex Breakup Autopsy",
+        title: "How It Works: Should I Text My Ex? Free AI Breakup & Relapse Analyzer",
         steps: [
-          { title: "Drop the Lore", desc: "Explain why you broke up, their biggest red flags, and your current relapse level." },
-          { title: "Toxic Analysis", desc: "The AI calculates the toxicity levels and the exact reason why it failed." },
-          { title: "Relapse Risk", desc: "Find out the mathematical probability of you sending that 'I miss us' text at 2 AM." }
+          { title: "Upload Photos or Drop the Breakup Lore", desc: "Upload photos of you and your ex (or describe why you broke up and their latest breadcrumb)." },
+          { title: "AI Runs a Brutal Breakup Autopsy", desc: "The algorithm calculates who won the ego war, why the relationship failed, and your exact relapse probability." },
+          { title: "Get Your Relapse Risk % & 'Do Not Text' Verdict", desc: "See whether there is genuine unfinished business or if you need to block them immediately." }
         ]
       },
       useCases: {
-        title: "When to Analyze Your Ex",
+        title: "When to Use the Ex Compatibility & Relapse Check",
         cases: [
-          { title: "Missing Them", desc: "When you're about to text them and need the AI to aggressively stop you." },
-          { title: "Post-Breakup Clarity", desc: "Trying to understand how you ever tolerated their dusty behavior." },
-          { title: "Venting Session", desc: "Using the AI as a therapist to roast your ex into oblivion." }
+          { title: "At 2 AM When You Want to Text 'I Miss You'", desc: "Let the AI remind you of their red flags and stop you from embarrassing yourself with a late-night relapse text." },
+          { title: "When Your Ex Suddenly Views Your Story or Texts 'Hey'", desc: "Decode whether their sudden comeback is genuine regret or just an ego check to see if you're still available." },
+          { title: "Checking Who Actually Won the Breakup", desc: "Compare your current glow-up aura against your ex's vibe to see who came out on top." }
         ]
       },
       faq: {
-        title: "Ex Autopsy FAQ",
+        title: "Ex Compatibility & 'Should I Text My Ex?' Quiz — FAQ",
         questions: [
-          { q: "Will this stop me from texting them?", a: "We will roast your ex so hard you'll get the ick instantly. So yes." },
-          { q: "Is the relapse risk accurate?", a: "If the AI says 99% risk, hide your phone. We know your weaknesses." },
-          { q: "Can I see if we're meant to be?", a: "If they're an ex, it's a wrap. The AI will just confirm they belong to the streets." }
+          { q: "How do I know if I should text my ex or move on?", a: "Run VibeCheckr's Ex Compatibility test before hitting send. Our AI analyzes your breakup dynamics and both auras to give you a 0–100% Relapse Risk score and an unfiltered verdict on whether texting them is a mistake." },
+          { q: "Can this test tell if my ex will come back or still misses me?", a: "By analyzing their post-breakup behavior (orbiting your stories, breadcrumbing, or rebounding) alongside your vibe match, the AI exposes whether they miss you or just miss your attention." },
+          { q: "What does 'who won the ego war' mean in the Ex Compatibility test?", a: "The AI compares both photos and breakup patterns to determine who has the stronger post-breakup glow-up and unbothered main character energy." },
+          { q: "Is the Ex Compatibility test free and anonymous?", a: "Yes, it is 100% private and free to start via 1-Click Guest Mode with no account required." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Toksik Eski Sevgili Otopsisi",
+        title: "Nasıl Çalışır: Eski Sevgiliye Mesaj Atmalı Mıyım? Ücretsiz Ex Uyum & Ayrılık Analizi",
         steps: [
-          { title: "Lore'u Sal", desc: "Neden ayrıldığınızı, en büyük red flag'lerini ve şu anki relapse (geri dönme) seviyeni açıkla." },
-          { title: "Toksik Analiz", desc: "Yapay zeka toksiklik seviyelerini ve ilişkinin tam olarak neden patladığını hesaplar." },
-          { title: "Relapse Riski", desc: "Gece 2'de 'Bizi özledim' mesajı atma ihtimalini matematiksel olarak öğren." }
+          { title: "Fotoğrafları Yükle veya Ayrılık Hikayesini Yaz", desc: "Senin ve eski sevgilinin fotoğrafını yükle ya da neden ayrıldığınızı ve son hareketlerini anlat." },
+          { title: "Yapay Zeka Ayrılık Otopsisini Çıkarır", desc: "Algoritma; ilişkinin neden bittiğini, ayrılık sonrası ego savaşını kimin kazandığını ve toksiklik oranını hesaplar." },
+          { title: "Geri Dönme (Relapse) Riskini ve Kararı Gör", desc: "Gece 2'de mesaj atma ihtimalini, barışma şansınızı ve 'Engelle mi / Konuş mu' kararını anında öğren." }
         ]
       },
       useCases: {
-        title: "Eski Sevgiliyi Ne Zaman Analiz Etmelisin?",
+        title: "Eski Sevgili (Ex) Uyum Testi Ne Zaman Kullanılır?",
         cases: [
-          { title: "Onu Özlediğinde", desc: "Ona yazmak üzereyken ve yapay zekanın seni agresifçe durdurmasına ihtiyacın olduğunda." },
-          { title: "Ayrılık Sonrası Aydınlanma", desc: "Onun o varoş hareketlerine nasıl katlandığını anlamaya çalışırken." },
-          { title: "İç Dökme Seansı", desc: "Yapay zekayı terapist gibi kullanıp eski sevgilini yerin dibine sokmak." }
+          { title: "Gece 'Seni Özledim' Mesajı Atmak Üzereyken", desc: "O mesajı gönderip pişman olmadan önce yapay zekanın eski sevgilini gömmesine ve seni durdurmasına izin ver." },
+          { title: "Eski Sevgilin Story'ni İzlediğinde veya 'Nasılsın?' Yazdığında", desc: "Aniden geri dönmesinin gerçek bir pişmanlık mı yoksa sadece yoklama (ego tatmini) mi olduğunu çöz." },
+          { title: "Ayrılığı Kimin Kazandığını Görmek İçin", desc: "İkinizin güncel fotoğraflarını karşılaştırıp ayrılık sonrası kimin glow-up yaşadığını ve ego savaşını kazandığını gör." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Eski Sevgili Uyum Testi & Geri Döner Mi Analizi — SSS",
         questions: [
-          { q: "Bu onlara yazmamı engeller mi?", a: "Eski sevgilini o kadar sert linçleyeceğiz ki anında ick geleceksin. Yani evet." },
-          { q: "Relapse riski doğru çıkıyor mu?", a: "Yapay zeka %99 risk diyorsa telefonunu sakla. Zayıflıklarını biliyoruz." },
-          { q: "Belki de kaderimiz bir, ona bakabilir miyim?", a: "Eski sevgiliyse bitmiştir. Yapay zeka sadece onların ait olduğu yeri (sokakları) onaylar." }
+          { q: "Eski sevgilime mesaj atmalı mıyım yoksa tamamen bitmeli mi?", a: "VibeCheckr Ex Uyum Testi, ayrılık dinamiklerinizi ve auralarınızı analiz ederek sana 0–100 arası Relapse (Geri Dönüş) Riskini ve mesaj atmanın mantıklı olup olmadığını filtresiz şekilde söyler." },
+          { q: "Eski sevgilim geri döner mi, beni hâlâ özlüyor mu nasıl anlaşılır?", a: "Hikayelerini gizlice izlemesi (orbiting), ortak arkadaşlara sorması veya gece gelen bahaneli mesajları yapay zekaya anlattığında bunun gerçek özlem mi yoksa yedekte tutma çabası mı olduğunu netleştiririz." },
+          { q: "Ayrılık sonrası ego savaşını kimin kazandığı nasıl hesaplanıyor?", a: "Yapay zeka iki fotoğrafın güncel aura puanını, özgüven enerjisini ve ayrılık hikayesini kıyaslayarak kimin gerçekten yoluna baktığını belirler." },
+          { q: "Ex uyum testi ücretsiz ve gizli mi?", a: "Evet, tamamen gizlidir ve tek tıkla Misafir Girişi ile hesap açmadan 5 ücretsiz jetonla anında kullanılabilir." }
         ]
       }
     }
@@ -380,53 +394,55 @@ export const featureSeoData: Record<string, any> = {
   "mood-reset": {
     en: {
       howItWorks: {
-        title: "How It Works: AI Therapist & Mood Fixer",
+        title: "How It Works: Free AI Mood Reset — Fix Negative Aura & Stop Overthinking",
         steps: [
-          { title: "Vent it Out", desc: "Type out exactly why you're mad, sad, or just feeling like an absolute NPC today." },
-          { title: "Vibe Calibration", desc: "The AI reads your emotional state and formulates the perfect hype-up or reality check." },
-          { title: "Mood Reset", desc: "Get instantly validated, roasted, or hyped up to regain your main character energy." }
+          { title: "Vent What's Draining Your Energy", desc: "Type out why you are spiraling, stressed, heartbroken, or feeling stuck in a negative rut today." },
+          { title: "AI Calibrates Your Vibe & Reality", desc: "Our AI reads your emotional state and cuts through overthinking with a sharp blend of validation and tough love." },
+          { title: "Get Your Instant Action Plan & Aura Recharge", desc: "Receive a step-by-step micro-reset plan to stop spiraling and reclaim your main character energy in 60 seconds." }
         ]
       },
       useCases: {
-        title: "When to use Mood Reset",
+        title: "When to Use the AI Mood Reset Tool",
         cases: [
-          { title: "Mental Breakdown", desc: "When you're crying over minor inconveniences and need a quick reset." },
-          { title: "Pre-Game Hype", desc: "Need to boost your aura before stepping out to a party or an event." },
-          { title: "Post-Drama Stress", desc: "When the group chat drama is too much and you need to cleanse your vibe." }
+          { title: "Stopping a Late-Night Overthinking Spiral", desc: "When your brain won't stop replaying an awkward moment or unanswered text, snap out of the loop fast." },
+          { title: "Recharging After Relationship or Friend Drama", desc: "Cleanse your mental energy after a draining argument, breakup, or toxic group chat situation." },
+          { title: "Pre-Event Confidence & Main Character Hype", desc: "Need an instant aura boost before a date, interview, or party? Let the AI hype you back to 100%." }
         ]
       },
       faq: {
-        title: "Mood Reset FAQ",
+        title: "AI Mood Reset & Negative Aura Fixer — FAQ",
         questions: [
-          { q: "Is this actual therapy?", a: "No, it's AI giving you Gen-Z advice. Don't use us instead of a real therapist. We just serve vibes." },
-          { q: "Will it tell me what I want to hear?", a: "If you need hype, yes. If you're being delusional, we will snap you out of it." },
-          { q: "How fast is the reset?", a: "Instantly. Say goodbye to the bad vibes." }
+          { q: "How do I fix a negative aura and stop overthinking fast?", a: "Open VibeCheckr's Mood Reset tool and type out what is bothering you in 1–2 sentences. The AI immediately breaks your overthinking loop with a clear perspective shift and 3 actionable steps you can do right now." },
+          { q: "Will the AI hype me up or give me a tough-love reality check?", a: "Both! If you are being too hard on yourself, the AI validates and hypes you up; if you are spiraling over someone who doesn't deserve your energy, it delivers a wake-up call." },
+          { q: "Is Mood Reset a replacement for professional therapy?", a: "No. Mood Reset is an instant AI mindset and entertainment tool for everyday stress, dating drama, and vibe calibration—not medical or clinical therapy." },
+          { q: "Is the AI Mood Reset tool free to use?", a: "Yes, use 1-Click Guest Mode to get 5 free welcome tokens and reset your mood in seconds without signing up." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Yapay Zeka Terapisti & Mood Düzeltici",
+        title: "Nasıl Çalışır: Ücretsiz Mood Reset — Eksi Auranı Sıfırla & Aşırı Düşünmeyi Durdur",
         steps: [
-          { title: "İçini Dök", desc: "Neden kızgın, üzgün olduğunu ya da bugün neden tam bir NPC gibi hissettiğini yaz." },
-          { title: "Vibe Kalibrasyonu", desc: "Yapay zeka duygusal durumunu okur ve mükemmel hype'ı veya reality check'i hazırlar." },
-          { title: "Mood Reset", desc: "Main character enerjini geri kazanmak için anında onaylan, fırça ye veya gaza gel." }
+          { title: "Enerjini Sömüren Şeyi Yaz (İçini Dök)", desc: "Bugün neden modunun düşük olduğunu, kafana taktığın olayı veya seni yoran dramayı kısaca yaz." },
+          { title: "Yapay Zeka Duygusal Durumunu Kalibre Eder", desc: "Algoritma aşırı düşünme (overthinking) döngünü yakalar ve ihtiyacın olan gerçekçi uyanış konuşmasını hazırlar." },
+          { title: "Anında Mod Sıfırlama Planını ve Aura Şarjını Al", desc: "Saniyeler içinde kafandaki kuruntuyu bitirecek net perspektifi ve ana karakter enerjini geri kazandıracak adımları gör." }
         ]
       },
       useCases: {
-        title: "Mood Reset Ne Zaman Kullanılır?",
+        title: "Mood Reset (Mod Yükseltme & Aura Temizleme) Ne Zaman Kullanılır?",
         cases: [
-          { title: "Mental Breakdown", desc: "En ufak şeylere ağladığında ve hızlı bir reset gerektiğinde." },
-          { title: "Dışarı Çıkmadan Önce", desc: "Bir partiye ya da etkinliğe gitmeden önce auranı boostlaman gerektiğinde." },
-          { title: "Drama Sonrası Stres", desc: "Grup sohbetindeki drama fazla geldiğinde ve vibe'ını temizlemen gerektiğinde." }
+          { title: "Aşırı Düşünme (Overthinking) Krizlerini Durdurmak İçin", desc: "Kafanda aynı senaryoyu döndürüp durduğunda yapay zekanın net ve sarsıcı yorumuyla o döngüden çık." },
+          { title: "İlişki veya Arkadaş Draması Sonrası Enerji Temizliği", desc: "Toksik bir tartışma, ayrılık veya yorucu bir günün ardından eksiye düşen auranı hızla toparla." },
+          { title: "Buluşma, Parti veya Önemli Bir Gün Öncesi Özgüven Hype'ı", desc: "Dışarı çıkmadan önce modunu ve özgüvenini %100 seviyesine çekmek için anında motivasyon al." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Mood Reset & Negatif Aura Sıfırlama — SSS",
         questions: [
-          { q: "Bu gerçek bir terapi mi?", a: "Hayır, sana Gen-Z tavsiyeleri veren bir yapay zeka. Gerçek bir terapist yerine bizi kullanma. Biz sadece vibe dağıtıyoruz." },
-          { q: "Bana duymak istediklerimi mi söyleyecek?", a: "Gaza gelmen gerekiyorsa evet. Ama delulu takılıyorsan, seni o kafadan çekip çıkarırız." },
-          { q: "Reset ne kadar hızlı?", a: "Anında. Kötü vibe'lara elveda de." }
+          { q: "Düşük modumu nasıl yükseltirim ve aşırı düşünmeyi (overthinking) nasıl durdururum?", a: "VibeCheckr Mood Reset aracına kafana takılan durumu yazman yeterli. Yapay zeka seni aşağı çeken düşünce döngüsünü tespit eder, net bir gerçeklik kontrolü ve hemen uygulayabileceğin pratik adımlar sunar." },
+          { q: "Yapay zeka beni motive mi ediyor yoksa gerçekleri yüzüme mi vuruyor?", a: "İhtiyacına göre ikisini de yapar! Kendine haksızlık ediyorsan seni yükseltir (hype verir); değmeyecek biri için üzülüyorsan seni kendine getirecek o net konuşmayı yapar." },
+          { q: "Mood Reset gerçek bir psikolojik terapi midir?", a: "Hayır. Mood Reset günlük stres, ilişki draması ve mod düşüklüğü için eğlenceli ve hızlı bir yapay zeka farkındalık aracıdır; profesyonel terapi yerine geçmez." },
+          { q: "Mood Reset aracı ücretsiz mi?", a: "Evet, hesap açmadan tek tıkla Misafir Girişi yaparak anında 5 ücretsiz jetonla modunu sıfırlayabilirsin." }
         ]
       }
     }
@@ -434,53 +450,55 @@ export const featureSeoData: Record<string, any> = {
   "reply-guru": {
     en: {
       howItWorks: {
-        title: "How It Works: Rizz AI Text Generator",
+        title: "How It Works: Free AI Rizz & Text Reply Generator from Chat Screenshots",
         steps: [
-          { title: "Paste the Text", desc: "Drop the message you don't know how to reply to. Is it dry? Is it flirty? We got you." },
-          { title: "Select the Vibe", desc: "Choose if you want to be toxic, flirty, mysterious, or just have max rizz." },
-          { title: "Get the Rizz", desc: "Copy the AI-generated reply, send it, and watch them fall for your immaculate text game." }
+          { title: "Upload a Chat Screenshot or Paste Their Text", desc: "Drop a screenshot from WhatsApp, iMessage, Instagram DM, Tinder, Hinge, or Bumble—or type what they said." },
+          { title: "Choose Your Reply Vibe (Flirty, Cool, Savage, or Safe)", desc: "Tell the AI whether you want maximum rizz, unbothered mystery, a witty comeback, or polite closure." },
+          { title: "Copy & Send the Perfect Response", desc: "Get tailored, natural-sounding text replies in 3 seconds that match the exact context of your conversation." }
         ]
       },
       useCases: {
-        title: "When to use Reply Guru",
+        title: "When to Use Reply Guru (AI Text & Rizz Assistant)",
         cases: [
-          { title: "Dry Texters", desc: "When they hit you with 'cool' and you need to revive the conversation." },
-          { title: "Flirting 101", desc: "When you want to shoot your shot but your flirting skills are non-existent." },
-          { title: "Winning Arguments", desc: "Generate the perfect toxic comeback that will leave them speechless." }
+          { title: "Replying to Dry Texters & One-Word Messages", desc: "When they send a dry 'lol', 'wyd', or 'cool' and you want to flip the conversation dynamic effortlessly." },
+          { title: "Flirting & Sliding Into DMs With Unspoken Rizz", desc: "Craft smooth, non-cringe openers and witty banter for your crush or dating app matches." },
+          { title: "Handling Risky Texts, Arguments & Ex Messages", desc: "Know exactly what to say when an ex texts 'hey stranger' or when a situationship tests your boundaries." }
         ]
       },
       faq: {
-        title: "Rizz Guru FAQ",
+        title: "Reply Guru AI — Text Reply & Rizz Generator FAQ",
         questions: [
-          { q: "Will they know I used AI?", a: "Not unless your usual replies are 'ok' and suddenly you're Shakespeare with rizz." },
-          { q: "Can it handle dry replies?", a: "Yes, it can perform miracles on one-word replies." },
-          { q: "What if the text is too toxic?", a: "You chose the toxic vibe, babe. Stand on business." }
+          { q: "How do I know what to text back when I'm stuck?", a: "Upload a screenshot of your chat or paste their message into VibeCheckr's Reply Guru AI. The tool reads the tone and context of your conversation and generates ready-to-send flirty, cool, savage, or safe replies in 3 seconds." },
+          { q: "Can Reply Guru generate rizz responses from Instagram DM, WhatsApp, or Tinder screenshots?", a: "Yes! Our multimodal AI reads screenshots from any messaging or dating app (iMessage, WhatsApp, Instagram DM, Snapchat, Tinder, Hinge, Bumble) so you don't even have to type out the thread." },
+          { q: "Will the other person know I used an AI text generator?", a: "No. Unlike robotic chatbots, Reply Guru writes in natural, modern texting style—short, punchy, and matched to the exact vibe you select." },
+          { q: "Is the AI Rizz & Text Reply Generator free?", a: "Yes! Start immediately with 1-Click Guest Mode (5 free welcome tokens, no sign-up required)." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Rizz Yapay Zeka Mesaj Üreticisi",
+        title: "Nasıl Çalışır: Sohbet Ekran Görüntüsünden Ücretsiz Rizz & Mesaj Cevap Üretici",
         steps: [
-          { title: "Mesajı Yapıştır", desc: "Nasıl cevap vereceğini bilmediğin o mesajı yapıştır. Dry mı? Flörtöz mü? Halletik." },
-          { title: "Vibe'ı Seç", desc: "Toksik, flörtöz, gizemli ya da sadece max rizz olmak isteyip istemediğini seç." },
-          { title: "Rizz'i Al", desc: "Yapay zekanın ürettiği cevabı kopyala, gönder ve kusursuz mesajlaşma yeteneğine düşmelerini izle." }
+          { title: "Sohbet Ekran Görüntüsünü Yükle veya Mesajı Yapıştır", desc: "WhatsApp, Instagram DM, Tinder veya Bumble ekran görüntüsünü yükle ya da karşı tarafın attığı mesajı yaz." },
+          { title: "Cevap Tarzını (Vibe'ını) Seç", desc: "Flörtöz (yüksek rizz), cool ve gizemli, laf sokucu (toksik) veya garantici/net tarzlarından birini belirle." },
+          { title: "En İyi Cevabı Kopyala ve Gönder", desc: "Sohbetin akışına %100 uyan, doğal ve zekice hazırlanmış hazır mesaj alternatiflerini 3 saniyede al." }
         ]
       },
       useCases: {
-        title: "Reply Guru Ne Zaman Kullanılır?",
+        title: "Reply Guru (Mesaja Ne Yazılır YZ Aracı) Ne Zaman Kullanılır?",
         cases: [
-          { title: "Dry Texter'lar", desc: "Sana 'iyi' yazdıklarında ve sohbeti diriltmen gerektiğinde." },
-          { title: "Flört 101", desc: "Yürümek istediğinde ama flört yeteneklerin sıfırın altındayken." },
-          { title: "Tartışmaları Kazanmak", desc: "Onları sus pus edecek o mükemmel toksik laf sokmayı üretmek için." }
+          { title: "'Buna Ne Cevap Yazsam?' Diye Klavyeye Bakakaldığında", desc: "Hoşlandığın kişiden gelen zor veya heyecanlandırıcı bir mesaja hata yapmadan en etkileyici yanıtı vermek için." },
+          { title: "Tek Kelimelik Soğuk (Dry) Mesajları Çevirmek İçin", desc: "'Aynen', 'ok', 'napıyorsun' gibi sıkıcı mesajlara sohbeti anında canlandıracak veya ağırlığını koyacak cevaplar üretmek için." },
+          { title: "Eski Sevgiliye veya Tartışmalara Kapak Cevap Vermek İçin", desc: "Gece aniden yazan eski sevgiliye veya sınırlarını zorlayan birine onu sus pus edecek cevabı yapıştırmak için." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Reply Guru (Rizz & Mesaj Cevap Üretici) — SSS",
         questions: [
-          { q: "Yapay zeka kullandığımı anlarlar mı?", a: "Normalde sadece 'ok' yazıp aniden rizz'li bir Shakespeare'e dönüşmezsen anlamazlar." },
-          { q: "Tek kelimelik dry mesajları kurtarabilir mi?", a: "Evet, tek kelimelik mesajlar üzerinde mucizeler yaratabilir." },
-          { q: "Ya mesaj fazla toksik olursa?", a: "Toksik vibe'ı sen seçtin aşko. Arkasında dur." }
+          { q: "Flörtün veya hoşlandığım kişinin mesajına ne cevap yazacağımı nasıl bulurum?", a: "VibeCheckr Reply Guru aracına WhatsApp veya Instagram DM ekran görüntüsünü yüklemen yeterli. Yapay zeka konuşmanın havasını okur ve flörtöz, cool veya laf sokucu en iyi cevapları 3 saniyede yazar." },
+          { q: "Ekran görüntüsünden (screenshot) otomatik mesaj okuyabiliyor mu?", a: "Evet! Mesajları tek tek yazmana gerek kalmadan WhatsApp, Instagram, Tinder, Bumble veya SMS ekran görüntüsünü yükleyerek anında hazır cevap alabilirsin." },
+          { q: "Üretilen mesajlar yapay zeka gibi robotik durur mu?", a: "Hayır. Reply Guru resmi ve robotik cümleler yerine günlük mesajlaşma diline, mizaha ve seçtiğin rizz seviyesine uygun doğal yanıtlar üretir." },
+          { q: "Mesaj cevap üretici ücretsiz mi?", a: "Evet, tek tıkla Misafir Girişi ile hesap açmadan anında tanımlanan 5 ücretsiz jetonla hemen kullanabilirsin." }
         ]
       }
     }
@@ -488,53 +506,55 @@ export const featureSeoData: Record<string, any> = {
   "situationship-clarifier": {
     en: {
       howItWorks: {
-        title: "How It Works: Situationship Analyzer",
+        title: "How It Works: Free AI Situationship Test — Decode 'What Are We?' from Texts",
         steps: [
-          { title: "Explain the Mess", desc: "Tell us how long it's been, what you do together, and if they've introduced you to their friends." },
-          { title: "Reading the Flags", desc: "The AI scans for commitment issues, breadcrumbing, and hidden red flags." },
-          { title: "The Brutal Truth", desc: "Find out if it's heading towards a relationship or if you're just a placeholder." }
+          { title: "Upload Chat Screenshots or Describe the Talking Stage", desc: "Share how long you've been talking, how often you meet, or upload your text thread screenshots." },
+          { title: "AI Scans for Commitment Signals vs. Breadcrumbing", desc: "Our algorithm checks consistency, future planning, vulnerability, and avoidance patterns." },
+          { title: "Get Your Clarity Score & Commitment Odds", desc: "Find out if your talking stage is progressing toward a real relationship or keeping you on the bench." }
         ]
       },
       useCases: {
-        title: "When to Clarify the Situationship",
+        title: "When to Use the AI Situationship Clarifier",
         cases: [
-          { title: "Month 6 Confusion", desc: "When it's been half a year and they still introduce you as 'a friend'." },
-          { title: "The 'What Are We' Text", desc: "Before you send the dreaded paragraph, see what the AI says." },
-          { title: "Late Night Panics", desc: "Trying to figure out if their good morning text means they want to marry you." }
+          { title: "Stuck in a 3+ Month 'Talking Stage' With No Label", desc: "When you act like a couple in private but still have no title, see where you actually stand." },
+          { title: "Before Sending the 'What Are We?' Paragraph", desc: "Test the waters with AI first and get the exact script to ask for clarity without losing your dignity." },
+          { title: "Decoding Hot-and-Cold Behavior", desc: "When they are obsessed one week and distant the next, find out if it's fear of commitment or lack of interest." }
         ]
       },
       faq: {
-        title: "Situationship FAQ",
+        title: "Situationship Clarifier & 'What Are We?' Quiz — FAQ",
         questions: [
-          { q: "Is a situationship a real relationship?", a: "No. You're single, but with exclusive stress and no benefits." },
-          { q: "Will this hurt my feelings?", a: "Yes. The AI does not believe in sugarcoating your situationship." },
-          { q: "Can a situationship become real?", a: "Rarely. The AI will tell you if you have a 1% chance." }
+          { q: "How do I know if I'm in a situationship or heading toward a real relationship?", a: "Run your chat screenshots or story through VibeCheckr's Situationship Clarifier AI. It evaluates effort consistency, date initiation, and emotional availability to score whether they want commitment or convenience." },
+          { q: "What are the biggest signs of a dead-end situationship?", a: "Last-minute plans, inconsistent texting, keeping you hidden from friends/social media, avoiding future conversations, and saying 'I'm just going with the flow' after months of dating." },
+          { q: "Can the AI tell me how to ask 'what are we' without sounding needy?", a: "Yes! Every Situationship Clarifier reading includes actionable advice on what boundary to set next based on your specific dynamic." },
+          { q: "Is the Situationship Test free online?", a: "Yes, use 1-Click Guest Mode for 5 free instant tokens—no sign-up required." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Situationship Analizcisi",
+        title: "Nasıl Çalışır: Ücretsiz Situationship Testi — 'Biz Şimdi Neyiz?' & Belirsiz İlişki Analizi",
         steps: [
-          { title: "Kaosu Açıkla", desc: "Ne zamandır sürdüğünü, birlikte ne yaptığınızı ve seni arkadaşlarıyla tanıştırıp tanıştırmadığını anlat." },
-          { title: "Bayrakları Okumak", desc: "Yapay zeka bağlanma sorunlarını, breadcrumbing'i ve gizli red flag'leri tarar." },
-          { title: "Acı Gerçek", desc: "İlişkiye mi gidiyor yoksa sadece bir yedek misin öğren." }
+          { title: "Mesaj Ekran Görüntüsü Yükle veya Durumu Anlat", desc: "Ne zamandır konuştuğunuzu, buluşma sıklığınızı yaz veya WhatsApp/DM sohbet ekran görüntülerini yükle." },
+          { title: "Yapay Zeka Bağlanma Sinyallerini ve Oyalama Taktiklerini Tarar", desc: "Algoritma; tutarlılığı, gelecek planlarını, arkadaş çevresiyle tanıştırma durumunu ve kaçıngan davranışları inceler." },
+          { title: "0–100 Netlik Skorunu ve İlişki İhtimalini Öğren", desc: "Bu sürecin gerçek bir sevgililiğe mi gittiğini yoksa sadece yedek kulübesinde (bench) mi tutulduğunu anında gör." }
         ]
       },
       useCases: {
-        title: "Situationship Ne Zaman Netleştirilmeli?",
+        title: "Situationship Çözücü ('Biz Neyiz?' Testi) Ne Zaman Kullanılır?",
         cases: [
-          { title: "6. Ay Kafa Karışıklığı", desc: "Yarım yıl olmuş ve seni hala 'bir arkadaşım' diye tanıştırdığında." },
-          { title: "'Biz Neyiz' Mesajı", desc: "O korkulan paragrafı atmadan önce yapay zekanın ne diyeceğini görmek için." },
-          { title: "Gece Panikleri", desc: "Attığı günaydın mesajının seninle evlenmek istediği anlamına gelip gelmediğini anlamaya çalışırken." }
+          { title: "Aylardır Konuşup Hâlâ Adı Konulmamış İlişkilerde", desc: "Sevgili gibi davranıp 'akışına bırakalım' denilen belirsiz (flört/situationship) sürecin gerçekte ne olduğunu öğrenmek için." },
+          { title: "'Biz Şimdi Neyiz?' Konuşması Yapmadan Önce", desc: "O kritik soruyu sormadan önce karşı tarafın niyetini ölçmek ve nasıl bir sınır çizmen gerektiğini görmek için." },
+          { title: "Bir Sıcak Bir Soğuk (Hot & Cold) Davranışları Çözmek İçin", desc: "Buluşunca harika vakit geçirip sonrasında günlerce kaybolan flörtün bağlanma korkusu mu yaşadığını yoksa oyaladığını mı anlamak için." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Situationship Testi & Belirsiz İlişki Analizi — SSS",
         questions: [
-          { q: "Situationship gerçek bir ilişki midir?", a: "Hayır. Bekarsın, ama ilişkinin tüm stresi var, avantajları yok." },
-          { q: "Bu kalbimi kırar mı?", a: "Evet. Yapay zeka situationship'ini yumuşatıp anlatmaya inanmaz." },
-          { q: "Situationship gerçeğe dönüşebilir mi?", a: "Çok nadir. Eğer %1 şansın varsa yapay zeka sana söyler." }
+          { q: "Situationship (belirsiz ilişki) içinde miyim yoksa sevgili olacak mıyız nasıl anlarım?", a: "VibeCheckr Situationship Çözücü aracına mesaj ekran görüntülerini yükle veya sürecinizi anlat. Yapay zeka karşı tarafın çabasını, tutarlılığını ve kaçıngan sinyallerini ölçerek ilişkinin ciddiyete gidip gitmediğini puanlar." },
+          { q: "Birinin beni sadece oyaladığının (yedekte tuttuğunun) en büyük belirtileri nelerdir?", a: "Son dakika yapılan planlar, sadece gece gelen mesajlar, sosyal medyada veya arkadaş çevresinde gizlenmek ve aylardır sürmesine rağmen 'etiketlere takılmayalım' bahanesi en net situationship işaretleridir." },
+          { q: "Yapay zeka bu belirsizlikten çıkmam için ne yapmam gerektiğini de söylüyor mu?", a: "Evet! Analiz sonucunda sadece teşhis koymakla kalmaz, durumuna özel olarak nasıl sınır koyman veya hangi adımı atman gerektiğini de açıklar." },
+          { q: "Situationship testi ücretsiz mi?", a: "Evet, tek tıkla Misafir Girişi ile hesap açmadan anında 5 ücretsiz jetonla kullanabilirsin." }
         ]
       }
     }
@@ -542,53 +562,55 @@ export const featureSeoData: Record<string, any> = {
   "soulmate-radar": {
     en: {
       howItWorks: {
-        title: "How It Works: AI Soulmate Predictor",
+        title: "How It Works: Free AI Soulmate Predictor — Who Is My Soulmate? (Selfie Test)",
         steps: [
-          { title: "Enter Your Stats", desc: "Provide your traits, your toxic habits, and what you're actually looking for." },
-          { title: "AI Matchmaking", desc: "The algorithm calculates the exact type of person who can handle your chaos." },
-          { title: "Find the One", desc: "Discover the aesthetic, vibe, and personality of your true soulmate." }
+          { title: "Upload Your Selfie & Optional Zodiac Sign", desc: "Drop a clear photo of yourself and select your birth sign so the AI can read your core aura." },
+          { title: "AI Matches Your Energy to Your Ideal Partner Archetype", desc: "Our algorithm calculates the exact personality type, aesthetic vibe, and zodiac signs that balance your energy." },
+          { title: "Reveal Your Soulmate Profile & Where You'll Meet", desc: "Discover your ideal partner's traits, best zodiac matches, green flags to look for, and likely meeting scenario." }
         ]
       },
       useCases: {
-        title: "When to use Soulmate Radar",
+        title: "When to Use the AI Soulmate Radar",
         cases: [
-          { title: "Tired of Dating Apps", desc: "When Tinder and Bumble give you nothing but Ls and you need a new strategy." },
-          { title: "Manifesting", desc: "Figuring out exactly what to put on your vision board to attract the right vibe." },
-          { title: "Curiosity", desc: "Just wanting to know who is crazy enough to match your freak." }
+          { title: "Breaking the Cycle of Dating the Wrong Type", desc: "If you keep falling for walking red flags, see what partner archetype actually complements your aura." },
+          { title: "Checking Your Best Zodiac & Aesthetic Match", desc: "Find out which zodiac signs and personality vibes naturally harmonize with your energy." },
+          { title: "Sharing Your Soulmate Prediction Card on Stories", desc: "Generate a shareable Soulmate Radar card to post on Instagram or TikTok and see who replies." }
         ]
       },
       faq: {
-        title: "Soulmate FAQ",
+        title: "AI Soulmate Radar & Ideal Partner Test — FAQ",
         questions: [
-          { q: "Does it give me a real name?", a: "No, we predict the 'type' of person. Finding them is your job." },
-          { q: "What if my soulmate sounds toxic?", a: "Maybe you're attracted to red flags. The AI just states facts." },
-          { q: "How accurate is the aesthetic prediction?", a: "Scarily accurate. Get ready to fall in love with a description." }
+          { q: "How can I find out who my soulmate is from my photo?", a: "Upload your selfie into VibeCheckr's free AI Soulmate Radar. By reading your visual aura and zodiac traits, the AI reveals the personality archetype, aesthetic style, and zodiac signs of your ideal soulmate." },
+          { q: "Does Soulmate Radar tell me which zodiac sign is my best match?", a: "Yes! The AI identifies your top compatible zodiac signs and explains why their elemental energy balances your personality." },
+          { q: "Will it predict where I will meet my soulmate?", a: "Each Soulmate Radar reading includes a custom meeting scenario and the exact green flags to watch for so you don't miss them." },
+          { q: "Is the AI Soulmate test free without registration?", a: "Yes, use 1-Click Guest Mode to claim 5 free welcome tokens and reveal your soulmate profile immediately." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Yapay Zeka Ruh İkizi Radarı",
+        title: "Nasıl Çalışır: Fotoğraftan Ücretsiz Ruh Eşi Testi & YZ Aşk Falı (Ruh Eşim Kim?)",
         steps: [
-          { title: "İstatistiklerini Gir", desc: "Özelliklerini, toksik alışkanlıklarını ve aslında ne aradığını sağla." },
-          { title: "Yapay Zeka Eşleştirme", desc: "Algoritma, senin kaosunla başa çıkabilecek tam o kişi tipini hesaplar." },
-          { title: "O Kişiyi Bul", desc: "Gerçek ruh ikizinin estetiğini, vibe'ını ve kişiliğini keşfet." }
+          { title: "Selfie'ni Yükle ve Burcunu Seç", desc: "Kendi fotoğrafını yükle ve yapay zekanın temel enerji alanını okuması için burcunu belirt." },
+          { title: "Yapay Zeka Auranı Dengeleyecek İdeal Partneri Hesaplar", desc: "Algoritma; yüz ifadeni, karakter enerjini ve burç elementini analiz ederek sana en uygun kişi profilini çıkarır." },
+          { title: "Ruh Eşinin Karakterini, Burcunu ve Tanışma Senaryonuzu Gör", desc: "İdeal partnerinin görünüm/tarz arketipini, en uyumlu burçları ve nerede karşılaşacağınızı saniyeler içinde öğren." }
         ]
       },
       useCases: {
-        title: "Soulmate Radar Ne Zaman Kullanılır?",
+        title: "Ruh Eşi Radarı (Ruh Eşim Kim Testi) Ne Zaman Kullanılır?",
         cases: [
-          { title: "Dating App'lerden Bıkmak", desc: "Tinder ve Bumble sana sadece L (kayıp) verdiğinde ve yeni bir strateji gerektiğinde." },
-          { title: "Manifesting", desc: "Doğru vibe'ı çekmek için vision board'una tam olarak ne koyman gerektiğini anlamak." },
-          { title: "Merak", desc: "Sadece senin freak'liğinle eşleşecek kadar kimin deli olduğunu bilmek istemek." }
+          { title: "Sürekli Yanlış ve Toksik Kişilere Çekildiğinde", desc: "Hep aynı red flag tiplere aşık oluyorsan, auranı gerçekten iyileştirecek ve dengeleyecek doğru partner tipini keşfet." },
+          { title: "Bana En Uygun Burç ve Karakter Hangisi Diye Merak Ettiğinde", desc: "Kendi enerjinle %100 uyum yakalayacak burçları ve kişilik özelliklerini öğren." },
+          { title: "Instagram ve TikTok'ta Ruh Eşi Kartını Paylaşmak İçin", desc: "Çıkan ruh eşi profilini hikayende paylaşıp o tanıma uyan kişilerin DM'den düşmesini izle." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Ruh Eşi Radarı & YZ Aşk Uyumu — SSS",
         questions: [
-          { q: "Bana gerçek bir isim veriyor mu?", a: "Hayır, kişi 'tipini' tahmin ediyoruz. Onları bulmak senin işin." },
-          { q: "Ya ruh ikizim toksik biriyse?", a: "Belki de red flag'lere çekiliyorsundur. Yapay zeka sadece gerçekleri söyler." },
-          { q: "Estetik tahmini ne kadar doğru?", a: "Korkutucu derecede. Bir açıklamaya aşık olmaya hazır ol." }
+          { q: "Fotoğrafımdan ruh eşimin kim olduğunu ve nasıl biri olacağını nasıl öğrenebilirim?", a: "VibeCheckr Ruh Eşi Radarı sayfasına selfie'ni yükleyip burcunu seçtiğinde yapay zeka auranı tarar; ideal ruh eşinin karakter tipini, tarzını, uyumlu burçlarını ve tanışma hikayenizi anında çıkarır." },
+          { q: "Bana en uygun burç eşleşmesini de gösteriyor mu?", a: "Evet! Analiz sonucunda hem görsel enerjine hem de kendi burcuna en yüksek uyum sağlayan burçları ve nedenlerini detaylıca görebilirsin." },
+          { q: "Ruh eşimle nerede tanışacağımı tahmin ediyor mu?", a: "Evet, yapay zeka auranın frekansına göre ideal partnerinle hangi ortamda veya senaryoda karşılaşma ihtimalinin yüksek olduğunu ve dikkat etmen gereken green flag'leri listeler." },
+          { q: "Fotoğraflı ruh eşi testi ücretsiz mi?", a: "Evet, tek tıkla Misafir Girişi yaparak hesap açmadan anında verilen 5 ücretsiz jetonla ruh eşi analizini hemen yapabilirsin." }
         ]
       }
     }
@@ -596,57 +618,55 @@ export const featureSeoData: Record<string, any> = {
   "profile-autopsy": {
     en: {
       howItWorks: {
-        title: "How It Works: The Profile Operating Table",
+        title: "How It Works: Free AI Dating & Social Media Profile Analyzer (Tinder, Hinge, IG)",
         steps: [
-          { title: "Submit Your Profile", desc: "Drop your Tinder, Bumble, Hinge, Instagram, X, or BeReal profile. The AI doesn't judge... actually it does, that's the whole point." },
-          { title: "AI Runs the Autopsy", desc: "The algorithm checks your photos, bio, energy, and overall aesthetic. Is it main character energy or full NPC energy? We're about to find out." },
-          { title: "Get the Full Diagnosis", desc: "Receive a 0-100 score, a list of green flags that are actually working, and every red flag that's killing your engagement — with step-by-step fixes." }
+          { title: "Upload Profile Screenshots (Self Audit or Detective Mode)", desc: "Drop screenshots of a Tinder, Hinge, Bumble, Instagram, X, or TikTok profile—yours or someone else's." },
+          { title: "AI Audits Photos, Bio & Unspoken Vibe", desc: "The algorithm evaluates first-impression score, bio clichés, photo selection, and hidden red or green flags." },
+          { title: "Get a 0–100 Profile Score & Actionable Fixes", desc: "See exactly why a profile gets swiped left or ghosted—or uncover a match's hidden intentions before meeting." }
         ]
       },
       useCases: {
-        title: "When You Need a Profile Autopsy",
+        title: "When to Run an AI Profile Autopsy",
         cases: [
-          { title: "The 'No Matches' Crisis", desc: "Your bio is basically a red flag museum and you've been getting zero matches. Run a Self Audit to find out exactly why." },
-          { title: "Pre-Date Background Check", desc: "You just matched with someone, but their vibe is slightly off. Run Detective Mode to decode their hidden red flags before you meet up." },
-          { title: "Serve Looks, Not Confusion", desc: "You think your photos are fire, but you're still getting ghosted. Let the AI audit your profile before you waste another six months." },
-          { title: "The 'I Told You So' Autopsy", desc: "Your bestie is clueless about why their profile isn't working. Run a Detective Mode autopsy on their profile and save them from themselves." }
+          { title: "Fixing 'Zero Matches' on Tinder, Hinge, or Bumble", desc: "Use Self Audit Mode to find out which photo or bio line is secretly giving people the ick—and how to fix it fast." },
+          { title: "Pre-Date Detective Check on a Match or Crush", desc: "Switch to Detective Mode to analyze a match's Instagram or dating profile for narcissism, player vibes, or green flags." },
+          { title: "Upgrading Your Instagram Aesthetic & Bio", desc: "Audit your social media grid and bio to make sure your profile radiates authentic Main Character Energy." }
         ]
       },
       faq: {
-        title: "Profile Autopsy FAQ",
+        title: "AI Dating & Instagram Profile Analyzer — FAQ",
         questions: [
-          { q: "Can it really tell what's wrong with my profile?", a: "If your bio is giving NPC energy and your first photo screams red flag, yes. The Self Audit mode will tell you that directly." },
-          { q: "Can I use it to analyze someone else's profile?", a: "Absolutely. Switch to Detective Mode to stalk a match, an ex, or a crush. It will calculate their swipe-worthy score and expose their hidden red flags." },
-          { q: "Which platforms does it work for?", a: "Tinder, Bumble, Hinge, Instagram, X, and BeReal. If you can screenshot it, the AI can read it." },
-          { q: "Will it tell me I'm the problem?", a: "If you have zero main character energy on your profile, absolutely. The AI doesn't sugarcoat. That's the whole vibe." }
+          { q: "Why am I getting no matches on Tinder, Hinge, or Bumble?", a: "Upload a screenshot of your dating profile to VibeCheckr's Profile Autopsy in Self Audit Mode. Our AI scores your profile from 0–100, pinpoints which photos or bio prompts are giving people the 'ick', and gives you exact fixes." },
+          { q: "Can I use AI to analyze someone else's dating or Instagram profile for red flags?", a: "Yes! Switch to Detective Mode and upload screenshots of your crush's, match's, or ex's profile. The AI decodes their subtext, ego level, and hidden red flags before you go on a date." },
+          { q: "Which apps work with Profile Autopsy?", a: "It works with screenshots from Tinder, Hinge, Bumble, Instagram, TikTok, X (Twitter), and BeReal." },
+          { q: "Is the AI dating profile review free?", a: "Yes, start immediately with 1-Click Guest Mode (5 free welcome tokens, no sign-up required)." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Profil Ameliyat Masası",
+        title: "Nasıl Çalışır: Ücretsiz Instagram, Tinder & Bumble Profil Analizi (Profil Otopsisi)",
         steps: [
-          { title: "Profilini Gönder", desc: "Tinder, Bumble, Hinge, Instagram, X veya BeReal profilini at. Yapay zeka yargılamaz... aslında yargılar, çünkü tam da bu iş için burada." },
-          { title: "Yapay Zeka Otopsisi Çalıştırır", desc: "Algoritma fotoğraflarını, biyo'nu, enerjini ve genel estetiğini kontrol eder. Main character enerjisi mi veriyor yoksa tam NPC enerjisi mi? Hemen öğreneceğiz." },
-          { title: "Tam Teşhisi Al", desc: "0-100 puan, işe yarayan green flag'lerin listesi ve etkileşimini öldüren her red flag — adım adım düzeltmelerle birlikte." }
+          { title: "Profil Ekran Görüntüsünü Yükle (Kendi Profilin veya Dedektif Modu)", desc: "Instagram, Tinder, Bumble, Hinge veya X profilinin ekran görüntüsünü seç—ister kendininkini ister flörtününkini!" },
+          { title: "Yapay Zeka Fotoğrafları, Bio'yu ve Gizli Vibe'ı İnceler", desc: "Algoritma; ilk izlenim puanını, biyografi hatalarını, fotoğraf seçimini ve gizli red/green flag sinyallerini tarar." },
+          { title: "0–100 Profil Skorunu, Ick'leri ve Düzeltme Tavsiyelerini Al", desc: "Profilin neden etkileşim/eşleşme almadığını veya karşı tarafın gerçekte nasıl biri olduğunu adım adım öğren." }
         ]
       },
       useCases: {
-        title: "Profil Otopsisine Ne Zaman İhtiyacın Var?",
+        title: "Yapay Zeka Profil Analizi (Profil Otopsisi) Ne Zaman Kullanılır?",
         cases: [
-          { title: "Sıfır Eşleşme Krizi", desc: "Biyo'n tam bir red flag müzesi ve haftalardır sıfır eşleşme alıyorsun. Kendi Profilin modunu aç ve acı gerçekle yüzleş." },
-          { title: "İlk Buluşma Öncesi Stalk", desc: "Biriyle yeni eşleştin ama aurasında bir gariplik seziyorsun. Buluşmadan önce Dedektif Modu ile gizli toksik sinyallerini ifşa et." },
-          { title: "Kafa Karışıklığını Bitir", desc: "Fotoğraflarının harika olduğunu düşünüyorsun ama hâlâ ghost yiyorsun. Altı ay daha boşa harcamadan önce yapay zekadan acil müdahale (top fix) iste." },
-          { title: "Arkadaşı Kurtarma Operasyonu", desc: "Arkadaşın neden match almadığını bir türlü anlamıyor. Dedektif Modu otopsisi çalıştır ve onu o cringy bio'sundan kurtar." }
+          { title: "Tinder, Bumble veya Hinge'de Eşleşme Alamadığında", desc: "'Kendi Profilim' moduyla hangi fotoğrafının veya bio cümlenin karşı tarafa itici (ick) geldiğini bul ve hemen düzelt." },
+          { title: "İlk Buluşma Öncesi Flörtü Stalklama (Dedektif Modu)", desc: "Yeni tanıştığın kişinin Instagram veya flört profilini Dedektif Modu'nda taratıp gizli narsist/çapkın sinyallerini yakala." },
+          { title: "Instagram Profilini ve Biyografini Güçlendirmek İçin", desc: "Profilinin dışarıdan nasıl göründüğünü (ana karakter mi yoksa NPC mi) 100 üzerinden puanlat." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Instagram & Flört Uygulaması Profil Analizi — SSS",
         questions: [
-          { q: "Profilimdeki sorunu gerçekten bulabilir mi?", a: "Biyo'n NPC enerjisi veriyorsa ve ilk fotoğrafın çok kasıntıysa, evet. 'Kendi Profilim' modu hatalarını direkt yüzüne vurur." },
-          { q: "Başkasının profilini analiz edebilir miyim?", a: "Kesinlikle! Dedektif Modu'na geçerek flörtünü, eski sevgilini veya crush'ını stalkla. Yapay zeka onun gerçek niyetini ve gizli red flag'lerini anında döker." },
-          { q: "Hangi platformlar için çalışıyor?", a: "Tinder, Bumble, Hinge, Instagram, X ve BeReal. Ekran görüntüsünü alabildiğin her profili analiz ederiz." },
-          { q: "Benim sorun olduğumu söyler mi?", a: "Profilinde sıfır main character enerjisi varsa, kesinlikle. Yapay zeka lafı dolandırmaz." }
+          { q: "Instagram veya Tinder/Bumble profilimi yapay zekaya ücretsiz nasıl analiz ettirebilirim?", a: "Profilinin ekran görüntüsünü alıp VibeCheckr Profil Otopsisi aracına yüklemen yeterli. Yapay zeka 0–100 çekicilik ve vibe puanını, itici duran detayları (ick) ve nasıl düzelteceğini saniyeler içinde listeler." },
+          { q: "Hoşlandığım kişinin veya flörtümün profilinden red flag analizi yapabilir miyim?", a: "Evet! 'Dedektif Modu'nu seçip karşı tarafın Instagram veya tanışma uygulaması ekran görüntüsünü yükleyerek gerçek niyetini ve gizli toksik sinyallerini öğrenebilirsin." },
+          { q: "Hangi sosyal medya ve flört uygulamalarını destekliyor?", a: "Instagram, Tinder, Bumble, Hinge, X (Twitter), TikTok ve ekran görüntüsü alınabilen tüm sosyal profilleri analiz eder." },
+          { q: "Profil Otopsisi ücretsiz mi ve karşı tarafa bildirim gider mi?", a: "Tamamen ücretsizdir ve ekran görüntüsü üzerinden çalıştığı için karşı tarafa asla bildirim gitmez." }
         ]
       }
     }
@@ -654,53 +674,55 @@ export const featureSeoData: Record<string, any> = {
   "toxic-ex-scanner": {
     en: {
       howItWorks: {
-        title: "How It Works: Red Flag Detector",
+        title: "How It Works: Free AI Red Flag & Toxic Ex Scanner (Photo & Text Detector)",
         steps: [
-          { title: "Upload the Offender", desc: "Drop a picture of your ex or that suspicious new person." },
-          { title: "Red Flag Scanning", desc: "Our AI scans their facial structure, fit, and overall energy for hidden toxic traits." },
-          { title: "The Diagnosis", desc: "Get a full list of their red flags before they can ruin your life." }
+          { title: "Upload a Photo or Chat Screenshot", desc: "Drop a photo or text screenshot of your ex, situationship, or suspicious new date." },
+          { title: "AI Scans for Manipulation, Gaslighting & Toxic Vibe", desc: "Our algorithm detects love bombing, guilt-tripping, narcissistic phrasing, and walking-red-flag energy." },
+          { title: "Get a 0–100% Toxicity Score & Red Flag Report", desc: "See every red flag clearly exposed so you can protect your peace before getting hurt." }
         ]
       },
       useCases: {
-        title: "When to use the Toxic Scanner",
+        title: "When to Use the AI Toxic & Red Flag Scanner",
         cases: [
-          { title: "Pre-Date Background Check", desc: "Scan their Hinge profile pic to see if they're a narcissist or just boring." },
-          { title: "Post-Breakup Validation", desc: "Prove to your friends that your ex objectively looks like a walking red flag." },
-          { title: "Scanning Friends' Partners", desc: "Checking if your bestie's new boo is giving serial cheater vibes." }
+          { title: "Checking If You Are Being Gaslighted or Manipulated", desc: "Upload an argument screenshot when someone makes you feel crazy for setting basic boundaries." },
+          { title: "Pre-Date Red Flag Check on Someone New", desc: "Scan a new match's photo or early texts to spot love bombing and emotional unavailability early." },
+          { title: "Post-Breakup Validation & Closure", desc: "Remind yourself why your ex was toxic whenever rose-colored nostalgia tries to trick you into texting them." }
         ]
       },
       faq: {
-        title: "Toxic Scanner FAQ",
+        title: "AI Toxic Ex & Red Flag Scanner — FAQ",
         questions: [
-          { q: "Can a picture really show red flags?", a: "You'd be surprised how much 'finance bro' energy an AI can detect in one photo." },
-          { q: "What if it scans me as toxic?", a: "Then you're the problem, babe. Time for some self-reflection." },
-          { q: "Is it a joke?", a: "It's for entertainment, but it's rarely wrong about the vibes." }
+          { q: "How can I scan texts or photos for relationship red flags?", a: "Upload a chat screenshot or photo into VibeCheckr's free Toxic Ex Scanner. The AI analyzes behavioral cues, communication patterns, and vibe signals to generate a 0–100% Toxicity Score and itemized Red Flag Report." },
+          { q: "Can the AI detect gaslighting, love bombing, and narcissist texting patterns?", a: "Yes! When you upload message screenshots or describe an interaction, the AI flags classic manipulation tactics like blame-shifting, DARVO, guilt-tripping, future-faking, and breadcrumbing." },
+          { q: "Does the Toxic Scanner work for new dates and situationships too?", a: "Absolutely. Despite the name, thousands of users run new Hinge/Tinder matches and talking-stage texts through the scanner before getting emotionally invested." },
+          { q: "Is the Red Flag & Toxic Ex Scanner free and private?", a: "Yes, all scans are 100% confidential, deleted immediately after analysis, and free to start via 1-Click Guest Mode." }
         ]
       }
     },
     tr: {
       howItWorks: {
-        title: "Nasıl Çalışır: Red Flag Dedektörü",
+        title: "Nasıl Çalışır: Fotoğraf ve Mesajdan Ücretsiz Toksik İlişki & Red Flag Tarayıcı",
         steps: [
-          { title: "Suçluyu Yükle", desc: "Eski sevgilinin veya o şüpheli yeni kişinin bir fotoğrafını at." },
-          { title: "Red Flag Taraması", desc: "Yapay zekamız yüz yapısını, kombinini ve genel enerjisini gizli toksik özellikler için tarar." },
-          { title: "Teşhis", desc: "Hayatını mahvetmeden önce red flag'lerinin tam listesini al." }
+          { title: "Fotoğraf veya Mesaj Ekran Görüntüsü Yükle", desc: "Eski sevgilinin, yeni flörtünün veya şüpheli birinin fotoğrafını ya da WhatsApp/DM tartışma görüntüsünü yükle." },
+          { title: "Yapay Zeka Manipülasyon, Gaslighting ve Toksik Enerjiyi Tarar", desc: "Algoritma; suçluluk psikolojisi, love bombing, narsist ifadeler ve gizli tehlike sinyallerini inceler." },
+          { title: "0–100 Toksiklik Skorunu ve Red Flag Raporunu Al", desc: "Görmezden geldiğin tüm kırmızı bayrakları (red flag) maddeler halinde gör ve kendini koru." }
         ]
       },
       useCases: {
-        title: "Toxic Scanner Ne Zaman Kullanılır?",
+        title: "Toksik Ex & Red Flag Tarayıcı Ne Zaman Kullanılır?",
         cases: [
-          { title: "Date Öncesi Arka Plan Kontrolü", desc: "Narsist mi yoksa sadece sıkıcı mı diye Hinge profil fotoğrafını taratmak." },
-          { title: "Ayrılık Sonrası Onay", desc: "Arkadaşlarına eski sevgilinin objektif olarak yürüyen bir red flag gibi göründüğünü kanıtlamak." },
-          { title: "Arkadaşların Sevgililerini Taramak", desc: "Kankanın yeni flörtü seri aldatıcı (cheater) vibe'ı veriyor mu diye kontrol etmek." }
+          { title: "Gaslighting veya Manipülasyona Uğradığından Şüphelendiğinde", desc: "Haklı olduğun bir konuda bile kendini suçlu hissediyorsan mesajları yükle, manipülasyon taktiklerini ifşa et." },
+          { title: "Yeni Bir Flörtte Erken Red Flag Kontrolü Yapmak İçin", desc: "Daha yolun başındayken karşı tarafın fotoğrafını veya mesajlarını taratıp toksik potansiyelini önceden gör." },
+          { title: "Eski Sevgiliyi Özlediğinde Gerçekleri Hatırlamak İçin", desc: "Ayrılık sonrası sadece iyi anıları hatırladığında yapay zekaya eski sevgilinin red flag'lerini döktür." }
         ]
       },
       faq: {
-        title: "Sıkça Sorulan Sorular",
+        title: "Toksik İlişki & Red Flag Testi — Sıkça Sorulan Sorular",
         questions: [
-          { q: "Bir fotoğraf gerçekten red flag'leri gösterebilir mi?", a: "Yapay zekanın tek fotoğrafta ne kadar 'finance bro' enerjisi sezebileceğine şaşırırsın." },
-          { q: "Ya beni toksik olarak tararsa?", a: "O zaman sorun sensin aşko. Biraz özeleştiri vakti." },
-          { q: "Bu bir şaka mı?", a: "Eğlence amaçlı, ama vibe'lar konusunda nadiren yanılır." }
+          { q: "Bir kişinin fotoğrafından veya mesajlarından toksik (red flag) olup olmadığı nasıl anlaşılır?", a: "VibeCheckr Toksik Ex Tarayıcıya fotoğraf veya sohbet ekran görüntüsü yüklediğinde yapay zeka; yüz/duruş enerjisini ve mesajlardaki manipülatif kalıpları tarayarak 0–100 arası Toksiklik Skoru ve Red Flag listesi çıkarır." },
+          { q: "Mesaj ekran görüntüsünden gaslighting ve narsist manipülasyon anlaşılır mı?", a: "Evet! Yapay zeka; suçu sana çevirme, duygularını küçümseme ('çok abartıyorsun'), love bombing ve gelecek vaadiyle oyalama (future faking) gibi toksik kalıpları anında yakalar." },
+          { q: "Sadece eski sevgili için mi yoksa yeni flörtler için de kullanılır mı?", a: "İkisi için de kullanılır! Yeni tanıştığın bir flörtün veya mevcut ilişkinde yaşadığın bir tartışmanın ne kadar sağlıklı olduğunu ölçmek için de idealdir." },
+          { q: "Toksik ilişki ve red flag testi ücretsiz mi?", a: "Evet, tek tıkla Misafir Girişi yaparak hesap açmadan anında 5 ücretsiz jetonla kullanabilirsin." }
         ]
       }
     }

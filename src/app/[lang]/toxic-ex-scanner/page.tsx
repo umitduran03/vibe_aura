@@ -190,7 +190,7 @@ export default async function ToxicExScannerLanding({ params }: { params: Promis
               <span>{isTr ? "Uyarı: Aşırı Linç İçerir" : "Warning: Brutally Honest"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-red-400 via-rose-500 to-orange-500">
-              {isTr ? "Toksik Eski Sevgili Tarayıcı YZ" : "Toxic Ex Scanner AI"}
+              {isTr ? "Toksik Ex & Red Flag Tarayıcı — Fotoğraf ve Mesaj Analizi" : "Toxic Ex & Red Flag Scanner AI — Photo & Text Detector"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr 
