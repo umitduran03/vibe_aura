@@ -215,10 +215,14 @@ export async function saveDuoSession(
     const expiresAt = Timestamp.fromDate(new Date(Date.now() + 2 * 24 * 60 * 60 * 1000));
 
     // Privacy: Base64 photo data is intentionally excluded from Firestore
+    const isBattleScore =
+      duoRelationType === "battle" &&
+      typeof result.person1Score === "number" &&
+      typeof result.person2Score === "number";
     const docRef = await addDoc(collection(db, "results"), {
       userId: userId || "anonymous",
       type: "duo",
-      score: result.duoScore,
+      score: isBattleScore ? `${result.person1Score}-${result.person2Score}` : result.duoScore,
       person1Score: result.person1Score ?? null,
       person2Score: result.person2Score ?? null,
       winner: result.winner ?? null,

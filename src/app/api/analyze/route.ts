@@ -762,13 +762,9 @@ Your output must be purely JSON:
       };
       const baseInstruction = duoBaseInstructions[duoRelationType] || duoBaseInstructions.flirt;
       
-      const battleScoreFields = isBattle
-        ? `\n  "person1Score": <integer 18-98: Person 1's independent aura score>,\n  "person2Score": <integer 18-98: Person 2's independent aura score, must differ from person1Score>,\n  "winner": <1 or 2: must match whichever person has the higher score>,`
-        : "";
-
-      const duoScoreFieldDesc = isBattle
-        ? `<integer: must equal the winning score, i.e. the higher of person1Score and person2Score>`
-        : `<integer 15-98: realistic compatibility score calculated specifically for this pair>`;
+      const scoreSchemaFields = isBattle
+        ? `"person1Score": <integer 18-98: Person 1's independent aura score>,\n  "person2Score": <integer 18-98: Person 2's independent aura score, must differ from person1Score>,\n  "winner": <1 or 2: must match whichever person has the higher score>,`
+        : `"duoScore": <integer 15-98: realistic compatibility score calculated specifically for this pair>,`;
 
       const duoRedFlagMapUnlocked: Record<string, string> = {
         flirt: `"redFlag": "Specify either Person 1 or Person 2 (fairly, based on their actual signs/photos) — state who brings more drama, stubbornness, or chaos into this relationship dynamic and why"`,
@@ -793,7 +789,7 @@ ${titleStr}:
 ${magicText ? `- User's Context / Note: ${magicText}\n` : ""}
 ${baseInstruction} ${langInstruction} Your output must be purely JSON and strictly follow this exact structure:
 {
-  "duoScore": ${duoScoreFieldDesc},${battleScoreFields}
+  ${scoreSchemaFields}
   "title": "An original, creative, memorable title tailored specifically to this duo's energy (avoid overused clichés)",
   "toxicComment": "A sharp, witty one-liner summarizing the core truth of their dynamic",
   ${redFlagUnlocked},
@@ -818,7 +814,7 @@ CRITICAL TEASER INSTRUCTIONS:
 
 Your output must be purely JSON and strictly follow this exact structure:
 {
-  "duoScore": ${duoScoreFieldDesc},${battleScoreFields}
+  ${scoreSchemaFields}
   "title": "An original, creative title tailored to this duo's energy (avoid overused clichés)",
   "toxicComment": "A sharp, witty one-liner summarizing their dynamic",
   ${redFlagLocked},

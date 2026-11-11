@@ -113,8 +113,12 @@ export default function DuoResultCard() {
 
       if (!blob) throw new Error("Canvas blob failed");
 
+      const battleScoreLabel =
+        duoRelationType === "battle" && typeof duoResult.person1Score === "number" && typeof duoResult.person2Score === "number"
+          ? `${duoResult.person1Score}-${duoResult.person2Score}`
+          : duoResult.duoScore.toString();
       const file = new File([blob], "vibecheckr-duo-result.png", { type: "image/png" });
-      const filename = `vibecheckr-duo-${duoResult.duoScore}.png`;
+      const filename = `vibecheckr-duo-${battleScoreLabel}.png`;
 
       // Reset reward flag for new share attempt
       hasRewardedRef.current = false;
@@ -124,7 +128,7 @@ export default function DuoResultCard() {
           shareStartTimeRef.current = Date.now();
           await navigator.share({
             title: t.resultShareTitle.replace("{name}", duoResult.title),
-            text: t.resultDuoShareText.replace("{score}", duoResult.duoScore.toString()),
+            text: t.resultDuoShareText.replace("{score}", battleScoreLabel),
             files: [file],
           });
         } catch (e: any) {
