@@ -689,11 +689,11 @@ Your output must be purely JSON:
       if (parsedJson) {
         if (extrasType === "delulu-check" && parsedJson.delulu_score !== undefined) {
           const ds = Number(parsedJson.delulu_score);
-          parsedJson.delulu_score = Number.isFinite(ds) ? Math.max(0, Math.min(100, Math.round(ds))) : 63;
+          parsedJson.delulu_score = Number.isFinite(ds) ? Math.max(0, Math.min(100, Math.round(ds))) : 38 + Math.floor(Math.random() * 52);
         }
         if (extrasType === "profile-autopsy" && parsedJson.profile_overall_score !== undefined) {
           const ps = Number(parsedJson.profile_overall_score);
-          parsedJson.profile_overall_score = Number.isFinite(ps) ? Math.max(1, Math.min(100, Math.round(ps))) : 71;
+          parsedJson.profile_overall_score = Number.isFinite(ps) ? Math.max(1, Math.min(100, Math.round(ps))) : 52 + Math.floor(Math.random() * 38);
         }
       }
 
@@ -757,7 +757,7 @@ Your output must be purely JSON:
         battle: `Based on these details (and photos if any), compare their auras head-to-head and score EACH person INDEPENDENTLY between 18 and 98 ("person1Score" and "person2Score"):
 - INDEPENDENT & REALISTIC SCORING RULE: Score each person on their own actual merits (photo confidence, expression, lighting, styling, posture, and zodiac aura). Do NOT automatically dump the loser into the 30s or 40s unless their vibe genuinely warrants a low score! If both people have strong auras, both can score high (e.g., both in the 70s, 80s, or 90s with a close, realistic margin); if both are chaotic/mid, both might land in the 50s/60s; if one completely outshines the other, reflect that gap naturally.
 - SCORE-TO-TEXT CALIBRATION RULE: Your commentary in "redFlag" and "analysis_text" MUST match the actual scores! If the battle is close/neck-and-neck, do NOT brutally trash the loser—give them credit for holding their own and explain the specific subtle flaw or missing detail that cost them the crown. Only deliver a ruthless roast if the loser genuinely scored low or got blown out by a wide margin.
-- NO BIAS & NO FIXED NUMBERS: Person 1 and Person 2 must have an equal, fair chance to win based on their vibe. Never make "person1Score" and "person2Score" equal, avoid lazy multiples of 5 or 10, and NEVER default to 84 vs 41 or any fixed number pair.
+- NO BIAS & NO FIXED NUMBERS: Person 1 and Person 2 must have an equal, fair chance to win based on their vibe. Never make "person1Score" and "person2Score" equal, avoid lazy multiples of 5 or 10, and never default to any fixed number pair.
 - Set "winner" to 1 if person1Score > person2Score, or 2 if person2Score > person1Score, and state who lost the battle in "redFlag". DO NOT treat this as a romantic relationship test—this is a pure 1v1 aura competition.`,
       };
       const baseInstruction = duoBaseInstructions[duoRelationType] || duoBaseInstructions.flirt;
