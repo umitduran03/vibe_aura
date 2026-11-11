@@ -189,7 +189,9 @@ export default async function BffVibeCheckLanding({ params }: { params: Promise<
           className="mb-16"
         >
           <h2 className="text-2xl font-black text-white mb-2">
-            {isTr ? "Gerçek Örnekler" : "Real Scenarios"}
+            {isTr
+              ? "Gerçek Arkadaşlık ve BFF Uyum Testi Sonuç Örnekleri"
+              : "Real BFF Friendship Compatibility & Chaos Score Examples"}
           </h2>
           <p className="text-white/50 text-sm mb-6">
             {isTr ? "Kullanıcıların aldığı gerçek sonuçlardan örnekler" : "Examples from real user results"}
@@ -214,7 +216,9 @@ export default async function BffVibeCheckLanding({ params }: { params: Promise<
           className="mb-16"
         >
           <h2 className="text-2xl font-black text-white mb-2">
-            {isTr ? "Benzer Araçlar" : "Related Tools"}
+            {isTr
+              ? "Diğer İkili Uyum ve Aura Karşılaştırma Testleri"
+              : "More Free Two-Photo Compatibility & Aura Battle Tools"}
           </h2>
           <p className="text-white/50 text-sm mb-6">
             {isTr ? "Bunları da beğenebilirsin" : "You might also like these"}

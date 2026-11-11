@@ -231,7 +231,9 @@ export default async function ExCompatibilityLanding({ params }: { params: Promi
             className="text-center mb-8"
           >
             <h2 className="text-2xl font-black text-white mb-2">
-              {isTr ? "İlgili Araçlar" : "Related Tools"}
+              {isTr
+                ? "Diğer Eski Sevgili, Red Flag ve Situationship Testleri"
+                : "More Free Ex Red Flag, Delulu & Situationship Tools"}
             </h2>
             <p className="text-white/40 text-sm">
               {isTr ? "Ex Compatibility'den sonra bunlara da bak" : "Also check these after your ex analysis"}

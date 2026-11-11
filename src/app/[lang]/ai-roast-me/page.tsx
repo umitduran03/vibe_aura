@@ -100,7 +100,9 @@ export default async function AIRoastMeLanding({ params }: { params: Promise<{ l
               <span>{isTr ? "Uyarı: Egonuz Zarar Görebilir" : "Warning: Ego Damage Inbound"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-500 to-red-500">
-              {isTr ? "AI Fotoğraf Roast — Yapay Zeka Seni Çiğ Çiğ Yesin" : "AI Roast Me — Let the AI Roast Your Entire Existence"}
+              {isTr
+                ? "AI Fotoğraf Roast (Beni Göm) — Ücretsiz Selfie & 0–100 Aura Analizi"
+                : "AI Roast Me — Free AI Photo Roast & 0–100 Selfie Aura Score"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr 
@@ -190,7 +192,9 @@ export default async function AIRoastMeLanding({ params }: { params: Promise<{ l
             className="text-center mb-10"
           >
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
-              {isTr ? "Gerçek Gömleme Örnekleri" : "Real Roast Examples"}
+              {isTr
+                ? "Gerçek Yapay Zeka Fotoğraf Roast & Aura Skoru Örnekleri"
+                : "Real AI Selfie Roast & 0–100 Aura Score Examples"}
             </h2>
             <p className="text-white/50">
               {isTr ? "Bunlar tanıdık geldi mi? Yapay zeka gerçeği söyler." : "Sound familiar? The AI doesn't hold back."}
@@ -231,7 +235,9 @@ export default async function AIRoastMeLanding({ params }: { params: Promise<{ l
             className="text-center mb-8"
           >
             <h2 className="text-2xl font-black text-white mb-2">
-              {isTr ? "İlgili Araçlar" : "Related Tools"}
+              {isTr
+                ? "Diğer Ücretsiz Fotoğraf Analizi ve Aura Savaşı Araçları"
+                : "More Free AI Photo Vibe Check & Aura Battle Tools"}
             </h2>
             <p className="text-white/40 text-sm">
               {isTr ? "AI Roast'tan sonra bunlara da bak" : "Also check these after your roast"}

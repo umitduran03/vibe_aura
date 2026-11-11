@@ -151,7 +151,9 @@ export default async function ReplyGuruLanding({ params }: { params: Promise<{ l
               <span>{isTr ? "Akıl Oyunlarını Kazan" : "Win The Mind Games"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-500 to-indigo-400">
-              {isTr ? "Reply Guru (Mesaj Gurusu) — Sohbetten Hazır Rizz & Cevap Üretici" : "Reply Guru AI — Free Rizz & Text Reply Generator from Screenshots"}
+              {isTr
+                ? "Yapay Zeka Mesaj Cevap & Rizz Üretici (Reply Guru) — Mesaja Ne Yazılır?"
+                : "AI Text Reply & Rizz Generator (Reply Guru) — What to Text Back Free"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr
@@ -209,7 +211,9 @@ export default async function ReplyGuruLanding({ params }: { params: Promise<{ l
         <div className="mb-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
-              {isTr ? "Nasıl Çalışır?" : "How It Works"}
+              {isTr
+                ? "Yapay Zeka ile Mesaja Hazır Cevap ve Rizz Nasıl Üretilir?"
+                : "How the AI Text Reply & Rizz Generator Works"}
             </h2>
             <p className="text-white/50 max-w-lg mx-auto">
               {isTr ? "3 adımda mükemmel cevabı al" : "3 steps to the perfect reply"}
@@ -268,7 +272,9 @@ export default async function ReplyGuruLanding({ params }: { params: Promise<{ l
         <div className="mb-24">
           <div className="text-center mb-10">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
-              {isTr ? "Tanıdık Senaryolar" : "Relatable Scenarios"}
+              {isTr
+                ? "Kuru Mesajlara, Görüldüye ve Karışık Sinyallere Ne Cevap Yazılır?"
+                : "What to Text Back: Dry Text, Ghosting & Mixed Signal Examples"}
             </h2>
             <p className="text-white/50">
               {isTr
@@ -330,7 +336,9 @@ export default async function ReplyGuruLanding({ params }: { params: Promise<{ l
         <div className="mb-24 mt-16">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-black text-white mb-2">
-              {isTr ? "İlgili Araçlar" : "Related Tools"}
+              {isTr
+                ? "Diğer Ücretsiz Yapay Zeka İlişki ve Mesaj Analiz Araçları"
+                : "More Free AI Texting & Relationship Analysis Tools"}
             </h2>
             <p className="text-white/40 text-sm">
               {isTr

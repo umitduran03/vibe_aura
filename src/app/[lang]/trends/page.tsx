@@ -11,9 +11,9 @@ import { useAppStore } from "@/store/useAppStore";
 
 const strings = {
   en: {
-    title: "Vibe Culture Hub — Gen-Z Dating, Red Flags & Aura Guides",
-    intro: "30+ Relationship Psychology, Texting & Aura Deep Dives",
-    introPara: "From decoding mixed signals, dry texting, and situationships to calculating your 0–100 aura points and spotting narcissist red flags—explore our complete Gen-Z dating & vibe check guides.",
+    title: "Gen-Z Dating, Red Flags, Rizz & Aura Guides — Vibe Culture Hub",
+    intro: "30+ Relationship Psychology, Texting Game & Aura Deep Dives",
+    introPara: "From decoding mixed signals, dry texting, and situationships to calculating your 0–100 aura points, unspoken rizz, and spotting narcissist red flags—explore our complete Gen-Z dating & vibe check guides.",
     searchPlaceholder: "Search for a trend, keyword, or red flag...",
     readMore: "Read full analysis",
     ctaTitle: "Less reading, more roasting.",
@@ -23,8 +23,8 @@ const strings = {
     noResults: "No trends found for",
   },
   tr: {
-    title: "Vibe Kültür Merkezi — İlişki Rehberleri, Red Flag & Aura Trendleri",
-    intro: "30+ Flört Psikolojisi, Mesajlaşma Taktikleri & Gen-Z Rehberi",
+    title: "İlişki Rehberleri, Red Flag, Rizz & Vibe Check Trendleri — Vibe Kültür Merkezi",
+    intro: "30+ Flört Psikolojisi, Mesajlaşma (Rizz) Taktikleri & Gen-Z Rehberi",
     introPara: "Situationship çıkmazından karışık sinyallere, burçların red flag'lerinden 0–100 aura puanı hesaplamaya ve mesajlaşma (rizz) taktiklerine kadar tüm güncel ilişki analizlerini keşfet.",
     searchPlaceholder: "Trend, kelime veya red flag ara...",
     readMore: "Analizin tamamını oku",

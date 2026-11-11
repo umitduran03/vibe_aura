@@ -90,7 +90,9 @@ export default async function SoulmateRadarLanding({ params }: { params: Promise
               <span>{isTr ? "Ruh Eşin Seni Bekliyor" : "Your Soulmate is Waiting"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-rose-500 to-purple-500">
-              {isTr ? "Ruh Eşi Radarı — Ruh Eşinin Profilini Çıkar" : "AI Soulmate Radar — Discover Your True Soulmate"}
+              {isTr
+                ? "Ruh Eşim Kim? Ücretsiz YZ Ruh Eşi Radarı & Aşk Falı Testi"
+                : "Who Is My Soulmate? Free AI Soulmate Radar & Aura Match Test"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr
@@ -189,7 +191,9 @@ export default async function SoulmateRadarLanding({ params }: { params: Promise
           className="mb-16"
         >
           <h2 className="text-2xl font-black text-white mb-2">
-            {isTr ? "Gerçek Örnekler" : "Real Scenarios"}
+            {isTr
+              ? "Gerçek Ruh Eşi ve Burç Eşleşmesi Analiz Örnekleri"
+              : "Real AI Soulmate Match & Zodiac Prediction Examples"}
           </h2>
           <p className="text-white/50 text-sm mb-6">
             {isTr ? "Kullanıcıların aldığı gerçek sonuçlardan örnekler" : "Examples from real user results"}
@@ -214,7 +218,9 @@ export default async function SoulmateRadarLanding({ params }: { params: Promise
           className="mb-16"
         >
           <h2 className="text-2xl font-black text-white mb-2">
-            {isTr ? "Benzer Araçlar" : "Related Tools"}
+            {isTr
+              ? "Diğer Ücretsiz Aşk Uyumu ve İlişki Testleri"
+              : "More Free AI Love Compatibility & Crush Tests"}
           </h2>
           <p className="text-white/50 text-sm mb-6">
             {isTr ? "Bunları da beğenebilirsin" : "You might also like these"}
@@ -243,7 +249,9 @@ export default async function SoulmateRadarLanding({ params }: { params: Promise
         >
           <Sparkles className="w-10 h-10 text-pink-400 mx-auto mb-6" />
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">
-            {isTr ? "Kaderini Görmeye Hazır mısın?" : "Ready to meet your destiny?"}
+            {isTr
+              ? "Ruh Eşinin Kim Olduğunu ve Nerede Tanışacağınızı Öğren"
+              : "Find Out Who Your Soulmate Is & Where You Will Meet"}
           </h2>
           <p className="text-white/60 mb-8 max-w-md mx-auto text-lg">
             {isTr

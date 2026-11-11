@@ -1,6 +1,8 @@
 import React from "react";
-import { CheckCircle2, HelpCircle } from "lucide-react";
+import Link from "next/link";
+import { BookOpen, CheckCircle2, ChevronRight, HelpCircle } from "lucide-react";
 import { featureSeoData } from "@/lib/seo-feature-data";
+import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
 
 type Props = {
   featureId: string;
@@ -8,11 +10,28 @@ type Props = {
 };
 
 export default function FeatureSeoContent({ featureId, isTr }: Props) {
-  const data = featureSeoData[featureId]?.[isTr ? "tr" : "en"];
+  const locale = isTr ? "tr" : "en";
+  const data = featureSeoData[featureId]?.[locale];
 
   if (!data) return null;
 
   const { howItWorks, useCases, faq } = data;
+
+  const allTrends = isTr ? trendsDataTr : trendsDataEn;
+  const directMatches = allTrends.filter((a) => a.ctaLink === `/${featureId}`);
+  const fallbackSlugs = [
+    "what-is-a-vibe-check",
+    "ai-photo-personality-test",
+    "what-is-rizz",
+    "aura-battle-who-is-cooler",
+    "gen-z-dating-terms-2026",
+  ];
+  const fallbackMatches = allTrends.filter(
+    (a) =>
+      fallbackSlugs.includes(a.slug) &&
+      !directMatches.some((d) => d.slug === a.slug)
+  );
+  const relatedGuides = [...directMatches, ...fallbackMatches].slice(0, 4);
 
 
   return (
@@ -92,6 +111,50 @@ export default function FeatureSeoContent({ featureId, isTr }: Props) {
           ))}
         </div>
       </section>
+
+      {/* RELATED DEEP-DIVE GUIDES (Bidirectional Topic Cluster) */}
+      {relatedGuides.length > 0 && (
+        <section>
+          <div className="text-center mb-10">
+            <h2 className="text-2xl md:text-3xl font-black text-white mb-3 flex items-center justify-center gap-3">
+              <BookOpen className="w-7 h-7 text-indigo-400" />
+              {isTr
+                ? "İlgili Rehberler & Derinlemesine Analizler"
+                : "Related Guides & Deep-Dive Articles"}
+            </h2>
+            <p className="text-white/50 text-sm">
+              {isTr
+                ? "Bu aracın arkasındaki ilişki psikolojisi, aura sinyalleri ve Gen-Z terimleri"
+                : "Explore the dating psychology, aura signals, and Gen-Z slang behind this tool"}
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+            {relatedGuides.map((guide) => (
+              <Link
+                key={guide.slug}
+                href={`/${locale}/trends/${guide.slug}`}
+                className="group flex flex-col justify-between p-5 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] hover:border-indigo-500/40 transition-all duration-300"
+              >
+                <div>
+                  <div className="text-xs font-bold text-indigo-400 mb-2">
+                    {guide.category} • {guide.readTime}
+                  </div>
+                  <h3 className="text-base font-bold text-white mb-2 group-hover:text-indigo-300 transition-colors leading-snug">
+                    {guide.title}
+                  </h3>
+                  <p className="text-xs text-white/60 line-clamp-2 leading-relaxed mb-3">
+                    {guide.description}
+                  </p>
+                </div>
+                <div className="flex items-center text-xs font-semibold text-indigo-400 group-hover:text-indigo-300 transition-colors">
+                  <span>{isTr ? "Rehberi Oku" : "Read Guide"}</span>
+                  <ChevronRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }

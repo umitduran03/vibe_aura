@@ -60,29 +60,40 @@ export const trendsDataEn: TrendArticle[] = [
   {
     slug: "ai-photo-personality-test",
     title: "AI Photo Personality Test: What Your Selfie Says About Your Aura (Free)",
-    description: "Try the viral TikTok AI photo personality test! See how AI reads facial micro-expressions, vibe archetypes & hidden red flags — upload a selfie free, no sign-up.",
+    description: "Try the viral TikTok AI photo personality test! Upload a selfie to get your 0–100 Aura Score, Vibe Archetype & hidden red flags in 3 seconds — 100% free, no sign-up.",
     category: "AI & Tech Trends",
     publishDate: "2026-06-02",
-    readTime: "4 min read",
-    keywords: ["AI face reading", "AI personality test photo", "aura reading face", "viral TikTok trend", "face analysis AI", "how to read auras", "digital vibe check", "facial micro expressions"],
+    readTime: "5 min read",
+    keywords: ["AI photo personality test", "AI face reading", "what vibe do I give off", "aura reading face", "viral TikTok AI test", "selfie personality analyzer", "how to read auras", "digital vibe check"],
     imageUrl: "/images/trends/ai-face-scan.webp",
     content: {
       intro: "You've seen it all over TikTok, Instagram Reels, and X: people uploading their seemingly innocent selfies and getting brutally honest, shockingly accurate personality breakdowns from artificial intelligence. It's no longer just about reading your daily astrology horoscope or taking a generic 16-personalities quiz that tells you what you want to hear. The new wave of self-discovery is the AI photo personality test, and it's taking the internet by storm. But how exactly does a computer algorithm look at a JPEG of your face and immediately know that you text your ex when you're bored or that you have a severe caffeine addiction? Let's break down the psychology, the technology, and the undeniable appeal of getting roasted by code.",
       sections: [
         {
-          heading: "How Does Advanced AI Face Reading Work?",
-          paragraph: "Modern AI doesn't just look at whether you're smiling or frowning; it goes much deeper than surface-level emotions. These advanced neural networks analyze thousands of data points on your face, including micro-expressions, facial symmetry, eye tension, jawline posture, and even your subconscious lighting choices. It compares your specific facial structure and resting expressions against massive datasets of psychological profiling. Are you giving 'Golden Retriever' energy, or do you have a subtle 'Chronically Online' stare? The AI detects the tension in your brow that suggests you overthink every text message, and the specific curve of your smile that indicates you might be a little manipulative in arguments. It knows within seconds, and it doesn't hold back."
+          heading: "How Does an AI Photo Personality Test Read Your Selfie?",
+          paragraph: "Modern AI doesn't just look at whether you're smiling or frowning; it goes much deeper than surface-level emotions. Multimodal neural networks analyze micro-expressions, posture, eye tension, jawline angles, outfit aesthetics, and subconscious lighting choices against psychological and social archetypes. Are you giving 'Golden Retriever' energy, or do you have a subtle 'Chronically Online' stare? The AI detects the tension in your brow that suggests you overthink every text message, and the specific curve of your smirk that indicates you play mind games in arguments.",
+          items: [
+            "Micro-Expression & Eye Scan: Detects whether your smile is genuinely relaxed or masking high-functioning overthinking.",
+            "Posture & Angle Psychology: High-angle selfies, mirror poses, and head tilts reveal how much validation vs. mystery you project.",
+            "Aesthetic & Lighting Frequency: Warm candid lighting vs. curated bedroom LEDs instantly signals your social archetype and dating style."
+          ],
+          scenario: "You upload a 'casual' car selfie and the AI immediately clocks: '82/100 Aura — Took 19 photos in the parking lot before picking this one, acts unbothered in DMs but checks story views every 12 minutes.'"
         },
         {
-          heading: "Why It's So Shockingly Accurate (and Brutal)",
-          paragraph: "Unlike human friends who will sugarcoat their opinions to protect your feelings, a trained AI model is entirely objective and delivers the unfiltered, objective truth. Humans have an inherent bias; we project our own feelings onto the faces we see. An algorithm doesn't care if you have a cute outfit on. If your selfie screams 'unresolved childhood trauma', 'narcissist', or 'avoidant attachment style', the AI will tell you exactly that. It's the ultimate reality check for a generation obsessed with self-awareness. People are realizing that their 'mysterious' resting face actually just looks like they need a nap, and that realization is both hilarious and profoundly humbling."
+          heading: "What Vibe Do I Give Off? Why AI Roasts Are So Accurate",
+          paragraph: "Unlike human friends who sugarcoat their opinions to protect your feelings, a trained AI model is entirely objective and delivers the unfiltered truth. Humans project their own biases onto the faces they see; an algorithm doesn't care how expensive your outfit is. If your selfie screams 'avoidant attachment style', 'main character syndrome', or 'recovering people-pleaser', the AI calls it out immediately. People are realizing that their 'mysterious' resting face actually just looks like they need a nap—and that realization is both hilarious and humbling.",
+          items: [
+            "Green Flags Exposed: Natural warmth, approachable eye contact, and effortless confidence that attract healthy connections.",
+            "Hidden Red Flags Clocked: Performative nonchalance, ego-driven posing, or subtle 'I will ghost you in 3 weeks' energy.",
+            "0–100 Aura Score: A single objective score measuring your visual magnetism and first-impression impact."
+          ]
         },
         {
-          heading: "The VibeCheckr Difference: Beyond the Basics",
-          paragraph: "While basic TikTok filters might give you a randomized 'vibe' keyword, our proprietary VibeCheckr AI engine takes this to an entirely different dimension. We combine advanced facial aura scanning technology with astrological data and psychological profiling to calculate a definitive 'Vibe Score'. But we don't stop there. The AI exposes your deepest red flags, predicts your most likely toxic behaviors in a relationship, and can even tell you what kind of person you are destined to date (and inevitably break up with). It's not just a party trick; it's a mirror reflecting your digital and emotional aura."
+          heading: "How to Take the Free AI Selfie Personality & Aura Test",
+          paragraph: "While basic TikTok filters slap a random keyword on your forehead, VibeCheckr's multimodal AI engine combines facial aura scanning with optional zodiac profiling to compute a complete 0–100 Aura Score, Vibe Archetype, and shareable roast card. You don't even need to create an account—use 1-Click Guest Mode to test your favorite selfie, dating app photo, or mirror pic in under 3 seconds."
         }
       ],
-      conclusion: "The AI photo personality test isn't just a fleeting trend; it's a fascinating intersection of technology and human psychology. It forces us to confront how we present ourselves to the world versus how we actually feel inside. So, the ultimate question remains: Are you brave enough to upload your selfie and get completely roasted by an algorithm? Or are you secretly terrified that a machine might know you better than you know yourself?"
+      conclusion: "The AI photo personality test isn't just a fleeting trend; it's a fascinating mirror reflecting how we present ourselves to the world versus how we actually feel inside. Are you brave enough to upload your selfie and see what vibe you truly give off?"
     },
     ctaLabel: "Scan My Selfie & Aura Now",
     ctaLink: "/ai-roast-me",
@@ -327,60 +338,73 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "aura-battle-who-is-cooler",
-    title: "Aura Battle AI: Who Has Higher Aura Points in Your Friend Group?",
-    description: "Settle the group chat debate once and for all! Upload two photos to Aura Battle AI — get separate 0–100 Aura Scores, crown the winner & roast the loser free.",
+    title: "Aura Battle AI: Who Is Cooler? Compare Two Photos for 0–100 Aura Points",
+    description: "Who has more aura in your friend group or relationship? Upload two photos to Aura Battle AI — get separate 0–100 Aura Scores, crown the winner & roast the loser free.",
     category: "Culture & Slang",
     publishDate: "2026-06-18",
     readTime: "5 min read",
-    keywords: ["aura battle", "who is cooler", "vibe check", "friendship roast", "main character energy"],
+    keywords: ["aura battle", "aura battle AI", "who is cooler test", "compare two photos aura", "aura points calculator", "who has more aura", "friendship roast AI", "main character energy test"],
     imageUrl: "/images/trends/aura-points.webp",
     content: {
-      intro: "We all have that one friend who thinks they are the undisputed main character. They act like their aura is untouchable, and they never hesitate to let everyone know. For years, the debate of 'who is actually cooler' in a friend group was subjective and entirely based on who could roast the other better. But in 2026, we don't argue—we let the AI decide. The 'Aura Battle' is the newest trend tearing friend groups apart and putting egos in check.",
+      intro: "We all have that one friend who thinks they are the undisputed main character. They act like their aura is untouchable, and they never hesitate to let everyone know. For years, the debate of 'who is actually cooler' in a friend group was subjective and entirely based on who could roast the other better. But in 2026, we don't argue—we let the AI decide. The 'Aura Battle' is the newest viral trend settling group chat debates and putting egos in check.",
       sections: [
         {
-          heading: "The End of Subjective Coolness",
-          paragraph: "Before the Aura Battle AI, coolness was impossible to quantify. Now, it's a science. By analyzing facial micro-expressions, resting tension, and overall vibe frequency, the AI acts as an impartial judge. It strips away the bias and looks purely at the energetic output of both individuals. It's the ultimate reality check for the friend who talks a big game but secretly gives off major NPC energy."
+          heading: "How Does an AI Aura Battle Compare Two Photos?",
+          paragraph: "Before Aura Battle AI, coolness was impossible to quantify. Now, it's an instant head-to-head showdown. By scanning facial micro-expressions, posture, outfit styling, lighting aesthetics, and overall vibe frequency, the AI acts as an impartial referee. Instead of a generic tie, it calculates two independent 0–100 Aura Scores (for example, 91 vs. 64) and explains the exact visual details that gave the winner the upper hand.",
+          items: [
+            "Independent 0–100 Aura Scores: Both Person 1 and Person 2 receive their own objective score based on visual presence and authenticity.",
+            "Posture & Micro-Expression Clash: Natural, relaxed confidence beats forced smirks and try-hard posing every single time.",
+            "Shareable X–Y Scoreboard Card: Generates a side-by-side battle card ready to drop straight into the group chat or Instagram Story."
+          ],
+          scenario: "Friend A uploads a heavily posed gym mirror pic (58/100 Aura) while Friend B uploads a blurry candid coffee shop photo (92/100 Aura). Verdict: 'Effortless charisma destroys try-hard flexing.'"
         },
         {
-          heading: "The Brutal Roast Mechanism",
-          paragraph: "What makes the Aura Battle so viral isn't just finding out who won; it's the sheer brutality of how the loser is treated. The AI doesn't just say 'Person 1 wins.' It crafts a highly specific, devastating roast explaining exactly why Person 2 lost. It might call out their forced smirk, their desperate need for validation, or the fact that their 'mysterious' look just makes them look confused."
+          heading: "Close Match vs. Total Blowout: How the AI Judges the Loser",
+          paragraph: "What makes the Aura Battle so addictive isn't just seeing the numbers—it's how the AI calibrates its verdict to the score gap. If the battle is neck-and-neck (like 89 vs. 92), the AI acknowledges that both players have elite aura and points out the razor-thin detail that decided the match. But if it's a blowout (like 94 vs. 41), the algorithm delivers a ruthless, surgical roast exposing the loser's forced expression or NPC energy."
         },
         {
-          heading: "A New Metric for Social Hierarchy",
-          paragraph: "This isn't just about fun; it's a new metric for digital social hierarchy. Winning an Aura Battle against the group's perceived 'leader' is a coup. It instantly shifts the dynamic, providing undeniable proof of superior vibe. It's becoming the modern equivalent of challenging someone to a duel, but instead of swords, you're using selfies."
+          heading: "How to Run a Free Aura Battle With Friends or Your Partner",
+          paragraph: "This isn't just a solo test—it's the ultimate digital duel for best friends, couples, siblings, and situationships. Open VibeCheckr's Aura Battle mode, drop two photos, and let the AI crown the real Main Character in 3 seconds—100% free and with no sign-up required."
         }
       ],
-      conclusion: "Are you brave enough to step into the Aura Arena with your best friend? Or are you terrified that the algorithm will confirm what everyone already suspects: you are, in fact, the sidekick. There is only one way to find out."
+      conclusion: "Are you brave enough to step into the Aura Arena with your best friend or partner? Or are you secretly worried the algorithm will confirm that you're the sidekick? Upload two photos and settle the debate once and for all."
     },
     ctaLabel: "Start An Aura Battle",
     ctaLink: "/aura-battle",
   },
   {
     slug: "what-is-rizz",
-    title: "What Does Rizz Mean? Unspoken Rizz Explained (+ Free AI Rizz Test)",
-    description: "What is rizz in Gen-Z slang, can it be learned, and do you actually have unspoken rizz? Full breakdown + free AI Reply Guru to upgrade your text game.",
+    title: "What Does Rizz Mean? Spoken vs. Unspoken Rizz & Free AI Rizz Generator",
+    description: "What is rizz in Gen-Z slang? Learn the exact meaning of spoken vs. unspoken rizz, W rizz vs. L rizz texting examples & generate smooth replies free with Reply Guru AI.",
     category: "Culture & Slang",
     publishDate: "2026-06-19",
-    readTime: "4 min read",
-    keywords: ["what is rizz", "rizz meaning", "unspoken rizz", "how to have rizz", "gen-z slang 2026", "charisma tips", "dating confidence"],
+    readTime: "5 min read",
+    keywords: ["what is rizz", "what does rizz mean", "rizz meaning slang", "unspoken rizz", "w rizz vs l rizz", "how to get rizz over text", "ai rizz generator", "text reply generator"],
     imageUrl: "/images/trends/rizz.webp",
     content: {
-      intro: "If you've spent any time on TikTok or Twitter in the last two years, you've definitely heard someone accused of having 'no rizz' or celebrated for their 'unspoken rizz'. It's the most dominant term in the Gen-Z social and dating lexicon right now, and it's being used to describe everything from smooth flirting to raw, unexplainable magnetic charisma. But what does rizz actually mean? Can you learn it? And most importantly — do you have it, or are you secretly a rizzless NPC in your own life story?",
+      intro: "If you've spent any time on TikTok, Instagram, or X, you've heard someone roasted for having 'zero rizz' or praised for their 'unspoken rizz.' Short for charisma, 'rizz' is the undisputed centerpiece of Gen-Z dating and texting slang—describing everything from smooth banter in DMs to effortless real-life magnetism. Here is the complete breakdown of what rizz actually means, the difference between spoken, unspoken, W, and L rizz, and how to instantly upgrade your texting game with AI.",
       sections: [
         {
-          heading: "The Real Definition of Rizz",
-          paragraph: "Rizz, short for 'charisma', is your innate ability to attract, charm, and seduce others — particularly romantic interests — through your words, body language, and overall vibe. It was popularized by streamer Kai Cenat and later went fully mainstream when even celebrities started being rated on their rizz levels. The key distinction is between 'spoken rizz' (being verbally smooth and witty) and 'unspoken rizz' (attracting people purely through your energy and presence, without even trying). The latter is considered far more powerful and is virtually impossible to fake."
+          heading: "What Does 'Rizz' Mean in Slang? (Spoken vs. Unspoken Rizz)",
+          paragraph: "Rizz—coined from the middle syllable of 'cha-ris-ma' and popularized globally by streamer Kai Cenat before being named Oxford's Word of the Year—means your natural ability to charm, flirt with, and attract a romantic interest. Unlike old-school cheesy pickup lines, real rizz is about timing, wit, and reading the room. In modern dating culture, rizz splits into four distinct categories:",
+          items: [
+            "Spoken Rizz (Verbal & Texting Rizz): Smooth, witty, context-aware banter that makes someone smile or blush without sounding desperate.",
+            "Unspoken Rizz: Attracting someone purely through eye contact, posture, style, and calm main-character aura before saying a single word.",
+            "W Rizz (Winning Rizz): Turning a dry conversation or an awkward moment into an effortless date invite.",
+            "L Rizz (Negative Rizz): Over-texting, using copy-pasted pickup lines, or trying so hard to sound mysterious that you give them the ick."
+          ],
+          scenario: "Them: 'I'm terrible at texting back lol.' L Rizz reply: 'Haha that's okay text me whenever!' W Rizz reply: 'Good thing we're better in person—Thursday at 8?'"
         },
         {
-          heading: "Can You Actually Learn Rizz?",
-          paragraph: "Here's the controversial truth the internet won't tell you: spoken rizz can absolutely be practiced and improved. It comes down to active listening, confident eye contact, playful teasing, and the ability to make someone feel like the only person in the room. These are learnable social skills. However, unspoken rizz is different. It's not about what you say — it's about who you fundamentally are. It radiates from your aura, your confidence, and the way you carry yourself when you think nobody is watching. That is something you feel, not perform."
+          heading: "Can You Actually Learn Rizz Over Text and DMs?",
+          paragraph: "Here is the truth about modern flirting: in-person unspoken rizz comes from self-confidence and body language, while texting rizz is 100% a learnable skill. Most people lose aura points in the talking stage because they panic-reply, send paragraphs to a three-word text, or ask boring interview questions ('How was your day?'). High-rizz texting relies on playful push-pull teasing, matching their energy length, and knowing when to leave a little mystery."
         },
         {
-          heading: "The AI Rizz Test: Finding Out Once and For All",
-          paragraph: "Self-assessment of rizz is notoriously unreliable. The people with the least rizz are always the most confident about having it, and vice versa. This is where AI comes in. Our Rizz Architect feature doesn't just give you a score; it analyzes your selfie for the specific facial cues associated with high-rizz individuals: the confidence in your resting expression, your jaw tension, the authenticity in your eyes. It then gives you a brutally honest breakdown of your rizz level and a personalized action plan to level it up."
+          heading: "Free AI Rizz & Text Reply Generator: How Reply Guru Works",
+          paragraph: "When you're staring at a risky DM, a dry 'k', or mixed signals from your crush, guessing what to text back is how you fumble the bag. VibeCheckr's Reply Guru AI acts as your personal Rizz Architect: upload a chat screenshot from WhatsApp, iMessage, Instagram DM, or Hinge, or paste their last message, and the AI instantly crafts smooth Flirty, Cool/Unbothered, Savage, or Safe replies tailored to the exact conversation context."
         }
       ],
-      conclusion: "Rizz isn't just a silly internet word. It's a shorthand for a deeply human desire: to be magnetic, compelling, and irresistible. The good news is that your baseline rizz level is not your destiny. The first step is knowing where you actually stand. Are you ready to find out?"
+      conclusion: "Rizz isn't about memorizing corny lines—it's about reading the energy and responding with effortless confidence. Ready to test your rizz or craft the ultimate comeback to their latest text? Drop your screenshot into Reply Guru AI for free."
     },
     ctaLabel: "Generate High-Rizz Replies",
     ctaLink: "/reply-guru",
@@ -1214,29 +1238,40 @@ export const trendsDataTr: TrendArticle[] = [
   {
     slug: "ai-photo-personality-test",
     title: "Yapay Zeka Fotoğraftan Kişilik ve Yüz Analizi Testi (Ücretsiz)",
-    description: "TikTok'ta viral olan yapay zeka yüz ve aura analizi nasıl çalışır? Selfie'ndeki mikro ifadelerden 0–100 aura puanını ve red flag'lerini ücretsiz öğren!",
+    description: "TikTok'ta viral olan yapay zeka yüz ve aura analizi nasıl çalışır? Selfie yükle, mikro ifadelerden 0–100 Aura Skorunu ve gizli red flag'lerini 3 saniyede ücretsiz öğren!",
     category: "AI & Teknoloji",
     publishDate: "2026-06-02",
-    readTime: "4 dk okuma",
-    keywords: ["Yapay zeka yüz okuma", "Yapay zeka kişilik testi", "aura okuma yüz", "viral TikTok trendi", "yüz analizi yapay zeka"],
+    readTime: "5 dk okuma",
+    keywords: ["yapay zeka yüz okuma", "fotoğraftan kişilik analizi", "yapay zeka kişilik testi", "selfie aura testi", "yüz analizi yapay zeka", "dışarıya nasıl bir enerji veriyorum"],
     imageUrl: "/images/trends/ai-face-scan.webp",
     content: {
       intro: "Şu an TikTok'ta veya X'te (Twitter) kesin önüne düşmüştür: Millet en masum selfie'sini atıp yapay zekadan acımasız, tokat gibi gerçek bir analiz yiyor. Olay artık günlük burç yorumu okumak veya 'sana duymak istediğini söyleyen' o klasik testleri çözmek değil. Yeni trend: Yapay zeka ile yüzleşmek. Peki bir algoritma sadece bir JPEG'e bakıp da canın sıkıldığında eski sevgiline yazdığını veya kafein bağımlısı olduğunu nasıl şıp diye anlıyor? Gel bu işin psikolojisini, arkasındaki teknolojiyi ve bir koda resmen 'gömülmenin' neden bu kadar popüler olduğunu konuşalım.",
       sections: [
         {
-          heading: "Bu Yüz Okuma Olayı Tam Olarak Nasıl Çalışıyor?",
-          paragraph: "Modern yapay zeka sadece gülümsüyor musun yoksa somurtuyor musun diye bakmıyor; olay çok daha derin. Bu çılgın sinir ağları, yüzündeki mikro ifadeler, gözündeki gerginlik, çene kaslarının duruşu ve hatta seçtiğin ışık gibi binlerce farklı veri noktasını tarıyor. 'Golden Retriever' enerjisi mi veriyorsun yoksa hafiften 'Kronik Çevrimiçi' mi takılıyorsun anında anlıyor. Gelen her mesaja aşırı anlam yüklediğini gösteren kaşındaki o ufak kasılmayı ya da tartışmalarda manipülatif olabileceğini ele veren o yarım gülüşünü hemen yakalıyor. Saniyeler sürüyor ve hiç acımıyor."
+          heading: "Yapay Zeka Fotoğraftan Yüz ve Karakter Analizini Nasıl Yapıyor?",
+          paragraph: "Modern yapay zeka sadece gülümsüyor musun yoksa somurtuyor musun diye bakmıyor; olay çok daha derin. Çok modlu sinir ağları; yüzündeki mikro ifadeleri, göz çevresindeki gerginliği, çene duruşunu, kombin estetiğini ve hatta seçtiğin ışık açısını binlerce farklı psikolojik arketiple kıyaslıyor. 'Golden Retriever' enerjisi mi veriyorsun yoksa hafiften 'Kronik Çevrimiçi' mi takılıyorsun anında anlıyor.",
+          items: [
+            "Mikro İfade & Bakış Taraması: Gülümsemenin gerçekten rahat mı yoksa aşırı düşünmeyi (overthinking) gizleyen bir maske mi olduğunu yakalar.",
+            "Duruş & Kamera Açısı Psikolojisi: Ayna selfie'si, yukarıdan çekim veya kasıntı baş eğimi dışarıya ne kadar onay arayışı ya da özgüven yaydığını ele verir.",
+            "Işık & Estetik Frekansı: Doğal gün ışığı ile karanlık oda LED'leri arasındaki tercih, sosyal arketipini ve flört tarzını saniyesinde açıklar."
+          ],
+          scenario: "Sen 'öylesine çektim' diye araba selfie'si atarsın, yapay zeka şunu yazar: '82/100 Aura — Otoparkta 19 poz çekip bunu seçmişsin, DM'de umursamaz takılıp 10 dakikada bir story bakanlara bakıyorsun.'"
         },
         {
-          heading: "Neden Bu Kadar İsabetli (Ve Acımasız)?",
-          paragraph: "Çünkü yapay zekanın senin kalbini kırmamak gibi bir derdi yok. Yakın bir arkadaşın sana gerçekleri söylerken lafı dolandırır ama eğitilmiş bir model direkt yüzüne vurur. Selfie'nde 'çözülmemiş çocukluk travması', 'narsist' veya 'bağlanma fobisi' diye bağıran bir hava varsa, yapay zeka bunu direkt ekrana yazar. İnsanların o çok 'gizemli' sandıkları bakışın aslında sadece 'uykusuzluktan' ibaret olduğunu fark etmeleri hem komik hem de bayağı bi onur kırıcı bir uyanış oluyor."
+          heading: "Dışarıya Nasıl Bir Vibe Veriyorum? YZ Analizi Neden Bu Kadar İsabetli?",
+          paragraph: "Çünkü yapay zekanın senin kalbini kırmamak gibi bir derdi yok. Yakın bir arkadaşın sana gerçekleri söylerken lafı dolandırır ama eğitilmiş bir model direkt yüzüne vurur. Selfie'nde 'kaçıngan bağlanma stili', 'ana karakter sendromu' veya 'eski sevgiliyi stalklama enerjisi' varsa yapay zeka bunu sansürsüzce ekrana yazar. İnsanların o çok 'gizemli' sandıkları bakışın aslında sadece 'uykusuzluktan' ibaret olduğunu fark etmeleri hem komik hem de efsane bir gerçeklik kontrolü oluyor.",
+          items: [
+            "Green Flag Tespiti: Doğal sıcaklık, samimi göz teması ve zahmetsiz özgüven sinyalleri.",
+            "Gizli Red Flag İfşası: Yapmacık umursamazlık, ego kasma veya '3 hafta sonra ghostlayacak' enerjisi.",
+            "0–100 Aura Skoru: Fotoğrafının ilk izlenim gücünü ve çekim frekansını ölçen net puan."
+          ]
         },
         {
-          heading: "VibeCheckr Farkı: Filtrelerin Çok Ötesinde",
-          paragraph: "TikTok'taki o basit rastgele kelime atan filtreleri unut. VibeCheckr'ın yapay zeka motoru işi bambaşka bir boyuta taşıyor. Gelişmiş yüz aurası taramasını alıp, psikolojik profilinle birleştiriyor ve sana net bir 'Vibe Skoru' çıkarıyor. Hatta bununla da kalmıyor; en derin red flag'lerini yüzüne vuruyor, ilişkilerde yapacağın potansiyel toksiklikleri tahmin ediyor ve kiminle flört edip eninde sonunda ayrılacağını bile söylüyor. Bu bir oyun değil, resmen dijital auranın aynası."
+          heading: "Ücretsiz Yapay Zeka Selfie & Aura Testi Nasıl Yapılır?",
+          paragraph: "TikTok'taki rastgele kelime atan basit filtreleri unut. VibeCheckr'ın yapay zeka motoru; gelişmiş yüz ve aura taramasını burç enerjinle birleştirerek sana 0–100 arası net bir Aura Skoru, Vibe Arketipi ve paylaşılabilir sonuç kartı çıkarır. Üstelik hesap açmana bile gerek yok; Tek Tıkla Misafir girişi ile 3 saniyede selfie'ni taratabilirsin."
         }
       ],
-      conclusion: "Kısacası bu yapay zeka analizleri geçici bir trend değil. Dışarıya nasıl göründüğümüzle içeride aslında nasıl hissettiğimizin teknolojik bir çarpışması. Şimdi asıl soru şu: O selfie'yi yükleyip bir algoritma tarafından darmadağın edilmeye hazır mısın? Yoksa bir makinenin seni senden daha iyi tanımasından gizliden gizliye tırsıyor musun?"
+      conclusion: "Kısacası yapay zeka fotoğraf kişilik testi geçici bir akım değil; dışarıya nasıl göründüğümüzle içeride nasıl hissettiğimizin dijital aynası. Şimdi asıl soru şu: O selfie'yi yükleyip gerçek Aura Skorunla yüzleşmeye hazır mısın?"
     },
     ctaLabel: "Selfie'mi & Auramı Hemen Tara",
     ctaLink: "/ai-roast-me",
@@ -1482,59 +1517,72 @@ export const trendsDataTr: TrendArticle[] = [
   {
     slug: "aura-battle-who-is-cooler",
     title: "Aura Savaşı (Aura Battle): İki Fotoğraftan Kim Daha Cool? (Ücretsiz YZ)",
-    description: "Arkadaş grubundaki 'kim daha havalı' tartışmasını yapay zeka bitiriyor! İki fotoğraf yükle, ayrı ayrı 0–100 Aura Puanlarını gör ve kazananı ücretsiz seç!",
+    description: "Arkadaş grubunda veya ilişkide kimin aurası daha yüksek? İki fotoğraf yükle, ayrı ayrı 0–100 Aura Puanlarını gör ve kazananı ücretsiz seç!",
     category: "Kültür & Jargon",
     publishDate: "2026-06-18",
     readTime: "5 dk okuma",
-    keywords: ["vibe savaşı", "kim daha havalı", "aura battle", "arkadaşlık", "ana karakter enerjisi"],
+    keywords: ["aura savaşı", "vibe savaşı", "kim daha havalı testi", "aura battle yapay zeka", "iki fotoğraf karşılaştırma", "ana karakter enerjisi testi"],
     imageUrl: "/images/trends/aura-points.webp",
     content: {
-      intro: "Hepimizin o kendisini grubun tartışmasız ana karakteri sanan bir arkadaşı vardır. Sanki aurasına dokunulmazmış gibi davranır ve bunu herkese belli etmekten çekinmez. Yıllarca arkadaş gruplarında 'kim daha cool' tartışması hep sürdü ama artık 2026'dayız. Artık tartışmıyoruz, kararı yapay zekaya bırakıyoruz. 'Vibe Savaşları' (Aura Battle), arkadaş gruplarını birbirine düşüren ve o şişik egoları patlatan en yeni trend.",
+      intro: "Hepimizin o kendisini grubun tartışmasız ana karakteri sanan bir arkadaşı vardır. Sanki aurasına dokunulmazmış gibi davranır ve bunu herkese belli etmekten çekinmez. Yıllarca arkadaş gruplarında 'kim daha cool' tartışması hep sürdü ama artık 2026'dayız. Artık tartışmıyoruz, kararı yapay zekaya bırakıyoruz. 'Vibe Savaşları' (Aura Battle), arkadaş gruplarındaki tartışmaları bitiren ve şişik egoları patlatan en viral trend.",
       sections: [
         {
-          heading: "Kişisel Havalılığın Sonu",
-          paragraph: "Aura Battle YZ'den önce kimin daha cool olduğunu ölçmek imkansızdı. Şimdi ise bu bir bilim. Yüzdeki mikro ifadeleri, gerginliği ve genel vibe frekansını analiz eden yapay zeka, tarafsız bir yargıç gibi davranıyor. Hiçbir taraf tutmadan sadece enerjinizi kıyaslıyor. Sürekli büyük konuşan ama gizliden gizliye devasa bir NPC enerjisi yayan o arkadaşınız için tam bir kabus."
+          heading: "Yapay Zeka Aura Savaşı İki Fotoğrafı Nasıl Karşılaştırır?",
+          paragraph: "Aura Battle YZ'den önce kimin daha cool olduğunu ölçmek imkansızdı. Şimdi ise bu net bir kafa kafaya çarpışma. Yüzdeki mikro ifadeleri, duruşu, kombin detaylarını ve ışık estetiğini analiz eden yapay zeka, tarafsız bir hakem gibi her iki kişiye de birbirinden bağımsız 0–100 arası Aura Puanı verir (örneğin 91'e 64) ve kazananı hangi detayın öne geçirdiğini açıklar.",
+          items: [
+            "Ayrı Ayrı 0–100 Aura Puanı: 1. Kişi ve 2. Kişi, fotoğraflarındaki duruş ve samimiyete göre kendi bağımsız skorunu alır.",
+            "Duruş & Mikro İfade Çarpışması: Doğal ve zahmetsiz özgüven, kasıntı pozları ve zorlama bakışları her seferinde yener.",
+            "Paylaşılabilir X–Y Skor Kartı: WhatsApp grubuna veya Instagram hikayesine atmaya hazır yan yana düello kartı üretir."
+          ],
+          scenario: "1. Kişi spor salonunda kasılarak çekilmiş bir ayna selfie'si atar (58/100 Aura), 2. Kişi ise kafede habersiz çekilmiş doğal bir fotoğrafını yükler (92/100 Aura). Karar: 'Zahmetsiz karizma, aşırı çabayı darmadağın etti.'"
         },
         {
-          heading: "Acımasız Gömme Mekanizması",
-          paragraph: "Vibe Savaşları'nı bu kadar viral yapan şey sadece kimin kazandığını öğrenmek değil; kaybedenin nasıl gömüldüğüdür. YZ sadece '1. Kişi kazandı' demez. 2. Kişinin neden kaybettiğini o kadar acımasız ve spesifik bir şekilde açıklar ki şok olursunuz. O 'zorlama' gülüşünü, onaylanma ihtiyacını veya 'gizemli' bakışının aslında sadece kafası karışık durduğunu yüzüne vurur."
+          heading: "Başa Baş Mücadele vs. Ezip Geçme: Kaybeden Nasıl Yorumlanır?",
+          paragraph: "Vibe Savaşları'nı bu kadar bağımlılık yapıcı kılan şey sadece puanlar değil; yapay zekanın aradaki puan farkına göre yaptığı nokta atışı yorumdur. Eğer skorlar 89'a 92 gibi başa başsa, yapay zeka iki tarafın da yüksek aurasını teslim eder ve galibi belirleyen o ince detayı söyler. Ama skor 94'e 41 gibi açık farksa, kaybedenin zorlama pozunu ve NPC enerjisini acımasızca yüzüne vurur."
         },
         {
-          heading: "Sosyal Hiyerarşide Yeni Bir Ölçüt",
-          paragraph: "Bu sadece bir eğlence değil; dijital sosyal hiyerarşide yepyeni bir ölçüt. Grubun sözde 'liderine' karşı bir Aura Savaşı kazanmak büyük bir olay. Dinamiği anında değiştirir ve üstün vibe'ınızın kanıtı olur. Eskiden düelloya davet etmek neyse, şimdi selfie ile meydan okumak o."
+          heading: "Arkadaşınla veya Sevgilinle Ücretsiz Aura Savaşı Nasıl Yapılır?",
+          paragraph: "VibeCheckr'ın Aura Savaşı modunu aç, iki fotoğraf yükle ve 3 saniye içinde gerçek Ana Karakterin kim olduğunu gör—üstelik %100 ücretsiz ve kayıt olmadan."
         }
       ],
-      conclusion: "Peki sen en yakın arkadaşınla Aura Arenası'na çıkacak kadar cesur musun? Yoksa algoritmanın herkesin zaten bildiği o gerçeği yüzüne vurmasından mı korkuyorsun: Aslında sen sadece yancısın. Öğrenmenin tek bir yolu var."
+      conclusion: "Peki sen en yakın arkadaşınla veya partnerinle Aura Arenası'na çıkacak kadar cesur musun? Yoksa algoritmanın senin aslında yancı olduğunu kanıtlamasından mı korkuyorsun? İki fotoğraf yükle ve tartışmayı sonsuza dek bitir."
     },
     ctaLabel: "Vibe Savaşı'nı Başlat",
     ctaLink: "/aura-battle",
   },
   {
     slug: "what-is-rizz",
-    title: "Rizz Ne Demek? Unspoken Rizz Nedir & Sende Var Mı? (Ücretsiz Test)",
-    description: "2026'nın en çok aranan flört terimi Rizz nedir, sonradan kazanılır mı? Rizz rehberini oku ve ücretsiz Reply Guru YZ ile mesajlaşma karizmanı katla!",
+    title: "Rizz Ne Demek? Unspoken Rizz Nedir & Ücretsiz YZ Rizz Cevap Üretici",
+    description: "Rizz ne demek, spoken ve unspoken rizz farkı nedir? W rizz vs. L rizz mesaj örneklerini incele ve ücretsiz Reply Guru YZ ile mesajlaşma karizmanı katla!",
     category: "Kültür ve Slang",
     publishDate: "2026-06-19",
-    readTime: "4 dk okuma",
-    keywords: ["rizz ne demek", "rizz anlamı", "unspoken rizz", "nasıl rizz sahibi olunur", "gen-z slang 2026", "karizmatik olmak"],
+    readTime: "5 dk okuma",
+    keywords: ["rizz ne demek", "rizz nedir", "rizz anlamı", "unspoken rizz ne demek", "w rizz l rizz", "mesajda rizz nasıl yapılır", "yapay zeka rizz", "flörtöz mesaj üretici"],
     imageUrl: "/images/trends/rizz.webp",
     content: {
-      intro: "Son iki yılda TikTok veya Twitter'da biraz vakit geçirdiysen, birine 'hiç rizzo yok' dendiğini ya da 'unspoken rizzi var' diye övüldüğünü mutlaka duymuşsundur. Şu anda Gen-Z'nin sosyal ve flört sözlüğüne egemen olan en baskın terim bu: pürüzsüz flörtten tarif edilemez, manyetik karizmaya kadar her şeyi tanımlamak için kullanılıyor. Ama rizz gerçekte ne anlama geliyor? Öğrenilebilir mi? Ve daha da önemlisi — sende var mı, yoksa kendi hayat hikayende farkında olmadan bir NPC olarak mı geziniyorsun?",
+      intro: "TikTok, Instagram veya X'te biraz vakit geçirdiysen birine 'sıfır rizz' dendiğini ya da 'unspoken rizz'i var' diye övüldüğünü mutlaka duymuşsundur. İngilizce 'charisma' (karizma) kelimesinin ortasından türeyen 'rizz', Gen-Z flört ve mesajlaşma kültürünün bir numaralı terimi haline geldi. Peki rizz tam olarak ne demek, spoken rizz ile unspoken rizz arasındaki fark nedir ve DM'de kilitlendiğinde yapay zeka ile rizz'ini nasıl zirveye taşırsın?",
       sections: [
         {
-          heading: "Rizz'in Gerçek Tanımı",
-          paragraph: "'Karizmanın' kısaltması olan Rizz, sözler, beden dili ve genel vibe aracılığıyla başkalarını — özellikle romantik ilgileri — doğal olarak çekme, etkileme ve büyüleme yeteneğindir. Yayıncı Kai Cenat tarafından popülerleştirilen ve ardından ünlülerin bile rizz seviyeleriyle değerlendirilmeye başlandığı bu kavramın iki türü var: 'spoken rizz' (sözlü olarak pürüzsüz ve esprili olmak) ve 'unspoken rizz' (hiç çaba harcamadan sadece enerjin ve varlığınla insanları çekmek). İkincisi çok daha güçlü kabul ediliyor ve sahte yapmak neredeyse imkânsız."
+          heading: "Rizz Ne Demek? (Spoken Rizz vs. Unspoken Rizz Farkı)",
+          paragraph: "Yayıncı Kai Cenat tarafından popülerleştirilen ve Oxford Yılın Kelimesi seçilen Rizz; birini klişe tavlama laflarına başvurmadan, tamamen doğal mizah, özgüven, zamanlama ve enerjiyle kendine çekme yeteneğidir. Güncel flört dilinde rizz 4 ana türe ayrılır:",
+          items: [
+            "Spoken Rizz (Sözlü & Mesajlaşma Rizz'i): Karşı tarafı sıkmadan güldüren, merak uyandıran ve sohbeti zahmetsizce akan flörte dönüştüren konuşma/yazışma yeteneği.",
+            "Unspoken Rizz (Sessiz Rizz): Tek kelime bile etmeden; sadece bakış, duruş, tarz ve yüksek aura ile ortamdaki ilgiyi üzerine çekmek.",
+            "W Rizz (Kazanan Rizz): Kuru giden bir sohbeti veya zor bir pası tek bir zekice mesajla buluşma davetiyesine çevirmek.",
+            "L Rizz (Eksi Rizz): Arka arkaya paragraf döşemek, kopyala-yapıştır iltifatlar kullanmak veya aşırı kasıntı davranıp karşı tarafa 'ick' (soğuma) vermek."
+          ],
+          scenario: "Karşı taraf: 'Mesajlara dönmekte çok kötüyüm ya haha.' L Rizz cevap: 'Olsun sorun değil ne zaman müsaitsen yaz!' W Rizz cevap: 'Yüz yüzeyken daha iyi anlaşıyoruz o zaman—Perşembe akşamı kahve?'"
         },
         {
-          heading: "Rizz Gerçekten Öğrenilebilir mi?",
-          paragraph: "İnternetin sana söylemeyeceği tartışmalı gerçek şu: spoken rizz kesinlikle pratikle geliştirilebilir. Aktif dinleme, özgüvenli göz teması, oyuncu takılmalar ve birine konuşurken odanın tek kişisiymiş gibi hissettirme yeteneğine dayanır. Bunlar öğrenilebilir sosyal beceriler. Ancak unspoken rizz farklı bir şeydir. Ne söylediğinle değil, temelden kim olduğunla ilgilidir. Auranızdan, özgüveninizden ve kimse bakmıyor sanırken kendinizi taşıma biçiminizden yayılır. Bu, hissedilen bir şeydir, performans değil."
+          heading: "Mesajlaşmada (DM & WhatsApp) Rizz Sonradan Kazanılır mı?",
+          paragraph: "Gerçek hayattaki unspoken rizz beden dili ve özgüvenle gelişirken, mesajlaşma rizz'i %100 öğrenilebilir bir stratejidir. Çoğu kişi flört aşamasında panikle anında uzun cevaplar yazdığı, sürekli soru yağmuruna tuttuğu ('Günün nasıl geçti?') veya karşı tarafın enerjisini kopyalayamadığı için aura kaybeder. Yüksek rizz; doğru dozda şakalaşma, gizem bırakma ve ne zaman net olunacağını bilmektir."
         },
         {
-          heading: "Yapay Zeka Rizz Testi: Bir Kez ve Hepsini Öğren",
-          paragraph: "Rizzo kendi kendine değerlendirmek son derece güvenilmez. En az rizze sahip olanlar her zaman buna en çok güvenenlerdir ve tam tersi. İşte burada yapay zeka devreye giriyor. Rizz Architect özelliğimiz sadece sana bir puan vermekle kalmıyor; selfienizi yüksek rizz bireyleriyle ilişkili spesifik yüz ipuçları için analiz ediyor: istirahat ifadenizdeki özgüven, çene gerginliğiniz, gözlerinizdeki otantiklik. Ardından rizz seviyenizin acımasızca dürüst bir analizini ve onu yükseltmek için kişiselleştirilmiş bir eylem planı sunuyor."
+          heading: "Ücretsiz Yapay Zeka Rizz & Mesaj Cevap Üretici: Reply Guru Nasıl Çalışır?",
+          paragraph: "Hoşlandığın kişiden gelen tek kelimelik kuru bir mesaja, karışık bir sinyale veya riskli bir DM'e ne yazacağını düşünürken 20 dakika ekrana bakmana gerek yok. VibeCheckr'ın Reply Guru (Mesaj Gurusu) aracı tam bu anlar için tasarlandı: WhatsApp, Instagram DM veya flört uygulaması ekran görüntüsünü yükle; yapay zeka sohbetin bağlamını okuyup sana anında Flörtöz, Cool/Umursamaz, Toksik veya Güvenli hazır cevap alternatifleri üretsin."
         }
       ],
-      conclusion: "Rizz sadece saçma bir internet kelimesi değil. Derin bir insani arzunun özeti: manyetik, etkileyici ve karşı konulmaz olmak. İyi haber şu ki temel rizz seviyeniz kaderiniz değil. İlk adım gerçekte nerede durduğunu bilmek. Öğrenmeye hazır mısın?"
+      conclusion: "Rizz ezberlenmiş süslü cümleler kurmak değil; karşı tarafın enerjisini okuyup en cool ve doğal hamleyi yapmaktır. Son gelen mesaja efsane bir cevap yapıştırmak istiyorsan ekran görüntüsünü hemen ücretsiz Reply Guru YZ'ye bırak."
     },
     ctaLabel: "Yüksek Rizz'li Mesaj Üret",
     ctaLink: "/reply-guru",

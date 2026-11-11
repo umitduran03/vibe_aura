@@ -13,9 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Vibe Kültür Merkezi — Gen-Z İlişki Rehberleri, Red Flag & Aura Trendleri",
+      title: "İlişki Rehberleri, Red Flag, Rizz & Vibe Check Trendleri | VibeCheckr",
       description:
-        "Situationship psikolojisi, ick nedir, delulu belirtileri, burç red flag'leri ve aura puanı rehberleri. 30+ analiz yazısını oku ve ücretsiz YZ testlerini dene!",
+        "Situationship ne demek, ick nedir, rizz nasıl yapılır, delulu belirtileri ve 0–100 aura puanı rehberleri. 30+ analiz yazısını oku ve ücretsiz YZ testlerini dene!",
       keywords: [
         "vibe trendleri",
         "gen-z trendleri 2026",
@@ -51,9 +51,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Vibe Culture Hub — Gen-Z Dating Psychology, Red Flags & Aura Guides",
+    title: "Gen-Z Dating, Red Flags, Rizz & Aura Guides — Vibe Culture Hub | VibeCheckr",
     description:
-      "30+ deep dives on Gen-Z dating trends, aura points, situationship red flags, attachment styles, rizz & texting anxiety — plus free instant AI vibe tests!",
+      "What is a vibe check, rizz, the ick, delulu & aura points? Read 30+ Gen-Z dating psychology & texting guides — plus try our free instant AI vibe tests!",
     keywords: [
       "gen-z trends 2026",
       "vibe check culture",

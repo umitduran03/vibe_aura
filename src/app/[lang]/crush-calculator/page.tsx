@@ -189,7 +189,9 @@ export default async function CrushCalculatorLanding({ params }: { params: Promi
           className="mb-16"
         >
           <h2 className="text-2xl font-black text-white mb-2">
-            {isTr ? "Gerçek Örnekler" : "Real Scenarios"}
+            {isTr
+              ? "Hoşlandığın Kişi Seni Seviyor Mu? Gerçek Crush Analiz Örnekleri"
+              : "Does My Crush Like Me? Real AI Crush Compatibility Examples"}
           </h2>
           <p className="text-white/50 text-sm mb-6">
             {isTr ? "Kullanıcıların aldığı gerçek sonuçlardan örnekler" : "Examples from real user results"}
@@ -214,7 +216,9 @@ export default async function CrushCalculatorLanding({ params }: { params: Promi
           className="mb-16"
         >
           <h2 className="text-2xl font-black text-white mb-2">
-            {isTr ? "Benzer Araçlar" : "Related Tools"}
+            {isTr
+              ? "Diğer Ücretsiz Flört, Delulu ve Mesaj Analiz Araçları"
+              : "More Free AI Crush, Delulu & Texting Analysis Tools"}
           </h2>
           <p className="text-white/50 text-sm mb-6">
             {isTr ? "Bunları da beğenebilirsin" : "You might also like these"}

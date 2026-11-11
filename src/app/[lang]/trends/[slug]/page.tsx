@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: "VibeCheckr",
       type: "article",
       publishedTime: article.publishDate,
-      modifiedTime: "2026-11-06",
+      modifiedTime: "2026-11-11",
       authors: ["VibeCheckr AI"],
       images: [resolvedImage],
       locale: localeKey === "tr" ? "tr_TR" : "en_US",
@@ -94,7 +94,12 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
 
   const pageUrl = `${baseUrl}/${localeKey}/trends/${article.slug}`;
 
-  // Article + BreadcrumbList JSON-LD Schema for Google Discover and Rich Results
+  const ctaHref =
+    article.ctaLink === "/"
+      ? `/${resolvedParams.lang}`
+      : `/${resolvedParams.lang}${article.ctaLink}`;
+
+  // Article + FAQPage + BreadcrumbList JSON-LD Schema for Google Discover and Rich Results
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -118,11 +123,25 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
         },
       },
       datePublished: article.publishDate,
-      dateModified: "2026-11-06",
+      dateModified: "2026-11-11",
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": pageUrl,
       },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: article.content.sections.map((sec) => ({
+        "@type": "Question",
+        name: sec.heading.trim().endsWith("?")
+          ? sec.heading.trim()
+          : `${sec.heading.trim()}?`,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: sec.paragraph,
+        },
+      })),
     },
     {
       "@context": "https://schema.org",
@@ -172,7 +191,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
         </div>
 
         {/* Header */}
-        <header className="mb-12">
+        <header className="mb-10">
           <div className="flex flex-wrap items-center gap-3 mb-6 text-sm font-medium text-white/50">
             <span className="text-indigo-400">{article.category}</span>
             <span>•</span>
@@ -187,6 +206,24 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
             {article.content.intro}
           </p>
         </header>
+
+        {/* Quick Above-the-Fold Interactive Tool Callout */}
+        <div className="mb-12 p-5 rounded-2xl bg-indigo-950/40 border border-indigo-500/30 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start sm:items-center gap-3">
+            <Sparkles className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5 sm:mt-0" />
+            <p className="text-sm text-white/80 font-medium">
+              {isTr
+                ? "Ücretsiz yapay zeka aracımızla kendi fotoğrafını veya mesajını 3 saniyede test et:"
+                : "Test your own selfie or chat screenshot in 3 seconds with our free AI tool:"}
+            </p>
+          </div>
+          <Link
+            href={ctaHref}
+            className="inline-flex items-center justify-center shrink-0 px-5 py-2.5 rounded-full bg-indigo-500 hover:bg-indigo-400 text-white text-sm font-bold tracking-wide transition-all"
+          >
+            {article.ctaLabel} →
+          </Link>
+        </div>
 
         {/* Hero Image */}
         {article.imageUrl && (
