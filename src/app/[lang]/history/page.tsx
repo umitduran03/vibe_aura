@@ -202,8 +202,10 @@ export default function HistoryPage() {
                 </h3>
               </div>
               {sharingItem.score !== undefined && sharingItem.score !== null && (
-                <div className="text-[40px] font-black tabular-nums tracking-tighter leading-none drop-shadow-lg" style={{ color: sharingItem.color }}>
-                  {sharingItem.score}
+                <div className="text-[40px] font-black tabular-nums tracking-tighter leading-none drop-shadow-lg shrink-0" style={{ color: sharingItem.color }}>
+                  {typeof sharingItem.person1Score === "number" && typeof sharingItem.person2Score === "number"
+                    ? `${sharingItem.person1Score}-${sharingItem.person2Score}`
+                    : sharingItem.score}
                 </div>
               )}
             </div>
@@ -350,7 +352,9 @@ export default function HistoryPage() {
                     
                     {item.score !== undefined && item.score !== null && (
                       <div className="text-[28px] font-black tabular-nums tracking-tighter leading-none drop-shadow-md shrink-0" style={{ color: item.color }}>
-                        {item.score}
+                        {typeof item.person1Score === "number" && typeof item.person2Score === "number"
+                          ? `${item.person1Score}-${item.person2Score}`
+                          : item.score}
                       </div>
                     )}
                   </div>

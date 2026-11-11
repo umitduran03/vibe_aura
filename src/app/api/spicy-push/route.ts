@@ -36,9 +36,9 @@ async function generateSpicyNotification(zodiac: string, locale: string = "tr"):
     Write a SHORT (max 2 sentences), ruthless, and curiosity-inducing "Red Flag / Digital Gossip" push notification for the zodiac sign below.
     
     CRITICAL THEME INSTRUCTIONS:
-    Include astrological events (like Mercury retrograde, full moons) or aura drops to bait them into opening the app.
-    IMPORTANT: DO NOT make definitive claims about other people's actions (e.g. do not say "Someone is stalking you"). Instead, use words like "might be", "could be", or "seems like" to avoid misleading notifications.
-    Examples of the vibe: "Merkür retrosu başladı, auran çok düşük hissediliyor, hemen bi' vibe kontrolü yap" or "Someone might be lowering your vibe score right now...".
+    Reference astrological shifts, sudden aura fluctuations, or unspoken relationship/social tension to spark curiosity and make them want to open the app for a quick vibe check.
+    IMPORTANT: DO NOT make definitive claims about other people's actions (never state as a fact that someone is stalking or texting them). Instead, frame it around their own aura energy, cosmic timing, or playful "what if / could be" curiosity so notifications are never misleading.
+    Write a fresh, unpredictable hook every time—never repeat generic templates.
     
     The user will see this as a Push Notification on their phone, so they MUST feel compelled to CLICK it out of sheer curiosity or offense.
     Use emojis generously! ${langInstruction}

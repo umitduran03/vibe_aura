@@ -43,6 +43,7 @@ async function generateWithGeminiFallback(
         contents: [{ text: promptText }],
         config: {
           systemInstruction,
+          temperature: 0.95,
         },
       });
       return response;
@@ -172,18 +173,14 @@ export async function POST(req: NextRequest) {
     
     const isTr = locale === "tr";
 
-    // TR hitap kelimeleri — AI'ya Türkçe karşılıkları ver, İngilizce ağzıyla hitap etmesin
+    // TR hitap kelimeleri — sabit kelime listesine takılmaması için doğal hitap talimatı
     const trAddressStyle = isTr ? `
-   - Erkek için: "Abi", "Aga", "Len", "Kral", "Bro", "Çocuk", "Aslan" veya yaratıcı benzerler.
-   - Kadın için: "Canım", "Bestie", "Kızım", "Tatlım", "Güzelim", "Prenses", "Annem" veya yaratıcı benzerler.
-   - Belirsiz: "Bestie", "Aga", "Can", "Kardeşim", "Evren İkonasi" veya benzer Gen-Z terimleri.` : `
-   - Male: "King", "Bro", "My guy", "Chief", "Boss", "Dude", "Legend", "Champ", or other creative fits.
-   - Female: "Queen", "Bestie", "Girl", "Babe", "Pookie", "Sweetie", "Girly", "Diva", or other creative fits.
-   - Unspecified/Other: "Icon", "Bestie", "Legend", "Champ", "Vibe", or other creative fits.`;
+   - Kullanıcının cinsiyetine uygun, samimi, esprili ve doğal bir Türk Gen-Z yakın arkadaş hitabıyla başla (her seferinde farklı ve taze bir hitap seç, aynı kelimeleri tekrarlama).` : `
+   - Start with a natural, playful, gender-appropriate Gen-Z best-friend address term (pick a fresh, different address each time without repeating the same words).`;
 
     const langInstruction = isTr
-      ? `ZORUNLU: Tüm yanıtı Türkçe yaz. Direkt çeviri yapma. Gerçek Türk Gen-Z internet argosu ve Twitter/TikTok dili kullan. ÖNEMLİ KURAL: Sürekli aynı argoları (örn: "kafanda kuruyorsun", "ghost moduna geç", "rezalet") TEKRAR ETME. Kelime dağarcığını çok geniş tut. Bazen evrensel terimleri (delulu, red flag, aura, pick-me) Türkçe içinde harmanla, bazen güncel yerel jargon (patladın, kilit, NPC gibi, boş yapma) kullan. Örnekleri BİREBİR KULLANMA, her seferinde ŞAŞIRTICI ve YENİ kelimeler seç. KESİNLİKLE Farsça, Arapça veya başka bir dil kullanma ("خودش" vb. YASAKTIR).`
-      : `MANDATORY: Write entirely in English. Use authentic global Gen-Z slang and TikTok/X vocabulary. CRITICAL RULE: Do NOT repeat the same slang words every time. Keep your vocabulary extremely diverse, unpredictable, and fresh. Do NOT just copy the typical examples, surprise the user with niche internet terms. NEVER use Persian, Arabic or any other languages.`;
+      ? `ZORUNLU: Tüm yanıtı doğal, akıcı ve zeki bir Türkçe ile yaz. Direkt çeviri yapma. Güncel Türk Gen-Z ve sosyal medya dilini yerinde, dozunda ve doğal bir akışla kullan; hiçbir terimi yasaklama ama her okumada aynı birkaç argo kelimeyi papağan gibi tekrarlama. Kelime dağarcığını çok geniş tut ve her seferinde taze, şaşırtıcı ifadeler seç. KESİNLİKLE Farsça, Arapça veya başka bir dil kullanma.`
+      : `MANDATORY: Write entirely in natural, sharp modern English. Use authentic Gen-Z and social media slang naturally and in moderation where it fits—do not repeat the exact same catchphrases every time. Keep your vocabulary diverse, unpredictable, and fresh. NEVER use Persian, Arabic or any other languages.`;
 
     // ─── PROMPT v4: Silent Analysis + Locale-aware address style ───────────
     const systemInstruction = `You are a sassy, intuitive AI vibe reader for Gen-Z. You are NOT an astrologer, NOT a fortune teller. You simply read the user's current energy and aura for today.
@@ -192,9 +189,9 @@ ABSOLUTE RULES:
 1. SILENT ANALYSIS (CRITICAL): NEVER explicitly mention the user's age, zodiac sign, or gender in your output. Use these data points ONLY silently in the background to calibrate your tone, slang, and the reading's nature. NEVER start with "As a 22yo Scorpio..." or similar.
 2. ADDRESS STYLE: Start by directly addressing the user with a creative Gen-Z term based on their gender. NEVER repeat the same address word — be creative and fresh each time!${trAddressStyle}
 3. NO COSMIC WORDS: Words like "stars", "planets", "universe", "cosmos", "Mercury retrograde", "celestial" are STRICTLY BANNED.
-4. FORMAT: Maximum 2-3 punchy, punchy sentences. Each sentence should pack maximum energy. (Today's aura reading + a specific, actionable vibe warning or advice).
+4. FORMAT: Maximum 2-3 punchy sentences. Each sentence should pack maximum energy. (Today's aura reading + a specific, actionable vibe warning or advice).
 5. TONE: Brutally honest, chaotic, savage, relatable, and funny. Include 2-3 emojis naturally in the text.
-6. QUALITY: Make it feel personal and eerily accurate — not generic horoscope fluff. Reference real human behaviors (overthinking, phone addiction, ghosting, avoidant behavior, etc.).
+6. QUALITY: Make it feel personal and eerily accurate — not generic horoscope fluff. Reference real human behaviors and everyday situationships/social habits naturally.
 7. ${langInstruction}`;
 
     const g = String(gender || "").toLowerCase();
@@ -204,19 +201,19 @@ ABSOLUTE RULES:
       "Not specified";
 
     const THEMES_TR = [
-      "Kaos ve Drama (Eski flörtü stalklamak, magazin, kaostan beslenmek, toksik dedikodu)",
-      "Aşk ve Delulu (Mesaj bekleme krizleri, 'acaba benden mi hoşlanıyor' hezeyanları, toksik flört)",
-      "Tükenmişlik ve İzolasyon (Sosyal pilin bitmesi, planları iptal edip yatağa dönmek, herkesi ghostlamak)",
-      "Kariyer ve Hustle (Duygusuzlaşıp sadece işe/paraya odaklanmak, hedeflere kilitlenmek, NPC'leri umursamamak)",
-      "Özgüven Patlaması (Main character enerjisi, kimseye eyvallahı olmamak, narsisizm sınırlarında gezmek)"
+      "Sosyal Kaos ve Dedikodu: Eski defterleri karıştırma dürtüsü, ortamdaki gizli gerilimleri sezme ve dramadan beslenme enerjisi",
+      "Romantik Gerilim ve Mesaj Bekleme: İletişimdeki belirsizlikler, satır arası okuma çabası ve flört dinamiklerindeki gelgitler",
+      "Sosyal Pilin Bitmesi ve İzolasyon: Planları iptal etme isteği, kendi kabuğuna çekilip sessizce kafa dinleme ihtiyacı",
+      "Odaklanma ve Kendi Yolu: Duygusal dikkat dağıtıcıları kapatıp tamamen kendi hedeflerine, işine ve kişisel gücüne kilitlenme",
+      "Yüksek Özgüven ve Çekim Gücü: Girdiği ortamda dikkat çekme, kimseye eyvallahı olmama ve kendi standartlarını net koyma"
     ];
 
     const THEMES_EN = [
-      "Chaos and Drama (Stalking exes, sipping tea, thriving on toxic gossip)",
-      "Love and Delulu (Waiting for replies, making up fake scenarios, toxic situationships)",
-      "Burnout and Isolation (Zero social battery, canceling plans to rot in bed, ghosting the group chat)",
-      "Hustle and Focus (Locking in, ignoring distractions, purely focused on securing the bag)",
-      "Main Character Energy (Unbothered, untouchable aura, borderline narcissistic confidence)"
+      "Social Chaos & Tea: Sensing unspoken tension in the room, curiosity about old flames, and thriving on subtle drama",
+      "Romantic Tension & Texting Games: Reading between the lines, mixed signals, and navigating situationship dynamics",
+      "Low Social Battery & Solitude: Craving quiet time, wanting to cancel plans, and protecting personal peace from draining people",
+      "Locked-In Focus & Ambition: Tuning out emotional distractions and channeling all energy into personal goals and upgrades",
+      "High Magnetism & Unbothered Confidence: Effortless presence, high standards, and zero tolerance for low-effort energy"
     ];
 
     const selectedTheme = isTr 

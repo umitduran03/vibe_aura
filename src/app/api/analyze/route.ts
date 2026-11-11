@@ -469,14 +469,19 @@ Your output must be purely JSON:
 Delulu Check Request:
 - Chat Text: ${formData.chatText || "No chat text provided"}
 
-Analyze the provided chat evidence (screenshots and/or text). Calculate a realistic 'delulu_score' from 0 to 100 based on the actual signals (0 = completely valid and grounded, 100 = completely delusional). Break down what the other person's texts or behavior actually mean, whether the interest is mutual or one-sided, and what the user should do next.
+Analyze the provided chat evidence (screenshots and/or text). Calculate a realistic, specific 'delulu_score' integer from 0 to 100 based on the actual signals:
+- 0 to 25: Grounded reality — clear mutual effort, consistent replies, genuine green flags.
+- 26 to 54: Mixed signals / mild overthinking — some interest exists, but the user is reading too deeply into small details.
+- 55 to 79: High delulu risk — breadcrumbing, dry replies, or excuses where the user is doing most of the emotional work.
+- 80 to 100: Full fantasy cinema — zero real reciprocation, pure projection.
+Pick an exact, organic integer (avoid lazy multiples of 5 or 10, and never default to a fixed number). Break down what the other person's texts or behavior actually mean, whether the interest is mutual or one-sided, and what the user should do next.
 
 Your output must be purely JSON:
 {
   "title": "An original, sharp title reflecting their specific situation and score (avoid generic clichés)",
   "verdict": "One punchy one-liner reality check summarizing the verdict",
   "analysis_text": "A detailed, observant, entertaining paragraph breaking down the specific evidence in their texts/story, explaining why they got this score, and their best next move.",
-  "delulu_score": 68,
+  "delulu_score": <integer 0-100 calculated from the rubric above>,
   "theme_color_hex": "#f59e0b"
 }`;
       } else if (extrasType === "rizz-architect") {
@@ -517,7 +522,7 @@ Perform an honest, observant, BALANCED profile audit:
 1. Identify genuine strengths (green flags) — specific visual or bio details that actually work well and attract the right attention.
 2. Identify real weaknesses (red flags) — specific details hurting their impression or engagement.
 3. Give 3 specific, actionable top fixes ranked by priority.
-4. Give a realistic overall score from 0 to 100.
+4. Calculate a realistic, specific integer score ('profile_overall_score') from 15 to 98 based on photo quality, framing, bio, and vibe (avoid round multiples of 5 or 10 and never use a fixed default number).
 5. Write an original one-line verdict and a detailed analysis explaining your reasoning.
 
 CRITICAL RULE: Address the user directly as "you". Give them direct, tailored advice based on what you actually see in the screenshot(s).
@@ -527,7 +532,7 @@ Your output must be purely JSON:
   "title": "An original, memorable verdict title tailored to their specific profile aesthetic",
   "verdict": "One sharp, fair one-liner summarizing the profile's first impression",
   "analysis_text": "A detailed, entertaining, balanced paragraph explaining what works, what falls flat, and the exact vibe their profile projects.",
-  "profile_overall_score": 72,
+  "profile_overall_score": <integer 15-98 calculated from the profile's actual quality>,
   "profile_green_flags": ["Specific strength 1", "Specific strength 2", "Specific strength 3"],
   "profile_red_flags": ["Specific weakness 1", "Specific weakness 2"],
   "profile_top_fixes": ["Priority fix #1", "Priority fix #2", "Priority fix #3"],
@@ -546,7 +551,7 @@ Hem dobra hem de dengeli ve yapıcı bir profil denetimi yap:
 1. Gerçekten işe yarayan, dikkat çeken güçlü yanları (green flag'leri) somut detaylarla belirt.
 2. Profilin enerjisini düşüren veya yanlış izlenim veren zayıflıkları (red flag'leri) açıkla.
 3. Öncelik sırasına göre 3 somut düzeltme önerisi (top fix) ver.
-4. 0-100 arasında gerçekçi bir genel puan ver.
+4. Fotoğraf kalitesi, ışık, biyografi ve genel auraya göre 15 ile 98 arasında gerçekçi, küsuratlı bir tam sayı puan ('profile_overall_score') hesapla (5 ve 10'un yuvarlak katlarından kaçın, sabit bir sayı kullanma).
 
 ÖNEMLİ KURAL: Kullanıcıya doğrudan "sen" diyerek hitap et ve ekran görüntüsünde gerçekten gördüğün fotoğraflara/yazılara dayanarak özgün bir analiz yaz.
 
@@ -555,7 +560,7 @@ Hem dobra hem de dengeli ve yapıcı bir profil denetimi yap:
   "title": "Profilin tarzına ve enerjisine özel, klişe olmayan yaratıcı bir başlık",
   "verdict": "Profilin dışarıya verdiği ilk izlenimi özetleyen vurucu ve adil tek cümle",
   "analysis_text": "Detaylı, eğlenceli ve dengeli analiz paragrafı. Neyin çok iyi durduğunu ve neyin düzeltilmesi gerektiğini samimi bir dille açıkla.",
-  "profile_overall_score": 72,
+  "profile_overall_score": <15 ile 98 arasında hesaplanan gerçekçi tam sayı puan>,
   "profile_green_flags": ["Somut güçlü yön 1", "Somut güçlü yön 2"],
   "profile_red_flags": ["Somut zayıf yön 1", "Somut zayıf yön 2"],
   "profile_top_fixes": ["Öncelikli düzeltme #1", "Öncelikli düzeltme #2", "Öncelikli düzeltme #3"],
@@ -574,7 +579,7 @@ Perform a perceptive, honest personality and vibe read based on their profile:
 1. Identify genuine green flags — specific signs that make them intriguing or worth engaging with.
 2. Identify red flags — subtle cues or patterns to watch out for.
 3. Read their personality and unspoken vibe from their photos and bio.
-4. Give an engagement score (0-100) and 3 tactical tips for how the user should approach or handle this person.
+4. Calculate a realistic, specific engagement/vibe score ('profile_overall_score') from 15 to 98 based on the green flags vs. red flags visible in their profile (avoid round multiples of 5 or 10), plus 3 tactical tips for how the user should approach or handle this person.
 
 CRITICAL RULE: Talk TO the user ABOUT the person in the profile ("they/this person", NOT "you").
 
@@ -583,7 +588,7 @@ Your output must be purely JSON:
   "title": "An original, perceptive title capturing this person's exact profile persona",
   "verdict": "One sharp one-liner summarizing this person's real vibe",
   "analysis_text": "A detailed, entertaining, observant paragraph reading this person's profile—what they project on the surface vs. what their choices actually reveal.",
-  "profile_overall_score": 64,
+  "profile_overall_score": <integer 15-98 calculated from their profile signals>,
   "profile_green_flags": ["Specific green flag from their profile", "Second positive signal"],
   "profile_red_flags": ["Specific red flag from their profile", "Second warning sign"],
   "profile_top_fixes": ["Tactical tip #1 for approaching them", "Tactical tip #2", "Boundary or warning sign #3"],
@@ -602,7 +607,7 @@ Bu kişinin profilinden keskin bir kişilik ve aura okuması yap:
 1. Green flag'ler — bu kişiyi çekici, samimi veya konuşmaya değer kılan somut detaylar.
 2. Red flag'ler — dikkat edilmesi gereken ince sinyaller veya ego/bağlanma ipuçları.
 3. Kişilik okuması — fotoğrafları ve biyografisi bu kişinin karakteri hakkında ne söylüyor?
-4. Etkileşim skoru (0-100) ve kullanıcıya bu kişiye nasıl yaklaşması gerektiğini anlatan 3 taktik.
+4. Profildeki yeşil ve kırmızı bayrakların dengesine göre 15 ile 98 arasında gerçekçi, küsuratlı bir etkileşim/güven puanı ('profile_overall_score') hesapla (5 ve 10'un katlarından kaçın) ve kullanıcıya bu kişiye nasıl yaklaşması gerektiğini anlatan 3 taktik ver.
 
 ÖNEMLİ KURAL: Kullanıcıya profilin sahibiymiş gibi hitap etme! Kullanıcıyla profildeki kişi HAKKINDA ("bu kişi / o") konuş.
 
@@ -611,7 +616,7 @@ Bu kişinin profilinden keskin bir kişilik ve aura okuması yap:
   "title": "Bu kişinin profil karakterini nokta atışı özetleyen özgün ve yaratıcı bir başlık",
   "verdict": "Bu kişinin gerçek profil enerjisini özetleyen vurucu tek cümle",
   "analysis_text": "Bu kişinin profilini derinlemesine okuyan detaylı, eğlenceli ve gözlem dolu analiz paragrafı. Dışarıya nasıl görünmek istiyor ve aslında nasıl biri?",
-  "profile_overall_score": 64,
+  "profile_overall_score": <15 ile 98 arasında hesaplanan gerçekçi tam sayı puan>,
   "profile_green_flags": ["Profilden somut green flag 1", "Somut pozitif sinyal 2"],
   "profile_red_flags": ["Profilden somut red flag 1", "Somut uyarı işareti 2"],
   "profile_top_fixes": ["Bu kişiye yaklaşım taktiği #1", "İletişim ipucu #2", "Dikkat etmen gereken sınır #3"],
@@ -681,6 +686,17 @@ Your output must be purely JSON:
         return NextResponse.json({ error: "Failed to parse AI response." }, { status: 500 });
       }
 
+      if (parsedJson) {
+        if (extrasType === "delulu-check" && parsedJson.delulu_score !== undefined) {
+          const ds = Number(parsedJson.delulu_score);
+          parsedJson.delulu_score = Number.isFinite(ds) ? Math.max(0, Math.min(100, Math.round(ds))) : 63;
+        }
+        if (extrasType === "profile-autopsy" && parsedJson.profile_overall_score !== undefined) {
+          const ps = Number(parsedJson.profile_overall_score);
+          parsedJson.profile_overall_score = Number.isFinite(ps) ? Math.max(1, Math.min(100, Math.round(ps))) : 71;
+        }
+      }
+
       // Token düşme
       if (!isVipActive && adminDb && userId) {
         try {
@@ -717,7 +733,7 @@ Your output must be purely JSON:
         ex: `You are a razor-sharp breakup analyst and relationship archivist. Dissect why they didn't work out, the ego dynamics, who caused the most chaos, and the real relapse risk in a witty, unfiltered tone. Write a detailed and satisfyingly long analysis. ${langInstruction}`,
         platonic: `You are an observant, witty crush & attraction decoder. Analyze both people's photos and zodiac signs to determine if there is genuine romantic tension, magnetic chemistry, or friendzone energy—and who is secretly more invested. Write a detailed and satisfyingly long analysis. ${langInstruction}`,
         bff: `You are a witty friendship & duo synergy analyst. Read their friendship chemistry, humor alignment, loyalty, and dynamic roles (who is the grounded planner/therapist vs. who brings the spontaneous chaos). Praise what makes their bond iconic while playfully calling out their duo habits. Write a detailed and satisfyingly long analysis. ${langInstruction}`,
-        battle: `You are an AI Aura Judge. Compare both people's visual presence, style, and energy to definitively decide who has higher aura points. Praise the winner's effortless presence and playfully roast the loser's vibe in an entertaining, dramatic way. Write a detailed and satisfyingly long analysis. ${langInstruction}`,
+        battle: `You are an impartial, razor-sharp AI Aura Judge. Evaluate Person 1 and Person 2 INDEPENDENTLY on their own visual presence, expression, posture, styling, lighting, and zodiac energy to assign each person a realistic individual aura score. Praise the winner's presence and playfully roast why the loser fell short in an entertaining, dramatic way. Write a detailed and satisfyingly long analysis. ${langInstruction}`,
       };
 
       const systemInstruction = duoSystemPrompts[duoRelationType] || duoSystemPrompts.flirt;
@@ -734,30 +750,37 @@ Your output must be purely JSON:
       const titleStr = duoHeaderMap[duoRelationType] || "Duo Compatibility Analysis";
 
       const duoBaseInstructions: Record<string, string> = {
-        flirt: `Based on these details (and photos if any), analyze their romantic chemistry, how their energies complement or challenge each other, their strongest green flags as a duo, and their realistic compatibility score (1-100).`,
-        ex: `Based on these details (and photos if any), dissect their breakup dynamic, why the relationship combusted, who won the post-breakup ego war, and their realistic compatibility/relapse score (1-100).`,
-        platonic: `Based on these details (and photos if any), evaluate the unspoken attraction, romantic spark vs. friendzone odds, how their auras interact, and their crush compatibility score (1-100).`,
-        bff: `Based on these details (and photos if any), analyze their best-friend synergy, shared humor, loyalty, how their personalities balance each other out, and their friendship compatibility score (1-100).`,
-        battle: `Based on these details (and photos if any), compare their auras head-to-head, give EACH person their own separate Vibe/Aura Score between 1 and 100 ("person1Score" and "person2Score" — they MUST NOT be equal, and the winner MUST have a strictly higher score than the loser), set "winner" to 1 or 2, and state who lost the battle in "redFlag". DO NOT treat this as a romantic relationship test. This is a pure 1v1 aura competition.`,
+        flirt: `Based on these details (and photos if any), analyze their romantic chemistry, how their energies complement or challenge each other, their strongest green flags as a duo, and calculate a realistic, organic compatibility score between 15 and 98 (avoid round multiples of 5 or 10, and never default to a fixed number).`,
+        ex: `Based on these details (and photos if any), dissect their breakup dynamic, why the relationship combusted, who won the post-breakup ego war, and calculate a realistic compatibility/relapse score between 12 and 96 (avoid round multiples of 5 or 10, and never default to a fixed number).`,
+        platonic: `Based on these details (and photos if any), evaluate the unspoken attraction, romantic spark vs. friendzone odds, how their auras interact, and calculate a realistic crush compatibility score between 15 and 98 (avoid round multiples of 5 or 10, and never default to a fixed number).`,
+        bff: `Based on these details (and photos if any), analyze their best-friend synergy, shared humor, loyalty, how their personalities balance each other out, and calculate a realistic friendship compatibility score between 25 and 99 (avoid round multiples of 5 or 10, and never default to a fixed number).`,
+        battle: `Based on these details (and photos if any), compare their auras head-to-head and score EACH person INDEPENDENTLY between 18 and 98 ("person1Score" and "person2Score"):
+- INDEPENDENT & REALISTIC SCORING RULE: Score each person on their own actual merits (photo confidence, expression, lighting, styling, posture, and zodiac aura). Do NOT automatically dump the loser into the 30s or 40s unless their vibe genuinely warrants a low score! If both people have strong auras, both can score high (e.g., both in the 70s, 80s, or 90s with a close, realistic margin); if both are chaotic/mid, both might land in the 50s/60s; if one completely outshines the other, reflect that gap naturally.
+- NO BIAS & NO FIXED NUMBERS: Person 1 and Person 2 must have an equal, fair chance to win based on their vibe. Never make "person1Score" and "person2Score" equal, avoid lazy multiples of 5 or 10, and NEVER default to 84 vs 41 or any fixed number pair.
+- Set "winner" to 1 if person1Score > person2Score, or 2 if person2Score > person1Score, and state who lost the battle in "redFlag". DO NOT treat this as a romantic relationship test—this is a pure 1v1 aura competition.`,
       };
       const baseInstruction = duoBaseInstructions[duoRelationType] || duoBaseInstructions.flirt;
       
       const battleScoreFields = isBattle
-        ? `\n  "person1Score": 84,\n  "person2Score": 41,\n  "winner": 1,`
+        ? `\n  "person1Score": <integer 18-98: Person 1's independent aura score>,\n  "person2Score": <integer 18-98: Person 2's independent aura score, must differ from person1Score>,\n  "winner": <1 or 2: must match whichever person has the higher score>,`
         : "";
 
+      const duoScoreFieldDesc = isBattle
+        ? `<integer: must equal the winning score, i.e. the higher of person1Score and person2Score>`
+        : `<integer 15-98: realistic compatibility score calculated specifically for this pair>`;
+
       const duoRedFlagMapUnlocked: Record<string, string> = {
-        flirt: `"redFlag": "Person 1 (or Person 2) — State who brings more drama, stubbornness, or chaos into this relationship dynamic and why"`,
-        ex: `"redFlag": "Person 1 (or Person 2) — State who was the bigger walking red flag in this breakup and why"`,
-        platonic: `"redFlag": "Person 1 (or Person 2) — State who is more likely to overthink, catch feelings first, or play hard to get—and why"`,
-        bff: `"redFlag": "Person 1 (or Person 2) — State who is the chaos instigator / bad influence in this friendship and why"`,
-        battle: `"redFlag": "Person 1 (or Person 2) — Explicitly state who LOST the battle (must be the person with the lower score) and playfully roast why their aura lost."`,
+        flirt: `"redFlag": "Specify either Person 1 or Person 2 (fairly, based on their actual signs/photos) — state who brings more drama, stubbornness, or chaos into this relationship dynamic and why"`,
+        ex: `"redFlag": "Specify either Person 1 or Person 2 (fairly, based on their actual signs/photos) — state who was the bigger walking red flag in this breakup and why"`,
+        platonic: `"redFlag": "Specify either Person 1 or Person 2 (fairly, based on their actual signs/photos) — state who is more likely to overthink, catch feelings first, or play hard to get—and why"`,
+        bff: `"redFlag": "Specify either Person 1 or Person 2 (fairly, based on their actual signs/photos) — state who is the chaos instigator / bad influence in this friendship and why"`,
+        battle: `"redFlag": "Specify the loser (Person 1 or Person 2 — MUST be the person with the lower score) and playfully roast why their aura lost this matchup"`,
       };
       const redFlagUnlocked = duoRedFlagMapUnlocked[duoRelationType] || duoRedFlagMapUnlocked.flirt;
 
       const redFlagLocked = isBattle
-        ? `"redFlag": "Targeted hook where the loser's identity is hidden... e.g., The undeniable loser of this battle is <blur>Person 2</blur> because <blur>The specific reason their aura lost...</blur>"`
-        : `"redFlag": "Targeted hook where the identity is hidden... e.g., The bigger source of chaos in this duo is <blur>Person 2</blur> because <blur>The specific explanation...</blur>"`;
+        ? `"redFlag": "Write a suspenseful hook in the target language where the loser's identity (Person 1 or Person 2, whichever has the lower score) AND the specific reason their aura lost are enclosed inside <blur>...</blur> tags"`
+        : `"redFlag": "Write a suspenseful hook in the target language where the identity of the person causing more chaos (Person 1 or Person 2, chosen fairly) AND the specific explanation are enclosed inside <blur>...</blur> tags"`;
 
       if (isUnlocked) {
         // SENARYO A: Kullanıcının Token'ı Varsa (Sansür veya Zeigarnik yok)
@@ -769,7 +792,7 @@ ${titleStr}:
 ${magicText ? `- User's Context / Note: ${magicText}\n` : ""}
 ${baseInstruction} ${langInstruction} Your output must be purely JSON and strictly follow this exact structure:
 {
-  "duoScore": 78,${battleScoreFields}
+  "duoScore": ${duoScoreFieldDesc},${battleScoreFields}
   "title": "An original, creative, memorable title tailored specifically to this duo's energy (avoid overused clichés)",
   "toxicComment": "A sharp, witty one-liner summarizing the core truth of their dynamic",
   ${redFlagUnlocked},
@@ -794,7 +817,7 @@ CRITICAL TEASER INSTRUCTIONS:
 
 Your output must be purely JSON and strictly follow this exact structure:
 {
-  "duoScore": 78,${battleScoreFields}
+  "duoScore": ${duoScoreFieldDesc},${battleScoreFields}
   "title": "An original, creative title tailored to this duo's energy (avoid overused clichés)",
   "toxicComment": "A sharp, witty one-liner summarizing their dynamic",
   ${redFlagLocked},
@@ -844,29 +867,33 @@ Your output must be purely JSON and strictly follow this exact structure:
         );
       }
 
+      const toScore = (v: any) => {
+        const n = Number(v);
+        return Number.isFinite(n) ? Math.max(1, Math.min(100, Math.round(n))) : NaN;
+      };
+
       // Aura Battle: Her iki kişi için ayrı skor ve kazanan/kaybeden tutarlılık garantisi
       if (isBattle && parsedJson) {
-        const toNum = (v: any) => {
-          const n = Number(v);
-          return Number.isFinite(n) ? Math.max(1, Math.min(100, Math.round(n))) : NaN;
-        };
-
-        let p1 = toNum(parsedJson.person1Score);
-        let p2 = toNum(parsedJson.person2Score);
-        const baseScore = toNum(parsedJson.duoScore);
+        let p1 = toScore(parsedJson.person1Score);
+        let p2 = toScore(parsedJson.person2Score);
+        const baseScore = toScore(parsedJson.duoScore);
 
         if (Number.isNaN(p1) && Number.isNaN(p2)) {
-          p1 = !Number.isNaN(baseScore) ? Math.max(55, baseScore) : 82;
-          p2 = Math.max(12, p1 - 29);
+          p1 = !Number.isNaN(baseScore) ? Math.max(58, baseScore) : 65 + Math.floor(Math.random() * 27);
+          const gap = 6 + Math.floor(Math.random() * 22);
+          p2 = Math.max(24, p1 - gap);
         } else if (Number.isNaN(p1)) {
-          p1 = p2 >= 60 ? Math.max(15, p2 - 25) : Math.min(96, p2 + 25);
+          const gap = 6 + Math.floor(Math.random() * 20);
+          p1 = p2 >= 65 ? Math.max(28, p2 - gap) : Math.min(96, p2 + gap);
         } else if (Number.isNaN(p2)) {
-          p2 = p1 >= 60 ? Math.max(15, p1 - 25) : Math.min(96, p1 + 25);
+          const gap = 6 + Math.floor(Math.random() * 20);
+          p2 = p1 >= 65 ? Math.max(28, p1 - gap) : Math.min(96, p1 + gap);
         }
 
         if (p1 === p2) {
-          if (p1 <= 90) p1 += 7;
-          else p2 -= 7;
+          const nudge = 3 + Math.floor(Math.random() * 6);
+          if (p1 <= 92) p1 += nudge;
+          else p2 -= nudge;
         }
 
         // redFlag metninde kaybeden olarak kimin yazıldığını tespit et (tutarlılık için)
@@ -899,6 +926,9 @@ Your output must be purely JSON and strictly follow this exact structure:
         parsedJson.person2Score = p2;
         parsedJson.winner = p1 > p2 ? 1 : 2;
         parsedJson.duoScore = Math.max(p1, p2);
+      } else if (parsedJson) {
+        const ds = toScore(parsedJson.duoScore);
+        parsedJson.duoScore = !Number.isNaN(ds) ? ds : 58 + Math.floor(Math.random() * 34);
       }
 
       // Jeton düşme işlemi (Backend'de güvence altına alınıyor)
@@ -944,7 +974,7 @@ Your output must be purely JSON and strictly follow this exact structure:
     const soloJsonInstructionsUnlocked: Record<string, string> = {
       general: `{
   "aura_name": "An original, charismatic, hyper-specific aura archetype title capturing their true vibe — MUST be in the correct language",
-  "aura_score": 76,
+  "aura_score": <integer 45-97: realistic aura score calculated from their photo presence, expression, style, and zodiac energy>,
   "analysis_text": "A rich, perceptive, 4-5 sentence holistic vibe & personality analysis. Read their visual presence, expression, style, and zodiac energy: highlight what makes their aura genuinely magnetic or cool, and playfully expose the subtle habits or contradictions hiding underneath. Do NOT blindly roast them—make them feel truly seen.",
   "toxicComment": "One razor-sharp, memorable one-liner observation about the contrast between their outer image and inner world.",
   "traits": ["Unique Trait 1", "Unique Trait 2", "Unique Trait 3"],
@@ -952,7 +982,7 @@ Your output must be purely JSON and strictly follow this exact structure:
 }`,
       roast: `{
   "aura_name": "A hilarious, savage comedy-roast title tailored specifically to their photo and vibe — MUST be in the correct language",
-  "aura_score": 42,
+  "aura_score": <integer 15-78: comedic roast score reflecting how hard their vibe got roasted>,
   "analysis_text": "3-4 relentless, hilarious, stand-up style sentences roasting their specific photo details, expression, pose, zodiac sign, and relationship status. Be creative and hyper-specific—never use generic clichés.",
   "toxicComment": "One devastatingly funny one-liner punchline that sums up the roast.",
   "traits": ["Roast Tag 1", "Roast Tag 2", "Roast Tag 3"],
@@ -960,7 +990,7 @@ Your output must be purely JSON and strictly follow this exact structure:
 }`,
       soulmate: `{
   "aura_name": "An original, magnetic archetype title for their IDEAL SOULMATE — MUST be in the correct language",
-  "aura_score": 88,
+  "aura_score": <integer 60-98: soulmate magnetism & readiness score calculated from their aura>,
   "analysis_text": "A detailed, vivid 4-5 sentence profile of their ideal soulmate based on the user's photo aura and zodiac: describe the soulmate's personality, best zodiac match, aesthetic style, why their energies lock in, and the exact scenario where they'll likely meet.",
   "toxicComment": "One sharp, honest one-liner about the dating habit the user must drop to attract this soulmate.",
   "traits": ["Soulmate Trait 1", "Soulmate Trait 2", "Soulmate Trait 3"],
@@ -971,7 +1001,7 @@ Your output must be purely JSON and strictly follow this exact structure:
     const soloJsonInstructionsLocked: Record<string, string> = {
       general: `{
   "aura_name": "An original, charismatic, hyper-specific aura archetype title capturing their true vibe — MUST be in the correct language",
-  "aura_score": 74,
+  "aura_score": <integer 45-97: realistic aura score calculated from their photo presence, expression, style, and zodiac energy>,
   "analysis_text": "1-2 intriguing, spot-on sentences about the immediate energy their photo/vibe gives off, cutting off right before the deepest personality insight... <blur>The rest of the rich, perceptive, balanced paragraph revealing their hidden strengths, subtle habits, and true aura dynamic...</blur>",
   "toxicComment": "One razor-sharp one-liner observation about their vibe.",
   "traits": ["Unique Trait 1", "Unique Trait 2", "Unique Trait 3"],
@@ -979,7 +1009,7 @@ Your output must be purely JSON and strictly follow this exact structure:
 }`,
       roast: `{
   "aura_name": "A hilarious, savage comedy-roast title tailored to their vibe — MUST be in the correct language",
-  "aura_score": 38,
+  "aura_score": <integer 15-78: comedic roast score reflecting how hard their vibe got roasted>,
   "analysis_text": "1-2 sharp setup sentences cutting off right at the climax... <blur>The rest of the relentless, hilarious stand-up roast dissecting their photo and habits...</blur>",
   "toxicComment": "One funny one-liner roast punchline.",
   "traits": ["Roast Tag 1", "Roast Tag 2", "Roast Tag 3"],
@@ -987,7 +1017,7 @@ Your output must be purely JSON and strictly follow this exact structure:
 }`,
       soulmate: `{
   "aura_name": "An original, magnetic archetype title for their IDEAL SOULMATE — MUST be in the correct language",
-  "aura_score": 88,
+  "aura_score": <integer 60-98: soulmate magnetism & readiness score calculated from their aura>,
   "analysis_text": "1-2 intriguing sentences describing the initial energy of their ideal match, cutting off right before revealing their zodiac sign and meeting scenario... <blur>The rest of the detailed soulmate profile, best zodiac match, and where they will meet...</blur>",
   "toxicComment": "One sharp one-liner about their love-life pattern.",
   "traits": ["Soulmate Trait 1", "Soulmate Trait 2", "Soulmate Trait 3"],
@@ -1016,7 +1046,7 @@ User Details:
 
 Based on these details (and the attached photo if any), ${langInstruction} 
 
-CRITICAL SCORING RULE: The aura_score MUST NOT default to 85. 90% of the time, give a realistic and varied score between 15 and 98 based on the actual vibe (for general/soulmate modes, most balanced or strong vibes land between 60 and 94; for roast mode, vary widely). ONLY in extremely rare 1% cases, you may use -100, -999, or 999 as a rare Easter egg.
+CRITICAL SCORING RULE: Give a realistic, organic integer for 'aura_score' between 15 and 98 based on the actual vibe (avoid round multiples of 5 or 10, and never default to a fixed number). ONLY in extremely rare 1% cases, you may use -100, -999, or 999 as a rare Easter egg.
 
 Your output must be purely JSON and strictly follow this exact structure (fill all values with 100% original content in the requested language):
 ${soloJsonInstructionsUnlocked[activeScenario] || soloJsonInstructionsUnlocked.general}
@@ -1033,7 +1063,7 @@ User Details:
 
 Based on these details (and the attached photo if any), ${langInstruction}
 
-CRITICAL SCORING RULE: The aura_score MUST NOT default to 85. Give a realistic, varied score between 15 and 98.
+CRITICAL SCORING RULE: Give a realistic, organic integer for 'aura_score' between 15 and 98 based on the actual vibe (avoid round multiples of 5 or 10, and never default to a fixed number).
 
 CRITICAL TEASER INSTRUCTIONS:
 1. RATIO RULE: The visible (unblurred) text MUST NOT exceed 20-30% of the total analysis. The remaining 70-80% MUST be completely enclosed inside <blur> and </blur> tags. Do not write long satisfying paragraphs outside <blur>.
@@ -1077,6 +1107,11 @@ ${soloJsonInstructionsLocked[activeScenario] || soloJsonInstructionsLocked.gener
         { error: "Failed to parse AI response." },
         { status: 500 }
       );
+    }
+
+    if (parsedJson) {
+      const as = Number(parsedJson.aura_score);
+      parsedJson.aura_score = Number.isFinite(as) ? Math.round(as) : 64 + Math.floor(Math.random() * 28);
     }
 
     // Jeton düşme işlemi (Backend'de güvence altına alınıyor)
