@@ -55,12 +55,15 @@ export function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  // Locale yok → tespit et ve yönlendir
+  // Locale yok → tespit et ve yönlendir (307 Temporary Redirect + Vary header:
+  // Accept-Language/cookie tabanlı yönlendirmelerde 308 kalıcı önbelleklenmeye yol açar)
   const locale = getLocale(request);
   const newUrl = request.nextUrl.clone();
   newUrl.pathname = `/${locale}${pathname}`;
 
-  return NextResponse.redirect(newUrl, { status: 308 });
+  const response = NextResponse.redirect(newUrl, { status: 307 });
+  response.headers.set("Vary", "Accept-Language, Cookie");
+  return response;
 }
 
 export const config = {

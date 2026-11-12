@@ -163,13 +163,15 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   if (!hasLocale(lang)) notFound();
 
+  const isTr = lang === "tr";
+
   return (
     <html lang={lang} suppressHydrationWarning className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
       <head>
         {/* Google Search Console Verification */}
         <meta name="google-site-verification" content="D41h1N2A_WHp7CwkRMW19KP1XYPFdQ6YdXXH_edJ1xQ" />
 
-        {/* JSON-LD Structured Data — WebApplication + WebSite Schema */}
+        {/* JSON-LD Structured Data — WebApplication + WebSite + Organization Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -178,12 +180,21 @@ export default async function LocaleLayout({ children, params }: Props) {
                 "@context": "https://schema.org",
                 "@type": "WebApplication",
                 name: "VibeCheckr",
-                url: "https://thevibecheckr.com",
+                alternateName: [
+                  "TheVibeCheckr",
+                  "thevibecheckr.com",
+                  "Vibe Checkr",
+                  "VibeCheckr AI",
+                  ...(isTr ? ["VibeCheckr Türkçe", "Vibe Check Testi"] : ["Vibe Checker AI"]),
+                ],
+                url: `https://thevibecheckr.com/${lang}`,
                 sameAs: [
                   "https://www.producthunt.com/products/vibecheckr",
                 ],
-                inLanguage: ["en", "tr"],
-                description: "Free AI-powered selfie vibe check, 0–100 aura scoring, chat screenshot red flag analyzer, two-photo duo compatibility platform & photo roast app. Instant access with 1-click Guest Mode (5 free tokens, no registration required).",
+                inLanguage: isTr ? "tr-TR" : "en-US",
+                description: isTr
+                  ? "VibeCheckr (thevibecheckr.com) — Ücretsiz yapay zeka vibe check testi, 0–100 aura skoru, fotoğraf roast, ikili çift/crush uyumu, WhatsApp/DM mesaj red flag analizi ve cevap üretici (Reply Guru). Kayıtsız tek tıkla Misafir Modu ile 5 ücretsiz jeton."
+                  : "VibeCheckr (thevibecheckr.com) — Free AI-powered selfie vibe check, 0–100 aura scoring, chat screenshot red flag analyzer, two-photo duo compatibility platform & photo roast app. Instant access with 1-click Guest Mode (5 free tokens, no registration required).",
                 applicationCategory: "EntertainmentApplication",
                 operatingSystem: "Web, Android, iOS",
                 browserRequirements: "Requires JavaScript",
@@ -191,61 +202,87 @@ export default async function LocaleLayout({ children, params }: Props) {
                 isAccessibleForFree: true,
                 audience: {
                   "@type": "Audience",
-                  audienceType: "Gen-Z, Young Adults, Singles, Couples"
+                  audienceType: isTr
+                    ? "Gen-Z, Genç Yetişkinler, Bekarlar, Çiftler"
+                    : "Gen-Z, Young Adults, Singles, Couples",
                 },
                 offers: {
                   "@type": "Offer",
                   price: "0",
                   priceCurrency: "USD",
                   availability: "https://schema.org/InStock",
-                  description: "Free to start with 5 instant welcome tokens via 1-Click Guest Mode (no account required) or Google Sign-In.",
+                  description: isTr
+                    ? "Kayıt gerektirmeyen 1-Tıkla Misafir Modu veya Google Girişi ile anında 5 ücretsiz hoş geldin jetonu."
+                    : "Free to start with 5 instant welcome tokens via 1-Click Guest Mode (no account required) or Google Sign-In.",
                 },
                 creator: {
                   "@type": "Organization",
                   name: "VibeCheckr",
+                  alternateName: ["TheVibeCheckr", "thevibecheckr.com", "Vibe Checkr"],
                   url: "https://thevibecheckr.com",
                   logo: "https://thevibecheckr.com/v-wave.png",
                   sameAs: [
                     "https://www.producthunt.com/products/vibecheckr",
                   ],
                 },
-                featureList: [
-                  "Instant 1-Click Guest Mode (5 Free Tokens, No Registration Required)",
-                  "AI Selfie Vibe Check & 0-100 Aura Score",
-                  "AI Photo Personality Analysis",
-                  "Savage AI Photo Roast",
-                  "Chat Screenshot Red Flag & Mixed Signal Analyzer",
-                  "Two-Photo Duo Flirt Compatibility Check",
-                  "Aura Battle (Head-to-Head Photo Comparison)",
-                  "Tinder, Bumble, Hinge & Instagram Dating Profile Autopsy",
-                  "AI Soulmate Finder (Soulmate Radar)",
-                  "Crush Calculator",
-                  "Ex Relationship & Relapse Analyzer",
-                  "BFF Vibe Check & Friendship Compatibility",
-                  "Toxic Ex Scanner",
-                  "Situationship Clarifier",
-                  "Delulu Check",
-                  "Rizz Architect & Reply Guru",
-                  "Mood Reset",
-                  "Shareable Neon Result Cards",
-                ],
+                featureList: isTr
+                  ? [
+                      "Kayıtsız 1-Tıkla Misafir Modu (5 Ücretsiz Jeton)",
+                      "Yapay Zeka Selfie Vibe Check & 0-100 Aura Skoru",
+                      "Yapay Zeka Fotoğraf Kişilik Analizi",
+                      "Acımasız AI Fotoğraf Roast (Beni Göm)",
+                      "WhatsApp & Instagram DM Mesaj Red Flag Analizi",
+                      "2 Fotoğraftan İkili Çift & Flört Uyum Testi",
+                      "Aura Savaşı (1v1 Kim Daha Cool Testi)",
+                      "Tinder, Bumble & Instagram Profil Otopsisi",
+                      "Yapay Zeka Ruh Eşi Radarı (Ruh Eşim Kim?)",
+                      "Platonik & Crush Uyum Hesaplayıcı",
+                      "Eski Sevgili (Ex) Uyum & Dönüş Analizi",
+                      "BFF Kanka Uyum Testi",
+                      "Toksik Ex Tarayıcı",
+                      "Situationship Çözücü (Biz Şimdi Neyiz?)",
+                      "Delulu Check Testi",
+                      "Reply Guru & Rizz Mesaj Cevap Üretici",
+                      "Mood Reset (Eksi Aura Sıfırlayıcı)",
+                    ]
+                  : [
+                      "Instant 1-Click Guest Mode (5 Free Tokens, No Registration Required)",
+                      "AI Selfie Vibe Check & 0-100 Aura Score",
+                      "AI Photo Personality Analysis",
+                      "Savage AI Photo Roast",
+                      "Chat Screenshot Red Flag & Mixed Signal Analyzer",
+                      "Two-Photo Duo Flirt Compatibility Check",
+                      "Aura Battle (Head-to-Head Photo Comparison)",
+                      "Tinder, Bumble, Hinge & Instagram Dating Profile Autopsy",
+                      "AI Soulmate Finder (Soulmate Radar)",
+                      "Crush Calculator",
+                      "Ex Relationship & Relapse Analyzer",
+                      "BFF Vibe Check & Friendship Compatibility",
+                      "Toxic Ex Scanner",
+                      "Situationship Clarifier",
+                      "Delulu Check",
+                      "Rizz Architect & Reply Guru",
+                      "Mood Reset",
+                      "Shareable Neon Result Cards",
+                    ],
                 screenshot: "https://thevibecheckr.com/opengraph-image.png",
               },
               {
                 "@context": "https://schema.org",
                 "@type": "WebSite",
                 name: "VibeCheckr",
-                url: "https://thevibecheckr.com",
-                inLanguage: ["en", "tr"],
+                alternateName: ["TheVibeCheckr", "thevibecheckr.com", "Vibe Checkr", "VibeCheckr AI"],
+                url: `https://thevibecheckr.com/${lang}`,
+                inLanguage: isTr ? "tr-TR" : "en-US",
                 potentialAction: {
                   "@type": "SearchAction",
                   target: {
                     "@type": "EntryPoint",
-                    urlTemplate: "https://thevibecheckr.com/en/trends?q={search_term_string}"
+                    urlTemplate: `https://thevibecheckr.com/${lang}/trends?q={search_term_string}`,
                   },
-                  "query-input": "required name=search_term_string"
-                }
-              }
+                  "query-input": "required name=search_term_string",
+                },
+              },
             ]),
           }}
         />
