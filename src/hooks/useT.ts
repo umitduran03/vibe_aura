@@ -5,6 +5,7 @@
  */
 "use client";
 
+import { useParams } from "next/navigation";
 import { useAppStore } from "@/store/useAppStore";
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -868,6 +869,10 @@ export type TKeys = keyof typeof STRINGS.en;
 export type Locale = "en" | "tr";
 
 export function useT() {
-  const locale = useAppStore((s) => s.locale) as Locale;
+  const params = useParams();
+  const storeLocale = useAppStore((s) => s.locale) as Locale;
+  const routeLang = params?.lang as string | undefined;
+  const locale: Locale =
+    routeLang === "tr" || routeLang === "en" ? routeLang : storeLocale;
   return STRINGS[locale] ?? STRINGS.en;
 }

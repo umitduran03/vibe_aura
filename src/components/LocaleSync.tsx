@@ -9,11 +9,15 @@ import { useAppStore } from "@/store/useAppStore";
  */
 export default function LocaleSync({ lang }: { lang: string }) {
   const setLocale = useAppStore((s) => s.setLocale);
+  const validLocale = lang === "tr" ? "tr" : "en";
+
+  if (useAppStore.getState().locale !== validLocale) {
+    useAppStore.setState({ locale: validLocale });
+  }
 
   useEffect(() => {
-    const validLocale = lang === "tr" ? "tr" : "en";
     setLocale(validLocale);
-  }, [lang, setLocale]);
+  }, [validLocale, setLocale]);
 
   return null;
 }
