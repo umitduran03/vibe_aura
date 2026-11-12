@@ -91,11 +91,11 @@ const seoContent = {
     termsLabel: "Terms of Service",
   },
   tr: {
-    badge: "Ücretsiz Yapay Zeka Vibe Check & Aura Testi",
-    heading: "VibeCheckr — Ücretsiz Yapay Zeka Vibe Check Testi, 0–100 Aura Skoru, Fotoğraf & Mesaj Analizi",
+    badge: "Ücretsiz Yapay Zeka Vibe Testi, Vibe Check & Aura Testi",
+    heading: "VibeCheckr — Ücretsiz Yapay Zeka Vibe Testi, Vibe Check, 0–100 Aura Testi & Fotoğraf Analizi",
     tagline:
-      "Vibe check ne demek? Selfie'ni, iki fotoğrafı veya WhatsApp/DM mesaj ekran görüntünü yükle; yapay zeka ile ücretsiz vibe check testi, 0–100 aura puanı, ikili çift/crush uyumu, delulu testi ve acımasız fotoğraf roast analizini hesapsız anında öğren.",
-    whatIsTitle: "Vibe Check Nedir? Ücretsiz Yapay Zeka Vibe & Aura Testi Nasıl Çalışır?",
+      "Vibe testi ve vibe check ne demek? Selfie'ni, iki fotoğrafı veya WhatsApp/DM mesaj ekran görüntünü yükle; yapay zeka ile ücretsiz vibe testi, vibe check, 0–100 aura testi, ikili çift/crush uyumu, delulu testi ve fotoğraf roast analizini hesapsız anında öğren.",
+    whatIsTitle: "Vibe Check ve Vibe Testi Nedir? Ücretsiz Yapay Zeka Aura Testi Nasıl Çalışır?",
     whatIsDesc:
       "Vibe check; bir kişinin fotoğrafından, duruşundan veya mesajlarından dışarıya yaydığı enerjiyi (vibe), samimiyeti ve gizli sinyalleri ölçen enerji kontrolüdür. VibeCheckr yapay zeka motoru; yüz ifadelerini, burç dinamiklerini ve WhatsApp/Instagram DM sohbet ekran görüntülerini analiz ederek 0–100 arası Aura Skorunu hesaplar, red flag'leri yakalar ve paylaşılabilir sonuç kartları üretir.",
     steps: [
