@@ -19,12 +19,15 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "İki fotoğraf yükle, yapay zeka ikinize ayrı ayrı 0–100 Aura Puanı versin ve kimin kazandığını ilan etsin! Ücretsiz & hesapsız tartışmayı bitir →",
       keywords: [
         "aura savaşı",
-        "kim daha cool",
+        "vibe savaşı",
+        "kim daha cool testi",
+        "kim daha havalı testi",
         "aura puanı karşılaştırma",
         "aura battle yapay zeka",
         "arkadaş aura testi",
         "aura points testi",
         "iki fotoğraf karşılaştırma ai",
+        "1v1 aura testi ücretsiz",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/aura-battle`,

@@ -18,12 +18,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         "VibeCheckr ücretsiz mi, hesap açmak şart mı, fotoğraflar siliniyor mu? Yapay zeka aura skoru, sohbet analizi ve ikili uyum testi hakkında tüm cevaplar.",
       keywords: [
         "vibecheckr sss",
+        "vibecheckr nedir",
         "yapay zeka vibe testi",
-        "fotoğraf gömme",
+        "ücretsiz vibe check testi",
+        "fotoğraf gömme ai",
         "aura analizi nasıl yapılır",
-        "ücretsiz vibe check",
         "vibecheckr güvenli mi",
         "fotoğraflar kaydediliyor mu",
+        "ücretsiz aura testi",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/faq`,

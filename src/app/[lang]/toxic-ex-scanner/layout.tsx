@@ -18,11 +18,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description:
         "Eski sevgilinin veya flörtünün fotoğrafını/mesajını yükle → yapay zeka narsist sinyalleri, manipülasyonu ve red flag skorunu ücretsiz ifşa etsin!",
       keywords: [
-        "toksik eski sevgili",
+        "toksik eski sevgili testi",
+        "toksik ex testi",
         "red flag testi",
         "eski sevgili toksik mi",
-        "narsist testi",
+        "narsist sevgili testi",
         "toksik ilişki belirtileri",
+        "mesajdan red flag analizi",
+        "manipülatif flört testi",
         "red flag tarayıcı yapay zeka",
       ],
       alternates: {

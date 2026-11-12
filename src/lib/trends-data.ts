@@ -1283,26 +1283,37 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Flört Psikolojisi",
     publishDate: "2026-06-01",
     readTime: "5 dk okuma",
-    keywords: ["situationship anlamı", "çıkıyor muyuz arkadaş mıyız", "situationship kırmızı bayrakları", "toksik ilişkiler"],
+    keywords: ["situationship nedir", "situationship ne demek", "situationship anlamı", "biz şimdi neyiz testi", "çıkıyor muyuz arkadaş mıyız", "belirsiz ilişki belirtileri", "situationship red flag", "bağlanma korkusu olan erkek", "flört mü sevgili mi testi"],
     imageUrl: "/images/trends/situationship.webp",
     content: {
       intro: "Sabahtan akşama kadar mesajlaşıyorsunuz. Hafta sonu sürekli beraber takılıyorsunuz, dizi izliyorsunuz. Köpeğiyle bile tanıştın, kahveyi nasıl içtiğini ezbere biliyorsun. Ama arkadaşın sana dönüp 'E siz şimdi nesiniz?' dediğinde kalbin sıkışıyor ve buz kesiyorsun. 'Ya işte... takılıyoruz' diye geveliyorsun. Aramıza hoş geldin, burası 'Situationship'. Yani neslimizin açık ara en stresli, en yorucu ve adı konmamış flört batağı. Arkadaşlıkla sevgililik arasındaki o kafa karıştırıcı gri bölge ve şu an milyonlarca insan burada hapis kalmış durumda.",
       sections: [
         {
-          heading: "Temel Fark: Yakınlık vs. Bağlılık",
-          paragraph: "Sağlıklı bir ilişkinin net sınırları, karşılıklı bir sözü ve gelecek planı vardır. Nerede durduğunu bilirsin. Ama bir situationship tamamen anlık keyfe ve o lanet belirsizliğe dayanır. Sana bir ilişkinin yakınlığını sunar (gece mesajlaşmaları, sarılmalar, dertleşmeler) ama iş ciddiyete binince ortada hiçbir güvence yoktur. Gelecekten bahsetmekten ölümüne kaçarlar. Kısacası: Bir ilişkinin bütün stresini ve kaygısını çekersin ama hiçbir güvenliğini alamazsın."
+          heading: "Situationship Nedir? Yakınlık Var Ama Bağlılık Yok",
+          paragraph: "Sağlıklı bir ilişkinin net sınırları, karşılıklı bir sözü ve gelecek planı vardır. Nerede durduğunu bilirsin. Ama bir situationship tamamen anlık keyfe ve o lanet belirsizliğe dayanır. Sana bir ilişkinin yakınlığını sunar (gece mesajlaşmaları, sarılmalar, dertleşmeler) ama iş ciddiyete binince ortada hiçbir güvence yoktur. Gelecekten bahsetmekten ölümüne kaçarlar. Kısacası: Bir ilişkinin bütün stresini ve kaygısını çekersin ama hiçbir güvenliğini alamazsın.",
+          items: [
+            "Planlar hep son dakika yapılır ('Bu akşam müsait misin?'); gelecek haftaya veya tatile dair asla net plan kurulmaz.",
+            "Baş başayken sevgili gibidir ama ortak arkadaş ortamında veya sosyal medyada seni gizler.",
+            "'Akışına bırakalım, etiketlere takılmayalım' cümlesiyle sorumluluktan kaçar."
+          ],
+          scenario: "3 aydır her hafta sonu berabersinizdir ama yakın arkadaşının doğum gününe seni çağırmaz; sorduğunda 'Ortam çok kalabalıktı, sıkılırdın' der."
         },
         {
-          heading: "Göz Göre Göre Görmezden Geldiğin Red Flag'ler",
-          paragraph: "Situationship'te olduğunu nasıl anlarsın? Eğer sana sadece gece 10'dan sonra 'Naber, napıyosun?' yazıyorsa o bir red flag. Ortamlarda seni 'Bu da arkadaşım' diye tanıştırıyorsa direkt tehlike çanları çalıyor demektir. En kötüsü de şu: 'Biz neyiz?' muhabbetini açtığında şakaya vurup konuyu değiştiriyor veya direkt savunmaya geçiyorsa, üzgünüm ama ilişki falan yok ortada. Sen sadece bir seçeneksin. Kendi takvimlerini başkalarına açık tutarken senin ilginin tadını çıkarıyorlar."
+          heading: "Situationship'te Olduğunu Gösteren En Net Red Flag'ler",
+          paragraph: "Situationship'te olduğunu nasıl anlarsın? Eğer sana sadece gece 10'dan sonra 'Naber, napıyosun?' yazıyorsa o bir red flag. Ortamlarda seni 'Bu da arkadaşım' diye tanıştırıyorsa direkt tehlike çanları çalıyor demektir. En kötüsü de şu: 'Biz neyiz?' muhabbetini açtığında şakaya vurup konuyu değiştiriyor veya direkt savunmaya geçiyorsa, üzgünüm ama ilişki falan yok ortada. Sen sadece bir seçeneksin. Kendi takvimlerini başkalarına açık tutarken senin ilginin tadını çıkarıyorlar.",
+          items: [
+            "Sadece kendi canı sıkıldığında veya gece geç saatlerde mesaj atması.",
+            "Özel günlerde, hastalıkta veya gerçekten desteğe ihtiyacın olduğunda ortadan kaybolması.",
+            "İlişki konusunu her açtığında 'Beni darlıyorsun' diyerek seni suçlu hissettirmesi."
+          ]
         },
         {
-          heading: "İşin Psikolojik Bedeli",
+          heading: "Belirsiz İlişkinin (Situationship) Psikolojik Bedeli",
           paragraph: "Bu gri alanda kalmak insanı mental olarak bitiriyor. Mesaj atma süresini, son görülmesini, ses tonunu sürekli analiz etmekten beynin yanıyor. 'Eğer biraz daha cool olursam veya biraz daha beklersem elbet bana bağlanır' yalanına inanmaya başlıyorsun. Spoiler verelim: Bağlanmayacaklar. Situationship, senin hak ettiğinden daha azına razı olma durumundan beslenen bir parazit gibidir."
         },
         {
-          heading: "Bu Döngüyü Kırıp Gerçeği Görmek",
-          paragraph: "Senin acilen netliğe ihtiyacın var. Bazen kendi duygularımızdan dolayı olayları hep iyiye yorarız, görmek istediğimizi görürüz. İşte bu yüzden sana tokat gibi çarpacak tarafsız bir analize ihtiyacın var. İkinizin bir fotoğrafını Duo Compatibility yapay zekamıza yükle ve aranızdaki dinamiğe bir de filtreden uzak bak. Arkadaşlarının seni kırmamak için söyleyemediği o gerçeği yapay zeka direkt söyleyecek: 'Zamanını boşa harcıyorsun, yola devam et.'"
+          heading: "Situationship Döngüsünü Kırmak ve Gerçeği Görmek",
+          paragraph: "Senin acilen netliğe ihtiyacın var. Bazen kendi duygularımızdan dolayı olayları hep iyiye yorarız, görmek istediğimizi görürüz. İşte bu yüzden sana tokat gibi çarpacak tarafsız bir analize ihtiyacın var. Mesaj ekran görüntülerini veya durumunu Situationship Çözücü yapay zekamıza yükle ve aranızdaki dinamiğe filtreden uzak bak. Arkadaşlarının seni kırmamak için söyleyemediği o gerçeği yapay zeka direkt söyleyecek."
         }
       ],
       conclusion: "Bir mesajın sonundaki emojiyi deşifre etmeye çalışarak hayatının altı ayını daha çöpe atma. Situationship'te ne kadar uzun kalırsan çıkması o kadar zorlaşır. Netlik iste, sınırını çiz, eğer buna uymuyorsa arkana bile bakmadan kaç. Sen kafa karıştırıcı bir 'belki' değil, net bir 'evet' hak ediyorsun."
@@ -1317,17 +1328,23 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Kültür & Jargon",
     publishDate: "2026-05-30",
     readTime: "4 dk okuma",
-    keywords: ["aura puanları nedir", "aura puanları mem", "aura nasıl kazanılır", "aura kaybetmek", "tiktok aura trendi"],
+    keywords: ["aura puanı nedir", "aura points ne demek", "+1000 aura ne demek", "eksi aura nedir", "aura puanı hesaplama", "fotoğraftan aura testi", "aura nasıl yükseltilir", "tiktok aura akımı"],
     imageUrl: "/images/trends/aura-points.webp",
     content: {
       intro: "Son dönemde TikTok veya Instagram'da takıldıysan kesin yorumlarda 'abi -10.000 aura puanı' veya '+500 aura kazandın' tarzı şeyler görmüşsündür. 2026'da statü artık banka hesabınla veya takipçi sayınla falan ölçülmüyor; olay tamamen Aura Puanında bitiyor. Tamamen görünmez, internet kültürünün uydurduğu bu saçma ama aşırı eğlenceli skor sistemi nereden çıktı? Ve en önemlisi: Her sokağa çıktığında aura kaybetmekten nasıl kurtulursun?",
       sections: [
         {
-          heading: "Aura Ekonomisi Nereden Çıktı?",
-          paragraph: "Aura puanları, birinin ortama yaydığı o 'cool'luğu ve enerjiyi puanlamak için viral olan bir internet geyiği aslında. Gerçek hayatta oynadığın bir RPG oyununun skor tablosu gibi düşün. Güne belli bir baz puanla başlıyorsun. Masadan düşen bir bardağı bakmadan havada yakaladın mı? Şak! +1000 Aura. Ama yolda yürürken aslında arkandaki kişiye el sallayan birine yanlışlıkla el mi salladın? Geçmiş olsun, o yıkıcı utançla direkt -5000 Aura yiyorsun."
+          heading: "Aura Puanı (Aura Points) Nedir ve Nasıl Hesaplanır?",
+          paragraph: "Aura puanları, birinin ortama yaydığı o 'cool'luğu ve enerjiyi puanlamak için viral olan bir internet geyiği aslında. Gerçek hayatta oynadığın bir RPG oyununun skor tablosu gibi düşün. Güne belli bir baz puanla başlıyorsun. Masadan düşen bir bardağı bakmadan havada yakaladın mı? Şak! +1000 Aura. Ama yolda yürürken aslında arkandaki kişiye el sallayan birine yanlışlıkla el mi salladın? Geçmiş olsun, o yıkıcı utançla direkt -5000 Aura yiyorsun.",
+          items: [
+            "+1000 Aura Kazandıran Hareketler: Göz teması kurarken sakin kalmak, görüldü yediğinde ikinci mesajı atmamak, kaotik ortamlarda panik yapmamak.",
+            "-5000 Eksi Aura Yediren Hareketler: Eski sevgilinin 2022 gönderisini yanlışlıkla beğenmek, yürürken düz yolda tökezlemek, mesaja 3 saniyede destan yazmak.",
+            "Fotoğraf Aurası (0–100 Skor): Selfie'ndeki duruş, bakış ve ışık uyumunun dışarıya verdiği net karizma puanı."
+          ],
+          scenario: "Kafede garson 'Afiyet olsun' dediğinde 'Sana da' dersin: -1500 Aura. Ama hiç bozuntuya vermeden kahveden bir yudum alıp bilgisayarına dönersin: +400 Aura geri kazanıldı."
         },
         {
-          heading: "Auranı Korumak ve Uçuşa Geçirmek",
+          heading: "Auranı Korumak ve Uçuşa Geçirmek (Main Character Energy)",
           paragraph: "Yüksek auranın altın kuralı: 'Ana Karakter Enerjisi (Main Character Energy)'. Etrafta ne kadar kaotik veya utanç verici bir şey olursa olsun hiç bozuntuya vermeden, cool ve umursamaz kalabilmek. Auranı korumak için altın kurallar: Seni görüldüde bırakan birine asla ama asla ikinci mesajı (double text) atma. Kafede kartın reddedilirse asla panik yapma, sanki yanlış kartı vermişsin gibi hafifçe gülümse. İnsanların ne düşündüğünü ne kadar az umursarsan auran o kadar arşa çıkar."
         },
         {
@@ -1335,7 +1352,7 @@ export const trendsDataTr: TrendArticle[] = [
           paragraph: "Aura bir kere düşmeye başladı mı domino etkisi yapar. Yatakta uzanırken telefonu yüzüne mi düşürdün? Eksi aura. Garson 'afiyet olsun' dediğinde yanlışlıkla 'size de' mi dedin? Devasa bir eksi aura. İnternetin ortak kararı şu: Bir şey için 'fazla kasmak' veya çabalamak, aura hesabını iflas ettiren en hızlı yoldur. Özgünlük ve o 'umurumda değil' rahatlığı, şu an en değerli para birimi."
         },
         {
-          heading: "Gerçek Aura Puanını Bulma",
+          heading: "Fotoğraftan Gerçek 0–100 Aura Puanını Hesaplama",
           paragraph: "İnternet ortamında her ne kadar günlük küçük sakarlıklara göre puan kırılıp eklense de, aslında senin gerçek 'dinlenme halindeki' auran karakterinin tam merkezinde yer alır. Gelişmiş yapay zekamız, yüz ifadelerine ve yaydığın o genel dijital ayak izine bakarak senin gerçek Aura Skorunu hesaplar. Yani o ufak tefek sakarlıkları es geçip, bir ortama girdiğinde gerçekten ne kadar 'vibe' yaydığını ortaya çıkarır."
         }
       ],
@@ -1351,14 +1368,21 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Toksik Psikoloji",
     publishDate: "2026-05-25",
     readTime: "6 dk okuma",
-    keywords: ["flört red flagleri", "narsist flört işaretleri", "toksik eski sevgili", "love bombing belirtileri", "gaslighting nedir"],
+    keywords: ["red flag ne demek", "ilişkide red flag nedir", "flört red flagleri", "erkeklerde red flag", "kadınlarda red flag", "narsist flört işaretleri", "toksik eski sevgili testi", "love bombing belirtileri", "gaslighting nedir"],
     imageUrl: "/images/trends/red-flags.webp",
     content: {
       intro: "Acı gerçekleri konuşalım: Flört piyasası şu an tam bir kaos ve Red Flag'ler (kırmızı bayraklar) da artık seviye atladı. İnsanlar eskisi gibi sadece 'iletişim özürlüsü' veya 'biraz dağınık' değiller; artık love-bombing, breadcrumbing ve gaslighting gibi ustaca psikolojik oyunlar oynuyorlar. Date uygulamalarında gezinmek romantizm aramaktan çok, mayın tarlasında yürümeye benziyor. Önümüzdeki 3 yılı terapistine 'podcastleri 2x hızında dinleyen o manyağı' anlatarak geçirmek istemiyorsan, bu yıl kesinlikle görmezden gelemeyeceğin o devasa red flag'lere iyi bak.",
       sections: [
         {
-          heading: "'Kronik Online' Sendromu",
-          paragraph: "Eğer bütün espri anlayışı Twitter memeleri veya TikTok seslerinden ibaretse, ciddi bir tartışmanın ortasında sana dönüp 'çok delulu takılıyorsun' veya 'red flag' falan diyorsa, arkanı dön ve koş. Bu tiplerin gerçek dünyada duygusal zekası yerlerde sürünür. İlişkilere normal bir insan gibi değil de internetteki goygoylar üzerinden bakarlar. Seninle oturup doğru düzgün bir sorun çözmek yerine, Instagram'dan gördüğü bir psikoloji postuyla seni analiz etmeye kalkarlar."
+          heading: "Red Flag Nedir? Flörtte En Tehlikeli İşaretler",
+          paragraph: "Eğer bütün espri anlayışı Twitter memeleri veya TikTok seslerinden ibaretse, ciddi bir tartışmanın ortasında sana dönüp 'çok delulu takılıyorsun' veya 'red flag' falan diyorsa, arkanı dön ve koş. Bu tiplerin gerçek dünyada duygusal zekası yerlerde sürünür. İlişkilere normal bir insan gibi değil de internetteki goygoylar üzerinden bakarlar. Seninle oturup doğru düzgün bir sorun çözmek yerine, Instagram'dan gördüğü bir psikoloji postuyla seni analiz etmeye kalkarlar.",
+          items: [
+            "Love Bombing (Aşk Bombardımanı): İlk 3 günde ruh eşi ilan edip 3. haftada buz gibi soğumak.",
+            "Breadcrumbing (Yemleme): Buluşmaya gelmeyip sadece gece story'lerine alev atarak seni yedekte tutmak.",
+            "Sıfır Sorumluluk: Geçmişteki tüm biten ilişkilerinde karşı tarafı 'deli/suçlu' ilan etmek.",
+            "Sıcak-Soğuk Dengesizliği: Bir gün saatlerce konuşup ertesi 2 gün 'çok yoğundum' diyerek kaybolmak."
+          ],
+          scenario: "İlk buluşmada 'Sen şimdiye kadar tanıdığım herkesten farklısın, eski sevgililerimin hepsi toksikti' diyorsa, sıradaki 'toksik eski sevgili' adayı sensin."
         },
         {
           heading: "Tehlikenin Adı: 'Love Bombing' (Aşk Bombardımanı)",
@@ -1385,14 +1409,20 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Flört Psikolojisi",
     publishDate: "2026-06-03",
     readTime: "5 dk okuma",
-    keywords: ["delüzyonel miyim", "karışık sinyaller ne anlama geliyor", "delulu kontrolü", "flört mü ediyorlar yoksa sadece kibarlar mı"],
+    keywords: ["karışık sinyaller", "delulu muyum testi", "benden hoşlanıyor mu yoksa kibar mı", "flört sinyalleri nasıl anlaşılır", "delulu check türkçe", "hoşlanma belirtileri testi", "mesajdan hoşlanma testi"],
     imageUrl: "/images/trends/delulu.webp",
     content: {
       intro: "Hepimiz bu tuzağa düştük. Senin için kapıyı açık tuttu, 2 hafta önceki Instagram story'ni beğendi, mesaja '👀' emojisi koydu. Ve sen anında kafanda düğün mekanı bakmaya başladın. Ama bir saniye dur—bunlar gerçekten sana yürümek için atılan karışık sinyaller mi, yoksa sen kronik bir 'delulu' vakası mısın? Günümüzde birinin gerçekten ilgilenmesiyle, öylesine nazik olması arasındaki çizgi çok ince. Gel şu durumu bir çözelim ve sana ihtiyacın olan o acımasız gerçeklik kontrolünü yapalım.",
       sections: [
         {
-          heading: "Nedir Bu 'Delulu' Muhabbeti?",
-          paragraph: "'Delulu' (Delusional - Hayalperest/Kuruntulu) tıbbi bir terim falan değil; dümdüz, ortadaki gerçeği reddedip kafandaki o çok daha heyecan verici fanteziye inanma durumu. Karşı tarafın attığı iki kelimelik mesaja destan yazılmış gibi anlamlar yüklemektir. Biraz delulu olmak eğlencelidir, insana yaşama sevinci verir ama ipin ucu kaçarsa adamın aslında senin için hiçbir çaba sarf etmediği gerçeğini göremezsin."
+          heading: "Delulu Nedir? Gerçek Hoşlanma vs. Kuruntu Farkı",
+          paragraph: "'Delulu' (Delusional - Hayalperest/Kuruntulu) tıbbi bir terim falan değil; dümdüz, ortadaki gerçeği reddedip kafandaki o çok daha heyecan verici fanteziye inanma durumu. Karşı tarafın attığı iki kelimelik mesaja destan yazılmış gibi anlamlar yüklemektir. Biraz delulu olmak eğlencelidir, insana yaşama sevinci verir ama ipin ucu kaçarsa adamın aslında senin için hiçbir çaba sarf etmediği gerçeğini göremezsin.",
+          items: [
+            "Gerçek Hoşlanma Sinyali: Buluşmak için net gün/saat önerir, söylediklerinle ilgili detayları hatırlar ve seni merakta bırakmaz.",
+            "Karışık Sinyal (Ego Tatmini): Story'lerine ateş atar ama 'Hadi buluşalım' dediğinde bahaneler üretir.",
+            "Saf Delulu Belirtisi: 12 saat sonra gelen tek kelimelik 'aynen' cevabını 'kesin utandığı için kısa yazdı' diye yorumlamak."
+          ],
+          scenario: "Ortak grupta herkesin mesajına güldüğü gibi seninkine de '😂' bırakır; sen yakın arkadaşına ekran görüntüsü atıp 'Bak kesin bana yürüyor' dersin."
         },
         {
           heading: "Karışık Sinyal Diye Bir Şey Yoktur",
@@ -1416,17 +1446,23 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "how-to-stop-overthinking-texts",
     title: "Mesajları Kafada Kurmayı Bırakma: Görüldü & Geç Cevap Rehberi",
     description: "Saatlerce 'görüldü'de kalmak veya cümle sonundaki noktayı analiz etmek yordu mu? Mesajlaşma anksiyetesini bitir ve mesajları ücretsiz YZ ile analiz et!",
-    category: "Mental Health & Tech",
+    category: "Psikoloji & İletişim",
     publishDate: "2026-06-04",
     readTime: "4 dk okuma",
-    keywords: ["mesajlaşma kaygısı", "neden beni görüldüde bırakıyorlar", "mesajları aşırı düşünmek", "reply guru", "kuru mesajlaşma"],
+    keywords: ["mesajlaşma kaygısı", "görüldü atan flört", "mesajlara geç cevap veren erkek", "mesajları kafada kurmak", "mesaja ne cevap yazılır", "reply guru", "kuru mesajlaşma", "double text atılır mı"],
     imageUrl: "/images/trends/overthinking.webp",
     content: {
       intro: "Telefon titrer. O yazmıştır. Ekrana bakarsın, sadece üç kelime: 'Tamam uyar bana.' O an kalbin hızla atmaya başlar. Neden ünlem koymadı? Bunu yazması neden 3 saat sürdü? Acaba bana trip mi atıyor? Hemen mi cevap vermeliyim yoksa sırf ezik görünmemek için tam 3 saat 1 dakika mı beklemeliyim? Mesajlaşma anksiyetesi koca bir jenerasyonu rehin almış durumda. İletişim saniyelik, ama kendimizi hiç bu kadar yanlış anlaşılmış hissetmemiştik.",
       sections: [
         {
           heading: "O 'Görüldü' Yazısının Yarattığı Travma",
-          paragraph: "Mesaj okundu bilgisi, teknoloji tarihinin açık ara en stresli icadıdır. '14:14 Görüldü' yazısını okuyup saatin 18:00 olduğunu fark ettiğin an beynin savaş ya da kaç moduna girer. Kafanda en kötü senaryoları kurmaya başlarsın. Oysa gerçek nedir? Büyük ihtimalle mesajı trafikte kırmızı ışıkta gördü, sonra dikkati dağıldı ve gerçekten cevap yazmayı unuttu."
+          paragraph: "Mesaj okundu bilgisi, teknoloji tarihinin açık ara en stresli icadıdır. '14:14 Görüldü' yazısını okuyup saatin 18:00 olduğunu fark ettiğin an beynin savaş ya da kaç moduna girer. Kafanda en kötü senaryoları kurmaya başlarsın. Oysa gerçek nedir? Büyük ihtimalle mesajı trafikte kırmızı ışıkta gördü, sonra dikkati dağıldı ve gerçekten cevap yazmayı unuttu.",
+          items: [
+            "Son Görülme Takibini Kapat: Sürekli çevrimiçi olup olmadığını kontrol etmek sadece senin kortizol seviyeni yükseltir.",
+            "Ayna Kuralını Uygula: Karşı taraf 2 kelimelik yatırım yapıyorsa sen 3 paragraflık duygusal yatırım yapma.",
+            "Cevap Süresi Hesaplamayı Bırak: Müsaitsen yaz, değilsen hayatına devam et; kronometre tutmak kendi auranı düşürür."
+          ],
+          scenario: "Mesajını yazıp göndermeden önce 4 kez silip yeniden yazar, gönderdikten sonra da 20 dakika boyunca sohbet ekranından çıkmadan 'yazıyor...' ibaresini beklersin."
         },
         {
           heading: "Noktalama İşaretlerinin Şifresi",
@@ -1453,14 +1489,21 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Astroloji Roast'ları",
     publishDate: "2026-06-05",
     readTime: "7 dk okuma",
-    keywords: ["burçların kırmızı bayrakları", "astroloji toksik özellikleri", "ikizler kırmızı bayrakları", "akrep manipülasyonu"],
+    keywords: ["burçların red flagleri", "hangi burç ilişkide nasıl", "burç uyumu testi", "ikizler burcu red flag", "akrep burcu manipülasyon", "aslan burcu flört", "astroloji toksik özellikler", "fotoğraflı burç uyumu"],
     imageUrl: "/images/trends/zodiac.webp",
     content: {
       intro: "Venüs'ümüz onun Mars'ına uyuyor mu, acaba yıldızlar aşkımızı destekliyor mu diye doğum haritalarına bakmayı çok seviyoruz. Ama dürüst olalım; haritaya ruh eşini bulmak için değil, başına ne tür bir bela açacağını önden görüp ona göre pozisyon almak için bakmalısın. Her burcun kendine has inanılmaz toksik bir huyu var. Neye bulaştığını tam olarak bilmen için burçların en büyük kırmızı bayraklarını (red flag) masaya döküyoruz.",
       sections: [
         {
-          heading: "Ateş Grupları: Koç, Aslan, Yay",
-          paragraph: "Koç burcu, sporda fazla enerji içeceği içtiği için sırf atraksiyon olsun diye kavga çıkarır. İlişkiyi kazanması gereken bir boks maçı gibi görmesi en büyük red flag'idir. Aslanlar kendilerine Antik Yunan tanrısı gibi 7/24 tapılmasını bekler, egoları porselenden daha kırılgandır. Yay burcu sana dünyaları vadeder, seni sevdiğini söyler ve ertesi gün 'kutuya sıkışmış hissettim' diyerek vize bile istemeyen başka bir ülkeye tek yön bilet alıp kaçar."
+          heading: "Ateş Grupları: Koç, Aslan, Yay Red Flag'leri",
+          paragraph: "Koç burcu, sporda fazla enerji içeceği içtiği için sırf atraksiyon olsun diye kavga çıkarır. İlişkiyi kazanması gereken bir boks maçı gibi görmesi en büyük red flag'idir. Aslanlar kendilerine Antik Yunan tanrısı gibi 7/24 tapılmasını bekler, egoları porselenden daha kırılgandır. Yay burcu sana dünyaları vadeder, seni sevdiğini söyler ve ertesi gün 'kutuya sıkışmış hissettim' diyerek vize bile istemeyen başka bir ülkeye tek yön bilet alıp kaçar.",
+          items: [
+            "Koç & Aslan: Tartışmayı kazanmayı ilişkiyi korumaktan daha önemli görmek ve sürekli ilgi/övgü beklemek.",
+            "Boğa & Başak: İnatçılıkta rekor kırmak ve partneri 'düzeltilecek bir proje' gibi eleştirmek.",
+            "İkizler & Terazi: Kararsızlık, ani mod değişimi ve herkesle flörtöz konuşup sınırları bulandırmak.",
+            "Akrep & Yengeç: Gizli sadakat testleri kurgulamak ve duygusal kırgınlığı silah olarak kullanmak."
+          ],
+          scenario: "İkizler burcu flörtün dün gece 'Seninle her şey çok başka' yazıp bu sabah 11 saattir mesajına bakmıyordur; ama aynı anda 4 ayrı story paylaşmıştır."
         },
         {
           heading: "Toprak Grupları: Boğa, Başak, Oğlak",
@@ -1487,14 +1530,20 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Wellness & Vibe",
     publishDate: "2026-06-06",
     readTime: "4 dk okuma",
-    keywords: ["negatif aura anlamı", "kötü ruh hali nasıl düzeltilir", "ruh hali sıfırlama", "enerji temizliği", "düşük vibe", "titreşiminizi yükseltmek", "sabah kaygısı düzeltmesi"],
+    keywords: ["eksi aura nedir", "negatif aura temizleme", "mod yükseltme", "kötü ruh hali nasıl geçer", "ruh hali sıfırlama", "düşük enerji yükseltme", "mood reset türkçe"],
     imageUrl: "/images/trends/mood-reset.webp",
     content: {
       intro: "Sabah gözlerini açtın, telefonu eline aldın, daha ilk kahveni bile yudumlamadan o ağır hissi fark ettin: Üzerinde kapkara bir negatif aura var. Her şey gözüne batıyor. Odanın ışığı bile sinir bozucu, gelen mesajlar darlıyor ve bugünün tamamen 0/10 bir vibe ile geçeceğini iliklerine kadar hissediyorsun. Ortalıkta canını sıkacak spesifik bir olay yokken bile neden böyle oluyor? Gel bu 'kötü gün' olayının arkasındaki bilime ve enerji muhabbetine bakalım.",
       sections: [
         {
-          heading: "Vibe'ı Çökerten Gizli Suçlular",
-          paragraph: "Aura dediğin şey sadece havada uçuşan mistik bir enerji değil; sinir sisteminle direkt bağlantılı. Gece 3'e kadar TikTok'ta 'doomscrolling' (felaket kaydırması) yapıp binlerce yabancının stresini ve kaosunu sünger gibi emmek, dopamin seviyeni yerle bir eder. Buna uyku sersemliğini, susuzluğu ve adı konmamış o situationship'in arka planda çalışan anksiyetesini ekle... Al sana negatif aura için mükemmel bir tarif."
+          heading: "Vibe'ı ve Auranı Çökerten Gizli Suçlular",
+          paragraph: "Aura dediğin şey sadece havada uçuşan mistik bir enerji değil; sinir sisteminle direkt bağlantılı. Gece 3'e kadar TikTok'ta 'doomscrolling' (felaket kaydırması) yapıp binlerce yabancının stresini ve kaosunu sünger gibi emmek, dopamin seviyeni yerle bir eder. Buna uyku sersemliğini, susuzluğu ve adı konmamış o situationship'in arka planda çalışan anksiyetesini ekle... Al sana negatif aura için mükemmel bir tarif.",
+          items: [
+            "Sabah İlk 15 Dakika Telefon Tuzağı: Gözünü açar açmaz bildirimlere ve eski mesajlara bakıp beyni stres moduna sokmak.",
+            "Duygusal Doomscrolling: Kötü hissederken hüzünlü şarkılar ve eski sohbet geçmişleriyle enerjiyi daha da dibe çekmek.",
+            "Fiziksel Hareketsizlik: Havasız odada kalıp sinir sistemine 'tehlike geçti' sinyali vermemek."
+          ],
+          scenario: "Sabah uyanır uyanmaz elin telefona gider, onun çevrimiçi olup sana yazmadığını görürsün ve daha yataktan çıkmadan bütün günün enerjisi sıfırlanır."
         },
         {
           heading: "Dibe Vurma Tuzağı",
@@ -1594,21 +1643,27 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Flört Psikolojisi",
     publishDate: "2026-06-20",
     readTime: "5 dk okuma",
-    keywords: ["soft launch ne demek", "hard launch ilişki", "sosyal medyada ilişki paylaşmak", "partneri tanıtmak", "bağlanma stili", "instagram ilişki"],
+    keywords: ["soft launch ne demek", "hard launch ne demek", "soft launch ilişki", "storyde sevgili paylaşmak", "sosyal medyada ilişki gizlemek", "instagram sevgili story", "bağlanma stili testi"],
     imageUrl: "/images/trends/soft-launch.webp",
     content: {
       intro: "Müthiş biriyle yeni tanışmaya başladın. Kelebekler gerçek, buluşmalar kusursuz ve gerçek anlamda duygular geliştirmekten tehlikeli derecede yakınsın. Ardından modern flörtün en stratejik açıdan karmaşık kararı geliyor: Sosyal medya debütlerini nasıl yöneteceksin? Gizemli soft launch'a mı gideceksin — brunch fotoğrafının köşesinde bulanık bir el, story'nde neredeyse görünmez bir gölge — yoksa yüz yüze bir çift fotoğrafı ve etiketli bir Instagram gönderisiyle tam hard launch'a mı? Önceki nesillerin hiç vermek zorunda kalmadığı bu karar, psikolojin hakkında düşündüğünden çok daha fazlasını ortaya koyuyor.",
       sections: [
         {
-          heading: "Soft Launch: Stratejik Belirsizlik",
-          paragraph: "Soft launch, romantik bir partneri izleyicilerine tam olarak ortaya koymadan tanıtma sanatıdır. Kırpılmış bir el, bir siluet, sıfır bağlam içeren 'özel biriyle akşam yemeği yedim' açıklaması. Altta yatan psikoloji risk yönetimine dayanır. Soft launcher, ilişki işe yaramazsa utanç verici bir kamuoyu düşüşünden kendini korur. Aynı zamanda bazen bir güç hamlesidir — gizemlilik yaratır ve izleyicinin bu yeni kişinin kim olduğunu merak etmesini sağlar. Alışılmış bir soft launcher'san, bu aynı zamanda kaygılı veya kaçınmacı bir bağlanma stiline de işaret edebilir."
+          heading: "Soft Launch Nedir? Stratejik Gizem mi, Bağlanma Korkusu mu?",
+          paragraph: "Soft launch, romantik bir partneri izleyicilerine tam olarak ortaya koymadan tanıtma sanatıdır. Kırpılmış bir el, bir siluet, sıfır bağlam içeren 'özel biriyle akşam yemeği yedim' açıklaması. Altta yatan psikoloji risk yönetimine dayanır. Soft launcher, ilişki işe yaramazsa utanç verici bir kamuoyu düşüşünden kendini korur. Aynı zamanda bazen bir güç hamlesidir — gizemlilik yaratır ve izleyicinin bu yeni kişinin kim olduğunu merak etmesini sağlar. Alışılmış bir soft launcher'san, bu aynı zamanda kaygılı veya kaçınmacı bir bağlanma stiline de işaret edebilir.",
+          items: [
+            "Soft Launch (İpucu Bırakmak): Karşılıklı iki kahve bardağı, direksiyondaki kol saati veya etiketsiz gölge fotoğrafı.",
+            "Hard Launch (Resmi İlan): Yüzlerin net göründüğü, etiketli çift paylaşımı ve ilişkinin resmileşmesi.",
+            "Gizleme Red Flag'i: 6+ aydır beraber olmanıza rağmen sosyal medyada hâlâ tamamen bekar görünmeye çalışmak."
+          ],
+          scenario: "5 aydır çıkıyorsunuzdur ama attığı her story'de senin sadece dirseğin veya kahve fincanın görünüyordur; 'Nazar değmesin diye paylaşmıyorum' bahanesi ise klasik kaçıngan kalkanıdır."
         },
         {
           heading: "Hard Launch: Cesur Özgüven mi, Düşüncesiz İyimserlik mi?",
           paragraph: "Hard launch bir niyet beyanıdır. Net bir fotoğraf, her iki yüz de görünür, sıcak bir açıklama, belki bir etiket. Dünyaya şunu söyler: bu kişi benimle, gurur duyuyorum ve bundan sonra ne olacağından korkmuyorum. Hard launcher'lar genellikle daha güvenli bağlanma stillerine sahiptir — kırılganlıkla rahattırlar ve kamuoyu başarısızlığından obsesif biçimde korkmaz. Ancak erken bir hard launch (üç buluşmadan sonra birini paylaşmak), duygusal dürtüselliğin veya aşk bombalama eğilimlerinin de işareti olabilir. Hard launch'ın zamanlaması her şeydir."
         },
         {
-          heading: "Stratejin Bağlanma Stilin Hakkında Ne Söylüyor",
+          heading: "Story Stratejin Bağlanma Stilin Hakkında Ne Söylüyor?",
           paragraph: "İşte filtresiz psikolojik analiz. Kronik soft launcher'lar? Muhtemelen kaygılı veya kaçınmacı bağlanma — bağlantıya ihtiyaç duyarlar ama açılmaktan korkarlar. Dürtüsel hard launcher'lar? Muhtemelen korkulu-kaçınmacı, savunma mekanizması olarak yoğun açıklık kullanıyorlar. Hesaplı, zamanlanmış hard launcher'lar? Güvenli bağlanma — ne sahip olduklarını biliyorlar, bundan gurur duyuyorlar ve kimse için performans sergilemiyorlar."
         }
       ],
@@ -1624,22 +1679,28 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Flört Psikolojisi",
     publishDate: "2026-06-21",
     readTime: "6 dk okuma",
-    keywords: ["duygusal olarak kapalı erkek", "duygusal olarak kapalı kadın", "duygusal kapalılık işaretleri", "kaçınmacı bağlanma", "toksik ilişki işaretleri"],
+    keywords: ["duygusal olarak ulaşılamaz ne demek", "duygusal olarak kapalı erkek belirtileri", "duygusal olarak kapalı kadın", "bağlanma korkusu belirtileri", "kaçınmacı bağlanma flört", "sıcak soğuk yapan flört"],
     imageUrl: "/images/trends/emotionally-unavailable.webp",
     content: {
-      intro: "İki aydır konuşuyorsunuz. Gerçekleştiğinde sohbetler harika — komik, derin, elektrikli. Ama bir şey her zaman biraz ulaşılamaz hissettiriyor. Oradalar, ama tam olarak orada değiller. Hayatlarından ayrıntılar paylaşıyorlar ama emotionell ağır bir şeye gelir gelmez savıyorlar. Bağlı hissediyorsun, ama yalnızca senin tüketimin için dikkatlice inşa ettikleri bir versiyonuna. Duygusal olarak kapalı birine aşık oluyor olabilirsin ve acı gerçek şu: kendileri bile bunun farkında olmayabilir.",
+      intro: "İki aydır konuşuyorsunuz. Gerçekleştiğinde sohbetler harika — komik, derin, elektrikli. Ama bir şey her zaman biraz ulaşılamaz hissettiriyor. Oradalar, ama tam olarak orada değiller. Hayatlarından ayrıntılar paylaşıyorlar ama duygusal olarak ağır bir şeye gelir gelmez savıyorlar. Bağlı hissediyorsun, ama yalnızca senin tüketimin için dikkatlice inşa ettikleri bir versiyonuna. Duygusal olarak kapalı birine aşık oluyor olabilirsin ve acı gerçek şu: kendileri bile bunun farkında olmayabilir.",
       sections: [
         {
-          heading: "Yüzeyde Tutarlı, Derinlikte Yok",
-          paragraph: "Duygusal olarak kapalı insanlar genellikle mükemmel iletişimcilerdir — yüzeysel düzeyde. Düzenli mesaj atarlar, planlar yaparlar, gösterirler. Yapmadıkları şey daha derine inmektir. Bir sohbet eğlenceli ve flörtöz olmaktan savunmasız ve gerçeğe doğru kayar kaymaz konu değiştirirler. Derinlik olmadan tutarlılık, en erken ve en güvenilir uyarı işaretlerinden biridir. Sen onların öne çıkardıklarını alıyorsun, gerçeklerini değil."
+          heading: "Duygusal Olarak Ulaşılamaz (Kapalı) Kişi Nasıl Anlaşılır?",
+          paragraph: "Duygusal olarak kapalı insanlar genellikle mükemmel iletişimcilerdir — yüzeysel düzeyde. Düzenli mesaj atarlar, planlar yaparlar, gösterirler. Yapmadıkları şey daha derine inmektir. Bir sohbet eğlenceli ve flörtöz olmaktan savunmasız ve gerçeğe doğru kayar kaymaz konu değiştirirler. Derinlik olmadan tutarlılık, en erken ve en güvenilir uyarı işaretlerinden biridir. Sen onların öne çıkardıklarını alıyorsun, gerçeklerini değil.",
+          items: [
+            "Duygusal Konularda Mizah Kalkanı: Ciddi bir his paylaştığında hemen espriye vurup konuyu kapatması.",
+            "Yakınlık Sonrası Geri Çekilme: Çok güzel geçen bir buluşmanın hemen ardından 2–3 gün buz gibi mesafeli davranması.",
+            "Belirsiz Gelecek Cümleleri: 'Ben anı yaşıyorum, plan yapmayı sevmiyorum' diyerek bağlanmaktan kaçması."
+          ],
+          scenario: "Harika bir hafta sonu geçirirsiniz, sana çok yakın davranır; Pazartesi sabahından Çarşamba akşamına kadar tek kelimelik soğuk mesajlara döner."
         },
         {
-          heading: "Geçmişleri Bir Kasa",
+          heading: "Geçmişleri Bir Kasa: Neden Kırılganlıktan Kaçarlar?",
           paragraph: "Duygusal olarak erişilebilir bir kişi, zaman içinde güven ve kırılganlık inşa ederek geçmişini paylaşır. Duygusal olarak kapalı bir kişi ya hiçbir şey paylaşmaz ya da aslında hiçbir şeyi ortaya koymayan açıklık performansı olarak hepsini bir anda paylaşır. İşlenmemiş travmaları, henüz atlatamadıkları bir kırık kalpleri veya çocukluktan gelen derin kaçınmacı bağlanma kalıpları olabilir. Neden olursa olsun, geçmişleri mühürlü bir kasadır ve sana anahtarı vermeye hazır değiller."
         },
         {
-          heading: "Yine de Neden Aşık Oluyorsun?",
-          paragraph: "İşte en zor gerçek: duygusal olarak kapalı insanlar genellikle inanılmaz derecede karizmatik, çekici ve eğlencelidir. Yarattıkları sıcak-soğuk dinamiği psikolojik olarak bağımlılık yaratır — beynimiz tutarsız ödülleri kovalamaktan tutarlı olanlardan daha fazla dopamin salgılar. Kovalama heyecan verici hissettiriyor. Toksik Ex Scanner özelliğimiz, daha da derine girmeden hayatındaki birinin bu kalıpları sergileyip sergilemediğini belirlemenize yardımcı olabilir."
+          heading: "Sıcak-Soğuk Döngüsü Neden Bağımlılık Yapar?",
+          paragraph: "İşte en zor gerçek: duygusal olarak kapalı insanlar genellikle inanılmaz derecede karizmatik, çekici ve eğlencelidir. Yarattıkları sıcak-soğuk dinamiği psikolojik olarak bağımlılık yaratır — beynimiz tutarsız ödülleri kovalamaktan tutarsız olmayanlara göre daha fazla dopamin salgılar. Kovalama heyecan verici hissettiriyor. Toksik Ex Scanner özelliğimiz, daha da derine girmeden hayatındaki birinin bu kalıpları sergileyip sergilemediğini belirlemene yardımcı olabilir."
         }
       ],
       conclusion: "Duygusal olarak kapalı birini sevmek, hayal edilebilecek en yalnız deneyimlerden biridir — çünkü var olabilecek bağlantıyı hissedebilirsin, ihtiyaç duyduğun derinlikten sürekli mahrum kalırken. Birini hazır olmaya zorlayamazsın. Yapabileceğin en güçlü şey kalıbı fark etmek ve kendini seçmektir."
@@ -1654,25 +1715,31 @@ export const trendsDataTr: TrendArticle[] = [
     category: "İlişkiler",
     publishDate: "2026-06-22",
     readTime: "5 dk okuma",
-    keywords: ["toksik arkadaş işaretleri", "toksik arkadaşlık nasıl anlaşılır", "arkadaşlık kırmızı bayrakları", "tek taraflı arkadaşlık", "yorucu arkadaşlar"],
+    keywords: ["toksik arkadaş belirtileri", "toksik arkadaş nasıl anlaşılır", "kıskanç yakın arkadaş işaretleri", "arkadaşlık red flagleri", "tek taraflı arkadaşlık", "bff uyum testi", "arkadaşlık testi"],
     imageUrl: "/images/trends/toxic-friendship.webp",
     content: {
       intro: "Toksik romantik partnerleri tespit etmek için çok fazla enerji harcıyoruz, ancak aynı eleştirel bakışı pek nadiren arkadaşlıklarımıza uyguluyoruz. Oysa toksik bir arkadaşlık en az onlar kadar yıkıcı olabilir — ve çoğu zaman daha sinsi, çünkü beklentiler farklı ve ihanet daha derin acıtır. Arkadaşlar seçtiğimiz ailemiz, güvenli alanımız olmalıdır. O ilişki sevinç yerine kaygı, şüphe veya tükenme kaynağı haline geldiğinde, bir şeyler ciddi biçimde yanlış gitmiş demektir.",
       sections: [
         {
-          heading: "Her Şey Her Zaman Onlarla İlgili",
-          paragraph: "Sağlıklı bir arkadaşlık, enerji, destek ve gerçek ilginin iki yönlü bir alışverişidir. Toksik bir arkadaşlıkta ise sen izleyici, onlar baş karakterdir — her zaman. Sorunlarını dinlemek, başarılarını kutlamak ve duygularını onaylamak için saatler harcarsın. Kendi hayatından bir şeyler paylaşmaya çalıştığında sohbet hızla onlara geri döner. Her buluşmadan duygusal olarak tükenmiş ve tuhaf bir boşlukla ayrılırsın; çok şey verdiğini ama karşılığında hiçbir şey almadığını hissedersin."
+          heading: "Toksik Arkadaş Nasıl Anlaşılır? Enerji Vampirliği İşaretleri",
+          paragraph: "Sağlıklı bir arkadaşlık, enerji, destek ve gerçek ilginin iki yönlü bir alışverişidir. Toksik bir arkadaşlıkta ise sen izleyici, onlar baş karakterdir — her zaman. Sorunlarını dinlemek, başarılarını kutlamak ve duygularını onaylamak için saatler harcarsın. Kendi hayatından bir şeyler paylaşmaya çalıştığında sohbet hızla onlara geri döner. Her buluşmadan duygusal olarak tükenmiş ve tuhaf bir boşlukla ayrılırsın; çok şey verdiğini ama karşılığında hiçbir şey almadığını hissedersin.",
+          items: [
+            "Şaka Maskeli İğnelemeler: Kalabalık ortamda seni küçümseyip 'Şaka yaptım ya, hemen alınma' diyerek geçiştirmesi.",
+            "Gizli Rekabet ve Kıskançlık: Güzel bir haber verdiğinde yüzünün düşmesi veya hemen konuyu kendi başarısına çevirmesi.",
+            "Duygusal Çöp Kutusu Dinamiği: Sadece kendi krizi olduğunda araması, senin zor gününde ise 'çok yoğun' olması."
+          ],
+          scenario: "Yeni bir işe girdiğini veya güzel bir flörtün olduğunu heyecanla anlatırsın; sevinmek yerine ilk cümlesi 'Dikkat et öyle yerler/tipler genelde çok kötü çıkıyor' olur."
         },
         {
           heading: "Başarılarından Çok Başarısızlıklarını Kutluyorlar",
-          paragraph: "Gerçek bir arkadaşın başarına duyduğu sevinç samimi ve çekingesiz olmalıdır. Toksik bir arkadaşın başarılarına karşı tuhaf, zar zor gizlenmiş bir acılık vardır. Kazanımlarını küçümserler ('oh, bu güzel ama o kadar büyük bir şey değil'), başarını hemen kendileriyle kıyaslarlar ya da kutlama anında olumsuz bir şey bulurlar. Tersine, işler senin için yanlış gittiğinde neredeyse canlanır gibidirler, biraz fazla rahat hissettiren bir 'sempati' sunarlar."
+          paragraph: "Gerçek bir arkadaşın başarına duyduğu sevinç samimi ve çekincesiz olmalıdır. Toksik bir arkadaşın başarılarına karşı tuhaf, zar zor gizlenmiş bir acılık vardır. Kazanımlarını küçümserler ('oh, bu güzel ama o kadar büyük bir şey değil'), başarını hemen kendileriyle kıyaslarlar ya da kutlama anında olumsuz bir şey bulurlar. Tersine, işler senin için yanlış gittiğinde neredeyse canlanır gibidirler, biraz fazla rahat hissettiren bir 'sempati' sunarlar."
         },
         {
           heading: "Her Zaman Yumurta Kabuğu Üzerinde Yürüyorsun",
           paragraph: "Sağlıklı bir arkadaşlıkta tam ve filtresiz kendin olabilirsin. Toksik birinde ise sürekli kendini sansürlüyorsun. Onları kışkırtmamak için kelimelerini dikkatle seçiyorsun. İyi haberleri hemen paylaşmıyorsun çünkü tepkilerinden korkuyorsun. Onlarla buluşmadan önce hafif bir kaygı hissediyorsun. Bu yumurta kabuğu dinamiği, sinir sisteminin onların öngörülemeyen tepkilerinden seni korumak için geliştirdiği bir travma yanıtıdır."
         }
       ],
-      conclusion: "Bir arkadaşlığı bitirmek, yapabileceğin en acı verici şeylerden biridir. Ama aura'n — enerjin, ruh sağlığın, kendin olma hissin — bir zamanlar aile gibi hissettiren insanlardan bile korunmaya değer. Güneş ışığı gibi hissettiren arkadaşlıkları hak ediyorsun, iş gibi değil."
+      conclusion: "Bir arkadaşlığı bitirmek, yapabileceğin en acı verici şeylerden biridir. Ama auran — enerjin, ruh sağlığın, kendin olma hissin — bir zamanlar aile gibi hissettiren insanlardan bile korunmaya değer. Güneş ışığı gibi hissettiren arkadaşlıkları hak ediyorsun, iş gibi değil."
     },
     ctaLabel: "BFF Kanka Uyumunu Test Et",
     ctaLink: "/bff-vibe-check",
@@ -1684,22 +1751,29 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Kültür ve Slang",
     publishDate: "2026-06-20",
     readTime: "6 dk okuma",
-    keywords: ["gen-z flört terimleri 2026", "modern flört jargonu", "breadcrumbing ne demek", "benching flört", "beige flag", "situationship", "ilişki terimleri sözlüğü"],
+    keywords: ["gen-z flört terimleri", "ilişki terimleri sözlüğü", "breadcrumbing ne demek", "benching ne demek", "beige flag nedir", "situationship ne demek", "ghosting orbiting farkı", "flört jargonu türkçe"],
     imageUrl: "/images/trends/gen-z-dating-terms.webp",
     content: {
       intro: "Modern flört tamamen yeni bir dil geliştirdi ve bu dile hâkim değilsen, kendi aşk hayatın hakkındaki sohbetlerde tamamen kaybolduğunu göreceksin. Gen-Z, flörtün dağınık, kafa karıştırıcı ve çoğu zaman acı verici deneyimini aldı ve her tek fenomene kendi kesin, paylaşılabilir terimini verdi. Manipülatif olandan sıradana kadar bu sözcükler, önceki nesillerin bile kelime hazinesi olmayan duygusal gerçeklikleri yakalıyor. Bu, 2026'da romantizmde yol almak için temel sözlüğün.",
       sections: [
         {
-          heading: "Manipülasyon Oyun Kitabı: Toksik Davranış Terimleri",
-          paragraph: "Breadcrumbing: Gerçek bir şeye bağlanmadan seni ilgili tutmak için tam yeterince dikkat göndermek — bir beğeni, 'hey' mesajı, ara sıra iltifat. Benching: Başka birini takip ederken seni yedek seçenek olarak listede tutmak. Orbiting: Seninle konuşmayı bıraktılar ama her hikayeni hâlâ izliyorlar. Seni merak ettirir ve bağlı tutar, hiçbir gerçek çaba harcamadan. Love bombing: Gerçek doğalarını ortaya koymadan önce seni yakalamak için ilişkinin ilk aşamalarında yoğun sevgi, dikkat ve büyük jestlerle bunaltmak."
+          heading: "Manipülasyon Oyun Kitabı: Toksik Flört Terimleri",
+          paragraph: "Breadcrumbing: Gerçek bir şeye bağlanmadan seni ilgili tutmak için tam yeterince dikkat göndermek — bir beğeni, 'hey' mesajı, ara sıra iltifat. Benching: Başka birini takip ederken seni yedek seçenek olarak listede tutmak. Orbiting: Seninle konuşmayı bıraktılar ama her hikayeni hâlâ izliyorlar. Seni merak ettirir ve bağlı tutar, hiçbir gerçek çaba harcamadan. Love bombing: Gerçek doğalarını ortaya koymadan önce seni yakalamak için ilişkinin ilk aşamalarında yoğun sevgi, dikkat ve büyük jestlerle bunaltmak.",
+          items: [
+            "Breadcrumbing (Ekmek Kırıntısı): Buluşma planı yapmadan ara sıra story beğenisi veya tek kelimelik mesajla umut vermek.",
+            "Benching (Yedek Kulübesi): Seni tamamen bırakmayıp daha iyi bir seçenek çıkmazsa diye elde tutmak.",
+            "Orbiting (Yörüngede Dönmek): Mesajlarına cevap vermeyip attığın tüm hikayeleri ilk sırada izlemek.",
+            "Beige Flag: Toksik olmayan ama karşı tarafın tuhaf/komik alışkanlıklarını gösteren nötr özellikler."
+          ],
+          scenario: "3 haftadır buluşma ayarlamayan flörtün gece 01:15'te story'ne '🔥' atıyorsa, bu romantizm değil tam bir Breadcrumbing + Orbiting kombosudur."
         },
         {
           heading: "Belirsizlik Bölgesi: Kafa Karıştırıcı Durumlar İçin Terimler",
-          paragraph: "Situationship: Arkadaştan fazlası, partnerden azı — belirsizlik üzerine gelişen tanımlanmamış gri alan. Talking stage: İki haftadan dört yıla kadar sürebilen, net bir bitiş noktası olmayan ilişki öncesi aşama. Beige flag: Kırmızı bayrak olmayan ama dikkat çekici derecede garip bir tuhaflık veya alışkanlık. Slow fade: Doğrudan bir konuşma yerine, biri iletişim sıklığını azaltarak teknik olarak hayalet geçirmeksizin senden uzaklaşır."
+          paragraph: "Situationship: Arkadaştan fazlası, partnerden azı — belirsizlik üzerine gelişen tanımlanmamış gri alan. Talking stage: İki haftadan dört yıla kadar sürebilen, net bir bitiş noktası olmayan ilişki öncesi aşama. Beige flag: Kırmızı bayrak olmayan ama dikkat çekici derecede garip bir tuhaflık veya alışkanlık. Slow fade: Doğrudan bir konuşma yerine, biri iletişim sıklığını azaltarak teknik olarak ghostlamadan senden uzaklaşır."
         },
         {
-          heading: "İyi Taraf: Sağlıklı Flört İçin Terimler",
-          paragraph: "Green flag: Duygusal sağlığı, güvenliği ve iyi ilişki potansiyelini gösteren davranış veya özellik. Main character energy: Hayatını niyetle ve özgüvenle yaşamak, kendi hikayene öncelik vermek. Hard launch: Partnerini sosyal medyada açık ve güvenli bir şekilde paylaşmak — ilişkideki güvenlik ve gurur işareti. Rizz: Çok fazla çabalamadan birini doğal olarak çekici yapan manyetik karizm. Secure attachment: Argo bir terim değil ama hedef — duygusal erişilebilirlik, güven ve tutarlı davranışla karakterize edilmiş bir ilişki stili."
+          heading: "İyi Taraf: Sağlıklı Flört İçin Terimler (Green Flag & Rizz)",
+          paragraph: "Green flag: Duygusal sağlığı, güvenliği ve iyi ilişki potansiyelini gösteren davranış veya özellik. Main character energy: Hayatını niyetle ve özgüvenle yaşamak, kendi hikayene öncelik vermek. Hard launch: Partnerini sosyal medyada açık ve güvenli bir şekilde paylaşmak — ilişkideki güvenlik ve gurur işareti. Rizz: Çok fazla çabalamadan birini doğal olarak çekici yapan manyetik karizma. Secure attachment: Duygusal erişilebilirlik, güven ve tutarlı davranışla karakterize edilmiş sağlıklı ilişki stili."
         }
       ],
       conclusion: "Dil gerçekliği şekillendirir. Bu deneyimler için kesin bir kelime hazinesine sahip olarak Gen-Z, modern flörtün kafa karıştırıcı dinamiklerini tespit etmeyi, ifade etmeyi ve işlemeyi önemli ölçüde kolaylaştırdı. Toksik bir kalıptan kaçmanın ilk adımı onu adlandırabilmektir."
@@ -1714,22 +1788,28 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Flört Psikolojisi",
     publishDate: "2026-06-21",
     readTime: "5 dk okuma",
-    keywords: ["delulu ne demek", "delulu is the solulu", "ezildiğim kişi gerçekten beni seviyor mu", "manifestasyon vs yanılsama", "gen-z ruh sağlığı", "situationship yanılsaması"],
+    keywords: ["delulu ne demek", "delulu nedir", "delulu testi", "delulu muyum testi", "delulu is the solulu anlamı", "platonik aşk kuruntusu", "flörtte kendini kandırmak"],
     imageUrl: "/images/trends/delulu.webp",
     content: {
       intro: "'Delulu is the solulu.' Şaka olarak başladı, vahşi derecede gerçekçi olmayan romantik fantezilerinin en büyük kişilik özelliğin olduğunun öz farkında bir ilanı. Adını hatırlayan baristanın ruh eşi olduğuna inanan kız. İki harfli bir mesaj yanıtını derin duygusal bağlantının işareti olarak yorumlayan erkek. 'Delulu' olmak bir onur nişanı haline geldi — iyimserliği modern flörtün kasvetli gerçekliklerine karşı bir silah olarak kullanmanın bir yolu. Ama bir yerde şaka artık komik olmaktan çıktı. Çünkü bazılarımız delulu performansı sergilemiyoruz. Gerçekten yaşıyoruz onu, ve bu bizi olduğumuz yerde tutuyor.",
       sections: [
         {
-          heading: "Sağlıklı Delulu Türü",
-          paragraph: "Adil olalım — bu zihniyetin gerçekten sağlıklı bir versiyonu var. Psikologlar buna 'pozitif yanılsamalar' diyor: çekiciliğini, partnerinin ilgisini veya ilişkinin potansiyelini, seni motive ve iyimser tutan yollarla biraz abartmak. Araştırmalar aslında hafif pozitif yanılsamalara sahip insanların daha mutlu ve hedeflerini kovalamada daha ısrarcı olduğunu gösteriyor. 'Delulu is the solulu' dönemi, bunu özgüven inşa etmek, beğendiğin birine şans tanımak veya zorlu bir flört döneminden sonra umudu korumak için kullandığında işe yarıyor."
+          heading: "Delulu Ne Demek? Sağlıklı Özgüven vs. Romantik Kuruntu",
+          paragraph: "Adil olalım — bu zihniyetin gerçekten sağlıklı bir versiyonu var. Psikologlar buna 'pozitif yanılsamalar' diyor: çekiciliğini, partnerinin ilgisini veya ilişkinin potansiyelini, seni motive ve iyimser tutan yollarla biraz abartmak. Araştırmalar aslında hafif pozitif yanılsamalara sahip insanların daha mutlu ve hedeflerini kovalamada daha ısrarcı olduğunu gösteriyor. 'Delulu is the solulu' dönemi, bunu özgüven inşa etmek, beğendiğin birine şans tanımak veya zorlu bir flört döneminden sonra umudu korumak için kullandığında işe yarıyor.",
+          items: [
+            "Sağlıklı Delulu (Özgüven): Hoşlandığın kişiyle konuşmaya cesaret etmek ve şansını denemek.",
+            "Toksik Delulu (İnkar): 3 kez buluşma iptal eden birinin 'çok yoğun olduğu için' gelemediğine inanmak.",
+            "Kronik Delulu: Ortada hiçbir somut adım yokken burç uyumuna ve story izlenme sırasına bakıp ilişki hayali kurmak."
+          ],
+          scenario: "Spotify listesine eklediği tek bir şarkının baş harflerinden sana gizli mesaj gönderdiğini düşünüp 2 saat sözlerini analiz ediyorsan, Delulu Skoru %95 seviyesindedir."
         },
         {
-          heading: "Delulu Bir Tuzak Olduğunda",
-          paragraph: "Kanıt üretmeye başladığında çizgi aşılır. 'k' metnini gizli anlam için üç saat analiz ettiğinde. Dördüncü kez randevuyu iptal etmelerinin aslında senin için hisleri konusunda korktuktan kaçındıklarının işareti olduğuna karar verdiğinde. Talking stage'de altı aydır derinsin ve sadece biraz daha zamana ihtiyaçları olduğuna inandığında. Bu manifestasyon değil — bu bir travma yanıtı. Daha rahat olan kurgusal bir şeyi inşa ederek acı verici bir gerçekten kendini koruyorsun. Bu arada, delulu olduğun kişi muhtemelen düşündüğün kadar seni düşünmüyor."
+          heading: "Delulu Ne Zaman Tehlikeli Bir Tuzağa Dönüşür?",
+          paragraph: "Kanıt üretmeye başladığında çizgi aşılır. 'k' metnini gizli anlam için üç saat analiz ettiğinde. Dördüncü kez randevuyu iptal etmelerinin aslında senin için hisleri konusunda korktuklarından kaçındıklarının işareti olduğuna karar verdiğinde. Talking stage'de altı aydır derinsin ve sadece biraz daha zamana ihtiyaçları olduğuna inandığında. Bu manifestasyon değil — bu bir travma yanıtı. Daha rahat olan kurgusal bir şeyi inşa ederek acı verici bir gerçekten kendini koruyorsun."
         },
         {
-          heading: "Kendini Nasıl Gerçeklik Kontrolü Yaparsın",
-          paragraph: "Acı gerçek şu: yanılsama, tanımı gereği içeriden görünmez. Kendi yanılsamanı, onu yaratan beynin ile teşhis edemezsin. Bu yüzden dışsal, nesnel girdi çok önemli. Dürüst bir arkadaşla konuşmak yardımcı olur — ama arkadaşların da kendi önyargıları var. Yapay Zeka Delulu Check özelliğimiz tam bunun için tasarlandı: durumu anlat, algoritmamız sana bu kişinin gerçekten ilgilenip ilgilenmediği ya da duygularında yalnız mı olduğuna dair tamamen filtresiz, kanıta dayalı bir değerlendirme yapıyor."
+          heading: "Ücretsiz Yapay Zeka Delulu Check Testi Nasıl Yapılır?",
+          paragraph: "Acı gerçek şu: yanılsama, tanımı gereği içeriden görünmez. Kendi yanılsamanı, onu yaratan beynin ile teşhis edemezsin. Bu yüzden dışsal, nesnel girdi çok önemli. Yapay Zeka Delulu Check özelliğimiz tam bunun için tasarlandı: durumu anlat veya mesaj ekran görüntüsünü yükle; algoritmamız sana bu kişinin gerçekten ilgilenip ilgilenmediğine dair tamamen filtresiz, 0–100 Delulu Skoru içeren bir değerlendirme yapsın."
         }
       ],
       conclusion: "Delulu olmak, modern flörtün acımasız arenasında bazen hayatta kalmak için gereklidir. Ama kronik yanılsama, kendini terk etmenin bir yoludur — gerçek bir bağlantı bulabileceğin bir gerçekliğin yerine rahat bir kurguyu seçmek. Kendini mahvetmeden önce kendini kontrol et."
@@ -1744,26 +1824,33 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Flört Psikolojisi",
     publishDate: "2026-06-22",
     readTime: "6 dk okuma",
-    keywords: ["bağlanma stilleri", "kaygılı bağlanma", "kaçınmacı bağlanma", "güvenli bağlanma", "korkulu kaçınmacı", "ilişki psikolojisi", "neden insanları itiyorum"],
+    keywords: ["bağlanma stilleri", "bağlanma stilleri testi", "kaygılı bağlanma belirtileri", "kaçıngan bağlanma erkek", "güvenli bağlanma nedir", "korkulu kaçıngan bağlanma", "ilişki psikolojisi"],
     imageUrl: "/images/trends/attachment-styles.webp",
     content: {
       intro: "Her ilişki bittiğinde bir dahaki sefere farklı yapacağına yemin edersin. Ama bir şekilde aynı kalıplar tekrarlanmaya devam eder. Ya çok sıkı yapışıp insanları kaçırırsın, ya da işler ciddileşince sen kaçarsın. Aynı tip insanı çekersin, aynı tuzaklara düşersin ve aynı kalp kırıklığını hissedersin. Bu kötü şans değil — bu senin bağlanma stilin. Çocuklukta gelişen ve sinir sistemine kodlanmış olan bağlanma stilin, nasıl sevdiğini, nasıl kavga ettiğini, nasıl iletişim kurduğunu ve nihayetinde ilişkilerini nasıl sabote ettiğini belirleyen görünmez bir plandır.",
       sections: [
         {
-          heading: "Güvenli Bağlanma: Altın Standart",
-          paragraph: "Güvenli bağlananlar yakınlık ve bağımsızlıkla eşit ölçüde rahatlar. İhtiyaçlarını doğrudan iletirler, oyun oynamazlar ve panik ya da kapanma yaşamadan çatışmayla başa çıkabilirler. Partnerlerine güvenirler ve kaygı duymadan alan verirler. Kulağa bir fantezi gibi geliyorsa, bunun nedeni yetişkinlerin yalnızca yaklaşık %50'sinin güvenli bağlanma stiline sahip olmasıdır. Mükemmel değiller — sadece duygusal arazide yol almak için sağlıklı bir temelleri var."
+          heading: "4 Temel Bağlanma Stili: Hangi İlişki Kalıbındasın?",
+          paragraph: "Güvenli bağlananlar yakınlık ve bağımsızlıkla eşit ölçüde rahatlar. İhtiyaçlarını doğrudan iletirler, oyun oynamazlar ve panik ya da kapanma yaşamadan çatışmayla başa çıkabilirler. Partnerlerine güvenirler ve kaygı duymadan alan verirler. Kulağa bir fantezi gibi geliyorsa, bunun nedeni yetişkinlerin yalnızca yaklaşık %50'sinin güvenli bağlanma stiline sahip olmasıdır.",
+          items: [
+            "Güvenli Bağlanma: Net iletişim kurar, belirsizlik oyunu oynamaz ve hem yakınlıkla hem bireysel alanla rahattır.",
+            "Kaygılı Bağlanma: Terk edilme korkusuyla mesaj sürelerini takip eder, sürekli onay arar ve ufak soğukluğu felaket sanır.",
+            "Kaçıngan Bağlanma: İlişki ciddileştiğinde 'boğuluyormuş' gibi hisseder ve bağımsızlık maskesiyle mesafe koyar.",
+            "Korkulu-Kaçıngan (Düzensiz): Hem yoğun yakınlık ister hem de incinme korkusuyla aniden kaçar (it-çek döngüsü)."
+          ],
+          scenario: "Kaygılı partner mesaj gelmeyince üst üste 3 mesaj atar; kaçıngan partner bunu görünce 'Üzerime geliniyor' diyerek telefonu sessize alır ve döngü kilitlenir."
         },
         {
-          heading: "Kaygılı Bağlanma: Aşırı Düşünen",
-          paragraph: "Hiç çift mesaj attıysan, 'son görülme'yi 47 kez kontrol ettiysen veya ünlem yerine nokta kullandıkları için krizler geçirdiysen, kaygılı bağlanan olabilirsin. Kaygılı bağlanma, çocuklukta tutarsız bakım vermekten kaynaklanır — bazen ihtiyaçların karşılandı, bazen karşılanmadı. Bu, aşk etrafında bir aşırı uyanıklık yarattı. Yakınlığı yoğun bir şekilde arzularsın ama terk edilme korkusuyla yaşarsın. İlgi kaybettiklerine dair kanıt arayan bir dedektif olursun. Trajedisi şu ki tam da bu davranış — muhtaçlık, sürekli güvence arama — genellikle partnerleri uzaklaştırarak en derin korkunu doğrular."
+          heading: "Kaygılı Bağlanma: Aşırı Düşünen (Overthinker)",
+          paragraph: "Hiç çift mesaj attıysan, 'son görülme'yi 47 kez kontrol ettiysen veya ünlem yerine nokta kullandıkları için krizler geçirdiysen, kaygılı bağlanan olabilirsin. Kaygılı bağlanma, çocuklukta tutarsız bakım vermekten kaynaklanır — bazen ihtiyaçların karşılandı, bazen karşılanmadı. Bu, aşk etrafında bir aşırı uyanıklık yarattı. Yakınlığı yoğun bir şekilde arzularsın ama terk edilme korkusuyla yaşarsın."
         },
         {
-          heading: "Kaçınmacı Bağlanma: Kaçış Sanatçısı",
-          paragraph: "Kaçınmacılar, işler ciddileştiğinde geri çekilen insanlardır. Bağımsızlığa aşırı derecede değer verirler, duygusal kırılganlıkla rahatsız olurlar ve genellikle geçmiş ilişkileri idealleştirirken mevcut olanları değersizleştirirler. Kaçınmacı bağlanma genellikle bir çocuğun duygusal ihtiyaçlarını ifade etmenin reddedilmeye yol açtığını öğrendiğinde gelişir. Kendi kendini sakinleştirmeyi, kimseye ihtiyaç duymamayı öğrendiler. Yüzeyde soğukkanlı, bağımsız ve umursamaz görünürler. Altında, yutulma korkusu — başka bir insanda kendilerini kaybetme — taşırlar."
+          heading: "Kaçıngan Bağlanma: Kaçış Sanatçısı",
+          paragraph: "Kaçınmacılar, işler ciddileştiğinde geri çekilen insanlardır. Bağımsızlığa aşırı derecede değer verirler, duygusal kırılganlıkla rahatsız olurlar ve genellikle geçmiş ilişkileri idealleştirirken mevcut olanları değersizleştirirler. Yüzeyde soğukkanlı, bağımsız ve umursamaz görünürler. Altında, yutulma korkusu — başka bir insanda kendilerini kaybetme — taşırlar."
         },
         {
-          heading: "Korkulu-Kaçınmacı: İt-Çek Paradoksu",
-          paragraph: "En nadir ve en çalkantılı stil. Korkulu-kaçınmacılar umutsuzca aşkı isterler ama aynı anda ondan dehşete kapılırlar. Kaygılı ve kaçınmacı davranışlar arasında öngörülemez biçimde sallanırlar — bir gün tamamen içindeler, ertesi gün tamamen geri çekilmişler. Bu stil genellikle çocukluk travmasından veya sevginin kaynağının aynı zamanda korkunun kaynağı olduğu kaotik erken ilişkilerden kaynaklanır. İyi haber: tüm bağlanma stilleri farkındalık ve bilinçli çabayla güvenli bağlanmaya doğru kayabilir."
+          heading: "Korkulu-Kaçıngan: İt-Çek Paradoksu",
+          paragraph: "En nadir ve en çalkantılı stil. Korkulu-kaçınmacılar umutsuzca aşkı isterler ama aynı anda ondan dehşete kapılırlar. Kaygılı ve kaçınmacı davranışlar arasında öngörülemez biçimde sallanırlar — bir gün tamamen içindeler, ertesi gün tamamen geri çekilmişler. İyi haber: tüm bağlanma stilleri farkındalık ve bilinçli çabayla güvenli bağlanmaya doğru kayabilir."
         }
       ],
       conclusion: "Bağlanma stilin kaderin değil — başlangıç noktandır. Daha sağlıklı ilişkilere giden ilk adım, bilinçsizce tekrarladığın kalıbı anlamaktır. Bir kez gördüğünde, görmezden gelemezsin. Ve gerçek değişim o zaman başlar."
@@ -1778,17 +1865,23 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Flört Psikolojisi",
     publishDate: "2026-06-22",
     readTime: "5 dk okuma",
-    keywords: ["birini nasıl unuturum", "ayrılık sonrası ne yapmalı", "eski sevgiliyi unutmak", "kalp kırıklığı tavsiye", "birini düşünmeyi bırakmak", "ayrılık iyileşme"],
+    keywords: ["eski sevgiliyi unutmak", "birini nasıl unuturum", "ayrılık acısı nasıl geçer", "eski sevgiliye mesaj atmalı mıyım", "no contact kuralı nedir", "ayrılık sonrası stalk bırakma"],
     imageUrl: "/images/trends/get-over-someone.webp",
     content: {
       intro: "Gece 2. Yatakta yatıyorsun, tavana bakıyorsun, aynı konuşmayı 400. kez kafanda tekrarlıyorsun. Numarasını sildin — ve hafızandan tekrar kaydettin. Instagram'ını sessize aldın — ve tarayıcıdan kontrol ettin. Her şarkı onlar hakkında yazılmış gibi geliyor. Sokaklardaki her mutlu çift kişisel bir saldırı hissettiriyor. Birini unutmak evrensel olarak en acı verici insan deneyimlerinden biridir ve internetin 'kendine odaklan' ve 'zaman her şeyi iyileştirir' tavsiyeleri siperlerdeyken hakaret edici derecede yetersiz hissettiriyor. İşte gerçek rehber — şekerleme yok, toksik pozitiflik yok.",
       sections: [
         {
-          heading: "Beynin Neden Bırakmıyor (Tam Anlamıyla Bağımlılık)",
-          paragraph: "Bu sadece duygusal acı değil — nörokimyasal yoksunluk. Araştırmalar romantik reddin, kokain yoksunluğuyla aynı beyin bölgelerini aktive ettiğini gösteriyor. Beynin bu kişiyle her birlikteyken dopamin, oksitosin ve serotoninle doluyordu. Şimdi o kaynak kesildi ve beynin başka bir doz için çığlık atıyor. Bu yüzden sosyal medyalarını kontrol etmeye, eski mesajları yeniden okumaya devam ediyorsun. Zayıf değilsin — bir insandan yoksunluk geçiriyorsun."
+          heading: "Beynin Eski Sevgiliyi Neden Bırakmıyor? (Dopamin Yoksunluğu)",
+          paragraph: "Bu sadece duygusal acı değil — nörokimyasal yoksunluk. Araştırmalar romantik reddin, bağımlılık yoksunluğuyla aynı beyin bölgelerini aktive ettiğini gösteriyor. Beynin bu kişiyle her birlikteyken dopamin, oksitosin ve serotoninle doluyordu. Şimdi o kaynak kesildi ve beynin başka bir doz için çığlık atıyor. Bu yüzden sosyal medyalarını kontrol etmeye, eski mesajları yeniden okumaya devam ediyorsun. Zayıf değilsin — bir insandan yoksunluk geçiriyorsun.",
+          items: [
+            "Tam Sıfır İletişim (No Contact): Profiline bakmak bile beynindeki ödül-yoksunluk sayacını sıfırlar.",
+            "İdealleştirme Filtresini Kır: Sadece iyi anıları değil, seni üzdüğü ve değersiz hissettirdiği anları yazılı olarak hatırla.",
+            "Gece 01:00 Mesaj Kuralı: Gece geç saatte gelen özlem dalgasında asla mesaj atma; sabaha kadar bekle."
+          ],
+          scenario: "İki hafta boyunca hiç yazmazsın, tam rahatlamaya başlarken 'Sadece ne yapıyor diye bir kere profiline bakayım' dersin ve yeni bir takipçisini görüp başa dönersin."
         },
         {
-          heading: "İletişimi Kesme Kuralı: Neden Gerçekten İşe Yarıyor",
+          heading: "İletişimi Kesme Kuralı (No Contact): Neden Gerçekten İşe Yarıyor?",
           paragraph: "Her etkileşim — her mesaj, her story görüntüleme, her 'kazara' karşılaşma — yoksunluk saatini sıfıra geri alır. İletişimsizlik onları cezalandırmak veya oyun oynamakla ilgili değil. Beynine yeniden yapılanması için ihtiyaç duyduğu alanı vermekle ilgili. Sil, sessize al, engelle — ne gerekiyorsa. İlk iki hafta cehennem. Ondan sonra, istekler aralıklı olmaya başlar. 30 gün sonra, saatlerce onları düşünmediğini fark ettiğin anlar olacak."
         },
         {
@@ -1808,14 +1901,20 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Flört Psikolojisi",
     publishDate: "2026-06-22",
     readTime: "5 dk okuma",
-    keywords: ["birinin senden hoşlandığının işaretleri", "beden dili çekim", "hoşlanma belirtileri", "ezildiğim kişi beni seviyor mu", "sözsüz çekim ipuçları"],
+    keywords: ["birinin senden hoşlandığını nasıl anlarsın", "hoşlanma belirtileri beden dili", "benden hoşlanıyor mu testi", "platonik aşk belirtileri", "erkeklerin hoşlanma belirtileri", "kadınların hoşlanma belirtileri", "crush uyum testi"],
     imageUrl: "/images/trends/body-language-crush.webp",
     content: {
       intro: "Mesajlarını gizli anlamlar için analiz ediyor, emoji seçimlerini inceliyor ve yanıt sürelerini çok fazla derinlemesine okuyorsun. Ama işte çoğu flört tavsiyesinin görmezden geldiği gerçek: kelimeler yalan söyler. Mesajlar hesaplanabilir, altyazılar performatif olabilir ve insanlar hiçbirini kastetmeden doğru şeyleri söyleyebilir. Ama beden yalan söylemez. Sözsüz iletişim insan etkileşiminin %55'inden fazlasını oluşturur ve biri sana gerçekten ilgi duyduğunda, bedeni bunu bilinçli olarak kontrol edemeyecekleri şekillerde yayınlar.",
       sections: [
         {
-          heading: "Gözler: Nihai Gerçek Dedektörü",
-          paragraph: "Uzun süreli göz teması, çekimin en güvenilir tek göstergesidir. Biri senden hoşlandığında, göz bebekleri kelimenin tam anlamıyla genişler — taklit edemeyecekleri fizyolojik bir tepki. Bakışını gerekli olandan bir saniye daha uzun tutarlar. Bir grup ortamında bile güldüklerinde sana bakarlar, senin de komik bulup bulmadığını kontrol ederek. 'Üçgen bakış' — sol göz, sağ göz, sonra dudaklar, sonra tekrar yukarı — platonik değil romantik ilgiyi işaret eden bilinçaltı bir kalıptır."
+          heading: "Beden Diliyle Hoşlanma Belirtileri: Göz Teması ve Bakışlar",
+          paragraph: "Uzun süreli göz teması, çekimin en güvenilir tek göstergesidir. Biri senden hoşlandığında, göz bebekleri kelimenin tam anlamıyla genişler — taklit edemeyecekleri fizyolojik bir tepki. Bakışını gerekli olandan bir saniye daha uzun tutarlar. Bir grup ortamında bile güldüklerinde sana bakarlar, senin de komik bulup bulmadığını kontrol ederek. 'Üçgen bakış' — sol göz, sağ göz, sonra dudaklar, sonra tekrar yukarı — platonik değil romantik ilgiyi işaret eden bilinçaltı bir kalıptır.",
+          items: [
+            "Grup İçinde Refleks Bakış: Ortamda komik bir şey olduğunda ilk kimin güldüğüne bakıyorsa, odak noktası o kişidir.",
+            "Ayak Ucu ve Gövde Yönü: Kalabalıkta konuşurken bile gövdesi ve ayak uçları bilinçaltı olarak sana dönüktür.",
+            "Aynalama (Mirroring): Senin oturuşunu, ses tonunu veya bardağını alma anını farkında olmadan kopyalar."
+          ],
+          scenario: "Kalabalık bir masada herkes espriye gülerken onun gözleri refleks olarak ilk senin yüzüne kayıyorsa, bilinçaltı radarında bir numarasın demektir."
         },
         {
           heading: "Fiziksel Yakınlık ve Dokunma",
@@ -1826,7 +1925,7 @@ export const trendsDataTr: TrendArticle[] = [
           paragraph: "Birine çekildiğimizde bilinçsizce onların beden dilini aynalarız. Sen öne eğilirsen, onlar öne eğilir. Bacak bacak üstüne atarsan, onlar da atar. İçeceğini alırsan, saniyeler sonra onlar da alır. Bu fenomene 'limbik senkroni' denir ve beyindeki ayna nöronlar tarafından kontrol edilir. Tutarlı bir şekilde taklit etmek neredeyse imkansızdır. Biri farkında olmadan hareketlerini aynalıyorsa, bilinçaltı beyinleri zaten seni sevdiğine karar vermiştir."
         }
       ],
-      conclusion: "Bir dahaki sefere birinin senden hoşlanıp hoşlanmadığını merak ettiğinde, telefonunu bırak ve izlemeye başla. Bedenleri, sözlerinin söylemeyeceği her şeyi sana anlatıyor. Kimyanın gerçek olup olmadığı hakkında yapay zeka destekli ikinci bir görüş istersen, Duo Compatibility özelliğimiz ikiniz arasındaki dinamiği acımasız bir dürüstlükle analiz edebilir."
+      conclusion: "Bir dahaki sefere birinin senden hoşlanıp hoşlanmadığını merak ettiğinde, telefonunu bırak ve izlemeye başla. Bedenleri, sözlerinin söylemeyeceği her şeyi sana anlatıyor. Kimyanın gerçek olup olmadığı hakkında yapay zeka destekli ikinci bir görüş istersen, Crush Calculator özelliğimiz ikiniz arasındaki dinamiği acımasız bir dürüstlükle analiz edebilir."
     },
     ctaLabel: "Crush Uyumumuzu Hesapla",
     ctaLink: "/crush-calculator",
@@ -1838,22 +1937,29 @@ export const trendsDataTr: TrendArticle[] = [
     category: "İlişkiler",
     publishDate: "2026-06-22",
     readTime: "5 dk okuma",
-    keywords: ["sevgi dilleri", "5 sevgi dili", "benim sevgi dilim ne", "onaylama sözleri", "fiziksel temas sevgi dili", "kaliteli zaman", "hizmet eylemleri", "ilişki tavsiyesi"],
+    keywords: ["5 sevgi dili nedir", "sevgi dilleri testi", "benim sevgi dilim hangisi", "onaylayıcı sözler sevgi dili", "kaliteli zaman sevgi dili", "fiziksel temas", "hizmet davranışları", "çift uyum testi"],
     imageUrl: "/images/trends/love-languages.webp",
     content: {
       intro: "Onlara akşam yemeği pişiriyorsun, evi temizliyorsun, işlerini hallediyorsun — ve yeterince 'seni seviyorum' demediğinden şikayet ediyorlar. Sana bütün gün iltifat mesajları atıyorlar, aşk notları yazıyorlar, sözlü sevgi yağmuruna tutuyorlar — ve sen sevilmemiş hissediyorsun çünkü telefonlarına bakmadan seninle oturup film izlemiyorlar. Bu uyumsuzluk değil — bu bir sevgi dili uyuşmazlığı ve başka türlü harika ilişkilerin sessiz katili. Dr. Gary Chapman tarafından geliştirilen beş sevgi dili çerçevesi, insanların temelden farklı şekillerde sevgi verip aldığını açıklıyor.",
       sections: [
         {
-          heading: "Beş Dil Çözüldü",
-          paragraph: "Onaylama Sözleri: Sözlü ifadeyle sevilmiş hissedersin — iltifatlar, teşvikler, 'seni seviyorum' ve seni düşündüklerini gösteren mesajlar. Fiziksel Temas: Sarılmalar, el ele tutuşma, kucaklaşma ve fiziksel varlık seni güvende ve bağlı hissettirir. Kaliteli Zaman: Biri sana bölünmemiş, tamamen mevcut dikkatini verdiğinde sevilmiş hissedersin. Telefonuyla meşgul dikkatsiz bir partner en kötü kabusun. Hizmet Eylemleri: Senin için eylemler kelimelerden daha yüksek sesle konuşur. Biri çamaşırını yıkadığında veya stresli bir işi senin yerine hallettiğinde, bu onların 'seni seviyorum'u. Hediye Alma: Materyalizm değil — bir hediyenin arkasındaki düşünce, çaba ve sembolizmle ilgili."
+          heading: "5 Sevgi Dili Nedir? Hangi Davranış Hangi Dile Karşılık Gelir?",
+          paragraph: "Onaylama Sözleri: Sözlü ifadeyle sevilmiş hissedersin — iltifatlar, teşvikler, 'seni seviyorum' ve seni düşündüklerini gösteren mesajlar. Fiziksel Temas: Sarılmalar, el ele tutuşma, kucaklaşma ve fiziksel varlık seni güvende ve bağlı hissettirir. Kaliteli Zaman: Biri sana bölünmemiş, tamamen mevcut dikkatini verdiğinde sevilmiş hissedersin. Telefonuyla meşgul dikkatsiz bir partner en kötü kabusun. Hizmet Eylemleri: Senin için eylemler kelimelerden daha yüksek sesle konuşur. Biri çamaşırını yıkadığında veya stresli bir işi senin yerine hallettiğinde, bu onların 'seni seviyorum'u. Hediye Alma: Materyalizm değil — bir hediyenin arkasındaki düşünce, çaba ve sembolizmle ilgili.",
+          items: [
+            "Onaylayıcı Sözler: İltifatlar, takdir edilmek ve gün içinde 'aklımdasın' mesajları almak.",
+            "Kaliteli Zaman: Telefonların kenara bırakıldığı, bölünmemiş baş başa sohbet ve ortak deneyim.",
+            "Hizmet Davranışları: Yorgunken senin yerine işleri kolaylaştırması ve somut destek sunması.",
+            "Fiziksel Temas & Hediye Alma: Sarılma/yakınlık enerjisi ve düşünülmüş küçük sembolik sürprizler."
+          ],
+          scenario: "Senin sevgi dilin 'Kaliteli Zaman'dır, onunki 'Hizmet Davranışları'dır: O senin bilgisayarını tamir ederek sevgisini gösterir ama sen akşam yemekte telefona baktığı için 'Beni sevmiyor' diye düşünürsün."
         },
         {
-          heading: "Uyumsuz Diller İlişkileri Neden Yıkar",
-          paragraph: "İşte tuzak: içgüdüsel olarak KENDİ dilimizde sevgi ifade ederiz, partnerimizinkinde değil. Dilin Hizmet Eylemleri ise, parterin için bir şeyler yaparak sevgi gösterirsin. Ama onların dili Onaylama Sözleri ise, çabalarını sevgi olarak bile algılamayacaklar — sadece yardımsever olduğunu düşünecekler. Bu arada sen takdir edilmemiş hissedeceksin çünkü yaptığın her şeyi asla fark etmiyorlar. İkiniz de ilişkiye sevgi döküyorsunuz — ama diğerinin içemeyeceği bardaklara döküyorsunuz."
+          heading: "Uyumsuz Diller İlişkileri Neden Yıkar?",
+          paragraph: "İşte tuzak: içgüdüsel olarak KENDİ dilimizde sevgi ifade ederiz, partnerimizinkinde değil. Dilin Hizmet Eylemleri ise, partnerin için bir şeyler yaparak sevgi gösterirsin. Ama onların dili Onaylama Sözleri ise, çabalarını sevgi olarak bile algılamayacaklar — sadece yardımsever olduğunu düşünecekler. Bu arada sen takdir edilmemiş hissedeceksin çünkü yaptığın her şeyi asla fark etmiyorlar. İkiniz de ilişkiye sevgi döküyorsunuz — ama diğerinin içemeyeceği bardaklara döküyorsunuz."
         },
         {
-          heading: "Sevgi Dilini Nasıl Keşfeder ve Uygularsın",
-          paragraph: "Sevgi dilini keşfetmenin en hızlı yolu kendine sormak: eksik olduğunda en çok ne acıtır? Sessizlik seni öldürüyorsa, dilin Onaylama Sözleri. Mesafe reddedilmiş hissettiriyorsa, Fiziksel Temas. Yemekte görmezden gelinmek veya telefon kaydırma seni çıldırtıyorsa, Kaliteli Zaman. Kendininkini ve partnerinkini öğrendikten sonra, amaç doğal dilini değiştirmek değil — iki dilli olmak. Doğal gelmese bile ONLARIN dilinde sevgi ifade etmeyi öğren. Bu bir beceridir ve her beceri gibi pratikle kolaylaşır."
+          heading: "Sevgi Dilini Nasıl Keşfeder ve Uygularsın?",
+          paragraph: "Sevgi dilini keşfetmenin en hızlı yolu kendine sormak: eksik olduğunda en çok ne acıtır? Sessizlik seni öldürüyorsa, dilin Onaylama Sözleri. Mesafe reddedilmiş hissettiriyorsa, Fiziksel Temas. Yemekte görmezden gelinmek veya telefon kaydırma seni çıldırtıyorsa, Kaliteli Zaman. Kendininkini ve partnerinkini öğrendikten sonra, amaç doğal dilini değiştirmek değil — iki dilli olmak."
         }
       ],
       conclusion: "Sevgi dilleri çerçevesi sihirli bir çözüm değildir, ama inanılmaz güçlü bir teşhis aracıdır. Çoğu ilişki sorunu sevgi eksikliğinden değil — çeviri eksikliğinden kaynaklanır. Partnerinin dilini konuşmayı öğrendiğinde, her zaman orada olan sevgi nihayet karşı tarafa ulaşır."
@@ -1868,33 +1974,39 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Flört Psikolojisi",
     publishDate: "2026-06-27",
     readTime: "6 dk okuma",
-    keywords: ["ick nedir", "ick ne demek", "the ick ne demek", "ick ne anlama gelir", "ick örnekleri", "ick almak", "ick ilişki", "çekim kaybı", "gen-z ick", "birinden ick almak", "ick neden olur", "ick vs kırmızı bayrak", "ani çekim kaybı"],
+    keywords: ["ick nedir", "ick ne demek", "the ick ne demek", "ick ne anlama gelir", "ick örnekleri", "ick almak", "flörtte soğuma nedenleri", "birinden aniden soğumak", "ick vs red flag", "ani çekim kaybı"],
     imageUrl: "/images/trends/the-ick.webp",
     content: {
       intro: "Harika giden bir buluşmanın ortasındasın. Kimya var, kişi güzel görünüyor, sohbet akıyor. Sonra oluyor. Kendi şakasına biraz fazla yüksek sesle gülüyor. Ya da yürürken kollarını garip sallayarak biraz fazla hızlı yürüyor. Veya seni sokağın karşısından iki eliyle birden bayrak gibi sallayarak selamlıyor. Ve işte o an — bitti. İçinde birikmekte olan her damla çekim saniyeler içinde yerle bir oluyor, yerine korkunç, mantıksız ve seni yutacak gibi gelen bir iğrenme dalgası geçiyor. İşte bu dostum, 'ick'. Ve bir kez aldığında, neredeyse hiç geçmiyor.",
       sections: [
         {
-          heading: "Bu 'Ick' Olayı Tam Olarak Nedir?",
-          paragraph: "Ick, birine olan romantik çekimin belirli bir davranış, alışkanlık veya küçük bir ayrıntı tarafından aniden, istemsizce yok edilmesi demek. Gen-Z'nin ortaya attığı bu terim, romantizmde bir düğmeye basılması gibidir. Bir an tamamen o kişiye çekiliyorsun; bir sonraki anda onun hakkında düşünmek bile seni rahatsız ediyor. Ick'in en acımasız yanı irrasyonelliğidir. Mantık yoluyla çıkamazsın. İki eliyle selamlayan kişinin yanlış bir şey yapmadığını gayet iyi biliyorsun. Ama beynin karar verdi: Asla. Çekim öldü. Diriltilemiyor."
+          heading: "Ick Ne Demek? Flörtte Ani Soğuma Nasıl Başlar?",
+          paragraph: "Ick, birine olan romantik çekimin belirli bir davranış, alışkanlık veya küçük bir ayrıntı tarafından aniden, istemsizce yok edilmesi demek. Gen-Z'nin ortaya attığı bu terim, romantizmde bir düğmeye basılması gibidir. Bir an tamamen o kişiye çekiliyorsun; bir sonraki anda onun hakkında düşünmek bile seni rahatsız ediyor. Ick'in en acımasız yanı irrasyonelliğidir. Mantık yoluyla çıkamazsın. İki eliyle selamlayan kişinin yanlış bir şey yapmadığını gayet iyi biliyorsun. Ama beynin karar verdi: Asla. Çekim öldü. Diriltilemiyor.",
+          items: [
+            "Ick (Ani Soğuma): Tamamen zararsız ama göze garip gelen ufak bir hareket yüzünden romantik çekimin anında sıfırlanması.",
+            "Red Flag (Tehlike İşareti): Karşı tarafın saygısız, manipülatif veya yalancı olduğunu gösteren gerçek karakter sorunu.",
+            "Kaçıngan Ick: İlişki ciddileşmeye başladığında sırf bağlanmaktan kaçmak için beynin bahane üretmesi."
+          ],
+          scenario: "Rüzgarlı havada peçetenin peşinden eğilerek koştuğunu gördüğün o 3 saniyede, 2 aylık tüm romantik hoşlanmanın buharlaşıp uçması klasik bir Ick anıdır."
         },
         {
           heading: "En Yaygın Ick Tetikleyicileri (Uyarı: Kendini Görebilirsin)",
-          paragraph: "Ick tetikleyiciler çok kişisel olsa da bazıları neredeyse evrensel. Seni etkilemek için fazla çaba harcayan davranışlar — mesela arabanın kapısını açmak için neredeyse koşarak gelmek veya yemek siparişini garip bir tonlamayla vermek — büyük ick tetikleyicileri. Bir grup içinde kendini büyük göstermeye çalışmak da klasik bir ick. Bir de lojistik ick'ler var: paralel park yaparken paniğe kapılan birini izlemek, fotoğraf çektirmek için telefonu garsona vermek, ya da sana doğrudan bakarak ufacık çatal lokmaları alarak yemek yemek. Ve internetin en çok paylaşılan ick'leri: sırt çantasıyla koşmak, uçak indiğinde alkışlamak, 'nefis' kelimesini kullanmak, telefonu tam parlaklıkta tutmak. Bunlar objektif olarak küçük şeyler. Ama bir kamyon gibi çarpıyorlar."
+          paragraph: "Ick tetikleyiciler çok kişisel olsa da bazıları neredeyse evrensel. Seni etkilemek için fazla çaba harcayan davranışlar — mesela arabanın kapısını açmak için neredeyse koşarak gelmek veya yemek siparişini garip bir tonlamayla vermek — büyük ick tetikleyicileri. Bir grup içinde kendini büyük göstermeye çalışmak da klasik bir ick. Bir de lojistik ick'ler var: paralel park yaparken paniğe kapılan birini izlemek, fotoğraf çektirmek için telefonu garsona vermek, ya da sana doğrudan bakarak ufacık çatal lokmaları alarak yemek yemek."
         },
         {
           heading: "Ick'in Arkasındaki Psikoloji",
-          paragraph: "Psikologlar, ick'in aslında çok gelişmiş bir evrimsel eşleşme sinyali olabileceğini söylüyor — bilinçaltının sosyal yeterlilik ipuçlarını yakaladığı ince bir mekanizma. Fazla 'kasılan' bir davranış, sosyal kaygıyı veya güvensizliği işaret edebilir ve beynin bunu uzun vadeli uyumsuzluk işareti olarak kaydetmesine yol açar. Öte yandan ick, bazen kendi duygusal kaçınmanlığımızdan da kaynaklanabilir. Bazen gerçekten iyi olan birine karşı ick geliştiririz çünkü onların açıklığı ve kırılganlığı bizi korkutur. Şunu sormaya değer: Bu ick gerçek bir uyumsuzluk mu işaret ediyor, yoksa duygusal açıdan güvenli birinden mi kaçıyorum?"
+          paragraph: "Psikologlar, ick'in aslında çok gelişmiş bir evrimsel eşleşme sinyali olabileceğini söylüyor — bilinçaltının sosyal yeterlilik ipuçlarını yakaladığı ince bir mekanizma. Fazla 'kasılan' bir davranış, sosyal kaygıyı veya güvensizliği işaret edebilir ve beynin bunu uzun vadeli uyumsuzluk işareti olarak kaydetmesine yol açar. Öte yandan ick, bazen kendi duygusal kaçınmacılığımızdan da kaynaklanabilir."
         },
         {
-          heading: "Ick vs. Kırmızı Bayrak: Kritik Fark",
-          paragraph: "İnsanların sürekli karıştırdığı kritik ayrım bu. Ick, kişisel çekimini öldüren irrasyonel, zararsız bir tetikleyicidir — karşındaki kişinin karakteri hakkında hiçbir şey söylemez. Kırmızı bayrak ise toksik, manipülatif veya tehlikeli davranışın gerçek bir uyarı işaretidir. Birinin merdivenlerde tökezlediğini izlemek ick'tir. Birinin garsona bağırdığını izlemek kırmızı bayraktır. İkisi de çekimi kaybettiribilir, ama sadece biri seni gerçekten endişelendirmelidir. Ick ambalaj zevkindir; kırmızı bayrak ürünün kendisinin kusurlu olmasıdır. Karıştırmayın — ve gerçek kırmızı bayrakları 'sadece bir ick' diyerek geçiştirme."
+          heading: "Ick vs. Kırmızı Bayrak (Red Flag): Kritik Fark",
+          paragraph: "İnsanların sürekli karıştırdığı kritik ayrım bu. Ick, kişisel çekimini öldüren irrasyonel, zararsız bir tetikleyicidir — karşındaki kişinin karakteri hakkında hiçbir şey söylemez. Kırmızı bayrak ise toksik, manipülatif veya tehlikeli davranışın gerçek bir uyarı işaretidir. Birinin merdivenlerde tökezlediğini izlemek ick'tir. Birinin garsona bağırdığını izlemek kırmızı bayraktır."
         },
         {
           heading: "Ick'ten Geri Dönüş Mümkün mü?",
-          paragraph: "Çoğu durumda, ick bir kere kilitlenince iş biter. Çekim rasyonel bir karar değildir ve içgüdün reddettiği birini sevimli bulmaya kendin zorlayamazsın. Ancak nadiren ick'in geçtiği durumlar da var — genellikle karşındaki kişi o kadar güçlü bir özgüven, karakter veya duygusal zeka sergilediğinde ki beynin ilk yargısını geçersiz kılmak zorunda kalıyor. Zaman geçirmesine rağmen ick hâlâ devam ediyorsa, kendinle ve o kişiyle dürüst olmak neredeyse her zaman zorla sürdürülen bir bağlantıdan daha iyidir."
+          paragraph: "Çoğu durumda, ick bir kere kilitlenince iş biter. Çekim rasyonel bir karar değildir ve içgüdünün reddettiği birini sevimli bulmaya kendini zorlayamazsın. Zaman geçirmesine rağmen ick hâlâ devam ediyorsa, kendinle ve o kişiyle dürüst olmak neredeyse her zaman zorla sürdürülen bir bağlantıdan daha iyidir."
         }
       ],
-      conclusion: "Ick, modern flört dünyasının en çok konuşulan, en yaygın ve en acımasız fenomenlerinden biri. Çekimin her zaman tamamen mantıklı olmadığının bir hatırlatıcısı — vücudumuz ve beynimiz, hiçbir cazibinin her zaman yenemeyeceği karmaşık ve adil olmayan bir değerlendirme sistemi çalıştırıyor. En iyi yapabileceğin şey? Kendi ick tetikleyicilerini tanı, geldiğinde dürüst ol ve bunun gerçek bir uyumsuzluk işareti mi yoksa kendi kırılganlık korkunun mu sesini duyduğunu anlamaya çalış."
+      conclusion: "Ick, modern flört dünyasının en çok konuşulan, en yaygın ve en acımasız fenomenlerinden biri. En iyi yapabileceğin şey? Kendi ick tetikleyicilerini tanı, geldiğinde dürüst ol ve bunun gerçek bir uyumsuzluk işareti mi yoksa kendi kırılganlık korkunun mu sesini duyduğunu anlamaya çalış."
     },
     ctaLabel: "Profilindeki Ick & Red Flag'leri Tara",
     ctaLink: "/profile-autopsy",
@@ -1904,10 +2016,10 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "am-i-being-gaslighted",
     title: "Gaslighting Nedir? İlişkide Manipülasyona Uğradığının 9 İşareti",
     description: "Sürekli 'sen abartıyorsun' veya 'öyle bir şey demedim' mi duyuyorsun? Mesajlardaki 9 gizli gaslighting taktiğini gör ve ücretsiz YZ ile ekran görüntüsü tara!",
-    category: "Toxcitiy Check",
+    category: "Toksik Psikoloji",
     publishDate: "2026-07-02",
-    readTime: "7 min read",
-    keywords: ["gaslighting", "red flag", "delulu", "toksik ilişki", "manipülasyon", "dating", "flört"],
+    readTime: "7 dk okuma",
+    keywords: ["gaslighting nedir", "gaslighting ne demek", "ilişkide manipülasyon belirtileri", "duygusal manipülasyon testi", "sen abartıyorsun manipülasyon", "toksik ilişki belirtileri", "mesajdan gaslighting testi"],
     imageUrl: "/images/trends/am-i-being-gaslighted.webp",
     content: {
       intro: "Kanka, hiç bir tartışmanın ortasında aniden kendi zihinsel sağlığından şüphe etmeye başladığın oldu mu? Yani, ortada bariz bir sorun var, bunu dile getiriyorsun ama bir şekilde olay senin 'fazla hassas' olmana, her şeyi yanlış anlamana ve hatta uydurmana bağlanıyor. Eğer sürekli 'ben mi abartıyorum ya?' diyerek kendini yiyip bitiriyorsan, belki de delulu değilsindir. Belki de karşındaki insan bir gaslighting masterclass'ı veriyordur ve sen bunun farkında değilsindir. Gaslighting, flört dünyasının en sinsi, en tehlikeli ve en zor fark edilen red flag'lerinden biridir. Seni sadece üzmekle kalmaz, aynı zamanda gerçeklik algını da darmadağın eder. Kendi hafızana, kendi duygularına ve hatta kendi mantığına güvenemez hale gelirsin. Bir situationship'in içinde bu kadar kaybolmuş hissetmek normal değil dostum. O yüzden şimdi arkana yaslan, çünkü senin delulu olmadığını ve aslında profesyonel bir şekilde manipüle edildiğini sana kanıtlayacağız. Kendi gerçeğine sahip çıkmanın ve bu zehirli döngüyü kırmanın vakti geldi de geçiyor bile.",
@@ -1954,10 +2066,10 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "dry-texter-signs",
     title: "Dry Texter Nedir? Kuru Mesaj Atan Flört Meşgul mü, İlgisiz mi?",
     description: "Uzun mesajlarına 'aynen', 'tmm', 'haha' mı geliyor? Kuru mesaj (dry texting) atan birinin gerçek niyetini çöz ve Reply Guru YZ ile en cool cevabı ver!",
-    category: "Communication",
+    category: "Mesajlaşma & İletişim",
     publishDate: "2026-07-02",
-    readTime: "6 min read",
-    keywords: ["dry texter", "mesajlaşma", "flört", "ghosting", "red flag", "iletişim"],
+    readTime: "6 dk okuma",
+    keywords: ["dry texter nedir", "dry texting ne demek", "kuru mesaj atan flört", "tek kelimelik cevap veren erkek", "mesajlara geç dönen flört", "soğuk mesajlara ne cevap verilir", "reply guru türkçe"],
     imageUrl: "/images/trends/dry-texter-signs.webp",
     content: {
       intro: "Telefonun titriyor, heyecanla ekrana bakıyorsun... Ve karşında sadece şu üç harf: 'Aynen'. İçinden ufak bir çığlık attığını duyar gibiyim. Sen ona gününün nasıl geçtiğini, sabah kahvesini döken o sinir bozucu adamı, yeni keşfettiğin müzik grubunu destanlar yazarak anlatmışsın, o ise sana bir 'NPC' edasıyla sadece tek kelimelik cevaplar veriyor. Kanka, bu bir dry texter. Flört dünyasının enerjini sömüren, hevesini kursağında bırakan en büyük problemlerinden biri. Çoğu zaman kendi kendimize bahaneler üretiriz: 'Kesin çok çalışıyor', 'Mesajlaşmayı sevmiyor herhalde', 'Yüz yüzeyken çok farklı aslında...' Ama delulu olmayı bir kenara bırakalım. Gerçekten o kadar meşgul mü yoksa bare minimum çabayla seni elinin altında mı tutmaya çalışıyor? İletişim, bir ilişkinin ya da situationship'in oksijenidir. Eğer sen sürekli suni teneffüs yapmak zorunda kalıyorsan, o ilişki çoktan komaya girmiş demektir. Şimdi şu dry texter işaretlerine yakından bakalım ve seni bu sıkıcı döngüden kurtaralım.",
@@ -2004,10 +2116,10 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "main-character-energy",
     title: "Main Character Energy Nedir? Aşk Hayatında Yan Rol Olmayı Bırak",
     description: "Başkalarının tek bir mesajına göre modun mu değişiyor? Main Character Energy'ni geri kazan, auranı parlat ve ücretsiz YZ Selfie Vibe Check yap!",
-    category: "Self-Love",
+    category: "Özgüven & Aura",
     publishDate: "2026-07-02",
-    readTime: "8 min read",
-    keywords: ["main character", "özgüven", "self love", "ilişkiler", "bağımsızlık", "dating"],
+    readTime: "8 dk okuma",
+    keywords: ["main character energy nedir", "ana karakter enerjisi ne demek", "özgüven ve aura yükseltme", "ilişkide sınır koymak", "people pleasing bırakmak", "yüksek aura testi", "vibe check testi"],
     imageUrl: "/images/trends/main-character-energy.webp",
     content: {
       intro: "Kanka, hayalindeki o mükemmel filmi düşün. Ekran açılıyor, müzik giriyor ve başrolde... sen yoksun! Nasıl yani? Sen kendi filminin setinde herkese çay dağıtan, herkesin derdini dinleyen, dramalarını çözen ama hikayenin asıl kızı/oğlanı olamayan o 'iyi arkadaş' mısın yoksa? Flört dünyasında sürekli başkalarının ihtiyaçlarını kendi önüne koyuyorsan, onların toksik hareketlerini tolere edip 'aman ağzımızın tadı kaçmasın' diyorsan, acı bir haberim var: Kendi hayatında bir 'NPC' (Non-Playable Character) veya bir yan karakter, figüran olmuş durumdasın. Ama merak etme, senaryoyu baştan yazmak senin elinde. İhtiyacın olan tek şey o efsanevi 'Main Character Energy' (Başrol Enerjisi). Bu, bencil olmak veya dünyayı kendi etrafında döndürmek demek değildir. Bu, kendi değerini bilmek, kendi mutluluğunu önceliklendirmek ve artık kimsenin sana bare minimum çabayla gelmesine izin vermemektir. Hadi, o tacı kafana geri takalım ve kendi hikayenin kontrolünü nasıl ele alacağına yakından bakalım.",
@@ -2053,10 +2165,10 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "what-is-limerence",
     title: "Limerence Nedir? Gerçek Aşk ile Takıntılı Hoşlanma Farkı",
     description: "Onu düşünmeden tek bir saat bile geçiremiyor musun? Psikolojide Limerence (takıntılı romantik saplantı) belirtilerini ve bu döngüden çıkış yolunu keşfet!",
-    category: "Psychology",
+    category: "Flört Psikolojisi",
     publishDate: "2026-07-02",
-    readTime: "7 min read",
-    keywords: ["limerence", "takıntı", "aşk", "psikoloji", "delulu", "red flag", "dating"],
+    readTime: "7 dk okuma",
+    keywords: ["limerence nedir", "limerence ne demek", "takıntılı aşk belirtileri", "platonik saplantı nasıl geçer", "birini kafaya takmak psikoloji", "aşk mı takıntı mı testi", "delulu check"],
     imageUrl: "/images/trends/what-is-limerence.webp",
     content: {
       intro: "Kanka, hepimiz birilerinden hoşlanırız, hepimiz bazen biraz 'delulu' oluruz. Yeni tanıştığın o kişinin profilinde saatlerce gezinmek, mesaj atmasını beklerken tırnakları yemek flörtün doğasında vardır. Ama bazen bu durum çok daha karanlık, çok daha yoğun ve kontrol edilemez bir noktaya ulaşır. Onu düşünmediğin tek bir saniye bile yoktur. Onun ufak bir bakışından, mesajına koyduğu tek bir noktadan bile binlerce anlam çıkarırsın. Tüm ruh halin, onun sana vereceği minicik bir ilgi kırıntısına bağlıdır. Bu hissi 'büyük aşk' zannedebilirsin ama psikolojide bunun çok daha tehlikeli bir adı var: Limerence. Limerence, sıradan bir hoşlanmanın sınırlarını aşıp, karşındaki kişiye karşı geliştirilen obsesif, takıntılı ve tamamen mantık dışı bir bağımlılık halidir. Kişiyi bir insandan çok, kafanda yarattığın bir ideale aşık olduğun bu durum, enerjini sömüren ve seni gerçeklikten koparan bir tuzaktır. Eğer bu duyguların aşk mı yoksa saplantı mı olduğundan şüphe ediyorsan, gel Limerence'in karanlık sularına beraber dalalım.",
@@ -2102,10 +2214,10 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "what-is-orbiting",
     title: "Orbiting Nedir? Mesaja Cevap Vermeyip Tüm Storyleri İzleyenler",
     description: "Seni ghostladı ama attığın her hikayeyi ilk saniyede mi görüyor? Flörtte orbiting psikolojisini, neden yaptıklarını ve en net sınır koyma yöntemini öğren!",
-    category: "Digital Dating",
+    category: "Dijital Flört",
     publishDate: "2026-07-02",
-    readTime: "7 min read",
-    keywords: ["orbiting", "ghosting", "sosyal medya", "red flag", "flört", "iletişim"],
+    readTime: "7 dk okuma",
+    keywords: ["orbiting nedir", "orbiting ne demek", "mesaja bakmayıp story izleyen erkek", "eski sevgili neden story izler", "ghosting sonrası story beğenmek", "breadcrumbing ve orbiting", "flört red flagleri"],
     imageUrl: "/images/trends/what-is-orbiting.webp",
     content: {
       intro: "Kanka, hikaye şöyle başlar: Biriyle tanışırsın, her şey harika gider, flört edersiniz, belki birkaç date'e çıkarsınız. Sonra birden... puff! Karşı taraf bir duman gibi ortadan kaybolur. Mesajlarına cevap vermez, buluşmaları eker. Tam bir klasik 'ghosting' vakası dersin, önüne bakmaya çalışırsın. Ama sonra telefonuna o bildirim düşer. Senin attığın o çok havalı kafeden story'yi izlemiş! Hatta bir de eski bir fotoğrafını beğenmiş. 'Nasıl yani?' diye beyninden vurulmuşa dönersin. Hem benimle konuşmuyor, hem de hayatımı saniye saniye takip ediyor? İşte flört dünyasının bu en saçma, en kafa karıştırıcı ve en sinir bozucu trendine 'Orbiting' deniyor. Bir nevi gezegenin etrafında dönen ama asla iniş yapmayan bir uydu gibidirler. Seni tamamen hayatından çıkarmaz, ama tam olarak hayatına da girmez. Senin o tatlı, değerli zamanını ve zihnini işgal etmek için uzaktan varlıklarını hissettirirler. Eğer sen de bu uzay boşluğunda bir orbitere takılı kaldıysan, kemerlerini bağla, seni bu yörüngeden çıkarıyoruz.",
@@ -2151,10 +2263,10 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "trauma-bonding-signs",
     title: "Travma Bağı (Trauma Bonding) Nedir? Toksik İlişkiden Kopamamak",
     description: "Bir gün göklere çıkarıp ertesi gün yerle bir eden ilişkiler aşk değil travma bağıdır. Trauma bonding'in 7 işaretini gör ve toksik döngüyü kır!",
-    category: "Toxcitiy Check",
+    category: "Toksik Psikoloji",
     publishDate: "2026-07-02",
-    readTime: "8 min read",
-    keywords: ["trauma bonding", "toksik ilişki", "red flag", "psikoloji", "manipülasyon"],
+    readTime: "8 dk okuma",
+    keywords: ["travma bağı nedir", "trauma bonding ne demek", "toksik ilişkiden neden kopulamaz", "narsist ilişki döngüsü", "sıcak soğuk taktiği psikoloji", "love bombing ve değersizleştirme", "toksik ex testi"],
     imageUrl: "/images/trends/trauma-bonding-signs.webp",
     content: {
       intro: "Kanka, hiç arkadaşlarına saatlerce sevgilinin ne kadar kötü biri olduğunu, sana nasıl yanlış yaptığını, ne kadar bencil davrandığını anlatıp; günün sonunda yine 'Ama onu çok seviyorum' diyerek onun kollarına geri döndüğün oldu mu? Dışarıdan bakan herkes sana 'Ayrıl, bırak şu çocuğu/kızı' derken, senin içinde sanki kopması imkansız çelikten bir halat varmış gibi hissedersin. Mantığın 'kaç' diye bağırırken, kalbin (veya daha doğrusu kimyan) seni ona doğru çeker. Sen kendini büyük, efsanevi ve aşılmaz bir aşk yaşıyor sanabilirsin ama psikoloji literatüründe bunun çok daha karanlık bir adı var: Trauma Bonding (Travma Bağı). Bu, sana en çok acı veren kişinin, aynı zamanda sığındığın tek güvenli liman haline gelmesi paradoksudur. Tam bir zehirli döngüdür. Eğer 'Ona katlanamıyorum ama onsuz da yaşayamıyorum' diyorsan, muhtemelen bir travma bağının tam ortasındasın demektir. Peki bu bağ nasıl oluşur ve bu görünmez zincirleri nasıl kırarsın? Gel, bu karanlık odaya biraz ışık tutalım.",
@@ -2200,10 +2312,10 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "hyper-independence-in-dating",
     title: "İlişkilerde Aşırı Bağımsızlık: Güç mü Yoksa Travma Kalkanı mı?",
     description: "'Kimseye ihtiyacım yok' demek güç mü yoksa kırılma korkusu mu? İlişkilerde yakınlıktan kaçma ve hyper-independence belirtilerini keşfet.",
-    category: "Psychology",
+    category: "Flört Psikolojisi",
     publishDate: "2026-07-02",
-    readTime: "7 min read",
-    keywords: ["hyper independence", "psikoloji", "ilişkiler", "red flag", "bağlanma"],
+    readTime: "7 dk okuma",
+    keywords: ["aşırı bağımsızlık psikoloji", "hyper independence nedir", "ilişkide güven sorunu", "yakınlıktan kaçma belirtileri", "kaçıngan bağlanma travma", "kimseye ihtiyacım yok sendromu"],
     imageUrl: "/images/trends/hyper-independence-in-dating.webp",
     content: {
       intro: "Kanka, bağımsız olmak, kendi ayaklarının üzerinde durmak, main character energy ile parlamak harika şeyler. 'Benim param var, kendi evim var, kimseye ihtiyacım yok' demek dışarıdan bakıldığında çok güçlü ve havalı duruyor, değil mi? Ama flört dünyasında, 'Hiç kimseye ihtiyacım yok' cümlesi bazen karanlık bir sokağa çıkabilir. Her şeyi tek başına çözmeye çalışmak, birisinin senin için ufak bir iyilik yapmasına bile tahammül edememek, bir ilişkide savunmasız kalmaktan (vulnerability) ölümüne korkmak... İşte buna 'Hyper-Independence' (Aşırı Bağımsızlık) diyoruz. Ve sürpriz kanka: Bu bir güç göstergesi değil, çoğu zaman derin bir travma tepkisidir! Eğer geçmişte birine güvenip yarı yolda kaldıysan, bilinçaltın 'Güvende olmanın tek yolu her şeyi kendim yapmam' duvarını örmüştür. Ancak bu çelikten duvarlar, seni sadece kötülüklerden değil, gerçek sevgiden ve derin bir bağ kurmaktan da korur (daha doğrusu alıkoyar). Eğer sen de 'Strong Independent' imajının arkasına saklanıp, insanları kendinden uzaklaştırıyorsan, gel bu duvarlarda birkaç pencere açalım.",
@@ -2249,10 +2361,10 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "one-sided-effort-relationship",
     title: "Tek Taraflı İlişki Belirtileri: Sevgili misin, İlişki Hamalı mı?",
     description: "Hep sen mi yazıyorsun, buluşmaları hep sen mi planlıyorsun? Tek taraflı çaba (one-sided effort) işaretlerini gör ve mesaj dengesini ücretsiz YZ ile ölç!",
-    category: "Dating Dynamics",
+    category: "İlişki Dinamikleri",
     publishDate: "2026-07-02",
-    readTime: "7 min read",
-    keywords: ["one sided", "flört", "çaba", "red flag", "ilişkiler"],
+    readTime: "7 dk okuma",
+    keywords: ["tek taraflı ilişki belirtileri", "ilişkide tek taraflı çaba", "hep ben mesaj atıyorum", "buluşma planlamayan sevgili", "ilgisiz flört belirtileri", "bare minimum ne demek", "situationship testi"],
     imageUrl: "/images/trends/one-sided-effort-relationship.webp",
     content: {
       intro: "Kanka, bir düşün bakalım... En son ne zaman o 'Seni şuraya götürmek istiyorum, rezervasyon yaptırdım' dedi? En son ne zaman sen hiçbir şey yapmadan, tamamen onun başlattığı, uzun, derin bir sohbetin içinde buldun kendini? Eğer bu soruların cevabını hatırlamak için beyninin derinliklerine inmen gerekiyorsa, tebrikler: Sen bir flörtün/partnerin değil, bir PR uzmanı, kişisel asistan ve etkinlik planlayıcısı olmuşsun! Flört dünyasının en sessiz ama en öldürücü red flag'lerinden biri 'One-Sided Effort' yani tek taraflı çabadır. İlişki denilen şey, iki kişinin kürek çektiği bir kayık gibidir. Eğer o kayıkta sadece sen kan ter içinde kürek çekiyor, karşıdaki kişi ise arkaya yaslanıp güneşleniyorsa, o kayık sadece senin etrafında döner durur ve sonunda batar. Sürekli inisiyatif alan, sürekli 'oldurmaya' çalışan taraf olmaktan yorulduysan, bu yazıyı okuduktan sonra o kürekleri denize fırlatma vaktin geldi demektir.",
@@ -2298,10 +2410,10 @@ export const trendsDataTr: TrendArticle[] = [
     slug: "when-to-walk-away",
     title: "Bir İlişkiden Ne Zaman Vazgeçmelisin? Ayrılık Öncesi 8 İşaret",
     description: "'Belki değişir' diyerek aylarını mı harcıyorsun? Toksik bir situationship veya ilişkiden arkanı dönüp gitme vaktinin geldiğini kanıtlayan 8 maddelik liste!",
-    category: "Dating Advice",
+    category: "İlişki Rehberi",
     publishDate: "2026-07-02",
-    readTime: "6 min read",
-    keywords: ["ayrılık", "ne zaman gitmeli", "red flag", "toksik ilişki", "öz değer"],
+    readTime: "6 dk okuma",
+    keywords: ["ilişkiden ne zaman vazgeçilmeli", "ayrılmalı mıyım testi", "bitmesi gereken ilişki belirtileri", "toksik ilişkiden çıkma", "eski sevgili uyum testi", "flörtü ne zaman bırakmalı"],
     imageUrl: "/images/trends/when-to-walk-away.webp",
     content: {
       intro: "Kanka, o anı biliyorum. Ekranın başında saatlerce oturup o mesajı yazıp yazıp sildiğin, içindeki o ağır 'Acaba haksızlık mı yapıyorum?', 'Ya düzelirse?', 'Belki bu sefer farklı olur' sorularıyla boğuştuğumuz o karanlık dehliz. Bir ilişkiyi veya situationship'i bitirmek asla kolay değildir, özellikle de ortada güçlü bir çekim veya bir travma bağı varsa. Sürekli 'potansiyele' aşık oluruz, gerçekliğe değil. Kafamızda onun 'ne kadar harika biri olabileceği' ihtimaline o kadar sarılırız ki, şu an bize ne kadar zarar verdiğini görmezden geliriz. Ama bazen gemi çok su almıştır ve o gemiyi kurtarmaya çalışırken boğulan sen olursun. Eğer aklında sürekli 'Artık gitmeli miyim?' sorusu yankılanıyorsa, kalbin o kararı çoktan vermiştir; sadece mantığının o biletleri kesmesini bekliyordur. O halde derin bir nefes al, telefonu masaya bırak ve o 'Engelle' butonuna basmadan önce, sana neden gitmen gerektiğini kanıtlayacak bu son kontrol listesine beraber bakalım.",
