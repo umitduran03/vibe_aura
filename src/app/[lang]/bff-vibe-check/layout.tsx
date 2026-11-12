@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "BFF Vibe Check — Kanka Uyumu & Arkadaşlık Testi (Ücretsiz YZ)",
+      title: { absolute: "BFF Vibe Check — Kanka Uyumu & Arkadaşlık Testi (Ücretsiz YZ)" },
       description:
         "En yakın arkadaşınla iki fotoğraf yükle → yapay zeka 0–100 kanka uyumunuzu, kaos seviyenizi ve gruptaki gizli rollerinizi çıkarsın! Hesapsız & ücretsiz →",
       keywords: [
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "BFF Vibe Check — Free AI Best Friend Compatibility Test (2 Photos)",
+    title: { absolute: "BFF Vibe Check — Free AI Best Friend Compatibility Test" },
     description:
       "Upload two photos with your bestie → AI calculates your 0–100 friendship compatibility, chaos rating, gossip synergy & hidden roles. Free & no sign-up →",
     keywords: [

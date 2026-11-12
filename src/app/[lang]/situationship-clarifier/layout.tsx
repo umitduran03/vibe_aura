@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Situationship Çözücü — Biz Neyiz Testi & Karışık Sinyal Analizi (YZ)",
+      title: { absolute: "Situationship Çözücü — Biz Neyiz & Karışık Sinyal Testi (YZ)" },
       description:
         "'Biz şimdi neyiz?' diye sormadan önce mesajları yapay zekaya okut! Gerçek ilişkiye mi gidiyor yoksa yedek kulübesi mi? Ücretsiz & hesapsız öğren →",
       keywords: [
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Situationship Clarifier AI — Free 'What Are We?' & Mixed Signal Test",
+    title: { absolute: "Situationship Clarifier AI — Free 'What Are We?' & Signal Test" },
     description:
       "In a talking stage or dead-end situationship? Paste texts or upload chat screenshots → AI decodes mixed signals & commitment odds. Free & no sign-up →",
     keywords: [

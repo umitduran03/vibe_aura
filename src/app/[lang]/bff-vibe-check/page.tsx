@@ -11,7 +11,7 @@ export default async function BffVibeCheckLanding({ params }: { params: Promise<
   const stats = [
     { value: "6M+", label: isTr ? "analiz edilen arkadaşlık" : "friendships analyzed" },
     { value: "71%", label: isTr ? "kaotik ikili" : "are chaotic besties" },
-    { value: "< 10 sn", label: isTr ? "analiz süresi" : "< 10 sec" },
+    { value: isTr ? "< 10 sn" : "< 10 sec", label: isTr ? "analiz süresi" : "analysis time" },
     { value: "100%", label: isTr ? "ücretsiz" : "free" },
   ];
 
@@ -71,7 +71,7 @@ export default async function BffVibeCheckLanding({ params }: { params: Promise<
           <Link
             href={`/${lang}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cyan-500/30 transition-all cursor-pointer"
-            aria-label="Go back home"
+            aria-label={isTr ? "Ana sayfaya dön" : "Go back home"}
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>

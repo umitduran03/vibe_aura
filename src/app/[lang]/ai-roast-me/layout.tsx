@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "AI Fotoğraf Gömmesi & Selfie Vibe Check (Ücretsiz & Hesapsız)",
+      title: { absolute: "AI Fotoğraf Gömmesi & Selfie Vibe Check (Ücretsiz & Hesapsız)" },
       description:
         "Selfie yükle → 0–100 Aura Skoru, gizli red flag'lerin ve acımasız AI fotoğraf roast kartın 3 saniyede hazır! Ücretsiz, kayıt gerektirmez → Hemen dene!",
       keywords: [
@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "AI Roast Me — Free Selfie Roast & 0–100 Aura Score (No Sign-Up)",
+    title: { absolute: "AI Roast Me — Free Selfie Roast & 0–100 Aura Score (No Sign-Up)" },
     description:
       "Upload a selfie and get roasted by AI in 3 seconds: 0–100 Aura Score, Vibe Archetype, hidden red flags & shareable roast card. 100% free, no account needed →",
     keywords: [

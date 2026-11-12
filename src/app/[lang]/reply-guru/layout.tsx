@@ -14,9 +14,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Mesaja Ne Cevap Yazılır? YZ Rizz & Mesaj Cevap Üretici (Reply Guru)",
+      title: { absolute: "Mesaja Ne Cevap Yazılır? YZ Rizz & Cevap Üretici (Reply Guru)" },
       description:
-        "'Buna ne yazsam?' derdi bitti! WhatsApp veya Instagram DM ekran görüntüsünü at → yapay zeka flörtöz, cool, toksik veya güvenli cevabı 3 saniyede yazsın. Ücretsiz & hesapsız →",
+        "'Buna ne yazsam?' derdi bitti! WhatsApp veya DM ekran görüntüsünü at → yapay zeka flörtöz, cool veya güvenli cevabı 3 saniyede yazsın. Ücretsiz & hesapsız!",
       keywords: [
         "mesaja ne cevap yazılır",
         "nasıl cevap verilir",
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "AI Text Reply & Rizz Generator — What to Text Back Free (Reply Guru)",
+    title: { absolute: "AI Text Reply & Rizz Generator — What to Text Back (Reply Guru)" },
     description:
       "Stuck on what to text back? Upload a chat screenshot → Reply Guru AI crafts the smoothest flirty, cool, savage, or safe reply in 3 seconds. 100% free, no sign-up →",
     keywords: [

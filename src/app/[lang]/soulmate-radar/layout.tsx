@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Ruh Eşi Radarı & YZ Aşk Falı — Ruh Eşim Kim? (Ücretsiz Selfie Testi)",
+      title: { absolute: "Ruh Eşi Radarı & YZ Aşk Falı — Ruh Eşim Kim? (Ücretsiz Test)" },
       description:
         "Selfie yükle → yapay zeka auranı tarasın; ideal ruh eşinin burcunu, karakterini ve nerede tanışacağınızı anında açıklasın! Ücretsiz & hesapsız →",
       keywords: [
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "AI Soulmate Radar — Who Is My Soulmate? Free Selfie Aura Match",
+    title: { absolute: "AI Soulmate Radar — Who Is My Soulmate? Free Selfie Aura Match" },
     description:
       "Upload a selfie → AI scans your aura to reveal your ideal soulmate's personality, best zodiac match, and where you'll meet. 100% free, no sign-up →",
     keywords: [

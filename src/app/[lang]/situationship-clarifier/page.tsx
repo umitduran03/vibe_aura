@@ -173,7 +173,7 @@ export default async function SituationshipClarifierLanding({ params }: { params
           <Link
             href={`/${lang}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-purple-500/30 transition-all cursor-pointer"
-            aria-label="Go back home"
+            aria-label={isTr ? "Ana sayfaya dön" : "Go back home"}
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>
@@ -343,7 +343,7 @@ export default async function SituationshipClarifierLanding({ params }: { params
         {/* Related Tools */}
         <div className="mb-24">
           <h2 className="text-2xl font-black text-white mb-2 tracking-tight">
-            {isTr ? "İlgili Araçlar" : "Related Tools"}
+            {isTr ? "Diğer Ücretsiz Delulu, Mesaj ve İlişki Analiz Araçları" : "More Free Delulu, Texting & Relationship Analysis Tools"}
           </h2>
           <p className="text-white/50 text-sm mb-8">
             {isTr ? "Bunlar da işine yarayabilir." : "You might also like these."}

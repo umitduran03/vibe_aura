@@ -10,7 +10,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const pageUrl = `${baseUrl}/${isTr ? "tr" : "en"}/terms`;
   return {
     title: isTr
-      ? "Kullanım Koşulları — Ücretsiz Jetonlar & Hizmet Şartları"
+      ? "Kullanım Koşulları — Ücretsiz Jeton & Kurallar"
       : "Terms of Service — Free Tokens, AI Usage & Rules",
     description: isTr
       ? "VibeCheckr Kullanım Koşulları — Yapay zeka vibe check testi, ücretsiz hoş geldin jetonları, misafir modu ve platform kuralları hakkında detaylar."

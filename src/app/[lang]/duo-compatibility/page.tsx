@@ -116,7 +116,7 @@ export default async function DuoCompatibilityLanding({ params }: { params: Prom
           <Link
             href={`/${lang}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-pink-500/30 transition-all cursor-pointer"
-            aria-label="Go back home"
+            aria-label={isTr ? "Ana sayfaya dön" : "Go back home"}
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>
@@ -274,7 +274,7 @@ export default async function DuoCompatibilityLanding({ params }: { params: Prom
             className="text-center mb-8"
           >
             <h2 className="text-2xl font-black text-white mb-2">
-              {isTr ? "İlgili Araçlar" : "Related Tools"}
+              {isTr ? "Diğer Ücretsiz Çift, Crush ve Arkadaşlık Uyum Testleri" : "More Free Couple, Crush & Friendship Compatibility Tests"}
             </h2>
             <p className="text-white/40 text-sm">
               {isTr ? "Duo Compatibility'den sonra bunlara da bak" : "Also check these after your compatibility test"}

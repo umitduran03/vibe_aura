@@ -11,7 +11,7 @@ export default async function CrushCalculatorLanding({ params }: { params: Promi
   const stats = [
     { value: "8M+", label: isTr ? "hesaplanan crush" : "crushes calculated" },
     { value: "64%", label: isTr ? "delulu çıktı" : "were delusional" },
-    { value: "< 5 sn", label: isTr ? "analiz süresi" : "< 5 sec" },
+    { value: isTr ? "< 5 sn" : "< 5 sec", label: isTr ? "analiz süresi" : "analysis time" },
     { value: "100%", label: isTr ? "ücretsiz" : "free" },
   ];
 
@@ -71,7 +71,7 @@ export default async function CrushCalculatorLanding({ params }: { params: Promi
           <Link
             href={`/${lang}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-purple-500/30 transition-all cursor-pointer"
-            aria-label="Go back home"
+            aria-label={isTr ? "Ana sayfaya dön" : "Go back home"}
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Yapay Zeka İkili Uyum Testi — 2 Fotoğraftan İlişki Kimyası (Ücretsiz)",
+      title: { absolute: "Yapay Zeka İkili Uyum Testi — 2 Fotoğraftan İlişki Kimyası" },
       description:
         "İki fotoğraf yükle → yapay zeka 0–100 çift uyumunuzu, burç kimyanızı, green/red flag'leri ve paylaşılabilir kartınızı anında çıkarsın! Hesapsız & ücretsiz →",
       keywords: [
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "AI Duo Compatibility Test — Free 2-Photo Couple Chemistry Check",
+    title: { absolute: "AI Duo Compatibility Test — Free 2-Photo Couple Chemistry Check" },
     description:
       "Upload two photos → AI calculates your 0–100% couple chemistry, zodiac match, aura blend & hidden red flags in seconds. Free & no sign-up required →",
     keywords: [

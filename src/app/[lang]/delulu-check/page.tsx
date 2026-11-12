@@ -244,7 +244,7 @@ export default async function DeluluCheckLanding({ params }: { params: Promise<{
         <div className="mb-24">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
-              {isTr ? "Nasıl Çalışır?" : "How It Works"}
+              {isTr ? "Delulu Check Testi Nasıl Çalışır?" : "How the AI Delulu Check Test Works"}
             </h2>
             <p className="text-white/50 max-w-lg mx-auto">
               {isTr
@@ -364,7 +364,7 @@ export default async function DeluluCheckLanding({ params }: { params: Promise<{
         <div className="mb-24">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-black text-white mb-2">
-              {isTr ? "İlgili Araçlar" : "Related Tools"}
+              {isTr ? "Diğer Ücretsiz Mesaj, Situationship ve Red Flag Analiz Araçları" : "More Free Texting, Situationship & Red Flag Analysis Tools"}
             </h2>
             <p className="text-white/40 text-sm">
               {isTr ? "Delulu Check'ten sonra bunlara da bak" : "Also check these after your reality check"}

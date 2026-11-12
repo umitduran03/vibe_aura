@@ -13,9 +13,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Sıkça Sorulan Sorular (S.S.S) — Ücretsiz YZ Vibe Testi & Gizlilik",
+      title: { absolute: "Sıkça Sorulan Sorular (S.S.S) — Ücretsiz YZ Vibe Testi & Gizlilik" },
       description:
-        "VibeCheckr ücretsiz mi, hesap açmak şart mı, yüklenen fotoğraflar siliniyor mu? Yapay zeka aura skoru, sohbet red flag analizi ve ikili uyum testi hakkında tüm cevaplar.",
+        "VibeCheckr ücretsiz mi, hesap açmak şart mı, fotoğraflar siliniyor mu? Yapay zeka aura skoru, sohbet analizi ve ikili uyum testi hakkında tüm cevaplar.",
       keywords: [
         "vibecheckr sss",
         "yapay zeka vibe testi",
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "FAQ — How Free AI Vibe Check, Aura Score & Photo Privacy Work",
+    title: { absolute: "FAQ — How Free AI Vibe Check, Aura Score & Photo Privacy Work" },
     description:
       "Is VibeCheckr free without signing up? Are selfies or chat screenshots stored? Answers on how our AI calculates 0–100 aura scores, red flags, and duo compatibility.",
     keywords: [

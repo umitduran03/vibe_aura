@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Delulu Check Testi — Delulu Muyum? Ücretsiz YZ Gerçeklik Kontrolü",
+      title: { absolute: "Delulu Check Testi — Delulu Muyum? Ücretsiz YZ Gerçeklik Kontrolü" },
       description:
         "Karışık sinyaller mi alıyorsun yoksa delulu musun? Mesaj ekran görüntüsünü at veya durumu yaz → 0–100 Delulu Skorunu hesapsız & ücretsiz 3 saniyede öğren!",
       keywords: [
@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Delulu Check — Am I Delusional? Free AI Text & Mixed Signal Test",
+    title: { absolute: "Delulu Check — Am I Delusional? Free AI Text & Mixed Signal Test" },
     description:
       "Are they actually into you or are you delulu? Paste texts or drop a chat screenshot → get an unfiltered 0–100% Delulu Score in 3 sec. Free & no sign-up!",
     keywords: [

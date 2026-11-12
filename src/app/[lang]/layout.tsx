@@ -1,8 +1,23 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import Script from "next/script";
+import { Inter } from "next/font/google";
 import { notFound } from "next/navigation";
-import { getDictionary, hasLocale, type Locale, SUPPORTED_LOCALES } from "@/lib/dictionaries";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import OfflineBanner from "@/components/OfflineBanner";
+import InstallBanner from "@/components/InstallBanner";
+import TranslateFix from "@/components/TranslateFix";
+import GlobalLoaderRemover from "@/components/GlobalLoaderRemover";
+import PushNotificationManager from "@/components/PushNotificationManager";
+import AdBannerController from "@/components/AdBannerController";
 import LocaleSync from "@/components/LocaleSync";
-import HtmlLangSync from "@/components/HtmlLangSync";
+import { getDictionary, hasLocale, type Locale, SUPPORTED_LOCALES } from "@/lib/dictionaries";
+import "../globals.css";
+
+const inter = Inter({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 type Props = {
   children: React.ReactNode;
@@ -12,6 +27,14 @@ type Props = {
 export async function generateStaticParams() {
   return SUPPORTED_LOCALES.map((lang) => ({ lang }));
 }
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  themeColor: "#050510",
+};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang } = await params;
@@ -72,6 +95,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           "toxic ex scanner",
           "vibecheckr",
         ],
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     alternates: {
       canonical: `${canonicalBase}/${lang}`,
       languages: {
@@ -88,15 +122,41 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       locale: isTr ? "tr_TR" : "en_US",
       alternateLocale: isTr ? ["en_US"] : ["tr_TR"],
-      images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
+      images: [
+        {
+          url: "/opengraph-image.png",
+          width: 1200,
+          height: 630,
+          alt: "VibeCheckr — AI Vibe Check, Photo Roast & Personality Analysis App",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.seo.title,
+      description: dict.seo.description,
+      images: ["/opengraph-image.png"],
+      creator: "@vibecheckr",
+    },
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "black-translucent",
+      title: "VibeCheckr",
+    },
+    other: {
+      "application-name": "VibeCheckr",
+      "mobile-web-app-capable": "yes",
+      "apple-mobile-web-app-capable": "yes",
     },
   };
 }
 
 /**
- * Locale Layout — Server Component
- * Validates the lang param. LocaleSync (client) writes locale to Zustand
- * so ALL child pages/components get the correct language automatically.
+ * Root Locale Layout — Server Component
+ * <html lang> is rendered on the server per locale (en / tr), so crawlers
+ * receive the correct document language in the initial HTML.
+ * LocaleSync (client) writes locale to Zustand so child components get the
+ * correct language automatically.
  */
 export default async function LocaleLayout({ children, params }: Props) {
   const { lang } = await params;
@@ -104,11 +164,175 @@ export default async function LocaleLayout({ children, params }: Props) {
   if (!hasLocale(lang)) notFound();
 
   return (
-    <>
-      {/* Kritik: <html lang> attribute'unu locale'e göre dinamik ayarlar */}
-      <HtmlLangSync lang={lang} />
-      <LocaleSync lang={lang} />
-      {children}
-    </>
+    <html lang={lang} suppressHydrationWarning className={`${inter.variable} h-full`} style={{ backgroundColor: "#050510" }}>
+      <head>
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="D41h1N2A_WHp7CwkRMW19KP1XYPFdQ6YdXXH_edJ1xQ" />
+
+        {/* JSON-LD Structured Data — WebApplication + WebSite Schema */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                name: "VibeCheckr",
+                url: "https://thevibecheckr.com",
+                sameAs: [
+                  "https://www.producthunt.com/products/vibecheckr",
+                ],
+                inLanguage: ["en", "tr"],
+                description: "Free AI-powered selfie vibe check, 0–100 aura scoring, chat screenshot red flag analyzer, two-photo duo compatibility platform & photo roast app. Instant access with 1-click Guest Mode (5 free tokens, no registration required).",
+                applicationCategory: "EntertainmentApplication",
+                operatingSystem: "Web, Android, iOS",
+                browserRequirements: "Requires JavaScript",
+                softwareVersion: "2.0",
+                isAccessibleForFree: true,
+                audience: {
+                  "@type": "Audience",
+                  audienceType: "Gen-Z, Young Adults, Singles, Couples"
+                },
+                offers: {
+                  "@type": "Offer",
+                  price: "0",
+                  priceCurrency: "USD",
+                  availability: "https://schema.org/InStock",
+                  description: "Free to start with 5 instant welcome tokens via 1-Click Guest Mode (no account required) or Google Sign-In.",
+                },
+                creator: {
+                  "@type": "Organization",
+                  name: "VibeCheckr",
+                  url: "https://thevibecheckr.com",
+                  logo: "https://thevibecheckr.com/v-wave.png",
+                  sameAs: [
+                    "https://www.producthunt.com/products/vibecheckr",
+                  ],
+                },
+                featureList: [
+                  "Instant 1-Click Guest Mode (5 Free Tokens, No Registration Required)",
+                  "AI Selfie Vibe Check & 0-100 Aura Score",
+                  "AI Photo Personality Analysis",
+                  "Savage AI Photo Roast",
+                  "Chat Screenshot Red Flag & Mixed Signal Analyzer",
+                  "Two-Photo Duo Flirt Compatibility Check",
+                  "Aura Battle (Head-to-Head Photo Comparison)",
+                  "Tinder, Bumble, Hinge & Instagram Dating Profile Autopsy",
+                  "AI Soulmate Finder (Soulmate Radar)",
+                  "Crush Calculator",
+                  "Ex Relationship & Relapse Analyzer",
+                  "BFF Vibe Check & Friendship Compatibility",
+                  "Toxic Ex Scanner",
+                  "Situationship Clarifier",
+                  "Delulu Check",
+                  "Rizz Architect & Reply Guru",
+                  "Mood Reset",
+                  "Shareable Neon Result Cards",
+                ],
+                screenshot: "https://thevibecheckr.com/opengraph-image.png",
+              },
+              {
+                "@context": "https://schema.org",
+                "@type": "WebSite",
+                name: "VibeCheckr",
+                url: "https://thevibecheckr.com",
+                inLanguage: ["en", "tr"],
+                potentialAction: {
+                  "@type": "SearchAction",
+                  target: {
+                    "@type": "EntryPoint",
+                    urlTemplate: "https://thevibecheckr.com/en/trends?q={search_term_string}"
+                  },
+                  "query-input": "required name=search_term_string"
+                }
+              }
+            ]),
+          }}
+        />
+
+        {/* Preconnect to Critical Firebase APIs (Lighthouse Fix: Max 2-3 preconnects) */}
+        <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://firestore.googleapis.com" crossOrigin="anonymous" />
+
+        {/* Sadece DNS-prefetch yap (Network'ü tıkamaz ama DNS'i hazır eder) */}
+        <link rel="dns-prefetch" href="https://firebaseinstallations.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.googleapis.com" />
+        <link rel="dns-prefetch" href="https://apis.google.com" />
+        <link rel="dns-prefetch" href="https://www.google.com" />
+        <link rel="dns-prefetch" href="https://securetoken.googleapis.com" />
+      </head>
+      <body className="min-h-full bg-background text-foreground antialiased" style={{ backgroundColor: "#050510" }}>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.deferredPWAEvent = null;
+              window.addEventListener('beforeinstallprompt', function(e) {
+                e.preventDefault();
+                window.deferredPWAEvent = e;
+              });
+            `,
+          }}
+        />
+        {/* Google AdSense — lazyOnload: Tüm sayfa kaynakları yüklendikten SONRA başlar.
+             afterInteractive → lazyOnload geçişi: LCP/FCP etkilenmez, TBT azalır.
+             Kullanıcı etkileşimine göre değil, load event'e göre tetiklenir. */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4394628220494584"
+          crossOrigin="anonymous"
+          strategy="lazyOnload"
+        />
+        {/* GLOBAL PRE-LOADER: Orijinal Neon V Wave */}
+        <div
+          id="global-loader"
+          style={{
+            position: "fixed",
+            inset: 0,
+            zIndex: 99999,
+            backgroundColor: "#050510",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "opacity 0.6s ease-out"
+          }}
+        >
+          <style dangerouslySetInnerHTML={{ __html: `
+            .wave-img {
+              width: 250px; /* Boyutunu buradan ayarlayabiliriz */
+              height: auto;
+              animation: pulse-wave 1.8s ease-in-out infinite alternate;
+              filter: drop-shadow(0 0 15px rgba(139,92,246,0.5)); /* Sabit aura glow'u */
+            }
+
+            @keyframes pulse-wave {
+              0% { transform: scale(0.95); opacity: 0.7; }
+              100% { transform: scale(1.02); opacity: 1; }
+            }
+          `}} />
+
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {/* WebP: ~49 KB | PNG fallback: 73 KB (eski tarayıcılar için) */}
+          <picture>
+            <source srcSet="/v-wave.webp" type="image/webp" />
+            <img src="/v-wave.png" alt="VibeCheckr" className="wave-img" width={250} height={176} />
+          </picture>
+        </div>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var p=location.pathname.replace(/\\/+$/,"");if(p&&p!=="/en"&&p!=="/tr"){var l=document.getElementById("global-loader");if(l)l.style.display="none";}}catch(e){}})();`,
+          }}
+        />
+
+        <GlobalLoaderRemover />
+        <AdBannerController />
+        <TranslateFix />
+        <OfflineBanner />
+        <InstallBanner />
+        <PushNotificationManager />
+        <LocaleSync lang={lang} />
+        {children}
+        <SpeedInsights />
+      </body>
+    </html>
   );
 }

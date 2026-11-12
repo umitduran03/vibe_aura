@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   // Büyük paketlerde otomatik tree-shaking — bundle boyutunu küçültür
   experimental: {
     optimizePackageImports: ["lucide-react", "framer-motion"],
+    globalNotFound: true,
   },
 
   // Production build'de console.log'ları kaldır — TBT iyileştirmesi

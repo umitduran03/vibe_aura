@@ -10,8 +10,8 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
   const pageUrl = `${baseUrl}/${isTr ? "tr" : "en"}/privacy`;
   return {
     title: isTr
-      ? "Gizlilik Politikası — Fotoğraf & Mesaj Güvenliği"
-      : "Privacy Policy — Zero Photo Storage & Data Protection",
+      ? "Gizlilik Politikası — Fotoğraf & Veri Güvenliği"
+      : "Privacy Policy — Zero Photo Storage & Security",
     description: isTr
       ? "VibeCheckr Gizlilik Politikası — Yüklenen selfie ve mesaj ekran görüntüleri asla saklanmaz veya YZ eğitiminde kullanılmaz. Veri güvenliği detaylarını inceleyin."
       : "VibeCheckr Privacy Policy — Uploaded selfies and chat screenshots are processed in real-time memory, never stored, and never used to train AI models.",

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Toksik Eski Sevgili Tarayıcı — Fotoğraf & Mesajdan Red Flag Testi (YZ)",
+      title: { absolute: "Toksik Ex Tarayıcı — Fotoğraf & Mesajdan Red Flag Testi (YZ)" },
       description:
         "Eski sevgilinin veya flörtünün fotoğrafını/mesajını yükle → yapay zeka narsist sinyalleri, manipülasyonu ve red flag skorunu ücretsiz ifşa etsin!",
       keywords: [
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Toxic Ex Scanner AI — Free Red Flag & Narcissist Text/Photo Detector",
+    title: { absolute: "Toxic Ex Scanner AI — Free Red Flag & Narcissist Text Detector" },
     description:
       "Upload a photo or chat screenshot of your ex or situationship → AI exposes manipulation tactics, gaslighting & 0–100 toxicity score. Free & no sign-up →",
     keywords: [

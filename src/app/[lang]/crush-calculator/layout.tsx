@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Crush Uyumu & Platonik Aşk Testi — Benden Hoşlanıyor mu? (Ücretsiz YZ)",
+      title: { absolute: "Crush & Platonik Aşk Testi — Benden Hoşlanıyor mu? (Ücretsiz YZ)" },
       description:
         "Gerçek bir kıvılcım var mı yoksa kafanda mı kuruyorsun? İki fotoğraf yükle, yapay zeka 0–100 crush uyum yüzdesini ve çekimi ölçsün! Hesapsız & ücretsiz →",
       keywords: [
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Crush Calculator AI — Does My Crush Like Me? Free 2-Photo Test",
+    title: { absolute: "Crush Calculator AI — Does My Crush Like Me? Free 2-Photo Test" },
     description:
       "Real spark or all in your head? Upload two photos → AI calculates your 0–100% crush compatibility, unspoken tension & delulu level. Free & no sign-up →",
     keywords: [

@@ -11,7 +11,7 @@ export default async function SoulmateRadarLanding({ params }: { params: Promise
   const stats = [
     { value: "1M+", label: isTr ? "bulunan ruh eşi" : "soulmates found" },
     { value: "89%", label: isTr ? "ideal tipiyle eşleşti" : "matched their ideal type" },
-    { value: "< 10 sn", label: isTr ? "analiz süresi" : "< 10 sec" },
+    { value: isTr ? "< 10 sn" : "< 10 sec", label: isTr ? "analiz süresi" : "analysis time" },
     { value: "100%", label: isTr ? "ücretsiz" : "free" },
   ];
 
@@ -71,7 +71,7 @@ export default async function SoulmateRadarLanding({ params }: { params: Promise
           <Link
             href={`/${lang}`}
             className="p-2 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 hover:border-pink-500/30 transition-all cursor-pointer"
-            aria-label="Go back home"
+            aria-label={isTr ? "Ana sayfaya dön" : "Go back home"}
           >
             <ArrowLeft className="w-5 h-5 text-white/70" />
           </Link>

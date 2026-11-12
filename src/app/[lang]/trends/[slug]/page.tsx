@@ -34,8 +34,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       : `${baseUrl}${article.imageUrl}`
     : `${baseUrl}/opengraph-image.png`;
 
+  // Keep titles within ~60 chars in SERPs: only append the brand when it fits.
+  const seoTitle =
+    article.title.length <= 48 ? `${article.title} | VibeCheckr` : article.title;
+
   return {
-    title: `${article.title} | VibeCheckr`,
+    title: { absolute: seoTitle },
     description: article.description,
     keywords: article.keywords,
     alternates: {
@@ -47,7 +51,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       },
     },
     openGraph: {
-      title: `${article.title} | VibeCheckr`,
+      title: seoTitle,
       description: article.description,
       url: `${baseUrl}/${localeKey}/trends/${article.slug}`,
       siteName: "VibeCheckr",
@@ -99,8 +103,20 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
       ? `/${resolvedParams.lang}`
       : `/${resolvedParams.lang}${article.ctaLink}`;
 
+  // FAQPage only from headings that are genuine questions (no synthetic "?" appended)
+  const faqItems = article.content.sections
+    .filter((sec) => /\?\s*$/.test(sec.heading.trim()))
+    .map((sec) => ({
+      "@type": "Question",
+      name: sec.heading.trim(),
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: sec.paragraph,
+      },
+    }));
+
   // Article + FAQPage + BreadcrumbList JSON-LD Schema for Google Discover and Rich Results
-  const jsonLd = [
+  const jsonLd: Record<string, unknown>[] = [
     {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -131,20 +147,6 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
     },
     {
       "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: article.content.sections.map((sec) => ({
-        "@type": "Question",
-        name: sec.heading.trim().endsWith("?")
-          ? sec.heading.trim()
-          : `${sec.heading.trim()}?`,
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: sec.paragraph,
-        },
-      })),
-    },
-    {
-      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
         {
@@ -168,6 +170,14 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
       ],
     },
   ];
+
+  if (faqItems.length >= 2) {
+    jsonLd.splice(1, 0, {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqItems,
+    });
+  }
 
   return (
     <div className="min-h-dvh bg-[#050510] text-white selection:bg-indigo-500/30">
@@ -213,8 +223,8 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
             <Sparkles className="w-5 h-5 text-indigo-400 shrink-0 mt-0.5 sm:mt-0" />
             <p className="text-sm text-white/80 font-medium">
               {isTr
-                ? "Ücretsiz yapay zeka aracımızla kendi fotoğrafını veya mesajını 3 saniyede test et:"
-                : "Test your own selfie or chat screenshot in 3 seconds with our free AI tool:"}
+                ? "Okuduğunu kendi üzerinde dene — ücretsiz yapay zeka aracı, saniyeler içinde sonuç:"
+                : "Try it on yourself — free AI tool, results in seconds:"}
             </p>
           </div>
           <Link

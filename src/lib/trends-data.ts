@@ -59,7 +59,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "ai-photo-personality-test",
-    title: "AI Photo Personality Test: What Your Selfie Says About Your Aura (Free)",
+    title: "AI Photo Personality Test: What Your Selfie Says About Your Aura",
     description: "Try the viral TikTok AI photo personality test! Upload a selfie to get your 0–100 Aura Score, Vibe Archetype & hidden red flags in 3 seconds — 100% free, no sign-up.",
     category: "AI & Tech Trends",
     publishDate: "2026-06-02",
@@ -100,7 +100,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "situationship-vs-relationship",
-    title: "Situationship vs. Relationship: 7 Signs You're Stuck in the Grey Zone",
+    title: "Situationship vs. Relationship: 7 Signs You're in the Grey Zone",
     description: "Are you actually dating or just convenient? Compare situationship vs. relationship signs, spot mixed-signal red flags & run our free AI Situationship Clarifier.",
     category: "Dating Psychology",
     publishDate: "2026-06-01",
@@ -202,7 +202,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "mixed-signals-or-delulu",
-    title: "Mixed Signals or Just Delulu? How to Tell If They Actually Like You",
+    title: "Mixed Signals or Delulu? How to Tell If They Actually Like You",
     description: "Are they playing hard to get or just not interested? Decode confusing texting patterns and take the free 0–100% AI Delulu Check before you double text!",
     category: "Dating Psychology",
     publishDate: "2026-06-03",
@@ -304,7 +304,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "fix-negative-aura-mood",
-    title: "Negative Aura Meaning: Why Your Vibe Feels Off (& How to Reset Fast)",
+    title: "Negative Aura Meaning: Why Your Vibe Is Off & How to Reset Fast",
     description: "Woke up with negative aura and zero energy? Discover the hidden habits draining your vibe and use our free AI Mood Reset to recharge in 60 seconds.",
     category: "Wellness & Vibe",
     publishDate: "2026-06-06",
@@ -338,8 +338,8 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "aura-battle-who-is-cooler",
-    title: "Aura Battle AI: Who Is Cooler? Compare Two Photos for 0–100 Aura Points",
-    description: "Who has more aura in your friend group or relationship? Upload two photos to Aura Battle AI — get separate 0–100 Aura Scores, crown the winner & roast the loser free.",
+    title: "Aura Battle AI: Who Is Cooler? Compare 2 Photos for Aura Points",
+    description: "Who has more aura in your friend group? Upload two photos to Aura Battle AI — get separate 0–100 Aura Scores, crown the winner & roast the loser for free.",
     category: "Culture & Slang",
     publishDate: "2026-06-18",
     readTime: "5 min read",
@@ -374,8 +374,8 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "what-is-rizz",
-    title: "What Does Rizz Mean? Spoken vs. Unspoken Rizz & Free AI Rizz Generator",
-    description: "What is rizz in Gen-Z slang? Learn the exact meaning of spoken vs. unspoken rizz, W rizz vs. L rizz texting examples & generate smooth replies free with Reply Guru AI.",
+    title: "What Does Rizz Mean? Spoken vs. Unspoken Rizz & AI Rizz Test",
+    description: "What is rizz in Gen-Z slang? Learn spoken vs. unspoken rizz, W vs. L rizz texting examples & generate smooth replies free with Reply Guru AI.",
     category: "Culture & Slang",
     publishDate: "2026-06-19",
     readTime: "5 min read",
@@ -411,7 +411,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "soft-launch-hard-launch",
-    title: "Soft Launch vs. Hard Launch in Dating: What Their Post Really Means",
+    title: "Soft Launch vs. Hard Launch in Dating: What Their Post Means",
     description: "Blurry dinner hands vs. grid official: what soft launching vs. hard launching says about commitment, secrecy, and red flags in modern relationships.",
     category: "Dating Psychology",
     publishDate: "2026-06-20",
@@ -501,7 +501,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "gen-z-dating-terms-2026",
-    title: "Gen-Z Dating Slang Dictionary (2026): Delulu, Ick, Orbiting & More",
+    title: "Gen-Z Dating Slang Guide (2026): Delulu, Ick, Orbiting & More",
     description: "Decode every viral 2026 dating term—breadcrumbing, benching, orbiting, limerence, beige flags, rizz & situationships—with real texting examples.",
     category: "Culture & Slang",
     publishDate: "2026-06-20",
@@ -531,7 +531,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "are-you-delulu",
-    title: "Am I Delulu? 8 Signs Your Crush Manifestation Crossed Into Delusion",
+    title: "Am I Delulu? 8 Signs Your Crush Obsession Crossed Into Delusion",
     description: "'Delulu is the solulu'—until you're romanticizing 9-hour late replies. Check the 8 signs you're being delusional & get your free 0–100% AI Delulu Score!",
     category: "Dating Psychology",
     publishDate: "2026-06-21",
@@ -561,7 +561,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "attachment-styles-explained",
-    title: "The 4 Attachment Styles in Dating: Anxious, Avoidant, Secure & Fearful",
+    title: "The 4 Attachment Styles in Dating: Anxious, Avoidant & Secure",
     description: "Why do you keep chasing avoidant partners? Understand the 4 attachment styles, spot the anxious-avoidant trap & check your relationship vibe with AI.",
     category: "Dating Psychology",
     publishDate: "2026-06-22",
@@ -655,7 +655,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "love-languages-which-one-are-you",
-    title: "The 5 Love Languages Explained: Which One Are You in Relationships?",
+    title: "The 5 Love Languages Explained: Which One Are You in Dating?",
     description: "Words of Affirmation, Quality Time, Physical Touch, Acts of Service, or Gifts? Find out how mismatched love languages cause fights and how to sync yours.",
     category: "Relationships",
     publishDate: "2026-06-22",
@@ -724,7 +724,7 @@ export const trendsDataEn: TrendArticle[] = [
   ,
   {
     slug: "am-i-being-gaslighted",
-    title: "Am I Being Gaslighted? 9 Subtle Manipulation Phrases & Reality Check",
+    title: "Am I Being Gaslighted? 9 Manipulation Phrases & AI Reality Check",
     description: "Constantly told 'you're overreacting' or 'that never happened'? Recognize 9 textbook gaslighting tactics in texts & scan screenshots free with our AI detector.",
     category: "Red Flags",
     publishDate: "2026-07-02",
@@ -932,7 +932,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "what-is-orbiting",
-    title: "What Is Orbiting in Dating? Why They Ghost You Yet Watch Every Story",
+    title: "What Is Orbiting in Dating? Ghosting Texts While Watching Stories",
     description: "Left on read for weeks, yet first to view every Instagram story? Decode why exes and situationships orbit you—and how to shut down breadcrumb mind games.",
     category: "Dating Trends",
     publishDate: "2026-07-02",
@@ -984,7 +984,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "trauma-bonding-signs",
-    title: "Trauma Bonding Signs: Why Leaving a Toxic Relationship Feels Impossible",
+    title: "Trauma Bonding Signs: Why Leaving a Toxic Ex Feels Impossible",
     description: "High highs followed by brutal lows isn't passion—it's intermittent reinforcement. Spot the 7 signs of a trauma bond and break the toxic cycle for good.",
     category: "Psychology",
     publishDate: "2026-07-02",
@@ -1036,7 +1036,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "hyper-independence-in-dating",
-    title: "Hyper-Independence in Dating: Why 'I Don't Need Anyone' Is a Shield",
+    title: "Hyper-Independence in Dating: Trauma Shield vs. Real Strength",
     description: "Pushing partners away the moment things get real? Learn how hyper-independence masks attachment trauma in modern dating and how to let healthy love in.",
     category: "Attachment Styles",
     publishDate: "2026-07-02",
@@ -1088,7 +1088,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "one-sided-effort-relationship",
-    title: "One-Sided Relationship Signs: Are You Dating Them or Carrying Them?",
+    title: "One-Sided Relationship Signs: Dating Them or Carrying Them?",
     description: "Always initiating texts, planning dates, and carrying every conversation? Spot the signs of one-sided effort and test your chat balance free with AI.",
     category: "Relationship Dynamics",
     publishDate: "2026-07-02",
@@ -1140,7 +1140,7 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "when-to-walk-away",
-    title: "When to Walk Away From a Situationship or Relationship (Final Checklist)",
+    title: "When to Walk Away From a Situationship or Toxic Relationship",
     description: "Holding onto potential instead of reality? Read the definitive 8-point checklist before you block them—and run a final free AI Reality Check on your chats.",
     category: "Breakups",
     publishDate: "2026-07-02",
@@ -1238,7 +1238,7 @@ export const trendsDataTr: TrendArticle[] = [
   {
     slug: "ai-photo-personality-test",
     title: "Yapay Zeka Fotoğraftan Kişilik ve Yüz Analizi Testi (Ücretsiz)",
-    description: "TikTok'ta viral olan yapay zeka yüz ve aura analizi nasıl çalışır? Selfie yükle, mikro ifadelerden 0–100 Aura Skorunu ve gizli red flag'lerini 3 saniyede ücretsiz öğren!",
+    description: "TikTok'ta viral olan yapay zeka yüz ve aura analizi nasıl çalışır? Selfie yükle, mikro ifadelerden 0–100 Aura Skorunu ve red flag'lerini ücretsiz öğren!",
     category: "AI & Teknoloji",
     publishDate: "2026-06-02",
     readTime: "5 dk okuma",
@@ -1312,7 +1312,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "what-are-aura-points",
-    title: "Aura Puanı (Aura Points) Nedir? +1000 Aura Kazanma & Ücretsiz Test",
+    title: "Aura Puanı (Aura Points) Nedir? +1000 Aura & Ücretsiz YZ Testi",
     description: "Gen-Z'nin viral statü birimi Aura Points ne demek? Hangi hareketler eksi auraya düşürür öğren ve kendi 0–100 Aura Skorunu fotoğraftan ücretsiz hesapla!",
     category: "Kültür & Jargon",
     publishDate: "2026-05-30",
@@ -1346,7 +1346,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "biggest-dating-red-flags-2026",
-    title: "2026 Flört Red Flag Rehberi: Anında Kaçman Gereken Toksik İşaretler",
+    title: "2026 Flört Red Flag Rehberi: Kaçman Gereken Toksik İşaretler",
     description: "Love bombing, kuru mesajlar ve orbiting dahil 2026'nın en tehlikeli flört red flag'leri — sohbet ekran görüntünü ücretsiz YZ Red Flag Tarayıcı ile test et!",
     category: "Toksik Psikoloji",
     publishDate: "2026-05-25",
@@ -1414,7 +1414,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "how-to-stop-overthinking-texts",
-    title: "Mesajları Kafada Kurmayı Nasıl Bırakırsın? (Görüldü & Geç Cevap Rehberi)",
+    title: "Mesajları Kafada Kurmayı Bırakma: Görüldü & Geç Cevap Rehberi",
     description: "Saatlerce 'görüldü'de kalmak veya cümle sonundaki noktayı analiz etmek yordu mu? Mesajlaşma anksiyetesini bitir ve mesajları ücretsiz YZ ile analiz et!",
     category: "Mental Health & Tech",
     publishDate: "2026-06-04",
@@ -1448,7 +1448,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "zodiac-signs-red-flags",
-    title: "Burçların En Büyük Red Flag'leri: İlişkide Hangi Burç Nasıl Mahveder?",
+    title: "Burçların En Büyük Red Flag'leri: Hangi Burç İlişkide Nasıldır?",
     description: "Aslan'ın egosundan Akrep'in gizli testlerine ve İkizler'in dengesizliğine: 12 burcun flörtteki en toksik red flag'leri + ücretsiz YZ burç uyumu testi!",
     category: "Astroloji Roast'ları",
     publishDate: "2026-06-05",
@@ -1516,7 +1516,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "aura-battle-who-is-cooler",
-    title: "Aura Savaşı (Aura Battle): İki Fotoğraftan Kim Daha Cool? (Ücretsiz YZ)",
+    title: "Aura Savaşı (Aura Battle): İki Fotoğraftan Kim Daha Cool? (YZ)",
     description: "Arkadaş grubunda veya ilişkide kimin aurası daha yüksek? İki fotoğraf yükle, ayrı ayrı 0–100 Aura Puanlarını gör ve kazananı ücretsiz seç!",
     category: "Kültür & Jargon",
     publishDate: "2026-06-18",
@@ -1552,7 +1552,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "what-is-rizz",
-    title: "Rizz Ne Demek? Unspoken Rizz Nedir & Ücretsiz YZ Rizz Cevap Üretici",
+    title: "Rizz Ne Demek? Unspoken Rizz Nedir & Ücretsiz YZ Rizz Testi",
     description: "Rizz ne demek, spoken ve unspoken rizz farkı nedir? W rizz vs. L rizz mesaj örneklerini incele ve ücretsiz Reply Guru YZ ile mesajlaşma karizmanı katla!",
     category: "Kültür ve Slang",
     publishDate: "2026-06-19",
@@ -1589,7 +1589,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "soft-launch-hard-launch",
-    title: "Soft Launch ve Hard Launch Ne Demek? İlişkide Story Paylaşım Şifreleri",
+    title: "Soft Launch ve Hard Launch Nedir? İlişkide Story Paylaşım Sırları",
     description: "Kahve masasında görünen el mi yoksa direkt çift fotoğrafı mı? Soft launch ve hard launch stratejilerinin bağlanma stili hakkında söyledikleri.",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-20",
@@ -1619,7 +1619,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "emotionally-unavailable-signs",
-    title: "Duygusal Olarak Ulaşılamaz Birinin 10 Net İşareti (Bahane Bulmayı Bırak)",
+    title: "Duygusal Olarak Ulaşılamaz Birinin 10 Net İşareti (Red Flag)",
     description: "Gece hızlı yazıp iş ciddiyete binince geri mi çekiliyor? Duygusal olarak kapalı flörtlerin 10 işaretini yakala ve zaman kaybetmekten kurtul!",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-21",
@@ -1679,7 +1679,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "gen-z-dating-terms-2026",
-    title: "2026 Gen-Z İlişki ve Flört Terimleri Sözlüğü (Delulu, Ick, Orbiting)",
+    title: "2026 Gen-Z İlişki Terimleri Sözlüğü: Delulu, Ick, Rizz & Orbiting",
     description: "Breadcrumbing, benching, beige flag, situationship, rizz ve delulu ne demek? Modern flört dünyasını yöneten tüm terimlerin Türkçe anlamları.",
     category: "Kültür ve Slang",
     publishDate: "2026-06-20",
@@ -1709,7 +1709,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "are-you-delulu",
-    title: "Delulu Ne Demek? Delulu Musun Yoksa Haklı Mı? (8 İşaret + YZ Testi)",
+    title: "Delulu Ne Demek? Delulu Musun Yoksa Haklı Mı? (8 Net İşaret)",
     description: "'Delulu is the solulu' nereye kadar? Manifestasyon ile kendini kandırma arasındaki 8 ince çizgiyi öğren ve ücretsiz 0–100 YZ Delulu Skorunu ölç!",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-21",
@@ -1739,7 +1739,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "attachment-styles-explained",
-    title: "İlişkilerde 4 Bağlanma Stili: Kaygılı, Kaçıngan ve Güvenli Bağlanma",
+    title: "İlişkilerde 4 Bağlanma Stili: Kaygılı, Kaçıngan & Güvenli Stil",
     description: "Neden hep senden kaçan insanlara çekiliyorsun? Kaygılı-kaçıngan döngüsünü çöz, bağlanma stilini bul ve çift uyumunu ücretsiz yapay zeka ile test et!",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-22",
@@ -1773,7 +1773,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "how-to-get-over-someone",
-    title: "Birini Gerçekten Nasıl Unutursun? (Psikoloji Destekli Ayrılık Rehberi)",
+    title: "Birini Gerçekten Nasıl Unutursun? Psikolojik Ayrılık Rehberi",
     description: "Profiline bakmadan duramıyor musun? Klişe tavsiyeler olmadan ayrılık acısını ve dopamin bağımlılığını bitirme rehberi + ücretsiz Eski Sevgili Testi!",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-22",
@@ -1803,7 +1803,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "signs-someone-likes-you-body-language",
-    title: "Birinin Senden Hoşlandığını Gösteren 12 Beden Dili İşareti (Bilimsel)",
+    title: "Birinin Senden Hoşlandığını Gösteren 12 Beden Dili İşareti",
     description: "Mesajlarda ne yazdığını boşver, hareketlerine bak! Gerçek çekimi ele veren 12 bilinçaltı beden dili işareti ve ücretsiz 2 fotoğraflı Crush Testi.",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-22",
@@ -1833,7 +1833,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "love-languages-which-one-are-you",
-    title: "5 Sevgi Dili Nedir, Senin Sevgi Dilin Hangisi? (İlişki Uyum Rehberi)",
+    title: "5 Sevgi Dili Nedir ve Seninki Hangisi? (İlişki Uyum Rehberi)",
     description: "Onaylayıcı sözler, kaliteli zaman, fiziksel temas, hizmet davranışları ve hediye alma: Sevgi dili uyumsuzluğunu çöz ve partnerinle kimyanı ölç!",
     category: "İlişkiler",
     publishDate: "2026-06-22",
@@ -2002,7 +2002,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "main-character-energy",
-    title: "Main Character Energy Nedir? Kendi Aşk Hayatında Yan Rol Olmayı Bırak",
+    title: "Main Character Energy Nedir? Aşk Hayatında Yan Rol Olmayı Bırak",
     description: "Başkalarının tek bir mesajına göre modun mu değişiyor? Main Character Energy'ni geri kazan, auranı parlat ve ücretsiz YZ Selfie Vibe Check yap!",
     category: "Self-Love",
     publishDate: "2026-07-02",
@@ -2051,7 +2051,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "what-is-limerence",
-    title: "Limerence Nedir? Gerçek Aşk ile Takıntılı Hoşlanma Arasındaki Fark",
+    title: "Limerence Nedir? Gerçek Aşk ile Takıntılı Hoşlanma Farkı",
     description: "Onu düşünmeden tek bir saat bile geçiremiyor musun? Psikolojide Limerence (takıntılı romantik saplantı) belirtilerini ve bu döngüden çıkış yolunu keşfet!",
     category: "Psychology",
     publishDate: "2026-07-02",
@@ -2149,7 +2149,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "trauma-bonding-signs",
-    title: "Trauma Bonding (Travma Bağı) Nedir? Toksik İlişkiden Neden Kopamıyorsun?",
+    title: "Travma Bağı (Trauma Bonding) Nedir? Toksik İlişkiden Kopamamak",
     description: "Bir gün göklere çıkarıp ertesi gün yerle bir eden ilişkiler aşk değil travma bağıdır. Trauma bonding'in 7 işaretini gör ve toksik döngüyü kır!",
     category: "Toxcitiy Check",
     publishDate: "2026-07-02",
@@ -2198,7 +2198,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "hyper-independence-in-dating",
-    title: "İlişkilerde Aşırı Bağımsızlık (Hyper-Independence): Gizli Travma Kalkanı",
+    title: "İlişkilerde Aşırı Bağımsızlık: Güç mü Yoksa Travma Kalkanı mı?",
     description: "'Kimseye ihtiyacım yok' demek güç mü yoksa kırılma korkusu mu? İlişkilerde yakınlıktan kaçma ve hyper-independence belirtilerini keşfet.",
     category: "Psychology",
     publishDate: "2026-07-02",
@@ -2247,7 +2247,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "one-sided-effort-relationship",
-    title: "Tek Taraflı İlişki Belirtileri: Sevgili misin Yoksa İlişkinin Hamalı mı?",
+    title: "Tek Taraflı İlişki Belirtileri: Sevgili misin, İlişki Hamalı mı?",
     description: "Hep sen mi yazıyorsun, buluşmaları hep sen mi planlıyorsun? Tek taraflı çaba (one-sided effort) işaretlerini gör ve mesaj dengesini ücretsiz YZ ile ölç!",
     category: "Dating Dynamics",
     publishDate: "2026-07-02",
@@ -2296,7 +2296,7 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "when-to-walk-away",
-    title: "Bir İlişkiden Ne Zaman Vazgeçmelisin? Engellemeden Önce 8 Son İşaret",
+    title: "Bir İlişkiden Ne Zaman Vazgeçmelisin? Ayrılık Öncesi 8 İşaret",
     description: "'Belki değişir' diyerek aylarını mı harcıyorsun? Toksik bir situationship veya ilişkiden arkanı dönüp gitme vaktinin geldiğini kanıtlayan 8 maddelik liste!",
     category: "Dating Advice",
     publishDate: "2026-07-02",

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Profil Otopsisi AI — Tinder, Bumble & Instagram Profil Analizi (Ücretsiz)",
+      title: { absolute: "Profil Otopsisi AI — Tinder, Bumble & IG Profil Analizi" },
       description:
         "Tinder, Bumble, Hinge veya Instagram profil ekran görüntüsünü yükle → 0–100 çekicilik skoru, bio hataları ve Dedektif Modu ile gizli red flag'leri ücretsiz gör!",
       keywords: [
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Profile Autopsy AI — Free Tinder, Hinge & Instagram Profile Analyzer",
+    title: { absolute: "Profile Autopsy AI — Free Tinder, Hinge & IG Profile Audit" },
     description:
       "Upload a Tinder, Bumble, Hinge, or Instagram screenshot → get a 0–100 profile score, ick fixes, bio tips, or stalk red flags in Detective Mode. Free, no sign-up!",
     keywords: [

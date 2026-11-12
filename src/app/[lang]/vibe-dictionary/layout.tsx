@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Vibe Sözlüğü (300+ Terim) — Vibe Check, Ick, Delulu & Rizz Ne Demek?",
+      title: { absolute: "Vibe Sözlüğü (300+ Terim) — Vibe Check, Ick & Rizz Ne Demek?" },
       description:
         "Vibe check ne demek? Ick nedir, delulu ve rizz ne anlama gelir? 300+ Gen-Z slang, ilişki terimi ve red flag sözlüğü (2026 güncel) → Ücretsiz keşfet!",
       keywords: [
@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Gen-Z Slang & Vibe Dictionary (300+ Terms) — Ick, Delulu, Rizz Meaning",
+    title: { absolute: "Gen-Z Slang & Vibe Dictionary — Ick, Delulu & Rizz Meaning" },
     description:
       "What does vibe check mean? What is an ick, delulu, rizz, situationship, or aura points? Search 300+ modern Gen-Z dating & slang definitions free →",
     keywords: [

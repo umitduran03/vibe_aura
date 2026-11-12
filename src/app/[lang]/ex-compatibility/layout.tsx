@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Ex Uyum Testi & Ayrılık Analizi — Mesaj Atmalı Mıyım? (Ücretsiz YZ)",
+      title: { absolute: "Ex Uyum Testi & Ayrılık Analizi — Mesaj Atmalı Mıyım? (YZ)" },
       description:
         "Eski sevgiline mesaj atmadan önce dur! İki fotoğraf yükle → ayrılık sebebinizi, ego savaşını kimin kazandığını ve geri dönüş riskini hesapsız & ücretsiz öğren!",
       keywords: [
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Ex Compatibility Test AI — Should I Text My Ex? Free Relapse Check",
+    title: { absolute: "Ex Compatibility Test AI — Should I Text My Ex? (Free Test)" },
     description:
       "Thinking of texting your ex? Upload two photos → AI analyzes your breakup, crowns who won the ego war & scores your relapse risk. Free & no sign-up →",
     keywords: [

@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Aura Savaşı (Aura Battle) — Kim Daha Cool? 1v1 YZ Aura Puanı",
+      title: { absolute: "Aura Savaşı (Aura Battle) — Kim Daha Cool? 1v1 YZ Aura Puanı" },
       description:
         "İki fotoğraf yükle, yapay zeka ikinize ayrı ayrı 0–100 Aura Puanı versin ve kimin kazandığını ilan etsin! Ücretsiz & hesapsız tartışmayı bitir →",
       keywords: [
@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Aura Battle AI — Who Has More Aura? Free 1v1 Photo Score",
+    title: { absolute: "Aura Battle AI — Who Has More Aura? Free 1v1 Photo Score" },
     description:
       "Upload two photos → AI scores Person 1 vs Person 2 (0–100 Aura Points), crowns the winner, and roasts the loser. Settle the group chat debate free, no sign-up!",
     keywords: [

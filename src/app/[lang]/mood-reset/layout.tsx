@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "Mood Reset YZ — Eksi Auranı Sıfırla & Modunu Yükselt (Ücretsiz)",
+      title: { absolute: "Mood Reset YZ — Eksi Auranı Sıfırla & Modunu Yükselt (Ücretsiz)" },
       description:
         "Modun yerlerde mi? Kafana taktığın şeyi yaz → yapay zeka sızlanmayı bitiren acımasız bir uyanış planı ve enerji reseti versin! Ücretsiz & hesapsız →",
       keywords: [
@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Mood Reset AI — Fix Negative Aura & Stop Spiraling (Free Instant Tool)",
+    title: { absolute: "Mood Reset AI — Fix Negative Aura & Stop Spiraling (Free)" },
     description:
       "Woke up with negative aura? Vent what's draining you → get a brutally honest AI wake-up call & step-by-step vibe recharge in seconds. Free & no sign-up →",
     keywords: [

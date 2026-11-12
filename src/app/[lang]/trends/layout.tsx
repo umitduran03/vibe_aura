@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: "İlişki Rehberleri, Red Flag, Rizz & Vibe Check Trendleri | VibeCheckr",
+      title: { absolute: "İlişki Rehberleri, Red Flag, Rizz & Vibe Check Trendleri" },
       description:
         "Situationship ne demek, ick nedir, rizz nasıl yapılır, delulu belirtileri ve 0–100 aura puanı rehberleri. 30+ analiz yazısını oku ve ücretsiz YZ testlerini dene!",
       keywords: [
@@ -51,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: "Gen-Z Dating, Red Flags, Rizz & Aura Guides — Vibe Culture Hub | VibeCheckr",
+    title: { absolute: "Gen-Z Dating, Red Flags, Rizz & Aura Guides | VibeCheckr" },
     description:
       "What is a vibe check, rizz, the ick, delulu & aura points? Read 30+ Gen-Z dating psychology & texting guides — plus try our free instant AI vibe tests!",
     keywords: [
