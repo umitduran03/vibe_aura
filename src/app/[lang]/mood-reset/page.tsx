@@ -96,7 +96,7 @@ export default async function MoodResetLanding({ params }: { params: Promise<{ l
               <span>{isTr ? "Enerjini Fulleyelim" : "Recharge Your Energy"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-teal-500 to-cyan-500">
-              {isTr ? "Mood Reset YZ — Eksi Auranı Sıfırla & Modunu Yükselt" : "Mood Reset AI — Fix Negative Aura & Stop Overthinking"}
+              {isTr ? "Overthinking & Stres Çözücü (Mood Reset YZ) — Eksi Auranı Sıfırla & Modunu Yükselt" : "Mood Reset AI — Stop Overthinking, Fix Negative Aura & Stop Spiraling"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr 

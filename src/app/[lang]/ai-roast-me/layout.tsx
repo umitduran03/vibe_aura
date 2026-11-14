@@ -14,22 +14,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "AI Fotoğraf Gömmesi & Selfie Vibe Check (Ücretsiz & Hesapsız)" },
+      title: { absolute: "AI Fotoğraf Roast (Beni Göm) — Ücretsiz Selfie Vibe Check Testi" },
       description:
-        "Selfie yükle → 0–100 Aura Skoru, gizli red flag'lerin ve acımasız AI fotoğraf roast kartın 3 saniyede hazır! Ücretsiz, kayıt gerektirmez → Hemen dene!",
+        "Beni göm (AI Roast Me)! Ücretsiz fotoğraf gömmesi ve selfie vibe check testi. Fotoğrafını yükle; acımasız komik roast, ilk izlenim ve 0-100 aura puanı al.",
       keywords: [
         "yapay zeka fotoğraf gömme",
+        "fotoğraf yorumlatma ai",
+        "fotoğraf puanlama testi",
+        "dışarıdan nasıl görünüyorum testi",
+        "kaç puanlık biriyim testi",
         "ai roast me türkçe",
-        "vibe check uygulaması",
-        "aura analizi yapay zeka",
+        "vibe check fotoğraf",
         "selfie roast",
         "fotoğraftan aura skoru",
-        "ai fotoğraf analizi",
-        "vibe check fotoğraf",
-        "yapay zeka aura testi",
-        "en dürüst ai uygulaması",
         "beni göm yapay zeka",
-        "ücretsiz selfie testi",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/ai-roast-me`,
@@ -54,21 +52,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "AI Roast Me — Free Selfie Roast & 0–100 Aura Score (No Sign-Up)" },
+    title: { absolute: "AI Roast Me — Free Selfie Roasts, Photo Vibe Check & Aura Score" },
     description:
-      "Upload a selfie and get roasted by AI in 3 seconds: 0–100 Aura Score, Vibe Archetype, hidden red flags & shareable roast card. 100% free, no account needed →",
+      "Get brutal AI selfie roasts and an instant photo vibe check! Upload any picture to AI Roast Me for a savage comedy roast, red flag scan, and 0-100 aura score.",
     keywords: [
       "ai roast me",
-      "vibe check app",
-      "ai photo roast",
-      "aura analysis",
-      "selfie roast ai",
+      "selfie roasts",
+      "vibe check image",
       "photo vibe check",
+      "ai photo roast",
+      "rate my selfie ai",
+      "rate me 1-10 ai",
+      "selfie roast ai",
       "aura score from photo",
-      "brutal ai roast",
-      "ai selfie analyzer",
-      "vibe check photo analysis",
-      "free ai roast generator",
       "roast my picture ai",
     ],
     alternates: {

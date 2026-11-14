@@ -14,19 +14,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Toksik Ex Tarayıcı — Fotoğraf & Mesajdan Red Flag Testi (YZ)" },
+      title: { absolute: "Toksik İlişki & Red Flag Testi — Narsist Ex Tarayıcı (Ücretsiz)" },
       description:
-        "Eski sevgilinin veya flörtünün fotoğrafını/mesajını yükle → yapay zeka narsist sinyalleri, manipülasyonu ve red flag skorunu ücretsiz ifşa etsin!",
+        "Eski sevgilin veya flörtün toksik mi, narsist mi? Ücretsiz Red Flag testi ve toksik ex tarayıcı! Mesaj veya fotoğraf yükle; gaslighting ve manipülasyonu yakala.",
       keywords: [
+        "toksik ilişki testi",
+        "red flag testi",
+        "narsist sevgili testi",
         "toksik eski sevgili testi",
         "toksik ex testi",
-        "red flag testi",
         "eski sevgili toksik mi",
-        "narsist sevgili testi",
         "toksik ilişki belirtileri",
         "mesajdan red flag analizi",
-        "manipülatif flört testi",
-        "red flag tarayıcı yapay zeka",
+        "manipülasyon testi",
+        "gaslighting mesaj testi",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/toxic-ex-scanner`,
@@ -51,17 +52,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "Toxic Ex Scanner AI — Free Red Flag & Narcissist Text Detector" },
+    title: { absolute: "Toxic Ex Scanner & Red Flag Test — AI Manipulation Detector" },
     description:
-      "Upload a photo or chat screenshot of your ex or situationship → AI exposes manipulation tactics, gaslighting & 0–100 toxicity score. Free & no sign-up →",
+      "Is your ex or partner toxic? Run the free AI Toxic Ex Scanner & Red Flag Test on texts or photos to detect gaslighting, love bombing, and narcissist traits.",
     keywords: [
       "toxic ex scanner",
+      "red flag test",
       "red flag detector ai",
+      "is my partner toxic quiz",
       "is my ex toxic",
-      "narcissist test",
+      "narcissist text scanner",
       "toxic relationship signs",
-      "ex red flags",
-      "is he toxic",
+      "gaslighting text checker",
       "chat red flag analyzer",
     ],
     alternates: {

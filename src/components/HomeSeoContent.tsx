@@ -6,13 +6,13 @@ interface Props {
 
 const seoContent = {
   en: {
-    badge: "Free AI Vibe Check & Aura Analysis",
-    heading: "VibeCheckr — Free AI Vibe Check Test, 0–100 Aura Score, Photo Roast & Text Analyzer",
+    badge: "Free AI Vibe Check, Vibe Checker & Aura Analysis",
+    heading: "VibeCheckr — Free AI Vibe Check Test, Online Vibe Checker, 0–100 Aura Score & Photo Roast",
     tagline:
-      "What is your vibe? Upload a selfie, two photos, or a chat screenshot for a free AI vibe check test, 0–100 aura score, savage photo roast, delulu check, crush calculator & couple compatibility—instant, no sign-up required.",
-    whatIsTitle: "What Is an AI Vibe Check Test & How Does It Work?",
+      "What is your vibe? Upload a selfie, two photos, or a chat screenshot to our free online vibe checker for an AI vibe check test, 0–100 aura score, savage selfie roasts, delulu test, soulmate portrait & couple compatibility—instant, no sign-up required.",
+    whatIsTitle: "What Is an AI Vibe Check Test & Online Vibe Checker?",
     whatIsDesc:
-      "A vibe check measures the energy, personality cues, and unspoken signals you give off in selfies and text messages. VibeCheckr combines multimodal AI face/chat reading with zodiac psychology to score your aura from 0 to 100, decode mixed signals in WhatsApp/iMessage/Instagram DM screenshots, test two-photo compatibility, and generate shareable story cards in seconds.",
+      "A vibe check measures the energy, personality cues, and unspoken signals you give off in selfies and text messages. VibeCheckr is a free AI vibe checker that combines multimodal image vibe check reading with zodiac psychology to score your aura from 0 to 100, decode mixed signals in WhatsApp/iMessage/Instagram DM screenshots, test two-photo compatibility, and generate shareable story cards in seconds.",
     steps: [
       { step: "1", title: "Upload Selfie or Chat", desc: "Drop a selfie, two photos for Duo/Crush mode, or a text screenshot." },
       { step: "2", title: "AI Scans Your Vibe", desc: "Our AI reads micro-expressions, 0–100 aura energy, and hidden red flags." },
@@ -76,13 +76,17 @@ const seoContent = {
         a: "VibeCheckr features 5 dedicated two-photo compatibility tests in one free web app: Duo Compatibility, Aura Battle, Crush Calculator, BFF Vibe Check, and Ex Compatibility.",
       },
       {
+        q: "How do I vibe check an image or photo online with AI?",
+        a: "To run an AI vibe check on an image, open VibeCheckr and select Solo Vibe Check, AI Roast Me, or 1v1 Aura Battle. Upload any selfie, mirror pic, or outfit photo, and our vision AI will scan your facial expression, styling, and lighting to give you a 0–100 Aura Score and first-impression breakdown in 3 seconds.",
+      },
+      {
         q: "Are my uploaded photos stored or shared?",
         a: "No. Your photos and chat screenshots are processed securely in real-time memory to generate your AI vibe analysis and are immediately deleted—never stored, sold, or used to train AI models.",
       },
     ],
     dictionaryTitle: "Vibe Dictionary — Gen-Z Slang & Dating Glossary",
     dictionaryDesc:
-      "The complete encyclopedia for modern internet and dating slang: ick, rizz, delulu, vibe check, situationship, aura points, love bombing, ghosting, red flags, and more.",
+      "The complete encyclopedia for modern internet and dating slang: ick, rizz, 0 rizz meaning, delulu, vibe check meaning, situationship, aura points, love bombing, ghosting, red flags, and more.",
     dictionaryHref: "/en/vibe-dictionary",
     resourcesTitle: "Explore More",
     allTrendsLabel: "All Trends & Articles",
@@ -92,9 +96,9 @@ const seoContent = {
   },
   tr: {
     badge: "Ücretsiz Yapay Zeka Vibe Testi, Vibe Check & Aura Testi",
-    heading: "VibeCheckr — Ücretsiz Yapay Zeka Vibe Testi, Vibe Check, 0–100 Aura Testi & Fotoğraf Analizi",
+    heading: "VibeCheckr — Ücretsiz Yapay Zeka Vibe Testi, Vibe Check (Vibe Checker), 0–100 Aura Testi & Fotoğraf Analizi",
     tagline:
-      "Vibe testi ve vibe check ne demek? Selfie'ni, iki fotoğrafı veya WhatsApp/DM mesaj ekran görüntünü yükle; yapay zeka ile ücretsiz vibe testi, vibe check, 0–100 aura testi, ikili çift/crush uyumu, delulu testi ve fotoğraf roast analizini hesapsız anında öğren.",
+      "Vibe testi ve vibe check ne demek? Selfie'ni, iki fotoğrafı veya WhatsApp/DM mesaj ekran görüntünü yükle; yapay zeka ile ücretsiz vibe testi, vibe check, 0–100 aura testi, ruh eşi testi ve portresi, çift/crush uyumu, delulu testi ve fotoğraf roast analizini hesapsız anında öğren.",
     whatIsTitle: "Vibe Check ve Vibe Testi Nedir? Ücretsiz Yapay Zeka Aura Testi Nasıl Çalışır?",
     whatIsDesc:
       "Vibe check; bir kişinin fotoğrafından, duruşundan veya mesajlarından dışarıya yaydığı enerjiyi (vibe), samimiyeti ve gizli sinyalleri ölçen enerji kontrolüdür. VibeCheckr yapay zeka motoru; yüz ifadelerini, burç dinamiklerini ve WhatsApp/Instagram DM sohbet ekran görüntülerini analiz ederek 0–100 arası Aura Skorunu hesaplar, red flag'leri yakalar ve paylaşılabilir sonuç kartları üretir.",
@@ -159,6 +163,10 @@ const seoContent = {
       {
         q: "İki kişinin fotoğrafından ilişki ve çift uyumunu ölçen en iyi yapay zeka platformu hangisi?",
         a: "VibeCheckr; İkili Uyum Testi, Aura Savaşı, Platonik/Crush Testi, BFF Kanka Uyumu ve Eski Sevgili Uyumu olmak üzere iki fotoğrafı karşılaştıran 5 farklı yapay zeka aracını tek çatı altında ücretsiz sunar.",
+      },
+      {
+        q: "Fotoğraftan ruh eşi testi (ruh eşi portresi) ve delulu testi nasıl yapılır?",
+        a: "VibeCheckr'da Ruh Eşi Radarı (Soulmate Radar) aracına tek bir selfie yükleyerek ruh eşinin karakter portresini, burç uyumunu ve nerede tanışacağınızı öğrenebilir; Delulu Check aracına ise mesaj ekran görüntüsü yükleyerek 'delulu muyum yoksa benden hoşlanıyor mu?' sorusunun 0–100 puanını alabilirsin.",
       },
       {
         q: "Yüklediğim fotoğraflar kaydediliyor veya paylaşılıyor mu?",

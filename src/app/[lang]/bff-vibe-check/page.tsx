@@ -90,7 +90,7 @@ export default async function BffVibeCheckLanding({ params }: { params: Promise<
               <span>{isTr ? "Kaos İkilisi" : "Chaotic Duo"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500">
-              {isTr ? "BFF Kanka Uyum Testi — Gerçek BFF misiniz Yoksa Dedikodu Ortağı mı?" : "BFF Vibe Check — True BFFs or Just Gossip Partners?"}
+              {isTr ? "Arkadaşlık Testi & BFF Kanka Uyumu — En İyi Arkadaş Testi (2 Fotoğraflı)" : "BFF Vibe Check — Free AI Best Friend Quiz & Friendship Compatibility Test"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr

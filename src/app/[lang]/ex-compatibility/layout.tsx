@@ -14,19 +14,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Ex Uyum Testi & Ayrılık Analizi — Mesaj Atmalı Mıyım? (YZ)" },
+      title: { absolute: "Eski Sevgiliye Mesaj Atmalı Mıyım? Ex Uyum & Barışma Testi (YZ)" },
       description:
-        "Eski sevgiline mesaj atmadan önce dur! İki fotoğraf yükle → ayrılık sebebinizi, ego savaşını kimin kazandığını ve geri dönüş riskini hesapsız & ücretsiz öğren!",
+        "Eski sevgiliye mesaj atmalı mıyım, geri döner mi? Ücretsiz yapay zeka ex uyum ve barışma testi! 2 fotoğraf yükle; ayrılık nedenini ve barışma ihtimalini gör.",
       keywords: [
-        "eski sevgili uyumu",
+        "eski sevgiliye mesaj atmalı mıyım",
+        "eski sevgilim döner mi testi",
+        "barışır mıyız testi",
         "ex uyum testi",
+        "eski sevgili uyumu",
         "ayrılık analizi",
         "eski sevgiliye mesaj atılır mı",
-        "ex ilişki analizi yapay zeka",
+        "no contact bozulmalı mı",
         "geri dönüş riski hesaplama",
-        "eski sevgili geri kazanma",
-        "ayrılık sebebi analizi",
-        "eski sevgili uyum skoru",
         "ego savaşı kim kazandı",
       ],
       alternates: {
@@ -52,19 +52,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "Ex Compatibility Test AI — Should I Text My Ex? (Free Test)" },
+    title: { absolute: "Ex Compatibility Test AI — Should I Text My Ex or Move On?" },
     description:
-      "Thinking of texting your ex? Upload two photos → AI analyzes your breakup, crowns who won the ego war & scores your relapse risk. Free & no sign-up →",
+      "Should I text my ex or move on? Take the free AI Ex Compatibility Test with two photos to see if they're 'the one that got away' or a lesson you already learned.",
     keywords: [
       "ex compatibility",
+      "ex compatibility test",
       "should i text my ex",
+      "will my ex come back quiz",
+      "should i break no contact quiz",
       "breakup analysis",
       "toxic ex relapse",
-      "ex compatibility test",
       "should I get back with my ex",
-      "ex relationship analyzer AI",
-      "breakup reason calculator",
-      "ex relapse risk score",
       "who won the breakup",
     ],
     alternates: {

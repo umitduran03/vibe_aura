@@ -20,54 +20,54 @@ export const trendsDataEn: TrendArticle[] = [
   {
     slug: "what-is-a-vibe-check",
     title: "What Is a Vibe Check? Meaning, Slang & Free AI Selfie Test",
-    description: "What does 'vibe check' mean on TikTok, texting & dating? Learn the exact slang meaning + scan your selfie or texts for a free 0–100 AI Aura Score (no sign-up).",
+    description: "What does 'vibe check' mean on Urban Dictionary, TikTok & texting? Learn the exact slang meaning + vibe check an image or chat free for a 0–100 Aura Score.",
     category: "Culture & Slang",
     publishDate: "2026-06-03",
     readTime: "4 min read",
-    keywords: ["vibe check", "what is a vibe check", "vibe check meaning", "AI vibe check", "vibe check test", "pass the vibe check", "vibe check quiz", "digital aura test"],
+    keywords: ["vibe check", "what is a vibe check", "vibe check meaning", "urban dictionary vibe check", "vibe check image", "online vibe checker", "AI vibe check", "vibe check test", "pass the vibe check", "vibe check quiz", "digital aura test"],
     content: {
-      intro: "Whether someone says 'you passed the vibe check' in a TikTok comment or texts 'quick vibe check' before a first date, the phrase 'vibe check' has become the universal radar for reading energy, intentions, and personality. Originally internet slang for a spontaneous assessment of someone's mood or character, a vibe check in 2026 has evolved into an AI-powered way to decode selfies, text messages, and relationship chemistry in seconds.",
+      intro: "What is a vibe check? A vibe check (popularized on Urban Dictionary and TikTok) is a spontaneous assessment of someone's energy, mood, aura, or attitude. Whether someone says 'you passed the vibe check' in a comment or you use an online vibe checker to scan a selfie or text screenshot, a vibe check in 2026 is the universal radar for decoding personality, intentions, and relationship chemistry in seconds.",
       sections: [
         {
-          heading: "What Does 'Vibe Check' Actually Mean?",
-          paragraph: "At its core, a vibe check is an instant evaluation of the energy, attitude, or atmosphere a person gives off. Passing the vibe check means your energy feels authentic, safe, magnetic, and effortless. Failing the vibe check means something feels off—forced confidence, hidden red flags, dry texting, or chaotic main-character delusion.",
+          heading: "What Does 'Vibe Check' Mean on Urban Dictionary, TikTok & Texting?",
+          paragraph: "At its core, a vibe check is an instant evaluation of the energy, attitude, or atmosphere a person gives off. On Urban Dictionary, 'vibe check' originally meant checking someone's mood or energy in real time; today, passing the vibe check means your energy feels authentic, safe, magnetic, and effortless. Failing the vibe check means something feels off—forced confidence, hidden red flags, dry texting, or chaotic main-character delusion.",
           items: [
-            "Social Vibe Check: Checking how a friend or group is feeling mentally and emotionally.",
+            "Social & Group Chat Vibe Check: Checking how a friend, DM, or group chat is feeling mentally and emotionally.",
             "Dating Vibe Check: Testing whether a crush's actions match their words before getting attached.",
-            "AI Photo & Chat Vibe Check: Uploading a selfie or screenshot so an objective algorithm can score your aura, roast your aesthetic, and expose mixed signals."
+            "AI Photo & Image Vibe Check: Uploading a selfie or screenshot to an online vibe checker so an algorithm can score your aura (0–100), roast your aesthetic, and expose mixed signals."
           ],
           scenario: "When your crush says 'I'm just really busy right now' but updates their playlist at 2 AM—that's an instant failed vibe check."
         },
         {
-          heading: "How an AI Vibe Check Test Works",
-          paragraph: "Human intuition is great until you have a crush and suddenly start ignoring every red flag in sight. That is why the AI vibe check trend exploded. Instead of guessing how you come across—or overanalyzing a three-word text for hours—VibeCheckr uses multimodal AI to scan facial micro-expressions, lighting, aesthetic cues, zodiac dynamics, and texting patterns.",
+          heading: "How Does an AI Vibe Check Test & Image Vibe Checker Work?",
+          paragraph: "Human intuition is great until you have a crush and suddenly start ignoring every red flag in sight. That is why the AI vibe check test exploded. Instead of guessing how you come across—or overanalyzing a three-word text for hours—VibeCheckr uses multimodal AI to vibe check an image, scan facial micro-expressions, lighting, aesthetic cues, zodiac dynamics, and texting patterns.",
           items: [
-            "Solo Vibe Check & AI Roast: Upload a selfie to get your exact Aura Score (0–100), personality archetype, and a brutally honest roast.",
+            "Solo Vibe Check & Selfie Roasts: Upload a selfie to get your exact Aura Score (0–100), personality archetype, and a brutally honest roast.",
             "Duo Compatibility & Aura Battle: Compare two photos and zodiac signs to measure romantic chemistry or see who has stronger main-character energy.",
-            "Crisis Center (Delulu Check & Reply Guru): Drop chat screenshots to decode situationships, scan toxic ex behavior, or craft the perfect reply."
+            "Crisis Center (Delulu Check & Reply Guru): Drop chat screenshots to take a delulu test, decode situationships, or generate a high-aura rizz reply."
           ]
         },
         {
-          heading: "Signs You Pass (or Fail) the Vibe Check",
+          heading: "What Are the Signs You Pass or Fail the Vibe Check?",
           paragraph: "Wondering what separates immaculate aura from instant ick? AI personality scans consistently pick up on subtle visual and conversational patterns that humans miss at first glance. Self-awareness, relaxed posture, and consistent communication score high, while performative mysteriousness and mixed signals tank your score immediately."
         }
       ],
       conclusion: "A real vibe check isn't about perfection—it's about self-awareness and unfiltered honesty. Ready to find out what your selfie or latest situationship actually says about your energy? Put your aura to the test and see if you pass."
     },
-    ctaLabel: "Take the Free AI Vibe Check",
+    ctaLabel: "Take the Free AI Vibe Check Test",
     ctaLink: "/",
   },
   {
     slug: "ai-photo-personality-test",
-    title: "AI Photo Personality Test: What Your Selfie Says About Your Aura",
-    description: "Try the viral TikTok AI photo personality test! Upload a selfie to get your 0–100 Aura Score, Vibe Archetype & hidden red flags in 3 seconds — 100% free, no sign-up.",
+    title: "AI Photo Personality Test: Vibe Check Image & Selfie Roasts",
+    description: "Try the viral TikTok AI photo personality test! Vibe check an image or selfie for a 0–100 Aura Score, selfie roasts & hidden red flags in 3 seconds — free.",
     category: "AI & Tech Trends",
     publishDate: "2026-06-02",
     readTime: "5 min read",
-    keywords: ["AI photo personality test", "AI face reading", "what vibe do I give off", "aura reading face", "viral TikTok AI test", "selfie personality analyzer", "how to read auras", "digital vibe check"],
+    keywords: ["AI photo personality test", "vibe check image", "selfie roasts", "AI face reading", "what vibe do I give off", "aura reading face", "viral TikTok AI test", "selfie personality analyzer", "digital vibe check"],
     imageUrl: "/images/trends/ai-face-scan.webp",
     content: {
-      intro: "You've seen it all over TikTok, Instagram Reels, and X: people uploading their seemingly innocent selfies and getting brutally honest, shockingly accurate personality breakdowns from artificial intelligence. It's no longer just about reading your daily astrology horoscope or taking a generic 16-personalities quiz that tells you what you want to hear. The new wave of self-discovery is the AI photo personality test, and it's taking the internet by storm. But how exactly does a computer algorithm look at a JPEG of your face and immediately know that you text your ex when you're bored or that you have a severe caffeine addiction? Let's break down the psychology, the technology, and the undeniable appeal of getting roasted by code.",
+      intro: "You've seen it all over TikTok, Instagram Reels, and X: people uploading their seemingly innocent selfies and getting brutally honest selfie roasts and shockingly accurate personality breakdowns from artificial intelligence. The new wave of self-discovery is the AI photo personality test—letting an algorithm vibe check an image of your face to reveal your 0–100 Aura Score, Vibe Archetype, and hidden red flags.",
       sections: [
         {
           heading: "How Does an AI Photo Personality Test Read Your Selfie?",
@@ -80,8 +80,8 @@ export const trendsDataEn: TrendArticle[] = [
           scenario: "You upload a 'casual' car selfie and the AI immediately clocks: '82/100 Aura — Took 19 photos in the parking lot before picking this one, acts unbothered in DMs but checks story views every 12 minutes.'"
         },
         {
-          heading: "What Vibe Do I Give Off? Why AI Roasts Are So Accurate",
-          paragraph: "Unlike human friends who sugarcoat their opinions to protect your feelings, a trained AI model is entirely objective and delivers the unfiltered truth. Humans project their own biases onto the faces they see; an algorithm doesn't care how expensive your outfit is. If your selfie screams 'avoidant attachment style', 'main character syndrome', or 'recovering people-pleaser', the AI calls it out immediately. People are realizing that their 'mysterious' resting face actually just looks like they need a nap—and that realization is both hilarious and humbling.",
+          heading: "What Vibe Do I Give Off? Why Are AI Selfie Roasts So Accurate?",
+          paragraph: "Unlike human friends who sugarcoat their opinions to protect your feelings, a trained AI model is entirely objective and delivers unfiltered selfie roasts. Humans project their own biases onto the faces they see; an algorithm doesn't care how expensive your outfit is. If your selfie screams 'avoidant attachment style', 'main character syndrome', or 'recovering people-pleaser', the AI calls it out immediately.",
           items: [
             "Green Flags Exposed: Natural warmth, approachable eye contact, and effortless confidence that attract healthy connections.",
             "Hidden Red Flags Clocked: Performative nonchalance, ego-driven posing, or subtle 'I will ghost you in 3 weeks' energy.",
@@ -89,7 +89,7 @@ export const trendsDataEn: TrendArticle[] = [
           ]
         },
         {
-          heading: "How to Take the Free AI Selfie Personality & Aura Test",
+          heading: "How Do You Vibe Check an Image & Take the Free AI Selfie Test?",
           paragraph: "While basic TikTok filters slap a random keyword on your forehead, VibeCheckr's multimodal AI engine combines facial aura scanning with optional zodiac profiling to compute a complete 0–100 Aura Score, Vibe Archetype, and shareable roast card. You don't even need to create an account—use 1-Click Guest Mode to test your favorite selfie, dating app photo, or mirror pic in under 3 seconds."
         }
       ],
@@ -359,11 +359,11 @@ export const trendsDataEn: TrendArticle[] = [
           scenario: "Friend A uploads a heavily posed gym mirror pic (58/100 Aura) while Friend B uploads a blurry candid coffee shop photo (92/100 Aura). Verdict: 'Effortless charisma destroys try-hard flexing.'"
         },
         {
-          heading: "Close Match vs. Total Blowout: How the AI Judges the Loser",
+          heading: "Close Match vs. Total Blowout: How Does Aura Battle Judge the Loser?",
           paragraph: "What makes the Aura Battle so addictive isn't just seeing the numbers—it's how the AI calibrates its verdict to the score gap. If the battle is neck-and-neck (like 89 vs. 92), the AI acknowledges that both players have elite aura and points out the razor-thin detail that decided the match. But if it's a blowout (like 94 vs. 41), the algorithm delivers a ruthless, surgical roast exposing the loser's forced expression or NPC energy."
         },
         {
-          heading: "How to Run a Free Aura Battle With Friends or Your Partner",
+          heading: "How Do You Run a Free Aura Battle With Friends or Your Partner?",
           paragraph: "This isn't just a solo test—it's the ultimate digital duel for best friends, couples, siblings, and situationships. Open VibeCheckr's Aura Battle mode, drop two photos, and let the AI crown the real Main Character in 3 seconds—100% free and with no sign-up required."
         }
       ],
@@ -374,39 +374,39 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "what-is-rizz",
-    title: "What Does Rizz Mean? Spoken vs. Unspoken Rizz & AI Rizz Test",
-    description: "What is rizz in Gen-Z slang? Learn spoken vs. unspoken rizz, W vs. L rizz texting examples & generate smooth replies free with Reply Guru AI.",
+    title: "What Does Rizz Mean? 0 Rizz, No Rizz & Spoken vs Unspoken Rizz",
+    description: "What does rizz, 0 rizz, or no rizz mean in slang? Learn spoken vs. unspoken rizz, W vs. L rizz examples & generate a smooth rizz reply free with AI.",
     category: "Culture & Slang",
     publishDate: "2026-06-19",
     readTime: "5 min read",
-    keywords: ["what is rizz", "what does rizz mean", "rizz meaning slang", "unspoken rizz", "w rizz vs l rizz", "how to get rizz over text", "ai rizz generator", "text reply generator"],
+    keywords: ["what is rizz", "what does rizz mean", "0 rizz meaning", "no rizz meaning", "rizz reply", "rizz meaning slang", "unspoken rizz", "w rizz vs l rizz", "how to get rizz over text", "ai rizz generator", "text reply generator"],
     imageUrl: "/images/trends/rizz.webp",
     content: {
-      intro: "If you've spent any time on TikTok, Instagram, or X, you've heard someone roasted for having 'zero rizz' or praised for their 'unspoken rizz.' Short for charisma, 'rizz' is the undisputed centerpiece of Gen-Z dating and texting slang—describing everything from smooth banter in DMs to effortless real-life magnetism. Here is the complete breakdown of what rizz actually means, the difference between spoken, unspoken, W, and L rizz, and how to instantly upgrade your texting game with AI.",
+      intro: "What does rizz mean? Short for charisma, 'rizz' is Gen-Z slang for your natural ability to charm, flirt with, and attract a romantic interest through witty banter or effortless aura. Whether you've seen someone roasted for having '0 rizz' (no rizz) or praised for their 'unspoken rizz,' here is the complete guide to spoken vs. unspoken rizz, W vs. L rizz, and how to generate a high-aura rizz reply in seconds.",
       sections: [
         {
-          heading: "What Does 'Rizz' Mean in Slang? (Spoken vs. Unspoken Rizz)",
-          paragraph: "Rizz—coined from the middle syllable of 'cha-ris-ma' and popularized globally by streamer Kai Cenat before being named Oxford's Word of the Year—means your natural ability to charm, flirt with, and attract a romantic interest. Unlike old-school cheesy pickup lines, real rizz is about timing, wit, and reading the room. In modern dating culture, rizz splits into four distinct categories:",
+          heading: "What Does 'Rizz', '0 Rizz', and 'No Rizz' Mean in Slang?",
+          paragraph: "Rizz—coined from the middle syllable of 'cha-ris-ma' and popularized globally by streamer Kai Cenat before being named Oxford's Word of the Year—means your natural ability to charm, flirt with, and attract someone. Having '0 rizz' or 'no rizz' means having zero flirting game or charisma—sending dry texts, fumbling an easy opening, or sounding awkward in DMs. In modern dating culture, rizz splits into five distinct categories:",
           items: [
             "Spoken Rizz (Verbal & Texting Rizz): Smooth, witty, context-aware banter that makes someone smile or blush without sounding desperate.",
             "Unspoken Rizz: Attracting someone purely through eye contact, posture, style, and calm main-character aura before saying a single word.",
             "W Rizz (Winning Rizz): Turning a dry conversation or an awkward moment into an effortless date invite.",
-            "L Rizz (Negative Rizz): Over-texting, using copy-pasted pickup lines, or trying so hard to sound mysterious that you give them the ick."
+            "0 Rizz / No Rizz & L Rizz (Negative Rizz): Having zero flirting charisma, over-texting, using copy-pasted pickup lines, or trying so hard that you give them the ick."
           ],
-          scenario: "Them: 'I'm terrible at texting back lol.' L Rizz reply: 'Haha that's okay text me whenever!' W Rizz reply: 'Good thing we're better in person—Thursday at 8?'"
+          scenario: "Them: 'I'm terrible at texting back lol.' 0 Rizz / L Rizz reply: 'Haha that's okay text me whenever!' W Rizz reply: 'Good thing we're better in person—Thursday at 8?'"
         },
         {
           heading: "Can You Actually Learn Rizz Over Text and DMs?",
-          paragraph: "Here is the truth about modern flirting: in-person unspoken rizz comes from self-confidence and body language, while texting rizz is 100% a learnable skill. Most people lose aura points in the talking stage because they panic-reply, send paragraphs to a three-word text, or ask boring interview questions ('How was your day?'). High-rizz texting relies on playful push-pull teasing, matching their energy length, and knowing when to leave a little mystery."
+          paragraph: "Here is the truth about modern flirting: in-person unspoken rizz comes from self-confidence and body language, while crafting a smooth rizz reply over text is 100% a learnable skill. Most people get accused of having no rizz in the talking stage because they panic-reply, send paragraphs to a three-word text, or ask boring interview questions ('How was your day?'). High-rizz texting relies on playful push-pull teasing, matching their energy length, and knowing when to leave a little mystery."
         },
         {
-          heading: "Free AI Rizz & Text Reply Generator: How Reply Guru Works",
-          paragraph: "When you're staring at a risky DM, a dry 'k', or mixed signals from your crush, guessing what to text back is how you fumble the bag. VibeCheckr's Reply Guru AI acts as your personal Rizz Architect: upload a chat screenshot from WhatsApp, iMessage, Instagram DM, or Hinge, or paste their last message, and the AI instantly crafts smooth Flirty, Cool/Unbothered, Savage, or Safe replies tailored to the exact conversation context."
+          heading: "How Do You Generate a Smooth AI Rizz Reply With Reply Guru?",
+          paragraph: "When you're staring at a risky DM, a dry 'k', or mixed signals from your crush, guessing what to text back is how you fumble the bag. VibeCheckr's Reply Guru AI acts as your personal AI response to text and rizz reply generator: upload a chat screenshot from WhatsApp, iMessage, Instagram DM, or Hinge, or paste their last message, and the AI instantly crafts smooth Flirty, Cool/Unbothered, Savage, or Safe replies tailored to the exact conversation context."
         }
       ],
-      conclusion: "Rizz isn't about memorizing corny lines—it's about reading the energy and responding with effortless confidence. Ready to test your rizz or craft the ultimate comeback to their latest text? Drop your screenshot into Reply Guru AI for free."
+      conclusion: "Rizz isn't about memorizing corny lines—it's about reading the energy and responding with effortless confidence. Ready to turn 0 rizz into W rizz or craft the ultimate rizz reply to their latest text? Drop your screenshot into Reply Guru AI for free."
     },
-    ctaLabel: "Generate High-Rizz Replies",
+    ctaLabel: "Generate a High-Aura Rizz Reply",
     ctaLink: "/reply-guru",
   },
   {
@@ -416,21 +416,21 @@ export const trendsDataEn: TrendArticle[] = [
     category: "Dating Psychology",
     publishDate: "2026-06-20",
     readTime: "5 min read",
-    keywords: ["soft launch relationship", "hard launch dating", "relationship on social media", "posting your partner", "attachment style", "dating advice 2026", "instagram relationship"],
+    keywords: ["soft launch relationship", "hard launch dating", "soft launch vs hard launch", "relationship on social media", "posting your partner", "attachment style", "dating advice 2026", "instagram relationship"],
     imageUrl: "/images/trends/soft-launch.webp",
     content: {
-      intro: "You've just started seeing someone incredible. The butterflies are real, the dates are immaculate, and you are dangerously close to catching actual feelings. And then comes the most strategically complex decision of modern dating: how do you handle their social media debut? Do you go with the mysterious soft launch — a blurry hand in the corner of a brunch photo, a barely-visible shadow on your story — or do you go full hard launch with a face-forward couple photo and a tagged Instagram post? This decision, which previous generations never had to make, reveals more about your psychology than you might think.",
+      intro: "What is a soft launch vs. a hard launch in dating? A soft launch is subtly hinting that you're seeing someone on social media—like posting two coffee cups or a cropped hand on your Instagram Story without tagging them—while a hard launch is officially revealing your partner with a clear face photo and tag on your main grid. This modern dating decision reveals more about your attachment style and commitment level than you might think.",
       sections: [
         {
-          heading: "The Soft Launch: Strategic Ambiguity",
+          heading: "What Does a Soft Launch Mean in Dating?",
           paragraph: "The soft launch is the art of introducing a romantic partner to your audience without fully committing to the reveal. It's a cropped hand, a silhouette, a 'grabbed dinner with someone special' caption with zero context. The underlying psychology is one of risk management. The soft-launcher is protecting themselves from the embarrassing public fallout if the relationship doesn't work out. It's also sometimes a power move — generating mystery and making your audience wonder who this new person is. If you're a habitual soft-launcher, it can also signal an anxious or avoidant attachment style. You want the validation of being seen as desired, but you're terrified of the vulnerability of full commitment."
         },
         {
-          heading: "The Hard Launch: Bold Confidence or Reckless Optimism?",
+          heading: "What Is a Hard Launch on Instagram: Bold Confidence or Impulsivity?",
           paragraph: "The hard launch is a statement of intent. A clear photo, both faces visible, a warm caption, maybe even a tag. It tells the world: this person is mine, I am proud, and I am not afraid of what happens next. Hard launchers tend to have more secure attachment styles — they're comfortable with vulnerability and don't obsessively fear public failure. However, a premature hard launch (posting someone after three dates) can also be a sign of emotional impulsivity or love-bombing tendencies. The timing of the hard launch is everything. Too soon, and you look desperate. Just right, and it's the most romantic thing you can do."
         },
         {
-          heading: "What Your Strategy Reveals About Your Attachment Style",
+          heading: "What Does Your Launch Strategy Reveal About Your Attachment Style?",
           paragraph: "Here's the unfiltered psychological breakdown. Chronic soft-launchers? Likely anxious or avoidant attachment — they crave connection but fear exposure. Impulsive hard-launchers? Possibly fearful-avoidant, using intense openness as a defense mechanism. Calculated, timed hard-launchers? Secure attachment — they know what they have, they're proud of it, and they're not performing for anyone. Understanding your own pattern is the first step to understanding why your relationships unfold the way they do."
         }
       ],
@@ -531,32 +531,32 @@ export const trendsDataEn: TrendArticle[] = [
   },
   {
     slug: "are-you-delulu",
-    title: "Am I Delulu? 8 Signs Your Crush Obsession Crossed Into Delusion",
-    description: "'Delulu is the solulu'—until you're romanticizing 9-hour late replies. Check the 8 signs you're being delusional & get your free 0–100% AI Delulu Score!",
+    title: "Am I Delulu? Delulu Test & 8 Signs of Crush Delusion",
+    description: "Am I delulu or do they like me? Check the 8 signs your crush obsession crossed into delusion & take the free 0–100% AI Delulu Test (Delulu Check) now!",
     category: "Dating Psychology",
     publishDate: "2026-06-21",
     readTime: "5 min read",
-    keywords: ["delulu meaning", "delulu is the solulu", "am i delusional about my crush", "manifestation vs delusion", "gen-z mental health", "situationship delusion", "positive thinking"],
+    keywords: ["am i delulu", "delulu test", "delulu check", "delulu meaning", "delulu is the solulu", "am i delusional about my crush", "manifestation vs delusion", "situationship delusion"],
     imageUrl: "/images/trends/delulu.webp",
     content: {
-      intro: "'Delulu is the solulu.' It started as a joke, a self-aware declaration that your wildly unrealistic romantic fantasies were your greatest personality trait. The girl who's convinced the barista who remembered her name is her soulmate. The guy who interprets a two-letter text reply as a sign of deep emotional connection. Being 'delulu' became a badge of honor — a way of weaponizing optimism against the bleak realities of modern dating. But somewhere along the way, the joke stopped being funny. Because some of us aren't performing delulu. We're actually living it, and it's keeping us stuck.",
+      intro: "'Delulu is the solulu.' It started as a joke—a self-aware declaration that your unrealistic romantic fantasies were your greatest personality trait. Whether you're asking 'am I delulu?' over a two-word text reply or looking for an objective delulu test to decode mixed signals from your crush, here is how to tell healthy optimism apart from full-blown romantic delusion.",
       sections: [
         {
-          heading: "The Healthy Kind of Delulu",
+          heading: "What Does 'Delulu' Mean and When Is It Healthy?",
           paragraph: "Let's be fair — there is a genuinely healthy version of this mindset. Psychologists call it 'positive illusions': slightly overestimating your attractiveness, your partner's interest, or your relationship's potential in ways that keep you motivated and optimistic. Research actually shows that people with mild positive illusions tend to be happier and more persistent in pursuing their goals. The 'delulu is the solulu' era works when you're using it to build confidence, take a chance on someone you like, or maintain hope after a rough dating period."
         },
         {
-          heading: "When Delulu Becomes a Trap",
+          heading: "Am I Delulu? 8 Signs Your Crush Obsession Became a Trap?",
           paragraph: "The line is crossed when you start fabricating evidence. When you spend three hours analyzing a 'k' text for hidden meaning. When you decide that them canceling for the fourth time is actually a sign they're just scared of their feelings for you. When you're six months deep into a talking stage and you're convinced they just need more time. This isn't manifestation — it's a trauma response. You're protecting yourself from a painful reality by constructing a more comfortable fictional one. Meanwhile, the person you're delulu about is probably not thinking about you nearly as much as you think they are."
         },
         {
-          heading: "How to Reality-Check Yourself",
-          paragraph: "The brutal truth is that delusion, by definition, is invisible from the inside. You can't diagnose your own delusion with the same brain that created it. This is why external, objective input is crucial. Talking to a blunt friend helps — but friends have their own biases. Our AI Delulu Check feature is designed specifically for this: you describe the situation, and our algorithm gives you a completely unfiltered, evidence-based probability of whether this person is actually into you or whether you're deep in your feelings alone. Sometimes you need a machine to say what your friends are too kind to."
+          heading: "How Does the Free AI Delulu Check & Delulu Test Work?",
+          paragraph: "The brutal truth is that delusion, by definition, is invisible from the inside. You can't diagnose your own delusion with the same brain that created it. This is why external, objective input is crucial. Talking to a blunt friend helps — but friends have their own biases. Our AI Delulu Check (Delulu Test) is designed specifically for this: upload chat screenshots or describe the situation, and our algorithm gives you a completely unfiltered 0–100% Delulu Score on whether this person is actually into you."
         }
       ],
       conclusion: "Being delulu is sometimes necessary for survival in the brutal arena of modern dating. But chronic delusion is a way of abandoning yourself — choosing a comfortable fiction over a reality where you could actually find genuine connection. Check yourself before you wreck yourself."
     },
-    ctaLabel: "Run My Delulu Check",
+    ctaLabel: "Take the Free AI Delulu Test",
     ctaLink: "/delulu-check",
   },
   {
@@ -690,25 +690,25 @@ export const trendsDataEn: TrendArticle[] = [
     category: "Dating Psychology",
     publishDate: "2026-06-27",
     readTime: "6 min read",
-    keywords: ["what is an ick", "what is the ick", "ick meaning", "ick ne demek", "ick examples", "getting the ick", "ick in dating", "ick relationship", "why do i get the ick", "sudden loss of attraction", "ick vs red flag", "ick gen-z", "lost attraction"],
+    keywords: ["ick", "what is an ick", "what is the ick", "ick meaning", "ick ne demek", "ick examples", "getting the ick", "ick in dating", "ick relationship", "why do i get the ick", "sudden loss of attraction", "ick vs red flag", "ick gen-z", "lost attraction"],
     imageUrl: "/images/trends/the-ick.webp",
     content: {
-      intro: "You are on a perfectly good date. The chemistry is there, they look amazing, and the conversation is flowing. Then it happens. They laugh just a little too loudly at their own joke. Or they walk slightly too fast while swinging their arms in a weird way. Or they wave at you from across the street in an overly enthusiastic, double-handed wave. And just like that — it is gone. Every drop of attraction you had vanishes in an instant, replaced by a wave of visceral, irrational, overwhelming disgust. That, my friend, is the ick. And once you get it, it almost never goes away.",
+      intro: "What is the ick in dating? 'The ick' is a sudden, involuntary feeling of cringe or disgust toward a crush or partner triggered by a tiny, harmless habit—instantly killing all romantic attraction. You are on a great date, the chemistry is flowing, and then they wave with two hands or run after a ping-pong ball—and just like that, your attraction vanishes.",
       sections: [
         {
-          heading: "What Exactly Is 'The Ick'?",
+          heading: "What Exactly Is 'The Ick' in Dating?",
           paragraph: "The ick is a Gen-Z coined term for a sudden, involuntary loss of romantic attraction triggered by a specific behavior, habit, or quirk — usually something objectively small or harmless. It's the romantic equivalent of a switch being flipped. One moment you're completely into someone; the next, the mere thought of touching them gives you the shivers. What makes the ick so brutal is its irrationality. You can't logic your way out of it. You know perfectly well that the person waving enthusiastically isn't doing anything wrong. Yet your brain has decided: absolutely not. The attraction is dead. It cannot be revived."
         },
         {
-          heading: "The Most Common Ick Triggers (Warning: You May Relate)",
+          heading: "What Are the Most Common Ick Triggers in Dating?",
           paragraph: "While ick triggers are deeply personal, some are nearly universal. Being visibly too excited about impressing you — like running to open the car door, or ordering their food in a weird voice — triggers the ick at scale. Performing anything for an audience (laughing too hard, trying to be seen as the alpha of a group) is another classic. Then there are the logistical icks: watching someone struggle with parallel parking, seeing them hand their phone to the waiter to take a photo, or witnessing them eat with a tiny forkful of food while making direct eye contact. Oh, and the internet's greatest hits: running with a backpack on, clapping when the plane lands, using the word 'yummy,' wearing a lanyard, having their phone on full brightness. These are objectively minor. Yet they hit like a truck."
         },
         {
-          heading: "The Psychology Behind the Ick",
+          heading: "Why Do We Get the Ick? (The Psychology Behind It)",
           paragraph: "Psychologists suggest the ick might actually be a sophisticated evolutionary mating signal — your subconscious picking up on subtle social competency cues. An overly try-hard behavior might signal social anxiety or insecurity, which your brain registers as a potential long-term compatibility red flag. Alternatively, the ick could be rooted in your own emotional unavailability. Sometimes we develop the ick for genuinely good partners because something about their openness and vulnerability frightens us. It is worth asking yourself: am I experiencing the ick because of a real incompatibility, or am I running away from someone emotionally safe?"
         },
         {
-          heading: "Ick vs. Red Flag: Know the Critical Difference",
+          heading: "What Is the Difference Between an Ick and a Red Flag?",
           paragraph: "Here's the crucial distinction that people constantly mix up. An ick is an irrational, harmless trigger that kills your personal attraction — it says nothing about the other person's character. A red flag is a legitimate warning sign of toxic, manipulative, or dangerous behavior. Watching someone trip up the stairs is an ick. Watching someone scream at a waiter is a red flag. Both might make you lose attraction, but only one should genuinely concern you. The ick is about your taste in packaging; the red flag is the product itself being defective. Don't confuse them — and critically, don't dismiss actual red flags by telling yourself it's 'just an ick.'"
         },
         {
@@ -1202,22 +1202,22 @@ export const trendsDataTr: TrendArticle[] = [
     category: "Kültür & Jargon",
     publishDate: "2026-06-03",
     readTime: "4 dk okuma",
-    keywords: ["vibe check", "vibe check ne demek", "vibe testi", "vibe check testi", "yapay zeka vibe check", "vibe ne demek", "aura skoru testi", "online vibe analizi"],
+    keywords: ["vibe check", "vibe check ne demek", "vibe testi", "vibe test", "vibe check testi", "fotoğraftan vibe check", "yapay zeka vibe check", "vibe ne demek", "aura skoru testi", "online vibe analizi"],
     content: {
-      intro: "TikTok yorumlarında 'vibe check'i geçti' lafını duymuşsundur ya da flörtün buluşmadan önce 'hızlı bir vibe check yapalım' yazmıştır. İngilizce 'vibration' (titreşim/enerji) kelimesinden gelen 'vibe check', bir insanın, fotoğrafın, mesajın veya ortamın yaydığı enerjiyi ve samimiyeti saniyeler içinde tartmak demektir. 2026'da ise bu kavram sadece bir sosyal medya jargonu olmaktan çıkıp; selfie'lerden, burçlardan ve WhatsApp/Instagram ekran görüntülerinden kişilik ile ilişki analizi yapan yapay zeka vibe testine dönüştü.",
+      intro: "Vibe check ne demek? Vibe check; bir kişinin, fotoğrafın, mesajın veya ortamın yaydığı enerjiyi, samimiyeti ve niyeti saniyeler içinde ölçmek anlamına gelen popüler bir sosyal medya ve flört terimidir. Birinin 'vibe check'i geçmesi' (passing the vibe check) enerjisinin doğal, güvenilir ve çekici olduğunu; kalması ise gizli red flag veya yapmacık tavırları gösterir. 2026'da ise bu kavram selfie'lerden, burçlardan ve WhatsApp/Instagram ekran görüntülerinden kişilik ile ilişki analizi yapan yapay zeka vibe testine dönüştü.",
       sections: [
         {
-          heading: "Vibe Check Ne Demek? Günlük Hayatta ve Flörtte Kullanımı",
+          heading: "Vibe Check Ne Demek ve Flörtte Nasıl Kullanılır?",
           paragraph: "En net tanımıyla vibe check; karşındaki kişinin enerjisinin, niyetinin ve dışarıya verdiği havanın 'yerinde olup olmadığını' kontrol etmektir. Birinin vibe check'i geçmesi (passing the vibe check), enerjisinin doğal, güvenilir ve çekici olduğu anlamına gelir. Vibe check'te sınıfta kalmak ise gizli red flag'lerin, yapmacık tavırların veya toksik sinyallerin alarm vermesidir.",
           items: [
             "Sosyal Ortamda Vibe Check: Arkadaş grubunun modunu, enerjisini veya bir mekanın atmosferini yoklamak.",
             "İlişki ve Flörtte Vibe Check: Hoşlandığın kişinin sözleriyle davranışlarının tutarlı olup olmadığını, seni oyalayıp oyalamadığını (situationship) çözmek.",
-            "Yapay Zeka (AI) Vibe Check Testi: Selfie'ni veya sohbet ekran görüntünü yükleyerek yapay zekadan tarafsız Aura Skoru, kişilik analizi ve acımasız roast almak."
+            "Fotoğraftan Yapay Zeka (AI) Vibe Check Testi: Selfie'ni veya sohbet ekran görüntünü yükleyerek yapay zekadan tarafsız Aura Skoru (0–100), kişilik analizi ve acımasız roast almak."
           ],
           scenario: "Flörtün 'Şu sıralar çok yoğunum' deyip gece 02:30'da Spotify listesini güncelliyorsa, o vibe check'ten net olarak kalmıştır."
         },
         {
-          heading: "Yapay Zeka ile Vibe Check Testi Nasıl Yapılır?",
+          heading: "Yapay Zeka ile Fotoğraftan Vibe Check Testi Nasıl Yapılır?",
           paragraph: "İnsan gözü özellikle işin içinde duygular veya ego olduğunda gerçekleri görmekte zorlanır; görmek istediğine inanır. VibeCheckr yapay zeka motoru ise fotoğrafındaki mikro ifadeleri, duruşunu, ışık seçimini, burç enerjini ve mesajlaşma tonunu tamamen tarafsızca tarayarak sana filtreli olmayan gerçeği söyler.",
           items: [
             "Bireysel Vibe Check & Beni Göm (AI Roast): Selfie'ni yükle; 100 üzerinden Aura Skorunu, dışarıya verdiğin gerçek enerjiyi ve en komik zayıf noktalarını öğren.",
@@ -1226,7 +1226,7 @@ export const trendsDataTr: TrendArticle[] = [
           ]
         },
         {
-          heading: "Yüksek Vibe (High Aura) vs. Düşük Vibe Sinyalleri",
+          heading: "Yüksek Vibe (High Aura) ve Düşük Vibe Sinyalleri Nelerdir?",
           paragraph: "Yapay zeka analizlerinde en yüksek aura puanını alan profillerin ortak noktası kusursuz görünmek değil, kendiyle barışık ve net bir enerji yaymaktır. Aşırı kasıntı pozlar, belirsiz mesajlar ('bakarız', 'bilmem ki') ve tutarsız iletişim ise hem algoritmada hem gerçek hayatta anında eksi aura puanı olarak geri döner."
         }
       ],
@@ -1601,26 +1601,26 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "what-is-rizz",
-    title: "Rizz Ne Demek? Unspoken Rizz Nedir & Ücretsiz YZ Rizz Testi",
-    description: "Rizz ne demek, spoken ve unspoken rizz farkı nedir? W rizz vs. L rizz mesaj örneklerini incele ve ücretsiz Reply Guru YZ ile mesajlaşma karizmanı katla!",
+    title: "Rizz Ne Demek? 0 Rizz, No Rizz, Unspoken Rizz & YZ Rizz Testi",
+    description: "Rizz ne demek, 0 rizz (no rizz) ve unspoken rizz farkı nedir? W rizz vs. L rizz mesaj örneklerini gör ve ücretsiz Reply Guru YZ ile rizz cevap üret!",
     category: "Kültür ve Slang",
     publishDate: "2026-06-19",
     readTime: "5 dk okuma",
-    keywords: ["rizz ne demek", "rizz nedir", "rizz anlamı", "unspoken rizz ne demek", "w rizz l rizz", "mesajda rizz nasıl yapılır", "yapay zeka rizz", "flörtöz mesaj üretici"],
+    keywords: ["rizz ne demek", "rizz nedir", "0 rizz ne demek", "no rizz meaning", "rizz reply", "rizz anlamı", "unspoken rizz ne demek", "w rizz l rizz", "mesajda rizz nasıl yapılır", "yapay zeka rizz", "flörtöz mesaj üretici"],
     imageUrl: "/images/trends/rizz.webp",
     content: {
-      intro: "TikTok, Instagram veya X'te biraz vakit geçirdiysen birine 'sıfır rizz' dendiğini ya da 'unspoken rizz'i var' diye övüldüğünü mutlaka duymuşsundur. İngilizce 'charisma' (karizma) kelimesinin ortasından türeyen 'rizz', Gen-Z flört ve mesajlaşma kültürünün bir numaralı terimi haline geldi. Peki rizz tam olarak ne demek, spoken rizz ile unspoken rizz arasındaki fark nedir ve DM'de kilitlendiğinde yapay zeka ile rizz'ini nasıl zirveye taşırsın?",
+      intro: "Rizz ne demek? İngilizce 'charisma' (karizma) kelimesinden türeyen 'rizz', birini klişe tavlama laflarına başvurmadan, doğal mizah, özgüven ve akıcı mesajlaşmayla kendine çekme yeteneğidir. TikTok, Instagram veya X'te birine '0 rizz' (no rizz — sıfır karizma) dendiğini ya da 'unspoken rizz'i var' diye övüldüğünü duymuşsundur; işte rizz türleri ve DM'de yüksek rizz'li cevap üretmenin sırları.",
       sections: [
         {
-          heading: "Rizz Ne Demek? (Spoken Rizz vs. Unspoken Rizz Farkı)",
-          paragraph: "Yayıncı Kai Cenat tarafından popülerleştirilen ve Oxford Yılın Kelimesi seçilen Rizz; birini klişe tavlama laflarına başvurmadan, tamamen doğal mizah, özgüven, zamanlama ve enerjiyle kendine çekme yeteneğidir. Güncel flört dilinde rizz 4 ana türe ayrılır:",
+          heading: "Rizz, 0 Rizz (No Rizz) ve Unspoken Rizz Ne Demek?",
+          paragraph: "Yayıncı Kai Cenat tarafından popülerleştirilen ve Oxford Yılın Kelimesi seçilen Rizz; birini klişe tavlama laflarına başvurmadan, tamamen doğal mizah, özgüven, zamanlama ve enerjiyle kendine çekme yeteneğidir. '0 rizz' veya 'no rizz' ise flörtte sıfır çekicilik ve beceriksiz mesajlaşma anlamına gelir. Güncel flört dilinde rizz 4 ana türe ayrılır:",
           items: [
             "Spoken Rizz (Sözlü & Mesajlaşma Rizz'i): Karşı tarafı sıkmadan güldüren, merak uyandıran ve sohbeti zahmetsizce akan flörte dönüştüren konuşma/yazışma yeteneği.",
             "Unspoken Rizz (Sessiz Rizz): Tek kelime bile etmeden; sadece bakış, duruş, tarz ve yüksek aura ile ortamdaki ilgiyi üzerine çekmek.",
-            "W Rizz (Kazanan Rizz): Kuru giden bir sohbeti veya zor bir pası tek bir zekice mesajla buluşma davetiyesine çevirmek.",
-            "L Rizz (Eksi Rizz): Arka arkaya paragraf döşemek, kopyala-yapıştır iltifatlar kullanmak veya aşırı kasıntı davranıp karşı tarafa 'ick' (soğuma) vermek."
+            "W Rizz (Kazanan Rizz): Kuru giden bir sohbeti veya zor bir pası tek bir zekice mesajla (rizz reply) buluşma davetiyesine çevirmek.",
+            "0 Rizz / No Rizz & L Rizz (Eksi Rizz): Sıfır flört karizması, arka arkaya paragraf döşemek, kopyala-yapıştır iltifatlar kullanmak veya aşırı kasıntı davranıp karşı tarafa 'ick' (soğuma) vermek."
           ],
-          scenario: "Karşı taraf: 'Mesajlara dönmekte çok kötüyüm ya haha.' L Rizz cevap: 'Olsun sorun değil ne zaman müsaitsen yaz!' W Rizz cevap: 'Yüz yüzeyken daha iyi anlaşıyoruz o zaman—Perşembe akşamı kahve?'"
+          scenario: "Karşı taraf: 'Mesajlara dönmekte çok kötüyüm ya haha.' 0 Rizz / L Rizz cevap: 'Olsun sorun değil ne zaman müsaitsen yaz!' W Rizz cevap: 'Yüz yüzeyken daha iyi anlaşıyoruz o zaman—Perşembe akşamı kahve?'"
         },
         {
           heading: "Mesajlaşmada (DM & WhatsApp) Rizz Sonradan Kazanılır mı?",
@@ -1628,7 +1628,7 @@ export const trendsDataTr: TrendArticle[] = [
         },
         {
           heading: "Ücretsiz Yapay Zeka Rizz & Mesaj Cevap Üretici: Reply Guru Nasıl Çalışır?",
-          paragraph: "Hoşlandığın kişiden gelen tek kelimelik kuru bir mesaja, karışık bir sinyale veya riskli bir DM'e ne yazacağını düşünürken 20 dakika ekrana bakmana gerek yok. VibeCheckr'ın Reply Guru (Mesaj Gurusu) aracı tam bu anlar için tasarlandı: WhatsApp, Instagram DM veya flört uygulaması ekran görüntüsünü yükle; yapay zeka sohbetin bağlamını okuyup sana anında Flörtöz, Cool/Umursamaz, Toksik veya Güvenli hazır cevap alternatifleri üretsin."
+          paragraph: "Hoşlandığın kişiden gelen tek kelimelik kuru bir mesaja, karışık bir sinyale veya riskli bir DM'e ne yazacağını düşünürken 20 dakika ekrana bakmana gerek yok. VibeCheckr'ın Reply Guru (Mesaj Gurusu) aracı tam bu anlar için tasarlandı: WhatsApp, Instagram DM veya flört uygulaması ekran görüntüsünü yükle; yapay zeka sohbetin bağlamını okuyup sana anında Flörtöz, Cool/Umursamaz, Toksik veya Güvenli hazır rizz cevap alternatifleri üretsin."
         }
       ],
       conclusion: "Rizz ezberlenmiş süslü cümleler kurmak değil; karşı tarafın enerjisini okuyup en cool ve doğal hamleyi yapmaktır. Son gelen mesaja efsane bir cevap yapıştırmak istiyorsan ekran görüntüsünü hemen ücretsiz Reply Guru YZ'ye bırak."
@@ -1638,18 +1638,18 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "soft-launch-hard-launch",
-    title: "Soft Launch ve Hard Launch Nedir? İlişkide Story Paylaşım Sırları",
-    description: "Kahve masasında görünen el mi yoksa direkt çift fotoğrafı mı? Soft launch ve hard launch stratejilerinin bağlanma stili hakkında söyledikleri.",
+    title: "Hard Launch ve Soft Launch Ne Demek? İlişkide Story Sırları",
+    description: "Hard launch ne demek, soft launch nedir? Kahve masasında görünen el ile net çift fotoğrafı arasındaki farkı ve bağlanma stili sırlarını öğren!",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-20",
     readTime: "5 dk okuma",
-    keywords: ["soft launch ne demek", "hard launch ne demek", "soft launch ilişki", "storyde sevgili paylaşmak", "sosyal medyada ilişki gizlemek", "instagram sevgili story", "bağlanma stili testi"],
+    keywords: ["hard launch ne demek", "soft launch ne demek", "soft launch ilişki", "hard launch ilişki", "storyde sevgili paylaşmak", "sosyal medyada ilişki gizlemek", "instagram sevgili story", "bağlanma stili testi"],
     imageUrl: "/images/trends/soft-launch.webp",
     content: {
-      intro: "Müthiş biriyle yeni tanışmaya başladın. Kelebekler gerçek, buluşmalar kusursuz ve gerçek anlamda duygular geliştirmekten tehlikeli derecede yakınsın. Ardından modern flörtün en stratejik açıdan karmaşık kararı geliyor: Sosyal medya debütlerini nasıl yöneteceksin? Gizemli soft launch'a mı gideceksin — brunch fotoğrafının köşesinde bulanık bir el, story'nde neredeyse görünmez bir gölge — yoksa yüz yüze bir çift fotoğrafı ve etiketli bir Instagram gönderisiyle tam hard launch'a mı? Önceki nesillerin hiç vermek zorunda kalmadığı bu karar, psikolojin hakkında düşündüğünden çok daha fazlasını ortaya koyuyor.",
+      intro: "Hard launch ve soft launch ne demek? İlişkide hard launch, sevgilini veya flörtünü sosyal medyada yüzü net görünecek ve etiketlenecek şekilde açıkça paylaşarak ilişkiyi resmen ilan etmektir. Soft launch ise kahve masasında görünen bir el veya siluet gibi küçük ipuçlarıyla yüzünü göstermeden yeni bir ilişkinin sinyalini vermektir. Bu karar, bağlanma stilin hakkında düşündüğünden çok daha fazlasını ortaya koyar.",
       sections: [
         {
-          heading: "Soft Launch Nedir? Stratejik Gizem mi, Bağlanma Korkusu mu?",
+          heading: "Soft Launch Ne Demek? Stratejik Gizem mi, Bağlanma Korkusu mu?",
           paragraph: "Soft launch, romantik bir partneri izleyicilerine tam olarak ortaya koymadan tanıtma sanatıdır. Kırpılmış bir el, bir siluet, sıfır bağlam içeren 'özel biriyle akşam yemeği yedim' açıklaması. Altta yatan psikoloji risk yönetimine dayanır. Soft launcher, ilişki işe yaramazsa utanç verici bir kamuoyu düşüşünden kendini korur. Aynı zamanda bazen bir güç hamlesidir — gizemlilik yaratır ve izleyicinin bu yeni kişinin kim olduğunu merak etmesini sağlar. Alışılmış bir soft launcher'san, bu aynı zamanda kaygılı veya kaçınmacı bir bağlanma stiline de işaret edebilir.",
           items: [
             "Soft Launch (İpucu Bırakmak): Karşılıklı iki kahve bardağı, direksiyondaki kol saati veya etiketsiz gölge fotoğrafı.",
@@ -1659,7 +1659,7 @@ export const trendsDataTr: TrendArticle[] = [
           scenario: "5 aydır çıkıyorsunuzdur ama attığı her story'de senin sadece dirseğin veya kahve fincanın görünüyordur; 'Nazar değmesin diye paylaşmıyorum' bahanesi ise klasik kaçıngan kalkanıdır."
         },
         {
-          heading: "Hard Launch: Cesur Özgüven mi, Düşüncesiz İyimserlik mi?",
+          heading: "Hard Launch Ne Demek? Cesur Özgüven mi, Erken İlan mı?",
           paragraph: "Hard launch bir niyet beyanıdır. Net bir fotoğraf, her iki yüz de görünür, sıcak bir açıklama, belki bir etiket. Dünyaya şunu söyler: bu kişi benimle, gurur duyuyorum ve bundan sonra ne olacağından korkmuyorum. Hard launcher'lar genellikle daha güvenli bağlanma stillerine sahiptir — kırılganlıkla rahattırlar ve kamuoyu başarısızlığından obsesif biçimde korkmaz. Ancak erken bir hard launch (üç buluşmadan sonra birini paylaşmak), duygusal dürtüselliğin veya aşk bombalama eğilimlerinin de işareti olabilir. Hard launch'ın zamanlaması her şeydir."
         },
         {
@@ -1783,18 +1783,18 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "are-you-delulu",
-    title: "Delulu Ne Demek? Delulu Musun Yoksa Haklı Mı? (8 Net İşaret)",
-    description: "'Delulu is the solulu' nereye kadar? Manifestasyon ile kendini kandırma arasındaki 8 ince çizgiyi öğren ve ücretsiz 0–100 YZ Delulu Skorunu ölç!",
+    title: "Delulu Ne Demek? Delulu Muyum Testi ve 8 Net İşaret",
+    description: "Delulu ne demek, delulu musun yoksa haklı mı? Manifestasyon ile kuruntu arasındaki 8 işareti öğren ve ücretsiz 0–100 YZ Delulu Testini (Delulu Check) yap!",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-21",
     readTime: "5 dk okuma",
-    keywords: ["delulu ne demek", "delulu nedir", "delulu testi", "delulu muyum testi", "delulu is the solulu anlamı", "platonik aşk kuruntusu", "flörtte kendini kandırmak"],
+    keywords: ["delulu ne demek", "delulu nedir", "delulu testi", "delulu check", "delulu muyum testi", "delulu is the solulu anlamı", "platonik aşk kuruntusu", "flörtte kendini kandırmak"],
     imageUrl: "/images/trends/delulu.webp",
     content: {
-      intro: "'Delulu is the solulu.' Şaka olarak başladı, vahşi derecede gerçekçi olmayan romantik fantezilerinin en büyük kişilik özelliğin olduğunun öz farkında bir ilanı. Adını hatırlayan baristanın ruh eşi olduğuna inanan kız. İki harfli bir mesaj yanıtını derin duygusal bağlantının işareti olarak yorumlayan erkek. 'Delulu' olmak bir onur nişanı haline geldi — iyimserliği modern flörtün kasvetli gerçekliklerine karşı bir silah olarak kullanmanın bir yolu. Ama bir yerde şaka artık komik olmaktan çıktı. Çünkü bazılarımız delulu performansı sergilemiyoruz. Gerçekten yaşıyoruz onu, ve bu bizi olduğumuz yerde tutuyor.",
+      intro: "Delulu ne demek? İngilizce 'delusional' (hayalperest/kuruntulu) kelimesinden türeyen delulu, flörtte veya platonik aşkta ortadaki gerçekleri görmezden gelip kendi kurduğun romantik senaryoya inanmak anlamına gelir. 'Delulu is the solulu' bir şaka olarak başladı ama 'Acaba delulu muyum?' diye düşünüyorsan, sağlıklı özgüven ile kendini kandırma arasındaki 8 net işareti aşağıda bulabilirsin.",
       sections: [
         {
-          heading: "Delulu Ne Demek? Sağlıklı Özgüven vs. Romantik Kuruntu",
+          heading: "Delulu Ne Demek? Sağlıklı Özgüven ile Kuruntu Farkı Nedir?",
           paragraph: "Adil olalım — bu zihniyetin gerçekten sağlıklı bir versiyonu var. Psikologlar buna 'pozitif yanılsamalar' diyor: çekiciliğini, partnerinin ilgisini veya ilişkinin potansiyelini, seni motive ve iyimser tutan yollarla biraz abartmak. Araştırmalar aslında hafif pozitif yanılsamalara sahip insanların daha mutlu ve hedeflerini kovalamada daha ısrarcı olduğunu gösteriyor. 'Delulu is the solulu' dönemi, bunu özgüven inşa etmek, beğendiğin birine şans tanımak veya zorlu bir flört döneminden sonra umudu korumak için kullandığında işe yarıyor.",
           items: [
             "Sağlıklı Delulu (Özgüven): Hoşlandığın kişiyle konuşmaya cesaret etmek ve şansını denemek.",
@@ -1808,13 +1808,13 @@ export const trendsDataTr: TrendArticle[] = [
           paragraph: "Kanıt üretmeye başladığında çizgi aşılır. 'k' metnini gizli anlam için üç saat analiz ettiğinde. Dördüncü kez randevuyu iptal etmelerinin aslında senin için hisleri konusunda korktuklarından kaçındıklarının işareti olduğuna karar verdiğinde. Talking stage'de altı aydır derinsin ve sadece biraz daha zamana ihtiyaçları olduğuna inandığında. Bu manifestasyon değil — bu bir travma yanıtı. Daha rahat olan kurgusal bir şeyi inşa ederek acı verici bir gerçekten kendini koruyorsun."
         },
         {
-          heading: "Ücretsiz Yapay Zeka Delulu Check Testi Nasıl Yapılır?",
-          paragraph: "Acı gerçek şu: yanılsama, tanımı gereği içeriden görünmez. Kendi yanılsamanı, onu yaratan beynin ile teşhis edemezsin. Bu yüzden dışsal, nesnel girdi çok önemli. Yapay Zeka Delulu Check özelliğimiz tam bunun için tasarlandı: durumu anlat veya mesaj ekran görüntüsünü yükle; algoritmamız sana bu kişinin gerçekten ilgilenip ilgilenmediğine dair tamamen filtresiz, 0–100 Delulu Skoru içeren bir değerlendirme yapsın."
+          heading: "Ücretsiz Yapay Zeka Delulu Check (Delulu Testi) Nasıl Yapılır?",
+          paragraph: "Acı gerçek şu: yanılsama, tanımı gereği içeriden görünmez. Kendi yanılsamanı, onu yaratan beynin ile teşhis edemezsin. Bu yüzden dışsal, nesnel girdi çok önemli. Yapay Zeka Delulu Check (Delulu Testi) özelliğimiz tam bunun için tasarlandı: durumu anlat veya mesaj ekran görüntüsünü yükle; algoritmamız sana bu kişinin gerçekten ilgilenip ilgilenmediğine dair tamamen filtresiz, 0–100 Delulu Skoru içeren bir değerlendirme yapsın."
         }
       ],
       conclusion: "Delulu olmak, modern flörtün acımasız arenasında bazen hayatta kalmak için gereklidir. Ama kronik yanılsama, kendini terk etmenin bir yoludur — gerçek bir bağlantı bulabileceğin bir gerçekliğin yerine rahat bir kurguyu seçmek. Kendini mahvetmeden önce kendini kontrol et."
     },
-    ctaLabel: "Delulu Kontrolümü Yap",
+    ctaLabel: "Ücretsiz Delulu Testini Yap",
     ctaLink: "/delulu-check",
   },
   {
@@ -1970,17 +1970,17 @@ export const trendsDataTr: TrendArticle[] = [
   {
     slug: "what-is-an-ick",
     title: "Ick Nedir, Ne Demek? Flörtte Tüm Çekimi Anında Bitiren O His",
-    description: "Ick ne demek, neden tek bir küçük hareket tüm soğumayı başlatır? Ick ile red flag arasındaki farkı ve geri dönüşü olup olmadığını hemen öğren!",
+    description: "Ick nedir, ne demek ve neden tek bir küçük hareket tüm soğumayı başlatır? Ick ile red flag arasındaki farkı ve geri dönüşü olup olmadığını hemen öğren!",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-27",
     readTime: "6 dk okuma",
-    keywords: ["ick nedir", "ick ne demek", "the ick ne demek", "ick ne anlama gelir", "ick örnekleri", "ick almak", "flörtte soğuma nedenleri", "birinden aniden soğumak", "ick vs red flag", "ani çekim kaybı"],
+    keywords: ["ick", "ick nedir", "ick ne demek", "the ick ne demek", "ick ne anlama gelir", "ick örnekleri", "ick almak", "flörtte soğuma nedenleri", "birinden aniden soğumak", "ick vs red flag", "ani çekim kaybı"],
     imageUrl: "/images/trends/the-ick.webp",
     content: {
-      intro: "Harika giden bir buluşmanın ortasındasın. Kimya var, kişi güzel görünüyor, sohbet akıyor. Sonra oluyor. Kendi şakasına biraz fazla yüksek sesle gülüyor. Ya da yürürken kollarını garip sallayarak biraz fazla hızlı yürüyor. Veya seni sokağın karşısından iki eliyle birden bayrak gibi sallayarak selamlıyor. Ve işte o an — bitti. İçinde birikmekte olan her damla çekim saniyeler içinde yerle bir oluyor, yerine korkunç, mantıksız ve seni yutacak gibi gelen bir iğrenme dalgası geçiyor. İşte bu dostum, 'ick'. Ve bir kez aldığında, neredeyse hiç geçmiyor.",
+      intro: "Ick nedir? İlişki ve flört dilinde 'ick' (veya 'the ick'); hoşlandığın kişinin yaptığı çok küçük, zararsız bir hareket yüzünden içindeki romantik çekimin saniyeler içinde tamamen bitmesi ve yerini ani bir soğuma hissine bırakmasıdır. Harika giden bir buluşmanın ortasında kendi şakasına fazla sesli gülmesi ya da sokağın karşısından iki eliyle el sallamasıyla başlayan o geri dönüşsüz soğumanın psikolojisini inceliyoruz.",
       sections: [
         {
-          heading: "Ick Ne Demek? Flörtte Ani Soğuma Nasıl Başlar?",
+          heading: "Ick Nedir, Ne Demek? Flörtte Ani Soğuma Nasıl Başlar?",
           paragraph: "Ick, birine olan romantik çekimin belirli bir davranış, alışkanlık veya küçük bir ayrıntı tarafından aniden, istemsizce yok edilmesi demek. Gen-Z'nin ortaya attığı bu terim, romantizmde bir düğmeye basılması gibidir. Bir an tamamen o kişiye çekiliyorsun; bir sonraki anda onun hakkında düşünmek bile seni rahatsız ediyor. Ick'in en acımasız yanı irrasyonelliğidir. Mantık yoluyla çıkamazsın. İki eliyle selamlayan kişinin yanlış bir şey yapmadığını gayet iyi biliyorsun. Ama beynin karar verdi: Asla. Çekim öldü. Diriltilemiyor.",
           items: [
             "Ick (Ani Soğuma): Tamamen zararsız ama göze garip gelen ufak bir hareket yüzünden romantik çekimin anında sıfırlanması.",
@@ -1990,15 +1990,15 @@ export const trendsDataTr: TrendArticle[] = [
           scenario: "Rüzgarlı havada peçetenin peşinden eğilerek koştuğunu gördüğün o 3 saniyede, 2 aylık tüm romantik hoşlanmanın buharlaşıp uçması klasik bir Ick anıdır."
         },
         {
-          heading: "En Yaygın Ick Tetikleyicileri (Uyarı: Kendini Görebilirsin)",
+          heading: "En Yaygın Ick Tetikleyicileri ve Örnekleri Nelerdir?",
           paragraph: "Ick tetikleyiciler çok kişisel olsa da bazıları neredeyse evrensel. Seni etkilemek için fazla çaba harcayan davranışlar — mesela arabanın kapısını açmak için neredeyse koşarak gelmek veya yemek siparişini garip bir tonlamayla vermek — büyük ick tetikleyicileri. Bir grup içinde kendini büyük göstermeye çalışmak da klasik bir ick. Bir de lojistik ick'ler var: paralel park yaparken paniğe kapılan birini izlemek, fotoğraf çektirmek için telefonu garsona vermek, ya da sana doğrudan bakarak ufacık çatal lokmaları alarak yemek yemek."
         },
         {
-          heading: "Ick'in Arkasındaki Psikoloji",
+          heading: "Ick'in Arkasındaki Psikoloji Nedir?",
           paragraph: "Psikologlar, ick'in aslında çok gelişmiş bir evrimsel eşleşme sinyali olabileceğini söylüyor — bilinçaltının sosyal yeterlilik ipuçlarını yakaladığı ince bir mekanizma. Fazla 'kasılan' bir davranış, sosyal kaygıyı veya güvensizliği işaret edebilir ve beynin bunu uzun vadeli uyumsuzluk işareti olarak kaydetmesine yol açar. Öte yandan ick, bazen kendi duygusal kaçınmacılığımızdan da kaynaklanabilir."
         },
         {
-          heading: "Ick vs. Kırmızı Bayrak (Red Flag): Kritik Fark",
+          heading: "Ick ile Kırmızı Bayrak (Red Flag) Arasındaki Fark Nedir?",
           paragraph: "İnsanların sürekli karıştırdığı kritik ayrım bu. Ick, kişisel çekimini öldüren irrasyonel, zararsız bir tetikleyicidir — karşındaki kişinin karakteri hakkında hiçbir şey söylemez. Kırmızı bayrak ise toksik, manipülatif veya tehlikeli davranışın gerçek bir uyarı işaretidir. Birinin merdivenlerde tökezlediğini izlemek ick'tir. Birinin garsona bağırdığını izlemek kırmızı bayraktır."
         },
         {

@@ -14,20 +14,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Mesaja Ne Cevap Yazılır? YZ Rizz & Cevap Üretici (Reply Guru)" },
+      title: { absolute: "Mesaja Ne Cevap Yazılır? YZ Rizz Cevap Üretici (Reply Guru)" },
       description:
-        "'Buna ne yazsam?' derdi bitti! WhatsApp veya DM ekran görüntüsünü at → yapay zeka flörtöz, cool veya güvenli cevabı 3 saniyede yazsın. Ücretsiz & hesapsız!",
+        "Ona ne yazsam? Flört mesajına, görüldüye veya kuru mesaja ne cevap yazılır? Mesajı yapıştır; YZ Rizz cevap üretici ile cool, flörtöz ve esprili yanıtlar al.",
       keywords: [
         "mesaja ne cevap yazılır",
+        "flörte ne yazılır",
+        "görüldü atan kişiye ne yazılır",
+        "story'ye ne cevap verilir",
         "nasıl cevap verilir",
         "reply guru",
         "rizz ai türkçe",
         "yapay zeka mesaj cevabı",
         "flörtöz mesaj oluşturucu",
         "kuru mesaja cevap",
-        "toksik cevap oluşturucu",
-        "ai rizz uygulaması",
-        "sohbet ekran görüntüsü cevap üretici",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/reply-guru`,
@@ -52,20 +52,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "AI Text Reply & Rizz Generator — What to Text Back (Reply Guru)" },
+    title: { absolute: "AI Response to Text & Rizz Reply Generator — What to Text Back" },
     description:
-      "Stuck on what to text back? Upload a chat screenshot → Reply Guru AI crafts the smoothest flirty, cool, savage, or safe reply in 3 seconds. 100% free, no sign-up →",
+      "Need an AI response to text or a W rizz reply? Paste any DM, dry text, or spicy message into Reply Guru for 3 instant, high-aura, flirty or savage comebacks.",
     keywords: [
+      "ai response to text",
+      "rizz reply",
+      "rizz reply generator",
       "ai text reply generator",
       "what to text back ai",
-      "rizz ai generator",
-      "text reply generator",
+      "flirty text response generator",
+      "spicy text reply generator ai",
       "how to reply to dry texts",
-      "flirty response generator",
-      "ai rizz app",
+      "hinge prompt reply generator",
       "reply guru",
-      "chat screenshot reply generator",
-      "toxic reply generator",
     ],
     alternates: {
       canonical: `${baseUrl}/en/reply-guru`,

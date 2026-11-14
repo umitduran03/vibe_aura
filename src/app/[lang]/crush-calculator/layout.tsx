@@ -14,19 +14,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Crush & Platonik Aşk Testi — Benden Hoşlanıyor mu? (Ücretsiz YZ)" },
+      title: { absolute: "Benden Hoşlanıyor mu? Platonik Aşk & Crush Uyum Testi (Ücretsiz)" },
       description:
-        "Gerçek bir kıvılcım var mı yoksa kafanda mı kuruyorsun? İki fotoğraf yükle, yapay zeka 0–100 crush uyum yüzdesini ve çekimi ölçsün! Hesapsız & ücretsiz →",
+        "Acaba benden hoşlanıyor mu? Ücretsiz yapay zeka platonik aşk testi ve crush uyum hesaplayıcı! 2 fotoğraf yükle, aranızdaki gizli çekimi ve oluru öğren.",
       keywords: [
-        "crush uyumu",
+        "benden hoşlanıyor mu testi",
         "platonik aşk testi",
+        "bana aşık mı testi",
+        "crush uyumu",
         "benden hoşlanıyor mu",
         "yapay zeka aşk testi",
         "crush yüzdesi hesaplama",
-        "delulu seviyesi testi",
-        "crush analizi yapay zeka",
+        "fotoğraftan aşk ölçer",
         "aşk uyumu testi",
-        "crush vibe check",
         "platonik çekim testi",
       ],
       alternates: {
@@ -54,18 +54,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: { absolute: "Crush Calculator AI — Does My Crush Like Me? Free 2-Photo Test" },
     description:
-      "Real spark or all in your head? Upload two photos → AI calculates your 0–100% crush compatibility, unspoken tension & delulu level. Free & no sign-up →",
+      "Does my crush like me back? Upload two photos to the free AI Crush Calculator for a 0-100 romantic chemistry score, green/red flags, and first-move advice.",
     keywords: [
       "crush calculator",
       "does my crush like me test",
+      "is he into me test",
+      "do they like me test",
+      "photo love calculator",
       "ai love compatibility test",
-      "delulu level calculator",
       "crush percentage calculator",
       "crush compatibility ai",
-      "do they like me test",
       "platonic love test",
-      "ai crush analyzer",
-      "crush vibe check",
+      "signs my crush likes me test",
     ],
     alternates: {
       canonical: `${baseUrl}/en/crush-calculator`,

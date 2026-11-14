@@ -101,8 +101,8 @@ export default async function AIRoastMeLanding({ params }: { params: Promise<{ l
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-orange-400 via-amber-500 to-red-500">
               {isTr
-                ? "AI Fotoğraf Roast (Beni Göm) — Ücretsiz Selfie & 0–100 Aura Analizi"
-                : "AI Roast Me — Free AI Photo Roast & 0–100 Selfie Aura Score"}
+                ? "AI Fotoğraf Roast (Beni Göm) — Ücretsiz Selfie Vibe Check & Fotoğraf Puanlama Testi"
+                : "AI Roast Me — Free AI Selfie Roasts, Image Vibe Check & 0–100 Aura Score"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr 

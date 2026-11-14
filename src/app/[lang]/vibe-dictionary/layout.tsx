@@ -14,22 +14,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Vibe Sözlüğü (300+ Terim) — Vibe Check, Ick & Rizz Ne Demek?" },
+      title: { absolute: "Vibe Check, Rizz, Ick & Delulu Ne Demek? Gen-Z Vibe Sözlüğü" },
       description:
-        "Vibe check ne demek? Ick nedir, delulu ve rizz ne anlama gelir? 300+ Gen-Z slang, ilişki terimi ve red flag sözlüğü (2026 güncel) → Ücretsiz keşfet!",
+        "Vibe check ne demek? Ick nedir, rizz, 0 rizz, delulu, hard launch ve situationship ne anlama gelir? 300+ terimlik Türkçe Gen-Z sosyal medya ve flört sözlüğü.",
       keywords: [
         "vibe check ne demek",
         "ick nedir",
         "ick ne demek",
-        "gen-z sözlük",
-        "gen-z argot",
+        "hard launch ne demek",
+        "soft launch ne demek",
         "rizz ne demek",
-        "red flag ne demek",
-        "situationship ne demek",
+        "0 rizz ne demek",
         "delulu ne demek",
+        "situationship ne demek",
+        "red flag ne demek",
+        "beige flag ne demek",
         "orbiting ne demek",
-        "internet jargonu sözlüğü",
-        "vibe ne demek",
+        "gen-z sözlük",
         "vibe testi",
       ],
       alternates: {
@@ -55,21 +56,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "Gen-Z Slang & Vibe Dictionary — Ick, Delulu & Rizz Meaning" },
+    title: { absolute: "Vibe Check, Rizz, 0 Rizz & Ick Meaning — Gen-Z Slang Dictionary" },
     description:
-      "What does vibe check mean? What is an ick, delulu, rizz, situationship, or aura points? Search 300+ modern Gen-Z dating & slang definitions free →",
+      "What does vibe check, 0 rizz, no rizz, the ick, delulu, or hard launch mean? Explore 300+ Gen-Z slang & dating terms in our Urban Dictionary style Vibe Guide.",
     keywords: [
-      "gen z slang dictionary",
-      "what does delulu mean",
-      "vibe meaning",
-      "rizz definition",
-      "slay meaning gen z",
-      "gen z words 2026",
       "vibe check meaning",
+      "urban dictionary vibe check",
+      "0 rizz meaning",
+      "no rizz meaning",
       "what is an ick",
+      "ick meaning",
+      "what does delulu mean",
+      "rizz definition",
       "situationship meaning",
       "aura points meaning",
-      "orbiting meaning dating",
+      "hard launch meaning",
+      "gen z slang dictionary",
     ],
     alternates: {
       canonical: `${baseUrl}/en/vibe-dictionary`,

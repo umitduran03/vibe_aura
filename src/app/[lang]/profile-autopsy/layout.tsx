@@ -14,19 +14,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Profil Otopsisi AI — Tinder, Bumble & IG Profil Analizi" },
+      title: { absolute: "Tinder, Hinge & Instagram Profil Analizi — Profil Otopsisi YZ" },
       description:
-        "Tinder, Bumble, Hinge veya Instagram profil ekran görüntüsünü yükle → 0–100 çekicilik skoru, bio hataları ve Dedektif Modu ile gizli red flag'leri ücretsiz gör!",
+        "Neden eşleşme gelmiyor? Ücretsiz yapay zeka Tinder, Bumble, Hinge ve Instagram profil analizi (Profil Otopsisi). Ekran görüntüsü yükle, ilk izlenimini öğren.",
       keywords: [
+        "instagram profil analizi",
+        "tinder profil analizi",
+        "hinge profil analizi",
+        "bumble profil kontrolü",
+        "sosyal medya profil puanlama",
+        "neden eşleşme alamıyorum",
         "profil analizi yapay zeka",
         "tinder profil otopsisi",
-        "bumble profil kontrolü",
-        "hinge profil analizi",
         "instagram profil değerlendirme",
-        "bereal profil kontrolü",
-        "x twitter profil analizi",
         "dating profil ipuçları",
-        "ai profil değerlendirme",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/profile-autopsy`,
@@ -51,16 +52,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "Profile Autopsy AI — Free Tinder, Hinge & IG Profile Audit" },
+    title: { absolute: "Hinge, Tinder & IG Profile Review AI — Free Profile Autopsy" },
     description:
-      "Upload a Tinder, Bumble, Hinge, or Instagram screenshot → get a 0–100 profile score, ick fixes, bio tips, or stalk red flags in Detective Mode. Free, no sign-up!",
+      "Get an instant AI Hinge, Tinder, Bumble & Instagram profile review! Upload a screenshot to Profile Autopsy for a brutal bio audit, photo score, and match fixes.",
     keywords: [
-      "profile autopsy ai",
-      "tinder profile analyzer",
-      "bumble profile checker",
       "hinge profile review ai",
+      "tinder profile analyzer",
       "instagram profile audit",
-      "bereal profile check",
+      "rate my dating profile ai",
+      "profile autopsy ai",
+      "bumble profile checker",
       "x twitter profile analyzer",
       "dating profile tips ai",
       "social media profile score",

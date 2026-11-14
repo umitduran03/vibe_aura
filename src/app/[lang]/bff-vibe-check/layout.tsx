@@ -14,19 +14,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "BFF Vibe Check — Kanka Uyumu & Arkadaşlık Testi (Ücretsiz YZ)" },
+      title: { absolute: "Arkadaşlık Testi & BFF Kanka Uyumu — En İyi Arkadaş Testi (YZ)" },
       description:
-        "En yakın arkadaşınla iki fotoğraf yükle → yapay zeka 0–100 kanka uyumunuzu, kaos seviyenizi ve gruptaki gizli rollerinizi çıkarsın! Hesapsız & ücretsiz →",
+        "Gerçek dost musunuz? Ücretsiz yapay zeka arkadaşlık testi ve BFF kanka uyumu! İki fotoğraf yükle; arkadaşlık puanınızı, kaos seviyenizi ve gizli dinamikleri gör.",
       keywords: [
+        "arkadaşlık testi",
+        "en iyi arkadaş testi",
+        "en yakın arkadaş uyum testi",
+        "kanka testi",
         "bff vibe check",
         "kanka uyumu testi",
-        "en yakın arkadaş testi",
         "yapay zeka arkadaşlık",
         "bff uyum analizi",
-        "arkadaş vibe check",
         "iki fotoğraf uyum testi",
-        "en iyi arkadaş yapay zeka",
-        "bff chaos seviyesi",
         "dedikodu uyumu testi",
       ],
       alternates: {
@@ -52,20 +52,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "BFF Vibe Check — Free AI Best Friend Compatibility Test" },
+    title: { absolute: "BFF Vibe Check — Free AI Best Friend Quiz & Friendship Test" },
     description:
-      "Upload two photos with your bestie → AI calculates your 0–100 friendship compatibility, chaos rating, gossip synergy & hidden roles. Free & no sign-up →",
+      "Are you real besties or chaotic duo partners? Take the free AI BFF Vibe Check & friendship test with two photos to score your best friend compatibility 0-100.",
     keywords: [
       "bff vibe check",
       "best friend compatibility test",
+      "friendship test",
+      "best friend quiz",
       "friendship compatibility ai",
       "duo vibe check",
       "bff compatibility calculator",
       "ai friendship test",
       "best friend chaos level",
       "friendship synergy test",
-      "bff ai analyzer",
-      "best friend vibe analyzer",
     ],
     alternates: {
       canonical: `${baseUrl}/en/bff-vibe-check`,

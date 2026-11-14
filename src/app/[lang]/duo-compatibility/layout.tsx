@@ -14,20 +14,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Yapay Zeka İkili Uyum Testi — 2 Fotoğraftan İlişki Kimyası" },
+      title: { absolute: "Çift & Sevgili Uyum Testi — 2 Fotoğraftan İlişki Kimyası (YZ)" },
       description:
-        "İki fotoğraf yükle → yapay zeka 0–100 çift uyumunuzu, burç kimyanızı, green/red flag'leri ve paylaşılabilir kartınızı anında çıkarsın! Hesapsız & ücretsiz →",
+        "Sevgilinle veya flörtünle ne kadar uyumlusunuz? Ücretsiz 2 fotoğraftan çift uyum testi, sevgili uyumu ve burç kimyası analizi. Hesapsız anında sonuç al.",
       keywords: [
+        "çift uyum testi",
+        "sevgili uyum testi",
+        "bizden olur mu testi",
+        "iki fotoğraf uyum testi",
         "ikili uyum testi",
         "ilişki kimyası",
         "çift uyumu",
         "yapay zeka aşk uyumu",
-        "ikili aura eşleşmesi",
-        "çift uyum testi yapay zeka",
         "romantik uyum hesaplama",
         "iki kişi aura testi",
-        "en iyi arkadaş uyumu",
-        "çift kimya analizi",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/duo-compatibility`,
@@ -52,19 +52,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "AI Duo Compatibility Test — Free 2-Photo Couple Chemistry Check" },
+    title: { absolute: "AI Couple & Duo Compatibility Test — 2-Photo Relationship Check" },
     description:
-      "Upload two photos → AI calculates your 0–100% couple chemistry, zodiac match, aura blend & hidden red flags in seconds. Free & no sign-up required →",
+      "Are you two actually compatible? Upload two photos for a free AI couple & duo compatibility test! Check relationship chemistry, zodiac match, and vibe scores.",
     keywords: [
+      "couple compatibility test",
       "duo compatibility",
+      "are we compatible quiz",
       "relationship chemistry test",
       "ai couple test",
       "romantic compatibility",
       "duo compatibility AI",
-      "best friend aura match",
       "couple compatibility test AI",
-      "are we compatible",
-      "aura blend test",
       "love chemistry calculator",
       "two photo compatibility test",
     ],

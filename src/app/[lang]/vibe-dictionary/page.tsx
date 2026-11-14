@@ -7,16 +7,17 @@ import { motion } from "framer-motion";
 import VibeDictionaryClient from "@/components/VibeDictionaryClient";
 import { dictionaryTermsEn, dictionaryTermsTr } from "@/lib/dictionary-data";
 import SeoFooter from "@/components/SeoFooter";
+import FeatureSeoContent from "@/components/FeatureSeoContent";
 import InArticleAd from "@/components/InArticleAd";
 import { useAppStore } from "@/store/useAppStore";
 
 const strings = {
   en: {
-    heroH1: "Gen-Z Slang & Dating Dictionary (300+ Terms) — Ick, Delulu, Rizz & Vibe Check Meaning",
-    heroSubtitle: "What does delulu, rizz, the ick, situationship, orbiting, or aura points mean? Search 300+ modern Gen-Z internet & dating slang definitions with real examples.",
+    heroH1: "Vibe Check, Rizz, 0 Rizz & Ick Meaning — Gen-Z Slang & Dating Dictionary (300+ Terms)",
+    heroSubtitle: "What does vibe check, 0 rizz, no rizz, delulu, the ick, situationship, hard launch, or aura points mean? Search 300+ modern Gen-Z & Urban Dictionary dating slang definitions with real examples.",
     heroBadge: "300+ terms",
     title: "Gen-Z Vibe Dictionary",
-    intro: "Confused by modern texting and dating slang? Not sure if your crush is love bombing, breadcrumbing, orbiting, or giving you the ick? Browse our complete 300+ term encyclopedia of Gen-Z slang, relationship red flags, aura terms, and zodiac traits—then test your own energy with our free AI Vibe Check.",
+    intro: "Confused by modern texting and dating slang? Not sure what '0 rizz', 'no rizz', 'vibe check', 'hard launch', or 'giving me the ick' means? Browse our complete 300+ term encyclopedia of Gen-Z slang, relationship red flags, aura terms, and zodiac traits—then test your own energy with our free AI Vibe Checker.",
     ctaTopTitle: "Curious about your own vibe & aura score? 📸",
     ctaTopDesc: "Upload a selfie or chat screenshot and let our AI score your 0–100 aura or roast your vibe.",
     ctaTopBtn: "Get My Vibe Check",
@@ -29,11 +30,11 @@ const strings = {
     relatedSubtitle: "Put your new vocabulary to the test",
   },
   tr: {
-    heroH1: "Gen-Z & İlişki Terimleri Sözlüğü (300+ Terim) — Vibe Check, Ick, Delulu & Rizz Ne Demek?",
-    heroSubtitle: "Vibe check ne demek? Ick nedir, delulu, rizz, situationship, ghosting, red flag ve aura puanı ne anlama gelir? 300+ güncel internet ve flört terimini örnekleriyle keşfet.",
+    heroH1: "Vibe Check, Rizz, Ick & Delulu Ne Demek? Gen-Z & İlişki Terimleri Sözlüğü (300+ Terim)",
+    heroSubtitle: "Vibe check ne demek? Ick nedir, rizz, 0 rizz, delulu, hard launch, situationship, ghosting, red flag ve aura puanı ne anlama gelir? 300+ güncel internet ve flört terimini örnekleriyle keşfet.",
     heroBadge: "300+ terim",
     title: "Gen-Z Vibe Sözlüğü",
-    intro: "Sosyal medya ve flört jargonunda sıkça duyduğun kelimelerin gerçek anlamını mı merak ediyorsun? Hoşlandığın kişi sana breadcrumbing mi yapıyor, gaslighting mi uyguluyor yoksa tam bir walking red flag mi? 300'den fazla Gen-Z terimi, ilişki psikolojisi kavramı ve burç analizini buradan öğren; ardından ücretsiz yapay zeka Vibe Check testini dene.",
+    intro: "Sosyal medya ve flört jargonunda sıkça duyduğun 'vibe check ne demek', 'ick nedir', 'hard launch / soft launch ne demek' veya '0 rizz' gibi kelimelerin gerçek anlamını mı merak ediyorsun? 300'den fazla Gen-Z terimi, ilişki psikolojisi kavramı ve burç analizini buradan öğren; ardından ücretsiz yapay zeka Vibe Testi ile kendi enerjini ölç.",
     ctaTopTitle: "Kendi vibe ve aura puanını mı merak ediyorsun? 📸",
     ctaTopDesc: "Hemen bir selfie veya mesaj ekran görüntüsü yükle, yapay zeka 0–100 Aura Skorunu hesaplasın.",
     ctaTopBtn: "Vibe Check'imi Al",
@@ -213,6 +214,7 @@ export default function VibeDictionaryPage() {
           </div>
         </motion.div>
       </div>
+      <FeatureSeoContent featureId="vibe-dictionary" isTr={isTr} />
       <SeoFooter />
     </div>
   );

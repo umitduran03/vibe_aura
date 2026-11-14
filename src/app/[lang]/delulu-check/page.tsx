@@ -148,11 +148,11 @@ export default async function DeluluCheckLanding({ params }: { params: Promise<{
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400">
-                {isTr ? "Delulu Check" : "Delulu Check"}
+                {isTr ? "Delulu Check & Delulu Testi" : "Delulu Check & Free AI Delulu Test"}
               </span>
               <br />
               <span className="text-white/90 text-2xl md:text-4xl">
-                {isTr ? "— Delulu muyum Yoksa Karışık Sinyal mi?" : "— Am I Delusional or Getting Mixed Signals?"}
+                {isTr ? "— Delulu muyum Yoksa Karışık Sinyal mi?" : "— Am I Delulu or Are They Into Me?"}
               </span>
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">

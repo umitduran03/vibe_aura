@@ -190,7 +190,7 @@ export default async function SituationshipClarifierLanding({ params }: { params
               <span>{isTr ? `"Biz şimdi neyiz?" Çözücü` : `The "What are we?" Decoder`}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-500">
-              {isTr ? "Situationship Çözücü — 'Biz Şimdi Neyiz?' & Belirsiz İlişki Testi" : "Situationship Clarifier AI — Free 'What Are We?' & Mixed Signal Test"}
+              {isTr ? "Situationship Testi & Çözücü — 'Biz Şimdi Neyiz?' & Belirsiz İlişki Analizi" : "Situationship Test & Clarifier AI — Free 'What Are We?' & Mixed Signal Quiz"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr 

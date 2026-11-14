@@ -14,20 +14,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Delulu Check Testi — Delulu Muyum? Ücretsiz YZ Gerçeklik Kontrolü" },
+      title: { absolute: "Delulu Check & Delulu Testi — Delulu Muyum? (Ücretsiz YZ Test)" },
       description:
-        "Karışık sinyaller mi alıyorsun yoksa delulu musun? Mesaj ekran görüntüsünü at veya durumu yaz → 0–100 Delulu Skorunu hesapsız & ücretsiz 3 saniyede öğren!",
+        "Delulu muyum yoksa benden hoşlanıyor mu? Ücretsiz Delulu Check ve delulu testi! WhatsApp/DM mesajını yapıştır; yapay zeka karışık sinyalleri 0-100 puanlasın.",
       keywords: [
         "delulu check",
+        "delulu testi",
         "delulu muyum",
-        "gerçeklik testi",
-        "karışık sinyaller",
+        "kafamda mı kuruyorum testi",
+        "karışık sinyaller testi",
+        "whatsapp konuşma analizi yapay zeka",
+        "mesajdan hoşlanma belirtileri testi",
         "delulu check nedir",
         "am i delulu",
         "double text yapmalı mıyım",
-        "yapay zeka ilişki analizi",
-        "mixed signal ne demek",
-        "delulu testi ücretsiz",
         "delulu ne demek",
       ],
       alternates: {
@@ -53,21 +53,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "Delulu Check — Am I Delusional? Free AI Text & Mixed Signal Test" },
+    title: { absolute: "Delulu Check & Delulu Test — Am I Delulu? Free AI Signal Check" },
     description:
-      "Are they actually into you or are you delulu? Paste texts or drop a chat screenshot → get an unfiltered 0–100% Delulu Score in 3 sec. Free & no sign-up!",
+      "Am I delulu or do they like me? Take the free AI Delulu Check & delulu test! Paste any text or DM to decode mixed signals and get your 0-100 delusion score.",
     keywords: [
       "delulu check",
+      "delulu test",
+      "am i delulu",
+      "delulu check app",
       "am i delusional",
       "delulu check ai",
       "am i being delusional",
       "am i delulu quiz",
-      "mixed signals ai",
-      "stop double texting",
-      "should i text them",
-      "mixed signals meaning",
-      "reality check ai",
-      "delulu check test free",
+      "mixed signals test",
+      "analyze my text conversation with crush ai",
+      "does he like me or am i delulu",
     ],
     alternates: {
       canonical: `${baseUrl}/en/delulu-check`,

@@ -14,20 +14,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Mood Reset YZ — Eksi Auranı Sıfırla & Modunu Yükselt (Ücretsiz)" },
+      title: { absolute: "Overthinking & Stres Çözücü (Mood Reset) — Modunu Yükselt (YZ)" },
       description:
-        "Modun yerlerde mi? Kafana taktığın şeyi yaz → yapay zeka sızlanmayı bitiren acımasız bir uyanış planı ve enerji reseti versin! Ücretsiz & hesapsız →",
+        "Aşırı düşünmekten (overthinking) yoruldun mu? Ücretsiz yapay zeka Mood Reset ile kafana takılanları yaz; 60 saniyede eksi auranı sıfırla ve modunu yükselt.",
       keywords: [
+        "overthinking nasıl geçer",
+        "aşırı düşünmeyi bırakma",
+        "mod yükseltme",
+        "kötü hissediyorum ne yapmalıyım",
         "mood reset",
         "ruh hali düzeltici",
         "yapay zeka motivasyon",
-        "kötü gün kurtarıcısı",
-        "mood reset yapay zeka",
-        "duygusal destek yapay zeka",
-        "gen-z terapist botu",
+        "enerji temizleme",
         "vibe reset uygulaması",
-        "ruh hali şarj et",
-        "acımasız motivasyon yapay zeka",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/mood-reset`,
@@ -52,21 +51,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "Mood Reset AI — Fix Negative Aura & Stop Spiraling (Free)" },
+    title: { absolute: "Mood Reset AI — Stop Overthinking & Spiraling in 60 Seconds" },
     description:
-      "Woke up with negative aura? Vent what's draining you → get a brutally honest AI wake-up call & step-by-step vibe recharge in seconds. Free & no sign-up →",
+      "Spiraling over a text or stuck overthinking? Vent to Mood Reset AI for a free 60-second mental reset, grounded perspective shift, and instant aura recovery.",
     keywords: [
       "mood reset ai",
+      "how to stop overthinking fast",
+      "stop spiraling over a text",
+      "fix negative aura",
+      "instant mood booster ai",
       "fix bad mood",
       "vibe recharge",
       "brutal motivation",
-      "mood reset app",
-      "emotional support AI",
-      "gen-z therapist bot",
       "vibe reset app",
-      "instant mood fix",
-      "ai mental wellness",
-      "fix negative aura",
     ],
     alternates: {
       canonical: `${baseUrl}/en/mood-reset`,

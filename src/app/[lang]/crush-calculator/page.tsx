@@ -90,7 +90,7 @@ export default async function CrushCalculatorLanding({ params }: { params: Promi
               <span>{isTr ? "Delulu Seviyesi: %99" : "Delulu Level: 99%"}</span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-500 to-pink-500">
-              {isTr ? "Platonik & Crush Uyum Testi — Crush'ınla Gerçekten Oluru Var Mı?" : "AI Crush Calculator — Do You And Your Crush Actually Have A Chance?"}
+              {isTr ? "Benden Hoşlanıyor mu? Platonik Aşk & Crush Uyum Testi — Gerçekten Oluru Var Mı?" : "AI Crush Calculator — Does My Crush Like Me? (Free 2-Photo Test)"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr

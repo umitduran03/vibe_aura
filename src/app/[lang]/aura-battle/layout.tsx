@@ -14,20 +14,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Aura Savaşı (Aura Battle) — Kim Daha Cool? 1v1 YZ Aura Puanı" },
+      title: { absolute: "Aura Savaşı & Aura Hesaplama — Kim Daha Cool? 1v1 Fotoğraf Testi" },
       description:
-        "İki fotoğraf yükle, yapay zeka ikinize ayrı ayrı 0–100 Aura Puanı versin ve kimin kazandığını ilan etsin! Ücretsiz & hesapsız tartışmayı bitir →",
+        "Kimin aurası daha yüksek? Ücretsiz 1v1 Aura Savaşı (Aura Battle) ve fotoğraftan aura hesaplama testi! 2 fotoğraf yükle, yapay zeka kazananı 0-100 seçsin.",
       keywords: [
         "aura savaşı",
-        "vibe savaşı",
+        "aura hesaplama",
+        "kimin aurası daha yüksek",
         "kim daha cool testi",
+        "iki fotoğraf karşılaştırma",
+        "hangimiz daha yakışıklı testi",
+        "vibe savaşı",
         "kim daha havalı testi",
         "aura puanı karşılaştırma",
         "aura battle yapay zeka",
-        "arkadaş aura testi",
-        "aura points testi",
-        "iki fotoğraf karşılaştırma ai",
-        "1v1 aura testi ücretsiz",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/aura-battle`,
@@ -52,17 +52,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "Aura Battle AI — Who Has More Aura? Free 1v1 Photo Score" },
+    title: { absolute: "Aura Battle AI & Aura Points Calculator — 1v1 Photo Vibe Test" },
     description:
-      "Upload two photos → AI scores Person 1 vs Person 2 (0–100 Aura Points), crowns the winner, and roasts the loser. Settle the group chat debate free, no sign-up!",
+      "Who has more aura? Upload two photos to the free 1v1 AI Aura Battle & aura points calculator! Compare main character energy and settle who wins the mog battle.",
     keywords: [
       "aura battle",
+      "aura points calculator",
       "who has more aura",
+      "who mogs who photo test",
+      "1v1 photo comparison ai",
       "aura battle who is cooler",
       "aura score battle",
       "friend aura comparison ai",
       "aura points test",
-      "aura fight",
       "compare two photos aura ai",
     ],
     alternates: {

@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       siteName: "VibeCheckr",
       type: "article",
       publishedTime: article.publishDate,
-      modifiedTime: "2026-11-11",
+      modifiedTime: "2026-11-15",
       authors: ["VibeCheckr AI"],
       images: [resolvedImage],
       locale: localeKey === "tr" ? "tr_TR" : "en_US",
@@ -103,17 +103,43 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
       ? `/${resolvedParams.lang}`
       : `/${resolvedParams.lang}${article.ctaLink}`;
 
-  // FAQPage only from headings that are genuine questions (no synthetic "?" appended)
-  const faqItems = article.content.sections
-    .filter((sec) => /\?\s*$/.test(sec.heading.trim()))
-    .map((sec) => ({
+  const rawQuestionSections = article.content.sections.filter(
+    (sec) => /\?\s*$/.test(sec.heading.trim()) && !/[:.!]\?\s*$/.test(sec.heading.trim())
+  );
+
+  const faqSourceSections =
+    rawQuestionSections.length >= 2
+      ? rawQuestionSections
+      : article.content.sections.slice(0, 3);
+
+  const faqItems = faqSourceSections.map((sec) => {
+    const trimmed = sec.heading.trim();
+    if (/\?\s*$/.test(trimmed) && !/[:.!]\?\s*$/.test(trimmed)) {
+      return {
+        "@type": "Question",
+        name: trimmed,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: sec.paragraph,
+        },
+      };
+    }
+    const cleanTopic = trimmed
+      .replace(/^\d+[\.\)]\s*/, "")
+      .replace(/[:.!?]+\s*$/, "")
+      .trim();
+    const questionName = isTr
+      ? `${cleanTopic} nasıl anlaşılır ve ne anlama gelir?`
+      : `What does ${cleanTopic} mean and how do you spot it?`;
+    return {
       "@type": "Question",
-      name: sec.heading.trim(),
+      name: questionName,
       acceptedAnswer: {
         "@type": "Answer",
         text: sec.paragraph,
       },
-    }));
+    };
+  });
 
   // Article + FAQPage + BreadcrumbList JSON-LD Schema for Google Discover and Rich Results
   const jsonLd: Record<string, unknown>[] = [
@@ -139,7 +165,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
         },
       },
       datePublished: article.publishDate,
-      dateModified: "2026-11-11",
+      dateModified: "2026-11-15",
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": pageUrl,
@@ -300,6 +326,43 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
           >
             {article.ctaLabel}
           </Link>
+        </div>
+
+        {/* Popular AI Vibe Tests Hub (Internal Search-Intent Links) */}
+        <div className="mb-16 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+          <h3 className="text-lg font-bold text-white mb-4">
+            {isTr ? "Popüler Ücretsiz Yapay Zeka Testleri" : "Popular Free AI Vibe & Relationship Tests"}
+          </h3>
+          <div className="flex flex-wrap gap-2.5">
+            {(isTr
+              ? [
+                  { href: `/${resolvedParams.lang}/soulmate-radar`, label: "Ruh Eşi Testi & Portresi (Ruh Eşim Kim?)" },
+                  { href: `/${resolvedParams.lang}/delulu-check`, label: "Delulu Check & Delulu Testi" },
+                  { href: `/${resolvedParams.lang}/reply-guru`, label: "Mesaja Ne Cevap Yazılır? (Rizz Yanıt)" },
+                  { href: `/${resolvedParams.lang}/ai-roast-me`, label: "Fotoğraf Vibe Check & Selfie Roast" },
+                  { href: `/${resolvedParams.lang}/situationship-clarifier`, label: "Situationship (Biz Neyiz?) Testi" },
+                  { href: `/${resolvedParams.lang}/toxic-ex-scanner`, label: "Toksik Eski Sevgili & Red Flag Testi" },
+                  { href: `/${resolvedParams.lang}/vibe-dictionary`, label: "VibeCheckr Jargon Sözlüğü (Rizz, Ick, Delulu)" },
+                ]
+              : [
+                  { href: `/${resolvedParams.lang}/soulmate-radar`, label: "AI Soulmate Radar & Test" },
+                  { href: `/${resolvedParams.lang}/delulu-check`, label: "Delulu Check & Am I Delulu Test" },
+                  { href: `/${resolvedParams.lang}/reply-guru`, label: "AI Response to Text & Rizz Reply" },
+                  { href: `/${resolvedParams.lang}/ai-roast-me`, label: "AI Selfie Roasts & Photo Vibe Check" },
+                  { href: `/${resolvedParams.lang}/situationship-clarifier`, label: "Situationship Clarifier Test" },
+                  { href: `/${resolvedParams.lang}/toxic-ex-scanner`, label: "Toxic Ex & Red Flag Scanner" },
+                  { href: `/${resolvedParams.lang}/vibe-dictionary`, label: "Gen-Z Vibe & Slang Dictionary" },
+                ]
+            ).map((tool) => (
+              <Link
+                key={tool.href}
+                href={tool.href}
+                className="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-indigo-500/20 border border-white/10 hover:border-indigo-500/40 text-xs sm:text-sm font-medium text-white/80 hover:text-white transition-all"
+              >
+                {tool.label} →
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Related Articles (Cross-linking) */}

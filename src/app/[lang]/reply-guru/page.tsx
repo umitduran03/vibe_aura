@@ -152,8 +152,8 @@ export default async function ReplyGuruLanding({ params }: { params: Promise<{ l
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-500 to-indigo-400">
               {isTr
-                ? "Yapay Zeka Mesaj Cevap & Rizz Üretici (Reply Guru) — Mesaja Ne Yazılır?"
-                : "AI Text Reply & Rizz Generator (Reply Guru) — What to Text Back Free"}
+                ? "Mesaja Ne Cevap Yazılır? YZ Rizz Cevap Üretici (Reply Guru)"
+                : "AI Response to Text & Rizz Reply Generator (Reply Guru) — What to Text Back"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr

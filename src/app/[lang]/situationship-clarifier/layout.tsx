@@ -14,20 +14,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Situationship Çözücü — Biz Neyiz & Karışık Sinyal Testi (YZ)" },
+      title: { absolute: "Situationship Testi — Biz Şimdi Neyiz & Flört Analizi (Ücretsiz)" },
       description:
-        "'Biz şimdi neyiz?' diye sormadan önce mesajları yapay zekaya okut! Gerçek ilişkiye mi gidiyor yoksa yedek kulübesi mi? Ücretsiz & hesapsız öğren →",
+        "Biz şimdi neyiz? Belirsiz ilişki (situationship) testi ile seni oyalıyor mu yoksa ciddi mi öğren! Mesaj veya fotoğraf yükle, yapay zeka niyetini çözsün.",
       keywords: [
+        "situationship testi",
+        "biz şimdi neyiz testi",
+        "beni ciddi düşünüyor mu testi",
+        "beni oyalıyor mu",
+        "flört mü sevgili mi testi",
         "situationship nedir",
         "situationship ne demek",
-        "biz şimdi neyiz testi",
         "biz neyiz testi",
         "karışık sinyaller testi",
         "belirsiz ilişki analizi",
-        "situationship mi ilişki mi",
-        "flört mü sevgili mi testi",
-        "biz neyiz yapay zeka",
-        "situationship testi ücretsiz",
       ],
       alternates: {
         canonical: `${baseUrl}/tr/situationship-clarifier`,
@@ -52,16 +52,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "Situationship Clarifier AI — Free 'What Are We?' & Signal Test" },
+    title: { absolute: "Situationship Test & Clarifier AI — Free 'What Are We?' Decoder" },
     description:
-      "In a talking stage or dead-end situationship? Paste texts or upload chat screenshots → AI decodes mixed signals & commitment odds. Free & no sign-up →",
+      "Stuck in a situationship asking 'what are we?' Take the free AI Situationship Test & Clarifier! Decode mixed signals, breadcrumbing, and true intentions fast.",
     keywords: [
+      "situationship test",
       "situationship clarifier",
+      "what are we quiz",
+      "what are we test",
+      "is he stringing me along",
       "what is a situationship",
       "situationship or relationship",
       "decode mixed signals",
-      "what are we test",
-      "situationship ai",
       "am i in a situationship",
       "situationship quiz free",
     ],

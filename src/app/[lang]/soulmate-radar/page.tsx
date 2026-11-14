@@ -91,13 +91,13 @@ export default async function SoulmateRadarLanding({ params }: { params: Promise
             </div>
             <h1 className="text-4xl md:text-6xl font-black tracking-tight leading-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-400 via-rose-500 to-purple-500">
               {isTr
-                ? "Ruh Eşim Kim? Ücretsiz YZ Ruh Eşi Radarı & Aşk Falı Testi"
-                : "Who Is My Soulmate? Free AI Soulmate Radar & Aura Match Test"}
+                ? "Ruh Eşim Kim? Ücretsiz Ruh Eşi Testi, Ruh Eşi Portresi & Ruh İkizini Bulma Testi (Soulmate Radar)"
+                : "Who Is My Soulmate? Free AI Soulmate Radar, Soulmate Test & Portrait Reading"}
             </h1>
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr
-                ? "Yanlış insanlarla vakit kaybetmeyi bırak. Auranı tarat ve yapay zekanın senin için biçilmiş o mükemmel ruh eşinin karakterini, vibe'ını ve seninle nerede çarpışacağını söylemesine izin ver."
-                : "Stop wasting time on the wrong people. Scan your aura and let our AI accurately predict the exact personality, vibe, and location of your future soulmate."}
+                ? "Ruh eşim kim ve nasıl biri? Yanlış insanlarla vakit kaybetmeyi bırak. Selfie yükle; yapay zeka auranı tarasın, ruh eşi portreni (ideal karakter ve görünüm arketipini), burç uyumunu ve ruh ikizinle nerede tanışacağınızı anında açıklasın."
+                : "Stop wasting time on the wrong people. Upload a selfie to the free AI Soulmate Radar test to get your written soulmate portrait, twin flame aura match, ideal zodiac sign, and where you'll meet."}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
