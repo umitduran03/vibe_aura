@@ -64,6 +64,14 @@ const faqs = {
       question: "How accurate is the Zodiac analysis?",
       answer: "Our AI takes your zodiac sign into account when delivering its roast. If you're a Leo, expect to be humbled about your ego. If you're a Scorpio, expect it to call out your trust issues. It's shockingly accurate.",
     },
+    {
+      question: "How do Soulmate Radar and the AI Soulmate Portrait test work?",
+      answer: "In Soulmate Radar, you upload a selfie and optionally select your zodiac sign. The AI scans your aura frequency and attachment cues to reveal 'who is my soulmate'—generating a detailed soulmate portrait, personality archetype, top zodiac matches, and where you're most likely to meet your twin flame.",
+    },
+    {
+      question: "How do the AI Delulu Check (Delulu Test) and Rizz Reply Generator work?",
+      answer: "For Delulu Check ('Am I delulu?'), upload a chat screenshot or describe your crush's behavior to get an objective 0–100% Delulu Score. For Reply Guru, paste their text or DM screenshot and our AI response to text generator crafts smooth Flirty, Unbothered, Savage, or Safe rizz replies in seconds.",
+    },
   ],
   tr: [
     {
@@ -118,21 +126,29 @@ const faqs = {
       question: "Burç analizi ne kadar isabetli?",
       answer: "Yapay zekamız seni gömerken burcunu da kesinlikle hesaba katar. Eğer bir Aslan burcuysan, o tavan yapmış egonla yüzleşmeye hazır ol. Akrepsen, güvensizlik krizlerin direkt yüzüne vurulur. Kısacası: Şaşırtıcı derecede isabetli.",
     },
+    {
+      question: "Ruh Eşi Testi (Ruh Eşi Portresi) ve 'Ruh Eşim Kim?' analizi nasıl çalışır?",
+      answer: "Soulmate Radar (Ruh Eşi Testi ve Ruh İkizini Bulma Testi) aracına bir selfie yükleyip isteğe bağlı burcunu seçtiğinde; yapay zeka yüz hatlarını ve aura frekansını tarayarak ideal ruh eşi portreni, karakter arketipini, en uyumlu burçları ve ruh eşinle nerede tanışabileceğini saniyeler içinde çıkarır.",
+    },
+    {
+      question: "Delulu Check (Delulu Testi) ve Rizz Mesaj Cevap Üretici nasıl kullanılır?",
+      answer: "Delulu Check ('Delulu muyum?') aracına WhatsApp/Instagram DM ekran görüntünü yükleyerek karşı tarafın gerçekten hoşlanıp hoşlanmadığını 0–100 Delulu Skoru ile görebilirsin. Reply Guru (Mesaja Ne Cevap Yazılır?) aracında ise gelen mesajı yükleyip anında Flörtöz, Cool/Umursamaz veya Alfa rizz cevap alternatifleri üretebilirsin.",
+    },
   ],
 };
 
 const pageStrings = {
   en: {
-    title: "Frequently Asked Questions",
-    intro: "Everything you need to know about how our AI reads your aura, roasts your selfies, and calculates your cosmic compatibility. No gatekeeping here.",
+    title: "Frequently Asked Questions — AI Vibe Check, Soulmate & Delulu Tests",
+    intro: "Everything you need to know about how our AI vibe checker reads your aura, roasts your selfies, generates rizz replies, and calculates your soulmate or delulu score.",
     ctaTitle: "No more questions. Time for answers.",
     ctaDesc: "Upload a selfie and let our AI give you a brutally honest reality check.",
     ctaBtn: "Start Free AI Vibe Check",
     ariaBack: "Go back home",
   },
   tr: {
-    title: "Sıkça Sorulan Sorular",
-    intro: "Yapay zekamızın auranı nasıl okuduğu, selfie'lerini nasıl yerin dibine soktuğu ve kozmik uyumunu nasıl hesapladığı hakkında bilmen gereken her şey. Bilgi saklamak yok.",
+    title: "Sıkça Sorulan Sorular — Ücretsiz Vibe Testi, Ruh Eşi & Delulu Check",
+    intro: "Yapay zekamızın auranı nasıl okuduğu, selfie'lerini nasıl puanladığı, ruh eşi portreni ve delulu skorunu nasıl hesapladığı hakkında bilmen gereken her şey.",
     ctaTitle: "Soru sorma faslı bitti. Yüzleşme zamanı.",
     ctaDesc: "Hemen bir selfie yükle ve yapay zekanın o acımasız gerçeklik kontrolünü başlat.",
     ctaBtn: "Ücretsiz Vibe Check'i Başlat",

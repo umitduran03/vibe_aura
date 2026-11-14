@@ -13,14 +13,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "Sıkça Sorulan Sorular (S.S.S) — Ücretsiz YZ Vibe Testi & Gizlilik" },
+      title: { absolute: "Sıkça Sorulan Sorular (S.S.S) — Ücretsiz YZ Vibe & Aura Testi" },
       description:
-        "VibeCheckr ücretsiz mi, hesap açmak şart mı, fotoğraflar siliniyor mu? Yapay zeka aura skoru, sohbet analizi ve ikili uyum testi hakkında tüm cevaplar.",
+        "VibeCheckr ücretsiz mi, fotoğraflar siliniyor mu? Ruh eşi testi (portresi), delulu check, rizz mesaj üretici ve 0–100 aura skoru hakkında tüm yanıtlar.",
       keywords: [
         "vibecheckr sss",
         "vibecheckr nedir",
         "yapay zeka vibe testi",
+        "vibe check ne demek",
         "ücretsiz vibe check testi",
+        "ruh eşi testi nasıl yapılır",
+        "ruh eşi portresi nedir",
+        "delulu check nedir",
+        "mesaja ne cevap yazılır",
         "fotoğraf gömme ai",
         "aura analizi nasıl yapılır",
         "vibecheckr güvenli mi",
@@ -50,12 +55,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "FAQ — How Free AI Vibe Check, Aura Score & Photo Privacy Work" },
+    title: { absolute: "FAQ — Free AI Vibe Check Test, Soulmate Radar & Delulu Check" },
     description:
-      "Is VibeCheckr free without signing up? Are selfies or chat screenshots stored? Answers on how our AI calculates 0–100 aura scores, red flags, and duo compatibility.",
+      "Is VibeCheckr free without signing up? Are selfies or chats stored? Answers on our AI vibe checker, soulmate radar, delulu test, rizz reply & 0–100 aura score.",
     keywords: [
       "vibecheckr faq",
       "ai vibe check questions",
+      "vibe checker faq",
+      "vibe check test help",
+      "delulu check app faq",
+      "soulmate radar faq",
+      "rizz reply generator help",
       "photo roast app help",
       "ai personality analysis faq",
       "zodiac compatibility questions",

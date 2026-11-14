@@ -13,18 +13,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (isTr) {
     return {
-      title: { absolute: "İlişki Rehberleri, Red Flag, Rizz & Vibe Check Trendleri" },
+      title: { absolute: "İlişki Rehberleri: Vibe Check, Rizz, Ick & Delulu Ne Demek?" },
       description:
-        "Situationship ne demek, ick nedir, rizz nasıl yapılır, delulu belirtileri ve 0–100 aura puanı rehberleri. 30+ analiz yazısını oku ve ücretsiz YZ testlerini dene!",
+        "Vibe check ne demek, ick nedir, rizz ve hard launch ne demek, situationship belirtileri neler? 30+ flört psikolojisi rehberini oku ve ücretsiz YZ testlerini çöz!",
       keywords: [
-        "vibe trendleri",
-        "gen-z trendleri 2026",
-        "situationship ne demek",
-        "toksik ilişki işaretleri",
-        "aura nedir",
+        "vibe check ne demek",
+        "rizz ne demek",
         "ick nedir",
         "delulu ne demek",
-        "rizz ne demek",
+        "hard launch ne demek",
+        "soft launch ne demek",
+        "situationship ne demek",
+        "gaslighting nedir",
+        "orbiting nedir",
+        "limerence nedir",
+        "toksik ilişki işaretleri",
+        "aura puanı nedir",
         "ilişki psikolojisi",
         "yapay zeka vibe check",
       ],
@@ -51,22 +55,23 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: { absolute: "Gen-Z Dating, Red Flags, Rizz & Aura Guides | VibeCheckr" },
+    title: { absolute: "Gen-Z Dating Guides: Vibe Check, Rizz, Ick & Delulu Meanings" },
     description:
-      "What is a vibe check, rizz, the ick, delulu & aura points? Read 30+ Gen-Z dating psychology & texting guides — plus try our free instant AI vibe tests!",
+      "What does vibe check, rizz (0 rizz), the ick, delulu & aura points mean? Read 30+ Gen-Z dating psychology & texting guides — plus try our free AI vibe tests!",
     keywords: [
-      "gen-z trends 2026",
-      "vibe check culture",
+      "what is a vibe check",
+      "urban dictionary vibe check",
+      "what does rizz mean",
+      "0 rizz meaning",
+      "no rizz meaning",
+      "what is an ick",
+      "am i delulu",
+      "soft launch vs hard launch",
       "situationship explained",
       "toxic relationship signs",
       "aura points trend",
-      "what is an ick",
-      "rizz explained",
-      "delulu meaning",
       "relationship psychology gen-z",
       "dating advice 2026",
-      "viral tiktok trends",
-      "vibe culture articles",
     ],
     alternates: {
       canonical: `${baseUrl}/en/trends`,

@@ -80,6 +80,47 @@ export default function TrendsHubPage() {
     },
     {
       "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: isTr
+        ? [
+            {
+              "@type": "Question",
+              name: "Vibe check, rizz, ick ve delulu ne demek?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Vibe check bir kişinin veya fotoğrafın enerjisini tartmak; rizz doğal flört ve mesajlaşma karizması (0 rizz = sıfır karizma); ick ufak bir hareketle aniden soğumak; delulu ise flörtte gerçekleri görmezden gelip kendi kuruntuna inanmak demektir.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Okuduğum ilişki rehberlerindeki yapay zeka testlerini ücretsiz çözebilir miyim?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Evet! Her rehberin içinden tek tıkla Ruh Eşi Testi, Delulu Check, Reply Guru (Rizz Cevap Üretici), Situationship Çözücü ve Selfie Vibe Check araçlarına ücretsiz ve hesapsız ulaşabilirsin.",
+              },
+            },
+          ]
+        : [
+            {
+              "@type": "Question",
+              name: "What do vibe check, rizz (0 rizz), the ick, and delulu mean in dating?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "A vibe check is an instant read on someone's energy or photo aura; rizz is natural flirting charisma (0 rizz or no rizz means zero game); the ick is a sudden loss of attraction over a tiny habit; and delulu means being delusional about a crush's mixed signals.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can I take the free AI vibe check and relationship tests from these guides?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes! Every guide links directly to our free AI tools—including the AI Vibe Checker, Delulu Test, Soulmate Radar, Reply Guru (Rizz Reply Generator), and Situationship Clarifier—with 1-Click Guest Mode and no sign-up required.",
+              },
+            },
+          ],
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
         {
