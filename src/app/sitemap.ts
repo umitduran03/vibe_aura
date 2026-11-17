@@ -14,7 +14,7 @@ const legalRoutes = ["/privacy", "/terms"];
 const topTierTrends = ["what-is-a-vibe-check","what-is-an-ick","are-you-delulu","am-i-being-gaslighted","what-is-limerence","mixed-signals-or-delulu","what-is-rizz","situationship-vs-relationship","what-are-aura-points","biggest-dating-red-flags-2026","gen-z-dating-terms-2026","aura-battle-who-is-cooler","fix-negative-aura-mood","how-to-stop-overthinking-texts","ai-photo-personality-test","zodiac-signs-red-flags"];
 const midTierTrends = ["what-is-orbiting","trauma-bonding-signs","dry-texter-signs","main-character-energy","attachment-styles-explained","signs-someone-likes-you-body-language","love-languages-which-one-are-you","soft-launch-hard-launch","emotionally-unavailable-signs","toxic-friendship-signs","how-to-get-over-someone","hyper-independence-in-dating","one-sided-effort-relationship","when-to-walk-away"];
 
-const STATIC_LAST_MODIFIED = new Date("2026-11-11");
+const STATIC_LAST_MODIFIED = new Date("2026-11-17");
 
 /** Build EN + TR sitemap entries with hreflang alternates. */
 function makeEntry(
@@ -52,10 +52,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   trendsDataEn.forEach((article: any) => {
     const { slug } = article;
     const lastMod = STATIC_LAST_MODIFIED;
-    let priority = 0.7;
-    let freq: "weekly" | "monthly" | "yearly" = "weekly";
-    if (topTierTrends.includes(slug)) { priority = 0.8; freq = "weekly"; }
-    else if (midTierTrends.includes(slug)) { priority = 0.7; freq = "weekly"; }
+    const priority = 0.85;
+    const freq: "weekly" | "monthly" | "yearly" = "weekly";
 
     if (trSlugSet.has(slug)) {
       routes.push(...makeEntry(`/trends/${slug}`, priority, freq, lastMod));

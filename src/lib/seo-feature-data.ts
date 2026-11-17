@@ -455,26 +455,26 @@ export const featureSeoData: Record<string, any> = {
   "reply-guru": {
     en: {
       howItWorks: {
-        title: "How It Works: Free AI Response to Text & Rizz Reply Generator",
+        title: "How It Works: Free AI Text Response Generator & Rizz Reply Generator",
         steps: [
-          { title: "Upload a Chat Screenshot or Paste Their Text", desc: "Drop a screenshot from WhatsApp, iMessage, Instagram DM, Tinder, Hinge, or Bumble—or type what they said." },
-          { title: "Choose Your Reply Vibe (Flirty, Cool, Savage, or Safe)", desc: "Tell the AI whether you want maximum rizz, unbothered mystery, a witty comeback, or polite closure." },
-          { title: "Copy & Send the Perfect Response", desc: "Get tailored, natural-sounding text replies in 3 seconds that match the exact context of your conversation." }
+          { title: "Upload a Chat Screenshot or Paste to 'Respond to This Message'", desc: "Drop a screenshot from WhatsApp, iMessage, Instagram DM, Tinder, Hinge, or Bumble—or paste any text you need to reply to." },
+          { title: "Choose Your Vibe (Flirty Texting, Playful Comeback, Savage, or Safe)", desc: "Use our flirty texting and reply generator or fun playful conversation and comeback generator modes for maximum W rizz." },
+          { title: "Copy & Send Your AI Text Response", desc: "Get 3 tailored, natural-sounding AI text responses and rizz replies in 3 seconds matched to your exact conversation." }
         ]
       },
       useCases: {
-        title: "When to Use Reply Guru (AI Response to Text & Rizz Assistant)",
+        title: "When to Use Reply Guru (AI Response to Text & Rizz Response Generator)",
         cases: [
-          { title: "Replying to Dry Texters & One-Word Messages", desc: "When they send a dry 'lol', 'wyd', or 'cool' and you want to flip the conversation dynamic effortlessly." },
-          { title: "Flirting & Sliding Into DMs With Unspoken Rizz", desc: "Craft smooth, non-cringe openers and witty banter for your crush or dating app matches." },
-          { title: "Handling Risky Texts, Arguments & Ex Messages", desc: "Know exactly what to say when an ex texts 'hey stranger' or when a situationship tests your boundaries." }
+          { title: "Replying to Dry Texters & One-Word Messages", desc: "When they send a dry 'lol', 'wyd', or 'cool' and you need an instant AI response to text that flips the dynamic." },
+          { title: "Flirty Texting & Spicy Late-Night Rizz Replies", desc: "Use the AI rizz response generator to craft smooth, high-tension, or spicy replies for your crush or dating app matches." },
+          { title: "Handling Risky Texts, Arguments & Ex Messages", desc: "Know exactly how to respond to this message when an ex texts 'hey stranger' or a situationship tests your boundaries." }
         ]
       },
       faq: {
-        title: "Reply Guru AI — AI Response to Text & Rizz Reply Generator FAQ",
+        title: "Reply Guru AI — AI Text Response & Rizz Reply Generator FAQ",
         questions: [
-          { q: "How do I generate an AI response to a text message when I'm stuck?", a: "Upload a screenshot of your chat or paste their message into VibeCheckr's Reply Guru AI. The tool reads the tone and context of your conversation and generates ready-to-send flirty, cool, savage, or safe rizz replies in 3 seconds." },
-          { q: "Can I use Reply Guru as a flirty, spicy, or late-night AI text response generator?", a: "Yes! Whether you need a bold, flirty response to a spicy late-night text, a smooth W rizz reply to a Hinge prompt, or an unbothered comeback to a dry 'hey' or 'wyd', select the Flirty or Savage tone to generate copy-paste responses instantly." },
+          { q: "How do I use an AI text response generator to respond to this message?", a: "Upload a screenshot of your chat or paste their message into VibeCheckr's Reply Guru AI text response generator. The AI reads the tone and context of your conversation and generates 3 ready-to-send flirty, cool, savage, or safe rizz replies in 3 seconds." },
+          { q: "Can I use Reply Guru as a flirty texting and reply generator or spicy AI rizz response generator?", a: "Yes! Reply Guru works as both a flirty texting and reply generator (including bold, spicy late-night text responses) and a fun playful conversation and comeback generator for Hinge, Tinder, Instagram DM, and iMessage." },
           { q: "Can Reply Guru generate rizz responses from Instagram DM, WhatsApp, or Tinder screenshots?", a: "Yes! Our multimodal AI reads screenshots from any messaging or dating app (iMessage, WhatsApp, Instagram DM, Snapchat, Tinder, Hinge, Bumble) so you don't even have to type out the thread." },
           { q: "Will the other person know I used an AI text generator?", a: "No. Unlike robotic chatbots, Reply Guru writes in natural, modern texting style—short, punchy, and matched to the exact vibe you select." },
           { q: "Is the AI Rizz & Text Reply Generator free?", a: "Yes! Start immediately with 1-Click Guest Mode (5 free welcome tokens, no sign-up required)." }

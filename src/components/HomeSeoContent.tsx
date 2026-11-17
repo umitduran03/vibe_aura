@@ -39,15 +39,33 @@ const seoContent = {
       { name: "What Is a Vibe Check?", href: "/en/trends/what-is-a-vibe-check" },
       { name: "AI Photo Personality Test", href: "/en/trends/ai-photo-personality-test" },
       { name: "Aura Battle: Who Is Cooler?", href: "/en/trends/aura-battle-who-is-cooler" },
-      { name: "What is Rizz? (Spoken vs Unspoken)", href: "/en/trends/what-is-rizz" },
+      { name: "What is Rizz? (0 Rizz & Unspoken)", href: "/en/trends/what-is-rizz" },
       { name: "What Are Aura Points?", href: "/en/trends/what-are-aura-points" },
       { name: "What is an Ick?", href: "/en/trends/what-is-an-ick" },
       { name: "Are You Delulu?", href: "/en/trends/are-you-delulu" },
+      { name: "Mixed Signals or Delulu?", href: "/en/trends/mixed-signals-or-delulu" },
       { name: "Situationship vs Relationship", href: "/en/trends/situationship-vs-relationship" },
       { name: "How to Stop Overthinking Texts", href: "/en/trends/how-to-stop-overthinking-texts" },
       { name: "Biggest Dating Red Flags 2026", href: "/en/trends/biggest-dating-red-flags-2026" },
       { name: "Attachment Styles Explained", href: "/en/trends/attachment-styles-explained" },
       { name: "Gen-Z Dating Terms 2026", href: "/en/trends/gen-z-dating-terms-2026" },
+      { name: "Soft Launch vs Hard Launch", href: "/en/trends/soft-launch-hard-launch" },
+      { name: "Am I Being Gaslighted?", href: "/en/trends/am-i-being-gaslighted" },
+      { name: "What Is Limerence vs Crush?", href: "/en/trends/what-is-limerence" },
+      { name: "What Is Orbiting in Dating?", href: "/en/trends/what-is-orbiting" },
+      { name: "Dry Texter Signs & Replies", href: "/en/trends/dry-texter-signs" },
+      { name: "Main Character Energy Guide", href: "/en/trends/main-character-energy" },
+      { name: "Trauma Bonding vs Real Love", href: "/en/trends/trauma-bonding-signs" },
+      { name: "Emotionally Unavailable Signs", href: "/en/trends/emotionally-unavailable-signs" },
+      { name: "Toxic Friendship Red Flags", href: "/en/trends/toxic-friendship-signs" },
+      { name: "How to Get Over Someone Fast", href: "/en/trends/how-to-get-over-someone" },
+      { name: "Body Language Signs Someone Likes You", href: "/en/trends/signs-someone-likes-you-body-language" },
+      { name: "The 5 Love Languages Quiz Guide", href: "/en/trends/love-languages-which-one-are-you" },
+      { name: "Hyper-Independence in Dating", href: "/en/trends/hyper-independence-in-dating" },
+      { name: "One-Sided Relationship Signs", href: "/en/trends/one-sided-effort-relationship" },
+      { name: "When to Walk Away Checklist", href: "/en/trends/when-to-walk-away" },
+      { name: "Zodiac Signs' Biggest Red Flags", href: "/en/trends/zodiac-signs-red-flags" },
+      { name: "Fix Negative Aura & Bad Mood", href: "/en/trends/fix-negative-aura-mood" },
     ],
     faqTitle: "Vibe Check — Frequently Asked Questions",
     faqs: [
@@ -128,15 +146,33 @@ const seoContent = {
       { name: "Vibe Check Ne Demek?", href: "/tr/trends/what-is-a-vibe-check" },
       { name: "YZ Fotoğraftan Kişilik Testi", href: "/tr/trends/ai-photo-personality-test" },
       { name: "Aura Savaşı: Kim Daha Cool?", href: "/tr/trends/aura-battle-who-is-cooler" },
-      { name: "Rizz Ne Demek? (Unspoken Rizz)", href: "/tr/trends/what-is-rizz" },
+      { name: "Rizz (Riz) Ne Demek?", href: "/tr/trends/what-is-rizz" },
       { name: "Aura Puanı Nedir?", href: "/tr/trends/what-are-aura-points" },
-      { name: "Ick Nedir?", href: "/tr/trends/what-is-an-ick" },
-      { name: "Delulu Muyum?", href: "/tr/trends/are-you-delulu" },
-      { name: "Situationship ve İlişki Farkı", href: "/tr/trends/situationship-vs-relationship" },
+      { name: "Ick Nedir, Ne Demek?", href: "/tr/trends/what-is-an-ick" },
+      { name: "Delulu Ne Demek? (Delulu Testi)", href: "/tr/trends/are-you-delulu" },
+      { name: "Karışık Sinyal mi Delulu mu?", href: "/tr/trends/mixed-signals-or-delulu" },
+      { name: "Situationship ve Flört Farkı", href: "/tr/trends/situationship-vs-relationship" },
       { name: "Mesajları Kafada Kurmayı Bırak", href: "/tr/trends/how-to-stop-overthinking-texts" },
       { name: "2026 En Büyük Red Flag'ler", href: "/tr/trends/biggest-dating-red-flags-2026" },
-      { name: "Bağlanma Stilleri Rehberi", href: "/tr/trends/attachment-styles-explained" },
+      { name: "4 Bağlanma Stili Rehberi", href: "/tr/trends/attachment-styles-explained" },
       { name: "2026 Gen-Z İlişki Terimleri", href: "/tr/trends/gen-z-dating-terms-2026" },
+      { name: "Hard Launch & Soft Launch Ne Demek?", href: "/tr/trends/soft-launch-hard-launch" },
+      { name: "Gaslighting Nedir? (9 İşaret)", href: "/tr/trends/am-i-being-gaslighted" },
+      { name: "Limerence (Takıntılı Aşk) Nedir?", href: "/tr/trends/what-is-limerence" },
+      { name: "Orbiting Nedir? (Story İzleyen Ex)", href: "/tr/trends/what-is-orbiting" },
+      { name: "Dry Texter (Kuru Mesaj) Nedir?", href: "/tr/trends/dry-texter-signs" },
+      { name: "Main Character Energy Nedir?", href: "/tr/trends/main-character-energy" },
+      { name: "Travma Bağı (Trauma Bonding) Nedir?", href: "/tr/trends/trauma-bonding-signs" },
+      { name: "Duygusal Olarak Kapalı Kişi İşaretleri", href: "/tr/trends/emotionally-unavailable-signs" },
+      { name: "Toksik Arkadaş Belirtileri", href: "/tr/trends/toxic-friendship-signs" },
+      { name: "Eski Sevgiliyi Unutma Rehberi", href: "/tr/trends/how-to-get-over-someone" },
+      { name: "Beden Dili Hoşlanma Belirtileri", href: "/tr/trends/signs-someone-likes-you-body-language" },
+      { name: "5 Sevgi Dili Nedir?", href: "/tr/trends/love-languages-which-one-are-you" },
+      { name: "İlişkide Aşırı Bağımsızlık", href: "/tr/trends/hyper-independence-in-dating" },
+      { name: "Tek Taraflı İlişki Belirtileri", href: "/tr/trends/one-sided-effort-relationship" },
+      { name: "İlişkiden Ne Zaman Vazgeçilmeli?", href: "/tr/trends/when-to-walk-away" },
+      { name: "Burçların En Büyük Red Flag'leri", href: "/tr/trends/zodiac-signs-red-flags" },
+      { name: "Eksi Aura & Mod Sıfırlama", href: "/tr/trends/fix-negative-aura-mood" },
     ],
     faqTitle: "Vibe Check — Sıkça Sorulan Sorular",
     faqs: [
@@ -350,6 +386,13 @@ export default function HomeSeoContent({ lang }: Props) {
         </Link>
         <Link href={`/${lang}/terms`} className="hover:text-white/80 transition-colors">
           {c.termsLabel}
+        </Link>
+        <Link
+          href={lang === "tr" ? "/en" : "/tr"}
+          hrefLang={lang === "tr" ? "en" : "tr"}
+          className="hover:text-white/80 transition-colors font-semibold text-purple-300/80"
+        >
+          {lang === "tr" ? "English (EN)" : "Türkçe (TR)"}
         </Link>
       </nav>
     </section>

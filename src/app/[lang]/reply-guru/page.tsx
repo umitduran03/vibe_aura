@@ -158,7 +158,7 @@ export default async function ReplyGuruLanding({ params }: { params: Promise<{ l
             <p className="text-lg md:text-xl text-white/70 leading-relaxed max-w-xl">
               {isTr
                 ? "20 dakikadır klavyeye mi bakıyorsun? Mesajın ekran görüntüsünü sal ve yapay zekanın tam o mükemmel toksik, cool veya garantici cevabı yapıştırmasına izin ver."
-                : "Staring at your keyboard for 20 minutes? Drop the screenshot of their text and let the AI craft the perfect toxic, cool, or safe reply."}
+                : "Not sure how to respond to this message? Drop a screenshot or paste their text into our free AI text response generator & flirty texting and reply generator for instant W rizz comebacks."}
             </p>
             <div className="pt-4 flex flex-col sm:flex-row gap-4">
               <Link
@@ -213,7 +213,7 @@ export default async function ReplyGuruLanding({ params }: { params: Promise<{ l
             <h2 className="text-3xl md:text-4xl font-black text-white mb-3 tracking-tight">
               {isTr
                 ? "Yapay Zeka ile Mesaja Hazır Cevap ve Rizz Nasıl Üretilir?"
-                : "How the AI Text Reply & Rizz Generator Works"}
+                : "How the AI Text Response Generator & Rizz Reply Generator Works"}
             </h2>
             <p className="text-white/50 max-w-lg mx-auto">
               {isTr ? "3 adımda mükemmel cevabı al" : "3 steps to the perfect reply"}

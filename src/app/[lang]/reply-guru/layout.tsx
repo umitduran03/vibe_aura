@@ -54,14 +54,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: { absolute: "AI Response to Text & Rizz Reply Generator — What to Text Back" },
     description:
-      "Need an AI response to text or a W rizz reply? Paste any DM, dry text, or spicy message into Reply Guru for 3 instant, high-aura, flirty or savage comebacks.",
+      "Free AI text response generator & rizz reply generator! Paste any DM or screenshot to respond to this message with flirty texting, playful comebacks & W rizz.",
     keywords: [
       "ai response to text",
-      "rizz reply",
+      "ai text response generator",
+      "ai text response",
       "rizz reply generator",
-      "ai text reply generator",
+      "rizz reply",
+      "ai rizz response generator",
+      "flirty texting and reply generator",
+      "fun playful conversation and comeback generator",
+      "respond to this message",
       "what to text back ai",
-      "flirty text response generator",
       "spicy text reply generator ai",
       "how to reply to dry texts",
       "hinge prompt reply generator",

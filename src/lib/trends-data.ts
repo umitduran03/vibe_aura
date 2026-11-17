@@ -24,9 +24,9 @@ export const trendsDataEn: TrendArticle[] = [
     category: "Culture & Slang",
     publishDate: "2026-06-03",
     readTime: "4 min read",
-    keywords: ["vibe check", "what is a vibe check", "vibe check meaning", "urban dictionary vibe check", "vibe check image", "online vibe checker", "AI vibe check", "vibe check test", "pass the vibe check", "vibe check quiz", "digital aura test"],
+    keywords: ["vibe check", "what is a vibe check", "vibe check meaning", "vibe check scale", "urban dictionary vibe check", "vibe check image", "online vibe checker", "AI vibe check", "vibe check test", "pass the vibe check", "vibe check quiz", "digital aura test"],
     content: {
-      intro: "What is a vibe check? A vibe check (popularized on Urban Dictionary and TikTok) is a spontaneous assessment of someone's energy, mood, aura, or attitude. Whether someone says 'you passed the vibe check' in a comment or you use an online vibe checker to scan a selfie or text screenshot, a vibe check in 2026 is the universal radar for decoding personality, intentions, and relationship chemistry in seconds.",
+      intro: "What is a vibe check? A vibe check (popularized on Urban Dictionary and TikTok) is a spontaneous assessment of someone's energy, mood, aura, or attitude on a 0–100 vibe check scale. Whether someone says 'you passed the vibe check' in a comment or you use an online vibe checker to scan a selfie or text screenshot, a vibe check in 2026 is the universal radar for decoding personality, intentions, and relationship chemistry in seconds.",
       sections: [
         {
           heading: "What Does 'Vibe Check' Mean on Urban Dictionary, TikTok & Texting?",
@@ -34,12 +34,12 @@ export const trendsDataEn: TrendArticle[] = [
           items: [
             "Social & Group Chat Vibe Check: Checking how a friend, DM, or group chat is feeling mentally and emotionally.",
             "Dating Vibe Check: Testing whether a crush's actions match their words before getting attached.",
-            "AI Photo & Image Vibe Check: Uploading a selfie or screenshot to an online vibe checker so an algorithm can score your aura (0–100), roast your aesthetic, and expose mixed signals."
+            "AI Photo & Image Vibe Check Scale (0–100): Uploading a selfie or screenshot to an online vibe checker so an algorithm can score your aura on a 0–100 vibe check scale, roast your aesthetic, and expose mixed signals."
           ],
           scenario: "When your crush says 'I'm just really busy right now' but updates their playlist at 2 AM—that's an instant failed vibe check."
         },
         {
-          heading: "How Does an AI Vibe Check Test & Image Vibe Checker Work?",
+          heading: "How Does the 0–100 AI Vibe Check Scale & Image Vibe Checker Work?",
           paragraph: "Human intuition is great until you have a crush and suddenly start ignoring every red flag in sight. That is why the AI vibe check test exploded. Instead of guessing how you come across—or overanalyzing a three-word text for hours—VibeCheckr uses multimodal AI to vibe check an image, scan facial micro-expressions, lighting, aesthetic cues, zodiac dynamics, and texting patterns.",
           items: [
             "Solo Vibe Check & Selfie Roasts: Upload a selfie to get your exact Aura Score (0–100), personality archetype, and a brutally honest roast.",
@@ -1278,18 +1278,18 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "situationship-vs-relationship",
-    title: "Situationship Nedir? Gerçek İlişki ile Arasındaki 7 Net Fark",
-    description: "'Biz neyiz?' belirsizliğinde mi sıkıştın? Situationship belirtilerini, bağlanma korkusu red flag'lerini öğren ve ücretsiz YZ Situationship Testini dene!",
+    title: "Situationship Nedir? Situationship, Flört ve İlişki Farkı",
+    description: "Situationship nedir, flört ve gerçek ilişki arasındaki fark ne? 'Biz neyiz?' belirsizliğindeki 7 işareti gör ve ücretsiz YZ Situationship Testini dene!",
     category: "Flört Psikolojisi",
     publishDate: "2026-06-01",
     readTime: "5 dk okuma",
-    keywords: ["situationship nedir", "situationship ne demek", "situationship anlamı", "biz şimdi neyiz testi", "çıkıyor muyuz arkadaş mıyız", "belirsiz ilişki belirtileri", "situationship red flag", "bağlanma korkusu olan erkek", "flört mü sevgili mi testi"],
+    keywords: ["situationship nedir", "situationship ne demek", "situationship flört farkı", "situationship anlamı", "biz şimdi neyiz testi", "çıkıyor muyuz arkadaş mıyız", "belirsiz ilişki belirtileri", "situationship red flag", "bağlanma korkusu olan erkek", "flört mü sevgili mi testi"],
     imageUrl: "/images/trends/situationship.webp",
     content: {
-      intro: "Situationship nedir? Situationship; iki kişinin sevgili gibi mesajlaştığı, vakit geçirdiği ve duygusal veya fiziksel yakınlık yaşadığı ancak 'Biz şimdi neyiz?' sorusuna net bir ad, etiket veya bağlılık koymadığı belirsiz ilişki türüdür. Arkadaşın sana dönüp 'E siz şimdi nesiniz?' dediğinde kalbin sıkışıyor ve 'Ya işte... takılıyoruz' diye geveliyorsan hoş geldin, burası neslimizin en yorucu ve adı konmamış flört batağı olan Situationship.",
+      intro: "Situationship nedir ve flörtten farkı ne? Situationship; iki kişinin sevgili gibi mesajlaştığı, vakit geçirdiği ve duygusal/fiziksel yakınlık yaşadığı ancak 'Biz şimdi neyiz?' sorusuna net bir ad, etiket veya bağlılık koymadığı belirsiz ilişki türüdür. Normal flört (talking stage) birbirini tanıyıp ilişkiye ilerleme amacı taşırken, situationship aylarca aynı gri alanda dönüp durmaktır.",
       sections: [
         {
-          heading: "Situationship Nedir ve Gerçek İlişkiden Farkı Ne?",
+          heading: "Situationship Nedir? Situationship, Flört ve Gerçek İlişki Farkı Ne?",
           paragraph: "Sağlıklı bir ilişkinin net sınırları, karşılıklı bir sözü ve gelecek planı vardır. Nerede durduğunu bilirsin. Ama bir situationship tamamen anlık keyfe ve o lanet belirsizliğe dayanır. Sana bir ilişkinin yakınlığını sunar (gece mesajlaşmaları, sarılmalar, dertleşmeler) ama iş ciddiyete binince ortada hiçbir güvence yoktur. Gelecekten bahsetmekten ölümüne kaçarlar. Kısacası: Bir ilişkinin bütün stresini ve kaygısını çekersin ama hiçbir güvenliğini alamazsın.",
           items: [
             "Planlar hep son dakika yapılır ('Bu akşam müsait misin?'); gelecek haftaya veya tatile dair asla net plan kurulmaz.",
@@ -1601,18 +1601,18 @@ export const trendsDataTr: TrendArticle[] = [
   },
   {
     slug: "what-is-rizz",
-    title: "Rizz Ne Demek? 0 Rizz, No Rizz, Unspoken Rizz & YZ Rizz Testi",
-    description: "Rizz ne demek, 0 rizz (no rizz) ve unspoken rizz farkı nedir? W rizz vs. L rizz mesaj örneklerini gör ve ücretsiz Reply Guru YZ ile rizz cevap üret!",
+    title: "Rizz (Riz) Ne Demek? 0 Rizz, No Rizz, Unspoken Rizz & Test",
+    description: "Rizz ne demek, riz ne demek, 0 rizz (no rizz) ve unspoken rizz farkı nedir? W rizz vs. L rizz mesaj örneklerini gör ve ücretsiz Reply Guru YZ ile cevap üret!",
     category: "Kültür ve Slang",
     publishDate: "2026-06-19",
     readTime: "5 dk okuma",
-    keywords: ["rizz ne demek", "rizz nedir", "0 rizz ne demek", "no rizz meaning", "rizz reply", "rizz anlamı", "unspoken rizz ne demek", "w rizz l rizz", "mesajda rizz nasıl yapılır", "yapay zeka rizz", "flörtöz mesaj üretici"],
+    keywords: ["rizz ne demek", "riz ne demek", "rizz nedir", "0 rizz ne demek", "0 rizz meaning", "no rizz meaning", "rizz reply", "rizz anlamı", "unspoken rizz ne demek", "w rizz l rizz", "mesajda rizz nasıl yapılır", "yapay zeka rizz", "flörtöz mesaj üretici"],
     imageUrl: "/images/trends/rizz.webp",
     content: {
-      intro: "Rizz ne demek? İngilizce 'charisma' (karizma) kelimesinden türeyen 'rizz', birini klişe tavlama laflarına başvurmadan, doğal mizah, özgüven ve akıcı mesajlaşmayla kendine çekme yeteneğidir. TikTok, Instagram veya X'te birine '0 rizz' (no rizz — sıfır karizma) dendiğini ya da 'unspoken rizz'i var' diye övüldüğünü duymuşsundur; işte rizz türleri ve DM'de yüksek rizz'li cevap üretmenin sırları.",
+      intro: "Rizz (veya sık aratılan haliyle riz) ne demek? İngilizce 'charisma' (karizma) kelimesinden türeyen 'rizz', birini klişe tavlama laflarına başvurmadan, doğal mizah, özgüven ve akıcı mesajlaşmayla kendine çekme yeteneğidir. TikTok, Instagram veya X'te birine '0 rizz' (no rizz — sıfır karizma) dendiğini ya da 'unspoken rizz'i var' diye övüldüğünü duymuşsundur; işte rizz türleri ve DM'de yüksek rizz'li cevap üretmenin sırları.",
       sections: [
         {
-          heading: "Rizz, 0 Rizz (No Rizz) ve Unspoken Rizz Ne Demek?",
+          heading: "Rizz (Riz) Ne Demek? 0 Rizz, No Rizz ve Unspoken Rizz Nedir?",
           paragraph: "Yayıncı Kai Cenat tarafından popülerleştirilen ve Oxford Yılın Kelimesi seçilen Rizz; birini klişe tavlama laflarına başvurmadan, tamamen doğal mizah, özgüven, zamanlama ve enerjiyle kendine çekme yeteneğidir. '0 rizz' veya 'no rizz' ise flörtte sıfır çekicilik ve beceriksiz mesajlaşma anlamına gelir. Güncel flört dilinde rizz 4 ana türe ayrılır:",
           items: [
             "Spoken Rizz (Sözlü & Mesajlaşma Rizz'i): Karşı tarafı sıkmadan güldüren, merak uyandıran ve sohbeti zahmetsizce akan flörte dönüştüren konuşma/yazışma yeteneği.",

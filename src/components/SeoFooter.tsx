@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useParams } from "next/navigation";
-import { Sparkles, ArrowRight } from "lucide-react";
+import { useParams, usePathname } from "next/navigation";
+import { Sparkles, ArrowRight, Globe } from "lucide-react";
 import { useAppStore } from "@/store/useAppStore";
 import { trendsDataEn, trendsDataTr } from "@/lib/trends-data";
 
@@ -65,32 +65,24 @@ const strings = {
 export default function SeoFooter() {
   const currentYear = new Date().getFullYear();
   const params = useParams();
+  const pathname = usePathname();
   const routeLang = (params?.lang as string) ?? "";
   const storeLocale = useAppStore((s) => s.locale);
   const locale = (routeLang || storeLocale) as "en" | "tr";
   const isTr = locale === "tr";
+  const altLocale = isTr ? "en" : "tr";
   const s = strings[locale] ?? strings.en;
   const currentTrends = isTr ? trendsDataTr : trendsDataEn;
-  const topReads = currentTrends.filter((t) => 
-    [
-      "what-is-a-vibe-check",
-      "ai-photo-personality-test", 
-      "aura-battle-who-is-cooler", 
-      "fix-negative-aura-mood",
-      "how-to-stop-overthinking-texts",
-      "zodiac-signs-red-flags", 
-      "what-is-an-ick",
-      "situationship-vs-relationship", 
-      "mixed-signals-or-delulu",
-      "biggest-dating-red-flags-2026",
-      "what-are-aura-points",
-      "are-you-delulu",
-      "what-is-rizz",
-      "am-i-being-gaslighted",
-      "what-is-limerence",
-      "gen-z-dating-terms-2026"
-    ].includes(t.slug)
-  ).slice(0, 16);
+  const topReads = currentTrends;
+
+  // Build exact counterpart URL in the other language for crawler discovery
+  const slugParam = typeof params?.slug === "string" ? params.slug : "";
+  let altHref = `/${altLocale}`;
+  if (slugParam) {
+    altHref = `/${altLocale}/trends/${slugParam}`;
+  } else if (pathname && (pathname.startsWith("/en/") || pathname.startsWith("/tr/"))) {
+    altHref = `/${altLocale}${pathname.slice(3)}`;
+  }
 
   return (
     <footer className="w-full border-t border-white/10 bg-black/40 backdrop-blur-md py-12 px-6 mt-20 relative z-20">
@@ -282,6 +274,25 @@ export default function SeoFooter() {
             <li>
               <Link href={`/${locale}/terms`} className="text-white/70 hover:text-white transition-colors text-sm">
                 {s.termsOfService}
+              </Link>
+            </li>
+            <li className="pt-3">
+              <Link
+                href={altHref}
+                hrefLang={altLocale}
+                className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-white/80 hover:text-white hover:border-indigo-500/40 transition-all text-xs font-semibold"
+              >
+                <Globe className="w-3.5 h-3.5 text-indigo-400" />
+                {isTr ? "English Version (EN)" : "Türkçe Sürüm (TR)"}
+              </Link>
+            </li>
+            <li>
+              <Link
+                href={`/${altLocale}`}
+                hrefLang={altLocale}
+                className="text-white/50 hover:text-white/80 transition-colors text-xs block"
+              >
+                {isTr ? "VibeCheckr English Home →" : "VibeCheckr Türkçe Ana Sayfa →"}
               </Link>
             </li>
           </ul>
