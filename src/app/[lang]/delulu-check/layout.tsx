@@ -141,13 +141,21 @@ export default async function Layout({ children, params }: Props) {
     description: isTr
       ? "Karışık sinyalleri ve mesaj ekran görüntülerini analiz ederek 0–100 Delulu Skoru veren ücretsiz yapay zeka gerçeklik testi."
       : "Free AI reality check tool that analyzes chat screenshots and mixed signals to deliver an unfiltered 0–100% Delulu Score.",
-    featureList: [
-      "AI Reality Check & Mixed Signal Decoder",
-      "Chat Screenshot & Text Receipt Analysis",
-      "0–100% Delulu Score",
-      "Red Flag & Breadcrumbing Detection",
-      "1-Click Guest Mode (No Sign-Up Required)",
-    ],
+    featureList: isTr
+      ? [
+          "Yapay Zeka Gerçeklik Testi & Karışık Sinyal Çözücü",
+          "Sohbet Ekran Görüntüsü & Mesaj Analizi",
+          "0–100% Delulu Skoru",
+          "Red Flag & Breadcrumbing (Yemleme) Tespiti",
+          "Tek Tıkla Misafir Modu (Kayıt Gerektirmez)",
+        ]
+      : [
+          "AI Reality Check & Mixed Signal Decoder",
+          "Chat Screenshot & Text Receipt Analysis",
+          "0–100% Delulu Score",
+          "Red Flag & Breadcrumbing Detection",
+          "1-Click Guest Mode (No Sign-Up Required)",
+        ],
     extraFaqs,
   });
 

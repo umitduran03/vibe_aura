@@ -99,12 +99,19 @@ export default async function Layout({ children, params }: Props) {
     description: isTr
       ? "Fotoğraf veya sohbet ekran görüntülerinden manipülasyon, gaslighting ve gizli red flag sinyallerini yakalayan ücretsiz yapay zeka tarayıcısı."
       : "Free AI red-flag scanner that analyzes photos or chat screenshots to expose toxic patterns, love-bombing, and manipulation.",
-    featureList: [
-      "Photo & Chat Screenshot Red Flag Detection",
-      "0–100 Toxicity & Manipulation Score",
-      "Gaslighting & Breadcrumbing Breakdown",
-      "1-Click Guest Mode (No Sign-Up Required)",
-    ],
+    featureList: isTr
+      ? [
+          "Fotoğraf ve Sohbet Ekran Görüntüsünden Red Flag Tespiti",
+          "0–100 Toksiklik ve Manipülasyon Skoru",
+          "Gaslighting ve Breadcrumbing Analizi",
+          "Tek Tıkla Misafir Modu (Kayıt Gerektirmez)",
+        ]
+      : [
+          "Photo & Chat Screenshot Red Flag Detection",
+          "0–100 Toxicity & Manipulation Score",
+          "Gaslighting & Breadcrumbing Breakdown",
+          "1-Click Guest Mode (No Sign-Up Required)",
+        ],
   });
 
   return (

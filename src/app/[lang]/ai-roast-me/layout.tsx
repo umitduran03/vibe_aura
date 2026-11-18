@@ -102,13 +102,21 @@ export default async function Layout({ children, params }: Props) {
     description: isTr
       ? "Selfie fotoğrafından 0–100 aura skoru, kişilik arketipi ve acımasız fotoğraf gömmesi üreten ücretsiz yapay zeka aracı."
       : "Free AI selfie roast and vibe check tool that calculates a 0–100 aura score, personality archetype, and savage first-impression roast.",
-    featureList: [
-      "Instant 0–100 Selfie Aura Score",
-      "Brutal AI Photo Roast",
-      "Vibe Archetype & First Impression Read",
-      "Shareable Story Result Card",
-      "1-Click Guest Mode (No Sign-Up Required)",
-    ],
+    featureList: isTr
+      ? [
+          "Anında 0–100 Selfie Aura Skoru",
+          "Acımasız Yapay Zeka Fotoğraf Gömmesi (AI Roast)",
+          "Vibe Arketipi & İlk İzlenim Analizi",
+          "Paylaşılabilir Story Sonuç Kartı",
+          "Tek Tıkla Misafir Modu (Kayıt Gerektirmez)",
+        ]
+      : [
+          "Instant 0–100 Selfie Aura Score",
+          "Brutal AI Photo Roast",
+          "Vibe Archetype & First Impression Read",
+          "Shareable Story Result Card",
+          "1-Click Guest Mode (No Sign-Up Required)",
+        ],
   });
 
   return (

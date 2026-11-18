@@ -102,12 +102,19 @@ export default async function Layout({ children, params }: Props) {
     description: isTr
       ? "İki fotoğraf yükleyerek çift kimyasını, burç uyumunu ve 0–100 ilişki potansiyelini hesaplayan ücretsiz yapay zeka testi."
       : "Free AI couple compatibility platform that analyzes two photos and zodiac signs to calculate 0–100% romantic chemistry and aura harmony.",
-    featureList: [
-      "Two-Photo AI Chemistry & Aura Match",
-      "0–100% Romantic Compatibility Score",
-      "Zodiac Sign Synergy & Red Flag Read",
-      "Shareable Neon Duo Card",
-    ],
+    featureList: isTr
+      ? [
+          "İki Fotoğraftan Yapay Zeka Kimya & Aura Eşleşmesi",
+          "0–100% Romantik Çift Uyum Skoru",
+          "Burç Sinerjisi & Red Flag Analizi",
+          "Paylaşılabilir Neon Çift Kartı",
+        ]
+      : [
+          "Two-Photo AI Chemistry & Aura Match",
+          "0–100% Romantic Compatibility Score",
+          "Zodiac Sign Synergy & Red Flag Read",
+          "Shareable Neon Duo Card",
+        ],
   });
 
   return (

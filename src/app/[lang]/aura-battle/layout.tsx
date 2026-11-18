@@ -100,12 +100,19 @@ export default async function Layout({ children, params }: Props) {
     description: isTr
       ? "İki fotoğrafı karşılaştırarak Kişi 1 ve Kişi 2 için ayrı ayrı 0–100 Aura Puanı hesaplayan ve kazananı belirleyen ücretsiz yapay zeka aracı."
       : "Head-to-head AI photo comparison tool that calculates separate 0–100 Aura Scores for Person 1 and Person 2, crowns the winner, and roasts the loser.",
-    featureList: [
-      "1v1 Head-to-Head Photo Aura Comparison",
-      "Separate 0–100 Vibe Scores for Person 1 & Person 2",
-      "Winner Crown & Loser Roast Verdict",
-      "Shareable Dual Scoreboard Card",
-    ],
+    featureList: isTr
+      ? [
+          "1v1 İki Fotoğraf Aura Karşılaştırması",
+          "1. Kişi ve 2. Kişi İçin Ayrı Ayrı 0–100 Vibe Skoru",
+          "Kazanan Tacı ve Kaybeden Roast Yorumu",
+          "Paylaşılabilir İkili Skor Tablosu Kartı",
+        ]
+      : [
+          "1v1 Head-to-Head Photo Aura Comparison",
+          "Separate 0–100 Vibe Scores for Person 1 & Person 2",
+          "Winner Crown & Loser Roast Verdict",
+          "Shareable Dual Scoreboard Card",
+        ],
   });
 
   return (

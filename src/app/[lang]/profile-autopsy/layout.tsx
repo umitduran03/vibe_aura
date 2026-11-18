@@ -100,12 +100,19 @@ export default async function ProfileAutopsyLayout({ children, params }: Props) 
     description: isTr
       ? "Instagram, Tinder, Bumble, Hinge ve X profillerini analiz ederek 0–100 puan, bio gücü ve red/green flag raporu sunan ücretsiz yapay zeka aracı."
       : "Free AI profile analyzer for Tinder, Bumble, Hinge, Instagram, and X with Self Audit Mode, Detective Mode, and 0–100 vibe scoring.",
-    featureList: [
-      "Self Audit Mode — Fix Your Own Dating Profile",
-      "Detective Mode — Scan Someone Else's Profile for Red Flags",
-      "0–100 First Impression & Bio Strength Score",
-      "Supports Tinder, Bumble, Hinge, Instagram, X & BeReal",
-    ],
+    featureList: isTr
+      ? [
+          "Kendi Profilim Modu — Flört Profilini Düzenle",
+          "Dedektif Modu — Başkasının Profilinde Red Flag Tara",
+          "0–100 İlk İzlenim ve Biyografi Gücü Puanı",
+          "Tinder, Bumble, Hinge, Instagram, X & BeReal Desteği",
+        ]
+      : [
+          "Self Audit Mode — Fix Your Own Dating Profile",
+          "Detective Mode — Scan Someone Else's Profile for Red Flags",
+          "0–100 First Impression & Bio Strength Score",
+          "Supports Tinder, Bumble, Hinge, Instagram, X & BeReal",
+        ],
   });
 
   return (

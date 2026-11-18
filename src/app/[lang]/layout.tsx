@@ -127,7 +127,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
           url: "/opengraph-image.png",
           width: 1200,
           height: 630,
-          alt: "VibeCheckr — AI Vibe Check, Photo Roast & Personality Analysis App",
+          alt: isTr
+            ? "VibeCheckr — Ücretsiz Yapay Zeka Vibe Testi, Fotoğraf Roast & Aura Analizi"
+            : "VibeCheckr — AI Vibe Check, Photo Roast & Personality Analysis App",
         },
       ],
     },

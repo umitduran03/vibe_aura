@@ -165,7 +165,7 @@ export default async function TrendArticlePage({ params }: { params: Promise<{ s
         },
       },
       datePublished: article.publishDate,
-      dateModified: "2026-11-17",
+      dateModified: "2026-11-18",
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": pageUrl,
